@@ -1,0 +1,23 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "发布",
+            "type": "lua",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/publish.lua",
+            "arg": [
+            ],
+            "consoleCoding": "utf8",
+            "sourceCoding": "utf8",
+            "luaVersion": "5.4",
+            "luaArch": "x86_64",
+            "outputCapture": [
+                "print",
+                "stderr",
+            ],
+        },
+    ]
+}
