@@ -36,20 +36,20 @@ export function activate(context: ExtensionContext) {
 		case "win32":
 			command = context.asAbsolutePath(
 				path.join(
-					beta ? 'server-beta' : 'server',
-					'Windows',
+					'server',
 					'bin',
-					beta ? 'lua-beta.exe' : 'lua-language-server.exe'
+					'Windows',
+					'lua-language-server.exe'
 				)
 			);
 			break;
 		case "linux":
 			command = context.asAbsolutePath(
 				path.join(
-					beta ? 'server-beta' : 'server',
-					'Linux',
+					'server',
 					'bin',
-					beta? 'lua-beta' : 'lua-language-server'
+					'Linux',
+					'lua-language-server'
 				)
 			);
 			fs.chmodSync(command, '777');
@@ -57,10 +57,10 @@ export function activate(context: ExtensionContext) {
 		case "darwin":
 			command = context.asAbsolutePath(
 				path.join(
-					beta ? 'server-beta' : 'server',
+					'server',
 					'macOS',
 					'bin',
-					beta? 'lua-beta' : 'lua-language-server'
+					'lua-language-server'
 				)
 			);
 			fs.chmodSync(command, '777');
@@ -74,8 +74,8 @@ export function activate(context: ExtensionContext) {
 			'-e',
 			'LANG="' + language + '"',
 			context.asAbsolutePath(path.join(
-				beta ? 'server-beta' : 'server',
-				'main.lua'
+				'server',
+				beta ? 'main-beta.lua' : 'main.lua',
 			))
 		]
 	};

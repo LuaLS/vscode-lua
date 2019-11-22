@@ -26,14 +26,14 @@ function activate(context) {
     let platform = os.platform();
     switch (platform) {
         case "win32":
-            command = context.asAbsolutePath(path.join(beta ? 'server-beta' : 'server', 'Windows', 'bin', beta ? 'lua-beta.exe' : 'lua-language-server.exe'));
+            command = context.asAbsolutePath(path.join('server', 'bin', 'Windows', 'lua-language-server.exe'));
             break;
         case "linux":
-            command = context.asAbsolutePath(path.join(beta ? 'server-beta' : 'server', 'Linux', 'bin', beta ? 'lua-beta' : 'lua-language-server'));
+            command = context.asAbsolutePath(path.join('server', 'bin', 'Linux', 'lua-language-server'));
             fs.chmodSync(command, '777');
             break;
         case "darwin":
-            command = context.asAbsolutePath(path.join(beta ? 'server-beta' : 'server', 'macOS', 'bin', beta ? 'lua-beta' : 'lua-language-server'));
+            command = context.asAbsolutePath(path.join('server', 'macOS', 'bin', 'lua-language-server'));
             fs.chmodSync(command, '777');
             break;
     }
@@ -43,7 +43,7 @@ function activate(context) {
             '-E',
             '-e',
             'LANG="' + language + '"',
-            context.asAbsolutePath(path.join(beta ? 'server-beta' : 'server', 'main.lua'))
+            context.asAbsolutePath(path.join('server', beta ? 'main-beta.lua' : 'main.lua'))
         ]
     };
     client = new vscode_languageclient_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
