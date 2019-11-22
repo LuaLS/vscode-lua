@@ -7,9 +7,11 @@ loadfile(rootPath .. 'server/platform.lua')('script')
 local fs = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
 local platform = require 'bee.platform'
-ROOT = fs.path(rootPath)
 
 require 'utility'
+dofile(rootPath .. 'server/test.lua')
+
+ROOT = fs.path(rootPath)
 dofile(rootPath .. 'build_package.lua')
 local json = require 'json'
 
@@ -126,7 +128,7 @@ local version = loadPackage()
 print('版本号为：' .. version)
 
 local out = createDirectory(version)
-
+print('输出目录为：', out)
 print('清理目录...')
 removeFiles(out)(true)
 
