@@ -66,7 +66,7 @@ You need to build `vscode-lua` yourself on macOS/Linux.
 * Clone source code
 ```
 git clone https://github.com/sumneko/vscode-lua
-cd lua-language-server
+cd vscode-lua
 git submodule update --init --recursive
 ```
 * Open repo and execute tasks in VSCode
