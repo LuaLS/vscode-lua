@@ -12,8 +12,7 @@
             ],
             "consoleCoding": "utf8",
             "sourceCoding": "utf8",
-            "luaVersion": "5.4",
-            "luaArch": "x86_64",
+            "luaexe": "${workspaceFolder}/server/bin/Windows/lua-language-server.exe",
             "outputCapture": [
                 "print",
                 "stderr",
