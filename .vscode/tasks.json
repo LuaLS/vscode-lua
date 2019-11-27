@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "type": "shell",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "C:\\Windows\\System32\\cmd.exe",
+                "args": [
+                    "/c"
+                ]
+            }
+        }
+    },
+    "options": {
+        "cwd": "${workspaceFolder}"
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "PreCompile",
+            "windows": {
+                "command": "tools\\ninja -f ninja\\msvc.ninja"
+            },
+            "linux": {
+                "command": "ninja -f ninja/linux.ninja"
+            },
+            "osx": {
+                "command": "ninja -f ninja/macos.ninja"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/server/3rd/luamake"
+            },
+        },
+        {
+            "type": "shell",
+            "label": "Compile",
+            "command": "${workspaceFolder}/server/3rd/luamake/luamake rebuild",
+            "options": {
+                "cwd": "${workspaceFolder}/server"
+            },
+        },
+        {
+            "label": "Install",
+            "command": "${workspaceFolder}/server/build/lua",
+            "args": [
+                "make/copy.lua",
+                "${command:extensionPath}"
+            ],
+        }
+    ]
+}

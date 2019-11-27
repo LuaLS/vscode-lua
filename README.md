@@ -26,46 +26,46 @@
 
 ### Goto Definition
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images//Goto%20Definition.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images//Goto%20Definition.gif)
 
 ### Find All References
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images//Find%20All%20References.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images//Find%20All%20References.gif)
 
 ### Hover
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Hover.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Hover.gif)
 
 ### Diagnostics
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Diagnostics.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Diagnostics.gif)
 
 ### Rename
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Rename.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Rename.gif)
 
 ### Auto Completion
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Auto%20Completion.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Auto%20Completion.gif)
 
 ### Signature Help
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Signature%20Help.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Signature%20Help.gif)
 
 ### Emmy Annotation
 
-![avatar](https://github.com/sumneko/vscode-lua-language-server/raw/master/images/Emmy%20Annotation.gif)
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Emmy%20Annotation.gif)
 
 ## How to use on macOS/Linux
 
-You need to build `lua-language-server` yourself on macOS/Linux.
+You need to build `vscode-lua` yourself on macOS/Linux.
 
 * Install [sumneko.lua] in VSCode
 * Install [extension-path] in VSCode
 * Install [ninja]
 * Clone source code
 ```
-git clone https://github.com/sumneko/lua-language-server
+git clone https://github.com/sumneko/vscode-lua
 cd lua-language-server
 git submodule update --init --recursive
 ```
@@ -102,7 +102,7 @@ If you find any mistakes, please [tell me][issues] or use [Pull Requests][@lua] 
 
 Please [help me][en-US] improve the quality of `en-US`.
 
-[en-US]: https://github.com/sumneko/vscode-lua-language-server/tree/master/locale/en-US
+[en-US]: https://github.com/sumneko/vscode-lua/tree/master/locale/en-US
 
 ## Credit
 
