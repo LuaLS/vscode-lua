@@ -58,8 +58,8 @@ export function activate(context: ExtensionContext) {
 			command = context.asAbsolutePath(
 				path.join(
 					'server',
-					'macOS',
 					'bin',
+					'macOS',
 					'lua-language-server'
 				)
 			);

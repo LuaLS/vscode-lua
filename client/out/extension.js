@@ -33,7 +33,7 @@ function activate(context) {
             fs.chmodSync(command, '777');
             break;
         case "darwin":
-            command = context.asAbsolutePath(path.join('server', 'macOS', 'bin', 'lua-language-server'));
+            command = context.asAbsolutePath(path.join('server', 'bin', 'macOS', 'lua-language-server'));
             fs.chmodSync(command, '777');
             break;
     }
