@@ -1,6 +1,8 @@
 local fs = require 'bee.filesystem'
 local pf = require 'bee.platform'
 
+print(package.cpath)
+
 local function getExtensionDirName(packageDir)
     local publisher,name,version
     for line in io.lines(packageDir .. '/package.json') do
