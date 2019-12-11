@@ -1,7 +1,7 @@
 local json = require 'json'
 local diagDefault = require 'constant.DiagnosticDefaultSeverity'
 
-local VERSION = "0.14.7"
+local VERSION = "0.15.0"
 
 local package = {
     name = "lua",
@@ -183,11 +183,11 @@ local package = {
                 --    default = ".vscode/lua-plugin/*.lua",
                 --    markdownDescription = "%config.plugin.path%"
                 --},
-                ["Lua.zzzzzz.cat"] = {
+                ["Lua.awakened.cat"] = {
                     scope = "resource",
                     type = "boolean",
                     default = false,
-                    markdownDescription = "%config.zzzzzz.cat%"
+                    markdownDescription = "%config.awakened.cat%"
                 },
             }
         },
@@ -298,7 +298,7 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.completion.keywordSnippet.Disable'] = "Only shows `keyword`.",
     ['config.completion.keywordSnippet.Both'] = "Shows `keyword` and `syntax snippet`.",
     ['config.completion.keywordSnippet.Replace'] = "Only shows `syntax snippet`.",
-    ['config.zzzzzz.cat']                 = 'DO NOT TOUCH ME, LET ME SLEEP >_<\n\n(This will enable beta version, which are still in the early stages of development, and all features will fail after enabling this setting.)',
+    ['config.awakened.cat']                 = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
 })
 
 print('生成 package.nls.zh-cn.json')
@@ -328,5 +328,5 @@ io.save(ROOT / 'package.nls.zh-cn.json', json.encode {
     ['config.completion.keywordSnippet.Disable'] = "只显示 `关键字`。",
     ['config.completion.keywordSnippet.Both'] = "显示 `关键字` 与 `语法片段`。",
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
-    ['config.zzzzzz.cat']                 = 'DO NOT TOUCH ME, LET ME SLEEP >_<\n\n（这会启用还处于早期开发阶段的beta版，开启后所有的功能都会失效）',
+    ['config.awakened.cat']                 = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
 })
