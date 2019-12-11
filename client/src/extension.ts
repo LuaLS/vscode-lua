@@ -29,7 +29,7 @@ export function activate(context: ExtensionContext) {
 		}
 	};
 
-	let beta: boolean = workspace.getConfiguration("Lua.zzzzzz").get("cat");
+	let beta: boolean = workspace.getConfiguration("Lua.awakened").get("cat");
 	let command: string;
 	let platform: string = os.platform();
 	switch (platform) {

@@ -21,7 +21,7 @@ function activate(context) {
             fileEvents: vscode_1.workspace.createFileSystemWatcher('**/.clientrc')
         }
     };
-    let beta = vscode_1.workspace.getConfiguration("Lua.zzzzzz").get("cat");
+    let beta = vscode_1.workspace.getConfiguration("Lua.awakened").get("cat");
     let command;
     let platform = os.platform();
     switch (platform) {
