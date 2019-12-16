@@ -60,6 +60,24 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "Lua.develop.debuggerPort": {
+                    "default": 11412,
+                    "markdownDescription": "%config.develop.debuggerPort%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
+                "Lua.develop.debuggerWait": {
+                    "default": false,
+                    "markdownDescription": "%config.develop.debuggerWait%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
+                "Lua.develop.enable": {
+                    "default": false,
+                    "markdownDescription": "%config.develop.enable%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
                 "Lua.diagnostics.disable": {
                     "items": {
                         "type": "string"

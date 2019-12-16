@@ -189,6 +189,24 @@ local package = {
                     default = false,
                     markdownDescription = "%config.awakened.cat%"
                 },
+                ["Lua.develop.enable"] = {
+                    scope = "resource",
+                    type = "boolean",
+                    default = false,
+                    markdownDescription = "%config.develop.enable%"
+                },
+                ["Lua.develop.debuggerPort"] = {
+                    scope = "resource",
+                    type = "integer",
+                    default = 11412,
+                    markdownDescription = "%config.develop.debuggerPort%"
+                },
+                ["Lua.develop.debuggerWait"] = {
+                    scope = "resource",
+                    type = "boolean",
+                    default = false,
+                    markdownDescription = "%config.develop.debuggerWait%"
+                },
             }
         },
         grammars = {
@@ -289,16 +307,19 @@ Load external library.
 This feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.
 The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../lib/temp`.
 ]] .. example.library,
-    ['config.completion.enable']          = 'Enable completion.',
-    ['config.completion.callSnippet']     = 'Shows function call snippets.',
-    ['config.completion.callSnippet.Disable'] = "Only shows `function name`.",
-    ['config.completion.callSnippet.Both'] = "Shows `function name` and `call snippet`.",
-    ['config.completion.callSnippet.Replace'] = "Only shows `call snippet.`",
-    ['config.completion.keywordSnippet']     = 'Shows keyword syntax snippets.',
+    ['config.completion.enable']                 = 'Enable completion.',
+    ['config.completion.callSnippet']            = 'Shows function call snippets.',
+    ['config.completion.callSnippet.Disable']    = "Only shows `function name`.",
+    ['config.completion.callSnippet.Both']       = "Shows `function name` and `call snippet`.",
+    ['config.completion.callSnippet.Replace']    = "Only shows `call snippet.`",
+    ['config.completion.keywordSnippet']         = 'Shows keyword syntax snippets.',
     ['config.completion.keywordSnippet.Disable'] = "Only shows `keyword`.",
-    ['config.completion.keywordSnippet.Both'] = "Shows `keyword` and `syntax snippet`.",
+    ['config.completion.keywordSnippet.Both']    = "Shows `keyword` and `syntax snippet`.",
     ['config.completion.keywordSnippet.Replace'] = "Only shows `syntax snippet`.",
-    ['config.awakened.cat']                 = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
+    ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
+    ['config.develop.enable']                    = 'Developer mode. Do not enable, performance will be affected.',
+    ['config.develop.debuggerPort']              = 'Listen port of debugger.',
+    ['config.develop.debuggerWait']              = 'Suspend before debugger connects.',
 })
 
 print('生成 package.nls.zh-cn.json')
@@ -319,14 +340,17 @@ io.save(ROOT / 'package.nls.zh-cn.json', json.encode {
 该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。
 下面这个例子表示加载`C:/lua`与`../lib`中的所有文件，但不加载`../lib/temp`中的文件。
 ]] .. example.library,
-    ['config.completion.enable']          = '启用自动完成。',
-    ['config.completion.callSnippet']     = '显示函数调用片段。',
-    ['config.completion.callSnippet.Disable'] = "只显示 `函数名`。",
-    ['config.completion.callSnippet.Both'] = "显示 `函数名` 与 `调用片段`。",
-    ['config.completion.callSnippet.Replace'] = "只显示 `调用片段`。",
-    ['config.completion.keywordSnippet']     = '显示关键字语法片段',
+    ['config.completion.enable']                 = '启用自动完成。',
+    ['config.completion.callSnippet']            = '显示函数调用片段。',
+    ['config.completion.callSnippet.Disable']    = "只显示 `函数名`。",
+    ['config.completion.callSnippet.Both']       = "显示 `函数名` 与 `调用片段`。",
+    ['config.completion.callSnippet.Replace']    = "只显示 `调用片段`。",
+    ['config.completion.keywordSnippet']         = '显示关键字语法片段',
     ['config.completion.keywordSnippet.Disable'] = "只显示 `关键字`。",
-    ['config.completion.keywordSnippet.Both'] = "显示 `关键字` 与 `语法片段`。",
+    ['config.completion.keywordSnippet.Both']    = "显示 `关键字` 与 `语法片段`。",
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
-    ['config.awakened.cat']                 = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
+    ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
+    ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
+    ['config.develop.debuggerPort']              = '调试器监听端口',
+    ['config.develop.debuggerWait']              = '调试器连接之前挂起',
 })
