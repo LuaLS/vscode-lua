@@ -351,6 +351,6 @@ io.save(ROOT / 'package.nls.zh-cn.json', json.encode {
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
-    ['config.develop.debuggerPort']              = '调试器监听端口',
-    ['config.develop.debuggerWait']              = '调试器连接之前挂起',
+    ['config.develop.debuggerPort']              = '调试器监听端口。',
+    ['config.develop.debuggerWait']              = '调试器连接之前挂起。',
 })

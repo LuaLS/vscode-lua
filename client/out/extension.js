@@ -22,6 +22,9 @@ function activate(context) {
         }
     };
     let beta = vscode_1.workspace.getConfiguration("Lua.awakened").get("cat");
+    let develop = vscode_1.workspace.getConfiguration("Lua.develop").get("enable");
+    let debuggerPort = vscode_1.workspace.getConfiguration("Lua.develop").get("debuggerPort");
+    let debuggerWait = vscode_1.workspace.getConfiguration("Lua.develop").get("debuggerWait");
     let command;
     let platform = os.platform();
     switch (platform) {
@@ -42,7 +45,7 @@ function activate(context) {
         args: [
             '-E',
             '-e',
-            'LANG="' + language + '"',
+            `LANG="${language}";DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
             context.asAbsolutePath(path.join('server', beta ? 'main-beta.lua' : 'main.lua'))
         ]
     };
