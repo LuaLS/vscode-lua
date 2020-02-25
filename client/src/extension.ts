@@ -29,7 +29,8 @@ export function activate(context: ExtensionContext) {
 		}
 	};
 
-	let beta: boolean = workspace.getConfiguration("Lua.awakened").get("cat");
+	//let beta: boolean = workspace.getConfiguration("Lua.awakened").get("cat");
+	let beta: boolean = false;
 	let develop: boolean = workspace.getConfiguration("Lua.develop").get("enable");
 	let debuggerPort: number = workspace.getConfiguration("Lua.develop").get("debuggerPort");
 	let debuggerWait: boolean = workspace.getConfiguration("Lua.develop").get("debuggerWait");
