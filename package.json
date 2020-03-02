@@ -22,6 +22,20 @@
                     "scope": "resource",
                     "type": "boolean"
                 },
+                "Lua.color.mode": {
+                    "default": "Grammar",
+                    "enum": [
+                        "Grammar",
+                        "Semantic"
+                    ],
+                    "markdownDescription": "%config.color.mode%",
+                    "markdownEnumDescriptions": [
+                        "%config.color.mode.Semantic%",
+                        "%config.color.mode.Grammar%"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.completion.callSnippet": {
                     "default": "Disable",
                     "enum": [

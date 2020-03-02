@@ -171,6 +171,20 @@ local package = {
                     },
                     markdownDescription = "%config.completion.keywordSnippet%"
                 },
+                ["Lua.color.mode"] = {
+                    scope = "resource",
+                    type = "string",
+                    default = "Grammar",
+                    enum = {
+                        "Grammar",
+                        "Semantic",
+                    },
+                    markdownEnumDescriptions = {
+                        "%config.color.mode.Semantic%",
+                        "%config.color.mode.Grammar%",
+                    },
+                    markdownDescription = "%config.color.mode%"
+                },
                 --["Lua.plugin.enable"] = {
                 --    scope = "resource",
                 --    type = "boolean",
@@ -316,6 +330,9 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.completion.keywordSnippet.Disable'] = "Only shows `keyword`.",
     ['config.completion.keywordSnippet.Both']    = "Shows `keyword` and `syntax snippet`.",
     ['config.completion.keywordSnippet.Replace'] = "Only shows `syntax snippet`.",
+    ['config.color.mode']                        = "Color mode.",
+    ['config.color.mode.Semantic']               = "Semantic color (test).",
+    ['config.color.mode.Grammar']                = "Grammar color.",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ['config.develop.enable']                    = 'Developer mode. Do not enable, performance will be affected.',
     ['config.develop.debuggerPort']              = 'Listen port of debugger.',
@@ -349,6 +366,9 @@ io.save(ROOT / 'package.nls.zh-cn.json', json.encode {
     ['config.completion.keywordSnippet.Disable'] = "只显示 `关键字`。",
     ['config.completion.keywordSnippet.Both']    = "显示 `关键字` 与 `语法片段`。",
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
+    ['config.color.mode']                        = "着色模式。",
+    ['config.color.mode.Semantic']               = "语义着色（测试）。",
+    ['config.color.mode.Grammar']                = "语法着色。",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
