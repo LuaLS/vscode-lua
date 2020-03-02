@@ -180,8 +180,8 @@ local package = {
                         "Semantic",
                     },
                     markdownEnumDescriptions = {
-                        "%config.color.mode.Semantic%",
                         "%config.color.mode.Grammar%",
+                        "%config.color.mode.Semantic%",
                     },
                     markdownDescription = "%config.color.mode%"
                 },

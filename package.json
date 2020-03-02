@@ -30,8 +30,8 @@
                     ],
                     "markdownDescription": "%config.color.mode%",
                     "markdownEnumDescriptions": [
-                        "%config.color.mode.Semantic%",
-                        "%config.color.mode.Grammar%"
+                        "%config.color.mode.Grammar%",
+                        "%config.color.mode.Semantic%"
                     ],
                     "scope": "resource",
                     "type": "string"
