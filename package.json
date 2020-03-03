@@ -16,26 +16,6 @@
     "contributes": {
         "configuration": {
             "properties": {
-                "Lua.awakened.cat": {
-                    "default": false,
-                    "markdownDescription": "%config.awakened.cat%",
-                    "scope": "resource",
-                    "type": "boolean"
-                },
-                "Lua.color.mode": {
-                    "default": "Grammar",
-                    "enum": [
-                        "Grammar",
-                        "Semantic"
-                    ],
-                    "markdownDescription": "%config.color.mode%",
-                    "markdownEnumDescriptions": [
-                        "%config.color.mode.Grammar%",
-                        "%config.color.mode.Semantic%"
-                    ],
-                    "scope": "resource",
-                    "type": "string"
-                },
                 "Lua.completion.callSnippet": {
                     "default": "Disable",
                     "enum": [

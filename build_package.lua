@@ -171,20 +171,20 @@ local package = {
                     },
                     markdownDescription = "%config.completion.keywordSnippet%"
                 },
-                ["Lua.color.mode"] = {
-                    scope = "resource",
-                    type = "string",
-                    default = "Grammar",
-                    enum = {
-                        "Grammar",
-                        "Semantic",
-                    },
-                    markdownEnumDescriptions = {
-                        "%config.color.mode.Grammar%",
-                        "%config.color.mode.Semantic%",
-                    },
-                    markdownDescription = "%config.color.mode%"
-                },
+                --["Lua.color.mode"] = {
+                --    scope = "resource",
+                --    type = "string",
+                --    default = "Grammar",
+                --    enum = {
+                --        "Grammar",
+                --        "Semantic",
+                --    },
+                --    markdownEnumDescriptions = {
+                --        "%config.color.mode.Grammar%",
+                --        "%config.color.mode.Semantic%",
+                --    },
+                --    markdownDescription = "%config.color.mode%"
+                --},
                 --["Lua.plugin.enable"] = {
                 --    scope = "resource",
                 --    type = "boolean",
@@ -197,12 +197,12 @@ local package = {
                 --    default = ".vscode/lua-plugin/*.lua",
                 --    markdownDescription = "%config.plugin.path%"
                 --},
-                ["Lua.awakened.cat"] = {
-                    scope = "resource",
-                    type = "boolean",
-                    default = false,
-                    markdownDescription = "%config.awakened.cat%"
-                },
+                --["Lua.awakened.cat"] = {
+                --    scope = "resource",
+                --    type = "boolean",
+                --    default = false,
+                --    markdownDescription = "%config.awakened.cat%"
+                --},
                 ["Lua.develop.enable"] = {
                     scope = "resource",
                     type = "boolean",
