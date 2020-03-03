@@ -420,5 +420,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/vscode-lua"
     },
-    "version": "0.15.5"
+    "version": "0.15.6"
 }
