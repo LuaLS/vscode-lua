@@ -12,7 +12,7 @@ local package = {
     license = "MIT",
     repository = {
         type = "git",
-        url = "https://github.com/sumneko/vscode-lua"
+        url = "https://github.com/sumneko/lua-language-server"
     },
     publisher = "sumneko",
     categories = {
