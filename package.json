@@ -418,7 +418,7 @@
     "publisher": "sumneko",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sumneko/vscode-lua"
+        "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.15.6"
+    "version": "0.15.7"
 }
