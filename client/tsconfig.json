@@ -7,6 +7,6 @@
 		"lib": ["es6"],
 		"sourceMap": true
 	},
-	"include": ["src"],
+	"include": ["src", "out/patch.js"],
 	"exclude": ["node_modules", ".vscode-test"]
 }

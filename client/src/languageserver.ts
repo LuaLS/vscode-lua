@@ -3,6 +3,8 @@ import * as os from 'os';
 import * as fs from 'fs';
 import { workspace, ExtensionContext, env } from 'vscode';
 
+let patch = require("./patch");
+
 import {
     LanguageClient,
     LanguageClientOptions,
@@ -85,6 +87,8 @@ export function activate(context: ExtensionContext) {
         serverOptions,
         clientOptions
     );
+
+    patch.patch(client);
 
     client.start();
 }

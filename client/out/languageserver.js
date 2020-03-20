@@ -4,6 +4,7 @@ const path = require("path");
 const os = require("os");
 const fs = require("fs");
 const vscode_1 = require("vscode");
+let patch = require("./patch");
 const vscode_languageclient_1 = require("vscode-languageclient");
 let client;
 function activate(context) {
@@ -47,6 +48,7 @@ function activate(context) {
         ]
     };
     client = new vscode_languageclient_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
+    patch.patch(client);
     client.start();
 }
 exports.activate = activate;
