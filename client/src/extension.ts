@@ -16,7 +16,7 @@ import {
 
 let client: LanguageClient;
 
-export function activate(context: ExtensionContext) {
+function activateLanguageServer(context: ExtensionContext) {
 	let language = env.language;
 
 	// Options to control the language client
@@ -92,6 +92,10 @@ export function activate(context: ExtensionContext) {
 	);
 
 	client.start();
+}
+
+export function activate(context: ExtensionContext) {
+	activateLanguageServer(context);
 }
 
 export function deactivate(): Thenable<void> | undefined {

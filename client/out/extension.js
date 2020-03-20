@@ -10,7 +10,7 @@ const fs = require("fs");
 const vscode_1 = require("vscode");
 const vscode_languageclient_1 = require("vscode-languageclient");
 let client;
-function activate(context) {
+function activateLanguageServer(context) {
     let language = vscode_1.env.language;
     // Options to control the language client
     let clientOptions = {
@@ -52,6 +52,9 @@ function activate(context) {
     };
     client = new vscode_languageclient_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     client.start();
+}
+function activate(context) {
+    activateLanguageServer(context);
 }
 exports.activate = activate;
 function deactivate() {
