@@ -1,7 +1,7 @@
 local json = require 'json'
 local diagDefault = require 'constant.DiagnosticDefaultSeverity'
 
-local VERSION = "0.15.7"
+local VERSION = "0.16.0"
 
 local package = {
     name = "lua",
