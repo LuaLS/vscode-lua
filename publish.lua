@@ -140,6 +140,12 @@ local count = copyFiles(ROOT , out) {
         ['package-lock.json'] = true,
         ['package.json']      = true,
         ['tsconfig.json']     = true,
+        ['3rd']               = {
+            ['vscode-lua-doc']  = {
+                ['doc']             = true,
+                ['extension.js']    = true,
+            },
+        },
     },
     ['server'] = {
         ['bin']               = true,
