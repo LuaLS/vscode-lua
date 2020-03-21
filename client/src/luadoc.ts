@@ -186,10 +186,12 @@ function createPanel(workPath, disposables, viewType, args) {
 function activateLuaDoc(workPath, disposables, LuaDoc) {
     disposables.push(vscode.commands.registerCommand(LuaDoc.OpenCommand, (args) => {
         try {
-            createPanel(workPath, disposables, LuaDoc.ViewType, args || {
-                language: "en-us",
-                version: "54",
-                file: "readme.html",
+            let params = args.split("/");
+            createPanel(workPath, disposables, LuaDoc.ViewType, {
+                language: params[0],
+                version: params[1],
+                file: params[2],
+                anchor: params[3],
             });
         } catch (error) {
             console.error(error)
