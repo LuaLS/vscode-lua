@@ -1,3 +1,4 @@
 /client/node_modules
 /client/out/*.map
 /publish/
+/luadoc/out/

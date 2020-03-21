@@ -5,7 +5,8 @@
         "publisherId": "fb626675-24cf-4881-8c13-b465f29bec2f"
     },
     "activationEvents": [
-        "onLanguage:lua"
+        "onLanguage:lua",
+        "onCommand:lua-doc.open"
     ],
     "author": "sumneko",
     "categories": [
