@@ -30,7 +30,8 @@ local package = {
         vscode = "^1.23.0"
     },
     activationEvents = {
-        "onLanguage:lua"
+        "onLanguage:lua",
+        "onCommand:extension.lua.doc",
     },
     main = "./client/out/extension",
     contributes = {

@@ -6,7 +6,7 @@
     },
     "activationEvents": [
         "onLanguage:lua",
-        "onCommand:lua-doc.open"
+        "onCommand:extension.lua.doc"
     ],
     "author": "sumneko",
     "categories": [
