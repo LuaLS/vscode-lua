@@ -1,10 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const languageserver = require("./languageserver");
-const luadoc = require("./luadoc");
+const luadoc = require("../3rd/vscode-lua-doc/extension");
 function activate(context) {
     languageserver.activate(context);
-    luadoc.activate(context);
+    let luadocContext = {
+        subscriptions: context.subscriptions,
+        workspaceState: context.workspaceState,
+        globalState: context.globalState,
+        extensionPath: context.extensionPath + '/client/3rd/vscode-lua-doc',
+        asAbsolutePath: context.asAbsolutePath,
+        storagePath: context.storagePath,
+        globalStoragePath: context.globalStoragePath,
+        logPath: context.logPath,
+    };
+    luadoc.activate(luadocContext);
 }
 exports.activate = activate;
 function deactivate() {
