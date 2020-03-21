@@ -2,12 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 
 let code = require("vscode");
-let realMarkdownString = code.MarkdownString;
+let realMarkdownString = code.MarkdownString
 
 function patchedMarkdownString(value, supportThemeIcons) {
-    let result = new realMarkdownString(value, supportThemeIcons);
-    result.isTrusted = true;
-    return result;
+    let ms = new realMarkdownString(value, supportThemeIcons);
+    this.value = ms.value;
+    this.supportThemeIcons = ms.supportThemeIcons;
+    this.isTrusted = true;
+    this.prototype = ms.prototype;
 }
 
 function patchMarkdown() {
