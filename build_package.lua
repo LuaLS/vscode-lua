@@ -31,6 +31,7 @@ local package = {
     },
     activationEvents = {
         "onLanguage:lua",
+        "onWebviewPanel:lua-doc",
         "onCommand:extension.lua.doc",
     },
     main = "./client/out/extension",
@@ -257,7 +258,7 @@ end
 package.version = VERSION
 
 print('生成 package.json')
-io.save(ROOT / 'package.json', json.encode(package))
+io.save(ROOT / 'package.json', json.encode(package) .. '\r\n')
 
 local example = {
     library = [[
