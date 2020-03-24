@@ -6,6 +6,7 @@
     },
     "activationEvents": [
         "onLanguage:lua",
+        "onWebviewPanel:lua-doc",
         "onCommand:extension.lua.doc"
     ],
     "author": "sumneko",
