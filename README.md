@@ -1,7 +1,5 @@
 # lua-language-server
 
-![build](https://github.com/sumneko/lua-language-server/workflows/build/badge.svg)
-
 ## Feature
 
 - [x] Goto Definition
