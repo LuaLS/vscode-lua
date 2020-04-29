@@ -42,6 +42,15 @@
         {
             "label": "Install",
             "command": "${workspaceFolder}/server/build/lua",
+            "linux": {
+                "command": "${workspaceFolder}/server/build/linux/bin/lua",
+                "args": [
+                    "-e",
+                    "package.cpath = \"./server/build/linux/bin/?.so;\" .. package.cpath",
+                    "make/copy.lua",
+                    "${command:extensionPath}",
+                ],
+            },
             "args": [
                 "-e",
                 "package.cpath = \"./server/build/?.so;\" .. package.cpath",
