@@ -51,6 +51,15 @@
                     "${command:extensionPath}",
                 ],
             },
+            "osx": {
+                "command": "${workspaceFolder}/server/build/macos/bin/lua",
+                "args": [
+                    "-e",
+                    "package.cpath = \"./server/build/macos/bin/?.so;\" .. package.cpath",
+                    "make/copy.lua",
+                    "${command:extensionPath}",
+                ],
+            },
             "args": [
                 "-e",
                 "package.cpath = \"./server/build/?.so;\" .. package.cpath",
