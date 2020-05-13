@@ -13,8 +13,8 @@
 		"vscode": "^1.42.0"
 	},
 	"dependencies": {
-		"@types/node": "^13.9.2",
-		"@types/vscode": "^1.43.0",
-		"vscode-languageclient": "^6.1.3"
+		"@types/node": "^13.13.6",
+		"@types/vscode": "^1.45.0",
+		"vscode-languageclient": "^6.2.0-next.1"
 	}
 }
