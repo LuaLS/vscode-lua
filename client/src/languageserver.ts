@@ -88,6 +88,8 @@ export function activate(context: ExtensionContext) {
         clientOptions
     );
 
+    client.registerProposedFeatures();
+
     patch.patch(client);
 
     client.start();

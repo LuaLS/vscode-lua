@@ -48,6 +48,7 @@ function activate(context) {
         ]
     };
     client = new vscode_languageclient_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
+    client.registerProposedFeatures();
     patch.patch(client);
     client.start();
 }
