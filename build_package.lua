@@ -173,20 +173,20 @@ local package = {
                     },
                     markdownDescription = "%config.completion.keywordSnippet%"
                 },
-                --["Lua.color.mode"] = {
-                --    scope = "resource",
-                --    type = "string",
-                --    default = "Grammar",
-                --    enum = {
-                --        "Grammar",
-                --        "Semantic",
-                --    },
-                --    markdownEnumDescriptions = {
-                --        "%config.color.mode.Grammar%",
-                --        "%config.color.mode.Semantic%",
-                --    },
-                --    markdownDescription = "%config.color.mode%"
-                --},
+                ["Lua.color.mode"] = {
+                    scope = "resource",
+                    type = "string",
+                    default = "Semantic",
+                    enum = {
+                        "Grammar",
+                        "Semantic",
+                    },
+                    markdownEnumDescriptions = {
+                        "%config.color.mode.Grammar%",
+                        "%config.color.mode.Semantic%",
+                    },
+                    markdownDescription = "%config.color.mode%"
+                },
                 --["Lua.plugin.enable"] = {
                 --    scope = "resource",
                 --    type = "boolean",
@@ -230,6 +230,16 @@ local package = {
                 language = "lua",
                 scopeName = "source.lua",
                 path = "./syntaxes/lua.tmLanguage.json"
+            }
+        },
+        semanticTokenScopes = {
+            {
+                language = "lua",
+                scopes = {
+                    ["namespace.static"] = {"support.function.lua"},
+                    ["namespace.readonly"] = {"constant.language.lua"},
+                    ["namespace.deprecated"] = {"entity.name.label"},
+                }
             }
         }
     },

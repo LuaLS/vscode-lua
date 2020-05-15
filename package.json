@@ -18,6 +18,20 @@
     "contributes": {
         "configuration": {
             "properties": {
+                "Lua.color.mode": {
+                    "default": "Semantic",
+                    "enum": [
+                        "Grammar",
+                        "Semantic"
+                    ],
+                    "markdownDescription": "%config.color.mode%",
+                    "markdownEnumDescriptions": [
+                        "%config.color.mode.Grammar%",
+                        "%config.color.mode.Semantic%"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.completion.callSnippet": {
                     "default": "Disable",
                     "enum": [
@@ -399,6 +413,22 @@
                 "language": "lua",
                 "path": "./syntaxes/lua.tmLanguage.json",
                 "scopeName": "source.lua"
+            }
+        ],
+        "semanticTokenScopes": [
+            {
+                "language": "lua",
+                "scopes": {
+                    "namespace.deprecated": [
+                        "entity.name.label"
+                    ],
+                    "namespace.readonly": [
+                        "constant.language.lua"
+                    ],
+                    "namespace.static": [
+                        "support.function.lua"
+                    ]
+                }
             }
         ]
     },
