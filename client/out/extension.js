@@ -13,6 +13,7 @@ function activate(context) {
         storagePath: context.storagePath,
         globalStoragePath: context.globalStoragePath,
         logPath: context.logPath,
+        extensionUri: context.extensionUri,
         ViewType: 'lua-doc',
         OpenCommand: 'extension.lua.doc',
     };
