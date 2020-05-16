@@ -427,6 +427,12 @@
                     ],
                     "namespace.static": [
                         "support.function.lua"
+                    ],
+                    "parameter.declaration": [
+                        "variable.parameter"
+                    ],
+                    "property.declaration": [
+                        "entity.other.attribute"
                     ]
                 }
             }

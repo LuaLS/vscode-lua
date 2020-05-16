@@ -239,6 +239,8 @@ local package = {
                     ["namespace.static"] = {"support.function.lua"},
                     ["namespace.readonly"] = {"constant.language.lua"},
                     ["namespace.deprecated"] = {"entity.name.label"},
+                    ['parameter.declaration'] = {"variable.parameter"},
+                    ['property.declaration'] = {"entity.other.attribute"},
                 }
             }
         }
@@ -343,7 +345,7 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.completion.keywordSnippet.Both']    = "Shows `keyword` and `syntax snippet`.",
     ['config.completion.keywordSnippet.Replace'] = "Only shows `syntax snippet`.",
     ['config.color.mode']                        = "Color mode.",
-    ['config.color.mode.Semantic']               = "Semantic color (test).",
+    ['config.color.mode.Semantic']               = "Semantic color (Testing. Your color theme must support semantic coloring to be effective.).",
     ['config.color.mode.Grammar']                = "Grammar color.",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ['config.develop.enable']                    = 'Developer mode. Do not enable, performance will be affected.',
@@ -379,7 +381,7 @@ io.save(ROOT / 'package.nls.zh-cn.json', json.encode {
     ['config.completion.keywordSnippet.Both']    = "显示 `关键字` 与 `语法片段`。",
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
     ['config.color.mode']                        = "着色模式。",
-    ['config.color.mode.Semantic']               = "语义着色（测试）。",
+    ['config.color.mode.Semantic']               = "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。",
     ['config.color.mode.Grammar']                = "语法着色。",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
