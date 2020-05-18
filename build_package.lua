@@ -241,6 +241,8 @@ local package = {
                     ["namespace.deprecated"] = {"entity.name.label"},
                     ['parameter.declaration'] = {"variable.parameter"},
                     ['property.declaration'] = {"entity.other.attribute"},
+                    ['variable'] = {"variable.other.lua"},
+                    ['interface.declaration'] = {"entity.name.function.lua"},
                 }
             }
         }

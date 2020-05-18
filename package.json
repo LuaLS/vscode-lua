@@ -433,6 +433,12 @@
                     ],
                     "property.declaration": [
                         "entity.other.attribute"
+                    ],
+                    "variable": [
+                        "variable.other.lua"
+                    ],
+                    "interface.declaration": [
+                        "entity.name.function.lua"
                     ]
                 }
             }
