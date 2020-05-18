@@ -419,6 +419,9 @@
             {
                 "language": "lua",
                 "scopes": {
+                    "interface.declaration": [
+                        "entity.name.function.lua"
+                    ],
                     "namespace.deprecated": [
                         "entity.name.label"
                     ],
@@ -436,9 +439,6 @@
                     ],
                     "variable": [
                         "variable.other.lua"
-                    ],
-                    "interface.declaration": [
-                        "entity.name.function.lua"
                     ]
                 }
             }
@@ -464,5 +464,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.17.0"
+    "version": "0.17.1"
 }
