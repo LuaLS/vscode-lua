@@ -12,4 +12,4 @@ local setting = {
     properties  = configuration,
 }
 
-io.save(fs.path'setting.json', json.encode(setting))
+io.save(fs.path'setting/schema.json', json.encode(setting))

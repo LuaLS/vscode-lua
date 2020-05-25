@@ -23,7 +23,7 @@
             "type": "lua",
             "request": "launch",
             "stopOnEntry": false,
-            "program": "${workspaceRoot}/setting.lua",
+            "program": "${workspaceRoot}/setting/build.lua",
             "arg": [
             ],
             "luaexe": "${workspaceFolder}/server/bin/Windows/lua-language-server.exe",
