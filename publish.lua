@@ -8,11 +8,14 @@ local fs = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
 local platform = require 'bee.platform'
 
+
 require 'utility'
 dofile(rootPath .. 'server/test.lua')
 
+package.path = package.path
+    .. ';' .. rootPath .. '/?.lua'
 ROOT = fs.path(rootPath)
-dofile(rootPath .. 'build_package.lua')
+require 'package.build'
 local json = require 'json'
 
 local function loadPackage()
