@@ -19,6 +19,23 @@
             ],
         },
         {
+            "name": "导出配置文件",
+            "type": "lua",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/setting.lua",
+            "arg": [
+            ],
+            "luaexe": "${workspaceFolder}/server/bin/Windows/lua-language-server.exe",
+            "path": "${workspaceFolder}/?.lua;${workspaceFolder}/server/script/?.lua;${workspaceFolder}/server/script/?/init.lua",
+            "consoleCoding": "utf8",
+            "sourceCoding": "utf8",
+            "outputCapture": [
+                "print",
+                "stderr",
+            ],
+        },
+        {
             "type": "extensionHost",
             "request": "launch",
             "name": "Launch Client",
