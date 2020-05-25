@@ -52,30 +52,6 @@
 
 ![avatar](https://github.com/sumneko/vscode-lua/raw/master/images/Emmy%20Annotation.gif)
 
-## How to use on macOS/Linux
-
-You need to build `vscode-lua` yourself on macOS/Linux.
-
-* Install [sumneko.lua] in VSCode
-* Install [extension-path] in VSCode
-* Install [ninja]
-* Clone source code
-```
-git clone https://github.com/sumneko/vscode-lua
-cd vscode-lua
-git submodule update --init --recursive
-```
-* Open repo and execute tasks in VSCode
-    1. PreCompile
-    2. Compile
-    3. Install
-* Restart VSCode and open your lua project
-* Enjoy
-
-[ninja]: https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages
-[sumneko.lua]: https://marketplace.visualstudio.com/items?itemName=sumneko.lua
-[extension-path]: https://marketplace.visualstudio.com/items?itemName=actboy168.extension-path
-
 ## Version
 
 - [x] Lua 5.1
@@ -98,7 +74,17 @@ If you find any mistakes, please [tell me][issues] or use [Pull Requests][@lua] 
 
 Please [help me][en-US] improve the quality of `en-US`.
 
-[en-US]: https://github.com/sumneko/vscode-lua/tree/master/locale/en-US
+[en-US]: https://github.com/sumneko/lua-language-server/tree/master/locale/en-US
+
+## Build
+
+* [Build and Run (In VSCode)](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(In-VSCode))
+* [Build and Run (Standalone)](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone))
+
+## Setting
+
+* In VSCode: Just use the setting of VSCode.
+* Standalone: See https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode
 
 ## Credit
 
@@ -111,11 +97,11 @@ Please [help me][en-US] improve the quality of `en-US`.
 * [ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
 * [vscode-languageclient](https://github.com/microsoft/vscode-languageserver-node)
 * [lua.tmbundle](https://github.com/textmate/lua.tmbundle)
-* [Lua 5.3 中文翻译](https://cloudwu.github.io/lua53doc/manual.html)
 * [EmmyLua](https://emmylua.github.io)
 * [lua-glob](https://github.com/sumneko/lua-glob)
-* [lua-uri](https://github.com/sumneko/lua-uri)
 * [JSON4Lua](http://github.com/craigmj/json4lua/)
+* [utility](https://github.com/sumneko/utility)
+* [vscode-lua-doc](https://github.com/actboy168/vscode-lua-doc)
 
 ## Acknowledgement
 
