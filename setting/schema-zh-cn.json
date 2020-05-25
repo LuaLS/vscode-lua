@@ -8,10 +8,10 @@
                 "Grammar",
                 "Semantic"
             ],
-            "markdownDescription": "Color mode.",
+            "markdownDescription": "着色模式。",
             "markdownEnumDescriptions": [
-                "Grammar color.",
-                "Semantic color (Testing. Your color theme must support semantic coloring to be effective.)."
+                "语法着色。",
+                "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。"
             ],
             "scope": "resource",
             "type": "string"
@@ -23,18 +23,18 @@
                 "Both",
                 "Replace"
             ],
-            "markdownDescription": "Shows function call snippets.",
+            "markdownDescription": "显示函数调用片段。",
             "markdownEnumDescriptions": [
-                "Only shows `function name`.",
-                "Shows `function name` and `call snippet`.",
-                "Only shows `call snippet.`"
+                "只显示 `函数名`。",
+                "显示 `函数名` 与 `调用片段`。",
+                "只显示 `调用片段`。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "Lua.completion.enable": {
             "default": true,
-            "markdownDescription": "Enable completion.",
+            "markdownDescription": "启用自动完成。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -45,30 +45,30 @@
                 "Both",
                 "Replace"
             ],
-            "markdownDescription": "Shows keyword syntax snippets.",
+            "markdownDescription": "显示关键字语法片段",
             "markdownEnumDescriptions": [
-                "Only shows `keyword`.",
-                "Shows `keyword` and `syntax snippet`.",
-                "Only shows `syntax snippet`."
+                "只显示 `关键字`。",
+                "显示 `关键字` 与 `语法片段`。",
+                "只显示 `语法片段`。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "Lua.develop.debuggerPort": {
             "default": 11412,
-            "markdownDescription": "Listen port of debugger.",
+            "markdownDescription": "调试器监听端口。",
             "scope": "resource",
             "type": "integer"
         },
         "Lua.develop.debuggerWait": {
             "default": false,
-            "markdownDescription": "Suspend before debugger connects.",
+            "markdownDescription": "调试器连接之前挂起。",
             "scope": "resource",
             "type": "boolean"
         },
         "Lua.develop.enable": {
             "default": false,
-            "markdownDescription": "Developer mode. Do not enable, performance will be affected.",
+            "markdownDescription": "开发者模式。请勿开启，会影响性能。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -76,13 +76,13 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n```json\n\"Lua.diagnostics.disable\" : [\n    \"unused-local\",\n    \"lowercase-global\"\n]\n```\n",
+            "markdownDescription": "禁用的诊断（使用浮框括号内的代码）。\n```json\n\"Lua.diagnostics.disable\" : [\n    \"unused-local\",\n    \"lowercase-global\"\n]\n```\n",
             "scope": "resource",
             "type": "array"
         },
         "Lua.diagnostics.enable": {
             "default": true,
-            "markdownDescription": "Enable diagnostics.",
+            "markdownDescription": "启用诊断。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -90,12 +90,12 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Defined global variables.\n```json\n\"Lua.diagnostics.globals\" : [\n    \"GLOBAL1\",\n    \"GLOBAL2\"\n]\n```\n",
+            "markdownDescription": "已定义的全局变量。\n```json\n\"Lua.diagnostics.globals\" : [\n    \"GLOBAL1\",\n    \"GLOBAL2\"\n]\n```\n",
             "scope": "resource",
             "type": "array"
         },
         "Lua.diagnostics.severity": {
-            "markdownDescription": "Modified diagnostic severity.\n```json\n\"Lua.diagnostics.severity\" : {\n    \"redefined-local\" : \"Warning\",\n    \"emmy-lua\" : \"Hint\"\n}\n```\n",
+            "markdownDescription": "修改诊断等级。\n```json\n\"Lua.diagnostics.severity\" : {\n    \"redefined-local\" : \"Warning\",\n    \"emmy-lua\" : \"Hint\"\n}\n```\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -344,7 +344,7 @@
                 "Lua 5.4",
                 "LuaJIT"
             ],
-            "markdownDescription": "Lua runtime version.",
+            "markdownDescription": "Lua运行版本。",
             "scope": "resource",
             "type": "string"
         },
@@ -355,36 +355,36 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Ignored directories (Use `.gitignore` grammar).\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
+            "markdownDescription": "忽略的目录（使用 `.gitignore` 语法）。\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
             "scope": "resource",
             "type": "array"
         },
         "Lua.workspace.ignoreSubmodules": {
             "default": true,
-            "markdownDescription": "Ignore submodules.",
+            "markdownDescription": "忽略子模块。",
             "scope": "resource",
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\nThe following example shows loaded files in `C:/lua` and `../lib` ,exclude `../lib/temp`.\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
+            "markdownDescription": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n下面这个例子表示加载`C:/lua`与`../lib`中的所有文件，但不加载`../lib/temp`中的文件。\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
             "scope": "resource",
             "type": "object"
         },
         "Lua.workspace.maxPreload": {
             "default": 300,
-            "markdownDescription": "Max preloaded files.",
+            "markdownDescription": "最大预加载文件数。",
             "scope": "resource",
             "type": "integer"
         },
         "Lua.workspace.preloadFileSize": {
             "default": 100,
-            "markdownDescription": "Skip files larger than this value (KB) when preloading.",
+            "markdownDescription": "预加载时跳过大小大于该值（KB）的文件。",
             "scope": "resource",
             "type": "integer"
         },
         "Lua.workspace.useGitIgnore": {
             "default": true,
-            "markdownDescription": "Ignore files list in `.gitignore` .",
+            "markdownDescription": "忽略 `.gitignore` 中列举的文件。",
             "scope": "resource",
             "type": "boolean"
         }
