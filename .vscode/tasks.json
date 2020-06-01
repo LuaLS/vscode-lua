@@ -19,7 +19,7 @@
             "type": "shell",
             "label": "PreCompile",
             "windows": {
-                "command": "tools\\ninja -f ninja\\msvc.ninja"
+                "command": "chcp 65001 && msvc_build.bat"
             },
             "linux": {
                 "command": "ninja -f ninja/linux.ninja"
