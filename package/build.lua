@@ -1,6 +1,6 @@
 local json = require 'json'
 
-local VERSION = "0.18.0"
+local VERSION = "0.18.1"
 
 local package = require 'package.package'
 
