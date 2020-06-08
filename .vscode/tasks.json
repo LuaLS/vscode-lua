@@ -41,7 +41,15 @@
         },
         {
             "label": "Install",
-            "command": "${workspaceFolder}/server/build/lua",
+            "windows": {
+                "command": "${workspaceFolder}/server/build/msvc/bin/lua.exe",
+                "args": [
+                    "-e",
+                    "package.cpath = \"./server/build/msvc/bin/?.dll;\" .. package.cpath",
+                    "make/copy.lua",
+                    "${command:extensionPath}",
+                ],
+            },
             "linux": {
                 "command": "${workspaceFolder}/server/build/linux/bin/lua",
                 "args": [
@@ -60,12 +68,6 @@
                     "${command:extensionPath}",
                 ],
             },
-            "args": [
-                "-e",
-                "package.cpath = \"./server/build/?.so;\" .. package.cpath",
-                "make/copy.lua",
-                "${command:extensionPath}",
-            ],
         }
     ]
 }
