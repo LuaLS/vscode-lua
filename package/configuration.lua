@@ -148,6 +148,12 @@ local config = {
         },
         markdownDescription = "%config.color.mode%"
     },
+    ["Lua.signatureHelp.enable"] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.signatureHelp.enable%"
+    },
     --["Lua.plugin.enable"] = {
     --    scope = "resource",
     --    type = "boolean",

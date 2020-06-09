@@ -29,6 +29,7 @@ return {
     ['config.color.mode']                        = "着色模式。",
     ['config.color.mode.Semantic']               = "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。",
     ['config.color.mode.Grammar']                = "语法着色。",
+    ['config.signatureHelp.enable']              = "启用参数提示",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
