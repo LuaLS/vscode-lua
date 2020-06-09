@@ -45,7 +45,7 @@
                 "command": "${workspaceFolder}/server/build/msvc/bin/lua.exe",
                 "args": [
                     "-e",
-                    "package.cpath = \"./server/build/msvc/bin/?.dll;\" .. package.cpath",
+                    "package.cpath = './server/build/msvc/bin/?.dll;' .. package.cpath",
                     "make/copy.lua",
                     "${command:extensionPath}",
                 ],
@@ -54,7 +54,7 @@
                 "command": "${workspaceFolder}/server/build/linux/bin/lua",
                 "args": [
                     "-e",
-                    "package.cpath = \"./server/build/linux/bin/?.so;\" .. package.cpath",
+                    "package.cpath = './server/build/linux/bin/?.so;' .. package.cpath",
                     "make/copy.lua",
                     "${command:extensionPath}",
                 ],
@@ -63,7 +63,7 @@
                 "command": "${workspaceFolder}/server/build/macos/bin/lua",
                 "args": [
                     "-e",
-                    "package.cpath = \"./server/build/macos/bin/?.so;\" .. package.cpath",
+                    "package.cpath = './server/build/macos/bin/?.so;' .. package.cpath",
                     "make/copy.lua",
                     "${command:extensionPath}",
                 ],
