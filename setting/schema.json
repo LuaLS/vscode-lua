@@ -348,6 +348,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.signatureHelp.enable": {
+            "default": true,
+            "markdownDescription": "Enable signature help.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.workspace.ignoreDir": {
             "default": [
                 ".vscode"
