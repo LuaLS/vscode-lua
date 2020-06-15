@@ -21,6 +21,7 @@
     "config.diagnostics.severity": "修改诊断等级。\n```json\n\"Lua.diagnostics.severity\" : {\n    \"redefined-local\" : \"Warning\",\n    \"emmy-lua\" : \"Hint\"\n}\n```\n",
     "config.runtime.path": "`package.path`",
     "config.runtime.version": "Lua运行版本。",
+    "config.signatureHelp.enable": "启用参数提示",
     "config.workspace.ignoreDir": "忽略的目录（使用 `.gitignore` 语法）。\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
     "config.workspace.ignoreSubmodules": "忽略子模块。",
     "config.workspace.library": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n下面这个例子表示加载`C:/lua`与`../lib`中的所有文件，但不加载`../lib/temp`中的文件。\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",

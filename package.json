@@ -364,6 +364,12 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "Lua.signatureHelp.enable": {
+                    "default": true,
+                    "markdownDescription": "%config.signatureHelp.enable%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
                 "Lua.workspace.ignoreDir": {
                     "default": [
                         ".vscode"
@@ -464,5 +470,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.18.1"
+    "version": "0.18.2"
 }
