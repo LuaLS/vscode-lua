@@ -154,6 +154,30 @@ local config = {
         default = true,
         markdownDescription = "%config.signatureHelp.enable%"
     },
+    ['Lua.hover.enable'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.hover.enable%"
+    },
+    ['Lua.hover.viewString'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.hover.viewString%"
+    },
+    ['Lua.hover.viewStringMax'] = {
+        scope = "resource",
+        type = "integer",
+        default = 1000,
+        markdownDescription = "%config.hover.viewStringMax%"
+    },
+    ['Lua.hover.viewNumber'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.hover.viewNumber%"
+    },
     --["Lua.plugin.enable"] = {
     --    scope = "resource",
     --    type = "boolean",
