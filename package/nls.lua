@@ -32,6 +32,7 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.signatureHelp.enable']              = "Enable signature help.",
     ['config.hover.enable']                      = "Enable hover.",
     ['config.hover.viewString']                  = "Hover to view the contents of a string (only if the literal contains an escape character).",
+    ['config.hover.viewStringMax']               = "The maximum length of a hover to view the contents of a string.",
     ['config.hover.viewNumber']                  = "Hover to view numeric content (only if literal is not decimal).",
     ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ['config.develop.enable']                    = 'Developer mode. Do not enable, performance will be affected.',
