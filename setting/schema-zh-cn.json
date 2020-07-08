@@ -322,6 +322,30 @@
             "title": "severity",
             "type": "object"
         },
+        "Lua.hover.enable": {
+            "default": true,
+            "markdownDescription": "启用悬停提示。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hover.viewNumber": {
+            "default": true,
+            "markdownDescription": "悬停提示查看数字内容（仅当字面量不是十进制时）。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hover.viewString": {
+            "default": true,
+            "markdownDescription": "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hover.viewStringMax": {
+            "default": 1000,
+            "markdownDescription": "%config.hover.viewStringMax%",
+            "scope": "resource",
+            "type": "integer"
+        },
         "Lua.runtime.path": {
             "default": [
                 "?.lua",
@@ -350,7 +374,7 @@
         },
         "Lua.signatureHelp.enable": {
             "default": true,
-            "markdownDescription": "启用参数提示",
+            "markdownDescription": "启用参数提示。",
             "scope": "resource",
             "type": "boolean"
         },
