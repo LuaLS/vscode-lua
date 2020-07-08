@@ -342,7 +342,7 @@
         },
         "Lua.hover.viewStringMax": {
             "default": 1000,
-            "markdownDescription": "%config.hover.viewStringMax%",
+            "markdownDescription": "悬停提示查看字符串内容时的最大长度。",
             "scope": "resource",
             "type": "integer"
         },

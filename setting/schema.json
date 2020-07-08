@@ -342,7 +342,7 @@
         },
         "Lua.hover.viewStringMax": {
             "default": 1000,
-            "markdownDescription": "%config.hover.viewStringMax%",
+            "markdownDescription": "The maximum length of a hover to view the contents of a string.",
             "scope": "resource",
             "type": "integer"
         },
