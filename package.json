@@ -256,6 +256,17 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "set-for-state": {
+                            "default": "Warning",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "trailing-space": {
                             "default": "Hint",
                             "enum": [
@@ -494,5 +505,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.19.4"
+    "version": "0.19.5"
 }
