@@ -21,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
         logPath:                       context.logPath,
         extensionUri:                  context.extensionUri,
         environmentVariableCollection: context.environmentVariableCollection,
+        extensionMode:                 context.extensionMode,
         ViewType:                      'lua-doc',
         OpenCommand:                   'extension.lua.doc',
     };

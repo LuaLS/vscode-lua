@@ -5,7 +5,7 @@ const os = require("os");
 const fs = require("fs");
 const vscode_1 = require("vscode");
 let patch = require("./patch");
-const vscode_languageclient_1 = require("vscode-languageclient");
+const node_1 = require("vscode-languageclient/node");
 let client;
 function activate(context) {
     let language = vscode_1.env.language;
@@ -47,7 +47,7 @@ function activate(context) {
             context.asAbsolutePath(path.join('server', beta ? 'main-beta.lua' : 'main.lua'))
         ]
     };
-    client = new vscode_languageclient_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
+    client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     client.registerProposedFeatures();
     patch.patch(client);
     client.start();
