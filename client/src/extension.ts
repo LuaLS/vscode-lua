@@ -11,17 +11,18 @@ export function activate(context: vscode.ExtensionContext) {
     languageserver.activate(context);
 
     let luadocContext: LuaDocExtensionContext = {
-        subscriptions:      context.subscriptions,
-        workspaceState:     context.workspaceState,
-        globalState:        context.globalState,
-        extensionPath:      context.extensionPath + '/client/3rd/vscode-lua-doc',
-        asAbsolutePath:     context.asAbsolutePath,
-        storagePath:        context.storagePath,
-        globalStoragePath:  context.globalStoragePath,
-        logPath:            context.logPath,
-        extensionUri:       context.extensionUri,
-        ViewType:           'lua-doc',
-        OpenCommand:        'extension.lua.doc',
+        subscriptions:                 context.subscriptions,
+        workspaceState:                context.workspaceState,
+        globalState:                   context.globalState,
+        extensionPath:                 context.extensionPath + '/client/3rd/vscode-lua-doc',
+        asAbsolutePath:                context.asAbsolutePath,
+        storagePath:                   context.storagePath,
+        globalStoragePath:             context.globalStoragePath,
+        logPath:                       context.logPath,
+        extensionUri:                  context.extensionUri,
+        environmentVariableCollection: context.environmentVariableCollection,
+        ViewType:                      'lua-doc',
+        OpenCommand:                   'extension.lua.doc',
     };
     luadoc.activate(luadocContext);
 }
