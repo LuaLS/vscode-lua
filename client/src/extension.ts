@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import * as languageserver from './languageserver';
-import * as luadoc from '../3rd/vscode-lua-doc/extension';
+
+let luadoc = require('../3rd/vscode-lua-doc/extension.js')
 
 interface LuaDocExtensionContext extends vscode.ExtensionContext {
     readonly ViewType: string;

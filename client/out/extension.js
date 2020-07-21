@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const languageserver = require("./languageserver");
-const luadoc = require("../3rd/vscode-lua-doc/extension");
+let luadoc = require('../3rd/vscode-lua-doc/extension.js');
 function activate(context) {
     languageserver.activate(context);
     let luadocContext = {
