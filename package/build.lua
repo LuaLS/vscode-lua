@@ -1,6 +1,6 @@
 local json = require 'json'
 
-local VERSION = "0.20.0"
+local VERSION = "0.20.1"
 
 local package = require 'package.package'
 
@@ -15,7 +15,7 @@ print('生成 package.json')
 io.save(ROOT / 'package.json', json.encode(package) .. '\r\n')
 
 print('生成 package.nls.json')
-io.save(ROOT / 'package.nls.json', json.encode(require 'package.nls'))
+io.save(ROOT / 'package.nls.json', json.encode((require 'package.nls')))
 
 print('生成 package.nls.zh-cn.json')
-io.save(ROOT / 'package.nls.zh-cn.json', json.encode(require 'package.nls-zh-cn'))
+io.save(ROOT / 'package.nls.zh-cn.json', json.encode((require 'package.nls-zh-cn')))
