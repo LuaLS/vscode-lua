@@ -10,8 +10,25 @@ import {
     LanguageClientOptions,
     ServerOptions,
 } from 'vscode-languageclient/node';
+import { commands } from 'vscode';
 
 let client: LanguageClient;
+
+function registerCustomCommands(context: ExtensionContext) {
+    context.subscriptions.push(commands.registerCommand('lua.config', (data) => {
+        let config = workspace.getConfiguration()
+        if (data.action == 'add') {
+            let value: any[] = config.get(data.key);
+            value.push(data.value);
+            config.update(data.key, value);
+            return;
+        }
+        if (data.action == 'set') {
+            config.update(data.key, data.value);
+            return;
+        }
+    }))
+}
 
 export function activate(context: ExtensionContext) {
     let language = env.language;
@@ -89,6 +106,7 @@ export function activate(context: ExtensionContext) {
     );
 
     client.registerProposedFeatures();
+    registerCustomCommands(context);
 
     patch.patch(client);
 

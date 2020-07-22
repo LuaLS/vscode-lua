@@ -6,7 +6,23 @@ const fs = require("fs");
 const vscode_1 = require("vscode");
 let patch = require("./patch");
 const node_1 = require("vscode-languageclient/node");
+const vscode_2 = require("vscode");
 let client;
+function registerCustomCommands(context) {
+    context.subscriptions.push(vscode_2.commands.registerCommand('lua.config', (data) => {
+        let config = vscode_1.workspace.getConfiguration();
+        if (data.action == 'add') {
+            let value = config.get(data.key);
+            value.push(data.value);
+            config.update(data.key, value);
+            return;
+        }
+        if (data.action == 'set') {
+            config.update(data.key, data.value);
+            return;
+        }
+    }));
+}
 function activate(context) {
     let language = vscode_1.env.language;
     // Options to control the language client
@@ -49,6 +65,7 @@ function activate(context) {
     };
     client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     client.registerProposedFeatures();
+    registerCustomCommands(context);
     patch.patch(client);
     client.start();
 }
