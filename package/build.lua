@@ -1,6 +1,6 @@
 local json = require 'json-beautify'
 
-local VERSION = "0.20.1"
+local VERSION = "0.20.2"
 
 local package = require 'package.package'
 
