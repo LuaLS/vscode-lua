@@ -76,7 +76,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "禁用的诊断（使用浮框括号内的代码）。\n```json\n\"Lua.diagnostics.disable\" : [\n    \"unused-local\",\n    \"lowercase-global\"\n]\n```\n",
+            "markdownDescription": "禁用的诊断（使用浮框括号内的代码）。\u000a```json\u000a\"Lua.diagnostics.disable\" : [\u000a    \"unused-local\",\u000a    \"lowercase-global\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
@@ -90,12 +90,12 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "已定义的全局变量。\n```json\n\"Lua.diagnostics.globals\" : [\n    \"GLOBAL1\",\n    \"GLOBAL2\"\n]\n```\n",
+            "markdownDescription": "已定义的全局变量。\u000a```json\u000a\"Lua.diagnostics.globals\" : [\u000a    \"GLOBAL1\",\u000a    \"GLOBAL2\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
         "Lua.diagnostics.severity": {
-            "markdownDescription": "修改诊断等级。\n```json\n\"Lua.diagnostics.severity\" : {\n    \"redefined-local\" : \"Warning\",\n    \"emmy-lua\" : \"Hint\"\n}\n```\n",
+            "markdownDescription": "修改诊断等级。\u000a```json\u000a\"Lua.diagnostics.severity\" : {\u000a    \"redefined-local\" : \"Warning\",\u000a    \"emmy-lua\" : \"Hint\"\u000a}\u000a```\u000a",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -240,6 +240,17 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "set-for-state": {
+                    "default": "Warning",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "trailing-space": {
                     "default": "Hint",
                     "enum": [
@@ -349,8 +360,8 @@
         "Lua.runtime.path": {
             "default": [
                 "?.lua",
-                "?/init.lua",
-                "?/?.lua"
+                "?\/init.lua",
+                "?\/?.lua"
             ],
             "items": {
                 "type": "string"
@@ -385,7 +396,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "忽略的目录（使用 `.gitignore` 语法）。\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
+            "markdownDescription": "忽略的目录（使用 `.gitignore` 语法）。\u000a```json\u000a\"Lua.workspace.ignoreDir\" : [\u000a    \"temp\/*.*\",\u000a    \"!temp\/*.lua\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
@@ -396,7 +407,7 @@
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n下面这个例子表示加载`C:/lua`与`../lib`中的所有文件，但不加载`../lib/temp`中的文件。\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
+            "markdownDescription": "加载外部函数库。\u000a该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\u000a下面这个例子表示加载`C:\/lua`与`..\/lib`中的所有文件，但不加载`..\/lib\/temp`中的文件。\u000a```json\u000a\"Lua.workspace.library\": {\u000a    \"C:\/lua\": true,\u000a    \"..\/lib\": [\u000a        \"temp\/*\"\u000a    ]\u000a}\u000a```\u000a",
             "scope": "resource",
             "type": "object"
         },

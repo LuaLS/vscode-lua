@@ -76,7 +76,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n```json\n\"Lua.diagnostics.disable\" : [\n    \"unused-local\",\n    \"lowercase-global\"\n]\n```\n",
+            "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\u000a```json\u000a\"Lua.diagnostics.disable\" : [\u000a    \"unused-local\",\u000a    \"lowercase-global\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
@@ -90,12 +90,12 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Defined global variables.\n```json\n\"Lua.diagnostics.globals\" : [\n    \"GLOBAL1\",\n    \"GLOBAL2\"\n]\n```\n",
+            "markdownDescription": "Defined global variables.\u000a```json\u000a\"Lua.diagnostics.globals\" : [\u000a    \"GLOBAL1\",\u000a    \"GLOBAL2\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
         "Lua.diagnostics.severity": {
-            "markdownDescription": "Modified diagnostic severity.\n```json\n\"Lua.diagnostics.severity\" : {\n    \"redefined-local\" : \"Warning\",\n    \"emmy-lua\" : \"Hint\"\n}\n```\n",
+            "markdownDescription": "Modified diagnostic severity.\u000a```json\u000a\"Lua.diagnostics.severity\" : {\u000a    \"redefined-local\" : \"Warning\",\u000a    \"emmy-lua\" : \"Hint\"\u000a}\u000a```\u000a",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -240,6 +240,17 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "set-for-state": {
+                    "default": "Warning",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "trailing-space": {
                     "default": "Hint",
                     "enum": [
@@ -349,8 +360,8 @@
         "Lua.runtime.path": {
             "default": [
                 "?.lua",
-                "?/init.lua",
-                "?/?.lua"
+                "?\/init.lua",
+                "?\/?.lua"
             ],
             "items": {
                 "type": "string"
@@ -385,7 +396,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Ignored directories (Use `.gitignore` grammar).\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
+            "markdownDescription": "Ignored directories (Use `.gitignore` grammar).\u000a```json\u000a\"Lua.workspace.ignoreDir\" : [\u000a    \"temp\/*.*\",\u000a    \"!temp\/*.lua\"\u000a]\u000a```\u000a",
             "scope": "resource",
             "type": "array"
         },
@@ -396,7 +407,7 @@
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\nThe following example shows loaded files in `C:/lua` and `../lib` ,exclude `../lib/temp`.\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
+            "markdownDescription": "Load external library.\u000aThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\u000aThe following example shows loaded files in `C:\/lua` and `..\/lib` ,exclude `..\/lib\/temp`.\u000a```json\u000a\"Lua.workspace.library\": {\u000a    \"C:\/lua\": true,\u000a    \"..\/lib\": [\u000a        \"temp\/*\"\u000a    ]\u000a}\u000a```\u000a",
             "scope": "resource",
             "type": "object"
         },

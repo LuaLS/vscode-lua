@@ -1,7 +1,7 @@
 local fs = require 'bee.filesystem'
 
 require 'utility'
-local json = require 'json'
+local json = require 'json-beautify'
 local configuration = require 'package.configuration'
 
 local function copyWithNLS(t, callback)
@@ -18,6 +18,10 @@ local function copyWithNLS(t, callback)
     return nt
 end
 
+local encodeOption = {
+    newline = '\r\n',
+    indent  = '    ',
+}
 for _, lang in ipairs {'', '-zh-cn'} do
     local nls = require('package.nls' .. lang)
 
@@ -31,5 +35,5 @@ for _, lang in ipairs {'', '-zh-cn'} do
         end),
     }
 
-    io.save(fs.path'setting/schema'..lang..'.json', json.encode(setting))
+    io.save(fs.path'setting/schema'..lang..'.json', json.beautify(setting, encodeOption))
 end
