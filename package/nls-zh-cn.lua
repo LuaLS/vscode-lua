@@ -34,7 +34,7 @@ return {
     ['config.hover.viewString']                  = "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
     ['config.hover.viewStringMax']               = "悬停提示查看字符串内容时的最大长度。",
     ['config.hover.viewNumber']                  = "悬停提示查看数字内容（仅当字面量不是十进制时）。",
-    ['config.awakened.cat']                      = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
+    ['config.zzzzzz.cat']                        = 'DONT TOUCH ME, LET ME SLEEP >_<',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
     ['config.develop.debuggerWait']              = '调试器连接之前挂起。',

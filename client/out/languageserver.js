@@ -34,11 +34,11 @@ function activate(context) {
             fileEvents: vscode_1.workspace.createFileSystemWatcher('**/.clientrc')
         }
     };
-    //let beta: boolean = workspace.getConfiguration("Lua.awakened").get("cat");
-    let beta = false;
-    let develop = vscode_1.workspace.getConfiguration("Lua.develop").get("enable");
-    let debuggerPort = vscode_1.workspace.getConfiguration("Lua.develop").get("debuggerPort");
-    let debuggerWait = vscode_1.workspace.getConfiguration("Lua.develop").get("debuggerWait");
+    let beta = vscode_1.workspace.getConfiguration().get("Lua.zzzzzz.cat");
+    //let beta: boolean = false;
+    let develop = vscode_1.workspace.getConfiguration().get("Lua.develop.enable");
+    let debuggerPort = vscode_1.workspace.getConfiguration().get("Lua.develop.debuggerPort");
+    let debuggerWait = vscode_1.workspace.getConfiguration().get("Lua.develop.debuggerWait");
     let command;
     let platform = os.platform();
     switch (platform) {

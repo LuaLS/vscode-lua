@@ -43,11 +43,11 @@ export function activate(context: ExtensionContext) {
         }
     };
 
-    //let beta: boolean = workspace.getConfiguration("Lua.awakened").get("cat");
-    let beta: boolean = false;
-    let develop: boolean = workspace.getConfiguration("Lua.develop").get("enable");
-    let debuggerPort: number = workspace.getConfiguration("Lua.develop").get("debuggerPort");
-    let debuggerWait: boolean = workspace.getConfiguration("Lua.develop").get("debuggerWait");
+    let beta: boolean = workspace.getConfiguration().get("Lua.zzzzzz.cat");
+    //let beta: boolean = false;
+    let develop: boolean = workspace.getConfiguration().get("Lua.develop.enable");
+    let debuggerPort: number = workspace.getConfiguration().get("Lua.develop.debuggerPort");
+    let debuggerWait: boolean = workspace.getConfiguration().get("Lua.develop.debuggerWait");
     let command: string;
     let platform: string = os.platform();
     switch (platform) {

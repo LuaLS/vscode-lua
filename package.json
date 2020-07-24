@@ -376,8 +376,8 @@
                 "Lua.runtime.path": {
                     "default": [
                         "?.lua",
-                        "?\/init.lua",
-                        "?\/?.lua"
+                        "?/init.lua",
+                        "?/?.lua"
                     ],
                     "items": {
                         "type": "string"
@@ -444,6 +444,12 @@
                     "markdownDescription": "%config.workspace.useGitIgnore%",
                     "scope": "resource",
                     "type": "boolean"
+                },
+                "Lua.zzzzzz.cat": {
+                    "default": false,
+                    "markdownDescription": "%config.zzzzzz.cat%",
+                    "scope": "resource",
+                    "type": "boolean"
                 }
             },
             "title": "Lua",
@@ -452,7 +458,7 @@
         "grammars": [
             {
                 "language": "lua",
-                "path": ".\/syntaxes\/lua.tmLanguage.json",
+                "path": "./syntaxes/lua.tmLanguage.json",
                 "scopeName": "source.lua"
             }
         ],
@@ -490,7 +496,7 @@
     "engines": {
         "vscode": "^1.23.0"
     },
-    "icon": "images\/logo.png",
+    "icon": "images/logo.png",
     "keywords": [
         "Lua",
         "LSP",
@@ -498,12 +504,12 @@
         "IntelliSense"
     ],
     "license": "MIT",
-    "main": ".\/client\/out\/extension",
+    "main": "./client/out/extension",
     "name": "lua",
     "publisher": "sumneko",
     "repository": {
         "type": "git",
-        "url": "https:\/\/github.com\/sumneko\/lua-language-server"
+        "url": "https://github.com/sumneko/lua-language-server"
     },
     "version": "0.20.2"
 }
