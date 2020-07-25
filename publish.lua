@@ -4,13 +4,14 @@ if rootPath == '' then
     rootPath = './'
 end
 loadfile(rootPath .. 'server/platform.lua')('script')
+require 'bee'
 local fs = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
 local platform = require 'bee.platform'
-
+local thread = require 'bee.thread'
 
 require 'utility'
-dofile(rootPath .. 'server/test.lua')
+--dofile(rootPath .. 'server/test.lua')
 
 package.path = package.path
     .. ';' .. rootPath .. '/?.lua'
@@ -187,12 +188,41 @@ removeFiles(out) {
     },
 }
 
-local path = ROOT / 'publish' / 'lua'
-print('清理发布目录...')
-removeFiles(path)(true)
-
-print('复制到发布目录...')
-local count = copyFiles(out, path)(true)
-print(('复制了[%d]个文件'):format(count))
-
 print('完成')
+
+for i = 5, 0, -1 do
+    print('将在' .. i .. '秒后发布版本：', version)
+    thread.sleep(1)
+end
+
+local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
+local p, err = subprocess.shell {
+    'vsce', 'package',
+    '-o', vsix,
+    cwd = out,
+    stderr = true,
+}
+if not p then
+    error(err)
+end
+p:wait()
+print(p.stderr:read 'a')
+
+subprocess.shell {
+    'git', 'tag', 'v' .. tostring(version),
+}
+
+subprocess.shell {
+    'git', 'push', '--tags',
+}
+
+local p, err = subprocess.shell {
+    'vsce', 'publish',
+    cwd = out,
+    stderr = true,
+}
+if not p then
+    error(err)
+end
+p:wait()
+print(p.stderr:read 'a')
