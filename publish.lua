@@ -210,6 +210,14 @@ p:wait()
 print(p.stderr:read 'a')
 
 subprocess.shell {
+    'git', 'add', '*',
+}
+
+subprocess.shell {
+    'git', 'commit', '-m', tostring(version),
+}
+
+subprocess.shell {
     'git', 'tag', 'v' .. tostring(version),
 }
 
