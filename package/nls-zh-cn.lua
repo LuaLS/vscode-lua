@@ -26,6 +26,7 @@ return {
     ['config.completion.keywordSnippet.Disable'] = "只显示 `关键字`。",
     ['config.completion.keywordSnippet.Both']    = "显示 `关键字` 与 `语法片段`。",
     ['config.completion.keywordSnippet.Replace'] = "只显示 `语法片段`。",
+    ['config.completion.displayContext']         = "预览建议的相关代码片段，可能可以帮助你了解这项建议的用法。设置的数字表示代码片段的截取行数，设置为`0`可以禁用此功能。",
     ['config.color.mode']                        = "着色模式。",
     ['config.color.mode.Semantic']               = "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。",
     ['config.color.mode.Grammar']                = "语法着色。",

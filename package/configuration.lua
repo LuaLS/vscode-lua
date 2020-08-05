@@ -134,6 +134,12 @@ local config = {
         },
         markdownDescription = "%config.completion.keywordSnippet%"
     },
+    ['Lua.completion.displayContext'] = {
+        scope = "resource",
+        type  = "integer",
+        default = 6,
+        markdownDescription = "%config.completion.displayContext%",
+    },
     ["Lua.color.mode"] = {
         scope = "resource",
         type = "string",

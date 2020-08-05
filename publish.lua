@@ -17,6 +17,7 @@ package.path = package.path
     .. ';' .. rootPath .. '/?.lua'
 ROOT = fs.path(rootPath)
 require 'package.build'
+dofile(rootPath .. 'setting/build.lua')
 local json = require 'json'
 
 local function loadPackage()

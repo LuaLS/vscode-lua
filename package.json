@@ -48,6 +48,12 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "Lua.completion.displayContext": {
+                    "default": 6,
+                    "markdownDescription": "%config.completion.displayContext%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
                 "Lua.completion.enable": {
                     "default": true,
                     "markdownDescription": "%config.completion.enable%",
