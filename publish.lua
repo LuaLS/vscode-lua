@@ -242,10 +242,6 @@ local p, err = subprocess.shell {
 if not p then
     error(err)
 end
-for line in p.stdout:read 'l' do
-    print(line)
-end
 p:wait()
-print(p.stderr:read 'a')
 
 print('完成')
