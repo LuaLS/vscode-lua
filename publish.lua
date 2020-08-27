@@ -209,21 +209,25 @@ end
 p:wait()
 print(p.stderr:read 'a')
 
-subprocess.shell {
+local p =subprocess.shell {
     'git', 'add', '*',
 }
+p:wait()
 
-subprocess.shell {
+local p = subprocess.shell {
     'git', 'commit', '-m', tostring(version),
 }
+p:wait()
 
-subprocess.shell {
+local p = subprocess.shell {
     'git', 'tag', 'v' .. tostring(version),
 }
+p:wait()
 
-subprocess.shell {
+local p = subprocess.shell {
     'git', 'push', '--tags',
 }
+p:wait()
 
 local p, err = subprocess.shell {
     'vsce', 'publish',
