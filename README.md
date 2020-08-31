@@ -1,5 +1,10 @@
 # lua-language-server
 
+## Install In VSCode
+https://marketplace.visualstudio.com/items?itemName=sumneko.lua
+
+![avatar](https://github.com/sumneko/vscode-lua/raw/master/images//Install%20In%20VSCode.gif)
+
 ## Feature
 
 - [x] Goto Definition
