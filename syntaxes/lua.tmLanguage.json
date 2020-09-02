@@ -57,20 +57,20 @@
 			]
 		},
 		{
-			"match": "(?<![\\w\\d.])0[xX][0-9A-Fa-f]+(?![pPeE.0-9])",
-			"name": "constant.numeric.integer.hexadecimal.lua"
-		},
-		{
 			"match": "(?<![\\w\\d.])0[xX][0-9A-Fa-f]+(\\.[0-9A-Fa-f]+)?([eE]-?\\d*)?([pP][-+]\\d+)?",
 			"name": "constant.numeric.float.hexadecimal.lua"
 		},
 		{
-			"match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
-			"name": "constant.numeric.integer.lua"
+			"match": "(?<![\\w\\d.])0[xX][0-9A-Fa-f]+(?![pPeE.0-9])",
+			"name": "constant.numeric.integer.hexadecimal.lua"
 		},
 		{
 			"match": "(?<![\\w\\d.])\\d+(\\.\\d+)?([eE]-?\\d*)?",
 			"name": "constant.numeric.float.lua"
+		},
+		{
+			"match": "(?<![\\w\\d.])\\d+(?![pPeE.0-9])",
+			"name": "constant.numeric.integer.lua"
 		},
 		{
 			"begin": "'",
