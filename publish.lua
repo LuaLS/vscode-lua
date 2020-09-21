@@ -227,6 +227,7 @@ p:wait()
 local p = subprocess.shell {
     'git', 'push',
 }
+p:wait()
 
 local p = subprocess.shell {
     'git', 'push', '--tags',
