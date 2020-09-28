@@ -196,11 +196,11 @@ local config = {
     --    default = ".vscode/lua-plugin/*.lua",
     --    markdownDescription = "%config.plugin.path%"
     --},
-    ["Lua.zzzzzz.cat"] = {
+    ["Lua.awakened.cat"] = {
         scope = "resource",
         type = "boolean",
         default = false,
-        markdownDescription = "%config.zzzzzz.cat%"
+        markdownDescription = "%config.awakened.cat%"
     },
     ["Lua.develop.enable"] = {
         scope = "resource",

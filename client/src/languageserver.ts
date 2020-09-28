@@ -81,7 +81,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     };
 
     let config = Workspace.getConfiguration(undefined, folder);
-    let beta: boolean = config.get("Lua.zzzzzz.cat");
+    let beta: boolean = config.get("Lua.awakened.cat");
     //let beta: boolean = false;
     let develop: boolean = config.get("Lua.develop.enable");
     let debuggerPort: number = config.get("Lua.develop.debuggerPort");

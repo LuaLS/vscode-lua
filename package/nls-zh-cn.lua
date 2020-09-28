@@ -1,6 +1,7 @@
 local example = require 'package.nls-example'
 
 return {
+    ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ["config.runtime.version"]            = "Lua运行版本。",
     ["config.runtime.path"]               = "`package.path`",
     ["config.diagnostics.enable"]         = "启用诊断。",

@@ -62,7 +62,7 @@ function start(context, documentSelector, folder) {
         workspaceFolder: folder,
     };
     let config = vscode_1.workspace.getConfiguration(undefined, folder);
-    let beta = config.get("Lua.zzzzzz.cat");
+    let beta = config.get("Lua.awakened.cat");
     //let beta: boolean = false;
     let develop = config.get("Lua.develop.enable");
     let debuggerPort = config.get("Lua.develop.debuggerPort");
