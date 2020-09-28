@@ -61,11 +61,12 @@ function start(context, documentSelector, folder) {
         documentSelector: documentSelector,
         workspaceFolder: folder,
     };
-    let beta = vscode_1.workspace.getConfiguration().get("Lua.zzzzzz.cat");
+    let config = vscode_1.workspace.getConfiguration(undefined, folder);
+    let beta = config.get("Lua.zzzzzz.cat");
     //let beta: boolean = false;
-    let develop = vscode_1.workspace.getConfiguration().get("Lua.develop.enable");
-    let debuggerPort = vscode_1.workspace.getConfiguration().get("Lua.develop.debuggerPort");
-    let debuggerWait = vscode_1.workspace.getConfiguration().get("Lua.develop.debuggerWait");
+    let develop = config.get("Lua.develop.enable");
+    let debuggerPort = config.get("Lua.develop.debuggerPort");
+    let debuggerWait = config.get("Lua.develop.debuggerWait");
     let command;
     let platform = os.platform();
     switch (platform) {

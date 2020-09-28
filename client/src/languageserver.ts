@@ -24,7 +24,7 @@ let clients: Map<string, LanguageClient> = new Map();
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (data) => {
-        let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri))
+        let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
         if (data.action == 'add') {
             let value: any[] = config.get(data.key);
             value.push(data.value);
@@ -80,11 +80,12 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         workspaceFolder: folder,
     };
 
-    let beta: boolean = Workspace.getConfiguration().get("Lua.zzzzzz.cat");
+    let config = Workspace.getConfiguration(undefined, folder);
+    let beta: boolean = config.get("Lua.zzzzzz.cat");
     //let beta: boolean = false;
-    let develop: boolean = Workspace.getConfiguration().get("Lua.develop.enable");
-    let debuggerPort: number = Workspace.getConfiguration().get("Lua.develop.debuggerPort");
-    let debuggerWait: boolean = Workspace.getConfiguration().get("Lua.develop.debuggerWait");
+    let develop: boolean = config.get("Lua.develop.enable");
+    let debuggerPort: number = config.get("Lua.develop.debuggerPort");
+    let debuggerWait: boolean = config.get("Lua.develop.debuggerWait");
     let command: string;
     let platform: string = os.platform();
     switch (platform) {
