@@ -1,22 +1,30 @@
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
-import { workspace, ExtensionContext, env } from 'vscode';
-
-let patch = require("./patch");
-
+import {
+    workspace as Workspace,
+    ExtensionContext,
+    env as Env,
+    commands as Commands,
+    TextDocument,
+    WorkspaceFolder,
+    Uri
+} from 'vscode';
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
+    DocumentSelector,
 } from 'vscode-languageclient/node';
-import { commands } from 'vscode';
 
-let client: LanguageClient;
+let patch = require("./patch");
+
+let defaultClient: LanguageClient;
+let clients: Map<string, LanguageClient> = new Map();
 
 function registerCustomCommands(context: ExtensionContext) {
-    context.subscriptions.push(commands.registerCommand('lua.config', (data) => {
-        let config = workspace.getConfiguration()
+    context.subscriptions.push(Commands.registerCommand('lua.config', (data) => {
+        let config = Workspace.getConfiguration()
         if (data.action == 'add') {
             let value: any[] = config.get(data.key);
             value.push(data.value);
@@ -30,24 +38,53 @@ function registerCustomCommands(context: ExtensionContext) {
     }))
 }
 
-export function activate(context: ExtensionContext) {
-    let language = env.language;
+let _sortedWorkspaceFolders: string[] | undefined;
+function sortedWorkspaceFolders(): string[] {
+    if (_sortedWorkspaceFolders === void 0) {
+        _sortedWorkspaceFolders = Workspace.workspaceFolders ? Workspace.workspaceFolders.map(folder => {
+            let result = folder.uri.toString();
+            if (result.charAt(result.length - 1) !== '/') {
+                result = result + '/';
+            }
+            return result;
+        }).sort(
+            (a, b) => {
+                return a.length - b.length;
+            }
+        ) : [];
+    }
+    return _sortedWorkspaceFolders;
+}
+Workspace.onDidChangeWorkspaceFolders(() => _sortedWorkspaceFolders = undefined);
 
+function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
+    let sorted = sortedWorkspaceFolders();
+    for (let element of sorted) {
+        let uri = folder.uri.toString();
+        if (uri.charAt(uri.length - 1) !== '/') {
+            uri = uri + '/';
+        }
+        if (uri.startsWith(element)) {
+            return Workspace.getWorkspaceFolder(Uri.parse(element))!;
+        }
+    }
+    return folder;
+}
+
+function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder): LanguageClient {
+    let language = Env.language;
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
-        documentSelector: [{ scheme: 'file', language: 'lua' }],
-        synchronize: {
-            // Notify the server about file changes to '.clientrc files contained in the workspace
-            fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
-        }
+        documentSelector: documentSelector,
+        workspaceFolder: folder,
     };
 
-    let beta: boolean = workspace.getConfiguration().get("Lua.zzzzzz.cat");
+    let beta: boolean = Workspace.getConfiguration().get("Lua.zzzzzz.cat");
     //let beta: boolean = false;
-    let develop: boolean = workspace.getConfiguration().get("Lua.develop.enable");
-    let debuggerPort: number = workspace.getConfiguration().get("Lua.develop.debuggerPort");
-    let debuggerWait: boolean = workspace.getConfiguration().get("Lua.develop.debuggerWait");
+    let develop: boolean = Workspace.getConfiguration().get("Lua.develop.enable");
+    let debuggerPort: number = Workspace.getConfiguration().get("Lua.develop.debuggerPort");
+    let debuggerWait: boolean = Workspace.getConfiguration().get("Lua.develop.debuggerWait");
     let command: string;
     let platform: string = os.platform();
     switch (platform) {
@@ -98,7 +135,7 @@ export function activate(context: ExtensionContext) {
         ]
     };
 
-    client = new LanguageClient(
+    let client = new LanguageClient(
         'Lua',
         'Lua',
         serverOptions,
@@ -106,16 +143,68 @@ export function activate(context: ExtensionContext) {
     );
 
     client.registerProposedFeatures();
-    registerCustomCommands(context);
 
     patch.patch(client);
 
     client.start();
+
+    return client;
+}
+
+export function activate(context: ExtensionContext) {
+    registerCustomCommands(context);
+    function didOpenTextDocument(document: TextDocument): void {
+        // We are only interested in language mode text
+        if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
+            return;
+        }
+
+        let uri = document.uri;
+        // Untitled files go to a default client.
+        if (uri.scheme === 'untitled' && !defaultClient) {
+            defaultClient = start(context, [
+                { scheme: 'untitled', language: 'lua' }
+            ], null);
+            return;
+        }
+        
+        let folder = Workspace.getWorkspaceFolder(uri);
+        // Files outside a folder can't be handled. This might depend on the language.
+        // Single file languages like JSON might handle files outside the workspace folders.
+        if (!folder) {
+            return;
+        }
+        // If we have nested workspace folders we only start a server on the outer most workspace folder.
+        folder = getOuterMostWorkspaceFolder(folder);
+
+        if (!clients.has(folder.uri.toString())) {
+            let client = start(context, [
+                { scheme: 'file', language: 'lua', pattern: `${folder.uri.fsPath}/**/*` }
+            ], folder);
+            clients.set(folder.uri.toString(), client);
+        }
+    }
+
+    Workspace.onDidOpenTextDocument(didOpenTextDocument);
+    Workspace.textDocuments.forEach(didOpenTextDocument);
+    Workspace.onDidChangeWorkspaceFolders((event) => {
+        for (let folder  of event.removed) {
+            let client = clients.get(folder.uri.toString());
+            if (client) {
+                clients.delete(folder.uri.toString());
+                client.stop();
+            }
+        }
+    });
 }
 
 export function deactivate(): Thenable<void> | undefined {
-    if (!client) {
-        return undefined;
+    let promises: Thenable<void>[] = [];
+    if (defaultClient) {
+        promises.push(defaultClient.stop());
     }
-    return client.stop();
+    for (let client of clients.values()) {
+        promises.push(client.stop());
+    }
+    return Promise.all(promises).then(() => undefined);
 }
