@@ -2,6 +2,12 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
+        "Lua.awakened.cat": {
+            "default": false,
+            "markdownDescription": "PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.color.mode": {
             "default": "Semantic",
             "enum": [
@@ -432,12 +438,6 @@
         "Lua.workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "Ignore files list in `.gitignore` .",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "Lua.zzzzzz.cat": {
-            "default": false,
-            "markdownDescription": "DONT TOUCH ME, LET ME SLEEP >_<",
             "scope": "resource",
             "type": "boolean"
         }

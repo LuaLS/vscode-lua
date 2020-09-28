@@ -1,4 +1,5 @@
 {
+    "config.awakened.cat": "PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）",
     "config.color.mode": "着色模式。",
     "config.color.mode.Grammar": "语法着色。",
     "config.color.mode.Semantic": "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。",
