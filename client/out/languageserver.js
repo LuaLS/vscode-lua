@@ -11,7 +11,7 @@ let defaultClient;
 let clients = new Map();
 function registerCustomCommands(context) {
     context.subscriptions.push(vscode_1.commands.registerCommand('lua.config', (data) => {
-        let config = vscode_1.workspace.getConfiguration();
+        let config = vscode_1.workspace.getConfiguration(undefined, vscode_1.Uri.parse(data.uri));
         if (data.action == 'add') {
             let value = config.get(data.key);
             value.push(data.value);
@@ -92,12 +92,12 @@ function start(context, documentSelector, folder) {
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     client.registerProposedFeatures();
-    patch.patch(client);
     client.start();
     return client;
 }
 function activate(context) {
     registerCustomCommands(context);
+    patch.patch();
     function didOpenTextDocument(document) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {

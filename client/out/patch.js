@@ -16,7 +16,7 @@ function patchMarkdown() {
     code.MarkdownString = patchedMarkdownString;
 }
 
-function patch(client) {
+function patch() {
     patchMarkdown();
 }
 

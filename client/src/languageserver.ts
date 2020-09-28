@@ -8,7 +8,7 @@ import {
     commands as Commands,
     TextDocument,
     WorkspaceFolder,
-    Uri
+    Uri,
 } from 'vscode';
 import {
     LanguageClient,
@@ -24,7 +24,7 @@ let clients: Map<string, LanguageClient> = new Map();
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (data) => {
-        let config = Workspace.getConfiguration()
+        let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri))
         if (data.action == 'add') {
             let value: any[] = config.get(data.key);
             value.push(data.value);
@@ -143,9 +143,6 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     );
 
     client.registerProposedFeatures();
-
-    patch.patch(client);
-
     client.start();
 
     return client;
@@ -153,6 +150,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
+    patch.patch();
     function didOpenTextDocument(document: TextDocument): void {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
@@ -188,7 +186,7 @@ export function activate(context: ExtensionContext) {
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
     Workspace.onDidChangeWorkspaceFolders((event) => {
-        for (let folder  of event.removed) {
+        for (let folder of event.removed) {
             let client = clients.get(folder.uri.toString());
             if (client) {
                 clients.delete(folder.uri.toString());
