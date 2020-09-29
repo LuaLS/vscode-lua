@@ -171,11 +171,12 @@ export function activate(context: ExtensionContext) {
         // Files outside a folder can't be handled. This might depend on the language.
         // Single file languages like JSON might handle files outside the workspace folders.
         if (!folder) {
-            if (!clients.has(uri.toString())) {
+            let parentUri = Uri.file(path.parse(uri.fsPath).dir)
+            if (!clients.has(parentUri.toString())) {
                 let client = start(context, [
-                    { scheme: 'file', language: 'lua', pattern: `${uri.fsPath}` }
+                    { scheme: 'file', language: 'lua', pattern: `${parentUri.fsPath}/**/*` }
                 ], null);
-                clients.set(uri.toString(), client);
+                clients.set(parentUri.toString(), client);
             }
             return;
         }
@@ -202,7 +203,7 @@ export function activate(context: ExtensionContext) {
     }
 
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
-    Workspace.onDidCloseTextDocument(didCloseTextDocument);
+    //Workspace.onDidCloseTextDocument(didCloseTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
     Workspace.onDidChangeWorkspaceFolders((event) => {
         for (let folder of event.removed) {
