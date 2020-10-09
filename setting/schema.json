@@ -383,7 +383,7 @@
             "type": "array"
         },
         "Lua.runtime.version": {
-            "default": "Lua 5.3",
+            "default": "Lua 5.4",
             "enum": [
                 "Lua 5.1",
                 "Lua 5.2",
