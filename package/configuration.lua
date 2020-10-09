@@ -4,7 +4,7 @@ local config = {
     ["Lua.runtime.version"] = {
         scope = "resource",
         type = "string",
-        default = "Lua 5.3",
+        default = "Lua 5.4",
         enum = {
             "Lua 5.1",
             "Lua 5.2",
