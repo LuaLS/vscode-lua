@@ -27,6 +27,29 @@ local config = {
             "?/?.lua"
         }
     },
+    ["Lua.runtime.special"] = {
+        scope = 'resource',
+        type  = 'object',
+        markdownDescription = '%config.runtime.special%',
+        patternProperties= {
+            [''] = {
+                type = "string",
+                scope = "resource",
+                default = "require",
+                enum = {
+                    '_G',
+                    'rawset',
+                    'rawget',
+                    'setmetatable',
+                    'require',
+                    'dofile',
+                    'loadfile',
+                    'pcall',
+                    'xpcall',
+                }
+            }
+        }
+    },
     ["Lua.diagnostics.enable"] = {
         scope = 'resource',
         type = 'boolean',

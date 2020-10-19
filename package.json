@@ -398,6 +398,29 @@
                     "scope": "resource",
                     "type": "array"
                 },
+                "Lua.runtime.special": {
+                    "markdownDescription": "%config.runtime.special%",
+                    "patternProperties": {
+                        "": {
+                            "default": "require",
+                            "enum": [
+                                "_G",
+                                "rawset",
+                                "rawget",
+                                "setmetatable",
+                                "require",
+                                "dofile",
+                                "loadfile",
+                                "pcall",
+                                "xpcall"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        }
+                    },
+                    "scope": "resource",
+                    "type": "object"
+                },
                 "Lua.runtime.version": {
                     "default": "Lua 5.4",
                     "enum": [

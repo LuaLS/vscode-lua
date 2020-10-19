@@ -40,5 +40,12 @@ return {
     "!temp/*.lua"
 ]
 ```
+]],
+    special = [[
+```json
+"Lua.runtime.special" : {
+    "include" : "require"
+}
+```
 ]]
 }
