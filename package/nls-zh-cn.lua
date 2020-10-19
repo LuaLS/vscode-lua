@@ -4,7 +4,7 @@ return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ["config.runtime.version"]            = "Lua运行版本。",
     ["config.runtime.path"]               = "`package.path`",
-    ["config.runtime.special"]            = [[将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
+    ["config.runtime.special"]            = [[`仅beta支持` 将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
 下面这个例子表示将 `include` 视为 `require` 。
 ]] .. example.special,
     ["config.diagnostics.enable"]         = "启用诊断。",

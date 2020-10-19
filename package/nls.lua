@@ -4,7 +4,7 @@ return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ["config.runtime.version"]            = "Lua runtime version.",
     ["config.runtime.path"]               = "`package.path`",
-    ["config.runtime.special"]            = "The custom global variables are regarded as some special built-in variables, and the language server will provide special support",
+    ["config.runtime.special"]            = "`Only supported in beta` The custom global variables are regarded as some special built-in variables, and the language server will provide special support",
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n" .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n" .. example.globals,
