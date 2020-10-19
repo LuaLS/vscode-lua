@@ -25,7 +25,7 @@
     "config.hover.viewString": "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
     "config.hover.viewStringMax": "悬停提示查看字符串内容时的最大长度。",
     "config.runtime.path": "`package.path`",
-    "config.runtime.special": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
+    "config.runtime.special": "`仅beta支持` 将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
     "config.runtime.version": "Lua运行版本。",
     "config.signatureHelp.enable": "启用参数提示。",
     "config.workspace.ignoreDir": "忽略的目录（使用 `.gitignore` 语法）。\n```json\n\"Lua.workspace.ignoreDir\" : [\n    \"temp/*.*\",\n    \"!temp/*.lua\"\n]\n```\n",
