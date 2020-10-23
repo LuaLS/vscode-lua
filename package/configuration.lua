@@ -251,6 +251,7 @@ for name, level in pairs(diagDefault) do
         scope = 'resource',
         type = 'string',
         default = level,
+        description = '%config.diagnostics.' .. name .. '%',
         enum = {
             'Error',
             'Warning',

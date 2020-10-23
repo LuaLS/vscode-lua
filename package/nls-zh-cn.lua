@@ -43,4 +43,23 @@ return {
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
     ['config.develop.debuggerWait']              = '调试器连接之前挂起。',
+
+    -- TODO 英文翻译
+    ['config.diagnostics.unused-local']          = '未使用的局部变量',
+    ['config.diagnostics.unused-function']       = '未使用的函数',
+    ['undefined-global']                         = '未定义的全局变量',
+    ['global-in-nil-env']                        = '不能使用全局变量（ `_ENV` 被设置为了 `nil`）',
+    ['unused-label']                             = '未使用的标签',
+    ['unused-vararg']                            = '未使用的不定参数',
+    ['trailing-space']                           = '后置空格',
+    ['redefined-local']                          = '重复定义的局部变量',
+    ['newline-call']                             = '以 `(` 开始的新行，在语法上被解析为了上一行的函数调用',
+    ['newfield-call']                            = '在字面量表中，2行代码之间缺少分隔符，在语法上被解析为了一次索引操作',
+    ['redundant-parameter']                      = '函数调用时，传入了多余的参数',
+    ['ambiguity-1']                              = '优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ',
+    ['lowercase-global']                         = '首字母小写的全局变量定义',
+    ['undefined-env-child']                      = '`_ENV` 被设置为了新的字面量表，但是试图获取的全局变量不再这张表中',
+    ['duplicate-index']                          = '在字面量表中重复定义了索引',
+    ['empty-block']                              = '空代码块',
+    ['redundant-value']                          = '赋值操作时，值的数量比被赋值的对象多',
 }
