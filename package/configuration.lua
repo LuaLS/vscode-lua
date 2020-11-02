@@ -79,6 +79,18 @@ local config = {
         title = "severity",
         properties = {}
     },
+    ["Lua.diagnostics.workspaceDelay"] = {
+        scope = "resource",
+        type = "integer",
+        default = 0,
+        markdownDescription = "%config.diagnostics.workspaceDelay%",
+    },
+    ["Lua.diagnostics.workspaceRate"] = {
+        scope = "resource",
+        type = "integer",
+        default = 100,
+        markdownDescription = "%config.diagnostics.workspaceRate%",
+    },
     ["Lua.workspace.ignoreDir"] = {
         scope = "resource",
         type = "array",
