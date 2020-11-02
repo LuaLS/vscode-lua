@@ -366,6 +366,18 @@
             "title": "severity",
             "type": "object"
         },
+        "Lua.diagnostics.workspaceDelay": {
+            "default": 0,
+            "markdownDescription": "`仅beta支持` 进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "Lua.diagnostics.workspaceRate": {
+            "default": 100,
+            "markdownDescription": "`仅beta支持` 工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
+            "scope": "resource",
+            "type": "integer"
+        },
         "Lua.hover.enable": {
             "default": true,
             "markdownDescription": "启用悬停提示。",

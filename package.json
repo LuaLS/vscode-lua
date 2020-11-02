@@ -382,6 +382,18 @@
                     "title": "severity",
                     "type": "object"
                 },
+                "Lua.diagnostics.workspaceDelay": {
+                    "default": 0,
+                    "markdownDescription": "%config.diagnostics.workspaceDelay%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
+                "Lua.diagnostics.workspaceRate": {
+                    "default": 100,
+                    "markdownDescription": "%config.diagnostics.workspaceRate%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
                 "Lua.hover.enable": {
                     "default": true,
                     "markdownDescription": "%config.hover.enable%",
@@ -561,5 +573,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.21.8"
+    "version": "0.21.9"
 }

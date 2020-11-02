@@ -366,6 +366,18 @@
             "title": "severity",
             "type": "object"
         },
+        "Lua.diagnostics.workspaceDelay": {
+            "default": 0,
+            "markdownDescription": "`Only supported in beta` Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "Lua.diagnostics.workspaceRate": {
+            "default": 100,
+            "markdownDescription": "`Only supported in beta` Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
+            "scope": "resource",
+            "type": "integer"
+        },
         "Lua.hover.enable": {
             "default": true,
             "markdownDescription": "Enable hover.",
