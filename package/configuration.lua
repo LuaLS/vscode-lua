@@ -117,7 +117,7 @@ local config = {
     ["Lua.workspace.maxPreload"] = {
         scope = "resource",
         type = "integer",
-        default = 300,
+        default = 1000,
         markdownDescription = "%config.workspace.maxPreload%"
     },
     ["Lua.workspace.preloadFileSize"] = {
