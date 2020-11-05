@@ -384,6 +384,12 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.hover.fieldInfer": {
+            "default": 3000,
+            "markdownDescription": "`仅beta支持` 悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
+            "scope": "resource",
+            "type": "integer"
+        },
         "Lua.hover.viewNumber": {
             "default": true,
             "markdownDescription": "悬停提示查看数字内容（仅当字面量不是十进制时）。",
@@ -399,6 +405,18 @@
         "Lua.hover.viewStringMax": {
             "default": 1000,
             "markdownDescription": "悬停提示查看字符串内容时的最大长度。",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "Lua.intelliSense.fastGlobal": {
+            "default": true,
+            "markdownDescription": "`仅beta支持` 在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.intelliSense.searchDepth": {
+            "default": 0,
+            "markdownDescription": "`仅beta支持` 设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
             "scope": "resource",
             "type": "integer"
         },

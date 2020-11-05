@@ -400,6 +400,12 @@
                     "scope": "resource",
                     "type": "boolean"
                 },
+                "Lua.hover.fieldInfer": {
+                    "default": 3000,
+                    "markdownDescription": "%config.hover.fieldInfer%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
                 "Lua.hover.viewNumber": {
                     "default": true,
                     "markdownDescription": "%config.hover.viewNumber%",
@@ -415,6 +421,18 @@
                 "Lua.hover.viewStringMax": {
                     "default": 1000,
                     "markdownDescription": "%config.hover.viewStringMax%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
+                "Lua.intelliSense.fastGlobal": {
+                    "default": true,
+                    "markdownDescription": "%config.intelliSense.fastGlobal%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
+                "Lua.intelliSense.searchDepth": {
+                    "default": 0,
+                    "markdownDescription": "%config.intelliSense.searchDepth%",
                     "scope": "resource",
                     "type": "integer"
                 },
@@ -573,5 +591,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.21.11"
+    "version": "0.21.12"
 }
