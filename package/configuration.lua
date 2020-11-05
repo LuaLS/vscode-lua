@@ -219,6 +219,12 @@ local config = {
         default = true,
         markdownDescription = "%config.hover.viewNumber%"
     },
+    ['Lua.hover.fieldInfer'] = {
+        scope = "resource",
+        type = "integer",
+        default = 3000,
+        markdownDescription = "%config.hover.fieldInfer%"
+    },
     --["Lua.plugin.enable"] = {
     --    scope = "resource",
     --    type = "boolean",
@@ -254,6 +260,18 @@ local config = {
         type = "boolean",
         default = false,
         markdownDescription = "%config.develop.debuggerWait%"
+    },
+    ['Lua.intelliSense.searchDepth'] = {
+        scope = "resource",
+        type = "integer",
+        default = 0,
+        markdownDescription = "%config.intelliSense.searchDepth%"
+    },
+    ['Lua.intelliSense.fastGlobal'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.intelliSense.fastGlobal%"
     },
 }
 
