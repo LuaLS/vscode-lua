@@ -480,7 +480,7 @@
             "type": "object"
         },
         "Lua.workspace.maxPreload": {
-            "default": 300,
+            "default": 1000,
             "markdownDescription": "最大预加载文件数。",
             "scope": "resource",
             "type": "integer"

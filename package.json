@@ -496,7 +496,7 @@
                     "type": "object"
                 },
                 "Lua.workspace.maxPreload": {
-                    "default": 300,
+                    "default": 1000,
                     "markdownDescription": "%config.workspace.maxPreload%",
                     "scope": "resource",
                     "type": "integer"
@@ -573,5 +573,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.21.10"
+    "version": "0.21.11"
 }

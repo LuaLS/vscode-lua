@@ -480,7 +480,7 @@
             "type": "object"
         },
         "Lua.workspace.maxPreload": {
-            "default": 300,
+            "default": 1000,
             "markdownDescription": "Max preloaded files.",
             "scope": "resource",
             "type": "integer"
