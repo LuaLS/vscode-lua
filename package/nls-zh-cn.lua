@@ -41,13 +41,13 @@ return {
     ['config.hover.viewString']                  = "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
     ['config.hover.viewStringMax']               = "悬停提示查看字符串内容时的最大长度。",
     ['config.hover.viewNumber']                  = "悬停提示查看数字内容（仅当字面量不是十进制时）。",
-    ['config.hover.fieldInfer']                  = "悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
+    ['config.hover.fieldInfer']                  = "`仅beta支持` 悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
     ['config.zzzzzz.cat']                        = 'DONT TOUCH ME, LET ME SLEEP >_<',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
     ['config.develop.debuggerWait']              = '调试器连接之前挂起。',
-    ['config.intelliSense.searchDepth']          = '设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。',
-    ['config.intelliSense.fastGlobal']          = '在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。',
+    ['config.intelliSense.searchDepth']          = '`仅beta支持` 设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。',
+    ['config.intelliSense.fastGlobal']          = '`仅beta支持` 在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。',
 
     -- TODO 英文翻译
     ['config.diagnostics.unused-local']          = '未使用的局部变量',
