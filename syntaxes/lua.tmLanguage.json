@@ -201,7 +201,7 @@
 							"name": "punctuation.definition.string.begin.lua"
 						}
 					},
-					"end": "'[ \\t]*",
+					"end": "'[ \\t]*|(?=\\n)",
 					"endCaptures": {
 						"0": {
 							"name": "punctuation.definition.string.end.lua"
@@ -221,7 +221,7 @@
 							"name": "punctuation.definition.string.begin.lua"
 						}
 					},
-					"end": "\"[ \\t]*",
+					"end": "\"[ \\t]*|(?=\\n)",
 					"endCaptures": {
 						"0": {
 							"name": "punctuation.definition.string.end.lua"
@@ -545,7 +545,7 @@
 					]
 				},
 				{
-					"begin": "(?=[a-zA-Z_\\.\"])",
+					"begin": "(?=[a-zA-Z_\\.\"'])",
 					"end": "(?=[\\s\\),])",
 					"patterns": [
 						{
