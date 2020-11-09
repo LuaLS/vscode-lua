@@ -563,7 +563,7 @@
 			]
 		},
 		"luadoc.type.resume": {
-			"begin": "\\|",
+			"begin": "\\|[ \\t]*",
 			"beginCaptures": {
 				"0": {
 					"name": "keyword.operator.lua"
