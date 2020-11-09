@@ -523,7 +523,7 @@
 		"luadoc.type": {
 			"patterns": [
 				{
-					"begin": "fun",
+					"begin": "\\bfun\\b",
 					"beginCaptures": {
 						"0": {
 							"name": "keyword.control.lua"
