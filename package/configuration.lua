@@ -1,4 +1,4 @@
-local diagDefault = require 'constant.DiagnosticDefaultSeverity'
+local const = require 'proto.define'
 
 local config = {
     ["Lua.runtime.version"] = {
@@ -276,7 +276,7 @@ local config = {
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties
-for name, level in pairs(diagDefault) do
+for name, level in pairs(const.DiagnosticDefaultSeverity) do
     DiagSeverity[name] = {
         scope = 'resource',
         type = 'string',

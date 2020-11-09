@@ -3,7 +3,7 @@ local rootPath = currentPath:gsub('[^/\\]-$', '')
 if rootPath == '' then
     rootPath = './'
 end
-loadfile(rootPath .. 'server/platform.lua')('script')
+loadfile(rootPath .. 'server/platform.lua')('script-beta')
 require 'bee'
 local fs = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
