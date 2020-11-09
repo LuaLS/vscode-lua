@@ -5,12 +5,11 @@ if rootPath == '' then
 end
 loadfile(rootPath .. 'server/platform.lua')('script-beta')
 require 'bee'
-local fs = require 'bee.filesystem'
+local fs         = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
-local platform = require 'bee.platform'
-local thread = require 'bee.thread'
-
-require 'utility'
+local platform   = require 'bee.platform'
+local thread     = require 'bee.thread'
+local fsu        = require 'fs-utility'
 --dofile(rootPath .. 'server/test.lua')
 
 package.path = package.path
@@ -21,7 +20,7 @@ dofile(rootPath .. 'setting/build.lua')
 local json = require 'json'
 
 local function loadPackage()
-    local buf = io.load(ROOT / 'package.json')
+    local buf = fsu.loadFile(ROOT / 'package.json')
     if not buf then
         error(ROOT:string())
     end

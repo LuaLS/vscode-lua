@@ -19,7 +19,7 @@
         "configuration": {
             "properties": {
                 "Lua.awakened.cat": {
-                    "default": false,
+                    "default": true,
                     "markdownDescription": "%config.awakened.cat%",
                     "scope": "resource",
                     "type": "boolean"
@@ -137,33 +137,69 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "circle-doc-class": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.circle-doc-class%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "doc-field-no-class": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.doc-field-no-class%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "duplicate-doc-class": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.duplicate-doc-class%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "duplicate-doc-field": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.duplicate-doc-field%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "duplicate-doc-param": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.duplicate-doc-param%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "duplicate-index": {
                             "default": "Warning",
                             "description": "%config.diagnostics.duplicate-index%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "scope": "resource",
-                            "type": "string"
-                        },
-                        "duplicate-method": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-method%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "scope": "resource",
-                            "type": "string"
-                        },
-                        "emmy-lua": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.emmy-lua%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -269,33 +305,45 @@
                             "scope": "resource",
                             "type": "string"
                         },
-                        "set-const": {
-                            "default": "Error",
-                            "description": "%config.diagnostics.set-const%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "scope": "resource",
-                            "type": "string"
-                        },
-                        "set-for-state": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.set-for-state%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "scope": "resource",
-                            "type": "string"
-                        },
                         "trailing-space": {
                             "default": "Hint",
                             "description": "%config.diagnostics.trailing-space%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "undefined-doc-class": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.undefined-doc-class%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "undefined-doc-name": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.undefined-doc-name%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "undefined-doc-param": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.undefined-doc-param%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -591,5 +639,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "0.21.12"
+    "version": "1.0.0"
 }

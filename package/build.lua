@@ -1,8 +1,9 @@
 local json = require 'json-beautify'
 
-local VERSION = "0.21.12"
+local VERSION = "1.0.0"
 
 local package = require 'package.package'
+local fsu     = require 'fs-utility'
 
 package.version = VERSION
 package.__metadata = {
@@ -16,10 +17,10 @@ local encodeOption = {
     indent  = '    ',
 }
 print('生成 package.json')
-io.save(ROOT / 'package.json', json.beautify(package, encodeOption) .. '\r\n')
+fsu.saveFile(ROOT / 'package.json', json.beautify(package, encodeOption) .. '\r\n')
 
 print('生成 package.nls.json')
-io.save(ROOT / 'package.nls.json', json.beautify(require 'package.nls', encodeOption))
+fsu.saveFile(ROOT / 'package.nls.json', json.beautify(require 'package.nls', encodeOption))
 
 print('生成 package.nls.zh-cn.json')
-io.save(ROOT / 'package.nls.zh-cn.json', json.beautify(require 'package.nls-zh-cn', encodeOption))
+fsu.saveFile(ROOT / 'package.nls.zh-cn.json', json.beautify(require 'package.nls-zh-cn', encodeOption))
