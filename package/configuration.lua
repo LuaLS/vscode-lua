@@ -240,7 +240,7 @@ local config = {
     ["Lua.awakened.cat"] = {
         scope = "resource",
         type = "boolean",
-        default = false,
+        default = true,
         markdownDescription = "%config.awakened.cat%"
     },
     ["Lua.develop.enable"] = {
