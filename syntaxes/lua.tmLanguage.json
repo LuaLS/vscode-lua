@@ -340,7 +340,7 @@
 		"luadoc": {
 			"patterns": [
 				{
-					"begin": "@class",
+					"begin": "(?<=---)@class",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -359,7 +359,7 @@
 					]
 				},
 				{
-					"begin": "@type",
+					"begin": "(?<=---)@type",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -373,7 +373,7 @@
 					]
 				},
 				{
-					"begin": "@alias",
+					"begin": "(?<=---)@alias",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -398,7 +398,7 @@
 					]
 				},
 				{
-					"begin": "@param",
+					"begin": "(?<=---)@param",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -423,7 +423,7 @@
 					]
 				},
 				{
-					"begin": "@return",
+					"begin": "(?<=---)@return",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -437,7 +437,7 @@
 					]
 				},
 				{
-					"begin": "@field",
+					"begin": "(?<=---)@field",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -462,7 +462,7 @@
 					]
 				},
 				{
-					"begin": "@generic",
+					"begin": "(?<=---)@generic",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -491,7 +491,7 @@
 					]
 				},
 				{
-					"begin": "@vararg",
+					"begin": "(?<=---)@vararg",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -505,7 +505,7 @@
 					]
 				},
 				{
-					"begin": "@overload",
+					"begin": "(?<=---)@overload",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
