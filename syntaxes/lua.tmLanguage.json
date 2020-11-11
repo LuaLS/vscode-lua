@@ -519,6 +519,15 @@
 					]
 				},
 				{
+					"begin": "(?<=---)@deprecated",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.annotation.lua"
+						}
+					},
+					"end": "(?=\\n)"
+				},
+				{
 					"begin": "(?<=---)\\|\\s*\\>?",
 					"beginCaptures": {
 						"0": {
@@ -567,6 +576,10 @@
 							"name": "support.type.lua"
 						},
 						{
+							"match": "(\\.\\.\\.)[ \\t]*",
+							"name": "constant.language.lua"
+						},
+						{
 							"include": "#string"
 						},
 						{
@@ -588,6 +601,10 @@
 				{
 					"match": "(\\b([a-zA-Z_][a-zA-Z0-9_\\.]*)\\b)[ \\t]*",
 					"name": "support.type.lua"
+				},
+				{
+					"match": "(\\.\\.\\.)[ \\t]*",
+					"name": "constant.language.lua"
 				},
 				{
 					"include": "#string"
