@@ -6,7 +6,6 @@ const os = require("os");
 const fs = require("fs");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
-let patch = require("./patch");
 let defaultClient;
 let clients = new Map();
 function registerCustomCommands(context) {
@@ -60,6 +59,10 @@ function start(context, documentSelector, folder) {
         // Register the server for plain text documents
         documentSelector: documentSelector,
         workspaceFolder: folder,
+        progressOnInitialization: true,
+        markdown: {
+            isTrusted: true,
+        },
     };
     let config = vscode_1.workspace.getConfiguration(undefined, folder);
     let beta = config.get("Lua.awakened.cat");
@@ -98,7 +101,6 @@ function start(context, documentSelector, folder) {
 }
 function activate(context) {
     registerCustomCommands(context);
-    patch.patch();
     function didOpenTextDocument(document) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {

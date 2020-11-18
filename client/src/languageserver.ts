@@ -17,8 +17,6 @@ import {
     DocumentSelector,
 } from 'vscode-languageclient/node';
 
-let patch = require("./patch");
-
 let defaultClient: LanguageClient;
 let clients: Map<string, LanguageClient> = new Map();
 
@@ -78,6 +76,10 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         // Register the server for plain text documents
         documentSelector: documentSelector,
         workspaceFolder: folder,
+        progressOnInitialization: true,
+        markdown: {
+            isTrusted: true,
+        },
     };
 
     let config = Workspace.getConfiguration(undefined, folder);
@@ -151,7 +153,6 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    patch.patch();
     function didOpenTextDocument(document: TextDocument): void {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
