@@ -164,7 +164,11 @@ export function activate(context: ExtensionContext) {
         if (uri.scheme === 'untitled' && !defaultClient) {
             defaultClient = start(context, [
                 { scheme: 'untitled', language: 'lua' }
-            ], null);
+            ], {
+                name: 'untitled',
+                uri: uri,
+                index: 0,
+            });
             return;
         }
         
@@ -176,7 +180,11 @@ export function activate(context: ExtensionContext) {
             if (!clients.has(parentUri.toString())) {
                 let client = start(context, [
                     { scheme: 'file', language: 'lua', pattern: `${parentUri.fsPath}/**/*` }
-                ], null);
+                ], {
+                    name: parentUri.fsPath,
+                    uri: parentUri,
+                    index: 0,
+                });
                 clients.set(parentUri.toString(), client);
             }
             return;

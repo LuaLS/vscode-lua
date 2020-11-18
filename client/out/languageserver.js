@@ -111,7 +111,11 @@ function activate(context) {
         if (uri.scheme === 'untitled' && !defaultClient) {
             defaultClient = start(context, [
                 { scheme: 'untitled', language: 'lua' }
-            ], null);
+            ], {
+                name: 'untitled',
+                uri: uri,
+                index: 0,
+            });
             return;
         }
         let folder = vscode_1.workspace.getWorkspaceFolder(uri);
@@ -122,7 +126,11 @@ function activate(context) {
             if (!clients.has(parentUri.toString())) {
                 let client = start(context, [
                     { scheme: 'file', language: 'lua', pattern: `${parentUri.fsPath}/**/*` }
-                ], null);
+                ], {
+                    name: parentUri.fsPath,
+                    uri: parentUri,
+                    index: 0,
+                });
                 clients.set(parentUri.toString(), client);
             }
             return;
