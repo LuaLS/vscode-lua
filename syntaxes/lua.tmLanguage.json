@@ -537,6 +537,25 @@
 					"end": "(?=\\n)"
 				},
 				{
+					"begin": "(?<=---)@version",
+					"beginCaptures": {
+						"0": {
+							"name": "storage.type.annotation.lua"
+						}
+					},
+					"end": "(?=\\n)",
+					"patterns": [
+						{
+							"match": "\\b(5\\.1|5\\.2|5\\.3|5\\.4|JIT)\\b",
+							"name": "support.class.lua"
+						},
+						{
+							"match": ",|\\>|\\<",
+							"name": "keyword.operator.lua"
+						}
+					]
+				},
+				{
 					"begin": "(?<=---)\\|\\s*[\\>\\+]?",
 					"beginCaptures": {
 						"0": {
