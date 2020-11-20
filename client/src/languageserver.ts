@@ -164,11 +164,7 @@ export function activate(context: ExtensionContext) {
         if (uri.scheme === 'untitled' && !defaultClient) {
             defaultClient = start(context, [
                 { scheme: 'untitled', language: 'lua' }
-            ], {
-                name: 'untitled',
-                uri: uri,
-                index: 0,
-            });
+            ], null);
             return;
         }
         
@@ -176,17 +172,6 @@ export function activate(context: ExtensionContext) {
         // Files outside a folder can't be handled. This might depend on the language.
         // Single file languages like JSON might handle files outside the workspace folders.
         if (!folder) {
-            let parentUri = Uri.file(path.parse(uri.fsPath).dir)
-            if (!clients.has(parentUri.toString())) {
-                let client = start(context, [
-                    { scheme: 'file', language: 'lua', pattern: `${parentUri.fsPath}/**/*` }
-                ], {
-                    name: parentUri.fsPath,
-                    uri: parentUri,
-                    index: 0,
-                });
-                clients.set(parentUri.toString(), client);
-            }
             return;
         }
         // If we have nested workspace folders we only start a server on the outer most workspace folder.
