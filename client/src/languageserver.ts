@@ -160,15 +160,15 @@ export function activate(context: ExtensionContext) {
         }
 
         let uri = document.uri;
+        let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
-        if (uri.scheme === 'untitled' && !defaultClient) {
+        if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
             defaultClient = start(context, [
-                { scheme: 'untitled', language: 'lua' }
+                { scheme: 'file', language: 'lua' }
             ], null);
             return;
         }
-        
-        let folder = Workspace.getWorkspaceFolder(uri);
+
         // Files outside a folder can't be handled. This might depend on the language.
         // Single file languages like JSON might handle files outside the workspace folders.
         if (!folder) {
