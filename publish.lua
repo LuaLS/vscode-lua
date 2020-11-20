@@ -3,7 +3,7 @@ local rootPath = currentPath:gsub('[^/\\]-$', '')
 if rootPath == '' then
     rootPath = './'
 end
-loadfile(rootPath .. 'server/platform.lua')('script-beta')
+loadfile(rootPath .. 'server/platform.lua')('script')
 require 'bee'
 local fs         = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
@@ -156,9 +156,7 @@ local count = copyFiles(ROOT , out) {
         ['libs']              = true,
         ['locale']            = true,
         ['script']            = true,
-        ['script-beta']       = true,
         ['main.lua']          = true,
-        ['main-beta.lua']     = true,
         ['platform.lua']      = true,
         ['test']              = true,
         ['test.lua']          = true,

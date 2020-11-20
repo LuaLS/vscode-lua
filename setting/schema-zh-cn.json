@@ -2,12 +2,6 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
-        "Lua.awakened.cat": {
-            "default": true,
-            "markdownDescription": "PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "Lua.color.mode": {
             "default": "Semantic",
             "enum": [
