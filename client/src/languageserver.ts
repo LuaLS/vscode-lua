@@ -83,8 +83,6 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     };
 
     let config = Workspace.getConfiguration(undefined, folder);
-    let beta: boolean = config.get("Lua.awakened.cat");
-    //let beta: boolean = false;
     let develop: boolean = config.get("Lua.develop.enable");
     let debuggerPort: number = config.get("Lua.develop.debuggerPort");
     let debuggerWait: boolean = config.get("Lua.develop.debuggerWait");
@@ -133,7 +131,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             `LANG="${language}";DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
             context.asAbsolutePath(path.join(
                 'server',
-                beta ? 'main-beta.lua' : 'main.lua',
+                'main.lua',
             ))
         ]
     };

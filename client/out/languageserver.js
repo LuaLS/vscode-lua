@@ -65,8 +65,6 @@ function start(context, documentSelector, folder) {
         },
     };
     let config = vscode_1.workspace.getConfiguration(undefined, folder);
-    let beta = config.get("Lua.awakened.cat");
-    //let beta: boolean = false;
     let develop = config.get("Lua.develop.enable");
     let debuggerPort = config.get("Lua.develop.debuggerPort");
     let debuggerWait = config.get("Lua.develop.debuggerWait");
@@ -91,7 +89,7 @@ function start(context, documentSelector, folder) {
             '-E',
             '-e',
             `LANG="${language}";DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
-            context.asAbsolutePath(path.join('server', beta ? 'main-beta.lua' : 'main.lua'))
+            context.asAbsolutePath(path.join('server', 'main.lua'))
         ]
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
