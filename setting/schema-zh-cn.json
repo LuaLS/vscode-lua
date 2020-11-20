@@ -133,6 +133,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "code-after-break": {
+                    "default": "Hint",
+                    "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "doc-field-no-class": {
                     "default": "Warning",
                     "description": "%config.diagnostics.doc-field-no-class%",

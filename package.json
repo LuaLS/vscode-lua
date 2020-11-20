@@ -149,6 +149,18 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "code-after-break": {
+                            "default": "Hint",
+                            "description": "%config.diagnostics.code-after-break%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "doc-field-no-class": {
                             "default": "Warning",
                             "description": "%config.diagnostics.doc-field-no-class%",
@@ -639,5 +651,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.0.5"
+    "version": "1.0.6"
 }
