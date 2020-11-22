@@ -4,15 +4,15 @@ return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ["config.runtime.version"]            = "Lua运行版本。",
     ["config.runtime.path"]               = "`package.path`",
-    ["config.runtime.special"]            = [[`仅beta支持` 将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
+    ["config.runtime.special"]            = [[将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
 下面这个例子表示将 `include` 视为 `require` 。
 ]] .. example.special,
     ["config.diagnostics.enable"]         = "启用诊断。",
     ["config.diagnostics.disable"]        = "禁用的诊断（使用浮框括号内的代码）。\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "已定义的全局变量。\n",-- .. example.globals,
     ["config.diagnostics.severity"]       = "修改诊断等级。\n",-- .. example.severity,
-    ["config.diagnostics.workspaceDelay"] = "`仅beta支持` 进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
-    ["config.diagnostics.workspaceRate"]  = "`仅beta支持` 工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
+    ["config.diagnostics.workspaceDelay"] = "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
+    ["config.diagnostics.workspaceRate"]  = "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
     ["config.workspace.ignoreDir"]        = "忽略的目录（使用 `.gitignore` 语法）。\n",-- .. example.ignoreDir,
     ["config.workspace.ignoreSubmodules"] = "忽略子模块。",
     ["config.workspace.useGitIgnore"]     = "忽略 `.gitignore` 中列举的文件。",
@@ -41,13 +41,13 @@ return {
     ['config.hover.viewString']                  = "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
     ['config.hover.viewStringMax']               = "悬停提示查看字符串内容时的最大长度。",
     ['config.hover.viewNumber']                  = "悬停提示查看数字内容（仅当字面量不是十进制时）。",
-    ['config.hover.fieldInfer']                  = "`仅beta支持` 悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
+    ['config.hover.fieldInfer']                  = "悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
     ['config.zzzzzz.cat']                        = 'DONT TOUCH ME, LET ME SLEEP >_<',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',
     ['config.develop.debuggerWait']              = '调试器连接之前挂起。',
-    ['config.intelliSense.searchDepth']          = '`仅beta支持` 设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。',
-    ['config.intelliSense.fastGlobal']          = '`仅beta支持` 在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。',
+    ['config.intelliSense.searchDepth']          = '设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。',
+    ['config.intelliSense.fastGlobal']          = '在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。',
 
     -- TODO 英文翻译
     ['config.diagnostics.unused-local']          = '未使用的局部变量',
