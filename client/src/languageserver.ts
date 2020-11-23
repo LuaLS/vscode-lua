@@ -70,7 +70,6 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
 }
 
 function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder): LanguageClient {
-    let language = Env.language;
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
@@ -128,7 +127,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         args: [
             '-E',
             '-e',
-            `LANG="${language}";DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
+            `DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
             context.asAbsolutePath(path.join(
                 'server',
                 'main.lua',

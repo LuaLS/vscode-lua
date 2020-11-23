@@ -53,7 +53,6 @@ function getOuterMostWorkspaceFolder(folder) {
     return folder;
 }
 function start(context, documentSelector, folder) {
-    let language = vscode_1.env.language;
     // Options to control the language client
     let clientOptions = {
         // Register the server for plain text documents
@@ -88,7 +87,7 @@ function start(context, documentSelector, folder) {
         args: [
             '-E',
             '-e',
-            `LANG="${language}";DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
+            `DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
             context.asAbsolutePath(path.join('server', 'main.lua'))
         ]
     };
