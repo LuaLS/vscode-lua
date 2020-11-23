@@ -422,13 +422,13 @@
         },
         "Lua.diagnostics.workspaceDelay": {
             "default": 0,
-            "markdownDescription": "`Only supported in beta` Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
+            "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
             "scope": "resource",
             "type": "integer"
         },
         "Lua.diagnostics.workspaceRate": {
             "default": 100,
-            "markdownDescription": "`Only supported in beta` Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
+            "markdownDescription": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
             "scope": "resource",
             "type": "integer"
         },
@@ -440,7 +440,7 @@
         },
         "Lua.hover.fieldInfer": {
             "default": 3000,
-            "markdownDescription": "`Only supported in beta` When hovering to view a table, type infer will be performed for each field. When the accumulated time of type infer reaches the set value (MS), the type infer of subsequent fields will be skipped.",
+            "markdownDescription": "When hovering to view a table, type infer will be performed for each field. When the accumulated time of type infer reaches the set value (MS), the type infer of subsequent fields will be skipped.",
             "scope": "resource",
             "type": "integer"
         },
@@ -464,13 +464,13 @@
         },
         "Lua.intelliSense.fastGlobal": {
             "default": true,
-            "markdownDescription": "`Only supported in beta` In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.",
+            "markdownDescription": "In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.",
             "scope": "resource",
             "type": "boolean"
         },
         "Lua.intelliSense.searchDepth": {
             "default": 0,
-            "markdownDescription": "`Only supported in beta` Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",
+            "markdownDescription": "Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",
             "scope": "resource",
             "type": "integer"
         },
@@ -488,7 +488,7 @@
             "type": "array"
         },
         "Lua.runtime.special": {
-            "markdownDescription": "`Only supported in beta` The custom global variables are regarded as some special built-in variables, and the language server will provide special support",
+            "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support",
             "patternProperties": {
                 "": {
                     "default": "require",
