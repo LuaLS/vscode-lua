@@ -340,7 +340,7 @@
 		"luadoc": {
 			"patterns": [
 				{
-					"begin": "(?<=---)@class",
+					"begin": "(?<=---\\s*)@class",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -359,7 +359,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@type",
+					"begin": "(?<=---\\s*)@type",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -373,7 +373,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@alias",
+					"begin": "(?<=---\\s*)@alias",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -398,7 +398,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@param",
+					"begin": "(?<=---\\s*)@param",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -426,7 +426,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@return",
+					"begin": "(?<=---\\s*)@return",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -444,7 +444,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@field",
+					"begin": "(?<=---\\s*)@field",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -469,7 +469,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@generic",
+					"begin": "(?<=---\\s*)@generic",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -498,7 +498,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@vararg",
+					"begin": "(?<=---\\s*)@vararg",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -512,7 +512,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@overload",
+					"begin": "(?<=---\\s*)@overload",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -526,7 +526,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---)@deprecated",
+					"begin": "(?<=---\\s*)@deprecated",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -535,7 +535,7 @@
 					"end": "(?=\\n)"
 				},
 				{
-					"begin": "(?<=---)@meta",
+					"begin": "(?<=---\\s*)@meta",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -544,7 +544,7 @@
 					"end": "(?=\\n)"
 				},
 				{
-					"begin": "(?<=---)@version",
+					"begin": "(?<=---\\s*)@version",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
