@@ -462,12 +462,6 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.intelliSense.fastGlobal": {
-            "default": true,
-            "markdownDescription": "In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "Lua.intelliSense.searchDepth": {
             "default": 0,
             "markdownDescription": "Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",

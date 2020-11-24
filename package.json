@@ -478,12 +478,6 @@
                     "scope": "resource",
                     "type": "integer"
                 },
-                "Lua.intelliSense.fastGlobal": {
-                    "default": true,
-                    "markdownDescription": "%config.intelliSense.fastGlobal%",
-                    "scope": "resource",
-                    "type": "boolean"
-                },
                 "Lua.intelliSense.searchDepth": {
                     "default": 0,
                     "markdownDescription": "%config.intelliSense.searchDepth%",
@@ -645,5 +639,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.1.1"
+    "version": "1.1.2"
 }

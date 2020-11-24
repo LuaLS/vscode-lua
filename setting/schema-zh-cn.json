@@ -462,12 +462,6 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.intelliSense.fastGlobal": {
-            "default": true,
-            "markdownDescription": "在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "Lua.intelliSense.searchDepth": {
             "default": 0,
             "markdownDescription": "设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
