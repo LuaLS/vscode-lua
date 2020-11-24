@@ -261,12 +261,6 @@ local config = {
         default = 0,
         markdownDescription = "%config.intelliSense.searchDepth%"
     },
-    ['Lua.intelliSense.fastGlobal'] = {
-        scope = "resource",
-        type = "boolean",
-        default = true,
-        markdownDescription = "%config.intelliSense.fastGlobal%"
-    },
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties
