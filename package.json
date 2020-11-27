@@ -639,5 +639,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.2.0"
+    "version": "1.2.1"
 }
