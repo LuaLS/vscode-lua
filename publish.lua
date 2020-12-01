@@ -178,6 +178,10 @@ local count = copyFiles(ROOT , out) {
 }
 print(('复制了[%d]个文件'):format(count))
 
+print('复制 readme ...')
+fs.copy_file(ROOT / 'server' / 'changelog.md', ROOT / 'changelog.md', true)
+fsu.saveFile(ROOT / 'readme.md', fsu.loadFile(ROOT / 'server' / 'readme.md'):gsub('%!%[build%][^\r\n]*', ''))
+
 print('开始测试...')
 runTest(out / 'server')
 
