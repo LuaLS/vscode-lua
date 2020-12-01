@@ -131,6 +131,10 @@ end
 local version = loadPackage()
 print('版本号为：' .. version)
 
+print('复制 readme ...')
+fs.copy_file(ROOT / 'server' / 'changelog.md', ROOT / 'changelog.md', true)
+fsu.saveFile(ROOT / 'README.md', fsu.loadFile(ROOT / 'server' / 'README.md'):gsub('%!%[build%][^\r\n]*', ''))
+
 local out = createDirectory(version)
 print('输出目录为：', out)
 print('清理目录...')
@@ -172,15 +176,12 @@ local count = copyFiles(ROOT , out) {
     ['package-lock.json']      = true,
     ['package.json']           = true,
     ['README.md']              = true,
+    ['changelog.md']           = true,
     ['tsconfig.json']          = true,
     ['package.nls.json']       = true,
     ['package.nls.zh-cn.json'] = true,
 }
 print(('复制了[%d]个文件'):format(count))
-
-print('复制 readme ...')
-fs.copy_file(ROOT / 'server' / 'changelog.md', ROOT / 'changelog.md', true)
-fsu.saveFile(ROOT / 'readme.md', fsu.loadFile(ROOT / 'server' / 'readme.md'):gsub('%!%[build%][^\r\n]*', ''))
 
 print('开始测试...')
 runTest(out / 'server')
