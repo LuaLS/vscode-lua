@@ -40,6 +40,7 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.hover.viewStringMax']               = "The maximum length of a hover to view the contents of a string.",
     ['config.hover.viewNumber']                  = "Hover to view numeric content (only if literal is not decimal).",
     ['config.hover.fieldInfer']                  = "When hovering to view a table, type infer will be performed for each field. When the accumulated time of type infer reaches the set value (MS), the type infer of subsequent fields will be skipped.",
+    ['config.hover.previewFields']               = "When hovering to view a table, limits the maximum number of previews for fields.",
     ['config.zzzzzz.cat']                        = 'DONT TOUCH ME, LET ME SLEEP >_<',
     ['config.develop.enable']                    = 'Developer mode. Do not enable, performance will be affected.',
     ['config.develop.debuggerPort']              = 'Listen port of debugger.',

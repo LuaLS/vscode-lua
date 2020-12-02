@@ -42,6 +42,7 @@ return {
     ['config.hover.viewStringMax']               = "悬停提示查看字符串内容时的最大长度。",
     ['config.hover.viewNumber']                  = "悬停提示查看数字内容（仅当字面量不是十进制时）。",
     ['config.hover.fieldInfer']                  = "悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
+    ['config.hover.previewFields']               = "悬停提示查看表时，限制表内字段的最大预览数量。",
     ['config.zzzzzz.cat']                        = 'DONT TOUCH ME, LET ME SLEEP >_<',
     ['config.develop.enable']                    = '开发者模式。请勿开启，会影响性能。',
     ['config.develop.debuggerPort']              = '调试器监听端口。',

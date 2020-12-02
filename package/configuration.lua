@@ -225,6 +225,12 @@ local config = {
         default = 3000,
         markdownDescription = "%config.hover.fieldInfer%"
     },
+    ['Lua.hover.previewFields'] = {
+        scope = "resource",
+        type = "integer",
+        default = 100,
+        markdownDescription = "%config.hover.previewFields%"
+    },
     --["Lua.plugin.enable"] = {
     --    scope = "resource",
     --    type = "boolean",
