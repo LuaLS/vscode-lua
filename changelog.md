@@ -1,5 +1,15 @@
 # changelog
 
+## 1.4.0
+`2020-12-3`
+* `NEW` setting `hover.previewFields`: limit how many fields are shown in table hover
+* `NEW` fully supports `---@type Object[]`
+* `NEW` supports `---@see`
+* `NEW` diagnostic `unbalanced-assignments`
+* `CHG` resolves infer of `string|table`
+* `CHG` `unused-local` ignores local with `---@class`
+* `CHG` locale file format changes to `lua`
+
 ## 1.3.0
 `2020-12-1`
 
@@ -14,12 +24,13 @@
 ## 1.2.1
 `2020-11-27`
 
-* `NEW` hover shows comments from `---@param` and `---@return`: [#135](https://github.com/sumneko/lua-language-server/issues/135)
 * `FIX` syntaxes tokens: [#272](https://github.com/sumneko/lua-language-server/issues/272)
 
 ## 1.2.0
 `2020-11-27`
 
+* `NEW` hover shows comments from `---@param` and `---@return`: [#135](https://github.com/sumneko/lua-language-server/issues/135)
+* `NEW` support `LuaDoc` as tail comment
 * `FIX` `---@class` inheritance
 * `FIX` missed syntaxes token: `punctuation.definition.parameters.finish.lua`
 
@@ -63,7 +74,7 @@
 ## 1.0.6
 `2020-11-20`
 
-* `NEW` `code-after-break`
+* `NEW` diagnostic `code-after-break`
 * `CHG` optimize performance
 * `CHG` updated language client
 * `CHG` `unused-function` ignores global functions (may used out of Lua)

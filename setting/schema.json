@@ -307,6 +307,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "unbalanced-assignments": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "undefined-doc-class": {
                     "default": "Warning",
                     "description": "%config.diagnostics.undefined-doc-class%",
@@ -441,6 +453,12 @@
         "Lua.hover.fieldInfer": {
             "default": 3000,
             "markdownDescription": "When hovering to view a table, type infer will be performed for each field. When the accumulated time of type infer reaches the set value (MS), the type infer of subsequent fields will be skipped.",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "Lua.hover.previewFields": {
+            "default": 100,
+            "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
             "scope": "resource",
             "type": "integer"
         },

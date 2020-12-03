@@ -323,6 +323,18 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "unbalanced-assignments": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.unbalanced-assignments%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "undefined-doc-class": {
                             "default": "Warning",
                             "description": "%config.diagnostics.undefined-doc-class%",
@@ -457,6 +469,12 @@
                 "Lua.hover.fieldInfer": {
                     "default": 3000,
                     "markdownDescription": "%config.hover.fieldInfer%",
+                    "scope": "resource",
+                    "type": "integer"
+                },
+                "Lua.hover.previewFields": {
+                    "default": 100,
+                    "markdownDescription": "%config.hover.previewFields%",
                     "scope": "resource",
                     "type": "integer"
                 },
@@ -639,5 +657,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.3.0"
+    "version": "1.4.0"
 }
