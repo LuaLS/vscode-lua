@@ -522,6 +522,12 @@
             "scope": "resource",
             "type": "object"
         },
+        "Lua.runtime.unicodeName": {
+            "default": false,
+            "markdownDescription": "允许在名字中使用 Unicode 字符。",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.runtime.version": {
             "default": "Lua 5.4",
             "enum": [

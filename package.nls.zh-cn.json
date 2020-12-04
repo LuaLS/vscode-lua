@@ -35,6 +35,7 @@
     "config.intelliSense.searchDepth": "设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
     "config.runtime.path": "`package.path`",
     "config.runtime.special": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
+    "config.runtime.unicodeName": "允许在名字中使用 Unicode 字符。",
     "config.runtime.version": "Lua运行版本。",
     "config.signatureHelp.enable": "启用参数提示。",
     "config.workspace.ignoreDir": "忽略的目录（使用 `.gitignore` 语法）。\n",
