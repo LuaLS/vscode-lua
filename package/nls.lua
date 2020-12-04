@@ -4,7 +4,10 @@ return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ["config.runtime.version"]            = "Lua runtime version.",
     ["config.runtime.path"]               = "`package.path`",
-    ["config.runtime.special"]            = "The custom global variables are regarded as some special built-in variables, and the language server will provide special support",
+    ["config.runtime.special"]            = [[The custom global variables are regarded as some special built-in variables, and the language server will provide special support
+The following example shows that 'include' is treated as' require '.
+]] .. example.special,
+    ["config.runtime.unicodeName"]        = "Allows Unicode characters in name.",
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n",-- .. example.globals,

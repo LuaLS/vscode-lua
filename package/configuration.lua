@@ -50,6 +50,12 @@ local config = {
             }
         }
     },
+    ["Lua.runtime.unicodeName"] = {
+        scope = 'resource',
+        type = 'boolean',
+        default = false,
+        markdownDescription = "%config.runtime.unicodeName%"
+    },
     ["Lua.diagnostics.enable"] = {
         scope = 'resource',
         type = 'boolean',
