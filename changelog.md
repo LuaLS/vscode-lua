@@ -1,5 +1,14 @@
 # changelog
 
+## 1.5.0
+`2020-12-5`
+* `NEW` setting `runtime.unicodeName`
+* `NEW` fully supports `---@generic T`
+* `FIX` [#274](https://github.com/sumneko/lua-language-server/issues/274)
+* `FIX` [#276](https://github.com/sumneko/lua-language-server/issues/276)
+* `FIX` [#279](https://github.com/sumneko/lua-language-server/issues/279)
+* `FIX` [#280](https://github.com/sumneko/lua-language-server/issues/280)
+
 ## 1.4.0
 `2020-12-3`
 * `NEW` setting `hover.previewFields`: limit how many fields are shown in table hover
