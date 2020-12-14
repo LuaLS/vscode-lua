@@ -12,7 +12,7 @@
 					"name": "keyword.control.lua"
 				}
 			},
-			"end": "(?<=[\\)\\-:{}\\[\\]\"'])",
+			"end": "(?<=[\\)\\-{}\\[\\]\"'])",
 			"name": "meta.function.lua",
 			"patterns": [
 				{
@@ -25,7 +25,7 @@
 							"name": "punctuation.definition.parameters.begin.lua"
 						}
 					},
-					"end": "(\\))|(?=[\\-\\.:{}\\[\\]\"'])",
+					"end": "(\\))|(?=[\\-\\.{}\\[\\]\"'])",
 					"endCaptures": {
 						"1": {
 							"name": "punctuation.definition.parameters.finish.lua"
@@ -43,6 +43,20 @@
 						{
 							"match": ",",
 							"name": "punctuation.separator.arguments.lua"
+						},
+						{
+							"begin": ":",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.separator.arguments.lua"
+								}
+							},
+							"end": "(?=[\\),])",
+							"patterns": [
+								{
+									"include": "#luadoc.type"
+								}
+							]
 						}
 					]
 				},
