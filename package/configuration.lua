@@ -273,6 +273,12 @@ local config = {
         default = 0,
         markdownDescription = "%config.intelliSense.searchDepth%"
     },
+    ['Lua.telemetry.enable'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.telemetry.enable%"
+    }
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties
