@@ -100,6 +100,294 @@
             "scope": "resource",
             "type": "array"
         },
+        "Lua.diagnostics.neededFileStatus": {
+            "markdownDescription": "Modified neededFileStatus.\n",
+            "properties": {
+                "ambiguity-1": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.ambiguity-1%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "circle-doc-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.circle-doc-class%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "code-after-break": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "doc-field-no-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.doc-field-no-class%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "duplicate-doc-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-class%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "duplicate-doc-field": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-field%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "duplicate-doc-param": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-param%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "duplicate-index": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-index%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "empty-block": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.empty-block%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "global-in-nil-env": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.global-in-nil-env%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "lowercase-global": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.lowercase-global%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "newfield-call": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.newfield-call%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "newline-call": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.newline-call%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "redefined-local": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.redefined-local%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "redundant-parameter": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.redundant-parameter%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "redundant-value": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.redundant-value%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "trailing-space": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.trailing-space%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unbalanced-assignments": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-doc-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-class%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-doc-name": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-name%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-doc-param": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-param%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-env-child": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-env-child%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-field": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.undefined-field%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "undefined-global": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-global%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unused-function": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.unused-function%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unused-label": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.unused-label%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unused-local": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.unused-local%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unused-vararg": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.unused-vararg%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "neededFileStatus",
+            "type": "object"
+        },
         "Lua.diagnostics.severity": {
             "markdownDescription": "Modified diagnostic severity.\n",
             "properties": {

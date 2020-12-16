@@ -33,6 +33,14 @@ return {
 }
 ```
 ]],
+    neededFileStatus = [[
+```json
+"Lua.diagnostics.neededFileStatus" : {
+    "undefined-global": "Any",
+    "undefined-field" : "Opened"
+}
+```
+]],
     ignoreDir = [[
 ```json
 "Lua.workspace.ignoreDir" : [

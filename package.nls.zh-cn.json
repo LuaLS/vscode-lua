@@ -20,6 +20,7 @@
     "config.diagnostics.disable": "禁用的诊断（使用浮框括号内的代码）。\n",
     "config.diagnostics.enable": "启用诊断。",
     "config.diagnostics.globals": "已定义的全局变量。\n",
+    "config.diagnostics.neededFileStatus": "修改诊断分析针对打开的文件还是全项目。\n",
     "config.diagnostics.severity": "修改诊断等级。\n",
     "config.diagnostics.unused-function": "未使用的函数",
     "config.diagnostics.unused-local": "未使用的局部变量",

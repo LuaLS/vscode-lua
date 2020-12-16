@@ -12,6 +12,7 @@ return {
     ["config.diagnostics.disable"]        = "禁用的诊断（使用浮框括号内的代码）。\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "已定义的全局变量。\n",-- .. example.globals,
     ["config.diagnostics.severity"]       = "修改诊断等级。\n",-- .. example.severity,
+    ["config.diagnostics.neededFileStatus"]     = "如果你只想诊断打开的文件，选Opened；否则，选Any。\n",-- .. example.neededFileStatus,
     ["config.diagnostics.workspaceDelay"] = "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
     ["config.diagnostics.workspaceRate"]  = "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
     ["config.workspace.ignoreDir"]        = "忽略的目录（使用 `.gitignore` 语法）。\n",-- .. example.ignoreDir,
