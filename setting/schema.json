@@ -101,7 +101,7 @@
             "type": "array"
         },
         "Lua.diagnostics.neededFileStatus": {
-            "markdownDescription": "Modified neededFileStatus.\n",
+            "markdownDescription": "If you want to check only opened files, choice Opened; else choice Any.\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",

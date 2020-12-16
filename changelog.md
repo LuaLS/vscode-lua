@@ -1,5 +1,12 @@
 # changelog
 
+## 1.7.1
+`2020-12-16`
+* `NEW` setting: `diagnostics.neededFileStatus`
+* `FIX` scan workspace may fails
+* `FIX` quickfix: `newline-call` failed
+* `FIX` a lot of other runtime errors
+
 ## 1.7.0
 `2020-12-16`
 * `NEW` diagnostic: `undefined-field`

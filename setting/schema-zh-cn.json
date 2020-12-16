@@ -101,7 +101,7 @@
             "type": "array"
         },
         "Lua.diagnostics.neededFileStatus": {
-            "markdownDescription": "修改诊断分析针对打开的文件还是全项目。\n",
+            "markdownDescription": "如果你只想诊断打开的文件，选Opened；否则，选Any。\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
