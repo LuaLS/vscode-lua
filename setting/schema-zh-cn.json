@@ -367,6 +367,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "undefined-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "undefined-global": {
                     "default": "Warning",
                     "description": "%config.diagnostics.undefined-global%",
@@ -544,6 +556,12 @@
         "Lua.signatureHelp.enable": {
             "default": true,
             "markdownDescription": "启用参数提示。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.telemetry.enable": {
+            "default": true,
+            "markdownDescription": "启用遥测，通过网络发送你的编辑器信息与错误日志\n* [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [如何使用这些数据](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
             "scope": "resource",
             "type": "boolean"
         },

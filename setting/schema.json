@@ -367,6 +367,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "undefined-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "undefined-global": {
                     "default": "Warning",
                     "description": "%config.diagnostics.undefined-global%",
@@ -544,6 +556,12 @@
         "Lua.signatureHelp.enable": {
             "default": true,
             "markdownDescription": "Enable signature help.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.telemetry.enable": {
+            "default": true,
+            "markdownDescription": "Enable telemetry to send your editor information and error logs over the network\n* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
             "scope": "resource",
             "type": "boolean"
         },

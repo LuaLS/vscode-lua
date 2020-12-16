@@ -383,6 +383,18 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "undefined-field": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.undefined-field%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "undefined-global": {
                             "default": "Warning",
                             "description": "%config.diagnostics.undefined-global%",
@@ -563,6 +575,12 @@
                     "scope": "resource",
                     "type": "boolean"
                 },
+                "Lua.telemetry.enable": {
+                    "default": true,
+                    "markdownDescription": "%config.telemetry.enable%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
                 "Lua.workspace.ignoreDir": {
                     "default": [
                         ".vscode"
@@ -663,5 +681,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.6.0"
+    "version": "1.7.0"
 }

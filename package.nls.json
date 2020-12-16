@@ -35,6 +35,7 @@
     "config.runtime.unicodeName": "Allows Unicode characters in name.",
     "config.runtime.version": "Lua runtime version.",
     "config.signatureHelp.enable": "Enable signature help.",
+    "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network\n* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
     "config.workspace.ignoreDir": "Ignored directories (Use `.gitignore` grammar).\n",
     "config.workspace.ignoreSubmodules": "Ignore submodules.",
     "config.workspace.library": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\nThe following example shows loaded files in `C:/lua` and `../lib` ,exclude `../lib/temp`.\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
