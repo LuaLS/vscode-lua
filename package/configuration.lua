@@ -85,6 +85,13 @@ local config = {
         title = "severity",
         properties = {}
     },
+    ["Lua.diagnostics.neededFileStatus"] = {
+        scope = "resource",
+        type = 'object',
+        markdownDescription = "%config.diagnostics.neededFileStatus%",
+        title = "neededFileStatus",
+        properties = {}
+    },
     ["Lua.diagnostics.workspaceDelay"] = {
         scope = "resource",
         type = "integer",
@@ -293,6 +300,20 @@ for name, level in pairs(const.DiagnosticDefaultSeverity) do
             'Warning',
             'Information',
             'Hint',
+        }
+    }
+end
+
+local DiagNeededFileStatus = config["Lua.diagnostics.neededFileStatus"].properties
+for name, level in pairs(const.DiagnosticDefaultNeededFileStatus) do
+    DiagNeededFileStatus[name] = {
+        scope = 'resource',
+        type = 'string',
+        default = level,
+        description = '%config.diagnostics.' .. name .. '%',
+        enum = {
+            'Any',
+            'Opened',
         }
     }
 end
