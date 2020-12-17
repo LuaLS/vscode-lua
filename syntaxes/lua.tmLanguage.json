@@ -185,7 +185,11 @@
 		"escaped_char": {
 			"patterns": [
 				{
-					"match": "\\\\[abfnrtvz\\\\\"'\\n]",
+					"match": "\\\\[abfnrtv\\\\\"'\\n]",
+					"name": "constant.character.escape.lua"
+				},
+				{
+					"match": "\\\\z[\\n\\t ]*",
 					"name": "constant.character.escape.lua"
 				},
 				{
