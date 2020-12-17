@@ -1,5 +1,11 @@
 # changelog
 
+## 1.7.2
+`2020-12-17`
+* `CHG` completion: use custom tabsize
+* `FIX` [#307](https://github.com/sumneko/lua-language-server/issues/307)
+* `FIX` a lot of runtime errors
+
 ## 1.7.1
 `2020-12-16`
 * `NEW` setting: `diagnostics.neededFileStatus`
