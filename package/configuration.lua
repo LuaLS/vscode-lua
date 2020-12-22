@@ -56,6 +56,21 @@ local config = {
         default = false,
         markdownDescription = "%config.runtime.unicodeName%"
     },
+    ["Lua.runtime.nonstandardSymbol"] = {
+        scope = 'resource',
+        type = 'array',
+        items = {
+            type = 'string',
+            enum = {
+                '//', '/**/',
+                '`',
+                '+=', '-=', '*=', '/=',
+                '||', '&&', '!', '!=',
+                'continue',
+            }
+        },
+        markdownDescription = "%config.runtime.nonstandardSymbol%"
+    },
     ["Lua.diagnostics.enable"] = {
         scope = 'resource',
         type = 'boolean',

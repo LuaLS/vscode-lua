@@ -786,6 +786,28 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.runtime.nonstandardSymbol": {
+            "items": {
+                "enum": [
+                    "//",
+                    "/**/",
+                    "`",
+                    "+=",
+                    "-=",
+                    "*=",
+                    "/=",
+                    "||",
+                    "&&",
+                    "!",
+                    "!=",
+                    "continue"
+                ],
+                "type": "string"
+            },
+            "markdownDescription": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
+            "scope": "resource",
+            "type": "array"
+        },
         "Lua.runtime.path": {
             "default": [
                 "?.lua",

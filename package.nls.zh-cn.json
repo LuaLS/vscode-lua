@@ -34,6 +34,7 @@
     "config.hover.viewStringMax": "悬停提示查看字符串内容时的最大长度。",
     "config.intelliSense.fastGlobal": "在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。",
     "config.intelliSense.searchDepth": "设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
+    "config.runtime.nonstandardSymbol": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
     "config.runtime.path": "`package.path`",
     "config.runtime.special": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
     "config.runtime.unicodeName": "允许在名字中使用 Unicode 字符。",

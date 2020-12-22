@@ -786,6 +786,28 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.runtime.nonstandardSymbol": {
+            "items": {
+                "enum": [
+                    "//",
+                    "/**/",
+                    "`",
+                    "+=",
+                    "-=",
+                    "*=",
+                    "/=",
+                    "||",
+                    "&&",
+                    "!",
+                    "!=",
+                    "continue"
+                ],
+                "type": "string"
+            },
+            "markdownDescription": "%config.runtime.nonstandardSymbol%",
+            "scope": "resource",
+            "type": "array"
+        },
         "Lua.runtime.path": {
             "default": [
                 "?.lua",
