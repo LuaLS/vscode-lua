@@ -253,6 +253,21 @@
 					]
 				},
 				{
+					"begin": "`",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.lua"
+						}
+					},
+					"end": "`[ \\t]*|(?=\\n)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.end.lua"
+						}
+					},
+					"name": "string.quoted.double.lua"
+				},
+				{
 					"begin": "(?<=\\.cdef)\\s*(\\[(=*)\\[)",
 					"beginCaptures": {
 						"0": {
