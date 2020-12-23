@@ -5,22 +5,21 @@ const languageserver = require("./languageserver");
 let luadoc = require('../3rd/vscode-lua-doc/extension.js');
 function activate(context) {
     languageserver.activate(context);
-    let luadocContext = {
-        subscriptions: context.subscriptions,
-        workspaceState: context.workspaceState,
-        globalState: context.globalState,
-        extensionPath: context.extensionPath + '/client/3rd/vscode-lua-doc',
-        asAbsolutePath: context.asAbsolutePath,
-        storagePath: context.storagePath,
-        globalStoragePath: context.globalStoragePath,
-        logPath: context.logPath,
-        extensionUri: context.extensionUri,
-        environmentVariableCollection: context.environmentVariableCollection,
-        extensionMode: context.extensionMode,
-        ViewType: 'lua-doc',
-        OpenCommand: 'extension.lua.doc',
+    let luaDocContext = {
+        ViewType: undefined,
+        OpenCommand: undefined,
+        extensionPath: undefined,
     };
-    luadoc.activate(luadocContext);
+    for (const k in context) {
+        if (k != 'extensionPath'
+            && k != 'extensionRuntime') {
+            luaDocContext[k] = context[k];
+        }
+    }
+    luaDocContext.ViewType = 'lua-doc';
+    luaDocContext.OpenCommand = 'extension.lua.doc';
+    luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc';
+    luadoc.activate(luaDocContext);
 }
 exports.activate = activate;
 function deactivate() {
