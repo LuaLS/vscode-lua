@@ -8,6 +8,7 @@ return {
 The following example shows that 'include' is treated as' require '.
 ]] .. example.special,
     ["config.runtime.unicodeName"]        = "Allows Unicode characters in name.",
+    ["config.runtime.nonstandardSymbol"]  = "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n",-- .. example.globals,
