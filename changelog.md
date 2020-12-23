@@ -1,7 +1,10 @@
 # changelog
 
 ## 1.8.0
+`2020-12-23`
 * `NEW` runtime: support nonstandard symbol
+* `NEW` diagnostic: `close-non-object`
+* `FIX` [#318](https://github.com/sumneko/lua-language-server/issues/318)
 
 ## 1.7.4
 `2020-12-20`

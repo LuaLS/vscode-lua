@@ -139,6 +139,16 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "close-non-object": {
+                            "default": "Any",
+                            "description": "%config.diagnostics.close-non-object%",
+                            "enum": [
+                                "Any",
+                                "Opened"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "code-after-break": {
                             "default": "Opened",
                             "description": "%config.diagnostics.code-after-break%",
@@ -422,6 +432,18 @@
                         "circle-doc-class": {
                             "default": "Warning",
                             "description": "%config.diagnostics.circle-doc-class%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "close-non-object": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.close-non-object%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -991,5 +1013,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.7.4"
+    "version": "1.8.0"
 }
