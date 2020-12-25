@@ -826,7 +826,7 @@
                 ],
                 "type": "string"
             },
-            "markdownDescription": "%config.runtime.nonstandardSymbol%",
+            "markdownDescription": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
             "scope": "resource",
             "type": "array"
         },
