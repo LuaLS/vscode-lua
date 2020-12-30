@@ -86,9 +86,10 @@ function start(context, documentSelector, folder) {
         command: command,
         args: [
             '-E',
-            '-e',
-            `DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
-            context.asAbsolutePath(path.join('server', 'main.lua'))
+            context.asAbsolutePath(path.join('server', 'main.lua')),
+            `--develop=${develop}`,
+            `--dbgport=${debuggerPort}`,
+            `--dbgwait=${debuggerWait}`,
         ]
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);

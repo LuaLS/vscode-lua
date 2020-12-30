@@ -126,12 +126,13 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         command: command,
         args: [
             '-E',
-            '-e',
-            `DEVELOP=${develop};DBGPORT=${debuggerPort};DBGWAIT=${debuggerWait}`,
             context.asAbsolutePath(path.join(
                 'server',
                 'main.lua',
-            ))
+            )),
+            `--develop=${develop}`,
+            `--dbgport=${debuggerPort}`,
+            `--dbgwait=${debuggerWait}`,
         ]
     };
 
