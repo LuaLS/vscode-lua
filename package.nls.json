@@ -13,6 +13,7 @@
     "config.completion.keywordSnippet.Both": "Shows `keyword` and `syntax snippet`.",
     "config.completion.keywordSnippet.Disable": "Only shows `keyword`.",
     "config.completion.keywordSnippet.Replace": "Only shows `syntax snippet`.",
+    "config.completion.workspaceWord": "Shows words within the workspace.",
     "config.develop.debuggerPort": "Listen port of debugger.",
     "config.develop.debuggerWait": "Suspend before debugger connects.",
     "config.develop.enable": "Developer mode. Do not enable, performance will be affected.",

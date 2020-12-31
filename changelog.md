@@ -1,5 +1,15 @@
 # changelog
 
+## 1.9.0
+`2020-12-31`
+* `NEW` YEAR! Peace and love!
+* `NEW` specify path of `log` and `meta` by `--logpath=xxx` and `--metapath=XXX` in command line
+* `NEW` completion: worksapce word
+* `NEW` completion: show words in comment
+* `NEW` completion: generate function documentation
+* `CHG` got arg after script name: `lua-language-server.exe main.lua --logpath=D:\log --metapath=D:\meta --develop=false`
+* `FIX` runtime errors
+
 ## 1.8.2
 `2020-12-29`
 * `CHG` performance optimization

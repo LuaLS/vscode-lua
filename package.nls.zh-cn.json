@@ -14,6 +14,7 @@
     "config.completion.keywordSnippet.Both": "显示 `关键字` 与 `语法片段`。",
     "config.completion.keywordSnippet.Disable": "只显示 `关键字`。",
     "config.completion.keywordSnippet.Replace": "只显示 `语法片段`。",
+    "config.completion.workspaceWord": "显示工作区范围内的单词",
     "config.develop.debuggerPort": "调试器监听端口。",
     "config.develop.debuggerWait": "调试器连接之前挂起。",
     "config.develop.enable": "开发者模式。请勿开启，会影响性能。",

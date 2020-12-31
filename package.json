@@ -76,6 +76,12 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "Lua.completion.workspaceWord": {
+                    "default": true,
+                    "markdownDescription": "%config.completion.workspaceWord%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
                 "Lua.develop.debuggerPort": {
                     "default": 11412,
                     "markdownDescription": "%config.develop.debuggerPort%",
@@ -1013,5 +1019,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.8.2"
+    "version": "1.9.0"
 }
