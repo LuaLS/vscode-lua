@@ -36,6 +36,7 @@ The following example shows loaded files in `C:/lua` and `../lib` ,exclude `../l
     ['config.completion.keywordSnippet.Both']    = "Shows `keyword` and `syntax snippet`.",
     ['config.completion.keywordSnippet.Replace'] = "Only shows `syntax snippet`.",
     ['config.completion.displayContext']         = "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
+    ['config.completion.workspaceWord']          = "Shows words within the workspace.",
     ['config.color.mode']                        = "Color mode.",
     ['config.color.mode.Semantic']               = "Semantic color (Testing. Your color theme must support semantic coloring to be effective.).",
     ['config.color.mode.Grammar']                = "Grammar color.",

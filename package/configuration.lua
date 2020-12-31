@@ -203,6 +203,12 @@ local config = {
         default = 6,
         markdownDescription = "%config.completion.displayContext%",
     },
+    ['Lua.completion.workspaceWord'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.completion.workspaceWord%"
+    },
     ["Lua.color.mode"] = {
         scope = "resource",
         type = "string",
