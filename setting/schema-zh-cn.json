@@ -149,6 +149,16 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "count-down-loop": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.count-down-loop%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "doc-field-no-class": {
                     "default": "Any",
                     "description": "%config.diagnostics.doc-field-no-class%",
@@ -446,6 +456,18 @@
                 "code-after-break": {
                     "default": "Hint",
                     "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "count-down-loop": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.count-down-loop%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -921,7 +943,7 @@
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n下面这个例子表示加载`C:/lua`与`../lib`中的所有文件，但不加载`../lib/temp`中的文件。\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
+            "markdownDescription": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n",
             "scope": "resource",
             "type": "object"
         },

@@ -165,6 +165,16 @@
                             "scope": "resource",
                             "type": "string"
                         },
+                        "count-down-loop": {
+                            "default": "Any",
+                            "description": "%config.diagnostics.count-down-loop%",
+                            "enum": [
+                                "Any",
+                                "Opened"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
                         "doc-field-no-class": {
                             "default": "Any",
                             "description": "%config.diagnostics.doc-field-no-class%",
@@ -462,6 +472,18 @@
                         "code-after-break": {
                             "default": "Hint",
                             "description": "%config.diagnostics.code-after-break%",
+                            "enum": [
+                                "Error",
+                                "Warning",
+                                "Information",
+                                "Hint"
+                            ],
+                            "scope": "resource",
+                            "type": "string"
+                        },
+                        "count-down-loop": {
+                            "default": "Warning",
+                            "description": "%config.diagnostics.count-down-loop%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -1019,5 +1041,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.9.0"
+    "version": "1.10.0"
 }

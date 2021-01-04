@@ -149,6 +149,16 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "count-down-loop": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.count-down-loop%",
+                    "enum": [
+                        "Any",
+                        "Opened"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "doc-field-no-class": {
                     "default": "Any",
                     "description": "%config.diagnostics.doc-field-no-class%",
@@ -446,6 +456,18 @@
                 "code-after-break": {
                     "default": "Hint",
                     "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "count-down-loop": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.count-down-loop%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -921,7 +943,7 @@
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\nThe following example shows loaded files in `C:/lua` and `../lib` ,exclude `../lib/temp`.\n```json\n\"Lua.workspace.library\": {\n    \"C:/lua\": true,\n    \"../lib\": [\n        \"temp/*\"\n    ]\n}\n```\n",
+            "markdownDescription": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\n",
             "scope": "resource",
             "type": "object"
         },
