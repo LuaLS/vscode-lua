@@ -1,5 +1,9 @@
 # changelog
 
+## 1.11.1
+`2021-1-5`
+* `CHG` performance optimization
+
 ## 1.11.0
 `2021-1-5`
 * `NEW` `Lua.runtime.plugin`
