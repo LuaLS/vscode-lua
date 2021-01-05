@@ -71,6 +71,12 @@ local config = {
         },
         markdownDescription = "%config.runtime.nonstandardSymbol%"
     },
+    ["Lua.runtime.plugin"] = {
+        scope = "resource",
+        type = "string",
+        default = ".vscode/lua/plugin.lua",
+        markdownDescription = "%config.runtime.plugin%"
+    },
     ["Lua.diagnostics.enable"] = {
         scope = 'resource',
         type = 'boolean',
