@@ -1,5 +1,14 @@
 # changelog
 
+## 1.11.0
+`2021-1-5`
+* `NEW` `Lua.runtime.plugin`
+* `NEW` intelli-scense: improved `m.f = function (self) end` from `self` to `m`
+* `CHG` performance optimization
+* `CHG` completion: improve performance of workspace words
+* `FIX` hover: tail comments may be cutted
+* `FIX` runtime errors
+
 ## 1.10.0
 `2021-1-4`
 * `NEW` workspace: supports `.dll`(`.so`) in `require`

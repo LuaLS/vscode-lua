@@ -871,6 +871,12 @@
             "scope": "resource",
             "type": "array"
         },
+        "Lua.runtime.plugin": {
+            "default": ".vscode/lua/plugin.lua",
+            "markdownDescription": "(Proposed) Plugin path.",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.runtime.special": {
             "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {

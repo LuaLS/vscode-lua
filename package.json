@@ -887,6 +887,12 @@
                     "scope": "resource",
                     "type": "array"
                 },
+                "Lua.runtime.plugin": {
+                    "default": ".vscode/lua/plugin.lua",
+                    "markdownDescription": "%config.runtime.plugin%",
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.runtime.special": {
                     "markdownDescription": "%config.runtime.special%",
                     "patternProperties": {
@@ -1041,5 +1047,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.10.0"
+    "version": "1.11.0"
 }

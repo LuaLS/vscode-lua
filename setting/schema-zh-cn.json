@@ -871,6 +871,12 @@
             "scope": "resource",
             "type": "array"
         },
+        "Lua.runtime.plugin": {
+            "default": ".vscode/lua/plugin.lua",
+            "markdownDescription": "（实验）插件路径。",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.runtime.special": {
             "markdownDescription": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
