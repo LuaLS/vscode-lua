@@ -11,7 +11,7 @@
             "markdownDescription": "Color mode.",
             "markdownEnumDescriptions": [
                 "Grammar color.",
-                "Semantic color (Testing. Your color theme must support semantic coloring to be effective.)."
+                "Semantic color. Your color theme must support semantic coloring to be effective."
             ],
             "scope": "resource",
             "type": "string"

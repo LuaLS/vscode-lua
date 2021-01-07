@@ -11,7 +11,7 @@
             "markdownDescription": "着色模式。",
             "markdownEnumDescriptions": [
                 "语法着色。",
-                "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。"
+                "语义着色。你的颜色主题必须要支持语义着色才有效。"
             ],
             "scope": "resource",
             "type": "string"
