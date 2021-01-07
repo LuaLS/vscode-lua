@@ -38,7 +38,7 @@ return {
     ['config.completion.displayContext']         = "预览建议的相关代码片段，可能可以帮助你了解这项建议的用法。设置的数字表示代码片段的截取行数，设置为`0`可以禁用此功能。",
     ['config.completion.workspaceWord']          = "显示工作区范围内的单词",
     ['config.color.mode']                        = "着色模式。",
-    ['config.color.mode.Semantic']               = "语义着色（测试中。你的颜色主题必须要支持语义着色才有效。）。",
+    ['config.color.mode.Semantic']               = "语义着色。你的颜色主题必须要支持语义着色才有效。",
     ['config.color.mode.Grammar']                = "语法着色。",
     ['config.signatureHelp.enable']              = "启用参数提示。",
     ['config.hover.enable']                      = "启用悬停提示。",
