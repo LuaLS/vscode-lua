@@ -1,5 +1,9 @@
 # changelog
 
+## 1.12.1
+`2021-1-27`
+* `FIX` endless loop
+
 ## 1.12.0
 `2021-1-26`
 * `NEW` progress
