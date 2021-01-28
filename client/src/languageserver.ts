@@ -9,13 +9,13 @@ import {
     TextDocument,
     WorkspaceFolder,
     Uri,
+    window,
 } from 'vscode';
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
     DocumentSelector,
-    NotificationType,
 } from 'vscode-languageclient/node';
 
 let defaultClient: LanguageClient;
@@ -70,7 +70,7 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
     return folder;
 }
 
-async function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder): Promise<LanguageClient> {
+function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
@@ -146,17 +146,33 @@ async function start(context: ExtensionContext, documentSelector: DocumentSelect
 
     client.registerProposedFeatures();
     client.start();
-    await client.onReady();
-    client.onNotification('$/command', (params) => {
-        Commands.executeCommand(params.command, params.data)
-    })
+    client.onReady().then(() => {
+        onCommand(client);
+        statusBar(client);
+    });
 
     return client;
 }
 
+function statusBar(client: LanguageClient) {
+    let bar = window.createStatusBarItem();
+    bar.text = 'Lua';
+    bar.show();
+    client.onNotification('$/status', (params) => {
+        bar.text    = params.text;
+        bar.tooltip = params.tooltip;
+    })
+}
+
+function onCommand(client: LanguageClient) {
+    client.onNotification('$/command', (params) => {
+        Commands.executeCommand(params.command, params.data);
+    });
+}
+
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    async function didOpenTextDocument(document: TextDocument): Promise<void> {
+    function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
             return;
@@ -166,7 +182,7 @@ export function activate(context: ExtensionContext) {
         let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
         if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
-            defaultClient = await start(context, [
+            defaultClient = start(context, [
                 { scheme: 'file', language: 'lua' }
             ], null);
             return;
@@ -181,7 +197,7 @@ export function activate(context: ExtensionContext) {
         folder = getOuterMostWorkspaceFolder(folder);
 
         if (!clients.has(folder.uri.toString())) {
-            let client = await start(context, [
+            let client = start(context, [
                 { scheme: 'file', language: 'lua', pattern: `${folder.uri.fsPath}/**/*` }
             ], folder);
             clients.set(folder.uri.toString(), client);
