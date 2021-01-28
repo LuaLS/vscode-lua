@@ -931,6 +931,18 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.window.progress": {
+            "default": true,
+            "markdownDescription": "%config.window.progress",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.window.statusBar": {
+            "default": true,
+            "markdownDescription": "%config.window.statusBar",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.workspace.ignoreDir": {
             "default": [
                 ".vscode"
