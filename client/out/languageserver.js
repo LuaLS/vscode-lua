@@ -104,8 +104,13 @@ function start(context, documentSelector, folder) {
 function statusBar(client) {
     let bar = vscode_1.window.createStatusBarItem();
     bar.text = 'Lua';
-    bar.show();
-    client.onNotification('$/status', (params) => {
+    client.onNotification('$/status/show', (params) => {
+        bar.show();
+    });
+    client.onNotification('$/status/hide', (params) => {
+        bar.hide();
+    });
+    client.onNotification('$/status/report', (params) => {
         bar.text = params.text;
         bar.tooltip = params.tooltip;
     });
