@@ -53,6 +53,8 @@ This feature can load external Lua files, which can be used for definition, auto
     ['config.develop.debuggerWait']              = 'Suspend before debugger connects.',
     ['config.intelliSense.searchDepth']          = 'Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.',
     ['config.intelliSense.fastGlobal']          = 'In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.',
+    ['config.window.statusBar']                 = 'Show extension status in status bar.',
+    ['config.window.progressBar']               = 'Show progress bar in status bar.',
     ['config.telemetry.enable']                 = [[
 Enable telemetry to send your editor information and error logs over the network
 * [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)

@@ -307,6 +307,18 @@ local config = {
         default = 0,
         markdownDescription = "%config.intelliSense.searchDepth%"
     },
+    ['Lua.window.statusBar'] = {
+        scope = "resource",
+        type  = 'boolean',
+        default = true,
+        markdownDescription = '%config.window.statusBar',
+    },
+    ['Lua.window.progress'] = {
+        scope = "resource",
+        type  = 'boolean',
+        default = true,
+        markdownDescription = '%config.window.progress',
+    },
     ['Lua.telemetry.enable'] = {
         scope = "resource",
         type = "boolean",

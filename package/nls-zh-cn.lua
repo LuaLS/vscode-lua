@@ -53,6 +53,8 @@ return {
     ['config.develop.debuggerWait']              = '调试器连接之前挂起。',
     ['config.intelliSense.searchDepth']          = '设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。',
     ['config.intelliSense.fastGlobal']          = '在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。',
+    ['config.window.statusBar']                 = '在状态栏显示插件状态。',
+    ['config.window.progressBar']               = '在状态栏显示进度条。',
     ['config.telemetry.enable']                 = [[
 启用遥测，通过网络发送你的编辑器信息与错误日志
 * [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)
