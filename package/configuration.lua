@@ -311,13 +311,13 @@ local config = {
         scope = "resource",
         type  = 'boolean',
         default = true,
-        markdownDescription = '%config.window.statusBar',
+        markdownDescription = '%config.window.statusBar%',
     },
-    ['Lua.window.progress'] = {
+    ['Lua.window.progressBar'] = {
         scope = "resource",
         type  = 'boolean',
         default = true,
-        markdownDescription = '%config.window.progress',
+        markdownDescription = '%config.window.progressBar%',
     },
     ['Lua.telemetry.enable'] = {
         scope = "resource",
