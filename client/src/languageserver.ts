@@ -15,6 +15,7 @@ import {
     LanguageClientOptions,
     ServerOptions,
     DocumentSelector,
+    NotificationType,
 } from 'vscode-languageclient/node';
 
 let defaultClient: LanguageClient;
@@ -69,7 +70,7 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
     return folder;
 }
 
-function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder): LanguageClient {
+async function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder): Promise<LanguageClient> {
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
@@ -145,13 +146,17 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
 
     client.registerProposedFeatures();
     client.start();
+    await client.onReady();
+    client.onNotification('$/command', (params) => {
+        Commands.executeCommand(params.command, params.data)
+    })
 
     return client;
 }
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    function didOpenTextDocument(document: TextDocument): void {
+    async function didOpenTextDocument(document: TextDocument): Promise<void> {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
             return;
@@ -161,7 +166,7 @@ export function activate(context: ExtensionContext) {
         let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
         if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
-            defaultClient = start(context, [
+            defaultClient = await start(context, [
                 { scheme: 'file', language: 'lua' }
             ], null);
             return;
@@ -176,7 +181,7 @@ export function activate(context: ExtensionContext) {
         folder = getOuterMostWorkspaceFolder(folder);
 
         if (!clients.has(folder.uri.toString())) {
-            let client = start(context, [
+            let client = await start(context, [
                 { scheme: 'file', language: 'lua', pattern: `${folder.uri.fsPath}/**/*` }
             ], folder);
             clients.set(folder.uri.toString(), client);
