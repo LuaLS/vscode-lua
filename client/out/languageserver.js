@@ -97,6 +97,7 @@ function start(context, documentSelector, folder) {
     client.start();
     client.onReady().then(() => {
         onCommand(client);
+        onDecorations(client);
         statusBar(client);
     });
     return client;
@@ -118,6 +119,46 @@ function statusBar(client) {
 function onCommand(client) {
     client.onNotification('$/command', (params) => {
         vscode_1.commands.executeCommand(params.command, params.data);
+    });
+}
+function onDecorations(client) {
+    let textType = vscode_1.window.createTextEditorDecorationType({});
+    vscode_1.window.onDidChangeTextEditorVisibleRanges((params) => {
+        let uri = client.code2ProtocolConverter.asUri(params.textEditor.document.uri);
+        let ranges = [];
+        for (let index = 0; index < params.visibleRanges.length; index++) {
+            ranges[index] = client.code2ProtocolConverter.asRange(params.visibleRanges[index]);
+        }
+        client.sendNotification('$/didChangeVisibleRanges', {
+            uri: uri,
+            ranges: ranges,
+        });
+    });
+    client.onNotification('$/decorations/create', (params) => {
+        let editor = vscode_1.window.activeTextEditor;
+        let uri = params.uri;
+        let edits = params.edits;
+        if (editor == undefined || editor.document.uri.toString() != uri || edits.length == 0) {
+            return;
+        }
+        let options = [];
+        for (let index = 0; index < edits.length; index++) {
+            const edit = edits[index];
+            options[index] = {
+                hoverMessage: edit.newText,
+                range: client.protocol2CodeConverter.asRange(edit.range),
+                renderOptions: {
+                    dark: {
+                        after: {
+                            contentText: edit.newText,
+                            color: '#ffcc00',
+                            backgroundColor: '#cc8811',
+                        }
+                    }
+                }
+            };
+        }
+        editor.setDecorations(textType, options);
     });
 }
 function activate(context) {

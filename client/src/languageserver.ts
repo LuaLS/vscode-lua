@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+import * as types from 'vscode-languageserver-types';
 import {
     workspace as Workspace,
     ExtensionContext,
@@ -11,6 +12,7 @@ import {
     WorkspaceFolder,
     Uri,
     window,
+    TextEditor,
 } from 'vscode';
 import {
     LanguageClient,
@@ -149,6 +151,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     client.start();
     client.onReady().then(() => {
         onCommand(client);
+        onDecorations(client);
         statusBar(client);
     });
 
@@ -174,6 +177,48 @@ function onCommand(client: LanguageClient) {
     client.onNotification('$/command', (params) => {
         Commands.executeCommand(params.command, params.data);
     });
+}
+
+function onDecorations(client: LanguageClient) {
+    let textType = window.createTextEditorDecorationType({})
+    window.onDidChangeTextEditorVisibleRanges((params: vscode.TextEditorVisibleRangesChangeEvent) => {
+        let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(params.textEditor.document.uri);
+        let ranges: types.Range[] = [];
+        for (let index = 0; index < params.visibleRanges.length; index++) {
+            ranges[index] = client.code2ProtocolConverter.asRange(params.visibleRanges[index]);
+        }
+        client.sendNotification('$/didChangeVisibleRanges', {
+            uri:    uri,
+            ranges: ranges,
+        })
+    })
+
+    client.onNotification('$/decorations/create', (params) => {
+        let editor: TextEditor       = window.activeTextEditor;
+        let uri:    types.URI        = params.uri;
+        let edits:  types.TextEdit[] = params.edits
+        if (editor == undefined || editor.document.uri.toString() != uri || edits.length == 0) {
+            return;
+        }
+        let options: vscode.DecorationOptions[] = [];
+        for (let index = 0; index < edits.length; index++) {
+            const edit = edits[index];
+            options[index] = {
+                hoverMessage:  edit.newText,
+                range:         client.protocol2CodeConverter.asRange(edit.range),
+                renderOptions: {
+                    dark: {
+                        after: {
+                            contentText: edit.newText,
+                            color: '#ffcc00',
+                            backgroundColor: '#cc8811',
+                        }
+                    }
+                }
+            }
+        }
+        editor.setDecorations(textType, options);
+    })
 }
 
 export function activate(context: ExtensionContext) {
