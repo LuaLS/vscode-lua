@@ -14,11 +14,11 @@ function registerCustomCommands(context) {
         if (data.action == 'add') {
             let value = config.get(data.key);
             value.push(data.value);
-            config.update(data.key, value);
+            config.update(data.key, value, data.global);
             return;
         }
         if (data.action == 'set') {
-            config.update(data.key, data.value);
+            config.update(data.key, data.value, data.global);
             return;
         }
     }));

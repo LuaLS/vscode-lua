@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
+import * as vscode from 'vscode';
 import {
     workspace as Workspace,
     ExtensionContext,
@@ -27,11 +28,11 @@ function registerCustomCommands(context: ExtensionContext) {
         if (data.action == 'add') {
             let value: any[] = config.get(data.key);
             value.push(data.value);
-            config.update(data.key, value);
+            config.update(data.key, value, data.global);
             return;
         }
         if (data.action == 'set') {
-            config.update(data.key, data.value);
+            config.update(data.key, data.value, data.global);
             return;
         }
     }))
