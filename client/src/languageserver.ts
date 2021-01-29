@@ -151,7 +151,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onDecorations(client);
+        //onDecorations(client);
         statusBar(client);
     });
 

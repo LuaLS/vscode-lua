@@ -97,7 +97,7 @@ function start(context, documentSelector, folder) {
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onDecorations(client);
+        //onDecorations(client);
         statusBar(client);
     });
     return client;
