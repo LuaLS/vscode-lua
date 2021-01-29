@@ -38,7 +38,7 @@ This feature can load external Lua files, which can be used for definition, auto
     ['config.completion.displayContext']         = "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
     ['config.completion.workspaceWord']          = "Shows words within the workspace.",
     ['config.color.mode']                        = "Color mode.",
-    ['config.color.mode.Semantic']               = "Semantic color. Your color theme must support semantic coloring to be effective.",
+    ['config.color.mode.Semantic']               = "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
     ['config.color.mode.Grammar']                = "Grammar color.",
     ['config.signatureHelp.enable']              = "Enable signature help.",
     ['config.hover.enable']                      = "Enable hover.",
