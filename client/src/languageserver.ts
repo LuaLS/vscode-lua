@@ -212,7 +212,7 @@ function onDecorations(client: LanguageClient) {
     let color           = new vscode.ThemeColor('textSeparator.foreground');
     let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
 
-    client.onNotification('$/decorations/create', (params) => {
+    client.onNotification('$/typeHint', (params) => {
         let textEditor: TextEditor;
         let uri:        types.URI = params.uri;
         for (let index = 0; index < window.visibleTextEditors.length; index++) {
