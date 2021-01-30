@@ -149,7 +149,7 @@ function onDecorations(client) {
     });
     let color = new vscode.ThemeColor('textSeparator.foreground');
     let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
-    client.onNotification('$/typeHint', (params) => {
+    client.onNotification('$/hint', (params) => {
         let textEditor;
         let uri = params.uri;
         for (let index = 0; index < vscode_1.window.visibleTextEditors.length; index++) {
