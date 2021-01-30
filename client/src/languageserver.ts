@@ -151,7 +151,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        //onDecorations(client);
+        onDecorations(client);
         statusBar(client);
     });
 
@@ -181,23 +181,49 @@ function onCommand(client: LanguageClient) {
 
 function onDecorations(client: LanguageClient) {
     let textType = window.createTextEditorDecorationType({})
-    window.onDidChangeTextEditorVisibleRanges((params: vscode.TextEditorVisibleRangesChangeEvent) => {
-        let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(params.textEditor.document.uri);
+
+    function notifyVisibleRanges(textEditor: TextEditor) {
+        let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
         let ranges: types.Range[] = [];
-        for (let index = 0; index < params.visibleRanges.length; index++) {
-            ranges[index] = client.code2ProtocolConverter.asRange(params.visibleRanges[index]);
+        for (let index = 0; index < textEditor.visibleRanges.length; index++) {
+            const range = textEditor.visibleRanges[index];
+            ranges[index] = client.code2ProtocolConverter.asRange(range);
         }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri:    uri,
             ranges: ranges,
         })
+    }
+
+    for (let index = 0; index < window.visibleTextEditors.length; index++) {
+        notifyVisibleRanges(window.visibleTextEditors[index]);
+    }
+
+    window.onDidChangeVisibleTextEditors((params: TextEditor[]) => {
+        for (let index = 0; index < params.length; index++) {
+            notifyVisibleRanges(params[index]);
+        }
     })
 
+    window.onDidChangeTextEditorVisibleRanges((params: vscode.TextEditorVisibleRangesChangeEvent) => {
+        notifyVisibleRanges(params.textEditor);
+    })
+
+    let color           = new vscode.ThemeColor('textSeparator.foreground');
+    let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
+
     client.onNotification('$/decorations/create', (params) => {
-        let editor: TextEditor       = window.activeTextEditor;
-        let uri:    types.URI        = params.uri;
+        let textEditor: TextEditor;
+        let uri:        types.URI = params.uri;
+        for (let index = 0; index < window.visibleTextEditors.length; index++) {
+            const editor = window.visibleTextEditors[index];
+            if (editor.document.uri.toString() == uri) {
+                textEditor = editor;
+                break;
+            }
+        }
         let edits:  types.TextEdit[] = params.edits
-        if (editor == undefined || editor.document.uri.toString() != uri || edits.length == 0) {
+        if (textEditor == undefined || edits.length == 0) {
             return;
         }
         let options: vscode.DecorationOptions[] = [];
@@ -207,17 +233,27 @@ function onDecorations(client: LanguageClient) {
                 hoverMessage:  edit.newText,
                 range:         client.protocol2CodeConverter.asRange(edit.range),
                 renderOptions: {
+                    light: {
+                        after: {
+                            contentText:     edit.newText,
+                            color:           color,
+                            backgroundColor: backgroundColor,
+                        }
+                    },
                     dark: {
                         after: {
-                            contentText: edit.newText,
-                            color: '#ffcc00',
-                            backgroundColor: '#cc8811',
+                            contentText:     edit.newText,
+                            color:           color,
+                            backgroundColor: backgroundColor,
                         }
                     }
                 }
             }
         }
-        editor.setDecorations(textType, options);
+        if (options.length == 0) {
+            return;
+        }
+        textEditor.setDecorations(textType, options);
     })
 }
 

@@ -4,6 +4,7 @@ exports.deactivate = exports.activate = void 0;
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
+const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
 let defaultClient;
@@ -97,7 +98,7 @@ function start(context, documentSelector, folder) {
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        //onDecorations(client);
+        onDecorations(client);
         statusBar(client);
     });
     return client;
@@ -123,22 +124,43 @@ function onCommand(client) {
 }
 function onDecorations(client) {
     let textType = vscode_1.window.createTextEditorDecorationType({});
-    vscode_1.window.onDidChangeTextEditorVisibleRanges((params) => {
-        let uri = client.code2ProtocolConverter.asUri(params.textEditor.document.uri);
+    function notifyVisibleRanges(textEditor) {
+        let uri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
         let ranges = [];
-        for (let index = 0; index < params.visibleRanges.length; index++) {
-            ranges[index] = client.code2ProtocolConverter.asRange(params.visibleRanges[index]);
+        for (let index = 0; index < textEditor.visibleRanges.length; index++) {
+            const range = textEditor.visibleRanges[index];
+            ranges[index] = client.code2ProtocolConverter.asRange(range);
         }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri: uri,
             ranges: ranges,
         });
+    }
+    for (let index = 0; index < vscode_1.window.visibleTextEditors.length; index++) {
+        notifyVisibleRanges(vscode_1.window.visibleTextEditors[index]);
+    }
+    vscode_1.window.onDidChangeVisibleTextEditors((params) => {
+        for (let index = 0; index < params.length; index++) {
+            notifyVisibleRanges(params[index]);
+        }
     });
+    vscode_1.window.onDidChangeTextEditorVisibleRanges((params) => {
+        notifyVisibleRanges(params.textEditor);
+    });
+    let color = new vscode.ThemeColor('textSeparator.foreground');
+    let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
     client.onNotification('$/decorations/create', (params) => {
-        let editor = vscode_1.window.activeTextEditor;
+        let textEditor;
         let uri = params.uri;
+        for (let index = 0; index < vscode_1.window.visibleTextEditors.length; index++) {
+            const editor = vscode_1.window.visibleTextEditors[index];
+            if (editor.document.uri.toString() == uri) {
+                textEditor = editor;
+                break;
+            }
+        }
         let edits = params.edits;
-        if (editor == undefined || editor.document.uri.toString() != uri || edits.length == 0) {
+        if (textEditor == undefined || edits.length == 0) {
             return;
         }
         let options = [];
@@ -148,17 +170,27 @@ function onDecorations(client) {
                 hoverMessage: edit.newText,
                 range: client.protocol2CodeConverter.asRange(edit.range),
                 renderOptions: {
+                    light: {
+                        after: {
+                            contentText: edit.newText,
+                            color: color,
+                            backgroundColor: backgroundColor,
+                        }
+                    },
                     dark: {
                         after: {
                             contentText: edit.newText,
-                            color: '#ffcc00',
-                            backgroundColor: '#cc8811',
+                            color: color,
+                            backgroundColor: backgroundColor,
                         }
                     }
                 }
             };
         }
-        editor.setDecorations(textType, options);
+        if (options.length == 0) {
+            return;
+        }
+        textEditor.setDecorations(textType, options);
     });
 }
 function activate(context) {
