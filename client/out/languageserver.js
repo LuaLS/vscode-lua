@@ -129,7 +129,7 @@ function onDecorations(client) {
         let ranges = [];
         for (let index = 0; index < textEditor.visibleRanges.length; index++) {
             const range = textEditor.visibleRanges[index];
-            ranges[index] = client.code2ProtocolConverter.asRange(textEditor.document.validateRange(new vscode.Range(range.start.line - 5, 0, range.end.line + 5, 0)));
+            ranges[index] = client.code2ProtocolConverter.asRange(new vscode.Range(Math.max(range.start.line - 3, 0), 0, Math.min(range.end.line + 3, textEditor.document.lineCount - 1), 0));
         }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri: uri,
