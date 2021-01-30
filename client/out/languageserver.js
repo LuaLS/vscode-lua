@@ -160,7 +160,7 @@ function onDecorations(client) {
             }
         }
         let edits = params.edits;
-        if (textEditor == undefined || edits.length == 0) {
+        if (textEditor == undefined) {
             return;
         }
         let options = [];
@@ -186,9 +186,6 @@ function onDecorations(client) {
                     }
                 }
             };
-        }
-        if (options.length == 0) {
-            return;
         }
         textEditor.setDecorations(textType, options);
     });

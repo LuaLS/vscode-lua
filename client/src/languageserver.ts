@@ -223,7 +223,7 @@ function onDecorations(client: LanguageClient) {
             }
         }
         let edits:  types.TextEdit[] = params.edits
-        if (textEditor == undefined || edits.length == 0) {
+        if (textEditor == undefined) {
             return;
         }
         let options: vscode.DecorationOptions[] = [];
@@ -249,9 +249,6 @@ function onDecorations(client: LanguageClient) {
                     }
                 }
             }
-        }
-        if (options.length == 0) {
-            return;
         }
         textEditor.setDecorations(textType, options);
     })
