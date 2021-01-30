@@ -187,7 +187,12 @@ function onDecorations(client: LanguageClient) {
         let ranges: types.Range[] = [];
         for (let index = 0; index < textEditor.visibleRanges.length; index++) {
             const range = textEditor.visibleRanges[index];
-            ranges[index] = client.code2ProtocolConverter.asRange(range);
+            ranges[index] = client.code2ProtocolConverter.asRange(textEditor.document.validateRange(new vscode.Range(
+                range.start.line - 5,
+                0,
+                range.end.line + 5,
+                0
+            )));
         }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri:    uri,
@@ -209,7 +214,7 @@ function onDecorations(client: LanguageClient) {
         notifyVisibleRanges(params.textEditor);
     })
 
-    let color           = new vscode.ThemeColor('textSeparator.foreground');
+    let color           = new vscode.ThemeColor('descriptionForeground');
     let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
 
     client.onNotification('$/hint', (params) => {
