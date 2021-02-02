@@ -55,6 +55,10 @@ This feature can load external Lua files, which can be used for definition, auto
     ['config.intelliSense.fastGlobal']          = 'In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.',
     ['config.window.statusBar']                 = 'Show extension status in status bar.',
     ['config.window.progressBar']               = 'Show progress bar in status bar.',
+    ['config.hint.enable']                      = 'Enabel hint.',
+    ['config.hint.paramType']                   = 'Show type hints at the parameter of the function.',
+    ['config.hint.setType']                     = 'Hint type at assignment operation.',
+    ['config.hint.paramName']                   = 'Hint parameter name when the parameter called is literal.',
     ['config.telemetry.enable']                 = [[
 Enable telemetry to send your editor information and error logs over the network
 * [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)

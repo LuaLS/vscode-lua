@@ -324,7 +324,31 @@ local config = {
         type = "boolean",
         default = true,
         markdownDescription = "%config.telemetry.enable%"
-    }
+    },
+    ['Lua.hint.enable'] = {
+        scope = 'resource',
+        type  = 'boolean',
+        default = true,
+        markdownDescription = '%config.hint.enable',
+    },
+    ['Lua.hint.paramType'] = {
+        scope = 'resource',
+        type  = 'boolean',
+        default = true,
+        markdownDescription = '%config.hint.paramType',
+    },
+    ['Lua.hint.setType'] = {
+        scope = 'resource',
+        type  = 'boolean',
+        default = false,
+        markdownDescription = '%config.hint.setType',
+    },
+    ['Lua.hint.paramName'] = {
+        scope = 'resource',
+        type  = 'boolean',
+        default = true,
+        markdownDescription = '%config.hint.paramName',
+    },
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties
