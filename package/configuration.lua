@@ -329,25 +329,25 @@ local config = {
         scope = 'resource',
         type  = 'boolean',
         default = true,
-        markdownDescription = '%config.hint.enable',
+        markdownDescription = '%config.hint.enable%',
     },
     ['Lua.hint.paramType'] = {
         scope = 'resource',
         type  = 'boolean',
         default = true,
-        markdownDescription = '%config.hint.paramType',
+        markdownDescription = '%config.hint.paramType%',
     },
     ['Lua.hint.setType'] = {
         scope = 'resource',
         type  = 'boolean',
         default = false,
-        markdownDescription = '%config.hint.setType',
+        markdownDescription = '%config.hint.setType%',
     },
     ['Lua.hint.paramName'] = {
         scope = 'resource',
         type  = 'boolean',
         default = true,
-        markdownDescription = '%config.hint.paramName',
+        markdownDescription = '%config.hint.paramName%',
     },
 }
 
