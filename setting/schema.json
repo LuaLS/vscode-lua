@@ -11,7 +11,7 @@
             "markdownDescription": "Color mode.",
             "markdownEnumDescriptions": [
                 "Grammar color.",
-                "Semantic color. Your color theme must support semantic coloring to be effective."
+                "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect."
             ],
             "scope": "resource",
             "type": "string"
@@ -794,6 +794,30 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.hint.enable": {
+            "default": true,
+            "markdownDescription": "Enabel hint.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.paramName": {
+            "default": true,
+            "markdownDescription": "Hint parameter name when the parameter called is literal.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.paramType": {
+            "default": true,
+            "markdownDescription": "Show type hints at the parameter of the function.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.setType": {
+            "default": false,
+            "markdownDescription": "Hint type at assignment operation.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.hover.enable": {
             "default": true,
             "markdownDescription": "Enable hover.",
@@ -931,15 +955,15 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.window.progress": {
+        "Lua.window.progressBar": {
             "default": true,
-            "markdownDescription": "%config.window.progress",
+            "markdownDescription": "Show progress bar in status bar.",
             "scope": "resource",
             "type": "boolean"
         },
         "Lua.window.statusBar": {
             "default": true,
-            "markdownDescription": "%config.window.statusBar",
+            "markdownDescription": "Show extension status in status bar.",
             "scope": "resource",
             "type": "boolean"
         },

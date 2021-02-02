@@ -1,9 +1,20 @@
 # changelog
 
+## 1.14.0
+`2021-2-2`
+* `NEW` `VSCode` hint
+* `NEW` flush cache after 5 min
+* `NEW` `VSCode` help semantic color with market theme
+* `CHG` create/delete/rename files no longer reload workspace
+* `CHG` `LuaDoc`: compatible with `--@`
+* `FIX` `VSCode` settings
+* `FIX` [#368](https://github.com/sumneko/lua-language-server/issues/368)
+* `FIX` [#371](https://github.com/sumneko/lua-language-server/issues/371)
+
 ## 1.13.0
 `2021-1-28`
-* `NEW` VSCode: status bar
-* `NEW` options in some window
+* `NEW` `VSCode` status bar
+* `NEW` `VSCode` options in some window
 * `CHG` performance optimization
 * `FIX` endless loop
 

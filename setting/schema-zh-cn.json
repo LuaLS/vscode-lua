@@ -11,7 +11,7 @@
             "markdownDescription": "着色模式。",
             "markdownEnumDescriptions": [
                 "语法着色。",
-                "语义着色。你的颜色主题必须要支持语义着色才有效。"
+                "语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。"
             ],
             "scope": "resource",
             "type": "string"
@@ -794,6 +794,30 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.hint.enable": {
+            "default": true,
+            "markdownDescription": "启用内联提示。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.paramName": {
+            "default": true,
+            "markdownDescription": "调用的参数为字面量时提示参数名。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.paramType": {
+            "default": true,
+            "markdownDescription": "在函数的参数位置提示类型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "Lua.hint.setType": {
+            "default": false,
+            "markdownDescription": "在赋值操作位置提示类型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.hover.enable": {
             "default": true,
             "markdownDescription": "启用悬停提示。",
@@ -931,15 +955,15 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.window.progress": {
+        "Lua.window.progressBar": {
             "default": true,
-            "markdownDescription": "%config.window.progress",
+            "markdownDescription": "在状态栏显示进度条。",
             "scope": "resource",
             "type": "boolean"
         },
         "Lua.window.statusBar": {
             "default": true,
-            "markdownDescription": "%config.window.statusBar",
+            "markdownDescription": "在状态栏显示插件状态。",
             "scope": "resource",
             "type": "boolean"
         },
