@@ -122,9 +122,24 @@ function onCommand(client) {
         vscode_1.commands.executeCommand(params.command, params.data);
     });
 }
+function isDocumentInClient(textDocuments, client) {
+    let selectors = client.clientOptions.documentSelector;
+    if (!node_1.DocumentSelector.is(selectors)) {
+        {
+            return false;
+        }
+    }
+    if (vscode.languages.match(selectors, textDocuments)) {
+        return true;
+    }
+    return false;
+}
 function onDecorations(client) {
     let textType = vscode_1.window.createTextEditorDecorationType({});
     function notifyVisibleRanges(textEditor) {
+        if (!isDocumentInClient(textEditor.document, client)) {
+            return;
+        }
         let uri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
         let ranges = [];
         for (let index = 0; index < textEditor.visibleRanges.length; index++) {
@@ -154,7 +169,7 @@ function onDecorations(client) {
         let uri = params.uri;
         for (let index = 0; index < vscode_1.window.visibleTextEditors.length; index++) {
             const editor = vscode_1.window.visibleTextEditors[index];
-            if (editor.document.uri.toString() == uri) {
+            if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
                 textEditor = editor;
                 break;
             }

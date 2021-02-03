@@ -179,10 +179,24 @@ function onCommand(client: LanguageClient) {
     });
 }
 
+function isDocumentInClient(textDocuments: TextDocument, client: LanguageClient): boolean {
+    let selectors = client.clientOptions.documentSelector;
+    if (!DocumentSelector.is(selectors)) {{
+        return false;
+    }}
+    if (vscode.languages.match(selectors, textDocuments)) {
+        return true;
+    }
+    return false;
+}
+
 function onDecorations(client: LanguageClient) {
     let textType = window.createTextEditorDecorationType({})
 
     function notifyVisibleRanges(textEditor: TextEditor) {
+        if (!isDocumentInClient(textEditor.document, client)) {
+            return;
+        }
         let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
         let ranges: types.Range[] = [];
         for (let index = 0; index < textEditor.visibleRanges.length; index++) {
@@ -222,7 +236,7 @@ function onDecorations(client: LanguageClient) {
         let uri:        types.URI = params.uri;
         for (let index = 0; index < window.visibleTextEditors.length; index++) {
             const editor = window.visibleTextEditors[index];
-            if (editor.document.uri.toString() == uri) {
+            if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
                 textEditor = editor;
                 break;
             }
