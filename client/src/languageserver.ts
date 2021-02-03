@@ -232,44 +232,39 @@ function onDecorations(client: LanguageClient) {
     let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
 
     client.onNotification('$/hint', (params) => {
-        let textEditor: TextEditor;
         let uri:        types.URI = params.uri;
         for (let index = 0; index < window.visibleTextEditors.length; index++) {
             const editor = window.visibleTextEditors[index];
             if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
-                textEditor = editor;
-                break;
-            }
-        }
-        let edits:  types.TextEdit[] = params.edits
-        if (textEditor == undefined) {
-            return;
-        }
-        let options: vscode.DecorationOptions[] = [];
-        for (let index = 0; index < edits.length; index++) {
-            const edit = edits[index];
-            options[index] = {
-                hoverMessage:  edit.newText,
-                range:         client.protocol2CodeConverter.asRange(edit.range),
-                renderOptions: {
-                    light: {
-                        after: {
-                            contentText:     edit.newText,
-                            color:           color,
-                            backgroundColor: backgroundColor,
-                        }
-                    },
-                    dark: {
-                        after: {
-                            contentText:     edit.newText,
-                            color:           color,
-                            backgroundColor: backgroundColor,
+                let textEditor = editor;
+                let edits:  types.TextEdit[] = params.edits
+                let options: vscode.DecorationOptions[] = [];
+                for (let index = 0; index < edits.length; index++) {
+                    const edit = edits[index];
+                    options[index] = {
+                        hoverMessage:  edit.newText,
+                        range:         client.protocol2CodeConverter.asRange(edit.range),
+                        renderOptions: {
+                            light: {
+                                after: {
+                                    contentText:     edit.newText,
+                                    color:           color,
+                                    backgroundColor: backgroundColor,
+                                }
+                            },
+                            dark: {
+                                after: {
+                                    contentText:     edit.newText,
+                                    color:           color,
+                                    backgroundColor: backgroundColor,
+                                }
+                            }
                         }
                     }
                 }
+                textEditor.setDecorations(textType, options);
             }
         }
-        textEditor.setDecorations(textType, options);
     })
 }
 

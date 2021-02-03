@@ -165,44 +165,39 @@ function onDecorations(client) {
     let color = new vscode.ThemeColor('descriptionForeground');
     let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
     client.onNotification('$/hint', (params) => {
-        let textEditor;
         let uri = params.uri;
         for (let index = 0; index < vscode_1.window.visibleTextEditors.length; index++) {
             const editor = vscode_1.window.visibleTextEditors[index];
             if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
-                textEditor = editor;
-                break;
+                let textEditor = editor;
+                let edits = params.edits;
+                let options = [];
+                for (let index = 0; index < edits.length; index++) {
+                    const edit = edits[index];
+                    options[index] = {
+                        hoverMessage: edit.newText,
+                        range: client.protocol2CodeConverter.asRange(edit.range),
+                        renderOptions: {
+                            light: {
+                                after: {
+                                    contentText: edit.newText,
+                                    color: color,
+                                    backgroundColor: backgroundColor,
+                                }
+                            },
+                            dark: {
+                                after: {
+                                    contentText: edit.newText,
+                                    color: color,
+                                    backgroundColor: backgroundColor,
+                                }
+                            }
+                        }
+                    };
+                }
+                textEditor.setDecorations(textType, options);
             }
         }
-        let edits = params.edits;
-        if (textEditor == undefined) {
-            return;
-        }
-        let options = [];
-        for (let index = 0; index < edits.length; index++) {
-            const edit = edits[index];
-            options[index] = {
-                hoverMessage: edit.newText,
-                range: client.protocol2CodeConverter.asRange(edit.range),
-                renderOptions: {
-                    light: {
-                        after: {
-                            contentText: edit.newText,
-                            color: color,
-                            backgroundColor: backgroundColor,
-                        }
-                    },
-                    dark: {
-                        after: {
-                            contentText: edit.newText,
-                            color: color,
-                            backgroundColor: backgroundColor,
-                        }
-                    }
-                }
-            };
-        }
-        textEditor.setDecorations(textType, options);
     });
 }
 function activate(context) {
