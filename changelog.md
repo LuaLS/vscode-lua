@@ -1,5 +1,15 @@
 # changelog
 
+## 1.14.2
+`2021-2-4`
+* `FIX` [#356](https://github.com/sumneko/lua-language-server/issues/356)
+* `FIX` [#375](https://github.com/sumneko/lua-language-server/issues/375)
+* `FIX` [#376](https://github.com/sumneko/lua-language-server/issues/376)
+* `FIX` [#377](https://github.com/sumneko/lua-language-server/issues/377)
+* `FIX` [#378](https://github.com/sumneko/lua-language-server/issues/378)
+* `FIX` [#379](https://github.com/sumneko/lua-language-server/issues/379)
+* `FIX` a lot of runtime errors
+
 ## 1.14.1
 `2021-2-2`
 * `FIX` [#372](https://github.com/sumneko/lua-language-server/issues/372)
