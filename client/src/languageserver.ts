@@ -203,9 +203,9 @@ function onDecorations(client: LanguageClient) {
             const range = textEditor.visibleRanges[index];
             ranges[index] = client.code2ProtocolConverter.asRange(new vscode.Range(
                 Math.max(range.start.line - 3, 0),
-                0,
+                range.start.character,
                 Math.min(range.end.line + 3, textEditor.document.lineCount - 1),
-                0
+                range.end.character
             ));
         }
         client.sendNotification('$/didChangeVisibleRanges', {
