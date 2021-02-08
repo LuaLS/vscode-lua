@@ -811,7 +811,7 @@
                     "type": "integer"
                 },
                 "Lua.hint.enable": {
-                    "default": true,
+                    "default": false,
                     "markdownDescription": "%config.hint.enable%",
                     "scope": "resource",
                     "type": "boolean"
@@ -1083,5 +1083,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.14.2"
+    "version": "1.14.3"
 }

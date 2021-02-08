@@ -1,5 +1,12 @@
 # changelog
 
+## 1.14.3
+`2021-2-8`
+* `CHG` hint: disabled by default, see [#380](https://github.com/sumneko/lua-language-server/issues/380)
+* `FIX` [#381](https://github.com/sumneko/lua-language-server/issues/381)
+* `FIX` [#382](https://github.com/sumneko/lua-language-server/issues/382)
+* `FIX` [#388](https://github.com/sumneko/lua-language-server/issues/388)
+
 ## 1.14.2
 `2021-2-4`
 * `FIX` [#356](https://github.com/sumneko/lua-language-server/issues/356)

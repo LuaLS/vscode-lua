@@ -795,7 +795,7 @@
             "type": "integer"
         },
         "Lua.hint.enable": {
-            "default": true,
+            "default": false,
             "markdownDescription": "启用内联提示。",
             "scope": "resource",
             "type": "boolean"
