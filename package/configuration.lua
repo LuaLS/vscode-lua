@@ -328,7 +328,7 @@ local config = {
     ['Lua.hint.enable'] = {
         scope = 'resource',
         type  = 'boolean',
-        default = true,
+        default = false,
         markdownDescription = '%config.hint.enable%',
     },
     ['Lua.hint.paramType'] = {
