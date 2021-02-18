@@ -10,6 +10,7 @@ return {
     ["config.runtime.unicodeName"]        = "允许在名字中使用 Unicode 字符。",
     ["config.runtime.nonstandardSymbol"]  = "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
     ["config.runtime.plugin"]             = "（实验）插件路径。",
+    ["config.runtime.fileEncoding"]       = "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
     ["config.diagnostics.enable"]         = "启用诊断。",
     ["config.diagnostics.disable"]        = "禁用的诊断（使用浮框括号内的代码）。\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "已定义的全局变量。\n",-- .. example.globals,

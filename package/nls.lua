@@ -10,6 +10,7 @@ The following example shows that 'include' is treated as' require '.
     ["config.runtime.unicodeName"]        = "Allows Unicode characters in name.",
     ["config.runtime.nonstandardSymbol"]  = "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     ["config.runtime.plugin"]             = "(Proposed) Plugin path.",
+    ["config.runtime.fileEncoding"]       = "File encoding. The `ansi` option is only available under the `Windows` platform.",
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n",-- .. example.globals,
