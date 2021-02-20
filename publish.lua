@@ -255,7 +255,7 @@ local ovsxToken = fsu.loadFile(ROOT / 'ovsx-token')
 if ovsxToken then
     ovsxToken = ovsxToken:match '[%w%-]+'
     shell {
-        'npx', 'ovsx', 'plublish', vsix,
+        'npx', 'ovsx', 'publish', vsix,
         '-p', ovsxToken
     }
 end
