@@ -203,9 +203,13 @@ for i = 5, 0, -1 do
 end
 
 local function shell(command)
-    command.cwd    = out
     command.stdout = true
     command.stderr = true
+    local show = {}
+    for _, c in ipairs(command) do
+        show[#show+1] = tostring(c)
+    end
+    print(table.concat(show, ' '))
     local p, err = subprocess.shell(command)
     if not p then
         error(err)
@@ -219,6 +223,7 @@ local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
 shell {
     'vsce', 'package',
     '-o', vsix,
+    cwd = out,
 }
 
 shell {
@@ -243,6 +248,7 @@ shell {
 
 shell {
     'vsce', 'publish',
+    cwd = out,
 }
 
 local ovsxToken = fsu.loadFile(ROOT / 'ovsx-token')

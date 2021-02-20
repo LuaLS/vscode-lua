@@ -36,6 +36,7 @@
     "config.hover.viewStringMax": "The maximum length of a hover to view the contents of a string.",
     "config.intelliSense.fastGlobal": "In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.",
     "config.intelliSense.searchDepth": "Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",
+    "config.runtime.fileEncoding": "File encoding. The `ansi` option is only available under the `Windows` platform.",
     "config.runtime.nonstandardSymbol": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     "config.runtime.path": "`package.path`",
     "config.runtime.plugin": "(Proposed) Plugin path.",

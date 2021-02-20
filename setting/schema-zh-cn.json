@@ -1006,6 +1006,16 @@
             "markdownDescription": "忽略 `.gitignore` 中列举的文件。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "lua.runtime.fileEncoding": {
+            "default": "utf8",
+            "enum": [
+                "utf8",
+                "ansi"
+            ],
+            "markdownDescription": "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
+            "scope": "resource",
+            "type": "string"
         }
     },
     "title": "setting",
