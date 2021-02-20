@@ -401,7 +401,7 @@
 							"name": "support.class.lua"
 						},
 						{
-							"match": ":",
+							"match": ":|,",
 							"name": "keyword.operator.lua"
 						}
 					]
