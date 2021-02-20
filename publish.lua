@@ -202,53 +202,56 @@ for i = 5, 0, -1 do
     thread.sleep(1)
 end
 
+local function shell(command)
+    command.cwd    = out
+    command.stdout = true
+    command.stderr = true
+    local p, err = subprocess.shell(command)
+    if not p then
+        error(err)
+    end
+    p:wait()
+    print(p.stdout:read 'a')
+    print(p.stderr:read 'a')
+end
+
 local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
-local p, err = subprocess.shell {
+shell {
     'vsce', 'package',
     '-o', vsix,
-    cwd = out,
-    stderr = true,
 }
-if not p then
-    error(err)
-end
-p:wait()
-print(p.stderr:read 'a')
 
-local p =subprocess.shell {
+shell {
     'git', 'add', '*',
 }
-p:wait()
 
-local p = subprocess.shell {
+shell {
     'git', 'commit', '-m', tostring(version),
 }
-p:wait()
 
-local p = subprocess.shell {
+shell {
     'git', 'tag', 'v' .. tostring(version),
 }
-p:wait()
 
-local p = subprocess.shell {
+shell {
     'git', 'push',
 }
-p:wait()
 
-local p = subprocess.shell {
+shell {
     'git', 'push', '--tags',
 }
-p:wait()
 
-local p, err = subprocess.shell {
+shell {
     'vsce', 'publish',
-    cwd = out,
-    stderr = true,
-    stdout = true,
 }
-if not p then
-    error(err)
+
+local ovsxToken = fsu.loadFile(ROOT / 'ovsx-token')
+if ovsxToken then
+    ovsxToken = ovsxToken:match '[%w%-]+'
+    shell {
+        'npx', 'ovsx', 'plublish', vsix,
+        '-p', ovsxToken
+    }
 end
-p:wait()
 
 print('完成')

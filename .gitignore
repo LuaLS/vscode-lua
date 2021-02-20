@@ -2,3 +2,4 @@
 /client/out/*.map
 /publish/
 /luadoc/out/
+/ovsx-token
