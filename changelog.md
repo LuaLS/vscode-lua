@@ -1,5 +1,16 @@
 # changelog
 
+## 1.16.1
+`2021-2-22`
+* `FIX` signature: parameters may be misplaced
+* `FIX` completion: interface in nested table
+* `FIX` completion: interface not show after `,`
+* `FIX` [#400](https://github.com/sumneko/lua-language-server/issues/400)
+* `FIX` [#402](https://github.com/sumneko/lua-language-server/issues/402)
+* `FIX` [#403](https://github.com/sumneko/lua-language-server/issues/403)
+* `FIX` [#404](https://github.com/sumneko/lua-language-server/issues/404)
+* `FIX` runtime errors
+
 ## 1.16.0
 `2021-2-20`
 * `NEW` file encoding supports `ansi`
