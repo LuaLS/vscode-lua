@@ -387,6 +387,7 @@ for name, level in pairs(const.DiagnosticDefaultNeededFileStatus) do
         enum = {
             'Any',
             'Opened',
+            'None',
         }
     }
 end
