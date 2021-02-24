@@ -114,7 +114,8 @@
                     "description": "%config.diagnostics.ambiguity-1%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -124,7 +125,8 @@
                     "description": "%config.diagnostics.circle-doc-class%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -134,7 +136,8 @@
                     "description": "%config.diagnostics.close-non-object%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -144,7 +147,8 @@
                     "description": "%config.diagnostics.code-after-break%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -154,7 +158,8 @@
                     "description": "%config.diagnostics.count-down-loop%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -164,7 +169,8 @@
                     "description": "%config.diagnostics.doc-field-no-class%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -174,7 +180,8 @@
                     "description": "%config.diagnostics.duplicate-doc-class%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -184,7 +191,8 @@
                     "description": "%config.diagnostics.duplicate-doc-field%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -194,7 +202,8 @@
                     "description": "%config.diagnostics.duplicate-doc-param%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -204,7 +213,19 @@
                     "description": "%config.diagnostics.duplicate-index%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "duplicate-set-field": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -214,7 +235,8 @@
                     "description": "%config.diagnostics.empty-block%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -224,7 +246,8 @@
                     "description": "%config.diagnostics.global-in-nil-env%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -234,7 +257,8 @@
                     "description": "%config.diagnostics.lowercase-global%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -244,7 +268,8 @@
                     "description": "%config.diagnostics.newfield-call%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -254,7 +279,19 @@
                     "description": "%config.diagnostics.newline-call%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "no-implicit-any": {
+                    "default": "None",
+                    "description": "%config.diagnostics.no-implicit-any%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -264,7 +301,8 @@
                     "description": "%config.diagnostics.redefined-local%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -274,7 +312,8 @@
                     "description": "%config.diagnostics.redundant-parameter%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -284,7 +323,8 @@
                     "description": "%config.diagnostics.redundant-value%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -294,7 +334,8 @@
                     "description": "%config.diagnostics.trailing-space%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -304,7 +345,8 @@
                     "description": "%config.diagnostics.unbalanced-assignments%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -314,7 +356,8 @@
                     "description": "%config.diagnostics.undefined-doc-class%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -324,7 +367,8 @@
                     "description": "%config.diagnostics.undefined-doc-name%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -334,7 +378,8 @@
                     "description": "%config.diagnostics.undefined-doc-param%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -344,7 +389,8 @@
                     "description": "%config.diagnostics.undefined-env-child%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -354,7 +400,8 @@
                     "description": "%config.diagnostics.undefined-field%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -364,7 +411,8 @@
                     "description": "%config.diagnostics.undefined-global%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -374,7 +422,8 @@
                     "description": "未使用的函数",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -384,7 +433,8 @@
                     "description": "%config.diagnostics.unused-label%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -394,7 +444,8 @@
                     "description": "未使用的局部变量",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -404,7 +455,8 @@
                     "description": "%config.diagnostics.unused-vararg%",
                     "enum": [
                         "Any",
-                        "Opened"
+                        "Opened",
+                        "None"
                     ],
                     "scope": "resource",
                     "type": "string"
@@ -537,6 +589,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "duplicate-set-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "empty-block": {
                     "default": "Hint",
                     "description": "%config.diagnostics.empty-block%",
@@ -588,6 +652,18 @@
                 "newline-call": {
                     "default": "Information",
                     "description": "%config.diagnostics.newline-call%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "no-implicit-any": {
+                    "default": "Information",
+                    "description": "%config.diagnostics.no-implicit-any%",
                     "enum": [
                         "Error",
                         "Warning",

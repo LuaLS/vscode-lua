@@ -1,5 +1,16 @@
 # changelog
 
+## 1.17.0
+`2021-2-24`
+* `NEW` diagnostic: `duplicate-set-field`
+* `NEW` diagnostic: `no-implicit-any`, disabled by default
+* `CHG` completion: improve field and table
+* `CHG` improve infer cross `ipairs`
+* `CHG` cache globals when loading
+* `CHG` completion: remove trigger character `\n` for now, see [#401](https://github.com/sumneko/lua-language-server/issues/401)
+* `FIX` diagnositc: may open file with wrong uri case
+* `FIX` [#406](https://github.com/sumneko/lua-language-server/issues/406)
+
 ## 1.16.1
 `2021-2-22`
 * `FIX` signature: parameters may be misplaced
