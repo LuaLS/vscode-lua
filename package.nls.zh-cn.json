@@ -50,7 +50,7 @@
     "config.telemetry.enable": "启用遥测，通过网络发送你的编辑器信息与错误日志\n* [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [如何使用这些数据](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
     "config.window.progressBar": "在状态栏显示进度条。",
     "config.window.statusBar": "在状态栏显示插件状态。",
-    "config.workspace.ignoreDir": "忽略的目录（使用 `.gitignore` 语法）。\n",
+    "config.workspace.ignoreDir": "忽略的文件与目录（使用 `.gitignore` 语法）。\n",
     "config.workspace.ignoreSubmodules": "忽略子模块。",
     "config.workspace.library": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n",
     "config.workspace.maxPreload": "最大预加载文件数。",

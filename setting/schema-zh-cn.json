@@ -1050,7 +1050,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "忽略的目录（使用 `.gitignore` 语法）。\n",
+            "markdownDescription": "忽略的文件与目录（使用 `.gitignore` 语法）。\n",
             "scope": "resource",
             "type": "array"
         },

@@ -47,7 +47,7 @@
     "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network\n* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
     "config.window.progressBar": "Show progress bar in status bar.",
     "config.window.statusBar": "Show extension status in status bar.",
-    "config.workspace.ignoreDir": "Ignored directories (Use `.gitignore` grammar).\n",
+    "config.workspace.ignoreDir": "Ignored files and directories (Use `.gitignore` grammar).\n",
     "config.workspace.ignoreSubmodules": "Ignore submodules.",
     "config.workspace.library": "Load external library.\nThis feature can load external Lua files, which can be used for definition, automatic completion and other functions. Note that the language server does not monitor changes in external files and needs to restart if the external files are modified.\n",
     "config.workspace.maxPreload": "Max preloaded files.",

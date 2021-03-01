@@ -1050,7 +1050,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Ignored directories (Use `.gitignore` grammar).\n",
+            "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).\n",
             "scope": "resource",
             "type": "array"
         },
