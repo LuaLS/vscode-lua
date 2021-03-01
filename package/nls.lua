@@ -18,7 +18,7 @@ The following example shows that 'include' is treated as' require '.
     ["config.diagnostics.neededFileStatus"]     = "If you want to check only opened files, choice Opened; else choice Any.\n",-- .. example.neededFileStatus,
     ["config.diagnostics.workspaceDelay"] = "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
     ["config.diagnostics.workspaceRate"]  = "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
-    ["config.workspace.ignoreDir"]        = "Ignored directories (Use `.gitignore` grammar).\n",-- .. example.ignoreDir,
+    ["config.workspace.ignoreDir"]        = "Ignored files and directories (Use `.gitignore` grammar).\n",-- .. example.ignoreDir,
     ["config.workspace.ignoreSubmodules"] = "Ignore submodules.",
     ["config.workspace.useGitIgnore"]     = "Ignore files list in `.gitignore` .",
     ["config.workspace.maxPreload"]       = "Max preloaded files.",
