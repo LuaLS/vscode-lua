@@ -158,9 +158,15 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     return client;
 }
 
+let barCount = 0;
 function statusBar(client: LanguageClient) {
     let bar = window.createStatusBarItem();
     bar.text = 'Lua';
+    barCount ++;
+    bar.command = 'Lua.statusBar:' + barCount;
+    Commands.registerCommand(bar.command, () => {
+        client.sendNotification('$/status/click');
+    })
     client.onNotification('$/status/show', (params) => {
         bar.show();
     })

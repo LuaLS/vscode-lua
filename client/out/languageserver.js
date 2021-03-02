@@ -103,9 +103,15 @@ function start(context, documentSelector, folder) {
     });
     return client;
 }
+let barCount = 0;
 function statusBar(client) {
     let bar = vscode_1.window.createStatusBarItem();
     bar.text = 'Lua';
+    barCount++;
+    bar.command = 'Lua.statusBar:' + barCount;
+    vscode_1.commands.registerCommand(bar.command, () => {
+        client.sendNotification('$/status/click');
+    });
     client.onNotification('$/status/show', (params) => {
         bar.show();
     });
