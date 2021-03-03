@@ -77,7 +77,7 @@ local config = {
         default = ".vscode/lua/plugin.lua",
         markdownDescription = "%config.runtime.plugin%"
     },
-    ["lua.runtime.fileEncoding"] = {
+    ["Lua.runtime.fileEncoding"] = {
         scope = 'resource',
         type  = 'string',
         default = 'utf8',
