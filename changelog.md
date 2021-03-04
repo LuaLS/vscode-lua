@@ -1,11 +1,17 @@
 # changelog
 
+## 1.17.4
+`2021-3-4`
+* `FIX` [#437](https://github.com/sumneko/lua-language-server/issues/437) again
+* `FIX` [#438](https://github.com/sumneko/lua-language-server/issues/438)
+
 ## 1.17.3
 `2021-3-3`
 * `CHG` intelli-scense: treat `V[]` as `table<integer, V>` in `pairs`
 * `FIX` completion: `detail` disappears during continuous input
 * `FIX` [#435](https://github.com/sumneko/lua-language-server/issues/435)
 * `FIX` [#436](https://github.com/sumneko/lua-language-server/issues/436)
+* `FIX` [#437](https://github.com/sumneko/lua-language-server/issues/437)
 
 ## 1.17.2
 `2021-3-2`

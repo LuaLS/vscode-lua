@@ -17,9 +17,8 @@ return {
     },
     keywords = {
         "Lua",
-        "LSP",
-        "GoTo Definition",
-        "IntelliSense"
+        "IntelliSense",
+        "EmmyLua",
     },
     engines = {
         vscode = "^1.23.0"

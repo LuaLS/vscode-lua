@@ -952,6 +952,16 @@
                     "scope": "resource",
                     "type": "integer"
                 },
+                "Lua.runtime.fileEncoding": {
+                    "default": "utf8",
+                    "enum": [
+                        "utf8",
+                        "ansi"
+                    ],
+                    "markdownDescription": "%config.runtime.fileEncoding%",
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.runtime.nonstandardSymbol": {
                     "items": {
                         "enum": [
@@ -1098,16 +1108,6 @@
                     "markdownDescription": "%config.workspace.useGitIgnore%",
                     "scope": "resource",
                     "type": "boolean"
-                },
-                "lua.runtime.fileEncoding": {
-                    "default": "utf8",
-                    "enum": [
-                        "utf8",
-                        "ansi"
-                    ],
-                    "markdownDescription": "%config.runtime.fileEncoding%",
-                    "scope": "resource",
-                    "type": "string"
                 }
             },
             "title": "Lua",
@@ -1157,9 +1157,8 @@
     "icon": "images/logo.png",
     "keywords": [
         "Lua",
-        "LSP",
-        "GoTo Definition",
-        "IntelliSense"
+        "IntelliSense",
+        "EmmyLua"
     ],
     "license": "MIT",
     "main": "./client/out/extension",
@@ -1169,5 +1168,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.17.3"
+    "version": "1.17.4"
 }

@@ -936,6 +936,16 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.runtime.fileEncoding": {
+            "default": "utf8",
+            "enum": [
+                "utf8",
+                "ansi"
+            ],
+            "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.runtime.nonstandardSymbol": {
             "items": {
                 "enum": [
@@ -1082,16 +1092,6 @@
             "markdownDescription": "Ignore files list in `.gitignore` .",
             "scope": "resource",
             "type": "boolean"
-        },
-        "lua.runtime.fileEncoding": {
-            "default": "utf8",
-            "enum": [
-                "utf8",
-                "ansi"
-            ],
-            "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
-            "scope": "resource",
-            "type": "string"
         }
     },
     "title": "setting",
