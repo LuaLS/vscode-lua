@@ -635,7 +635,7 @@
 					]
 				},
 				{
-					"begin": "(?<=---\\s*)@diagnostic(?:)?",
+					"begin": "(?<=---\\s*)@diagnostic",
 					"beginCaptures": {
 						"0": {
 							"name": "storage.type.annotation.lua"
@@ -644,10 +644,13 @@
 					"end": "(?=\\n)",
 					"patterns": [
 						{
-							"begin": "\\s+[a-zA-Z_\\-0-9]+",
+							"begin": "\\s+([a-zA-Z_\\-0-9]+)\\s*(:)?",
 							"beginCaptures": {
-								"0": {
+								"1": {
 									"name": "keyword.other.unit"
+								},
+								"2": {
+									"name": "keyword.operator.unit"
 								}
 							},
 							"end": "(?=\\n)",
