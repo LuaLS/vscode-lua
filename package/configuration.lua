@@ -172,7 +172,10 @@ local config = {
     },
     ["Lua.workspace.library"] = {
         scope = 'resource',
-        type = 'object',
+        type = "array",
+        items = {
+            type = "string"
+        },
         markdownDescription = "%config.workspace.library%"
     },
     ["Lua.completion.enable"] = {

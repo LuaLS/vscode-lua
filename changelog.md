@@ -1,5 +1,10 @@
 # changelog
 
+## 1.18.0
+* `CHG` `Windows`: dose not provide `ucrt` any more
+* `CHG` `Lua.workspace.library`: use `path[]` instead of `<path, true>`
+* `FIX` missed syntax error `local a <const>= 1`
+
 ## 1.17.4
 `2021-3-4`
 * `FIX` [#437](https://github.com/sumneko/lua-language-server/issues/437) again

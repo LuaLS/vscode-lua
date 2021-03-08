@@ -990,7 +990,7 @@
         "Lua.runtime.special": {
             "markdownDescription": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
-                "": {
+                ".*": {
                     "default": "require",
                     "enum": [
                         "_G",
@@ -1071,9 +1071,12 @@
             "type": "boolean"
         },
         "Lua.workspace.library": {
-            "markdownDescription": "加载外部函数库。\n该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。\n",
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "外部函数库的目录路径。\n语言服务会额外加载这些目录中的lua文件，即使他们不在当前的工作目录中，用于函数定义、自动完成等功能。\n",
             "scope": "resource",
-            "type": "object"
+            "type": "array"
         },
         "Lua.workspace.maxPreload": {
             "default": 1000,

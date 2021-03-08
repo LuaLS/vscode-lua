@@ -1006,7 +1006,7 @@
                 "Lua.runtime.special": {
                     "markdownDescription": "%config.runtime.special%",
                     "patternProperties": {
-                        "": {
+                        ".*": {
                             "default": "require",
                             "enum": [
                                 "_G",
@@ -1087,9 +1087,12 @@
                     "type": "boolean"
                 },
                 "Lua.workspace.library": {
+                    "items": {
+                        "type": "string"
+                    },
                     "markdownDescription": "%config.workspace.library%",
                     "scope": "resource",
-                    "type": "object"
+                    "type": "array"
                 },
                 "Lua.workspace.maxPreload": {
                     "default": 1000,

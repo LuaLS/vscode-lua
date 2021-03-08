@@ -24,8 +24,8 @@ return {
     ["config.workspace.maxPreload"]       = "最大预加载文件数。",
     ["config.workspace.preloadFileSize"]  = "预加载时跳过大小大于该值（KB）的文件。",
     ["config.workspace.library"]          = [[
-加载外部函数库。
-该功能可以加载外部的Lua文件，用于函数定义、自动完成等功能。注意，语言服务不会监视外部文件的变化，如果修改了外部文件需要重启。
+外部函数库的目录路径。
+语言服务会额外加载这些目录中的lua文件，即使他们不在当前的工作目录中，用于函数定义、自动完成等功能。
 ]],
     ['config.completion.enable']                 = '启用自动完成。',
     ['config.completion.callSnippet']            = '显示函数调用片段。',
