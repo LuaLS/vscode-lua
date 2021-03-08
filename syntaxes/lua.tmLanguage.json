@@ -644,7 +644,7 @@
 					"end": "(?=\\n)",
 					"patterns": [
 						{
-							"begin": "\\s+([a-zA-Z_\\-0-9]+)\\s*(:)?",
+							"begin": "([a-zA-Z_\\-0-9]+)[ \\t]*(:)?",
 							"beginCaptures": {
 								"1": {
 									"name": "keyword.other.unit"
