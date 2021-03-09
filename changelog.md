@@ -1,9 +1,32 @@
 # changelog
 
 ## 1.18.0
+`2021-3-9`
+* `NEW` `LuaDoc`: supports `---@diagnostic disable`
+* `NEW` code-action: convert JSON to Lua
+* `NEW` completion: provide `then .. end` snippet
+* `NEW` type-formating:
+    ```lua
+    -- press `enter` at $
+    local function f() $ end
+    -- formating result:
+    local function f()
+        $
+    end
+
+    -- as well as
+    do $ end
+    -- formating result
+    do
+        $
+    end
+    ```
 * `CHG` `Windows`: dose not provide `ucrt` any more
 * `CHG` `Lua.workspace.library`: use `path[]` instead of `<path, true>`
 * `FIX` missed syntax error `local a <const>= 1`
+* `FIX` workspace: preload blocked when hitting `Lua.workspace.maxPreload`
+* `FIX` [#443](https://github.com/sumneko/lua-language-server/issues/443)
+* `FIX` [#445](https://github.com/sumneko/lua-language-server/issues/445)
 
 ## 1.17.4
 `2021-3-4`

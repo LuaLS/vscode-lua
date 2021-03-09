@@ -417,6 +417,17 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "unknown-diag-code": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.unknown-diag-code%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "unused-function": {
                     "default": "Opened",
                     "description": "%config.diagnostics.unused-function%",
@@ -796,6 +807,18 @@
                 "undefined-global": {
                     "default": "Warning",
                     "description": "%config.diagnostics.undefined-global%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "unknown-diag-code": {
+                    "default": "Waiting",
+                    "description": "%config.diagnostics.unknown-diag-code%",
                     "enum": [
                         "Error",
                         "Warning",
