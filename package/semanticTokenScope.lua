@@ -11,6 +11,10 @@ return {
     ['property.declaration'] = {"entity.other.attribute"},
     -- 局部变量
     ['variable'] = {"variable.other.lua"},
+    -- const 变量
+    ['variable.static'] = {'variable.other.constant.lua'},
+    -- close 变量
+    ['variable.abstract'] = {'variable.other.constant.lua'},
     -- 自定义函数声明
     ['interface.declaration'] = {"entity.name.function.lua"},
 }

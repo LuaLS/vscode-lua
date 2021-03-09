@@ -1170,6 +1170,12 @@
                     ],
                     "variable": [
                         "variable.other.lua"
+                    ],
+                    "variable.static": [
+                        "variable.other.constant.lua"
+                    ],
+                    "variable.abstract": [
+                        "variable.other.constant.lua"
                     ]
                 }
             }
