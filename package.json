@@ -1171,10 +1171,10 @@
                     "variable": [
                         "variable.other.lua"
                     ],
-                    "variable.static": [
+                    "variable.abstract": [
                         "variable.other.constant.lua"
                     ],
-                    "variable.abstract": [
+                    "variable.static": [
                         "variable.other.constant.lua"
                     ]
                 }
@@ -1200,5 +1200,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.18.0"
+    "version": "1.18.1"
 }

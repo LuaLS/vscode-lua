@@ -1,5 +1,11 @@
 # changelog
 
+## 1.18.1
+`2021-3-10`
+* `CHG` semantic-tokens: improve colors of `const` and `close`
+* `CHG` type-formating: improve execution conditions
+* `FIX` [#444](https://github.com/sumneko/lua-language-server/issues/444)
+
 ## 1.18.0
 `2021-3-9`
 * `NEW` `LuaDoc`: supports `---@diagnostic disable`
