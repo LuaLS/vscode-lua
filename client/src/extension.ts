@@ -14,10 +14,9 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     for (const k in context) {
-        if (k != 'extensionPath'
-        &&  k != 'extensionRuntime') {
+        try {
             luaDocContext[k] = context[k];
-        }
+        } catch (error) {}
     }
     luaDocContext.ViewType      = 'lua-doc';
     luaDocContext.OpenCommand   = 'extension.lua.doc';
