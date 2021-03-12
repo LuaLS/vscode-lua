@@ -65,6 +65,7 @@ return {
 * [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)
 * [如何使用这些数据](https://github.com/sumneko/lua-telemetry-server/tree/master/method)
 ]],
+    ['config.misc.parameters']                   = 'VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。',
 
     -- TODO 英文翻译
     ['config.diagnostics.unused-local']          = '未使用的局部变量',

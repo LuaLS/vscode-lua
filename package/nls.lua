@@ -65,4 +65,5 @@ Enable telemetry to send your editor information and error logs over the network
 * [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)
 * [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)
 ]],
+    ['config.misc.parameters']                   = '[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.',
 }

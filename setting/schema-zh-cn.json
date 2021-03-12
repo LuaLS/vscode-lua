@@ -959,6 +959,12 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.misc.parameters": {
+            "default": "",
+            "markdownDescription": "VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.runtime.fileEncoding": {
             "default": "utf8",
             "enum": [

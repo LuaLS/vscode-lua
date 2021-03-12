@@ -68,6 +68,7 @@ function start(context, documentSelector, folder) {
     let develop = config.get("Lua.develop.enable");
     let debuggerPort = config.get("Lua.develop.debuggerPort");
     let debuggerWait = config.get("Lua.develop.debuggerWait");
+    let commandParam = config.get("Lua.misc.parameters");
     let command;
     let platform = os.platform();
     switch (platform) {
@@ -91,6 +92,7 @@ function start(context, documentSelector, folder) {
             `--develop=${develop}`,
             `--dbgport=${debuggerPort}`,
             `--dbgwait=${debuggerWait}`,
+            commandParam,
         ]
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);

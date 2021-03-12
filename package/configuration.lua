@@ -362,6 +362,12 @@ local config = {
         default = true,
         markdownDescription = '%config.hint.paramName%',
     },
+    ['Lua.misc.parameters'] = {
+        scope = 'resource',
+        type  = 'string',
+        default = '',
+        markdownDescription = '%config.misc.parameters%',
+    },
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties

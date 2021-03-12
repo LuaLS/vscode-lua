@@ -89,6 +89,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     let develop: boolean = config.get("Lua.develop.enable");
     let debuggerPort: number = config.get("Lua.develop.debuggerPort");
     let debuggerWait: boolean = config.get("Lua.develop.debuggerWait");
+    let commandParam: string = config.get("Lua.misc.parameters");
     let command: string;
     let platform: string = os.platform();
     switch (platform) {
@@ -137,6 +138,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             `--develop=${develop}`,
             `--dbgport=${debuggerPort}`,
             `--dbgwait=${debuggerWait}`,
+            commandParam,
         ]
     };
 

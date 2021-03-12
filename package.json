@@ -975,6 +975,12 @@
                     "scope": "resource",
                     "type": "integer"
                 },
+                "Lua.misc.parameters": {
+                    "default": "",
+                    "markdownDescription": "%config.misc.parameters%",
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.runtime.fileEncoding": {
                     "default": "utf8",
                     "enum": [

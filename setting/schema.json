@@ -959,6 +959,12 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.misc.parameters": {
+            "default": "",
+            "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.runtime.fileEncoding": {
             "default": "utf8",
             "enum": [

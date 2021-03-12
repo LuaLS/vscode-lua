@@ -1,5 +1,10 @@
 # changelog
 
+## 1.19.0
+* `NEW` VSCode: new setting `Lua.misc.parameters`
+* `CHG` text-document-synchronization: refactored
+* `FIX` missed syntax error `function m['x']() end`
+
 ## 1.18.1
 `2021-3-10`
 * `CHG` semantic-tokens: improve colors of `const` and `close`
