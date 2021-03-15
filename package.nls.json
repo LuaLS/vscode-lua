@@ -37,6 +37,7 @@
     "config.intelliSense.fastGlobal": "In the global variable completion, and view `_G` suspension prompt. This will slightly reduce the accuracy of type speculation, but it will have a significant performance improvement for projects that use a lot of global variables.",
     "config.intelliSense.searchDepth": "Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",
     "config.misc.parameters": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
+    "config.runtime.builtin": "Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.\n\n* `default`: Indicates that the library will be enabled or disabled according to the runtime version\n* `enable`: always enable\n* `disable`: always disable\n",
     "config.runtime.fileEncoding": "File encoding. The `ansi` option is only available under the `Windows` platform.",
     "config.runtime.nonstandardSymbol": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     "config.runtime.path": "`package.path`",

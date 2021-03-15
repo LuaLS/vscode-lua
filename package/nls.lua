@@ -11,6 +11,13 @@ The following example shows that 'include' is treated as' require '.
     ["config.runtime.nonstandardSymbol"]  = "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     ["config.runtime.plugin"]             = "(Proposed) Plugin path.",
     ["config.runtime.fileEncoding"]       = "File encoding. The `ansi` option is only available under the `Windows` platform.",
+    ['config.runtime.builtin']            = [[
+Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.
+
+* `default`: Indicates that the library will be enabled or disabled according to the runtime version
+* `enable`: always enable
+* `disable`: always disable
+]],
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n",-- .. example.globals,
