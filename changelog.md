@@ -2,7 +2,12 @@
 
 ## 1.19.0
 * `NEW` VSCode: new setting `Lua.misc.parameters`
+* `NEW` new setting `Lua.runtime.builtin`, used to disable some built-in libraries
+* `NEW` quick fix: disable diagnostic in line/file
+* `CHG` intelli-scense: search from generic param to return
 * `CHG` text-document-synchronization: refactored
+* `CHG` diagnostic: improve `newline-call`
+* `CHG` improve performance
 * `FIX` missed syntax error `function m['x']() end`
 
 ## 1.18.1

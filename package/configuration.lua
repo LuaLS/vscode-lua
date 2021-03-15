@@ -87,6 +87,12 @@ local config = {
         },
         markdownDescription = '%config.runtime.fileEncoding%',
     },
+    ['Lua.runtime.builtin'] = {
+        scope = 'resource',
+        type  = 'object',
+        properties = {},
+        markdownDescription = '%config.runtime.builtin%',
+    },
     ["Lua.diagnostics.enable"] = {
         scope = 'resource',
         type = 'boolean',
@@ -397,6 +403,21 @@ for name, level in pairs(const.DiagnosticDefaultNeededFileStatus) do
             'Any',
             'Opened',
             'None',
+        }
+    }
+end
+
+local builtin = config["Lua.runtime.builtin"].properties
+for name, status in pairs(const.BuiltIn) do
+    builtin[name] = {
+        scope = 'resource',
+        type = 'string',
+        default = status,
+        description = '%config.runtime.builtin.' .. name .. '%',
+        enum = {
+            'default',
+            'enable',
+            'disable',
         }
     }
 end

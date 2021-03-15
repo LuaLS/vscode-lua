@@ -965,6 +965,178 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.runtime.builtin": {
+            "markdownDescription": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
+            "properties": {
+                "basic": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.basic%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "bit": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.bit%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "bit32": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.bit32%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "builtin": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.builtin%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "coroutine": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.coroutine%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "debug": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.debug%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "ffi": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.ffi%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "io": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.io%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "jit": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.jit%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "math": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.math%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "os": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.os%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "package": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.package%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "string": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.string%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "table": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.table%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "utf8": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.utf8%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "type": "object"
+        },
         "Lua.runtime.fileEncoding": {
             "default": "utf8",
             "enum": [

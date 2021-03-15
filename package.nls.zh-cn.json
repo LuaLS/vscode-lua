@@ -40,6 +40,7 @@
     "config.intelliSense.fastGlobal": "在对全局变量进行补全，及查看 `_G` 的悬浮提示时进行优化。这会略微降低类型推测的准确度，但是对于大量使用全局变量的项目会有大幅的性能提升。",
     "config.intelliSense.searchDepth": "设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
     "config.misc.parameters": "VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
+    "config.runtime.builtin": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
     "config.runtime.fileEncoding": "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
     "config.runtime.nonstandardSymbol": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
     "config.runtime.path": "`package.path`",
