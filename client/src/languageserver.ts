@@ -236,9 +236,6 @@ function onDecorations(client: LanguageClient) {
         notifyVisibleRanges(params.textEditor);
     })
 
-    let color           = new vscode.ThemeColor('descriptionForeground');
-    let backgroundColor = new vscode.ThemeColor('textCodeBlock.background');
-
     client.onNotification('$/hint', (params) => {
         let uri:        types.URI = params.uri;
         for (let index = 0; index < window.visibleTextEditors.length; index++) {
@@ -256,15 +253,17 @@ function onDecorations(client: LanguageClient) {
                             light: {
                                 after: {
                                     contentText:     edit.newText,
-                                    color:           color,
-                                    backgroundColor: backgroundColor,
+                                    color:           '#888888',
+                                    backgroundColor: '#EEEEEE;border-radius: 5px;',
+                                    fontWeight:      '400; font-size: 12px; line-height: 1;',
                                 }
                             },
                             dark: {
                                 after: {
                                     contentText:     edit.newText,
-                                    color:           color,
-                                    backgroundColor: backgroundColor,
+                                    color:           '#888888',
+                                    backgroundColor: '#333333;border-radius: 5px;',
+                                    fontWeight:      '400; font-size: 12px; line-height: 1;',
                                 }
                             }
                         }
