@@ -32,7 +32,7 @@ Adjust the enabled state of the built-in library. You can disable (or redefine) 
     ["config.workspace.preloadFileSize"]  = "Skip files larger than this value (KB) when preloading.",
     ["config.workspace.library"]          = [[
 The directory path of the external function library.
-The language service will additionally load the lua files in these directories, even if they are not in the current working spcae, for definition, completion and other features.
+The language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.
 ]],
     ['config.completion.enable']                 = 'Enable completion.',
     ['config.completion.callSnippet']            = 'Shows function call snippets.',
