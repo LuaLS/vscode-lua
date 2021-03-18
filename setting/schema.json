@@ -1275,7 +1275,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "The directory path of the external function library.\nThe language service will additionally load the lua files in these directories, even if they are not in the current working spcae, for definition, completion and other features.\n",
+            "markdownDescription": "The directory path of the external function library.\nThe language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.\n",
             "scope": "resource",
             "type": "array"
         },
