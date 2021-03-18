@@ -1,14 +1,51 @@
 # changelog
 
 ## 1.19.0
+`2021-3-18`
 * `NEW` VSCode: new setting `Lua.misc.parameters`
 * `NEW` new setting `Lua.runtime.builtin`, used to disable some built-in libraries
 * `NEW` quick fix: disable diagnostic in line/file
+* `NEW` setting: `Lua.runtime.path` supports absolute path
+* `NEW` completion: field in table
+```lua
+---@class A
+---@field x number
+---@field y number
+---@field z number
+
+---@type A
+local t = {
+    -- provide `x`, `y` and `z` here
+}
+```
+* `NEW` `LuaDoc`: supports multi-line comment before resume
+```lua
+---this is
+---a multi line
+---comment
+---@alias XXXX
+---comment 1
+---comment 1
+---| '1'
+---comment 2
+---comment 2
+---| '2'
+
+---@param x XXXX
+local function f(x)
+end
+
+f( -- view comments of `1` and `2` in completion
+```
 * `CHG` intelli-scense: search from generic param to return
+* `CHG` intelli-scense: search across vararg
 * `CHG` text-document-synchronization: refactored
 * `CHG` diagnostic: improve `newline-call`
+* `CHG` completion: improve `then .. end`
+* `CHG` improve initialization speed
 * `CHG` improve performance
 * `FIX` missed syntax error `function m['x']() end`
+* `FIX` [#452](https://github.com/sumneko/lua-language-server/issues/452)
 
 ## 1.18.1
 `2021-3-10`
