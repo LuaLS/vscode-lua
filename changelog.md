@@ -1,5 +1,11 @@
 # changelog
 
+## 1.19.1
+`2021-3-22`
+* `CHG` improve performance
+* `FIX` [#457](https://github.com/sumneko/lua-language-server/issues/457)
+* `FIX` [#458](https://github.com/sumneko/lua-language-server/issues/458)
+
 ## 1.19.0
 `2021-3-18`
 * `NEW` VSCode: new setting `Lua.misc.parameters`
