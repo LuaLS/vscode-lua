@@ -1237,10 +1237,13 @@
             "type": "boolean"
         },
         "Lua.telemetry.enable": {
-            "default": true,
+            "default": null,
             "markdownDescription": "Enable telemetry to send your editor information and error logs over the network\n* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
             "scope": "resource",
-            "type": "boolean"
+            "type": [
+                "boolean",
+                "null"
+            ]
         },
         "Lua.window.progressBar": {
             "default": true,

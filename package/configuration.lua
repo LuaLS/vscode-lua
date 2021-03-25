@@ -1,4 +1,5 @@
 local const = require 'proto.define'
+local json  = require 'json'
 
 local config = {
     ["Lua.runtime.version"] = {
@@ -340,8 +341,8 @@ local config = {
     },
     ['Lua.telemetry.enable'] = {
         scope = "resource",
-        type = "boolean",
-        default = true,
+        type = {"boolean", "null"},
+        default = json.null,
         markdownDescription = "%config.telemetry.enable%"
     },
     ['Lua.hint.enable'] = {

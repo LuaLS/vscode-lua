@@ -1253,10 +1253,13 @@
                     "type": "boolean"
                 },
                 "Lua.telemetry.enable": {
-                    "default": true,
+                    "default": null,
                     "markdownDescription": "%config.telemetry.enable%",
                     "scope": "resource",
-                    "type": "boolean"
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "Lua.window.progressBar": {
                     "default": true,
