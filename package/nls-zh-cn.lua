@@ -68,9 +68,7 @@ return {
     ['config.hint.setType']                     = '在赋值操作位置提示类型。',
     ['config.hint.paramName']                   = '调用的参数为字面量时提示参数名。',
     ['config.telemetry.enable']                 = [[
-启用遥测，通过网络发送你的编辑器信息与错误日志
-* [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)
-* [如何使用这些数据](https://github.com/sumneko/lua-telemetry-server/tree/master/method)
+启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy)阅读我们的隐私声明。
 ]],
     ['config.misc.parameters']                   = 'VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。',
 

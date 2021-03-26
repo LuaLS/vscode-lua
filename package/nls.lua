@@ -68,9 +68,7 @@ The language service will additionally load the lua files in these directories, 
     ['config.hint.setType']                     = 'Hint type at assignment operation.',
     ['config.hint.paramName']                   = 'Hint parameter name when the parameter called is literal.',
     ['config.telemetry.enable']                 = [[
-Enable telemetry to send your editor information and error logs over the network
-* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)
-* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)
+Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).
 ]],
     ['config.misc.parameters']                   = '[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.',
 }
