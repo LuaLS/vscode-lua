@@ -46,7 +46,7 @@
     "config.runtime.unicodeName": "Allows Unicode characters in name.",
     "config.runtime.version": "Lua runtime version.",
     "config.signatureHelp.enable": "Enable signature help.",
-    "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network\n* [What data will be sent](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
+    "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
     "config.window.progressBar": "Show progress bar in status bar.",
     "config.window.statusBar": "Show extension status in status bar.",
     "config.workspace.ignoreDir": "Ignored files and directories (Use `.gitignore` grammar).\n",

@@ -49,7 +49,7 @@
     "config.runtime.unicodeName": "允许在名字中使用 Unicode 字符。",
     "config.runtime.version": "Lua运行版本。",
     "config.signatureHelp.enable": "启用参数提示。",
-    "config.telemetry.enable": "启用遥测，通过网络发送你的编辑器信息与错误日志\n* [会发送哪些数据](https://github.com/sumneko/lua-language-server/blob/master/script/service/telemetry.lua)\n* [如何使用这些数据](https://github.com/sumneko/lua-telemetry-server/tree/master/method)\n",
+    "config.telemetry.enable": "启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。\n",
     "config.window.progressBar": "在状态栏显示进度条。",
     "config.window.statusBar": "在状态栏显示插件状态。",
     "config.workspace.ignoreDir": "忽略的文件与目录（使用 `.gitignore` 语法）。\n",
