@@ -1,5 +1,11 @@
 # changelog
 
+## 1.20.2
+`2021-4-2`
+* `CHG` `LuaDoc`: supports `---@param self TYPE`
+* `CHG` completion: does not show suggests after `\n`, `{` and `,`, unless your setting `editor.acceptSuggestionOnEnter` is `off`
+* `FIX` [#482](https://github.com/sumneko/lua-language-server/issues/482)
+
 ## 1.20.1
 `2021-3-27`
 * `FIX` telemetry window blocks initializing
