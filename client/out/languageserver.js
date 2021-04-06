@@ -154,6 +154,18 @@ function onDecorations(client) {
             const range = textEditor.visibleRanges[index];
             ranges[index] = client.code2ProtocolConverter.asRange(new vscode.Range(Math.max(range.start.line - 3, 0), range.start.character, Math.min(range.end.line + 3, textEditor.document.lineCount - 1), range.end.character));
         }
+        for (let index = ranges.length; index > 1; index--) {
+            const current = ranges[index];
+            const before = ranges[index - 1];
+            if (current.start.line > before.end.line) {
+                continue;
+            }
+            if (current.start.line == before.end.line && current.start.character > before.end.character) {
+                continue;
+            }
+            ranges.pop();
+            before.end = current.end;
+        }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri: uri,
             ranges: ranges,

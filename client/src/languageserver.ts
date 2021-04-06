@@ -216,6 +216,18 @@ function onDecorations(client: LanguageClient) {
                 range.end.character
             ));
         }
+        for (let index = ranges.length; index > 1; index--) {
+            const current = ranges[index];
+            const before = ranges[index - 1];
+            if (current.start.line > before.end.line) {
+                continue;
+            }
+            if (current.start.line == before.end.line && current.start.character > before.end.character) {
+                continue;
+            }
+            ranges.pop();
+            before.end = current.end;
+        }
         client.sendNotification('$/didChangeVisibleRanges', {
             uri:    uri,
             ranges: ranges,
