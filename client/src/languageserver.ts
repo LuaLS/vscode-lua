@@ -314,8 +314,9 @@ export function activate(context: ExtensionContext) {
         folder = getOuterMostWorkspaceFolder(folder);
 
         if (!clients.has(folder.uri.toString())) {
+            let pattern: string = folder.uri.fsPath.replace(/(\[|\])/g, '[$1]') + '/**/*';
             let client = start(context, [
-                { scheme: 'file', language: 'lua', pattern: `${folder.uri.fsPath}/**/*` }
+                { scheme: 'file', language: 'lua', pattern: pattern }
             ], folder);
             clients.set(folder.uri.toString(), client);
         }
