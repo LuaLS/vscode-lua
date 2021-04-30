@@ -16,6 +16,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.completion.autoRequire": {
+            "default": true,
+            "markdownDescription": "When the input looks like a file name, automatically `require` this file.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.completion.callSnippet": {
             "default": "Disable",
             "enum": [
@@ -945,6 +951,12 @@
             "markdownDescription": "Enable hover.",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.hover.enumsLimit": {
+            "default": 5,
+            "markdownDescription": "When the value corresponds to multiple types, limit the number of types displaying.",
+            "scope": "resource",
+            "type": "integer"
         },
         "Lua.hover.fieldInfer": {
             "default": 3000,

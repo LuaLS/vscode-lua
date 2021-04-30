@@ -16,6 +16,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.completion.autoRequire": {
+            "default": true,
+            "markdownDescription": "输入内容看起来是个文件名时，自动 `require` 此文件。",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.completion.callSnippet": {
             "default": "Disable",
             "enum": [
@@ -62,7 +68,7 @@
         },
         "Lua.completion.workspaceWord": {
             "default": true,
-            "markdownDescription": "显示工作区范围内的单词",
+            "markdownDescription": "显示工作区范围内的单词。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -945,6 +951,12 @@
             "markdownDescription": "启用悬停提示。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.hover.enumsLimit": {
+            "default": 5,
+            "markdownDescription": "当值对应多个类型时，限制类型的显示数量。",
+            "scope": "resource",
+            "type": "integer"
         },
         "Lua.hover.fieldInfer": {
             "default": 3000,

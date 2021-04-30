@@ -235,6 +235,12 @@ local config = {
         default = true,
         markdownDescription = "%config.completion.workspaceWord%"
     },
+    ['Lua.completion.autoRequire'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.completion.autoRequire%"
+    },
     ["Lua.color.mode"] = {
         scope = "resource",
         type = "string",
@@ -290,6 +296,12 @@ local config = {
         type = "integer",
         default = 100,
         markdownDescription = "%config.hover.previewFields%"
+    },
+    ['Lua.hover.enumsLimit'] = {
+        scope = "resource",
+        type = "integer",
+        default = 5,
+        markdownDescription = "%config.hover.enumsLimit%"
     },
     --["Lua.plugin.enable"] = {
     --    scope = "resource",
