@@ -46,6 +46,7 @@ return {
     ['config.completion.displayContext']         = "预览建议的相关代码片段，可能可以帮助你了解这项建议的用法。设置的数字表示代码片段的截取行数，设置为`0`可以禁用此功能。",
     ['config.completion.workspaceWord']          = "显示工作区范围内的单词。",
     ['config.completion.autoRequire']            = "输入内容看起来是个文件名时，自动 `require` 此文件。",
+    ['config.completion.showParams']             = "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
     ['config.color.mode']                        = "着色模式。",
     ['config.color.mode.Semantic']               = "语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
     ['config.color.mode.Grammar']                = "语法着色。",

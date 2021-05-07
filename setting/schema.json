@@ -66,6 +66,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.completion.showParams": {
+            "default": true,
+            "markdownDescription": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "Lua.completion.workspaceWord": {
             "default": true,
             "markdownDescription": "Shows words within the workspace.",

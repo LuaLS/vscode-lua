@@ -15,6 +15,7 @@
     "config.completion.keywordSnippet.Both": "显示 `关键字` 与 `语法片段`。",
     "config.completion.keywordSnippet.Disable": "只显示 `关键字`。",
     "config.completion.keywordSnippet.Replace": "只显示 `语法片段`。",
+    "config.completion.showParams": "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
     "config.completion.workspaceWord": "显示工作区范围内的单词。",
     "config.develop.debuggerPort": "调试器监听端口。",
     "config.develop.debuggerWait": "调试器连接之前挂起。",

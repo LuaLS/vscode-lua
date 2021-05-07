@@ -14,6 +14,7 @@
     "config.completion.keywordSnippet.Both": "Shows `keyword` and `syntax snippet`.",
     "config.completion.keywordSnippet.Disable": "Only shows `keyword`.",
     "config.completion.keywordSnippet.Replace": "Only shows `syntax snippet`.",
+    "config.completion.showParams": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
     "config.completion.workspaceWord": "Shows words within the workspace.",
     "config.develop.debuggerPort": "Listen port of debugger.",
     "config.develop.debuggerWait": "Suspend before debugger connects.",

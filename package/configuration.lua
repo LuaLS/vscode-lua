@@ -241,6 +241,12 @@ local config = {
         default = true,
         markdownDescription = "%config.completion.autoRequire%"
     },
+    ['Lua.completion.showParams'] = {
+        scope = "resource",
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.completion.showParams%"
+    },
     ["Lua.color.mode"] = {
         scope = "resource",
         type = "string",
