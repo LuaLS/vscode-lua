@@ -1,5 +1,9 @@
 # changelog
 
+## 1.21.1
+`2021-5-8`
+* `FIX` [#529](https://github.com/sumneko/lua-language-server/issues/529)
+
 ## 1.21.0
 `2021-5-7`
 * `NEW` setting: `completion.showParams`
