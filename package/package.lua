@@ -49,4 +49,15 @@ return {
             }
         }
     },
+    capabilities = {
+        untrustedWorkspaces = {
+            supported = "limited",
+            description = "",
+            restrictedConfigurations = {
+                "Lua.develop.enable",
+                "Lua.runtime.plugin",
+                "Lua.misc.parameters",
+            },
+        },
+    },
 }
