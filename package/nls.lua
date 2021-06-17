@@ -9,7 +9,7 @@ The following example shows that 'include' is treated as' require '.
 ]] .. example.special,
     ["config.runtime.unicodeName"]        = "Allows Unicode characters in name.",
     ["config.runtime.nonstandardSymbol"]  = "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
-    ["config.runtime.plugin"]             = "(Proposed) Plugin path.",
+    ["config.runtime.plugin"]             = "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
     ["config.runtime.fileEncoding"]       = "File encoding. The `ansi` option is only available under the `Windows` platform.",
     ['config.runtime.builtin']            = [[
 Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.

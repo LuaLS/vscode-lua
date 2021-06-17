@@ -9,7 +9,7 @@ return {
 ]] .. example.special,
     ["config.runtime.unicodeName"]        = "允许在名字中使用 Unicode 字符。",
     ["config.runtime.nonstandardSymbol"]  = "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
-    ["config.runtime.plugin"]             = "（实验）插件路径。",
+    ["config.runtime.plugin"]             = "插件路径，请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
     ["config.runtime.fileEncoding"]       = "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
     ['config.runtime.builtin']            = [[
 调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。
