@@ -10,6 +10,17 @@
         "onCommand:extension.lua.doc"
     ],
     "author": "sumneko",
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "description": "",
+            "restrictedConfigurations": [
+                "Lua.develop.enable",
+                "Lua.runtime.plugin",
+                "Lua.misc.parameters"
+            ],
+            "supported": "limited"
+        }
+    },
     "categories": [
         "Linters",
         "Programming Languages",
@@ -1422,5 +1433,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "1.21.2"
+    "version": "1.21.3"
 }
