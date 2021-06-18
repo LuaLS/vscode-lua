@@ -47,7 +47,7 @@
     "config.runtime.fileEncoding": "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
     "config.runtime.nonstandardSymbol": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
     "config.runtime.path": "`package.path`",
-    "config.runtime.plugin": "（实验）插件路径。",
+    "config.runtime.plugin": "插件路径，请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
     "config.runtime.special": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
     "config.runtime.unicodeName": "允许在名字中使用 Unicode 字符。",
     "config.runtime.version": "Lua运行版本。",

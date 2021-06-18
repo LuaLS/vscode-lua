@@ -177,7 +177,7 @@
                     "type": "string"
                 },
                 "deprecated": {
-                    "default": "None",
+                    "default": "Opened",
                     "description": "%config.diagnostics.deprecated%",
                     "enum": [
                         "Any",
@@ -419,7 +419,7 @@
                     "type": "string"
                 },
                 "undefined-field": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "%config.diagnostics.undefined-field%",
                     "enum": [
                         "Any",
@@ -964,14 +964,8 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.hover.fieldInfer": {
-            "default": 3000,
-            "markdownDescription": "悬停提示查看表时，会对表的每个字段进行类型推测，当类型推测的用时累计达到该设定值（毫秒）时，将跳过后续字段的类型推测。",
-            "scope": "resource",
-            "type": "integer"
-        },
         "Lua.hover.previewFields": {
-            "default": 100,
+            "default": 20,
             "markdownDescription": "悬停提示查看表时，限制表内字段的最大预览数量。",
             "scope": "resource",
             "type": "integer"
@@ -1224,8 +1218,8 @@
             "type": "array"
         },
         "Lua.runtime.plugin": {
-            "default": ".vscode/lua/plugin.lua",
-            "markdownDescription": "（实验）插件路径。",
+            "default": "",
+            "markdownDescription": "插件路径，请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
             "scope": "resource",
             "type": "string"
         },

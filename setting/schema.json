@@ -177,7 +177,7 @@
                     "type": "string"
                 },
                 "deprecated": {
-                    "default": "None",
+                    "default": "Opened",
                     "description": "%config.diagnostics.deprecated%",
                     "enum": [
                         "Any",
@@ -419,7 +419,7 @@
                     "type": "string"
                 },
                 "undefined-field": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "%config.diagnostics.undefined-field%",
                     "enum": [
                         "Any",
@@ -964,14 +964,8 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.hover.fieldInfer": {
-            "default": 3000,
-            "markdownDescription": "When hovering to view a table, type infer will be performed for each field. When the accumulated time of type infer reaches the set value (MS), the type infer of subsequent fields will be skipped.",
-            "scope": "resource",
-            "type": "integer"
-        },
         "Lua.hover.previewFields": {
-            "default": 100,
+            "default": 20,
             "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
             "scope": "resource",
             "type": "integer"
@@ -1224,8 +1218,8 @@
             "type": "array"
         },
         "Lua.runtime.plugin": {
-            "default": ".vscode/lua/plugin.lua",
-            "markdownDescription": "(Proposed) Plugin path.",
+            "default": "",
+            "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
             "scope": "resource",
             "type": "string"
         },

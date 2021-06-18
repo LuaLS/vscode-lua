@@ -291,16 +291,10 @@ local config = {
         default = true,
         markdownDescription = "%config.hover.viewNumber%"
     },
-    ['Lua.hover.fieldInfer'] = {
-        scope = "resource",
-        type = "integer",
-        default = 3000,
-        markdownDescription = "%config.hover.fieldInfer%"
-    },
     ['Lua.hover.previewFields'] = {
         scope = "resource",
         type = "integer",
-        default = 100,
+        default = 20,
         markdownDescription = "%config.hover.previewFields%"
     },
     ['Lua.hover.enumsLimit'] = {
