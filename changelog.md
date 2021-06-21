@@ -1,5 +1,22 @@
 # changelog
 
+## 2.0.0
+`2021-6-21`
+* `NEW` implement
+* `CHG` diagnostics `undefined-field`, `deprecated`: default by `Opened` instead of `None`
+* `CHG` setting `Lua.runtime.plugin`: default by `""` instead of `".vscode/lua/plugin.lua"` (for security)
+* `CHG` setting `Lua.intelliSense.searchDepth`: removed
+* `CHG` setting `Lua.misc.parameters`: `string array` instead of `string`
+* `CHG` setting `Lua.develop.enable`, `Lua.develop.debuggerPort`, `Lua.develop.debuggerWait`: removed, use `Lua.misc.parameters` instead
+* `FIX` [#441](https://github.com/sumneko/lua-language-server/issues/441)
+* `FIX` [#493](https://github.com/sumneko/lua-language-server/issues/493)
+* `FIX` [#531](https://github.com/sumneko/lua-language-server/issues/531)
+* `FIX` [#542](https://github.com/sumneko/lua-language-server/issues/542)
+* `FIX` [#543](https://github.com/sumneko/lua-language-server/issues/543)
+* `FIX` [#553](https://github.com/sumneko/lua-language-server/issues/553)
+* `FIX` [#562](https://github.com/sumneko/lua-language-server/issues/562)
+* `FIX` [#563](https://github.com/sumneko/lua-language-server/issues/563)
+
 ## 1.21.3
 `2021-6-17`
 * `NEW` supports `untrusted workspaces`
