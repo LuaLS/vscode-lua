@@ -86,10 +86,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     };
 
     let config = Workspace.getConfiguration(undefined, folder);
-    let develop: boolean = config.get("Lua.develop.enable");
-    let debuggerPort: number = config.get("Lua.develop.debuggerPort");
-    let debuggerWait: boolean = config.get("Lua.develop.debuggerWait");
-    let commandParam: string = config.get("Lua.misc.parameters");
+    let commandParam: string[] = config.get("Lua.misc.parameters");
     let command: string;
     let platform: string = os.platform();
     switch (platform) {
@@ -127,19 +124,20 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             break;
     }
 
+    let args: string[] = [
+        '-E',
+        context.asAbsolutePath(path.join(
+            'server',
+            'main.lua',
+        )),
+    ];
+    try {
+        args = args.concat(commandParam);
+    } finally {};
+
     let serverOptions: ServerOptions = {
         command: command,
-        args: [
-            '-E',
-            context.asAbsolutePath(path.join(
-                'server',
-                'main.lua',
-            )),
-            `--develop=${develop}`,
-            `--dbgport=${debuggerPort}`,
-            `--dbgwait=${debuggerWait}`,
-            commandParam,
-        ]
+        args:    args,
     };
 
     let client = new LanguageClient(

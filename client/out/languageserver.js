@@ -65,9 +65,6 @@ function start(context, documentSelector, folder) {
         },
     };
     let config = vscode_1.workspace.getConfiguration(undefined, folder);
-    let develop = config.get("Lua.develop.enable");
-    let debuggerPort = config.get("Lua.develop.debuggerPort");
-    let debuggerWait = config.get("Lua.develop.debuggerWait");
     let commandParam = config.get("Lua.misc.parameters");
     let command;
     let platform = os.platform();
@@ -84,16 +81,18 @@ function start(context, documentSelector, folder) {
             fs.chmodSync(command, '777');
             break;
     }
+    let args = [
+        '-E',
+        context.asAbsolutePath(path.join('server', 'main.lua')),
+    ];
+    try {
+        args = args.concat(commandParam);
+    }
+    finally { }
+    ;
     let serverOptions = {
         command: command,
-        args: [
-            '-E',
-            context.asAbsolutePath(path.join('server', 'main.lua')),
-            `--develop=${develop}`,
-            `--dbgport=${debuggerPort}`,
-            `--dbgwait=${debuggerWait}`,
-            commandParam,
-        ]
+        args: args,
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     client.registerProposedFeatures();
