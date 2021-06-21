@@ -78,24 +78,6 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.develop.debuggerPort": {
-            "default": 11412,
-            "markdownDescription": "调试器监听端口。",
-            "scope": "resource",
-            "type": "integer"
-        },
-        "Lua.develop.debuggerWait": {
-            "default": false,
-            "markdownDescription": "调试器连接之前挂起。",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "Lua.develop.enable": {
-            "default": false,
-            "markdownDescription": "开发者模式。请勿开启，会影响性能。",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "Lua.diagnostics.disable": {
             "items": {
                 "type": "string"
@@ -419,7 +401,7 @@
                     "type": "string"
                 },
                 "undefined-field": {
-                    "default": "Any",
+                    "default": "Opened",
                     "description": "%config.diagnostics.undefined-field%",
                     "enum": [
                         "Any",
@@ -988,17 +970,13 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.intelliSense.searchDepth": {
-            "default": 0,
-            "markdownDescription": "设置智能感知的搜索深度。增大该值可以增加准确度，但会降低性能。不同的项目对该设置的容忍度差异较大，请自己调整为合适的值。",
-            "scope": "resource",
-            "type": "integer"
-        },
         "Lua.misc.parameters": {
-            "default": "",
+            "items": {
+                "type": "string"
+            },
             "markdownDescription": "VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
             "scope": "resource",
-            "type": "string"
+            "type": "array"
         },
         "Lua.runtime.builtin": {
             "markdownDescription": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",

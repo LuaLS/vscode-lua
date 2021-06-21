@@ -78,24 +78,6 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.develop.debuggerPort": {
-            "default": 11412,
-            "markdownDescription": "Listen port of debugger.",
-            "scope": "resource",
-            "type": "integer"
-        },
-        "Lua.develop.debuggerWait": {
-            "default": false,
-            "markdownDescription": "Suspend before debugger connects.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "Lua.develop.enable": {
-            "default": false,
-            "markdownDescription": "Developer mode. Do not enable, performance will be affected.",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "Lua.diagnostics.disable": {
             "items": {
                 "type": "string"
@@ -419,7 +401,7 @@
                     "type": "string"
                 },
                 "undefined-field": {
-                    "default": "Any",
+                    "default": "Opened",
                     "description": "%config.diagnostics.undefined-field%",
                     "enum": [
                         "Any",
@@ -988,17 +970,13 @@
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.intelliSense.searchDepth": {
-            "default": 0,
-            "markdownDescription": "Set the search depth for IntelliSense. Increasing this value increases accuracy, but decreases performance. Different workspace have different tolerance for this setting. Please adjust it to the appropriate value.",
-            "scope": "resource",
-            "type": "integer"
-        },
         "Lua.misc.parameters": {
-            "default": "",
+            "items": {
+                "type": "string"
+            },
             "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
             "scope": "resource",
-            "type": "string"
+            "type": "array"
         },
         "Lua.runtime.builtin": {
             "markdownDescription": "Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.\n\n* `default`: Indicates that the library will be enabled or disabled according to the runtime version\n* `enable`: always enable\n* `disable`: always disable\n",
