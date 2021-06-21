@@ -315,30 +315,30 @@ local config = {
     --    default = ".vscode/lua-plugin/*.lua",
     --    markdownDescription = "%config.plugin.path%"
     --},
-    ["Lua.develop.enable"] = {
-        scope = "resource",
-        type = "boolean",
-        default = false,
-        markdownDescription = "%config.develop.enable%"
-    },
-    ["Lua.develop.debuggerPort"] = {
-        scope = "resource",
-        type = "integer",
-        default = 11412,
-        markdownDescription = "%config.develop.debuggerPort%"
-    },
-    ["Lua.develop.debuggerWait"] = {
-        scope = "resource",
-        type = "boolean",
-        default = false,
-        markdownDescription = "%config.develop.debuggerWait%"
-    },
-    ['Lua.intelliSense.searchDepth'] = {
-        scope = "resource",
-        type = "integer",
-        default = 0,
-        markdownDescription = "%config.intelliSense.searchDepth%"
-    },
+    --["Lua.develop.enable"] = {
+    --    scope = "resource",
+    --    type = "boolean",
+    --    default = false,
+    --    markdownDescription = "%config.develop.enable%"
+    --},
+    --["Lua.develop.debuggerPort"] = {
+    --    scope = "resource",
+    --    type = "integer",
+    --    default = 11412,
+    --    markdownDescription = "%config.develop.debuggerPort%"
+    --},
+    --["Lua.develop.debuggerWait"] = {
+    --    scope = "resource",
+    --    type = "boolean",
+    --    default = false,
+    --    markdownDescription = "%config.develop.debuggerWait%"
+    --},
+    --['Lua.intelliSense.searchDepth'] = {
+    --    scope = "resource",
+    --    type = "integer",
+    --    default = 0,
+    --    markdownDescription = "%config.intelliSense.searchDepth%"
+    --},
     ['Lua.window.statusBar'] = {
         scope = "resource",
         type  = 'boolean',
@@ -383,8 +383,10 @@ local config = {
     },
     ['Lua.misc.parameters'] = {
         scope = 'resource',
-        type  = 'string',
-        default = '',
+        type = "array",
+        items = {
+            type = 'string',
+        },
         markdownDescription = '%config.misc.parameters%',
     },
 }
