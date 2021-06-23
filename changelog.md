@@ -1,5 +1,28 @@
 # changelog
 
+## 2.0.2
+`2021-6-23`
+* `NEW` supports literal table in `pairs`
+    ```lua
+    local t = { a = 1, b = 2, c = 3 }
+    for k, v in pairs(t) do
+        -- `k` is string and `v` is integer here
+    end
+    ```
+* `CHG` view `local f ---@type fun(x:number):boolean`
+    ```lua
+    ---before
+    function f(x: number)
+      -> boolean
+    ---after
+    local f: fun(x: number): boolean
+    ```
+* `FIX` [#558](https://github.com/sumneko/lua-language-server/issues/558)
+* `FIX` [#567](https://github.com/sumneko/lua-language-server/issues/567)
+* `FIX` [#568](https://github.com/sumneko/lua-language-server/issues/568)
+* `FIX` [#570](https://github.com/sumneko/lua-language-server/issues/570)
+* `FIX` [#571](https://github.com/sumneko/lua-language-server/issues/571)
+
 ## 2.0.1
 `2021-6-21`
 * `FIX` [#566](https://github.com/sumneko/lua-language-server/issues/566)
