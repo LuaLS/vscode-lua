@@ -1,5 +1,24 @@
 # changelog
 
+## 2.0.5
+`2021-7-1`
+* `NEW` `hover` and `completion` reports initialization progress
+* `CHG` `class field` consider implicit definition
+    ```lua
+    ---@class Class
+    local mt = {}
+
+    function mt:init()
+        self.xxx = 1
+    end
+
+    function mt:func()
+        print(self.xxx) -- self.xxx is defined
+    end
+    ```
+* `CHG` improve performance
+* `FIX` [#580](https://github.com/sumneko/lua-language-server/issues/580)
+
 ## 2.0.4
 `2021-6-25`
 * `FIX` [#550](https://github.com/sumneko/lua-language-server/issues/550)
