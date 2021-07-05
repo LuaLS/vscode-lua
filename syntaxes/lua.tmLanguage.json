@@ -711,8 +711,12 @@
 					]
 				},
 				{
+					"match": "[\\{\\}\\:\\,\\?\\|][ \\t]*",
+					"name": "keyword.operator.lua"
+				},
+				{
 					"begin": "(?=[a-zA-Z_\\.\\*\"'])",
-					"end": "(?=[\\s\\),\\?])",
+					"end": "(?=[\\s\\)\\,\\?\\:\\}\\|])",
 					"patterns": [
 						{
 							"match": "(([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*))(?<!,)[ \\t]*",
@@ -724,36 +728,8 @@
 						},
 						{
 							"include": "#string"
-						},
-						{
-							"include": "#luadoc.type.resume"
 						}
 					]
-				}
-			]
-		},
-		"luadoc.type.resume": {
-			"begin": "\\|[ \\t]*",
-			"beginCaptures": {
-				"0": {
-					"name": "keyword.operator.lua"
-				}
-			},
-			"end": "(?=[\\s\\),\\?])",
-			"patterns": [
-				{
-					"match": "(([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*))(?<!,)[ \\t]*",
-					"name": "support.type.lua"
-				},
-				{
-					"match": "(\\.\\.\\.)[ \\t]*",
-					"name": "constant.language.lua"
-				},
-				{
-					"include": "#string"
-				},
-				{
-					"include": "#luadoc.type.resume"
 				}
 			]
 		}
