@@ -63,6 +63,9 @@ function start(context, documentSelector, folder) {
         markdown: {
             isTrusted: true,
         },
+        initializationOptions: {
+            changeConfiguration: true,
+        }
     };
     let config = vscode_1.workspace.getConfiguration(undefined, folder);
     let commandParam = config.get("Lua.misc.parameters");

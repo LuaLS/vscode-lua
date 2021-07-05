@@ -83,6 +83,9 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         markdown: {
             isTrusted: true,
         },
+        initializationOptions: {
+            changeConfiguration: true,
+        }
     };
 
     let config = Workspace.getConfiguration(undefined, folder);
