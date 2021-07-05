@@ -3,7 +3,7 @@
 	"scopeName": "source.lua",
 	"patterns": [
 		{
-			"begin": "\\b(?:(local)\\s+)?(function)\\b",
+			"begin": "\\b(?:(local)\\s+)?(function)\\b(?!,)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.local.lua"
@@ -125,6 +125,10 @@
 			"name": "string.tag.lua"
 		},
 		{
+			"match": "\\<[a-zA-Z_\\*][a-zA-Z0-9_\\.\\*\\-]*\\>",
+			"name": "storage.type.generic.lua"
+		},
+		{
 			"match": "\\b(break|do|else|for|if|elseif|goto|return|then|repeat|while|until|end|in)\\b",
 			"name": "keyword.control.lua"
 		},
@@ -141,7 +145,7 @@
 			}
 		},
 		{
-			"match": "\\b(function)\\b",
+			"match": "\\b(function)\\b(?!,)",
 			"name": "keyword.control.lua"
 		},
 		{
@@ -169,7 +173,7 @@
 			"name": "entity.name.function.lua"
 		},
 		{
-			"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*:)",
+			"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b(?=\\s*\\??:)",
 			"name": "entity.name.class.lua"
 		},
 		{
@@ -179,6 +183,9 @@
 		{
 			"match": "\\+|-|%|#|\\*|\\/|\\^|==?|~=|!=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.)",
 			"name": "keyword.operator.lua"
+		},
+		{
+			"include": "#luadoc.type"
 		}
 	],
 	"repository": {
@@ -702,7 +709,7 @@
 							"name": "keyword.operator.lua"
 						},
 						{
-							"match": "(([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*))(?<!,)[ \\t]*(?=\\??:)",
+							"match": "([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*)(?<!,)[ \\t]*(?=\\??:)",
 							"name": "entity.name.variable.lua"
 						},
 						{
@@ -719,7 +726,7 @@
 					"end": "(?=[\\s\\)\\,\\?\\:\\}\\|])",
 					"patterns": [
 						{
-							"match": "(([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*))(?<!,)[ \\t]*",
+							"match": "([a-zA-Z_][a-zA-Z0-9_\\.\\*\\[\\]\\<\\>\\,\\-]*)(?<!,)[ \\t]*",
 							"name": "support.type.lua"
 						},
 						{
