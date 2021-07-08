@@ -1270,6 +1270,12 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.workspace.checkThirdParty": {
+            "default": true,
+            "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n    * OpenResty\n    * Cocos4.0\n    * Jass\n",
+            "scope": "source",
+            "type": "boolean"
+        },
         "Lua.workspace.ignoreDir": {
             "default": [
                 ".vscode"

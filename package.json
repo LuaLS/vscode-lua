@@ -1297,6 +1297,12 @@
                     "scope": "resource",
                     "type": "boolean"
                 },
+                "Lua.workspace.checkThirdParty": {
+                    "default": true,
+                    "markdownDescription": "%config.workspace.checkThirdParty%",
+                    "scope": "source",
+                    "type": "boolean"
+                },
                 "Lua.workspace.ignoreDir": {
                     "default": [
                         ".vscode"
@@ -1405,5 +1411,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.1.0"
+    "version": "2.2.0"
 }

@@ -1270,6 +1270,12 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.workspace.checkThirdParty": {
+            "default": true,
+            "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n    * OpenResty\n    * Cocos4.0\n    * Jass\n",
+            "scope": "source",
+            "type": "boolean"
+        },
         "Lua.workspace.ignoreDir": {
             "default": [
                 ".vscode"

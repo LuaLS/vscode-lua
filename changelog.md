@@ -1,5 +1,33 @@
 # changelog
 
+## 2.2.0
+`2021-7-8`
+* `NEW` detect and apply third-party libraries, including:
+  * OpenResty
+  * Cocos4.0
+  * Jass
+* `NEW` `LuaDoc`: supports literal table:
+    ```lua
+    ---@generic T
+    ---@param x T
+    ---@return { x: number, y: T, z?: boolean}
+    local function f(x) end
+
+    local t = f('str')
+    -- hovering "t" shows:
+    local t: {
+        x: number,
+        y: string,
+        z?: boolean,
+    }
+    ```
+* `CHG` improve changing config from server side
+* `CHG` improve hover color
+* `CHG` improve performance
+* `CHG` telemetry: sends version of this extension
+* `FIX` supports for file with LF
+* `FIX` may infer a custom class as a string
+
 ## 2.1.0
 `2021-7-2`
 * `NEW` supports local config file, using `--configpath="config.json"`, [learn more here](https://github.com/sumneko/lua-language-server/wiki/Setting-without-VSCode)
