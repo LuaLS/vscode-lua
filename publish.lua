@@ -166,7 +166,8 @@ local count = copyFiles(ROOT , out) {
         ['test.lua']          = true,
         ['debugger.lua']      = true,
         ['meta']              = {
-            ['template']      = true
+            ['template']      = true,
+            ['3rd']           = true,
         },
     },
     ['images'] = {
