@@ -34,6 +34,12 @@ Adjust the enabled state of the built-in library. You can disable (or redefine) 
 The directory path of the external function library.
 The language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.
 ]],
+['config.workspace.checkThirdParty']  = [[
+Automatic detection and adaptation of third-party libraries, currently supported libraries are:
+    * OpenResty
+    * Cocos4.0
+    * Jass
+]],
     ['config.completion.enable']                 = 'Enable completion.',
     ['config.completion.callSnippet']            = 'Shows function call snippets.',
     ['config.completion.callSnippet.Disable']    = "Only shows `function name`.",

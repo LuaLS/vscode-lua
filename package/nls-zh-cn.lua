@@ -34,6 +34,12 @@ return {
 外部函数库的目录路径。
 语言服务会额外加载这些目录中的lua文件，即使他们不在当前的工作目录中，用于函数定义、自动完成等功能。
 ]],
+    ['config.workspace.checkThirdParty']  = [[
+自动检测与适配第三方库，目前支持的库为：
+    * OpenResty
+    * Cocos4.0
+    * Jass
+]],
     ['config.completion.enable']                 = '启用自动完成。',
     ['config.completion.callSnippet']            = '显示函数调用片段。',
     ['config.completion.callSnippet.Disable']    = "只显示 `函数名`。",

@@ -185,6 +185,12 @@ local config = {
         },
         markdownDescription = "%config.workspace.library%"
     },
+    ['Lua.workspace.checkThirdParty'] = {
+        scope = 'source',
+        type  = 'boolean',
+        default = true,
+        markdownDescription = "%config.workspace.checkThirdParty%"
+    },
     ["Lua.completion.enable"] = {
         scope = "resource",
         type = "boolean",
