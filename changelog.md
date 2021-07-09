@@ -1,5 +1,10 @@
 # changelog
 
+## 2.2.2
+`2021-7-9`
+* `FIX` incorrect syntax color
+* `FIX` incorrect type infer
+
 ## 2.2.1
 `2021-7-8`
 * `FIX` change setting may failed
