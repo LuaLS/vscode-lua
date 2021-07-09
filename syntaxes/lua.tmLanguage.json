@@ -183,9 +183,6 @@
 		{
 			"match": "\\+|-|%|#|\\*|\\/|\\^|==?|~=|!=|<=?|>=?|(?<!\\.)\\.{2}(?!\\.)",
 			"name": "keyword.operator.lua"
-		},
-		{
-			"include": "#luadoc.type"
 		}
 	],
 	"repository": {
