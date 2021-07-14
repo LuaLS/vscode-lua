@@ -36,9 +36,10 @@ The language service will additionally load the lua files in these directories, 
 ]],
 ['config.workspace.checkThirdParty']  = [[
 Automatic detection and adaptation of third-party libraries, currently supported libraries are:
-    * OpenResty
-    * Cocos4.0
-    * Jass
+
+* OpenResty
+* Cocos4.0
+* Jass
 ]],
     ['config.completion.enable']                 = 'Enable completion.',
     ['config.completion.callSnippet']            = 'Shows function call snippets.',

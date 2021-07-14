@@ -36,9 +36,10 @@ return {
 ]],
     ['config.workspace.checkThirdParty']  = [[
 自动检测与适配第三方库，目前支持的库为：
-    * OpenResty
-    * Cocos4.0
-    * Jass
+
+* OpenResty
+* Cocos4.0
+* Jass
 ]],
     ['config.completion.enable']                 = '启用自动完成。',
     ['config.completion.callSnippet']            = '显示函数调用片段。',
