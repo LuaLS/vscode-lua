@@ -186,7 +186,7 @@ local config = {
         markdownDescription = "%config.workspace.library%"
     },
     ['Lua.workspace.checkThirdParty'] = {
-        scope = 'source',
+        scope = 'resource',
         type  = 'boolean',
         default = true,
         markdownDescription = "%config.workspace.checkThirdParty%"
