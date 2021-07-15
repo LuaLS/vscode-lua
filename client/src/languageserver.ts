@@ -25,17 +25,19 @@ let defaultClient: LanguageClient;
 let clients: Map<string, LanguageClient> = new Map();
 
 function registerCustomCommands(context: ExtensionContext) {
-    context.subscriptions.push(Commands.registerCommand('lua.config', (data) => {
-        let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
-        if (data.action == 'add') {
-            let value: any[] = config.get(data.key);
-            value.push(data.value);
-            config.update(data.key, value, data.global);
-            return;
-        }
-        if (data.action == 'set') {
-            config.update(data.key, data.value, data.global);
-            return;
+    context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
+        for (const data of changes) {
+            let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
+            if (data.action == 'add') {
+                let value: any[] = config.get(data.key);
+                value.push(data.value);
+                config.update(data.key, value, data.global);
+                continue;
+            }
+            if (data.action == 'set') {
+                config.update(data.key, data.value, data.global);
+                continue;
+            }
         }
     }))
 }
