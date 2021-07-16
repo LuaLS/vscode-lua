@@ -719,7 +719,7 @@
 					"name": "storage.type.generic.lua"
 				},
 				{
-					"match": "[\\{\\}\\:\\,\\?\\|][ \\t]*",
+					"match": "[\\{\\}\\:\\,\\?\\|\\`][ \\t]*",
 					"name": "keyword.operator.lua"
 				},
 				{
