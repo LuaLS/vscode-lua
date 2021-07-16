@@ -1,5 +1,43 @@
 # changelog
 
+## 2.3.0
+`2021-7-16`
+* `NEW` `VSCode`: click the status bar icon to operate:
+    * run workspace diagnostics
+* `NEW` `LuaDoc`: supports `[1]` as field:
+    ```lua
+    ---@class position
+    ---@field [1] number
+    ---@field [2] number
+    ---@field [3] number
+    ```
+* `NEW` hover: view array `local array = {'a', 'b', 'c'}`:
+    ```lua
+    local array: {
+        [1]: string = "a",
+        [2]: string = "b",
+        [3]: string = "c",
+    }
+    ```
+* `NEW` completion: supports enums in `fun()`
+    ```lua
+    ---@type fun(x: "'aaa'"|"'bbb'")
+    local f
+
+    f(--[[show `'aaa'` and `'bbb'` here]])
+    ```
+* `FIX` loading workspace may hang
+* `FIX` `debug.getuservalue` and `debug.setuservalue` should not exist in `Lua 5.1`
+* `FIX` infer of `---@type class[][]`
+* `FIX` infer of `---@type {}[]`
+* `FIX` completion: displaying `@fenv` in `Lua 5.1`
+* `FIX` completion: incorrect at end of line
+* `FIX` when a file is renamed, the file will still be loaded even if the new file name has been set to ignore
+* `FIX` [#596](https://github.com/sumneko/lua-language-server/issues/596)
+* `FIX` [#597](https://github.com/sumneko/lua-language-server/issues/597)
+* `FIX` [#598](https://github.com/sumneko/lua-language-server/issues/598)
+* `FIX` [#601](https://github.com/sumneko/lua-language-server/issues/601)
+
 ## 2.2.3
 `2021-7-9`
 * `CHG` improve `auto require`

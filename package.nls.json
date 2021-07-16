@@ -52,7 +52,7 @@
     "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
     "config.window.progressBar": "Show progress bar in status bar.",
     "config.window.statusBar": "Show extension status in status bar.",
-    "config.workspace.checkThirdParty": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n    * OpenResty\n    * Cocos4.0\n    * Jass\n",
+    "config.workspace.checkThirdParty": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* Jass\n",
     "config.workspace.ignoreDir": "Ignored files and directories (Use `.gitignore` grammar).\n",
     "config.workspace.ignoreSubmodules": "Ignore submodules.",
     "config.workspace.library": "The directory path of the external function library.\nThe language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.\n",

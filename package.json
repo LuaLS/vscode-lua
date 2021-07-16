@@ -1300,7 +1300,7 @@
                 "Lua.workspace.checkThirdParty": {
                     "default": true,
                     "markdownDescription": "%config.workspace.checkThirdParty%",
-                    "scope": "source",
+                    "scope": "resource",
                     "type": "boolean"
                 },
                 "Lua.workspace.ignoreDir": {
@@ -1411,5 +1411,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.2.3"
+    "version": "2.3.0"
 }
