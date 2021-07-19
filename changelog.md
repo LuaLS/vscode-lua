@@ -1,5 +1,14 @@
 # changelog
 
+## 2.3.1
+`2021-7-19`
+* `NEW` setting `Lua.workspace.userThirdParty`, add private user [third-parth](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd) by this setting
+* `CHG` path in config supports `~/xxxx`
+* `FIX` `autoRequire` inserted incorrect code
+* `FIX` `autoRequire` may provide dumplicated options
+* `FIX` [#606](https://github.com/sumneko/lua-language-server/issues/606)
+* `FIX` [#607](https://github.com/sumneko/lua-language-server/issues/607)
+
 ## 2.3.0
 `2021-7-16`
 * `NEW` `VSCode`: click the status bar icon to operate:

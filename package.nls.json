@@ -59,5 +59,6 @@
     "config.workspace.maxPreload": "Max preloaded files.",
     "config.workspace.preloadFileSize": "Skip files larger than this value (KB) when preloading.",
     "config.workspace.useGitIgnore": "Ignore files list in `.gitignore` .",
+    "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
     "config.zzzzzz.cat": "DONT TOUCH ME, LET ME SLEEP >_<"
 }

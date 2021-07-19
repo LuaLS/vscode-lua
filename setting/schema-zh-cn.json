@@ -1318,6 +1318,14 @@
             "markdownDescription": "忽略 `.gitignore` 中列举的文件。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.workspace.userThirdParty": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
+            "scope": "resource",
+            "type": "array"
         }
     },
     "title": "setting",

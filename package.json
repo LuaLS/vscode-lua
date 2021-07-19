@@ -1345,6 +1345,14 @@
                     "markdownDescription": "%config.workspace.useGitIgnore%",
                     "scope": "resource",
                     "type": "boolean"
+                },
+                "Lua.workspace.userThirdParty": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "markdownDescription": "%config.workspace.userThirdParty%",
+                    "scope": "resource",
+                    "type": "array"
                 }
             },
             "title": "Lua",
@@ -1411,5 +1419,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.3.0"
+    "version": "2.3.1"
 }

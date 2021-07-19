@@ -62,6 +62,7 @@
     "config.workspace.maxPreload": "最大预加载文件数。",
     "config.workspace.preloadFileSize": "预加载时跳过大小大于该值（KB）的文件。",
     "config.workspace.useGitIgnore": "忽略 `.gitignore` 中列举的文件。",
+    "config.workspace.userThirdParty": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
     "config.zzzzzz.cat": "DONT TOUCH ME, LET ME SLEEP >_<",
     "duplicate-index": "在字面量表中重复定义了索引",
     "empty-block": "空代码块",
