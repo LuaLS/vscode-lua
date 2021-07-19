@@ -18,6 +18,7 @@ Adjust the enabled state of the built-in library. You can disable (or redefine) 
 * `enable`: always enable
 * `disable`: always disable
 ]],
+    ['config.workspace.userThirdParty']          = 'Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)',
     ["config.diagnostics.enable"]         = "Enable diagnostics.",
     ["config.diagnostics.disable"]        = "Disabled diagnostic (Use code in hover brackets).\n",-- .. example.disable,
     ["config.diagnostics.globals"]        = "Defined global variables.\n",-- .. example.globals,

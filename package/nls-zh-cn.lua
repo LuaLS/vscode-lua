@@ -41,6 +41,7 @@ return {
 * Cocos4.0
 * Jass
 ]],
+    ['config.workspace.userThirdParty']          = '在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)',
     ['config.completion.enable']                 = '启用自动完成。',
     ['config.completion.callSnippet']            = '显示函数调用片段。',
     ['config.completion.callSnippet.Disable']    = "只显示 `函数名`。",
