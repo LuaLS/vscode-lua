@@ -40,6 +40,7 @@ Automatic detection and adaptation of third-party libraries, currently supported
 
 * OpenResty
 * Cocos4.0
+* LÖVE
 * Jass
 ]],
     ['config.completion.enable']                 = 'Enable completion.',
