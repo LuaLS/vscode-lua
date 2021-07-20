@@ -505,19 +505,26 @@
 					"end": "(?=\\n)",
 					"patterns": [
 						{
-							"begin": "(\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b|\\[\\s*[0-9]*\\s*\\])(\\??)",
+							"begin": "(\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b|(\\[))(\\??)",
 							"beginCaptures": {
-								"1": {
+								"2": {
 									"name": "entity.name.variable.lua"
 								},
-								"2": {
+								"3": {
 									"name": "keyword.operator.lua"
 								}
 							},
 							"end": "(?=\\n)",
 							"patterns": [
 								{
+									"include": "#string"
+								},
+								{
 									"include": "#luadoc.type"
+								},
+								{
+									"match": "\\]",
+									"name": "keyword.operator.lua"
 								}
 							]
 						}
@@ -711,6 +718,9 @@
 						},
 						{
 							"include": "#luadoc.type"
+						},
+						{
+							"include": "#string"
 						}
 					]
 				},
