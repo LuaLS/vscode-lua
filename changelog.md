@@ -1,5 +1,18 @@
 # changelog
 
+## 2.3.2
+`2021-7-21`
+* `NEW` `LuaDoc`: supports `['string']` as field:
+    ```lua
+    ---@class keyboard
+    ---@field ['!'] number
+    ---@field ['?'] number
+    ---@field ['#'] number
+    ```
+* `NEW` add supports of `love2d`
+* `FIX` gitignore pattern `\` broken initialization
+* `FIX` runtime errors
+
 ## 2.3.1
 `2021-7-19`
 * `NEW` setting `Lua.workspace.userThirdParty`, add private user [third-parth](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd) by this setting
