@@ -152,7 +152,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
         clientOptions
     );
 
-    client.registerProposedFeatures();
+    //client.registerProposedFeatures();
     client.start();
     client.onReady().then(() => {
         onCommand(client);

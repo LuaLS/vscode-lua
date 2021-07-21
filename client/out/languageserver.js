@@ -100,7 +100,7 @@ function start(context, documentSelector, folder) {
         args: args,
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
-    client.registerProposedFeatures();
+    //client.registerProposedFeatures();
     client.start();
     client.onReady().then(() => {
         onCommand(client);
