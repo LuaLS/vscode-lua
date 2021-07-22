@@ -38,6 +38,12 @@ function registerCustomCommands(context: ExtensionContext) {
                 config.update(data.key, data.value, data.global);
                 continue;
             }
+            if (data.action == 'prop') {
+                let value: Map<string, any> = config.get(data.key);
+                value[data.prop] = data.value;
+                config.update(data.key, value, data.global);
+                continue;
+            }
         }
     }))
 }
