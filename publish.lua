@@ -194,6 +194,9 @@ removeFiles(out) {
         ['log']               = true,
         ['test']              = true,
         ['test.lua']          = true,
+        ['meta']              = {
+            ['Lua 5.4 zh-cn'] = true,
+        }
     },
 }
 
