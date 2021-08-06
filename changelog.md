@@ -1,5 +1,10 @@
 # changelog
 
+## 2.3.4
+`2021-8-6`
+* `CHG` improve performance
+* `FIX` [#625](https://github.com/sumneko/lua-language-server/issues/625)
+
 ## 2.3.3
 `2021-7-26`
 * `NEW` config supports prop
