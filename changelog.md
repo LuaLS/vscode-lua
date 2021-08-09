@@ -1,5 +1,11 @@
 # changelog
 
+## 2.3.5
+`2021-8-9`
+* `CHG` improve memory usage
+* `CHG` completion: call snip triggers signature (VSCode only)
+* `FIX` completion: may not find results
+
 ## 2.3.4
 `2021-8-6`
 * `CHG` improve performance
