@@ -1,5 +1,10 @@
 # changelog
 
+## 2.3.6
+`2021-8-9`
+* `FIX` completion: can not find global fields
+* `FIX` globals and class may lost
+
 ## 2.3.5
 `2021-8-9`
 * `CHG` improve memory usage
