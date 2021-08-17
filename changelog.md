@@ -1,5 +1,10 @@
 # changelog
 
+## 2.3.7
+`2021-8-17`
+* `CHG` improve performance
+* `FIX` [#244](https://github.com/sumneko/lua-language-server/issues/244)
+
 ## 2.3.6
 `2021-8-9`
 * `FIX` completion: can not find global fields
