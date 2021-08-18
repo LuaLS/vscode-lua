@@ -78,7 +78,10 @@ return {
     ['config.hint.enable']                      = '启用内联提示。',
     ['config.hint.paramType']                   = '在函数的参数位置提示类型。',
     ['config.hint.setType']                     = '在赋值操作位置提示类型。',
-    ['config.hint.paramName']                   = '调用的参数为字面量时提示参数名。',
+    ['config.hint.paramName']                   = '在函数调用处提示参数名。',
+    ['config.hint.paramName.All']               = '所有类型的参数均进行提示。',
+    ['config.hint.paramName.Literal']           = '只有字面量类型的参数进行提示。',
+    ['config.hint.paramName.Disable']           = '禁用参数提示。',
     ['config.telemetry.enable']                 = [[
 启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。
 ]],

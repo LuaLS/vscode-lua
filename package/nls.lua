@@ -77,8 +77,11 @@ Automatic detection and adaptation of third-party libraries, currently supported
     ['config.window.progressBar']               = 'Show progress bar in status bar.',
     ['config.hint.enable']                      = 'Enabel hint.',
     ['config.hint.paramType']                   = 'Show type hints at the parameter of the function.',
-    ['config.hint.setType']                     = 'Hint type at assignment operation.',
-    ['config.hint.paramName']                   = 'Hint parameter name when the parameter called is literal.',
+    ['config.hint.setType']                     = 'Show hints of type at assignment operation.',
+    ['config.hint.paramName']                   = 'Show hints of parameter name at the function call.',
+    ['config.hint.paramName.All']               = 'All types of parameters are shown.',
+    ['config.hint.paramName.Literal']           = 'Only literal type parameters are shown.',
+    ['config.hint.paramName.Disable']           = 'Disable parameter hints.',
     ['config.telemetry.enable']                 = [[
 Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).
 ]],

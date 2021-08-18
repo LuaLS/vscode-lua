@@ -391,8 +391,18 @@ local config = {
     },
     ['Lua.hint.paramName'] = {
         scope = 'resource',
-        type  = 'boolean',
-        default = true,
+        type  = 'string',
+        default = 'All',
+        enum = {
+            "All",
+            "Literal",
+            "Disable",
+        },
+        markdownEnumDescriptions = {
+            "%config.hint.paramName.All%",
+            "%config.hint.paramName.Literal%",
+            "%config.hint.paramName.Disable%",
+        },
         markdownDescription = '%config.hint.paramName%',
     },
     ['Lua.misc.parameters'] = {
