@@ -142,6 +142,38 @@ local config = {
         default = 100,
         markdownDescription = "%config.diagnostics.workspaceRate%",
     },
+    ["Lua.diagnostics.libraryFiles"] = {
+        scope = "resource",
+        type = "string",
+        default = "Disable",
+        enum = {
+            "Enable",
+            "Opened",
+            "Disable",
+        },
+        markdownEnumDescriptions = {
+            "%config.diagnostics.files.Enable%",
+            "%config.diagnostics.files.Opened%",
+            "%config.diagnostics.files.Disable%",
+        },
+        markdownDescription = "%config.diagnostics.libraryFiles%",
+    },
+    ["Lua.diagnostics.ignoredFiles"] = {
+        scope = "resource",
+        type = "string",
+        default = "Disable",
+        enum = {
+            "Enable",
+            "Opened",
+            "Disable",
+        },
+        markdownEnumDescriptions = {
+            "%config.diagnostics.files.Enable%",
+            "%config.diagnostics.files.Opened%",
+            "%config.diagnostics.files.Disable%",
+        },
+        markdownDescription = "%config.diagnostics.ignoredFiles%",
+    },
     ["Lua.workspace.ignoreDir"] = {
         scope = "resource",
         type = "array",
