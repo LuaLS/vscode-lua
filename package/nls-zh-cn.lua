@@ -3,7 +3,11 @@ local example = require 'package.nls-example'
 return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）',
     ["config.runtime.version"]            = "Lua运行版本。",
-    ["config.runtime.path"]               = "`package.path`",
+    ["config.runtime.path"]               = [[
+当使用 `require` 时，如何根据输入的名字来查找文件。
+此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索所有的 `**/myfile/init.lua`。
+如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。
+]],
     ["config.runtime.special"]            = [[将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
 下面这个例子表示将 `include` 视为 `require` 。
 ]] .. example.special,
@@ -30,10 +34,7 @@ return {
     ["config.workspace.useGitIgnore"]     = "忽略 `.gitignore` 中列举的文件。",
     ["config.workspace.maxPreload"]       = "最大预加载文件数。",
     ["config.workspace.preloadFileSize"]  = "预加载时跳过大小大于该值（KB）的文件。",
-    ["config.workspace.library"]          = [[
-外部函数库的目录路径。
-语言服务会额外加载这些目录中的lua文件，即使他们不在当前的工作目录中，用于函数定义、自动完成等功能。
-]],
+    ["config.workspace.library"]          = "除了当前工作区以外，还会从哪些目录中加载文件。",
     ['config.workspace.checkThirdParty']  = [[
 自动检测与适配第三方库，目前支持的库为：
 

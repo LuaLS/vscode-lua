@@ -3,7 +3,11 @@ local example = require 'package.nls-example'
 return {
     ['config.awakened.cat']               = 'PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)',
     ["config.runtime.version"]            = "Lua runtime version.",
-    ["config.runtime.path"]               = "`package.path`",
+    ["config.runtime.path"]               = [[
+When using `require`, how to find the file based on the input name.
+Setting this config to `?/init.lua` means that when you enter `require 'myfile'`, all `**/myfile/init.lua` will be searched from the loaded files.
+If you want to load files outside the workspace, you need to set `Lua.workspace.library` first.
+]],
     ["config.runtime.special"]            = [[The custom global variables are regarded as some special built-in variables, and the language server will provide special support
 The following example shows that 'include' is treated as' require '.
 ]] .. example.special,
@@ -31,10 +35,7 @@ Adjust the enabled state of the built-in library. You can disable (or redefine) 
     ["config.workspace.useGitIgnore"]     = "Ignore files list in `.gitignore` .",
     ["config.workspace.maxPreload"]       = "Max preloaded files.",
     ["config.workspace.preloadFileSize"]  = "Skip files larger than this value (KB) when preloading.",
-    ["config.workspace.library"]          = [[
-The directory path of the external function library.
-The language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.
-]],
+    ["config.workspace.library"]          = "In addition to the current workspace, which directories will load files from.",
 ['config.workspace.checkThirdParty']  = [[
 Automatic detection and adaptation of third-party libraries, currently supported libraries are:
 
