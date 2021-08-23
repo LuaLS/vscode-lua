@@ -309,6 +309,12 @@ local config = {
         default = true,
         markdownDescription = "%config.completion.showParams%"
     },
+    ['Lua.completion.requireSeparator'] = {
+        scope = "resource",
+        type = "string",
+        default = '.',
+        markdownDescription = "%config.completion.requireSeparator%"
+    },
     ["Lua.color.mode"] = {
         scope = "resource",
         type = "string",
