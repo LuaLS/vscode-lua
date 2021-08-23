@@ -119,7 +119,8 @@ function start(context, documentSelector, folder) {
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onInlayHint(client);
+        onDecorations(client);
+        //onInlayHint(client);
         statusBar(client);
     });
     return client;
@@ -211,13 +212,14 @@ function onDecorations(client) {
                 let options = [];
                 for (let index = 0; index < edits.length; index++) {
                     const edit = edits[index];
+                    let pos = client.protocol2CodeConverter.asPosition(edit.pos);
                     options[index] = {
-                        hoverMessage: edit.newText,
-                        range: client.protocol2CodeConverter.asRange(edit.range),
+                        hoverMessage: edit.text,
+                        range: new vscode.Range(pos, pos),
                         renderOptions: {
                             light: {
                                 after: {
-                                    contentText: edit.newText,
+                                    contentText: edit.text,
                                     color: '#888888',
                                     backgroundColor: '#EEEEEE;border-radius: 5px;',
                                     fontWeight: '400; font-size: 12px; line-height: 1;',
@@ -225,7 +227,7 @@ function onDecorations(client) {
                             },
                             dark: {
                                 after: {
-                                    contentText: edit.newText,
+                                    contentText: edit.text,
                                     color: '#888888',
                                     backgroundColor: '#333333;border-radius: 5px;',
                                     fontWeight: '400; font-size: 12px; line-height: 1;',

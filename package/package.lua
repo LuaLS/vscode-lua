@@ -5,7 +5,6 @@ return {
     author = "sumneko",
     icon = "images/logo.png",
     license = "MIT",
-    enableProposedApi = true,
     repository = {
         type = "git",
         url = "https://github.com/sumneko/lua-language-server"

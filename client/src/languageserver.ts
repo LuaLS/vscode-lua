@@ -24,6 +24,12 @@ import {
 let defaultClient: LanguageClient;
 let clients: Map<string, LanguageClient> = new Map();
 
+type HintResult = {
+    text: string,
+    pos:  types.Position,
+    kind: types.integer,
+}
+
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
         for (const data of changes) {
@@ -162,7 +168,8 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onInlayHint(client);
+        onDecorations(client)
+        //onInlayHint(client);
         statusBar(client);
     });
 
@@ -263,17 +270,18 @@ function onDecorations(client: LanguageClient) {
             const editor = window.visibleTextEditors[index];
             if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
                 let textEditor = editor;
-                let edits:  types.TextEdit[] = params.edits
+                let edits: HintResult[] = params.edits
                 let options: vscode.DecorationOptions[] = [];
                 for (let index = 0; index < edits.length; index++) {
                     const edit = edits[index];
+                    let pos = client.protocol2CodeConverter.asPosition(edit.pos);
                     options[index] = {
-                        hoverMessage:  edit.newText,
-                        range:         client.protocol2CodeConverter.asRange(edit.range),
+                        hoverMessage:  edit.text,
+                        range:         new vscode.Range(pos, pos),
                         renderOptions: {
                             light: {
                                 after: {
-                                    contentText:     edit.newText,
+                                    contentText:     edit.text,
                                     color:           '#888888',
                                     backgroundColor: '#EEEEEE;border-radius: 5px;',
                                     fontWeight:      '400; font-size: 12px; line-height: 1;',
@@ -281,7 +289,7 @@ function onDecorations(client: LanguageClient) {
                             },
                             dark: {
                                 after: {
-                                    contentText:     edit.newText,
+                                    contentText:     edit.text,
                                     color:           '#888888',
                                     backgroundColor: '#333333;border-radius: 5px;',
                                     fontWeight:      '400; font-size: 12px; line-height: 1;',
@@ -297,11 +305,6 @@ function onDecorations(client: LanguageClient) {
 }
 
 function onInlayHint(client: LanguageClient) {
-    type HintResult = {
-        text: string,
-        pos:  types.Position,
-        kind: types.integer,
-    }
     vscode.languages.registerInlayHintsProvider(client.clientOptions.documentSelector, {
         provideInlayHints: async (model: TextDocument, range: vscode.Range): Promise<vscode.InlayHint[]> => {
             let pdoc    = client.code2ProtocolConverter.asTextDocumentIdentifier(model);
