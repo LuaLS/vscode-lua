@@ -66,15 +66,37 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.completion.requireSeparator": {
+            "default": ".",
+            "markdownDescription": "`require` 时使用的分隔符。",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.completion.showParams": {
             "default": true,
             "markdownDescription": "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.completion.showWord": {
+            "default": "Enable",
+            "enum": [
+                "Enable",
+                "Fallback",
+                "Disable"
+            ],
+            "markdownDescription": "在建议中显示上下文单词。",
+            "markdownEnumDescriptions": [
+                "总是在建议中显示上下文单词。",
+                "无法根据语义提供建议时才显示上下文单词。",
+                "不显示上下文单词。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.completion.workspaceWord": {
             "default": true,
-            "markdownDescription": "显示工作区范围内的单词。",
+            "markdownDescription": "显示的上下文单词是否包含工作区中其他文件的内容。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -99,6 +121,38 @@
             "markdownDescription": "已定义的全局变量。\n",
             "scope": "resource",
             "type": "array"
+        },
+        "Lua.diagnostics.ignoredFiles": {
+            "default": "Disable",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "如何诊断被忽略的文件。",
+            "markdownEnumDescriptions": [
+                "总是诊断这些文件。",
+                "只有打开这些文件时才会诊断。",
+                "不诊断这些文件。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "Lua.diagnostics.libraryFiles": {
+            "default": "Disable",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "如何诊断通过 `Lua.workspace.library` 加载的文件。",
+            "markdownEnumDescriptions": [
+                "总是诊断这些文件。",
+                "只有打开这些文件时才会诊断。",
+                "不诊断这些文件。"
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "Lua.diagnostics.neededFileStatus": {
             "markdownDescription": "如果你只想诊断打开的文件，选Opened；否则，选Any。\n",
@@ -161,6 +215,17 @@
                 "deprecated": {
                     "default": "Opened",
                     "description": "%config.diagnostics.deprecated%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "different-requires": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.different-requires%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -557,6 +622,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "different-requires": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "doc-field-no-class": {
                     "default": "Warning",
                     "description": "%config.diagnostics.doc-field-no-class%",
@@ -917,10 +994,20 @@
             "type": "boolean"
         },
         "Lua.hint.paramName": {
-            "default": true,
-            "markdownDescription": "调用的参数为字面量时提示参数名。",
+            "default": "All",
+            "enum": [
+                "All",
+                "Literal",
+                "Disable"
+            ],
+            "markdownDescription": "在函数调用处提示参数名。",
+            "markdownEnumDescriptions": [
+                "所有类型的参数均进行提示。",
+                "只有字面量类型的参数进行提示。",
+                "禁用参数提示。"
+            ],
             "scope": "resource",
-            "type": "boolean"
+            "type": "string"
         },
         "Lua.hint.paramType": {
             "default": true,
@@ -1191,7 +1278,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "`package.path`",
+            "markdownDescription": "当使用 `require` 时，如何根据输入的名字来查找文件。\n此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索所有的 `**/myfile/init.lua`。\n如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。\n",
             "scope": "resource",
             "type": "array"
         },
@@ -1297,7 +1384,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "外部函数库的目录路径。\n语言服务会额外加载这些目录中的lua文件，即使他们不在当前的工作目录中，用于函数定义、自动完成等功能。\n",
+            "markdownDescription": "除了当前工作区以外，还会从哪些目录中加载文件。",
             "scope": "resource",
             "type": "array"
         },

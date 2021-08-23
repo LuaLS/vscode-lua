@@ -1,5 +1,22 @@
 # changelog
 
+## 2.4.0
+* `NEW` settings:
+  + `Lua.diagnostics.libraryFiles`
+  + `Lua.diagnostics.ignoredFiles`
+  + `Lua.completion.showWord`
+  + `Lua.completion.requireSeparator`
+* `NEW` diagnostics:
+  + `different-requires`
+* `CHG` hover: improve showing multi defines
+* `CHG` hover: improve showing multi comments at enums
+* `CHG` hint: `Lua.hint.paramName` now supports `Disable`, `Literal` and `All`
+* `CHG` only search first file by `require`
+* `CHG` no longer ignore file names case in Windows
+* `CHG` watching library changes
+* `FIX` runtime errors
+* `FIX` hint: may show param-2 as `self`
+
 ## 2.3.7
 `2021-8-17`
 * `CHG` improve performance

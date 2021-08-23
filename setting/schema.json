@@ -66,15 +66,37 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.completion.requireSeparator": {
+            "default": ".",
+            "markdownDescription": "The separator used when `require`.",
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.completion.showParams": {
             "default": true,
             "markdownDescription": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
             "scope": "resource",
             "type": "boolean"
         },
+        "Lua.completion.showWord": {
+            "default": "Enable",
+            "enum": [
+                "Enable",
+                "Fallback",
+                "Disable"
+            ],
+            "markdownDescription": "Show contextual words in suggestions.",
+            "markdownEnumDescriptions": [
+                "Always show context words in suggestions.",
+                "Contextual words are only displayed when suggestions based on semantics cannot be provided.",
+                "Do not display context words."
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
         "Lua.completion.workspaceWord": {
             "default": true,
-            "markdownDescription": "Shows words within the workspace.",
+            "markdownDescription": "Whether the displayed context word contains the content of other files in the workspace.",
             "scope": "resource",
             "type": "boolean"
         },
@@ -99,6 +121,38 @@
             "markdownDescription": "Defined global variables.\n",
             "scope": "resource",
             "type": "array"
+        },
+        "Lua.diagnostics.ignoredFiles": {
+            "default": "Disable",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "How to diagnose ignored files.",
+            "markdownEnumDescriptions": [
+                "Always diagnose these files.",
+                "Only when these files are opened will it be diagnosed.",
+                "These files are not diagnosed."
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "Lua.diagnostics.libraryFiles": {
+            "default": "Disable",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "How to diagnose files loaded via `Lua.workspace.library`.",
+            "markdownEnumDescriptions": [
+                "Always diagnose these files.",
+                "Only when these files are opened will it be diagnosed.",
+                "These files are not diagnosed."
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "Lua.diagnostics.neededFileStatus": {
             "markdownDescription": "If you want to check only opened files, choice Opened; else choice Any.\n",
@@ -161,6 +215,17 @@
                 "deprecated": {
                     "default": "Opened",
                     "description": "%config.diagnostics.deprecated%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "different-requires": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.different-requires%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -557,6 +622,18 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "different-requires": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "doc-field-no-class": {
                     "default": "Warning",
                     "description": "%config.diagnostics.doc-field-no-class%",
@@ -917,10 +994,20 @@
             "type": "boolean"
         },
         "Lua.hint.paramName": {
-            "default": true,
-            "markdownDescription": "Hint parameter name when the parameter called is literal.",
+            "default": "All",
+            "enum": [
+                "All",
+                "Literal",
+                "Disable"
+            ],
+            "markdownDescription": "Show hints of parameter name at the function call.",
+            "markdownEnumDescriptions": [
+                "All types of parameters are shown.",
+                "Only literal type parameters are shown.",
+                "Disable parameter hints."
+            ],
             "scope": "resource",
-            "type": "boolean"
+            "type": "string"
         },
         "Lua.hint.paramType": {
             "default": true,
@@ -930,7 +1017,7 @@
         },
         "Lua.hint.setType": {
             "default": false,
-            "markdownDescription": "Hint type at assignment operation.",
+            "markdownDescription": "Show hints of type at assignment operation.",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1191,7 +1278,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "`package.path`",
+            "markdownDescription": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, all `**/myfile/init.lua` will be searched from the loaded files.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
             "scope": "resource",
             "type": "array"
         },
@@ -1297,7 +1384,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "The directory path of the external function library.\nThe language service will additionally load the lua files in these directories, even if they are not in the current workspace, for definition, completion and other features.\n",
+            "markdownDescription": "In addition to the current workspace, which directories will load files from.",
             "scope": "resource",
             "type": "array"
         },
