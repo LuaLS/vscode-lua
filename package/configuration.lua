@@ -25,7 +25,6 @@ local config = {
         default = {
             "?.lua",
             "?/init.lua",
-            "?/?.lua"
         }
     },
     ["Lua.runtime.special"] = {
