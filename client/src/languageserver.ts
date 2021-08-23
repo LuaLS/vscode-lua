@@ -162,7 +162,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onDecorations(client);
+        onInlayHint(client);
         statusBar(client);
     });
 
@@ -292,6 +292,37 @@ function onDecorations(client: LanguageClient) {
                 }
                 textEditor.setDecorations(textType, options);
             }
+        }
+    })
+}
+
+function onInlayHint(client: LanguageClient) {
+    type HintResult = {
+        text: string,
+        pos:  types.Position,
+        kind: types.integer,
+    }
+    vscode.languages.registerInlayHintsProvider(client.clientOptions.documentSelector, {
+        provideInlayHints: async (model: TextDocument, range: vscode.Range): Promise<vscode.InlayHint[]> => {
+            let pdoc    = client.code2ProtocolConverter.asTextDocumentIdentifier(model);
+            let prange  = client.code2ProtocolConverter.asRange(range);
+            let results: HintResult[] = await client.sendRequest('$/requestHint', {
+                textDocument: pdoc,
+                range:        prange,
+            });
+            if (!results) {
+                return [];
+            }
+            let hints: vscode.InlayHint[] = [];
+            for (const result of results) {
+                let hint = new vscode.InlayHint(
+                    result.text,
+                    client.protocol2CodeConverter.asPosition(result.pos),
+                    result.kind
+                );
+                hints.push(hint);
+            }
+            return hints;
         }
     })
 }

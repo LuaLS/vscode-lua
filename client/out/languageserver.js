@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const path = require("path");
@@ -110,7 +119,7 @@ function start(context, documentSelector, folder) {
     client.start();
     client.onReady().then(() => {
         onCommand(client);
-        onDecorations(client);
+        onInlayHint(client);
         statusBar(client);
     });
     return client;
@@ -228,6 +237,27 @@ function onDecorations(client) {
                 textEditor.setDecorations(textType, options);
             }
         }
+    });
+}
+function onInlayHint(client) {
+    vscode.languages.registerInlayHintsProvider(client.clientOptions.documentSelector, {
+        provideInlayHints: (model, range) => __awaiter(this, void 0, void 0, function* () {
+            let pdoc = client.code2ProtocolConverter.asTextDocumentIdentifier(model);
+            let prange = client.code2ProtocolConverter.asRange(range);
+            let results = yield client.sendRequest('$/requestHint', {
+                textDocument: pdoc,
+                range: prange,
+            });
+            if (!results) {
+                return [];
+            }
+            let hints = [];
+            for (const result of results) {
+                let hint = new vscode.InlayHint(result.text, client.protocol2CodeConverter.asPosition(result.pos), result.kind);
+                hints.push(hint);
+            }
+            return hints;
+        })
     });
 }
 function activate(context) {
