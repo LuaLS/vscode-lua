@@ -106,7 +106,7 @@
                     "type": "boolean"
                 },
                 "Lua.completion.showWord": {
-                    "default": "Enable",
+                    "default": "Fallback",
                     "enum": [
                         "Enable",
                         "Fallback",
@@ -1299,8 +1299,7 @@
                 "Lua.runtime.path": {
                     "default": [
                         "?.lua",
-                        "?/init.lua",
-                        "?/?.lua"
+                        "?/init.lua"
                     ],
                     "items": {
                         "type": "string"
@@ -1489,7 +1488,6 @@
     },
     "description": "Lua Language Server coded by Lua",
     "displayName": "Lua",
-    "enableProposedApi": true,
     "engines": {
         "vscode": "^1.23.0"
     },

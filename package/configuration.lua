@@ -283,7 +283,7 @@ local config = {
     ['Lua.completion.showWord'] = {
         scope = "resource",
         type = "string",
-        default = 'Enable',
+        default = 'Fallback',
         enum = {
             "Enable",
             "Fallback",
