@@ -281,6 +281,22 @@ local config = {
         default = true,
         markdownDescription = "%config.completion.workspaceWord%"
     },
+    ['Lua.completion.showWord'] = {
+        scope = "resource",
+        type = "string",
+        default = 'Enable',
+        enum = {
+            "Enable",
+            "Fallback",
+            "Disable",
+        },
+        markdownEnumDescriptions = {
+            "%config.completion.showWord.Enable%",
+            "%config.completion.showWord.Fallback%",
+            "%config.completion.showWord.Disable%",
+        },
+        markdownDescription = "%config.completion.showWord%"
+    },
     ['Lua.completion.autoRequire'] = {
         scope = "resource",
         type = "boolean",
