@@ -1488,6 +1488,7 @@
     },
     "description": "Lua Language Server coded by Lua",
     "displayName": "Lua",
+    "enableProposedApi": true,
     "engines": {
         "vscode": "^1.23.0"
     },
