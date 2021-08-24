@@ -144,7 +144,7 @@ local config = {
     ["Lua.diagnostics.libraryFiles"] = {
         scope = "resource",
         type = "string",
-        default = "Disable",
+        default = "Opened",
         enum = {
             "Enable",
             "Opened",
@@ -160,7 +160,7 @@ local config = {
     ["Lua.diagnostics.ignoredFiles"] = {
         scope = "resource",
         type = "string",
-        default = "Disable",
+        default = "Opened",
         enum = {
             "Enable",
             "Opened",
