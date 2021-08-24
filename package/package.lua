@@ -5,7 +5,6 @@ return {
     author = "sumneko",
     icon = "images/logo.png",
     license = "MIT",
-    enableProposedApi = true,
     repository = {
         type = "git",
         url = "https://github.com/sumneko/lua-language-server"
@@ -55,7 +54,6 @@ return {
             supported = "limited",
             description = "",
             restrictedConfigurations = {
-                "Lua.develop.enable",
                 "Lua.runtime.plugin",
                 "Lua.misc.parameters",
             },
