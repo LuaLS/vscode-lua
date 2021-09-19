@@ -22,14 +22,14 @@
                 "command": "chcp 65001 && msvc_x64.bat"
             },
             "linux": {
-                "command": "ninja -f ninja/linux.ninja"
+                "command": "ninja -f compile/ninja/linux.ninja"
             },
             "osx": {
-                "command": "ninja -f ninja/macos.ninja"
+                "command": "ninja -f compile/ninja/macos.ninja"
             },
             "options": {
                 "cwd": "${workspaceFolder}/server/3rd/luamake"
-            },
+            }
         },
         {
             "type": "shell",
@@ -38,6 +38,11 @@
             "options": {
                 "cwd": "${workspaceFolder}/server"
             },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "Install",
@@ -47,8 +52,8 @@
                     "-e",
                     "package.cpath = './server/build/msvc/bin/?.dll;' .. package.cpath",
                     "make/copy.lua",
-                    "${command:extensionPath}",
-                ],
+                    "${command:extensionPath}"
+                ]
             },
             "linux": {
                 "command": "${workspaceFolder}/server/build/linux/bin/lua",
@@ -56,8 +61,8 @@
                     "-e",
                     "package.cpath = \"./server/build/linux/bin/?.so;\" .. package.cpath",
                     "make/copy.lua",
-                    "${command:extensionPath}",
-                ],
+                    "${command:extensionPath}"
+                ]
             },
             "osx": {
                 "command": "${workspaceFolder}/server/build/macos/bin/lua",
@@ -65,9 +70,9 @@
                     "-e",
                     "package.cpath = \"./server/build/macos/bin/?.so;\" .. package.cpath",
                     "make/copy.lua",
-                    "${command:extensionPath}",
-                ],
-            },
+                    "${command:extensionPath}"
+                ]
+            }
         }
     ]
 }
