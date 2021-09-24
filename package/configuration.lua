@@ -271,7 +271,7 @@ local config = {
     ['Lua.completion.displayContext'] = {
         scope = "resource",
         type  = "integer",
-        default = 6,
+        default = 0,
         markdownDescription = "%config.completion.displayContext%",
     },
     ['Lua.completion.workspaceWord'] = {
