@@ -69,6 +69,7 @@ return {
     ['config.completion.requireSeparator']       = "`require` 时使用的分隔符。",
     ['config.color.mode']                        = "着色模式。",
     ['config.color.mode.Semantic']               = "语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
+    ['config.color.mode.SemanticEnhanced']       = "", -- TODO
     ['config.color.mode.Grammar']                = "语法着色。",
     ['config.signatureHelp.enable']              = "启用参数提示。",
     ['config.hover.enable']                      = "启用悬停提示。",
