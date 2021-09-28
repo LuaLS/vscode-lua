@@ -321,10 +321,12 @@ local config = {
         enum = {
             "Grammar",
             "Semantic",
+            "SemanticEnhanced",
         },
         markdownEnumDescriptions = {
             "%config.color.mode.Grammar%",
             "%config.color.mode.Semantic%",
+            "%config.color.mode.SemanticEnhanced%",
         },
         markdownDescription = "%config.color.mode%"
     },
