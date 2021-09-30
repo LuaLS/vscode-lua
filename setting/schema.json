@@ -6,12 +6,14 @@
             "default": "Semantic",
             "enum": [
                 "Grammar",
-                "Semantic"
+                "Semantic",
+                "SemanticEnhanced"
             ],
             "markdownDescription": "Color mode.",
             "markdownEnumDescriptions": [
                 "Grammar color.",
-                "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect."
+                "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
+                "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive."
             ],
             "scope": "resource",
             "type": "string"
@@ -39,7 +41,7 @@
             "type": "string"
         },
         "Lua.completion.displayContext": {
-            "default": 6,
+            "default": 0,
             "markdownDescription": "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
             "scope": "resource",
             "type": "integer"
@@ -123,7 +125,7 @@
             "type": "array"
         },
         "Lua.diagnostics.ignoredFiles": {
-            "default": "Disable",
+            "default": "Opened",
             "enum": [
                 "Enable",
                 "Opened",
@@ -139,7 +141,7 @@
             "type": "string"
         },
         "Lua.diagnostics.libraryFiles": {
-            "default": "Disable",
+            "default": "Opened",
             "enum": [
                 "Enable",
                 "Opened",
@@ -402,6 +404,17 @@
                 "trailing-space": {
                     "default": "Opened",
                     "description": "%config.diagnostics.trailing-space%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.type-check%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -791,7 +804,7 @@
                     "type": "string"
                 },
                 "redundant-parameter": {
-                    "default": "Hint",
+                    "default": "Warning",
                     "description": "%config.diagnostics.redundant-parameter%",
                     "enum": [
                         "Error",
@@ -803,7 +816,7 @@
                     "type": "string"
                 },
                 "redundant-value": {
-                    "default": "Hint",
+                    "default": "Warning",
                     "description": "%config.diagnostics.redundant-value%",
                     "enum": [
                         "Error",
@@ -817,6 +830,18 @@
                 "trailing-space": {
                     "default": "Hint",
                     "description": "%config.diagnostics.trailing-space%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.type-check%",
                     "enum": [
                         "Error",
                         "Warning",
