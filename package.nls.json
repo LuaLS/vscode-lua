@@ -3,6 +3,7 @@
     "config.color.mode": "Color mode.",
     "config.color.mode.Grammar": "Grammar color.",
     "config.color.mode.Semantic": "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
+    "config.color.mode.SemanticEnhanced": "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive.",
     "config.completion.autoRequire": "When the input looks like a file name, automatically `require` this file.",
     "config.completion.callSnippet": "Shows function call snippets.",
     "config.completion.callSnippet.Both": "Shows `function name` and `call snippet`.",

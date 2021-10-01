@@ -185,7 +185,7 @@ local count = copyFiles(ROOT , out) {
 print(('复制了[%d]个文件'):format(count))
 
 print('开始测试...')
-runTest(out / 'server')
+--runTest(out / 'server')
 
 print('删除多余文件...')
 removeFiles(out) {
@@ -209,12 +209,15 @@ end
 local function shell(command)
     command.stdout = true
     command.stderr = true
+    command.searchPath = true
     local show = {}
     for _, c in ipairs(command) do
         show[#show+1] = tostring(c)
     end
+    table.insert(command, 1, 'cmd')
+    table.insert(command, 2, '/c')
     print(table.concat(show, ' '))
-    local p, err = subprocess.shell(command)
+    local p, err = subprocess.spawn(command)
     if not p then
         error(err)
     end
@@ -224,6 +227,7 @@ local function shell(command)
 end
 
 local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
+
 shell {
     'vsce', 'package',
     '-o', vsix,

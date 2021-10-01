@@ -1,6 +1,8 @@
 # changelog
 
 ## 2.4.0
+`2021-10-1`
+* `NEW` loading settings from `.luarc.json`
 * `NEW` settings:
   + `Lua.diagnostics.libraryFiles`
   + `Lua.diagnostics.ignoredFiles`
@@ -8,14 +10,54 @@
   + `Lua.completion.requireSeparator`
 * `NEW` diagnostics:
   + `different-requires`
+* `NEW` `---@CustomClass<string, number>`
+* `NEW` supports `$/cancelRequest`
+* `NEW` `EventEmitter`
+    ```lua
+    --- @class Emit
+    --- @field on fun(eventName: string, cb: function)
+    --- @field on fun(eventName: '"died"', cb: fun(i: integer))
+    --- @field on fun(eventName: '"won"', cb: fun(s: string))
+    local emit = {}
+
+    emit:on(--[[support autocomplete fr "died" and "won"]])
+
+    emit:on("died", function (i)
+        -- should be i: integer
+    end)
+
+    emit:on('won', function (s)
+        -- should be s: string
+    end)
+    ```
+* `NEW` `---@module 'moduleName'`
+    ```lua
+    ---@module 'mylib'
+    local lib -- the same as `local lib = require 'mylib'`
+    ```
+* `NEW` add supports of `skynet`
 * `CHG` hover: improve showing multi defines
 * `CHG` hover: improve showing multi comments at enums
+* `CHG` hover: shows method
 * `CHG` hint: `Lua.hint.paramName` now supports `Disable`, `Literal` and `All`
 * `CHG` only search first file by `require`
+* `CHG` no longer infer by usage
 * `CHG` no longer ignore file names case in Windows
 * `CHG` watching library changes
+* `CHG` completion: improve misspelling results
+* `CHG` completion: `Lua.completion.displayContext` default to `0`
+* `CHG` completion: `autoRequire` has better inserting position
+* `CHG` diagnostics:
+  + `redundant-parameter` default severity to `Warning`
+  + `redundant-value` default severity to `Warning`
+* `CHG` infer: more strict of calculation results
+* `CHG` [#663](https://github.com/sumneko/lua-language-server/issues/663)
 * `FIX` runtime errors
 * `FIX` hint: may show param-2 as `self`
+* `FIX` semantic: may fail when scrolling
+* `FIX` [#647](https://github.com/sumneko/lua-language-server/issues/647)
+* `FIX` [#660](https://github.com/sumneko/lua-language-server/issues/660)
+* `FIX` [#673](https://github.com/sumneko/lua-language-server/issues/673)
 
 ## 2.3.7
 `2021-8-17`
