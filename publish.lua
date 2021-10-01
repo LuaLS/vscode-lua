@@ -185,7 +185,7 @@ local count = copyFiles(ROOT , out) {
 print(('复制了[%d]个文件'):format(count))
 
 print('开始测试...')
---runTest(out / 'server')
+runTest(out / 'server')
 
 print('删除多余文件...')
 removeFiles(out) {
