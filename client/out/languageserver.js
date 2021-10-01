@@ -20,6 +20,7 @@ let defaultClient;
 let clients = new Map();
 function registerCustomCommands(context) {
     context.subscriptions.push(vscode_1.commands.registerCommand('lua.config', (changes) => {
+        let propMap = new Map();
         for (const data of changes) {
             let config = vscode_1.workspace.getConfiguration(undefined, vscode_1.Uri.parse(data.uri));
             if (data.action == 'add') {
@@ -33,9 +34,11 @@ function registerCustomCommands(context) {
                 continue;
             }
             if (data.action == 'prop') {
-                let value = config.get(data.key);
-                value[data.prop] = data.value;
-                config.update(data.key, value, data.global);
+                if (!propMap[data.key]) {
+                    propMap[data.key] = config.get(data.key);
+                }
+                propMap[data.key][data.prop] = data.value;
+                config.update(data.key, propMap[data.key], data.global);
                 continue;
             }
         }

@@ -32,6 +32,7 @@ type HintResult = {
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
+        let propMap: Map<string, Map<string, any>> = new Map();
         for (const data of changes) {
             let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
             if (data.action == 'add') {
@@ -45,9 +46,11 @@ function registerCustomCommands(context: ExtensionContext) {
                 continue;
             }
             if (data.action == 'prop') {
-                let value: Map<string, any> = config.get(data.key);
-                value[data.prop] = data.value;
-                config.update(data.key, value, data.global);
+                if (!propMap[data.key]) {
+                    propMap[data.key] = config.get(data.key);
+                }
+                propMap[data.key][data.prop] = data.value;
+                config.update(data.key, propMap[data.key], data.global);
                 continue;
             }
         }

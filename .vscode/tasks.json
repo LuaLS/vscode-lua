@@ -39,10 +39,7 @@
                 "cwd": "${workspaceFolder}/server"
             },
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         },
         {
             "label": "Install",
@@ -73,6 +70,18 @@
                     "${command:extensionPath}"
                 ]
             }
+        },
+        {
+            "type": "typescript",
+            "tsconfig": "client/tsconfig.json",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "label": "tsc: 构建 - client/tsconfig.json"
         }
     ]
 }
