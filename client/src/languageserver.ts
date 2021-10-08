@@ -198,6 +198,7 @@ function statusBar(client: LanguageClient) {
         bar.text    = params.text;
         bar.tooltip = params.tooltip;
     })
+    client.sendNotification('$/status/refresh');
 }
 
 function onCommand(client: LanguageClient) {
