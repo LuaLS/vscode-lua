@@ -13,8 +13,8 @@ return {
     ['method.declaration'] = {'entity.name.function.lua'},
     -- 参数声明 | Parameter declaration
     ['parameter.declaration'] = {'variable.parameter.lua'},
-    -- table的field声明 | Table field access
-    ['property'] = {'variable.other.property.lua'},
+    -- table的field访问 | Table field access
+    ['property'] = {'entity.other.attribute.lua'},
     -- table的field声明 | Table field statement
     ['property.declaration'] = {'entity.other.property.lua'},
     -- Regular variable (modlue-local or otherwise not scoped)
