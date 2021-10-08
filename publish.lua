@@ -3,7 +3,6 @@ local rootPath = currentPath:gsub('[^/\\]-$', '')
 if rootPath == '' then
     rootPath = './'
 end
-loadfile(rootPath .. 'server/platform.lua')('script')
 local fs         = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
 local platform   = require 'bee.platform'
@@ -14,6 +13,7 @@ local fsu        = require 'fs-utility'
 package.path = package.path
     .. ';' .. rootPath .. '/?.lua'
 ROOT = fs.path(rootPath)
+fs.current_path(ROOT)
 require 'package.build'
 dofile(rootPath .. 'setting/build.lua')
 local json = require 'json'
