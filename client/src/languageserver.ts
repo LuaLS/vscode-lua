@@ -144,20 +144,9 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             break;
     }
 
-    let args: string[] = [
-        '-E',
-        context.asAbsolutePath(path.join(
-            'server',
-            'main.lua',
-        )),
-    ];
-    try {
-        args = args.concat(commandParam);
-    } finally {};
-
     let serverOptions: ServerOptions = {
         command: command,
-        args:    args,
+        args:    commandParam,
     };
 
     let client = new LanguageClient(

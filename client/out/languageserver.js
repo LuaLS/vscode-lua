@@ -104,18 +104,9 @@ function start(context, documentSelector, folder) {
             fs.chmodSync(command, '777');
             break;
     }
-    let args = [
-        '-E',
-        context.asAbsolutePath(path.join('server', 'main.lua')),
-    ];
-    try {
-        args = args.concat(commandParam);
-    }
-    finally { }
-    ;
     let serverOptions = {
         command: command,
-        args: args,
+        args: commandParam,
     };
     let client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
     //client.registerProposedFeatures();
