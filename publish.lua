@@ -1,17 +1,16 @@
 local currentPath = debug.getinfo(1, 'S').source:sub(2)
 local rootPath = currentPath:gsub('[^/\\]-$', '')
-if rootPath == '' then
-    rootPath = './'
-end
 local fs         = require 'bee.filesystem'
 local subprocess = require 'bee.subprocess'
 local platform   = require 'bee.platform'
 local thread     = require 'bee.thread'
-local fsu        = require 'fs-utility'
 --dofile(rootPath .. 'server/test.lua')
 
 package.path = package.path
-    .. ';' .. rootPath .. '/?.lua'
+    .. ';' .. rootPath .. '?.lua'
+    .. ';' .. rootPath .. 'server/script/?.lua'
+
+local fsu = require 'fs-utility'
 ROOT = fs.path(rootPath)
 fs.current_path(ROOT)
 require 'package.build'
@@ -59,7 +58,7 @@ local function copyFiles(root, out)
             if fs.is_directory(source) then
                 fs.create_directory(target)
                 if mode == true then
-                    for path in source:list_directory() do
+                    for path in fs.pairs(source) do
                         copy(relative / path:filename(), true)
                     end
                 else
@@ -109,7 +108,7 @@ local function removeFiles(out)
             end
             if fs.is_directory(target) then
                 if mode == true then
-                    for path in target:list_directory() do
+                    for path in fs.pairs(target) do
                         remove(relative / path:filename(), true)
                     end
                     fs.remove(target)
