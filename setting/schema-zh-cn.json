@@ -2,362 +2,14 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
-        "Lua": {
-            "properties": {
-                "color": {
-                    "properties": {
-                        "mode": {
-                            "$ref": "#/properties/Lua.color.mode"
-                        }
-                    }
-                },
-                "color.mode": {
-                    "$ref": "#/properties/Lua.color.mode"
-                },
-                "completion": {
-                    "properties": {
-                        "autoRequire": {
-                            "$ref": "#/properties/Lua.completion.autoRequire"
-                        },
-                        "callSnippet": {
-                            "$ref": "#/properties/Lua.completion.callSnippet"
-                        },
-                        "displayContext": {
-                            "$ref": "#/properties/Lua.completion.displayContext"
-                        },
-                        "enable": {
-                            "$ref": "#/properties/Lua.completion.enable"
-                        },
-                        "keywordSnippet": {
-                            "$ref": "#/properties/Lua.completion.keywordSnippet"
-                        },
-                        "requireSeparator": {
-                            "$ref": "#/properties/Lua.completion.requireSeparator"
-                        },
-                        "showParams": {
-                            "$ref": "#/properties/Lua.completion.showParams"
-                        },
-                        "showWord": {
-                            "$ref": "#/properties/Lua.completion.showWord"
-                        },
-                        "workspaceWord": {
-                            "$ref": "#/properties/Lua.completion.workspaceWord"
-                        }
-                    }
-                },
-                "completion.autoRequire": {
-                    "$ref": "#/properties/Lua.completion.autoRequire"
-                },
-                "completion.callSnippet": {
-                    "$ref": "#/properties/Lua.completion.callSnippet"
-                },
-                "completion.displayContext": {
-                    "$ref": "#/properties/Lua.completion.displayContext"
-                },
-                "completion.enable": {
-                    "$ref": "#/properties/Lua.completion.enable"
-                },
-                "completion.keywordSnippet": {
-                    "$ref": "#/properties/Lua.completion.keywordSnippet"
-                },
-                "completion.requireSeparator": {
-                    "$ref": "#/properties/Lua.completion.requireSeparator"
-                },
-                "completion.showParams": {
-                    "$ref": "#/properties/Lua.completion.showParams"
-                },
-                "completion.showWord": {
-                    "$ref": "#/properties/Lua.completion.showWord"
-                },
-                "completion.workspaceWord": {
-                    "$ref": "#/properties/Lua.completion.workspaceWord"
-                },
-                "diagnostics": {
-                    "properties": {
-                        "disable": {
-                            "$ref": "#/properties/Lua.diagnostics.disable"
-                        },
-                        "enable": {
-                            "$ref": "#/properties/Lua.diagnostics.enable"
-                        },
-                        "globals": {
-                            "$ref": "#/properties/Lua.diagnostics.globals"
-                        },
-                        "ignoredFiles": {
-                            "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
-                        },
-                        "libraryFiles": {
-                            "$ref": "#/properties/Lua.diagnostics.libraryFiles"
-                        },
-                        "neededFileStatus": {
-                            "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
-                        },
-                        "severity": {
-                            "$ref": "#/properties/Lua.diagnostics.severity"
-                        },
-                        "workspaceDelay": {
-                            "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
-                        },
-                        "workspaceRate": {
-                            "$ref": "#/properties/Lua.diagnostics.workspaceRate"
-                        }
-                    }
-                },
-                "diagnostics.disable": {
-                    "$ref": "#/properties/Lua.diagnostics.disable"
-                },
-                "diagnostics.enable": {
-                    "$ref": "#/properties/Lua.diagnostics.enable"
-                },
-                "diagnostics.globals": {
-                    "$ref": "#/properties/Lua.diagnostics.globals"
-                },
-                "diagnostics.ignoredFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
-                },
-                "diagnostics.libraryFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
-                },
-                "diagnostics.neededFileStatus": {
-                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
-                },
-                "diagnostics.severity": {
-                    "$ref": "#/properties/Lua.diagnostics.severity"
-                },
-                "diagnostics.workspaceDelay": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
-                },
-                "diagnostics.workspaceRate": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
-                },
-                "hint": {
-                    "properties": {
-                        "enable": {
-                            "$ref": "#/properties/Lua.hint.enable"
-                        },
-                        "paramName": {
-                            "$ref": "#/properties/Lua.hint.paramName"
-                        },
-                        "paramType": {
-                            "$ref": "#/properties/Lua.hint.paramType"
-                        },
-                        "setType": {
-                            "$ref": "#/properties/Lua.hint.setType"
-                        }
-                    }
-                },
-                "hint.enable": {
-                    "$ref": "#/properties/Lua.hint.enable"
-                },
-                "hint.paramName": {
-                    "$ref": "#/properties/Lua.hint.paramName"
-                },
-                "hint.paramType": {
-                    "$ref": "#/properties/Lua.hint.paramType"
-                },
-                "hint.setType": {
-                    "$ref": "#/properties/Lua.hint.setType"
-                },
-                "hover": {
-                    "properties": {
-                        "enable": {
-                            "$ref": "#/properties/Lua.hover.enable"
-                        },
-                        "enumsLimit": {
-                            "$ref": "#/properties/Lua.hover.enumsLimit"
-                        },
-                        "previewFields": {
-                            "$ref": "#/properties/Lua.hover.previewFields"
-                        },
-                        "viewNumber": {
-                            "$ref": "#/properties/Lua.hover.viewNumber"
-                        },
-                        "viewString": {
-                            "$ref": "#/properties/Lua.hover.viewString"
-                        },
-                        "viewStringMax": {
-                            "$ref": "#/properties/Lua.hover.viewStringMax"
-                        }
-                    }
-                },
-                "hover.enable": {
-                    "$ref": "#/properties/Lua.hover.enable"
-                },
-                "hover.enumsLimit": {
-                    "$ref": "#/properties/Lua.hover.enumsLimit"
-                },
-                "hover.previewFields": {
-                    "$ref": "#/properties/Lua.hover.previewFields"
-                },
-                "hover.viewNumber": {
-                    "$ref": "#/properties/Lua.hover.viewNumber"
-                },
-                "hover.viewString": {
-                    "$ref": "#/properties/Lua.hover.viewString"
-                },
-                "hover.viewStringMax": {
-                    "$ref": "#/properties/Lua.hover.viewStringMax"
-                },
-                "misc": {
-                    "properties": {
-                        "parameters": {
-                            "$ref": "#/properties/Lua.misc.parameters"
-                        }
-                    }
-                },
-                "misc.parameters": {
-                    "$ref": "#/properties/Lua.misc.parameters"
-                },
-                "runtime": {
-                    "properties": {
-                        "builtin": {
-                            "$ref": "#/properties/Lua.runtime.builtin"
-                        },
-                        "fileEncoding": {
-                            "$ref": "#/properties/Lua.runtime.fileEncoding"
-                        },
-                        "nonstandardSymbol": {
-                            "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
-                        },
-                        "path": {
-                            "$ref": "#/properties/Lua.runtime.path"
-                        },
-                        "plugin": {
-                            "$ref": "#/properties/Lua.runtime.plugin"
-                        },
-                        "special": {
-                            "$ref": "#/properties/Lua.runtime.special"
-                        },
-                        "unicodeName": {
-                            "$ref": "#/properties/Lua.runtime.unicodeName"
-                        },
-                        "version": {
-                            "$ref": "#/properties/Lua.runtime.version"
-                        }
-                    }
-                },
-                "runtime.builtin": {
-                    "$ref": "#/properties/Lua.runtime.builtin"
-                },
-                "runtime.fileEncoding": {
-                    "$ref": "#/properties/Lua.runtime.fileEncoding"
-                },
-                "runtime.nonstandardSymbol": {
-                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
-                },
-                "runtime.path": {
-                    "$ref": "#/properties/Lua.runtime.path"
-                },
-                "runtime.plugin": {
-                    "$ref": "#/properties/Lua.runtime.plugin"
-                },
-                "runtime.special": {
-                    "$ref": "#/properties/Lua.runtime.special"
-                },
-                "runtime.unicodeName": {
-                    "$ref": "#/properties/Lua.runtime.unicodeName"
-                },
-                "runtime.version": {
-                    "$ref": "#/properties/Lua.runtime.version"
-                },
-                "signatureHelp": {
-                    "properties": {
-                        "enable": {
-                            "$ref": "#/properties/Lua.signatureHelp.enable"
-                        }
-                    }
-                },
-                "signatureHelp.enable": {
-                    "$ref": "#/properties/Lua.signatureHelp.enable"
-                },
-                "telemetry": {
-                    "properties": {
-                        "enable": {
-                            "$ref": "#/properties/Lua.telemetry.enable"
-                        }
-                    }
-                },
-                "telemetry.enable": {
-                    "$ref": "#/properties/Lua.telemetry.enable"
-                },
-                "window": {
-                    "properties": {
-                        "progressBar": {
-                            "$ref": "#/properties/Lua.window.progressBar"
-                        },
-                        "statusBar": {
-                            "$ref": "#/properties/Lua.window.statusBar"
-                        }
-                    }
-                },
-                "window.progressBar": {
-                    "$ref": "#/properties/Lua.window.progressBar"
-                },
-                "window.statusBar": {
-                    "$ref": "#/properties/Lua.window.statusBar"
-                },
-                "workspace": {
-                    "properties": {
-                        "checkThirdParty": {
-                            "$ref": "#/properties/Lua.workspace.checkThirdParty"
-                        },
-                        "ignoreDir": {
-                            "$ref": "#/properties/Lua.workspace.ignoreDir"
-                        },
-                        "ignoreSubmodules": {
-                            "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
-                        },
-                        "library": {
-                            "$ref": "#/properties/Lua.workspace.library"
-                        },
-                        "maxPreload": {
-                            "$ref": "#/properties/Lua.workspace.maxPreload"
-                        },
-                        "preloadFileSize": {
-                            "$ref": "#/properties/Lua.workspace.preloadFileSize"
-                        },
-                        "useGitIgnore": {
-                            "$ref": "#/properties/Lua.workspace.useGitIgnore"
-                        },
-                        "userThirdParty": {
-                            "$ref": "#/properties/Lua.workspace.userThirdParty"
-                        }
-                    }
-                },
-                "workspace.checkThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
-                },
-                "workspace.ignoreDir": {
-                    "$ref": "#/properties/Lua.workspace.ignoreDir"
-                },
-                "workspace.ignoreSubmodules": {
-                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
-                },
-                "workspace.library": {
-                    "$ref": "#/properties/Lua.workspace.library"
-                },
-                "workspace.maxPreload": {
-                    "$ref": "#/properties/Lua.workspace.maxPreload"
-                },
-                "workspace.preloadFileSize": {
-                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
-                },
-                "workspace.useGitIgnore": {
-                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
-                },
-                "workspace.userThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.userThirdParty"
-                }
-            }
-        },
-        "Lua.color": {
+        "color": {
             "properties": {
                 "mode": {
-                    "$ref": "#/properties/Lua.color.mode"
+                    "$ref": "#/properties/color.mode"
                 }
             }
         },
-        "Lua.color.mode": {
+        "color.mode": {
             "default": "Semantic",
             "enum": [
                 "Grammar",
@@ -373,44 +25,44 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.completion": {
+        "completion": {
             "properties": {
                 "autoRequire": {
-                    "$ref": "#/properties/Lua.completion.autoRequire"
+                    "$ref": "#/properties/completion.autoRequire"
                 },
                 "callSnippet": {
-                    "$ref": "#/properties/Lua.completion.callSnippet"
+                    "$ref": "#/properties/completion.callSnippet"
                 },
                 "displayContext": {
-                    "$ref": "#/properties/Lua.completion.displayContext"
+                    "$ref": "#/properties/completion.displayContext"
                 },
                 "enable": {
-                    "$ref": "#/properties/Lua.completion.enable"
+                    "$ref": "#/properties/completion.enable"
                 },
                 "keywordSnippet": {
-                    "$ref": "#/properties/Lua.completion.keywordSnippet"
+                    "$ref": "#/properties/completion.keywordSnippet"
                 },
                 "requireSeparator": {
-                    "$ref": "#/properties/Lua.completion.requireSeparator"
+                    "$ref": "#/properties/completion.requireSeparator"
                 },
                 "showParams": {
-                    "$ref": "#/properties/Lua.completion.showParams"
+                    "$ref": "#/properties/completion.showParams"
                 },
                 "showWord": {
-                    "$ref": "#/properties/Lua.completion.showWord"
+                    "$ref": "#/properties/completion.showWord"
                 },
                 "workspaceWord": {
-                    "$ref": "#/properties/Lua.completion.workspaceWord"
+                    "$ref": "#/properties/completion.workspaceWord"
                 }
             }
         },
-        "Lua.completion.autoRequire": {
+        "completion.autoRequire": {
             "default": true,
             "markdownDescription": "输入内容看起来是个文件名时，自动 `require` 此文件。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.completion.callSnippet": {
+        "completion.callSnippet": {
             "default": "Disable",
             "enum": [
                 "Disable",
@@ -426,19 +78,19 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.completion.displayContext": {
+        "completion.displayContext": {
             "default": 0,
             "markdownDescription": "预览建议的相关代码片段，可能可以帮助你了解这项建议的用法。设置的数字表示代码片段的截取行数，设置为`0`可以禁用此功能。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.completion.enable": {
+        "completion.enable": {
             "default": true,
             "markdownDescription": "启用自动完成。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.completion.keywordSnippet": {
+        "completion.keywordSnippet": {
             "default": "Replace",
             "enum": [
                 "Disable",
@@ -454,19 +106,19 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.completion.requireSeparator": {
+        "completion.requireSeparator": {
             "default": ".",
             "markdownDescription": "`require` 时使用的分隔符。",
             "scope": "resource",
             "type": "string"
         },
-        "Lua.completion.showParams": {
+        "completion.showParams": {
             "default": true,
             "markdownDescription": "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.completion.showWord": {
+        "completion.showWord": {
             "default": "Fallback",
             "enum": [
                 "Enable",
@@ -482,44 +134,44 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.completion.workspaceWord": {
+        "completion.workspaceWord": {
             "default": true,
             "markdownDescription": "显示的上下文单词是否包含工作区中其他文件的内容。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.diagnostics": {
+        "diagnostics": {
             "properties": {
                 "disable": {
-                    "$ref": "#/properties/Lua.diagnostics.disable"
+                    "$ref": "#/properties/diagnostics.disable"
                 },
                 "enable": {
-                    "$ref": "#/properties/Lua.diagnostics.enable"
+                    "$ref": "#/properties/diagnostics.enable"
                 },
                 "globals": {
-                    "$ref": "#/properties/Lua.diagnostics.globals"
+                    "$ref": "#/properties/diagnostics.globals"
                 },
                 "ignoredFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
+                    "$ref": "#/properties/diagnostics.ignoredFiles"
                 },
                 "libraryFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
+                    "$ref": "#/properties/diagnostics.libraryFiles"
                 },
                 "neededFileStatus": {
-                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
+                    "$ref": "#/properties/diagnostics.neededFileStatus"
                 },
                 "severity": {
-                    "$ref": "#/properties/Lua.diagnostics.severity"
+                    "$ref": "#/properties/diagnostics.severity"
                 },
                 "workspaceDelay": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
+                    "$ref": "#/properties/diagnostics.workspaceDelay"
                 },
                 "workspaceRate": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
+                    "$ref": "#/properties/diagnostics.workspaceRate"
                 }
             }
         },
-        "Lua.diagnostics.disable": {
+        "diagnostics.disable": {
             "items": {
                 "type": "string"
             },
@@ -527,13 +179,13 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.diagnostics.enable": {
+        "diagnostics.enable": {
             "default": true,
             "markdownDescription": "启用诊断。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.diagnostics.globals": {
+        "diagnostics.globals": {
             "items": {
                 "type": "string"
             },
@@ -541,7 +193,7 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.diagnostics.ignoredFiles": {
+        "diagnostics.ignoredFiles": {
             "default": "Opened",
             "enum": [
                 "Enable",
@@ -557,7 +209,7 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.diagnostics.libraryFiles": {
+        "diagnostics.libraryFiles": {
             "default": "Opened",
             "enum": [
                 "Enable",
@@ -573,7 +225,7 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.diagnostics.neededFileStatus": {
+        "diagnostics.neededFileStatus": {
             "markdownDescription": "如果你只想诊断打开的文件，选Opened；否则，选Any。\n",
             "properties": {
                 "ambiguity-1": {
@@ -977,7 +629,7 @@
             "title": "neededFileStatus",
             "type": "object"
         },
-        "Lua.diagnostics.severity": {
+        "diagnostics.severity": {
             "markdownDescription": "修改诊断等级。\n",
             "properties": {
                 "ambiguity-1": {
@@ -1417,41 +1069,41 @@
             "title": "severity",
             "type": "object"
         },
-        "Lua.diagnostics.workspaceDelay": {
+        "diagnostics.workspaceDelay": {
             "default": 0,
             "markdownDescription": "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.diagnostics.workspaceRate": {
+        "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.hint": {
+        "hint": {
             "properties": {
                 "enable": {
-                    "$ref": "#/properties/Lua.hint.enable"
+                    "$ref": "#/properties/hint.enable"
                 },
                 "paramName": {
-                    "$ref": "#/properties/Lua.hint.paramName"
+                    "$ref": "#/properties/hint.paramName"
                 },
                 "paramType": {
-                    "$ref": "#/properties/Lua.hint.paramType"
+                    "$ref": "#/properties/hint.paramType"
                 },
                 "setType": {
-                    "$ref": "#/properties/Lua.hint.setType"
+                    "$ref": "#/properties/hint.setType"
                 }
             }
         },
-        "Lua.hint.enable": {
+        "hint.enable": {
             "default": false,
             "markdownDescription": "启用内联提示。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hint.paramName": {
+        "hint.paramName": {
             "default": "All",
             "enum": [
                 "All",
@@ -1467,84 +1119,84 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.hint.paramType": {
+        "hint.paramType": {
             "default": true,
             "markdownDescription": "在函数的参数位置提示类型。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hint.setType": {
+        "hint.setType": {
             "default": false,
             "markdownDescription": "在赋值操作位置提示类型。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hover": {
+        "hover": {
             "properties": {
                 "enable": {
-                    "$ref": "#/properties/Lua.hover.enable"
+                    "$ref": "#/properties/hover.enable"
                 },
                 "enumsLimit": {
-                    "$ref": "#/properties/Lua.hover.enumsLimit"
+                    "$ref": "#/properties/hover.enumsLimit"
                 },
                 "previewFields": {
-                    "$ref": "#/properties/Lua.hover.previewFields"
+                    "$ref": "#/properties/hover.previewFields"
                 },
                 "viewNumber": {
-                    "$ref": "#/properties/Lua.hover.viewNumber"
+                    "$ref": "#/properties/hover.viewNumber"
                 },
                 "viewString": {
-                    "$ref": "#/properties/Lua.hover.viewString"
+                    "$ref": "#/properties/hover.viewString"
                 },
                 "viewStringMax": {
-                    "$ref": "#/properties/Lua.hover.viewStringMax"
+                    "$ref": "#/properties/hover.viewStringMax"
                 }
             }
         },
-        "Lua.hover.enable": {
+        "hover.enable": {
             "default": true,
             "markdownDescription": "启用悬停提示。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hover.enumsLimit": {
+        "hover.enumsLimit": {
             "default": 5,
             "markdownDescription": "当值对应多个类型时，限制类型的显示数量。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.hover.previewFields": {
+        "hover.previewFields": {
             "default": 20,
             "markdownDescription": "悬停提示查看表时，限制表内字段的最大预览数量。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.hover.viewNumber": {
+        "hover.viewNumber": {
             "default": true,
             "markdownDescription": "悬停提示查看数字内容（仅当字面量不是十进制时）。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hover.viewString": {
+        "hover.viewString": {
             "default": true,
             "markdownDescription": "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.hover.viewStringMax": {
+        "hover.viewStringMax": {
             "default": 1000,
             "markdownDescription": "悬停提示查看字符串内容时的最大长度。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.misc": {
+        "misc": {
             "properties": {
                 "parameters": {
-                    "$ref": "#/properties/Lua.misc.parameters"
+                    "$ref": "#/properties/misc.parameters"
                 }
             }
         },
-        "Lua.misc.parameters": {
+        "misc.parameters": {
             "items": {
                 "type": "string"
             },
@@ -1552,35 +1204,35 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.runtime": {
+        "runtime": {
             "properties": {
                 "builtin": {
-                    "$ref": "#/properties/Lua.runtime.builtin"
+                    "$ref": "#/properties/runtime.builtin"
                 },
                 "fileEncoding": {
-                    "$ref": "#/properties/Lua.runtime.fileEncoding"
+                    "$ref": "#/properties/runtime.fileEncoding"
                 },
                 "nonstandardSymbol": {
-                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
+                    "$ref": "#/properties/runtime.nonstandardSymbol"
                 },
                 "path": {
-                    "$ref": "#/properties/Lua.runtime.path"
+                    "$ref": "#/properties/runtime.path"
                 },
                 "plugin": {
-                    "$ref": "#/properties/Lua.runtime.plugin"
+                    "$ref": "#/properties/runtime.plugin"
                 },
                 "special": {
-                    "$ref": "#/properties/Lua.runtime.special"
+                    "$ref": "#/properties/runtime.special"
                 },
                 "unicodeName": {
-                    "$ref": "#/properties/Lua.runtime.unicodeName"
+                    "$ref": "#/properties/runtime.unicodeName"
                 },
                 "version": {
-                    "$ref": "#/properties/Lua.runtime.version"
+                    "$ref": "#/properties/runtime.version"
                 }
             }
         },
-        "Lua.runtime.builtin": {
+        "runtime.builtin": {
             "markdownDescription": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
             "properties": {
                 "basic": {
@@ -1752,7 +1404,7 @@
             "scope": "resource",
             "type": "object"
         },
-        "Lua.runtime.fileEncoding": {
+        "runtime.fileEncoding": {
             "default": "utf8",
             "enum": [
                 "utf8",
@@ -1762,7 +1414,7 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.runtime.nonstandardSymbol": {
+        "runtime.nonstandardSymbol": {
             "items": {
                 "enum": [
                     "//",
@@ -1784,7 +1436,7 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.runtime.path": {
+        "runtime.path": {
             "default": [
                 "?.lua",
                 "?/init.lua"
@@ -1796,13 +1448,13 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.runtime.plugin": {
+        "runtime.plugin": {
             "default": "",
             "markdownDescription": "插件路径，请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
             "scope": "resource",
             "type": "string"
         },
-        "Lua.runtime.special": {
+        "runtime.special": {
             "markdownDescription": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
@@ -1825,13 +1477,13 @@
             "scope": "resource",
             "type": "object"
         },
-        "Lua.runtime.unicodeName": {
+        "runtime.unicodeName": {
             "default": false,
             "markdownDescription": "允许在名字中使用 Unicode 字符。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.runtime.version": {
+        "runtime.version": {
             "default": "Lua 5.4",
             "enum": [
                 "Lua 5.1",
@@ -1844,27 +1496,27 @@
             "scope": "resource",
             "type": "string"
         },
-        "Lua.signatureHelp": {
+        "signatureHelp": {
             "properties": {
                 "enable": {
-                    "$ref": "#/properties/Lua.signatureHelp.enable"
+                    "$ref": "#/properties/signatureHelp.enable"
                 }
             }
         },
-        "Lua.signatureHelp.enable": {
+        "signatureHelp.enable": {
             "default": true,
             "markdownDescription": "启用参数提示。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.telemetry": {
+        "telemetry": {
             "properties": {
                 "enable": {
-                    "$ref": "#/properties/Lua.telemetry.enable"
+                    "$ref": "#/properties/telemetry.enable"
                 }
             }
         },
-        "Lua.telemetry.enable": {
+        "telemetry.enable": {
             "default": null,
             "markdownDescription": "启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。\n",
             "scope": "resource",
@@ -1873,63 +1525,63 @@
                 "null"
             ]
         },
-        "Lua.window": {
+        "window": {
             "properties": {
                 "progressBar": {
-                    "$ref": "#/properties/Lua.window.progressBar"
+                    "$ref": "#/properties/window.progressBar"
                 },
                 "statusBar": {
-                    "$ref": "#/properties/Lua.window.statusBar"
+                    "$ref": "#/properties/window.statusBar"
                 }
             }
         },
-        "Lua.window.progressBar": {
+        "window.progressBar": {
             "default": true,
             "markdownDescription": "在状态栏显示进度条。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.window.statusBar": {
+        "window.statusBar": {
             "default": true,
             "markdownDescription": "在状态栏显示插件状态。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.workspace": {
+        "workspace": {
             "properties": {
                 "checkThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
+                    "$ref": "#/properties/workspace.checkThirdParty"
                 },
                 "ignoreDir": {
-                    "$ref": "#/properties/Lua.workspace.ignoreDir"
+                    "$ref": "#/properties/workspace.ignoreDir"
                 },
                 "ignoreSubmodules": {
-                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
+                    "$ref": "#/properties/workspace.ignoreSubmodules"
                 },
                 "library": {
-                    "$ref": "#/properties/Lua.workspace.library"
+                    "$ref": "#/properties/workspace.library"
                 },
                 "maxPreload": {
-                    "$ref": "#/properties/Lua.workspace.maxPreload"
+                    "$ref": "#/properties/workspace.maxPreload"
                 },
                 "preloadFileSize": {
-                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
+                    "$ref": "#/properties/workspace.preloadFileSize"
                 },
                 "useGitIgnore": {
-                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
+                    "$ref": "#/properties/workspace.useGitIgnore"
                 },
                 "userThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.userThirdParty"
+                    "$ref": "#/properties/workspace.userThirdParty"
                 }
             }
         },
-        "Lua.workspace.checkThirdParty": {
+        "workspace.checkThirdParty": {
             "default": true,
             "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* Jass\n",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.workspace.ignoreDir": {
+        "workspace.ignoreDir": {
             "default": [
                 ".vscode"
             ],
@@ -1940,13 +1592,13 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.workspace.ignoreSubmodules": {
+        "workspace.ignoreSubmodules": {
             "default": true,
             "markdownDescription": "忽略子模块。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.workspace.library": {
+        "workspace.library": {
             "items": {
                 "type": "string"
             },
@@ -1954,375 +1606,31 @@
             "scope": "resource",
             "type": "array"
         },
-        "Lua.workspace.maxPreload": {
+        "workspace.maxPreload": {
             "default": 1000,
             "markdownDescription": "最大预加载文件数。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.workspace.preloadFileSize": {
+        "workspace.preloadFileSize": {
             "default": 100,
             "markdownDescription": "预加载时跳过大小大于该值（KB）的文件。",
             "scope": "resource",
             "type": "integer"
         },
-        "Lua.workspace.useGitIgnore": {
+        "workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "忽略 `.gitignore` 中列举的文件。",
             "scope": "resource",
             "type": "boolean"
         },
-        "Lua.workspace.userThirdParty": {
+        "workspace.userThirdParty": {
             "items": {
                 "type": "string"
             },
             "markdownDescription": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
             "scope": "resource",
             "type": "array"
-        },
-        "color": {
-            "properties": {
-                "mode": {
-                    "$ref": "#/properties/Lua.color.mode"
-                }
-            }
-        },
-        "color.mode": {
-            "$ref": "#/properties/Lua.color.mode"
-        },
-        "completion": {
-            "properties": {
-                "autoRequire": {
-                    "$ref": "#/properties/Lua.completion.autoRequire"
-                },
-                "callSnippet": {
-                    "$ref": "#/properties/Lua.completion.callSnippet"
-                },
-                "displayContext": {
-                    "$ref": "#/properties/Lua.completion.displayContext"
-                },
-                "enable": {
-                    "$ref": "#/properties/Lua.completion.enable"
-                },
-                "keywordSnippet": {
-                    "$ref": "#/properties/Lua.completion.keywordSnippet"
-                },
-                "requireSeparator": {
-                    "$ref": "#/properties/Lua.completion.requireSeparator"
-                },
-                "showParams": {
-                    "$ref": "#/properties/Lua.completion.showParams"
-                },
-                "showWord": {
-                    "$ref": "#/properties/Lua.completion.showWord"
-                },
-                "workspaceWord": {
-                    "$ref": "#/properties/Lua.completion.workspaceWord"
-                }
-            }
-        },
-        "completion.autoRequire": {
-            "$ref": "#/properties/Lua.completion.autoRequire"
-        },
-        "completion.callSnippet": {
-            "$ref": "#/properties/Lua.completion.callSnippet"
-        },
-        "completion.displayContext": {
-            "$ref": "#/properties/Lua.completion.displayContext"
-        },
-        "completion.enable": {
-            "$ref": "#/properties/Lua.completion.enable"
-        },
-        "completion.keywordSnippet": {
-            "$ref": "#/properties/Lua.completion.keywordSnippet"
-        },
-        "completion.requireSeparator": {
-            "$ref": "#/properties/Lua.completion.requireSeparator"
-        },
-        "completion.showParams": {
-            "$ref": "#/properties/Lua.completion.showParams"
-        },
-        "completion.showWord": {
-            "$ref": "#/properties/Lua.completion.showWord"
-        },
-        "completion.workspaceWord": {
-            "$ref": "#/properties/Lua.completion.workspaceWord"
-        },
-        "diagnostics": {
-            "properties": {
-                "disable": {
-                    "$ref": "#/properties/Lua.diagnostics.disable"
-                },
-                "enable": {
-                    "$ref": "#/properties/Lua.diagnostics.enable"
-                },
-                "globals": {
-                    "$ref": "#/properties/Lua.diagnostics.globals"
-                },
-                "ignoredFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
-                },
-                "libraryFiles": {
-                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
-                },
-                "neededFileStatus": {
-                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
-                },
-                "severity": {
-                    "$ref": "#/properties/Lua.diagnostics.severity"
-                },
-                "workspaceDelay": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
-                },
-                "workspaceRate": {
-                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
-                }
-            }
-        },
-        "diagnostics.disable": {
-            "$ref": "#/properties/Lua.diagnostics.disable"
-        },
-        "diagnostics.enable": {
-            "$ref": "#/properties/Lua.diagnostics.enable"
-        },
-        "diagnostics.globals": {
-            "$ref": "#/properties/Lua.diagnostics.globals"
-        },
-        "diagnostics.ignoredFiles": {
-            "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
-        },
-        "diagnostics.libraryFiles": {
-            "$ref": "#/properties/Lua.diagnostics.libraryFiles"
-        },
-        "diagnostics.neededFileStatus": {
-            "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
-        },
-        "diagnostics.severity": {
-            "$ref": "#/properties/Lua.diagnostics.severity"
-        },
-        "diagnostics.workspaceDelay": {
-            "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
-        },
-        "diagnostics.workspaceRate": {
-            "$ref": "#/properties/Lua.diagnostics.workspaceRate"
-        },
-        "hint": {
-            "properties": {
-                "enable": {
-                    "$ref": "#/properties/Lua.hint.enable"
-                },
-                "paramName": {
-                    "$ref": "#/properties/Lua.hint.paramName"
-                },
-                "paramType": {
-                    "$ref": "#/properties/Lua.hint.paramType"
-                },
-                "setType": {
-                    "$ref": "#/properties/Lua.hint.setType"
-                }
-            }
-        },
-        "hint.enable": {
-            "$ref": "#/properties/Lua.hint.enable"
-        },
-        "hint.paramName": {
-            "$ref": "#/properties/Lua.hint.paramName"
-        },
-        "hint.paramType": {
-            "$ref": "#/properties/Lua.hint.paramType"
-        },
-        "hint.setType": {
-            "$ref": "#/properties/Lua.hint.setType"
-        },
-        "hover": {
-            "properties": {
-                "enable": {
-                    "$ref": "#/properties/Lua.hover.enable"
-                },
-                "enumsLimit": {
-                    "$ref": "#/properties/Lua.hover.enumsLimit"
-                },
-                "previewFields": {
-                    "$ref": "#/properties/Lua.hover.previewFields"
-                },
-                "viewNumber": {
-                    "$ref": "#/properties/Lua.hover.viewNumber"
-                },
-                "viewString": {
-                    "$ref": "#/properties/Lua.hover.viewString"
-                },
-                "viewStringMax": {
-                    "$ref": "#/properties/Lua.hover.viewStringMax"
-                }
-            }
-        },
-        "hover.enable": {
-            "$ref": "#/properties/Lua.hover.enable"
-        },
-        "hover.enumsLimit": {
-            "$ref": "#/properties/Lua.hover.enumsLimit"
-        },
-        "hover.previewFields": {
-            "$ref": "#/properties/Lua.hover.previewFields"
-        },
-        "hover.viewNumber": {
-            "$ref": "#/properties/Lua.hover.viewNumber"
-        },
-        "hover.viewString": {
-            "$ref": "#/properties/Lua.hover.viewString"
-        },
-        "hover.viewStringMax": {
-            "$ref": "#/properties/Lua.hover.viewStringMax"
-        },
-        "misc": {
-            "properties": {
-                "parameters": {
-                    "$ref": "#/properties/Lua.misc.parameters"
-                }
-            }
-        },
-        "misc.parameters": {
-            "$ref": "#/properties/Lua.misc.parameters"
-        },
-        "runtime": {
-            "properties": {
-                "builtin": {
-                    "$ref": "#/properties/Lua.runtime.builtin"
-                },
-                "fileEncoding": {
-                    "$ref": "#/properties/Lua.runtime.fileEncoding"
-                },
-                "nonstandardSymbol": {
-                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
-                },
-                "path": {
-                    "$ref": "#/properties/Lua.runtime.path"
-                },
-                "plugin": {
-                    "$ref": "#/properties/Lua.runtime.plugin"
-                },
-                "special": {
-                    "$ref": "#/properties/Lua.runtime.special"
-                },
-                "unicodeName": {
-                    "$ref": "#/properties/Lua.runtime.unicodeName"
-                },
-                "version": {
-                    "$ref": "#/properties/Lua.runtime.version"
-                }
-            }
-        },
-        "runtime.builtin": {
-            "$ref": "#/properties/Lua.runtime.builtin"
-        },
-        "runtime.fileEncoding": {
-            "$ref": "#/properties/Lua.runtime.fileEncoding"
-        },
-        "runtime.nonstandardSymbol": {
-            "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
-        },
-        "runtime.path": {
-            "$ref": "#/properties/Lua.runtime.path"
-        },
-        "runtime.plugin": {
-            "$ref": "#/properties/Lua.runtime.plugin"
-        },
-        "runtime.special": {
-            "$ref": "#/properties/Lua.runtime.special"
-        },
-        "runtime.unicodeName": {
-            "$ref": "#/properties/Lua.runtime.unicodeName"
-        },
-        "runtime.version": {
-            "$ref": "#/properties/Lua.runtime.version"
-        },
-        "signatureHelp": {
-            "properties": {
-                "enable": {
-                    "$ref": "#/properties/Lua.signatureHelp.enable"
-                }
-            }
-        },
-        "signatureHelp.enable": {
-            "$ref": "#/properties/Lua.signatureHelp.enable"
-        },
-        "telemetry": {
-            "properties": {
-                "enable": {
-                    "$ref": "#/properties/Lua.telemetry.enable"
-                }
-            }
-        },
-        "telemetry.enable": {
-            "$ref": "#/properties/Lua.telemetry.enable"
-        },
-        "window": {
-            "properties": {
-                "progressBar": {
-                    "$ref": "#/properties/Lua.window.progressBar"
-                },
-                "statusBar": {
-                    "$ref": "#/properties/Lua.window.statusBar"
-                }
-            }
-        },
-        "window.progressBar": {
-            "$ref": "#/properties/Lua.window.progressBar"
-        },
-        "window.statusBar": {
-            "$ref": "#/properties/Lua.window.statusBar"
-        },
-        "workspace": {
-            "properties": {
-                "checkThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
-                },
-                "ignoreDir": {
-                    "$ref": "#/properties/Lua.workspace.ignoreDir"
-                },
-                "ignoreSubmodules": {
-                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
-                },
-                "library": {
-                    "$ref": "#/properties/Lua.workspace.library"
-                },
-                "maxPreload": {
-                    "$ref": "#/properties/Lua.workspace.maxPreload"
-                },
-                "preloadFileSize": {
-                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
-                },
-                "useGitIgnore": {
-                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
-                },
-                "userThirdParty": {
-                    "$ref": "#/properties/Lua.workspace.userThirdParty"
-                }
-            }
-        },
-        "workspace.checkThirdParty": {
-            "$ref": "#/properties/Lua.workspace.checkThirdParty"
-        },
-        "workspace.ignoreDir": {
-            "$ref": "#/properties/Lua.workspace.ignoreDir"
-        },
-        "workspace.ignoreSubmodules": {
-            "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
-        },
-        "workspace.library": {
-            "$ref": "#/properties/Lua.workspace.library"
-        },
-        "workspace.maxPreload": {
-            "$ref": "#/properties/Lua.workspace.maxPreload"
-        },
-        "workspace.preloadFileSize": {
-            "$ref": "#/properties/Lua.workspace.preloadFileSize"
-        },
-        "workspace.useGitIgnore": {
-            "$ref": "#/properties/Lua.workspace.useGitIgnore"
-        },
-        "workspace.userThirdParty": {
-            "$ref": "#/properties/Lua.workspace.userThirdParty"
         }
     },
     "title": "setting",

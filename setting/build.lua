@@ -25,14 +25,16 @@ local function copyWithNLS(t, callback)
         elseif type(v) == 'table' then
             v = copyWithNLS(v, callback)
         end
-        if type(k) == 'string' and k:sub(1, #'Lua.') == 'Lua.' then
-            local ref = {
-                ['$ref'] = '#/properties/' .. k
-            }
-            addSplited(nt, k, ref)
-            addSplited(nt, k:sub(#'Lua.' + 1), ref)
-        end
         nt[k] = v
+        if type(k) == 'string' and k:sub(1, #'Lua.') == 'Lua.' then
+            local shortKey = k:sub(#'Lua.' + 1)
+            local ref = {
+                ['$ref'] = '#/properties/' .. shortKey
+            }
+            addSplited(nt, shortKey, ref)
+            nt[k] = nil
+            nt[shortKey] = v
+        end
     end
     return nt
 end
