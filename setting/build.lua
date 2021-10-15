@@ -8,11 +8,15 @@ local function copyWithNLS(t, callback)
     local nt = {}
     for k, v in pairs(t) do
         if type(v) == 'string' then
-            nt[k] = callback(v) or v
+            v = callback(v) or v
         elseif type(v) == 'table' then
-            nt[k] = copyWithNLS(v, callback)
-        else
-            nt[k] = v
+            v = copyWithNLS(v, callback)
+        end
+        nt[k] = v
+        if type(k) == 'string' and k:sub(1, #'Lua.') == 'Lua.' then
+            nt[k:sub(#'Lua.' + 1)] = {
+                ['$ref'] = '#/properties/' .. k
+            }
         end
     end
     return nt
