@@ -4,6 +4,19 @@ local json = require 'json-beautify'
 local configuration = require 'package.configuration'
 local fsu  = require 'fs-utility'
 
+local function addSplited(t, key, value)
+    t[key] = value
+    local left, right = key:match '([^%.]+)%.(.+)'
+    if not left then
+        return
+    end
+    local nt = t[left] or {
+        properties = {}
+    }
+    t[left] = nt
+    addSplited(nt.properties, right, value)
+end
+
 local function copyWithNLS(t, callback)
     local nt = {}
     for k, v in pairs(t) do
@@ -12,12 +25,14 @@ local function copyWithNLS(t, callback)
         elseif type(v) == 'table' then
             v = copyWithNLS(v, callback)
         end
-        nt[k] = v
         if type(k) == 'string' and k:sub(1, #'Lua.') == 'Lua.' then
-            nt[k:sub(#'Lua.' + 1)] = {
+            local ref = {
                 ['$ref'] = '#/properties/' .. k
             }
+            addSplited(nt, k, ref)
+            addSplited(nt, k:sub(#'Lua.' + 1), ref)
         end
+        nt[k] = v
     end
     return nt
 end

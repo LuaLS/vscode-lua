@@ -2,6 +2,354 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
+        "Lua": {
+            "properties": {
+                "color": {
+                    "properties": {
+                        "mode": {
+                            "$ref": "#/properties/Lua.color.mode"
+                        }
+                    }
+                },
+                "color.mode": {
+                    "$ref": "#/properties/Lua.color.mode"
+                },
+                "completion": {
+                    "properties": {
+                        "autoRequire": {
+                            "$ref": "#/properties/Lua.completion.autoRequire"
+                        },
+                        "callSnippet": {
+                            "$ref": "#/properties/Lua.completion.callSnippet"
+                        },
+                        "displayContext": {
+                            "$ref": "#/properties/Lua.completion.displayContext"
+                        },
+                        "enable": {
+                            "$ref": "#/properties/Lua.completion.enable"
+                        },
+                        "keywordSnippet": {
+                            "$ref": "#/properties/Lua.completion.keywordSnippet"
+                        },
+                        "requireSeparator": {
+                            "$ref": "#/properties/Lua.completion.requireSeparator"
+                        },
+                        "showParams": {
+                            "$ref": "#/properties/Lua.completion.showParams"
+                        },
+                        "showWord": {
+                            "$ref": "#/properties/Lua.completion.showWord"
+                        },
+                        "workspaceWord": {
+                            "$ref": "#/properties/Lua.completion.workspaceWord"
+                        }
+                    }
+                },
+                "completion.autoRequire": {
+                    "$ref": "#/properties/Lua.completion.autoRequire"
+                },
+                "completion.callSnippet": {
+                    "$ref": "#/properties/Lua.completion.callSnippet"
+                },
+                "completion.displayContext": {
+                    "$ref": "#/properties/Lua.completion.displayContext"
+                },
+                "completion.enable": {
+                    "$ref": "#/properties/Lua.completion.enable"
+                },
+                "completion.keywordSnippet": {
+                    "$ref": "#/properties/Lua.completion.keywordSnippet"
+                },
+                "completion.requireSeparator": {
+                    "$ref": "#/properties/Lua.completion.requireSeparator"
+                },
+                "completion.showParams": {
+                    "$ref": "#/properties/Lua.completion.showParams"
+                },
+                "completion.showWord": {
+                    "$ref": "#/properties/Lua.completion.showWord"
+                },
+                "completion.workspaceWord": {
+                    "$ref": "#/properties/Lua.completion.workspaceWord"
+                },
+                "diagnostics": {
+                    "properties": {
+                        "disable": {
+                            "$ref": "#/properties/Lua.diagnostics.disable"
+                        },
+                        "enable": {
+                            "$ref": "#/properties/Lua.diagnostics.enable"
+                        },
+                        "globals": {
+                            "$ref": "#/properties/Lua.diagnostics.globals"
+                        },
+                        "ignoredFiles": {
+                            "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
+                        },
+                        "libraryFiles": {
+                            "$ref": "#/properties/Lua.diagnostics.libraryFiles"
+                        },
+                        "neededFileStatus": {
+                            "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
+                        },
+                        "severity": {
+                            "$ref": "#/properties/Lua.diagnostics.severity"
+                        },
+                        "workspaceDelay": {
+                            "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
+                        },
+                        "workspaceRate": {
+                            "$ref": "#/properties/Lua.diagnostics.workspaceRate"
+                        }
+                    }
+                },
+                "diagnostics.disable": {
+                    "$ref": "#/properties/Lua.diagnostics.disable"
+                },
+                "diagnostics.enable": {
+                    "$ref": "#/properties/Lua.diagnostics.enable"
+                },
+                "diagnostics.globals": {
+                    "$ref": "#/properties/Lua.diagnostics.globals"
+                },
+                "diagnostics.ignoredFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
+                },
+                "diagnostics.libraryFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
+                },
+                "diagnostics.neededFileStatus": {
+                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
+                },
+                "diagnostics.severity": {
+                    "$ref": "#/properties/Lua.diagnostics.severity"
+                },
+                "diagnostics.workspaceDelay": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
+                },
+                "diagnostics.workspaceRate": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
+                },
+                "hint": {
+                    "properties": {
+                        "enable": {
+                            "$ref": "#/properties/Lua.hint.enable"
+                        },
+                        "paramName": {
+                            "$ref": "#/properties/Lua.hint.paramName"
+                        },
+                        "paramType": {
+                            "$ref": "#/properties/Lua.hint.paramType"
+                        },
+                        "setType": {
+                            "$ref": "#/properties/Lua.hint.setType"
+                        }
+                    }
+                },
+                "hint.enable": {
+                    "$ref": "#/properties/Lua.hint.enable"
+                },
+                "hint.paramName": {
+                    "$ref": "#/properties/Lua.hint.paramName"
+                },
+                "hint.paramType": {
+                    "$ref": "#/properties/Lua.hint.paramType"
+                },
+                "hint.setType": {
+                    "$ref": "#/properties/Lua.hint.setType"
+                },
+                "hover": {
+                    "properties": {
+                        "enable": {
+                            "$ref": "#/properties/Lua.hover.enable"
+                        },
+                        "enumsLimit": {
+                            "$ref": "#/properties/Lua.hover.enumsLimit"
+                        },
+                        "previewFields": {
+                            "$ref": "#/properties/Lua.hover.previewFields"
+                        },
+                        "viewNumber": {
+                            "$ref": "#/properties/Lua.hover.viewNumber"
+                        },
+                        "viewString": {
+                            "$ref": "#/properties/Lua.hover.viewString"
+                        },
+                        "viewStringMax": {
+                            "$ref": "#/properties/Lua.hover.viewStringMax"
+                        }
+                    }
+                },
+                "hover.enable": {
+                    "$ref": "#/properties/Lua.hover.enable"
+                },
+                "hover.enumsLimit": {
+                    "$ref": "#/properties/Lua.hover.enumsLimit"
+                },
+                "hover.previewFields": {
+                    "$ref": "#/properties/Lua.hover.previewFields"
+                },
+                "hover.viewNumber": {
+                    "$ref": "#/properties/Lua.hover.viewNumber"
+                },
+                "hover.viewString": {
+                    "$ref": "#/properties/Lua.hover.viewString"
+                },
+                "hover.viewStringMax": {
+                    "$ref": "#/properties/Lua.hover.viewStringMax"
+                },
+                "misc": {
+                    "properties": {
+                        "parameters": {
+                            "$ref": "#/properties/Lua.misc.parameters"
+                        }
+                    }
+                },
+                "misc.parameters": {
+                    "$ref": "#/properties/Lua.misc.parameters"
+                },
+                "runtime": {
+                    "properties": {
+                        "builtin": {
+                            "$ref": "#/properties/Lua.runtime.builtin"
+                        },
+                        "fileEncoding": {
+                            "$ref": "#/properties/Lua.runtime.fileEncoding"
+                        },
+                        "nonstandardSymbol": {
+                            "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
+                        },
+                        "path": {
+                            "$ref": "#/properties/Lua.runtime.path"
+                        },
+                        "plugin": {
+                            "$ref": "#/properties/Lua.runtime.plugin"
+                        },
+                        "special": {
+                            "$ref": "#/properties/Lua.runtime.special"
+                        },
+                        "unicodeName": {
+                            "$ref": "#/properties/Lua.runtime.unicodeName"
+                        },
+                        "version": {
+                            "$ref": "#/properties/Lua.runtime.version"
+                        }
+                    }
+                },
+                "runtime.builtin": {
+                    "$ref": "#/properties/Lua.runtime.builtin"
+                },
+                "runtime.fileEncoding": {
+                    "$ref": "#/properties/Lua.runtime.fileEncoding"
+                },
+                "runtime.nonstandardSymbol": {
+                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
+                },
+                "runtime.path": {
+                    "$ref": "#/properties/Lua.runtime.path"
+                },
+                "runtime.plugin": {
+                    "$ref": "#/properties/Lua.runtime.plugin"
+                },
+                "runtime.special": {
+                    "$ref": "#/properties/Lua.runtime.special"
+                },
+                "runtime.unicodeName": {
+                    "$ref": "#/properties/Lua.runtime.unicodeName"
+                },
+                "runtime.version": {
+                    "$ref": "#/properties/Lua.runtime.version"
+                },
+                "signatureHelp": {
+                    "properties": {
+                        "enable": {
+                            "$ref": "#/properties/Lua.signatureHelp.enable"
+                        }
+                    }
+                },
+                "signatureHelp.enable": {
+                    "$ref": "#/properties/Lua.signatureHelp.enable"
+                },
+                "telemetry": {
+                    "properties": {
+                        "enable": {
+                            "$ref": "#/properties/Lua.telemetry.enable"
+                        }
+                    }
+                },
+                "telemetry.enable": {
+                    "$ref": "#/properties/Lua.telemetry.enable"
+                },
+                "window": {
+                    "properties": {
+                        "progressBar": {
+                            "$ref": "#/properties/Lua.window.progressBar"
+                        },
+                        "statusBar": {
+                            "$ref": "#/properties/Lua.window.statusBar"
+                        }
+                    }
+                },
+                "window.progressBar": {
+                    "$ref": "#/properties/Lua.window.progressBar"
+                },
+                "window.statusBar": {
+                    "$ref": "#/properties/Lua.window.statusBar"
+                },
+                "workspace": {
+                    "properties": {
+                        "checkThirdParty": {
+                            "$ref": "#/properties/Lua.workspace.checkThirdParty"
+                        },
+                        "ignoreDir": {
+                            "$ref": "#/properties/Lua.workspace.ignoreDir"
+                        },
+                        "ignoreSubmodules": {
+                            "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
+                        },
+                        "library": {
+                            "$ref": "#/properties/Lua.workspace.library"
+                        },
+                        "maxPreload": {
+                            "$ref": "#/properties/Lua.workspace.maxPreload"
+                        },
+                        "preloadFileSize": {
+                            "$ref": "#/properties/Lua.workspace.preloadFileSize"
+                        },
+                        "useGitIgnore": {
+                            "$ref": "#/properties/Lua.workspace.useGitIgnore"
+                        },
+                        "userThirdParty": {
+                            "$ref": "#/properties/Lua.workspace.userThirdParty"
+                        }
+                    }
+                },
+                "workspace.checkThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
+                },
+                "workspace.ignoreDir": {
+                    "$ref": "#/properties/Lua.workspace.ignoreDir"
+                },
+                "workspace.ignoreSubmodules": {
+                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
+                },
+                "workspace.library": {
+                    "$ref": "#/properties/Lua.workspace.library"
+                },
+                "workspace.maxPreload": {
+                    "$ref": "#/properties/Lua.workspace.maxPreload"
+                },
+                "workspace.preloadFileSize": {
+                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
+                },
+                "workspace.useGitIgnore": {
+                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
+                },
+                "workspace.userThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.userThirdParty"
+                }
+            }
+        },
         "Lua.color.mode": {
             "default": "Semantic",
             "enum": [
@@ -1438,8 +1786,46 @@
             "scope": "resource",
             "type": "array"
         },
+        "color": {
+            "properties": {
+                "mode": {
+                    "$ref": "#/properties/Lua.color.mode"
+                }
+            }
+        },
         "color.mode": {
             "$ref": "#/properties/Lua.color.mode"
+        },
+        "completion": {
+            "properties": {
+                "autoRequire": {
+                    "$ref": "#/properties/Lua.completion.autoRequire"
+                },
+                "callSnippet": {
+                    "$ref": "#/properties/Lua.completion.callSnippet"
+                },
+                "displayContext": {
+                    "$ref": "#/properties/Lua.completion.displayContext"
+                },
+                "enable": {
+                    "$ref": "#/properties/Lua.completion.enable"
+                },
+                "keywordSnippet": {
+                    "$ref": "#/properties/Lua.completion.keywordSnippet"
+                },
+                "requireSeparator": {
+                    "$ref": "#/properties/Lua.completion.requireSeparator"
+                },
+                "showParams": {
+                    "$ref": "#/properties/Lua.completion.showParams"
+                },
+                "showWord": {
+                    "$ref": "#/properties/Lua.completion.showWord"
+                },
+                "workspaceWord": {
+                    "$ref": "#/properties/Lua.completion.workspaceWord"
+                }
+            }
         },
         "completion.autoRequire": {
             "$ref": "#/properties/Lua.completion.autoRequire"
@@ -1468,6 +1854,37 @@
         "completion.workspaceWord": {
             "$ref": "#/properties/Lua.completion.workspaceWord"
         },
+        "diagnostics": {
+            "properties": {
+                "disable": {
+                    "$ref": "#/properties/Lua.diagnostics.disable"
+                },
+                "enable": {
+                    "$ref": "#/properties/Lua.diagnostics.enable"
+                },
+                "globals": {
+                    "$ref": "#/properties/Lua.diagnostics.globals"
+                },
+                "ignoredFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
+                },
+                "libraryFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
+                },
+                "neededFileStatus": {
+                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
+                },
+                "severity": {
+                    "$ref": "#/properties/Lua.diagnostics.severity"
+                },
+                "workspaceDelay": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
+                },
+                "workspaceRate": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
+                }
+            }
+        },
         "diagnostics.disable": {
             "$ref": "#/properties/Lua.diagnostics.disable"
         },
@@ -1495,6 +1912,22 @@
         "diagnostics.workspaceRate": {
             "$ref": "#/properties/Lua.diagnostics.workspaceRate"
         },
+        "hint": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.hint.enable"
+                },
+                "paramName": {
+                    "$ref": "#/properties/Lua.hint.paramName"
+                },
+                "paramType": {
+                    "$ref": "#/properties/Lua.hint.paramType"
+                },
+                "setType": {
+                    "$ref": "#/properties/Lua.hint.setType"
+                }
+            }
+        },
         "hint.enable": {
             "$ref": "#/properties/Lua.hint.enable"
         },
@@ -1506,6 +1939,28 @@
         },
         "hint.setType": {
             "$ref": "#/properties/Lua.hint.setType"
+        },
+        "hover": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.hover.enable"
+                },
+                "enumsLimit": {
+                    "$ref": "#/properties/Lua.hover.enumsLimit"
+                },
+                "previewFields": {
+                    "$ref": "#/properties/Lua.hover.previewFields"
+                },
+                "viewNumber": {
+                    "$ref": "#/properties/Lua.hover.viewNumber"
+                },
+                "viewString": {
+                    "$ref": "#/properties/Lua.hover.viewString"
+                },
+                "viewStringMax": {
+                    "$ref": "#/properties/Lua.hover.viewStringMax"
+                }
+            }
         },
         "hover.enable": {
             "$ref": "#/properties/Lua.hover.enable"
@@ -1525,8 +1980,43 @@
         "hover.viewStringMax": {
             "$ref": "#/properties/Lua.hover.viewStringMax"
         },
+        "misc": {
+            "properties": {
+                "parameters": {
+                    "$ref": "#/properties/Lua.misc.parameters"
+                }
+            }
+        },
         "misc.parameters": {
             "$ref": "#/properties/Lua.misc.parameters"
+        },
+        "runtime": {
+            "properties": {
+                "builtin": {
+                    "$ref": "#/properties/Lua.runtime.builtin"
+                },
+                "fileEncoding": {
+                    "$ref": "#/properties/Lua.runtime.fileEncoding"
+                },
+                "nonstandardSymbol": {
+                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
+                },
+                "path": {
+                    "$ref": "#/properties/Lua.runtime.path"
+                },
+                "plugin": {
+                    "$ref": "#/properties/Lua.runtime.plugin"
+                },
+                "special": {
+                    "$ref": "#/properties/Lua.runtime.special"
+                },
+                "unicodeName": {
+                    "$ref": "#/properties/Lua.runtime.unicodeName"
+                },
+                "version": {
+                    "$ref": "#/properties/Lua.runtime.version"
+                }
+            }
         },
         "runtime.builtin": {
             "$ref": "#/properties/Lua.runtime.builtin"
@@ -1552,17 +2042,69 @@
         "runtime.version": {
             "$ref": "#/properties/Lua.runtime.version"
         },
+        "signatureHelp": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.signatureHelp.enable"
+                }
+            }
+        },
         "signatureHelp.enable": {
             "$ref": "#/properties/Lua.signatureHelp.enable"
         },
+        "telemetry": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.telemetry.enable"
+                }
+            }
+        },
         "telemetry.enable": {
             "$ref": "#/properties/Lua.telemetry.enable"
+        },
+        "window": {
+            "properties": {
+                "progressBar": {
+                    "$ref": "#/properties/Lua.window.progressBar"
+                },
+                "statusBar": {
+                    "$ref": "#/properties/Lua.window.statusBar"
+                }
+            }
         },
         "window.progressBar": {
             "$ref": "#/properties/Lua.window.progressBar"
         },
         "window.statusBar": {
             "$ref": "#/properties/Lua.window.statusBar"
+        },
+        "workspace": {
+            "properties": {
+                "checkThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
+                },
+                "ignoreDir": {
+                    "$ref": "#/properties/Lua.workspace.ignoreDir"
+                },
+                "ignoreSubmodules": {
+                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
+                },
+                "library": {
+                    "$ref": "#/properties/Lua.workspace.library"
+                },
+                "maxPreload": {
+                    "$ref": "#/properties/Lua.workspace.maxPreload"
+                },
+                "preloadFileSize": {
+                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
+                },
+                "useGitIgnore": {
+                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
+                },
+                "userThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.userThirdParty"
+                }
+            }
         },
         "workspace.checkThirdParty": {
             "$ref": "#/properties/Lua.workspace.checkThirdParty"
