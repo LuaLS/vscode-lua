@@ -6,15 +6,15 @@ local fsu  = require 'fs-utility'
 
 local function addSplited(t, key, value)
     t[key] = value
-    local left, right = key:match '([^%.]+)%.(.+)'
-    if not left then
-        return
+    for pos in key:gmatch '()%.' do
+        local left = key:sub(1, pos - 1)
+        local right = key:sub(pos + 1)
+        local nt = t[left] or {
+            properties = {}
+        }
+        t[left] = nt
+        addSplited(nt.properties, right, value)
     end
-    local nt = t[left] or {
-        properties = {}
-    }
-    t[left] = nt
-    addSplited(nt.properties, right, value)
 end
 
 local function copyWithNLS(t, callback)

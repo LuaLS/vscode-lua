@@ -350,6 +350,13 @@
                 }
             }
         },
+        "Lua.color": {
+            "properties": {
+                "mode": {
+                    "$ref": "#/properties/Lua.color.mode"
+                }
+            }
+        },
         "Lua.color.mode": {
             "default": "Semantic",
             "enum": [
@@ -365,6 +372,37 @@
             ],
             "scope": "resource",
             "type": "string"
+        },
+        "Lua.completion": {
+            "properties": {
+                "autoRequire": {
+                    "$ref": "#/properties/Lua.completion.autoRequire"
+                },
+                "callSnippet": {
+                    "$ref": "#/properties/Lua.completion.callSnippet"
+                },
+                "displayContext": {
+                    "$ref": "#/properties/Lua.completion.displayContext"
+                },
+                "enable": {
+                    "$ref": "#/properties/Lua.completion.enable"
+                },
+                "keywordSnippet": {
+                    "$ref": "#/properties/Lua.completion.keywordSnippet"
+                },
+                "requireSeparator": {
+                    "$ref": "#/properties/Lua.completion.requireSeparator"
+                },
+                "showParams": {
+                    "$ref": "#/properties/Lua.completion.showParams"
+                },
+                "showWord": {
+                    "$ref": "#/properties/Lua.completion.showWord"
+                },
+                "workspaceWord": {
+                    "$ref": "#/properties/Lua.completion.workspaceWord"
+                }
+            }
         },
         "Lua.completion.autoRequire": {
             "default": true,
@@ -449,6 +487,37 @@
             "markdownDescription": "显示的上下文单词是否包含工作区中其他文件的内容。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.diagnostics": {
+            "properties": {
+                "disable": {
+                    "$ref": "#/properties/Lua.diagnostics.disable"
+                },
+                "enable": {
+                    "$ref": "#/properties/Lua.diagnostics.enable"
+                },
+                "globals": {
+                    "$ref": "#/properties/Lua.diagnostics.globals"
+                },
+                "ignoredFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.ignoredFiles"
+                },
+                "libraryFiles": {
+                    "$ref": "#/properties/Lua.diagnostics.libraryFiles"
+                },
+                "neededFileStatus": {
+                    "$ref": "#/properties/Lua.diagnostics.neededFileStatus"
+                },
+                "severity": {
+                    "$ref": "#/properties/Lua.diagnostics.severity"
+                },
+                "workspaceDelay": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceDelay"
+                },
+                "workspaceRate": {
+                    "$ref": "#/properties/Lua.diagnostics.workspaceRate"
+                }
+            }
         },
         "Lua.diagnostics.disable": {
             "items": {
@@ -1360,6 +1429,22 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.hint": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.hint.enable"
+                },
+                "paramName": {
+                    "$ref": "#/properties/Lua.hint.paramName"
+                },
+                "paramType": {
+                    "$ref": "#/properties/Lua.hint.paramType"
+                },
+                "setType": {
+                    "$ref": "#/properties/Lua.hint.setType"
+                }
+            }
+        },
         "Lua.hint.enable": {
             "default": false,
             "markdownDescription": "启用内联提示。",
@@ -1393,6 +1478,28 @@
             "markdownDescription": "在赋值操作位置提示类型。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.hover": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.hover.enable"
+                },
+                "enumsLimit": {
+                    "$ref": "#/properties/Lua.hover.enumsLimit"
+                },
+                "previewFields": {
+                    "$ref": "#/properties/Lua.hover.previewFields"
+                },
+                "viewNumber": {
+                    "$ref": "#/properties/Lua.hover.viewNumber"
+                },
+                "viewString": {
+                    "$ref": "#/properties/Lua.hover.viewString"
+                },
+                "viewStringMax": {
+                    "$ref": "#/properties/Lua.hover.viewStringMax"
+                }
+            }
         },
         "Lua.hover.enable": {
             "default": true,
@@ -1430,6 +1537,13 @@
             "scope": "resource",
             "type": "integer"
         },
+        "Lua.misc": {
+            "properties": {
+                "parameters": {
+                    "$ref": "#/properties/Lua.misc.parameters"
+                }
+            }
+        },
         "Lua.misc.parameters": {
             "items": {
                 "type": "string"
@@ -1437,6 +1551,34 @@
             "markdownDescription": "VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
             "scope": "resource",
             "type": "array"
+        },
+        "Lua.runtime": {
+            "properties": {
+                "builtin": {
+                    "$ref": "#/properties/Lua.runtime.builtin"
+                },
+                "fileEncoding": {
+                    "$ref": "#/properties/Lua.runtime.fileEncoding"
+                },
+                "nonstandardSymbol": {
+                    "$ref": "#/properties/Lua.runtime.nonstandardSymbol"
+                },
+                "path": {
+                    "$ref": "#/properties/Lua.runtime.path"
+                },
+                "plugin": {
+                    "$ref": "#/properties/Lua.runtime.plugin"
+                },
+                "special": {
+                    "$ref": "#/properties/Lua.runtime.special"
+                },
+                "unicodeName": {
+                    "$ref": "#/properties/Lua.runtime.unicodeName"
+                },
+                "version": {
+                    "$ref": "#/properties/Lua.runtime.version"
+                }
+            }
         },
         "Lua.runtime.builtin": {
             "markdownDescription": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
@@ -1702,11 +1844,25 @@
             "scope": "resource",
             "type": "string"
         },
+        "Lua.signatureHelp": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.signatureHelp.enable"
+                }
+            }
+        },
         "Lua.signatureHelp.enable": {
             "default": true,
             "markdownDescription": "启用参数提示。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.telemetry": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/Lua.telemetry.enable"
+                }
+            }
         },
         "Lua.telemetry.enable": {
             "default": null,
@@ -1716,6 +1872,16 @@
                 "boolean",
                 "null"
             ]
+        },
+        "Lua.window": {
+            "properties": {
+                "progressBar": {
+                    "$ref": "#/properties/Lua.window.progressBar"
+                },
+                "statusBar": {
+                    "$ref": "#/properties/Lua.window.statusBar"
+                }
+            }
         },
         "Lua.window.progressBar": {
             "default": true,
@@ -1728,6 +1894,34 @@
             "markdownDescription": "在状态栏显示插件状态。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "Lua.workspace": {
+            "properties": {
+                "checkThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.checkThirdParty"
+                },
+                "ignoreDir": {
+                    "$ref": "#/properties/Lua.workspace.ignoreDir"
+                },
+                "ignoreSubmodules": {
+                    "$ref": "#/properties/Lua.workspace.ignoreSubmodules"
+                },
+                "library": {
+                    "$ref": "#/properties/Lua.workspace.library"
+                },
+                "maxPreload": {
+                    "$ref": "#/properties/Lua.workspace.maxPreload"
+                },
+                "preloadFileSize": {
+                    "$ref": "#/properties/Lua.workspace.preloadFileSize"
+                },
+                "useGitIgnore": {
+                    "$ref": "#/properties/Lua.workspace.useGitIgnore"
+                },
+                "userThirdParty": {
+                    "$ref": "#/properties/Lua.workspace.userThirdParty"
+                }
+            }
         },
         "Lua.workspace.checkThirdParty": {
             "default": true,
