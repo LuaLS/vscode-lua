@@ -1,5 +1,9 @@
 # changelog
 
+## 2.4.5
+`2021-10-18`
+* `FIX` accidentally load lua files from user workspace
+
 ## 2.4.4
 `2021-10-15`
 * `CHG` improve `.luarc.json`
