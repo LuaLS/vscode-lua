@@ -22,7 +22,7 @@
                 "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
                 "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion": {
@@ -59,7 +59,7 @@
         "completion.autoRequire": {
             "default": true,
             "markdownDescription": "When the input looks like a file name, automatically `require` this file.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.callSnippet": {
@@ -75,19 +75,19 @@
                 "Shows `function name` and `call snippet`.",
                 "Only shows `call snippet.`"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.displayContext": {
             "default": 0,
             "markdownDescription": "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "completion.enable": {
             "default": true,
             "markdownDescription": "Enable completion.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.keywordSnippet": {
@@ -103,19 +103,19 @@
                 "Shows `keyword` and `syntax snippet`.",
                 "Only shows `syntax snippet`."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.requireSeparator": {
             "default": ".",
             "markdownDescription": "The separator used when `require`.",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.showParams": {
             "default": true,
             "markdownDescription": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.showWord": {
@@ -131,13 +131,13 @@
                 "Contextual words are only displayed when suggestions based on semantics cannot be provided.",
                 "Do not display context words."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.workspaceWord": {
             "default": true,
             "markdownDescription": "Whether the displayed context word contains the content of other files in the workspace.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "diagnostics": {
@@ -176,13 +176,13 @@
                 "type": "string"
             },
             "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "diagnostics.enable": {
             "default": true,
             "markdownDescription": "Enable diagnostics.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "diagnostics.globals": {
@@ -190,7 +190,7 @@
                 "type": "string"
             },
             "markdownDescription": "Defined global variables.\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "diagnostics.ignoredFiles": {
@@ -206,7 +206,7 @@
                 "Only when these files are opened will it be diagnosed.",
                 "These files are not diagnosed."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "diagnostics.libraryFiles": {
@@ -222,7 +222,7 @@
                 "Only when these files are opened will it be diagnosed.",
                 "These files are not diagnosed."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
@@ -236,7 +236,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "circle-doc-class": {
@@ -247,7 +246,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "close-non-object": {
@@ -258,7 +256,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "code-after-break": {
@@ -269,7 +266,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "count-down-loop": {
@@ -280,7 +276,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "deprecated": {
@@ -291,7 +286,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "different-requires": {
@@ -302,7 +296,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "doc-field-no-class": {
@@ -313,7 +306,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-class": {
@@ -324,7 +316,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-field": {
@@ -335,7 +326,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-param": {
@@ -346,7 +336,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-index": {
@@ -357,7 +346,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-set-field": {
@@ -368,7 +356,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "empty-block": {
@@ -379,7 +366,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "global-in-nil-env": {
@@ -390,7 +376,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "lowercase-global": {
@@ -401,7 +386,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newfield-call": {
@@ -412,7 +396,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newline-call": {
@@ -423,7 +406,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "no-implicit-any": {
@@ -434,7 +416,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redefined-local": {
@@ -445,7 +426,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-parameter": {
@@ -456,7 +436,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-return": {
@@ -467,7 +446,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-value": {
@@ -478,7 +456,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "trailing-space": {
@@ -489,7 +466,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "type-check": {
@@ -500,7 +476,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unbalanced-assignments": {
@@ -511,7 +486,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-class": {
@@ -522,7 +496,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-name": {
@@ -533,7 +506,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-param": {
@@ -544,7 +516,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-env-child": {
@@ -555,7 +526,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-field": {
@@ -566,7 +536,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-global": {
@@ -577,7 +546,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unknown-diag-code": {
@@ -588,7 +556,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-function": {
@@ -599,7 +566,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-label": {
@@ -610,7 +576,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-local": {
@@ -621,7 +586,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-vararg": {
@@ -632,11 +596,10 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "title": "neededFileStatus",
             "type": "object"
         },
@@ -652,7 +615,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "circle-doc-class": {
@@ -664,7 +626,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "close-non-object": {
@@ -676,7 +637,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "code-after-break": {
@@ -688,7 +648,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "count-down-loop": {
@@ -700,7 +659,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "deprecated": {
@@ -712,7 +670,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "different-requires": {
@@ -724,7 +681,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "doc-field-no-class": {
@@ -736,7 +692,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-class": {
@@ -748,7 +703,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-field": {
@@ -760,7 +714,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-param": {
@@ -772,7 +725,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-index": {
@@ -784,7 +736,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-set-field": {
@@ -796,7 +747,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "empty-block": {
@@ -808,7 +758,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "global-in-nil-env": {
@@ -820,7 +769,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "lowercase-global": {
@@ -832,7 +780,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newfield-call": {
@@ -844,7 +791,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newline-call": {
@@ -856,7 +802,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "no-implicit-any": {
@@ -868,7 +813,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redefined-local": {
@@ -880,7 +824,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-parameter": {
@@ -892,7 +835,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-return": {
@@ -904,7 +846,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-value": {
@@ -916,7 +857,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "trailing-space": {
@@ -928,7 +868,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "type-check": {
@@ -940,7 +879,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unbalanced-assignments": {
@@ -952,7 +890,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-class": {
@@ -964,7 +901,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-name": {
@@ -976,7 +912,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-param": {
@@ -988,7 +923,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-env-child": {
@@ -1000,7 +934,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-field": {
@@ -1012,7 +945,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-global": {
@@ -1024,7 +956,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unknown-diag-code": {
@@ -1036,7 +967,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-function": {
@@ -1048,7 +978,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-label": {
@@ -1060,7 +989,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-local": {
@@ -1072,7 +1000,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-vararg": {
@@ -1084,24 +1011,23 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "title": "severity",
             "type": "object"
         },
         "diagnostics.workspaceDelay": {
             "default": 0,
             "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hint": {
@@ -1123,7 +1049,7 @@
         "hint.enable": {
             "default": false,
             "markdownDescription": "Enabel hint.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hint.paramName": {
@@ -1139,19 +1065,19 @@
                 "Only literal type parameters are shown.",
                 "Disable parameter hints."
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "hint.paramType": {
             "default": true,
             "markdownDescription": "Show type hints at the parameter of the function.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hint.setType": {
             "default": false,
             "markdownDescription": "Show hints of type at assignment operation.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover": {
@@ -1179,37 +1105,37 @@
         "hover.enable": {
             "default": true,
             "markdownDescription": "Enable hover.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.enumsLimit": {
             "default": 5,
             "markdownDescription": "When the value corresponds to multiple types, limit the number of types displaying.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hover.previewFields": {
             "default": 20,
             "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hover.viewNumber": {
             "default": true,
             "markdownDescription": "Hover to view numeric content (only if literal is not decimal).",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.viewString": {
             "default": true,
             "markdownDescription": "Hover to view the contents of a string (only if the literal contains an escape character).",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.viewStringMax": {
             "default": 1000,
             "markdownDescription": "The maximum length of a hover to view the contents of a string.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "misc": {
@@ -1224,7 +1150,7 @@
                 "type": "string"
             },
             "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime": {
@@ -1266,7 +1192,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "bit": {
@@ -1277,7 +1202,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "bit32": {
@@ -1288,7 +1212,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "builtin": {
@@ -1299,7 +1222,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "coroutine": {
@@ -1310,7 +1232,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "debug": {
@@ -1321,7 +1242,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "ffi": {
@@ -1332,7 +1252,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "io": {
@@ -1343,7 +1262,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "jit": {
@@ -1354,7 +1272,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "math": {
@@ -1365,7 +1282,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "os": {
@@ -1376,7 +1292,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "package": {
@@ -1387,7 +1302,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "string": {
@@ -1398,7 +1312,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "table": {
@@ -1409,7 +1322,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "utf8": {
@@ -1420,11 +1332,10 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "type": "object"
         },
         "runtime.fileEncoding": {
@@ -1434,7 +1345,7 @@
                 "ansi"
             ],
             "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "runtime.nonstandardSymbol": {
@@ -1456,7 +1367,7 @@
                 "type": "string"
             },
             "markdownDescription": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime.path": {
@@ -1468,13 +1379,13 @@
                 "type": "string"
             },
             "markdownDescription": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, all `**/myfile/init.lua` will be searched from the loaded files.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime.plugin": {
             "default": "",
             "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "runtime.special": {
@@ -1493,17 +1404,16 @@
                         "pcall",
                         "xpcall"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "type": "object"
         },
         "runtime.unicodeName": {
             "default": false,
             "markdownDescription": "Allows Unicode characters in name.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "runtime.version": {
@@ -1516,7 +1426,7 @@
                 "LuaJIT"
             ],
             "markdownDescription": "Lua runtime version.",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "signatureHelp": {
@@ -1529,7 +1439,7 @@
         "signatureHelp.enable": {
             "default": true,
             "markdownDescription": "Enable signature help.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "telemetry": {
@@ -1542,7 +1452,7 @@
         "telemetry.enable": {
             "default": null,
             "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
-            "scope": "resource",
+            "scope": "window",
             "type": [
                 "boolean",
                 "null"
@@ -1561,13 +1471,13 @@
         "window.progressBar": {
             "default": true,
             "markdownDescription": "Show progress bar in status bar.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "window.statusBar": {
             "default": true,
             "markdownDescription": "Show extension status in status bar.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace": {
@@ -1601,7 +1511,7 @@
         "workspace.checkThirdParty": {
             "default": true,
             "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* Jass\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.ignoreDir": {
@@ -1612,13 +1522,13 @@
                 "type": "string"
             },
             "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "workspace.ignoreSubmodules": {
             "default": true,
             "markdownDescription": "Ignore submodules.",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.library": {
@@ -1626,25 +1536,25 @@
                 "type": "string"
             },
             "markdownDescription": "In addition to the current workspace, which directories will load files from.",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "workspace.maxPreload": {
             "default": 1000,
             "markdownDescription": "Max preloaded files.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "workspace.preloadFileSize": {
             "default": 100,
             "markdownDescription": "Skip files larger than this value (KB) when preloading.",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "Ignore files list in `.gitignore` .",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.userThirdParty": {
@@ -1652,7 +1562,7 @@
                 "type": "string"
             },
             "markdownDescription": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         }
     },

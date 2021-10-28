@@ -22,7 +22,7 @@
                 "语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
                 "增强的语义颜色。 类似于`Semantic`，但会进行额外的分析（也会带来额外的开销）。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion": {
@@ -59,7 +59,7 @@
         "completion.autoRequire": {
             "default": true,
             "markdownDescription": "输入内容看起来是个文件名时，自动 `require` 此文件。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.callSnippet": {
@@ -75,19 +75,19 @@
                 "显示 `函数名` 与 `调用片段`。",
                 "只显示 `调用片段`。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.displayContext": {
             "default": 0,
             "markdownDescription": "预览建议的相关代码片段，可能可以帮助你了解这项建议的用法。设置的数字表示代码片段的截取行数，设置为`0`可以禁用此功能。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "completion.enable": {
             "default": true,
             "markdownDescription": "启用自动完成。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.keywordSnippet": {
@@ -103,19 +103,19 @@
                 "显示 `关键字` 与 `语法片段`。",
                 "只显示 `语法片段`。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.requireSeparator": {
             "default": ".",
             "markdownDescription": "`require` 时使用的分隔符。",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.showParams": {
             "default": true,
             "markdownDescription": "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "completion.showWord": {
@@ -131,13 +131,13 @@
                 "无法根据语义提供建议时才显示上下文单词。",
                 "不显示上下文单词。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "completion.workspaceWord": {
             "default": true,
             "markdownDescription": "显示的上下文单词是否包含工作区中其他文件的内容。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "diagnostics": {
@@ -176,13 +176,13 @@
                 "type": "string"
             },
             "markdownDescription": "禁用的诊断（使用浮框括号内的代码）。\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "diagnostics.enable": {
             "default": true,
             "markdownDescription": "启用诊断。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "diagnostics.globals": {
@@ -190,7 +190,7 @@
                 "type": "string"
             },
             "markdownDescription": "已定义的全局变量。\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "diagnostics.ignoredFiles": {
@@ -206,7 +206,7 @@
                 "只有打开这些文件时才会诊断。",
                 "不诊断这些文件。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "diagnostics.libraryFiles": {
@@ -222,7 +222,7 @@
                 "只有打开这些文件时才会诊断。",
                 "不诊断这些文件。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
@@ -236,7 +236,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "circle-doc-class": {
@@ -247,7 +246,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "close-non-object": {
@@ -258,7 +256,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "code-after-break": {
@@ -269,7 +266,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "count-down-loop": {
@@ -280,7 +276,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "deprecated": {
@@ -291,7 +286,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "different-requires": {
@@ -302,7 +296,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "doc-field-no-class": {
@@ -313,7 +306,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-class": {
@@ -324,7 +316,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-field": {
@@ -335,7 +326,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-param": {
@@ -346,7 +336,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-index": {
@@ -357,7 +346,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-set-field": {
@@ -368,7 +356,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "empty-block": {
@@ -379,7 +366,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "global-in-nil-env": {
@@ -390,7 +376,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "lowercase-global": {
@@ -401,7 +386,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newfield-call": {
@@ -412,7 +396,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newline-call": {
@@ -423,7 +406,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "no-implicit-any": {
@@ -434,7 +416,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redefined-local": {
@@ -445,7 +426,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-parameter": {
@@ -456,7 +436,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-return": {
@@ -467,7 +446,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-value": {
@@ -478,7 +456,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "trailing-space": {
@@ -489,7 +466,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "type-check": {
@@ -500,7 +476,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unbalanced-assignments": {
@@ -511,7 +486,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-class": {
@@ -522,7 +496,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-name": {
@@ -533,7 +506,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-param": {
@@ -544,7 +516,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-env-child": {
@@ -555,7 +526,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-field": {
@@ -566,7 +536,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-global": {
@@ -577,7 +546,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unknown-diag-code": {
@@ -588,7 +556,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-function": {
@@ -599,7 +566,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-label": {
@@ -610,7 +576,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-local": {
@@ -621,7 +586,6 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-vararg": {
@@ -632,11 +596,10 @@
                         "Opened",
                         "None"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "title": "neededFileStatus",
             "type": "object"
         },
@@ -652,7 +615,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "circle-doc-class": {
@@ -664,7 +626,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "close-non-object": {
@@ -676,7 +637,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "code-after-break": {
@@ -688,7 +648,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "count-down-loop": {
@@ -700,7 +659,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "deprecated": {
@@ -712,7 +670,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "different-requires": {
@@ -724,7 +681,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "doc-field-no-class": {
@@ -736,7 +692,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-class": {
@@ -748,7 +703,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-field": {
@@ -760,7 +714,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-doc-param": {
@@ -772,7 +725,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-index": {
@@ -784,7 +736,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "duplicate-set-field": {
@@ -796,7 +747,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "empty-block": {
@@ -808,7 +758,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "global-in-nil-env": {
@@ -820,7 +769,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "lowercase-global": {
@@ -832,7 +780,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newfield-call": {
@@ -844,7 +791,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "newline-call": {
@@ -856,7 +802,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "no-implicit-any": {
@@ -868,7 +813,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redefined-local": {
@@ -880,7 +824,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-parameter": {
@@ -892,7 +835,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-return": {
@@ -904,7 +846,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "redundant-value": {
@@ -916,7 +857,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "trailing-space": {
@@ -928,7 +868,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "type-check": {
@@ -940,7 +879,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unbalanced-assignments": {
@@ -952,7 +890,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-class": {
@@ -964,7 +901,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-name": {
@@ -976,7 +912,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-doc-param": {
@@ -988,7 +923,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-env-child": {
@@ -1000,7 +934,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-field": {
@@ -1012,7 +945,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "undefined-global": {
@@ -1024,7 +956,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unknown-diag-code": {
@@ -1036,7 +967,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-function": {
@@ -1048,7 +978,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-label": {
@@ -1060,7 +989,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-local": {
@@ -1072,7 +1000,6 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "unused-vararg": {
@@ -1084,24 +1011,23 @@
                         "Information",
                         "Hint"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "title": "severity",
             "type": "object"
         },
         "diagnostics.workspaceDelay": {
             "default": 0,
             "markdownDescription": "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hint": {
@@ -1123,7 +1049,7 @@
         "hint.enable": {
             "default": false,
             "markdownDescription": "启用内联提示。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hint.paramName": {
@@ -1139,19 +1065,19 @@
                 "只有字面量类型的参数进行提示。",
                 "禁用参数提示。"
             ],
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "hint.paramType": {
             "default": true,
             "markdownDescription": "在函数的参数位置提示类型。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hint.setType": {
             "default": false,
             "markdownDescription": "在赋值操作位置提示类型。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover": {
@@ -1179,37 +1105,37 @@
         "hover.enable": {
             "default": true,
             "markdownDescription": "启用悬停提示。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.enumsLimit": {
             "default": 5,
             "markdownDescription": "当值对应多个类型时，限制类型的显示数量。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hover.previewFields": {
             "default": 20,
             "markdownDescription": "悬停提示查看表时，限制表内字段的最大预览数量。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "hover.viewNumber": {
             "default": true,
             "markdownDescription": "悬停提示查看数字内容（仅当字面量不是十进制时）。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.viewString": {
             "default": true,
             "markdownDescription": "悬停提示查看字符串内容（仅当字面量包含转义符时）。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "hover.viewStringMax": {
             "default": 1000,
             "markdownDescription": "悬停提示查看字符串内容时的最大长度。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "misc": {
@@ -1224,7 +1150,7 @@
                 "type": "string"
             },
             "markdownDescription": "VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime": {
@@ -1266,7 +1192,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "bit": {
@@ -1277,7 +1202,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "bit32": {
@@ -1288,7 +1212,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "builtin": {
@@ -1299,7 +1222,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "coroutine": {
@@ -1310,7 +1232,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "debug": {
@@ -1321,7 +1242,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "ffi": {
@@ -1332,7 +1252,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "io": {
@@ -1343,7 +1262,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "jit": {
@@ -1354,7 +1272,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "math": {
@@ -1365,7 +1282,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "os": {
@@ -1376,7 +1292,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "package": {
@@ -1387,7 +1302,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "string": {
@@ -1398,7 +1312,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "table": {
@@ -1409,7 +1322,6 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 },
                 "utf8": {
@@ -1420,11 +1332,10 @@
                         "enable",
                         "disable"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "type": "object"
         },
         "runtime.fileEncoding": {
@@ -1434,7 +1345,7 @@
                 "ansi"
             ],
             "markdownDescription": "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "runtime.nonstandardSymbol": {
@@ -1456,7 +1367,7 @@
                 "type": "string"
             },
             "markdownDescription": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime.path": {
@@ -1468,13 +1379,13 @@
                 "type": "string"
             },
             "markdownDescription": "当使用 `require` 时，如何根据输入的名字来查找文件。\n此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索所有的 `**/myfile/init.lua`。\n如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "runtime.plugin": {
             "default": "",
             "markdownDescription": "插件路径，请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "runtime.special": {
@@ -1493,17 +1404,16 @@
                         "pcall",
                         "xpcall"
                     ],
-                    "scope": "resource",
                     "type": "string"
                 }
             },
-            "scope": "resource",
+            "scope": "window",
             "type": "object"
         },
         "runtime.unicodeName": {
             "default": false,
             "markdownDescription": "允许在名字中使用 Unicode 字符。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "runtime.version": {
@@ -1516,7 +1426,7 @@
                 "LuaJIT"
             ],
             "markdownDescription": "Lua运行版本。",
-            "scope": "resource",
+            "scope": "window",
             "type": "string"
         },
         "signatureHelp": {
@@ -1529,7 +1439,7 @@
         "signatureHelp.enable": {
             "default": true,
             "markdownDescription": "启用参数提示。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "telemetry": {
@@ -1542,7 +1452,7 @@
         "telemetry.enable": {
             "default": null,
             "markdownDescription": "启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。\n",
-            "scope": "resource",
+            "scope": "window",
             "type": [
                 "boolean",
                 "null"
@@ -1561,13 +1471,13 @@
         "window.progressBar": {
             "default": true,
             "markdownDescription": "在状态栏显示进度条。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "window.statusBar": {
             "default": true,
             "markdownDescription": "在状态栏显示插件状态。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace": {
@@ -1601,7 +1511,7 @@
         "workspace.checkThirdParty": {
             "default": true,
             "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* Jass\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.ignoreDir": {
@@ -1612,13 +1522,13 @@
                 "type": "string"
             },
             "markdownDescription": "忽略的文件与目录（使用 `.gitignore` 语法）。\n",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "workspace.ignoreSubmodules": {
             "default": true,
             "markdownDescription": "忽略子模块。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.library": {
@@ -1626,25 +1536,25 @@
                 "type": "string"
             },
             "markdownDescription": "除了当前工作区以外，还会从哪些目录中加载文件。",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         },
         "workspace.maxPreload": {
             "default": 1000,
             "markdownDescription": "最大预加载文件数。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "workspace.preloadFileSize": {
             "default": 100,
             "markdownDescription": "预加载时跳过大小大于该值（KB）的文件。",
-            "scope": "resource",
+            "scope": "window",
             "type": "integer"
         },
         "workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "忽略 `.gitignore` 中列举的文件。",
-            "scope": "resource",
+            "scope": "window",
             "type": "boolean"
         },
         "workspace.userThirdParty": {
@@ -1652,7 +1562,7 @@
                 "type": "string"
             },
             "markdownDescription": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-            "scope": "resource",
+            "scope": "window",
             "type": "array"
         }
     },

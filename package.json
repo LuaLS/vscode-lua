@@ -41,13 +41,13 @@
                         "%config.color.mode.Semantic%",
                         "%config.color.mode.SemanticEnhanced%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.completion.autoRequire": {
                     "default": true,
                     "markdownDescription": "%config.completion.autoRequire%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.completion.callSnippet": {
@@ -63,19 +63,19 @@
                         "%config.completion.callSnippet.Both%",
                         "%config.completion.callSnippet.Replace%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.completion.displayContext": {
                     "default": 0,
                     "markdownDescription": "%config.completion.displayContext%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.completion.enable": {
                     "default": true,
                     "markdownDescription": "%config.completion.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.completion.keywordSnippet": {
@@ -91,19 +91,19 @@
                         "%config.completion.keywordSnippet.Both%",
                         "%config.completion.keywordSnippet.Replace%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.completion.requireSeparator": {
                     "default": ".",
                     "markdownDescription": "%config.completion.requireSeparator%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.completion.showParams": {
                     "default": true,
                     "markdownDescription": "%config.completion.showParams%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.completion.showWord": {
@@ -119,13 +119,13 @@
                         "%config.completion.showWord.Fallback%",
                         "%config.completion.showWord.Disable%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.completion.workspaceWord": {
                     "default": true,
                     "markdownDescription": "%config.completion.workspaceWord%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.diagnostics.disable": {
@@ -133,13 +133,13 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.diagnostics.disable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.diagnostics.enable": {
                     "default": true,
                     "markdownDescription": "%config.diagnostics.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.diagnostics.globals": {
@@ -147,7 +147,7 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.diagnostics.globals%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.diagnostics.ignoredFiles": {
@@ -163,7 +163,7 @@
                         "%config.diagnostics.files.Opened%",
                         "%config.diagnostics.files.Disable%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.diagnostics.libraryFiles": {
@@ -179,7 +179,7 @@
                         "%config.diagnostics.files.Opened%",
                         "%config.diagnostics.files.Disable%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.diagnostics.neededFileStatus": {
@@ -193,7 +193,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "circle-doc-class": {
@@ -204,7 +203,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "close-non-object": {
@@ -215,7 +213,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "code-after-break": {
@@ -226,7 +223,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "count-down-loop": {
@@ -237,7 +233,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "deprecated": {
@@ -248,7 +243,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "different-requires": {
@@ -259,7 +253,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "doc-field-no-class": {
@@ -270,7 +263,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-class": {
@@ -281,7 +273,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-field": {
@@ -292,7 +283,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-param": {
@@ -303,7 +293,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-index": {
@@ -314,7 +303,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-set-field": {
@@ -325,7 +313,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "empty-block": {
@@ -336,7 +323,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "global-in-nil-env": {
@@ -347,7 +333,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "lowercase-global": {
@@ -358,7 +343,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "newfield-call": {
@@ -369,7 +353,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "newline-call": {
@@ -380,7 +363,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "no-implicit-any": {
@@ -391,7 +373,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redefined-local": {
@@ -402,7 +383,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-parameter": {
@@ -413,7 +393,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-return": {
@@ -424,7 +403,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-value": {
@@ -435,7 +413,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "trailing-space": {
@@ -446,7 +423,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "type-check": {
@@ -457,7 +433,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unbalanced-assignments": {
@@ -468,7 +443,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-class": {
@@ -479,7 +453,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-name": {
@@ -490,7 +463,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-param": {
@@ -501,7 +473,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-env-child": {
@@ -512,7 +483,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-field": {
@@ -523,7 +493,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-global": {
@@ -534,7 +503,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unknown-diag-code": {
@@ -545,7 +513,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-function": {
@@ -556,7 +523,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-label": {
@@ -567,7 +533,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-local": {
@@ -578,7 +543,6 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-vararg": {
@@ -589,11 +553,10 @@
                                 "Opened",
                                 "None"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         }
                     },
-                    "scope": "resource",
+                    "scope": "window",
                     "title": "neededFileStatus",
                     "type": "object"
                 },
@@ -609,7 +572,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "circle-doc-class": {
@@ -621,7 +583,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "close-non-object": {
@@ -633,7 +594,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "code-after-break": {
@@ -645,7 +605,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "count-down-loop": {
@@ -657,7 +616,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "deprecated": {
@@ -669,7 +627,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "different-requires": {
@@ -681,7 +638,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "doc-field-no-class": {
@@ -693,7 +649,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-class": {
@@ -705,7 +660,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-field": {
@@ -717,7 +671,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-doc-param": {
@@ -729,7 +682,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-index": {
@@ -741,7 +693,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "duplicate-set-field": {
@@ -753,7 +704,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "empty-block": {
@@ -765,7 +715,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "global-in-nil-env": {
@@ -777,7 +726,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "lowercase-global": {
@@ -789,7 +737,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "newfield-call": {
@@ -801,7 +748,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "newline-call": {
@@ -813,7 +759,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "no-implicit-any": {
@@ -825,7 +770,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redefined-local": {
@@ -837,7 +781,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-parameter": {
@@ -849,7 +792,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-return": {
@@ -861,7 +803,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "redundant-value": {
@@ -873,7 +814,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "trailing-space": {
@@ -885,7 +825,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "type-check": {
@@ -897,7 +836,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unbalanced-assignments": {
@@ -909,7 +847,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-class": {
@@ -921,7 +858,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-name": {
@@ -933,7 +869,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-doc-param": {
@@ -945,7 +880,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-env-child": {
@@ -957,7 +891,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-field": {
@@ -969,7 +902,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "undefined-global": {
@@ -981,7 +913,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unknown-diag-code": {
@@ -993,7 +924,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-function": {
@@ -1005,7 +935,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-label": {
@@ -1017,7 +946,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-local": {
@@ -1029,7 +957,6 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "unused-vararg": {
@@ -1041,30 +968,29 @@
                                 "Information",
                                 "Hint"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         }
                     },
-                    "scope": "resource",
+                    "scope": "window",
                     "title": "severity",
                     "type": "object"
                 },
                 "Lua.diagnostics.workspaceDelay": {
                     "default": 0,
                     "markdownDescription": "%config.diagnostics.workspaceDelay%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.diagnostics.workspaceRate": {
                     "default": 100,
                     "markdownDescription": "%config.diagnostics.workspaceRate%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.hint.enable": {
                     "default": false,
                     "markdownDescription": "%config.hint.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hint.paramName": {
@@ -1080,55 +1006,55 @@
                         "%config.hint.paramName.Literal%",
                         "%config.hint.paramName.Disable%"
                     ],
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.hint.paramType": {
                     "default": true,
                     "markdownDescription": "%config.hint.paramType%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hint.setType": {
                     "default": false,
                     "markdownDescription": "%config.hint.setType%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hover.enable": {
                     "default": true,
                     "markdownDescription": "%config.hover.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hover.enumsLimit": {
                     "default": 5,
                     "markdownDescription": "%config.hover.enumsLimit%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.hover.previewFields": {
                     "default": 20,
                     "markdownDescription": "%config.hover.previewFields%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.hover.viewNumber": {
                     "default": true,
                     "markdownDescription": "%config.hover.viewNumber%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hover.viewString": {
                     "default": true,
                     "markdownDescription": "%config.hover.viewString%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.hover.viewStringMax": {
                     "default": 1000,
                     "markdownDescription": "%config.hover.viewStringMax%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.misc.parameters": {
@@ -1136,7 +1062,7 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.misc.parameters%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.runtime.builtin": {
@@ -1150,7 +1076,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "bit": {
@@ -1161,7 +1086,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "bit32": {
@@ -1172,7 +1096,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "builtin": {
@@ -1183,7 +1106,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "coroutine": {
@@ -1194,7 +1116,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "debug": {
@@ -1205,7 +1126,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "ffi": {
@@ -1216,7 +1136,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "io": {
@@ -1227,7 +1146,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "jit": {
@@ -1238,7 +1156,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "math": {
@@ -1249,7 +1166,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "os": {
@@ -1260,7 +1176,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "package": {
@@ -1271,7 +1186,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "string": {
@@ -1282,7 +1196,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "table": {
@@ -1293,7 +1206,6 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         },
                         "utf8": {
@@ -1304,11 +1216,10 @@
                                 "enable",
                                 "disable"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         }
                     },
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "object"
                 },
                 "Lua.runtime.fileEncoding": {
@@ -1318,7 +1229,7 @@
                         "ansi"
                     ],
                     "markdownDescription": "%config.runtime.fileEncoding%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.runtime.nonstandardSymbol": {
@@ -1340,7 +1251,7 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.runtime.nonstandardSymbol%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.runtime.path": {
@@ -1352,13 +1263,13 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.runtime.path%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.runtime.plugin": {
                     "default": "",
                     "markdownDescription": "%config.runtime.plugin%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.runtime.special": {
@@ -1377,17 +1288,16 @@
                                 "pcall",
                                 "xpcall"
                             ],
-                            "scope": "resource",
                             "type": "string"
                         }
                     },
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "object"
                 },
                 "Lua.runtime.unicodeName": {
                     "default": false,
                     "markdownDescription": "%config.runtime.unicodeName%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.runtime.version": {
@@ -1400,19 +1310,19 @@
                         "LuaJIT"
                     ],
                     "markdownDescription": "%config.runtime.version%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "string"
                 },
                 "Lua.signatureHelp.enable": {
                     "default": true,
                     "markdownDescription": "%config.signatureHelp.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.telemetry.enable": {
                     "default": null,
                     "markdownDescription": "%config.telemetry.enable%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": [
                         "boolean",
                         "null"
@@ -1421,19 +1331,19 @@
                 "Lua.window.progressBar": {
                     "default": true,
                     "markdownDescription": "%config.window.progressBar%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.window.statusBar": {
                     "default": true,
                     "markdownDescription": "%config.window.statusBar%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.workspace.checkThirdParty": {
                     "default": true,
                     "markdownDescription": "%config.workspace.checkThirdParty%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.workspace.ignoreDir": {
@@ -1444,13 +1354,13 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.workspace.ignoreDir%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.workspace.ignoreSubmodules": {
                     "default": true,
                     "markdownDescription": "%config.workspace.ignoreSubmodules%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.workspace.library": {
@@ -1458,25 +1368,25 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.workspace.library%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 },
                 "Lua.workspace.maxPreload": {
                     "default": 1000,
                     "markdownDescription": "%config.workspace.maxPreload%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.workspace.preloadFileSize": {
                     "default": 100,
                     "markdownDescription": "%config.workspace.preloadFileSize%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "integer"
                 },
                 "Lua.workspace.useGitIgnore": {
                     "default": true,
                     "markdownDescription": "%config.workspace.useGitIgnore%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "boolean"
                 },
                 "Lua.workspace.userThirdParty": {
@@ -1484,7 +1394,7 @@
                         "type": "string"
                     },
                     "markdownDescription": "%config.workspace.userThirdParty%",
-                    "scope": "resource",
+                    "scope": "window",
                     "type": "array"
                 }
             },

@@ -3,7 +3,7 @@ local json  = require 'json'
 
 local config = {
     ["Lua.runtime.version"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Lua 5.4",
         enum = {
@@ -16,7 +16,7 @@ local config = {
         markdownDescription = "%config.runtime.version%"
     },
     ["Lua.runtime.path"] = {
-        scope = "resource",
+        scope = 'window',
         type = "array",
         items = {
             type = 'string',
@@ -28,13 +28,12 @@ local config = {
         }
     },
     ["Lua.runtime.special"] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'object',
         markdownDescription = '%config.runtime.special%',
         patternProperties= {
             ['.*'] = {
                 type = "string",
-                scope = "resource",
                 default = "require",
                 enum = {
                     '_G',
@@ -51,13 +50,13 @@ local config = {
         }
     },
     ["Lua.runtime.unicodeName"] = {
-        scope = 'resource',
+        scope = 'window',
         type = 'boolean',
         default = false,
         markdownDescription = "%config.runtime.unicodeName%"
     },
     ["Lua.runtime.nonstandardSymbol"] = {
-        scope = 'resource',
+        scope = 'window',
         type = 'array',
         items = {
             type = 'string',
@@ -72,13 +71,13 @@ local config = {
         markdownDescription = "%config.runtime.nonstandardSymbol%"
     },
     ["Lua.runtime.plugin"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "",
         markdownDescription = "%config.runtime.plugin%"
     },
     ["Lua.runtime.fileEncoding"] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'string',
         default = 'utf8',
         enum = {
@@ -88,19 +87,19 @@ local config = {
         markdownDescription = '%config.runtime.fileEncoding%',
     },
     ['Lua.runtime.builtin'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'object',
         properties = {},
         markdownDescription = '%config.runtime.builtin%',
     },
     ["Lua.diagnostics.enable"] = {
-        scope = 'resource',
+        scope = 'window',
         type = 'boolean',
         default = true,
         markdownDescription = "%config.diagnostics.enable%"
     },
     ["Lua.diagnostics.disable"] = {
-        scope = "resource",
+        scope = 'window',
         type = "array",
         items = {
             type = 'string',
@@ -108,7 +107,7 @@ local config = {
         markdownDescription = "%config.diagnostics.disable%"
     },
     ["Lua.diagnostics.globals"] = {
-        scope = "resource",
+        scope = 'window',
         type = "array",
         items = {
             type = 'string',
@@ -116,33 +115,33 @@ local config = {
         markdownDescription = "%config.diagnostics.globals%"
     },
     ["Lua.diagnostics.severity"] = {
-        scope = "resource",
+        scope = 'window',
         type = 'object',
         markdownDescription = "%config.diagnostics.severity%",
         title = "severity",
         properties = {}
     },
     ["Lua.diagnostics.neededFileStatus"] = {
-        scope = "resource",
+        scope = 'window',
         type = 'object',
         markdownDescription = "%config.diagnostics.neededFileStatus%",
         title = "neededFileStatus",
         properties = {}
     },
     ["Lua.diagnostics.workspaceDelay"] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 0,
         markdownDescription = "%config.diagnostics.workspaceDelay%",
     },
     ["Lua.diagnostics.workspaceRate"] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 100,
         markdownDescription = "%config.diagnostics.workspaceRate%",
     },
     ["Lua.diagnostics.libraryFiles"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Opened",
         enum = {
@@ -158,7 +157,7 @@ local config = {
         markdownDescription = "%config.diagnostics.libraryFiles%",
     },
     ["Lua.diagnostics.ignoredFiles"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Opened",
         enum = {
@@ -174,7 +173,7 @@ local config = {
         markdownDescription = "%config.diagnostics.ignoredFiles%",
     },
     ["Lua.workspace.ignoreDir"] = {
-        scope = "resource",
+        scope = 'window',
         type = "array",
         items = {
             type = 'string',
@@ -185,31 +184,31 @@ local config = {
         },
     },
     ["Lua.workspace.ignoreSubmodules"] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.workspace.ignoreSubmodules%"
     },
     ["Lua.workspace.useGitIgnore"] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.workspace.useGitIgnore%"
     },
     ["Lua.workspace.maxPreload"] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 1000,
         markdownDescription = "%config.workspace.maxPreload%"
     },
     ["Lua.workspace.preloadFileSize"] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 100,
         markdownDescription = "%config.workspace.preloadFileSize%"
     },
     ["Lua.workspace.library"] = {
-        scope = 'resource',
+        scope = 'window',
         type = "array",
         items = {
             type = "string"
@@ -217,13 +216,13 @@ local config = {
         markdownDescription = "%config.workspace.library%"
     },
     ['Lua.workspace.checkThirdParty'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'boolean',
         default = true,
         markdownDescription = "%config.workspace.checkThirdParty%"
     },
     ["Lua.workspace.userThirdParty"] = {
-        scope = 'resource',
+        scope = 'window',
         type = "array",
         items = {
             type = "string"
@@ -231,13 +230,13 @@ local config = {
         markdownDescription = "%config.workspace.userThirdParty%"
     },
     ["Lua.completion.enable"] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.completion.enable%"
     },
     ["Lua.completion.callSnippet"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Disable",
         enum = {
@@ -253,7 +252,7 @@ local config = {
         markdownDescription = "%config.completion.callSnippet%"
     },
     ["Lua.completion.keywordSnippet"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Replace",
         enum = {
@@ -269,19 +268,19 @@ local config = {
         markdownDescription = "%config.completion.keywordSnippet%"
     },
     ['Lua.completion.displayContext'] = {
-        scope = "resource",
+        scope = 'window',
         type  = "integer",
         default = 0,
         markdownDescription = "%config.completion.displayContext%",
     },
     ['Lua.completion.workspaceWord'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.completion.workspaceWord%"
     },
     ['Lua.completion.showWord'] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = 'Fallback',
         enum = {
@@ -297,25 +296,25 @@ local config = {
         markdownDescription = "%config.completion.showWord%"
     },
     ['Lua.completion.autoRequire'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.completion.autoRequire%"
     },
     ['Lua.completion.showParams'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.completion.showParams%"
     },
     ['Lua.completion.requireSeparator'] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = '.',
         markdownDescription = "%config.completion.requireSeparator%"
     },
     ["Lua.color.mode"] = {
-        scope = "resource",
+        scope = 'window',
         type = "string",
         default = "Semantic",
         enum = {
@@ -331,121 +330,121 @@ local config = {
         markdownDescription = "%config.color.mode%"
     },
     ["Lua.signatureHelp.enable"] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.signatureHelp.enable%"
     },
     ['Lua.hover.enable'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.hover.enable%"
     },
     ['Lua.hover.viewString'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.hover.viewString%"
     },
     ['Lua.hover.viewStringMax'] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 1000,
         markdownDescription = "%config.hover.viewStringMax%"
     },
     ['Lua.hover.viewNumber'] = {
-        scope = "resource",
+        scope = 'window',
         type = "boolean",
         default = true,
         markdownDescription = "%config.hover.viewNumber%"
     },
     ['Lua.hover.previewFields'] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 20,
         markdownDescription = "%config.hover.previewFields%"
     },
     ['Lua.hover.enumsLimit'] = {
-        scope = "resource",
+        scope = 'window',
         type = "integer",
         default = 5,
         markdownDescription = "%config.hover.enumsLimit%"
     },
     --["Lua.plugin.enable"] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "boolean",
     --    default = false,
     --    markdownDescription = "%config.plugin.enable%"
     --},
     --["Lua.plugin.path"] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "string",
     --    default = ".vscode/lua-plugin/*.lua",
     --    markdownDescription = "%config.plugin.path%"
     --},
     --["Lua.develop.enable"] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "boolean",
     --    default = false,
     --    markdownDescription = "%config.develop.enable%"
     --},
     --["Lua.develop.debuggerPort"] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "integer",
     --    default = 11412,
     --    markdownDescription = "%config.develop.debuggerPort%"
     --},
     --["Lua.develop.debuggerWait"] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "boolean",
     --    default = false,
     --    markdownDescription = "%config.develop.debuggerWait%"
     --},
     --['Lua.intelliSense.searchDepth'] = {
-    --    scope = "resource",
+    --    scope = 'window',
     --    type = "integer",
     --    default = 0,
     --    markdownDescription = "%config.intelliSense.searchDepth%"
     --},
     ['Lua.window.statusBar'] = {
-        scope = "resource",
+        scope = 'window',
         type  = 'boolean',
         default = true,
         markdownDescription = '%config.window.statusBar%',
     },
     ['Lua.window.progressBar'] = {
-        scope = "resource",
+        scope = 'window',
         type  = 'boolean',
         default = true,
         markdownDescription = '%config.window.progressBar%',
     },
     ['Lua.telemetry.enable'] = {
-        scope = "resource",
+        scope = 'window',
         type = {"boolean", "null"},
         default = json.null,
         markdownDescription = "%config.telemetry.enable%"
     },
     ['Lua.hint.enable'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'boolean',
         default = false,
         markdownDescription = '%config.hint.enable%',
     },
     ['Lua.hint.paramType'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'boolean',
         default = true,
         markdownDescription = '%config.hint.paramType%',
     },
     ['Lua.hint.setType'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'boolean',
         default = false,
         markdownDescription = '%config.hint.setType%',
     },
     ['Lua.hint.paramName'] = {
-        scope = 'resource',
+        scope = 'window',
         type  = 'string',
         default = 'All',
         enum = {
@@ -461,7 +460,7 @@ local config = {
         markdownDescription = '%config.hint.paramName%',
     },
     ['Lua.misc.parameters'] = {
-        scope = 'resource',
+        scope = 'window',
         type = "array",
         items = {
             type = 'string',
@@ -473,7 +472,6 @@ local config = {
 local DiagSeverity = config["Lua.diagnostics.severity"].properties
 for name, level in pairs(const.DiagnosticDefaultSeverity) do
     DiagSeverity[name] = {
-        scope = 'resource',
         type = 'string',
         default = level,
         description = '%config.diagnostics.' .. name .. '%',
@@ -489,7 +487,6 @@ end
 local DiagNeededFileStatus = config["Lua.diagnostics.neededFileStatus"].properties
 for name, level in pairs(const.DiagnosticDefaultNeededFileStatus) do
     DiagNeededFileStatus[name] = {
-        scope = 'resource',
         type = 'string',
         default = level,
         description = '%config.diagnostics.' .. name .. '%',
@@ -504,7 +501,6 @@ end
 local builtin = config["Lua.runtime.builtin"].properties
 for name, status in pairs(const.BuiltIn) do
     builtin[name] = {
-        scope = 'resource',
         type = 'string',
         default = status,
         description = '%config.runtime.builtin.' .. name .. '%',
