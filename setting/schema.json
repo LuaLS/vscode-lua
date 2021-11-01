@@ -1169,6 +1169,9 @@
                 "path": {
                     "$ref": "#/properties/runtime.path"
                 },
+                "pathStrict": {
+                    "$ref": "#/properties/runtime.pathStrict"
+                },
                 "plugin": {
                     "$ref": "#/properties/runtime.plugin"
                 },
@@ -1381,9 +1384,15 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, all `**/myfile/init.lua` will be searched from the loaded files.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
+            "markdownDescription": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from the loaded files.\nif `runtime.pathStrict` is `false`, `${workspace}/**/myfile/init.lua` will also be searched.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
             "scope": "window",
             "type": "array"
+        },
+        "runtime.pathStrict": {
+            "default": false,
+            "markdownDescription": "When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.",
+            "scope": "window",
+            "type": "boolean"
         },
         "runtime.plugin": {
             "default": "",
@@ -1514,7 +1523,7 @@
         },
         "workspace.checkThirdParty": {
             "default": true,
-            "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* Jass\n",
+            "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* skynet\n* Jass\n",
             "scope": "window",
             "type": "boolean"
         },

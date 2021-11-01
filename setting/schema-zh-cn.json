@@ -1169,6 +1169,9 @@
                 "path": {
                     "$ref": "#/properties/runtime.path"
                 },
+                "pathStrict": {
+                    "$ref": "#/properties/runtime.pathStrict"
+                },
                 "plugin": {
                     "$ref": "#/properties/runtime.plugin"
                 },
@@ -1381,9 +1384,15 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "当使用 `require` 时，如何根据输入的名字来查找文件。\n此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索所有的 `**/myfile/init.lua`。\n如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。\n",
+            "markdownDescription": "当使用 `require` 时，如何根据输入的名字来查找文件。\n此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索 `{workspace}/myfile/init.lua`。\n当 `runtime.pathStrict` 设置为 `false` 时，还会尝试搜索 `${workspace}/**/myfile/init.lua`。\n如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。\n",
             "scope": "window",
             "type": "array"
+        },
+        "runtime.pathStrict": {
+            "default": false,
+            "markdownDescription": "启用后 `runtime.path` 将只搜索第一层目录，见 `runtime.path` 的说明。",
+            "scope": "window",
+            "type": "boolean"
         },
         "runtime.plugin": {
             "default": "",
@@ -1514,7 +1523,7 @@
         },
         "workspace.checkThirdParty": {
             "default": true,
-            "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* Jass\n",
+            "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* skynet\n* Jass\n",
             "scope": "window",
             "type": "boolean"
         },
