@@ -226,6 +226,7 @@
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
+            "additionalProperties": false,
             "markdownDescription": "如果你只想诊断打开的文件，选Opened；否则，选Any。\n",
             "properties": {
                 "ambiguity-1": {
@@ -604,6 +605,7 @@
             "type": "object"
         },
         "diagnostics.severity": {
+            "additionalProperties": false,
             "markdownDescription": "修改诊断等级。\n",
             "properties": {
                 "ambiguity-1": {
@@ -1182,6 +1184,7 @@
             }
         },
         "runtime.builtin": {
+            "additionalProperties": false,
             "markdownDescription": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
             "properties": {
                 "basic": {
@@ -1389,6 +1392,7 @@
             "type": "string"
         },
         "runtime.special": {
+            "additionalProperties": false,
             "markdownDescription": "将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。\n下面这个例子表示将 `include` 视为 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {

@@ -226,6 +226,7 @@
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
+            "additionalProperties": false,
             "markdownDescription": "If you want to check only opened files, choice Opened; else choice Any.\n",
             "properties": {
                 "ambiguity-1": {
@@ -604,6 +605,7 @@
             "type": "object"
         },
         "diagnostics.severity": {
+            "additionalProperties": false,
             "markdownDescription": "Modified diagnostic severity.\n",
             "properties": {
                 "ambiguity-1": {
@@ -1182,6 +1184,7 @@
             }
         },
         "runtime.builtin": {
+            "additionalProperties": false,
             "markdownDescription": "Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.\n\n* `default`: Indicates that the library will be enabled or disabled according to the runtime version\n* `enable`: always enable\n* `disable`: always disable\n",
             "properties": {
                 "basic": {
@@ -1389,6 +1392,7 @@
             "type": "string"
         },
         "runtime.special": {
+            "additionalProperties": false,
             "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
