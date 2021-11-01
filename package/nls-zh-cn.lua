@@ -46,6 +46,7 @@ return {
 * OpenResty
 * Cocos4.0
 * LÖVE
+* skynet
 * Jass
 ]],
     ['config.workspace.userThirdParty']          = '在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)',
