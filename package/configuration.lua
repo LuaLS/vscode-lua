@@ -27,6 +27,12 @@ local config = {
             "?/init.lua",
         }
     },
+    ["Lua.runtime.pathStrict"] = {
+        scope = 'window',
+        type = "boolean",
+        markdownDescription = "%config.runtime.pathStrict%",
+        default = false,
+    },
     ["Lua.runtime.special"] = {
         scope = 'window',
         type  = 'object',

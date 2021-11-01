@@ -5,9 +5,11 @@ return {
     ["config.runtime.version"]            = "Lua运行版本。",
     ["config.runtime.path"]               = [[
 当使用 `require` 时，如何根据输入的名字来查找文件。
-此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索所有的 `**/myfile/init.lua`。
+此选项设置为 `?/init.lua` 意味着当你输入 `require 'myfile'` 时，会从已加载的文件中搜索 `{workspace}/myfile/init.lua`。
+当 `runtime.pathStrict` 设置为 `false` 时，还会尝试搜索 `${workspace}/**/myfile/init.lua`。
 如果你想要加载工作区以外的文件，你需要先设置 `Lua.workspace.library`。
 ]],
+    ["config.runtime.pathStrict"]         = '启用后 `runtime.path` 将只搜索第一层目录，见 `runtime.path` 的说明。',
     ["config.runtime.special"]            = [[将自定义全局变量视为一些特殊的内置变量，语言服务将提供特殊的支持。
 下面这个例子表示将 `include` 视为 `require` 。
 ]] .. example.special,

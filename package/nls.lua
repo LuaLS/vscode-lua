@@ -5,9 +5,11 @@ return {
     ["config.runtime.version"]            = "Lua runtime version.",
     ["config.runtime.path"]               = [[
 When using `require`, how to find the file based on the input name.
-Setting this config to `?/init.lua` means that when you enter `require 'myfile'`, all `**/myfile/init.lua` will be searched from the loaded files.
+Setting this config to `?/init.lua` means that when you enter `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from the loaded files.
+if `runtime.pathStrict` is `false`, `${workspace}/**/myfile/init.lua` will also be searched.
 If you want to load files outside the workspace, you need to set `Lua.workspace.library` first.
 ]],
+    ['config.runtime.pathStrict']         = 'When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.',
     ["config.runtime.special"]            = [[The custom global variables are regarded as some special built-in variables, and the language server will provide special support
 The following example shows that 'include' is treated as' require '.
 ]] .. example.special,
