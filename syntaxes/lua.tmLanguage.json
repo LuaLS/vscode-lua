@@ -755,6 +755,10 @@
 					"name": "storage.type.generic.lua"
 				},
 				{
+					"match": "\\basync\\b",
+					"name": "entity.name.tag.lua"
+				},
+				{
 					"match": "[\\{\\}\\:\\,\\?\\|\\`][ \\t]*",
 					"name": "keyword.operator.lua"
 				},
