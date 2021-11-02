@@ -696,6 +696,10 @@
 					]
 				},
 				{
+					"match": "(?<=---\\s*)@(async)",
+					"name": "storage.type.annotation.lua"
+				},
+				{
 					"begin": "(?<=---)\\|\\s*[\\>\\+]?",
 					"beginCaptures": {
 						"0": {
