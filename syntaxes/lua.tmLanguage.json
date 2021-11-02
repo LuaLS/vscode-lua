@@ -3,7 +3,7 @@
 	"scopeName": "source.lua",
 	"patterns": [
 		{
-			"begin": "\\b(?:(local)\\s+)?(function)\\b(?!,)",
+			"begin": "\\b(?:(local)\\s+)?(function)\\b(?![,:])",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.local.lua"
@@ -145,11 +145,11 @@
 			"name": "keyword.local.lua"
 		},
 		{
-			"match": "\\b(function)\\b(?!,)",
+			"match": "\\b(function)\\b(?![,:])",
 			"name": "keyword.control.lua"
 		},
 		{
-			"match": "(?<![^.]\\.|:)\\b(false|nil|true|_ENV|_G|_VERSION|math\\.(pi|huge|maxinteger|mininteger)|utf8\\.charpattern|io\\.(stdin|stdout|stderr)|package\\.(config|cpath|loaded|loaders|path|preload|searchers))\\b|(?<![.])\\.{3}(?!\\.)",
+			"match": "(?<![^.]\\.|:)\\b(false|nil(?!:)|true|_ENV|_G|_VERSION|math\\.(pi|huge|maxinteger|mininteger)|utf8\\.charpattern|io\\.(stdin|stdout|stderr)|package\\.(config|cpath|loaded|loaders|path|preload|searchers))\\b|(?<![.])\\.{3}(?!\\.)",
 			"name": "constant.language.lua"
 		},
 		{
