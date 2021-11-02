@@ -90,6 +90,8 @@ local config = {
         enum = {
             "utf8",
             "ansi",
+            "utf16le",
+            "utf16be",
         },
         markdownDescription = '%config.runtime.fileEncoding%',
     },

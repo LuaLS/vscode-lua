@@ -1348,7 +1348,9 @@
             "default": "utf8",
             "enum": [
                 "utf8",
-                "ansi"
+                "ansi",
+                "utf16le",
+                "utf16be"
             ],
             "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
             "scope": "window",

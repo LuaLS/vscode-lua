@@ -1348,7 +1348,9 @@
             "default": "utf8",
             "enum": [
                 "utf8",
-                "ansi"
+                "ansi",
+                "utf16le",
+                "utf16be"
             ],
             "markdownDescription": "文件编码，`ansi` 选项只在 `Windows` 平台下有效。",
             "scope": "window",
