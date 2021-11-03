@@ -704,7 +704,7 @@
 					]
 				},
 				{
-					"match": "(?<=---\\s*)@(async)",
+					"match": "(?<=---\\s*)@(async|nodiscard)",
 					"name": "storage.type.annotation.lua"
 				},
 				{
