@@ -16,62 +16,6 @@
     },
     "tasks": [
         {
-            "type": "shell",
-            "label": "PreCompile",
-            "windows": {
-                "command": "chcp 65001 && msvc_x64.bat"
-            },
-            "linux": {
-                "command": "ninja -f compile/ninja/linux.ninja"
-            },
-            "osx": {
-                "command": "ninja -f compile/ninja/macos.ninja"
-            },
-            "options": {
-                "cwd": "${workspaceFolder}/server/3rd/luamake"
-            }
-        },
-        {
-            "type": "shell",
-            "label": "Compile",
-            "command": "${workspaceFolder}/server/3rd/luamake/luamake rebuild",
-            "options": {
-                "cwd": "${workspaceFolder}/server"
-            },
-            "problemMatcher": [],
-            "group": "build"
-        },
-        {
-            "label": "Install",
-            "windows": {
-                "command": "${workspaceFolder}/server/build/msvc/bin/lua.exe",
-                "args": [
-                    "-e",
-                    "package.cpath = './server/build/msvc/bin/?.dll;' .. package.cpath",
-                    "make/copy.lua",
-                    "${command:extensionPath}"
-                ]
-            },
-            "linux": {
-                "command": "${workspaceFolder}/server/build/linux/bin/lua",
-                "args": [
-                    "-e",
-                    "package.cpath = \"./server/build/linux/bin/?.so;\" .. package.cpath",
-                    "make/copy.lua",
-                    "${command:extensionPath}"
-                ]
-            },
-            "osx": {
-                "command": "${workspaceFolder}/server/build/macos/bin/lua",
-                "args": [
-                    "-e",
-                    "package.cpath = \"./server/build/macos/bin/?.so;\" .. package.cpath",
-                    "make/copy.lua",
-                    "${command:extensionPath}"
-                ]
-            }
-        },
-        {
             "type": "typescript",
             "tsconfig": "client/tsconfig.json",
             "problemMatcher": [
