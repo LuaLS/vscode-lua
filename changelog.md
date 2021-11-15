@@ -1,5 +1,13 @@
 # changelog
 
+## 2.4.8
+`2021-11-15`
+* `FIX` incorrect IntelliSense in specific situations
+* `FIX` [#777](https://github.com/sumneko/lua-language-server/issues/777)
+* `FIX` [#778](https://github.com/sumneko/lua-language-server/issues/778)
+* `FIX` [#779](https://github.com/sumneko/lua-language-server/issues/779)
+* `FIX` [#780](https://github.com/sumneko/lua-language-server/issues/780)
+
 ## 2.4.7
 `2021-10-27`
 * `FIX` [#762](https://github.com/sumneko/lua-language-server/issues/762)

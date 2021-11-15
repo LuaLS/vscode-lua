@@ -196,16 +196,6 @@
                             ],
                             "type": "string"
                         },
-                        "await-in-sync": {
-                            "default": "None",
-                            "description": "%config.diagnostics.await-in-sync%",
-                            "enum": [
-                                "Any",
-                                "Opened",
-                                "None"
-                            ],
-                            "type": "string"
-                        },
                         "circle-doc-class": {
                             "default": "Any",
                             "description": "%config.diagnostics.circle-doc-class%",
@@ -259,16 +249,6 @@
                         "different-requires": {
                             "default": "Any",
                             "description": "%config.diagnostics.different-requires%",
-                            "enum": [
-                                "Any",
-                                "Opened",
-                                "None"
-                            ],
-                            "type": "string"
-                        },
-                        "discard-returns": {
-                            "default": "Opened",
-                            "description": "%config.diagnostics.discard-returns%",
                             "enum": [
                                 "Any",
                                 "Opened",
@@ -389,16 +369,6 @@
                         "no-implicit-any": {
                             "default": "None",
                             "description": "%config.diagnostics.no-implicit-any%",
-                            "enum": [
-                                "Any",
-                                "Opened",
-                                "None"
-                            ],
-                            "type": "string"
-                        },
-                        "not-yieldable": {
-                            "default": "None",
-                            "description": "%config.diagnostics.not-yieldable%",
                             "enum": [
                                 "Any",
                                 "Opened",
@@ -606,17 +576,6 @@
                             ],
                             "type": "string"
                         },
-                        "await-in-sync": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.await-in-sync%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "type": "string"
-                        },
                         "circle-doc-class": {
                             "default": "Warning",
                             "description": "%config.diagnostics.circle-doc-class%",
@@ -675,17 +634,6 @@
                         "different-requires": {
                             "default": "Warning",
                             "description": "%config.diagnostics.different-requires%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "type": "string"
-                        },
-                        "discard-returns": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.discard-returns%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -818,17 +766,6 @@
                         "no-implicit-any": {
                             "default": "Information",
                             "description": "%config.diagnostics.no-implicit-any%",
-                            "enum": [
-                                "Error",
-                                "Warning",
-                                "Information",
-                                "Hint"
-                            ],
-                            "type": "string"
-                        },
-                        "not-yieldable": {
-                            "default": "Warning",
-                            "description": "%config.diagnostics.not-yieldable%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -1558,5 +1495,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.4.7"
+    "version": "2.4.8"
 }
