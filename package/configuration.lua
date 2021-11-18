@@ -479,6 +479,30 @@ local config = {
         },
         markdownDescription = '%config.misc.parameters%',
     },
+    ['Lua.IntelliSense.traceLocalSet'] = {
+        scope = 'window',
+        type = "boolean",
+        default = false,
+        markdownDescription = '%config.IntelliSense.traceLocalSet%',
+    },
+    ['Lua.IntelliSense.traceReturn'] = {
+        scope = 'window',
+        type = "boolean",
+        default = false,
+        markdownDescription = '%config.IntelliSense.traceReturn%',
+    },
+    ['Lua.IntelliSense.traceBeSetted'] = {
+        scope = 'window',
+        type = "boolean",
+        default = false,
+        markdownDescription = '%config.IntelliSense.traceBeSetted%',
+    },
+    ['Lua.IntelliSense.traceFieldInject'] = {
+        scope = 'window',
+        type = "boolean",
+        default = false,
+        markdownDescription = '%config.IntelliSense.traceFieldInject%',
+    },
 }
 
 local DiagSeverity = config["Lua.diagnostics.severity"].properties

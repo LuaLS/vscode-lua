@@ -28,6 +28,30 @@
     "contributes": {
         "configuration": {
             "properties": {
+                "Lua.IntelliSense.traceBeSetted": {
+                    "default": false,
+                    "markdownDescription": "%config.IntelliSense.traceBeSetted%",
+                    "scope": "window",
+                    "type": "boolean"
+                },
+                "Lua.IntelliSense.traceFieldInject": {
+                    "default": false,
+                    "markdownDescription": "%config.IntelliSense.traceFieldInject%",
+                    "scope": "window",
+                    "type": "boolean"
+                },
+                "Lua.IntelliSense.traceLocalSet": {
+                    "default": false,
+                    "markdownDescription": "%config.IntelliSense.traceLocalSet%",
+                    "scope": "window",
+                    "type": "boolean"
+                },
+                "Lua.IntelliSense.traceReturn": {
+                    "default": false,
+                    "markdownDescription": "%config.IntelliSense.traceReturn%",
+                    "scope": "window",
+                    "type": "boolean"
+                },
                 "Lua.color.mode": {
                     "default": "Semantic",
                     "enum": [
@@ -1495,5 +1519,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.4.8"
+    "version": "2.4.9"
 }

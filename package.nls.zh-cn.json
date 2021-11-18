@@ -1,5 +1,9 @@
 {
     "ambiguity-1": "优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ",
+    "config.IntelliSense.traceBeSetted": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+    "config.IntelliSense.traceFieldInject": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+    "config.IntelliSense.traceLocalSet": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+    "config.IntelliSense.traceReturn": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
     "config.awakened.cat": "PLAY WITH ME >_<\n\n（这会启用还处于开发中的beta版，欢迎测试反馈！改变此选项需要重载窗口！）",
     "config.color.mode": "着色模式。",
     "config.color.mode.Grammar": "语法着色。",

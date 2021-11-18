@@ -2,6 +2,46 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
+        "IntelliSense": {
+            "properties": {
+                "traceBeSetted": {
+                    "$ref": "#/properties/IntelliSense.traceBeSetted"
+                },
+                "traceFieldInject": {
+                    "$ref": "#/properties/IntelliSense.traceFieldInject"
+                },
+                "traceLocalSet": {
+                    "$ref": "#/properties/IntelliSense.traceLocalSet"
+                },
+                "traceReturn": {
+                    "$ref": "#/properties/IntelliSense.traceReturn"
+                }
+            }
+        },
+        "IntelliSense.traceBeSetted": {
+            "default": false,
+            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceFieldInject": {
+            "default": false,
+            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceLocalSet": {
+            "default": false,
+            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceReturn": {
+            "default": false,
+            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+            "scope": "window",
+            "type": "boolean"
+        },
         "color": {
             "properties": {
                 "mode": {

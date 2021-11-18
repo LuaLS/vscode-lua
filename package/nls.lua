@@ -101,4 +101,8 @@ Automatic detection and adaptation of third-party libraries, currently supported
 Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).
 ]],
     ['config.misc.parameters']                   = '[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.',
+    ['config.IntelliSense.traceLocalSet']        = 'Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.',
+    ['config.IntelliSense.traceReturn']          = 'Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.',
+    ['config.IntelliSense.traceBeSetted']        = 'Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.',
+    ['config.IntelliSense.traceFieldInject']     = 'Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.',
 }

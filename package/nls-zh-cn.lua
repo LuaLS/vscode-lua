@@ -101,6 +101,10 @@ return {
 启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。
 ]],
     ['config.misc.parameters']                   = 'VSCode中启动语言服务时的[命令行参数](https://github.com/sumneko/lua-language-server/wiki/Command-line)。',
+    ['config.IntelliSense.traceLocalSet']        = '请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。',
+    ['config.IntelliSense.traceReturn']          = '请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。',
+    ['config.IntelliSense.traceBeSetted']        = '请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。',
+    ['config.IntelliSense.traceFieldInject']     = '请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。',
 
     -- TODO 英文翻译
     ['config.diagnostics.unused-local']          = '未使用的局部变量',

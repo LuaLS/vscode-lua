@@ -2,6 +2,46 @@
     "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
+        "IntelliSense": {
+            "properties": {
+                "traceBeSetted": {
+                    "$ref": "#/properties/IntelliSense.traceBeSetted"
+                },
+                "traceFieldInject": {
+                    "$ref": "#/properties/IntelliSense.traceFieldInject"
+                },
+                "traceLocalSet": {
+                    "$ref": "#/properties/IntelliSense.traceLocalSet"
+                },
+                "traceReturn": {
+                    "$ref": "#/properties/IntelliSense.traceReturn"
+                }
+            }
+        },
+        "IntelliSense.traceBeSetted": {
+            "default": false,
+            "markdownDescription": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceFieldInject": {
+            "default": false,
+            "markdownDescription": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceLocalSet": {
+            "default": false,
+            "markdownDescription": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+            "scope": "window",
+            "type": "boolean"
+        },
+        "IntelliSense.traceReturn": {
+            "default": false,
+            "markdownDescription": "请查阅[文档](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。",
+            "scope": "window",
+            "type": "boolean"
+        },
         "color": {
             "properties": {
                 "mode": {
