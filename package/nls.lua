@@ -42,7 +42,7 @@ Adjust the enabled state of the built-in library. You can disable (or redefine) 
     ["config.workspace.useGitIgnore"]     = "Ignore files list in `.gitignore` .",
     ["config.workspace.maxPreload"]       = "Max preloaded files.",
     ["config.workspace.preloadFileSize"]  = "Skip files larger than this value (KB) when preloading.",
-    ["config.workspace.library"]          = "In addition to the current workspace, which directories will load files from.",
+    ["config.workspace.library"]          = "In addition to the current workspace, which directories will load files from. The files in these directories will be treated as externally provided code libraries, and some features (such as renaming fields) will not modify these files.",
 ['config.workspace.checkThirdParty']  = [[
 Automatic detection and adaptation of third-party libraries, currently supported libraries are:
 
