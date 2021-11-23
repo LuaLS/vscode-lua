@@ -1,5 +1,15 @@
 # changelog
 
+## 2.4.10
+`2021-11-23`
+* `FIX` [#790](https://github.com/sumneko/lua-language-server/issues/790)
+* `FIX` [#798](https://github.com/sumneko/lua-language-server/issues/798)
+* `FIX` [#804](https://github.com/sumneko/lua-language-server/issues/804)
+* `FIX` [#805](https://github.com/sumneko/lua-language-server/issues/805)
+* `FIX` [#806](https://github.com/sumneko/lua-language-server/issues/806)
+* `FIX` [#807](https://github.com/sumneko/lua-language-server/issues/807)
+* `FIX` [#809](https://github.com/sumneko/lua-language-server/issues/809)
+
 ## 2.4.9
 `2021-11-18`
 * `CHG` for performance reasons, some of the features that are not cost-effective in IntelliSense have been disabled by default, and you can re-enable them through the following settings:
