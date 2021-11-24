@@ -70,6 +70,7 @@ Automatic detection and adaptation of third-party libraries, currently supported
     ['config.completion.autoRequire']            = "When the input looks like a file name, automatically `require` this file.",
     ['config.completion.showParams']             = "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
     ['config.completion.requireSeparator']       = "The separator used when `require`.",
+    ['config.completion.postfix']                = "The symbol used to trigger the postfix suggestion.",
     ['config.color.mode']                        = "Color mode.",
     ['config.color.mode.Semantic']               = "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
     ['config.color.mode.SemanticEnhanced']       = "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive.",

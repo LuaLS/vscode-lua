@@ -325,6 +325,12 @@ local config = {
         default = '.',
         markdownDescription = "%config.completion.requireSeparator%"
     },
+    ['Lua.completion.postfix'] = {
+        scope = 'window',
+        type = "string",
+        default = '@',
+        markdownDescription = "%config.completion.postfix%"
+    },
     ["Lua.color.mode"] = {
         scope = 'window',
         type = "string",
