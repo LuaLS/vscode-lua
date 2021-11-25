@@ -82,6 +82,9 @@
                 "keywordSnippet": {
                     "$ref": "#/properties/completion.keywordSnippet"
                 },
+                "postfix": {
+                    "$ref": "#/properties/completion.postfix"
+                },
                 "requireSeparator": {
                     "$ref": "#/properties/completion.requireSeparator"
                 },
@@ -146,6 +149,12 @@
             "scope": "window",
             "type": "string"
         },
+        "completion.postfix": {
+            "default": "@",
+            "markdownDescription": "用于触发后缀建议的符号。",
+            "scope": "window",
+            "type": "string"
+        },
         "completion.requireSeparator": {
             "default": ".",
             "markdownDescription": "`require` 时使用的分隔符。",
@@ -154,7 +163,7 @@
         },
         "completion.showParams": {
             "default": true,
-            "markdownDescription": "在自动完成列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
+            "markdownDescription": "在建议列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",
             "scope": "window",
             "type": "boolean"
         },
@@ -279,6 +288,16 @@
                     ],
                     "type": "string"
                 },
+                "await-in-sync": {
+                    "default": "None",
+                    "description": "%config.diagnostics.await-in-sync%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
                 "circle-doc-class": {
                     "default": "Any",
                     "description": "%config.diagnostics.circle-doc-class%",
@@ -332,6 +351,16 @@
                 "different-requires": {
                     "default": "Any",
                     "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "discard-returns": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.discard-returns%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -452,6 +481,16 @@
                 "no-implicit-any": {
                     "default": "None",
                     "description": "%config.diagnostics.no-implicit-any%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "not-yieldable": {
+                    "default": "None",
+                    "description": "%config.diagnostics.not-yieldable%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -659,6 +698,17 @@
                     ],
                     "type": "string"
                 },
+                "await-in-sync": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.await-in-sync%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
                 "circle-doc-class": {
                     "default": "Warning",
                     "description": "%config.diagnostics.circle-doc-class%",
@@ -717,6 +767,17 @@
                 "different-requires": {
                     "default": "Warning",
                     "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "discard-returns": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.discard-returns%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -849,6 +910,17 @@
                 "no-implicit-any": {
                     "default": "Information",
                     "description": "%config.diagnostics.no-implicit-any%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "not-yieldable": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.not-yieldable%",
                     "enum": [
                         "Error",
                         "Warning",
