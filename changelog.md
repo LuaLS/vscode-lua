@@ -1,5 +1,9 @@
 # changelog
 
+## 2.5.1
+`2021-11-29`
+* `FIX` incorrect syntax error
+
 ## 2.5.0
 `2021-11-29`
 * `NEW` settings:
