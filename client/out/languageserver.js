@@ -93,14 +93,14 @@ function start(context, documentSelector, folder) {
     let platform = os.platform();
     switch (platform) {
         case "win32":
-            command = context.asAbsolutePath(path.join('server', 'bin', 'Windows', 'lua-language-server.exe'));
+            command = context.asAbsolutePath(path.join('server', 'bin-Windows', 'lua-language-server.exe'));
             break;
         case "linux":
-            command = context.asAbsolutePath(path.join('server', 'bin', 'Linux', 'lua-language-server'));
+            command = context.asAbsolutePath(path.join('server', 'bin-Linux', 'lua-language-server'));
             fs.chmodSync(command, '777');
             break;
         case "darwin":
-            command = context.asAbsolutePath(path.join('server', 'bin', 'macOS', 'lua-language-server'));
+            command = context.asAbsolutePath(path.join('server', 'bin-macOS', 'lua-language-server'));
             fs.chmodSync(command, '777');
             break;
     }

@@ -114,8 +114,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin',
-                    'Windows',
+                    'bin-Windows',
                     'lua-language-server.exe'
                 )
             );
@@ -124,8 +123,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin',
-                    'Linux',
+                    'bin-Linux',
                     'lua-language-server'
                 )
             );
@@ -135,8 +133,7 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin',
-                    'macOS',
+                    'bin-macOS',
                     'lua-language-server'
                 )
             );
