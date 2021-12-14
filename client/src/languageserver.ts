@@ -90,7 +90,24 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
     return folder;
 }
 
-function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
+async function chmod(path: fs.PathLike, mode: fs.Mode) {
+    await new Promise((resolve) => {
+        fs.chmod(path, mode, resolve)
+    })
+}
+
+async function exists(path: fs.PathLike) {
+    return await new Promise((resolve) => {
+        fs.stat(path, (err, stats) => {
+            if (stats && stats.isDirectory()) {
+                resolve(true);
+            }
+            resolve(false);
+        })
+    })
+}
+
+async function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
@@ -109,12 +126,21 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
     let commandParam: string[] = config.get("Lua.misc.parameters");
     let command: string;
     let platform: string = os.platform();
+    let binDir: string;
+    if (await exists(context.asAbsolutePath(
+        path.join(
+            'server',
+            'bin',
+        )
+    ))) {
+        binDir = 'bin';
+    }
     switch (platform) {
         case "win32":
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin-Windows',
+                    binDir ? binDir : 'bin-Windows',
                     'lua-language-server.exe'
                 )
             );
@@ -123,21 +149,21 @@ function start(context: ExtensionContext, documentSelector: DocumentSelector, fo
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin-Linux',
+                    binDir ? binDir : 'bin-Linux',
                     'lua-language-server'
                 )
             );
-            fs.chmodSync(command, '777');
+            await chmod(command, '777');
             break;
         case "darwin":
             command = context.asAbsolutePath(
                 path.join(
                     'server',
-                    'bin-macOS',
+                    binDir ? binDir : 'bin-macOS',
                     'lua-language-server'
                 )
             );
-            fs.chmodSync(command, '777');
+            await chmod(command, '777');
             break;
     }
 
@@ -322,7 +348,7 @@ function onInlayHint(client: LanguageClient) {
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    function didOpenTextDocument(document: TextDocument) {
+    async function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
             return;
@@ -332,7 +358,7 @@ export function activate(context: ExtensionContext) {
         let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
         if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
-            defaultClient = start(context, [
+            defaultClient = await start(context, [
                 { scheme: 'file', language: 'lua' }
             ], null);
             return;
@@ -348,7 +374,7 @@ export function activate(context: ExtensionContext) {
 
         if (!clients.has(folder.uri.toString())) {
             let pattern: string = folder.uri.fsPath.replace(/(\[|\])/g, '[$1]') + '/**/*';
-            let client = start(context, [
+            let client = await start(context, [
                 { scheme: 'file', language: 'lua', pattern: pattern }
             ], folder);
             clients.set(folder.uri.toString(), client);
