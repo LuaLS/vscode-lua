@@ -32,10 +32,14 @@ jobs:
         with:
           submodules: recursive
       - uses: actboy168/setup-luamake@master
-      - run: |
-        cd server
-        luamake -platform ${{ matrix.platform }}
-        cd ..
+
+      - name: Luamake
+        id: luamake
+        shell: bash
+        run: |
+          cd server
+          luamake -platform ${{ matrix.platform }}
+          cd ..
 
       - name: Setting up workflow variables
         id: vars
