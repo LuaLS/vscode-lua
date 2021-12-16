@@ -32,9 +32,10 @@ jobs:
         with:
           submodules: recursive
       - uses: actboy168/setup-luamake@master
-      - run: cd server
-      - run: luamake -platform ${{ matrix.platform }}
-      - run: cd ..
+      - run: |
+        cd server
+        luamake -platform ${{ matrix.platform }}
+        cd ..
 
       - name: Setting up workflow variables
         id: vars
@@ -52,6 +53,11 @@ jobs:
 
           # Full name of the tarball asset
           PKG_NAME="${PKG_BASENAME}.${PKG_SUFFIX}"
+
+      - names: Pack vsix
+        id: pack
+        shell: bash
+        run: vsce package -o PKG_NAME
 
       - uses: actions/upload-artifact@v2
         with:
