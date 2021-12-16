@@ -70,5 +70,4 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.vars.outputs.PKG_BASENAME }}
           path: ${{ steps.vars.outputs.PKG_NAME }}
