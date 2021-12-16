@@ -63,9 +63,9 @@ jobs:
         shell: bash
         run: |
           npm install -g vsce
-          vsce package -o ${{ PKG_NAME }}
+          vsce package -o ${{ steps.vars.outputs.PKG_NAME }}
 
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.vars.outputs.PKG_BASENAME }}
-          path: ${{ PKG_NAME }}
+          path: ${{ steps.vars.outputs.PKG_NAME }}
