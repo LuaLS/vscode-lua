@@ -58,7 +58,7 @@ jobs:
           # Full name of the tarball asset
           PKG_NAME="${PKG_BASENAME}.${PKG_SUFFIX}"
 
-      - names: Pack vsix
+      - name: Pack vsix
         id: pack
         shell: bash
         run: vsce package -o PKG_NAME
