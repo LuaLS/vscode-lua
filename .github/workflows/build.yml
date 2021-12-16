@@ -33,7 +33,6 @@ jobs:
           submodules: recursive
 
       - uses: actboy168/setup-luamake@master
-        working-directory: ./server
 
       - name: Run luamake
         id: luamake
