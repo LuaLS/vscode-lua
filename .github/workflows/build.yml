@@ -58,6 +58,9 @@ jobs:
           # Full name of the tarball asset
           PKG_NAME="${PKG_BASENAME}.${PKG_SUFFIX}"
 
+          echo ::set-output name=PKG_BASENAME::${PKG_BASENAME}
+          echo ::set-output name=PKG_NAME::${PKG_NAME}
+
       - name: Pack vsix
         id: pack
         shell: bash
