@@ -61,7 +61,9 @@ jobs:
       - name: Pack vsix
         id: pack
         shell: bash
-        run: vsce package -o PKG_NAME
+        run: |
+          npm install -g vsce
+          vsce package -o PKG_NAME
 
       - uses: actions/upload-artifact@v2
         with:
