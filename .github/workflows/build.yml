@@ -1,0 +1,59 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - master
+
+env:
+  PROJECT: vscode-lua
+  BIN_DIR: server/bin
+  PKG_SUFFIX: vsix
+
+jobs:
+  compile:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-18.04,   target: linux,   platform: linux-x64    }
+          - { os: macos-11,       target: darwin,  platform: darwin-x64   }
+          - { os: macos-11,       target: darwin,  platform: darwin-arm64 }
+          - { os: windows-latest, target: windows, platform: win32-ia32   }
+          - { os: windows-latest, target: windows, platform: win32-x64    }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actboy168/setup-luamake@master
+      - run: cd server
+      - run: luamake -platform ${{ matrix.platform }}
+      - run: cd ..
+
+      - name: Setting up workflow variables
+        id: vars
+        shell: bash
+        run: |
+          # Package version
+          if [[ $GITHUB_REF = refs/tags/* ]]; then
+            PKG_VERSION=${GITHUB_REF##*/}
+          else
+            PKG_VERSION=${GITHUB_SHA:0:7}
+          fi
+
+          # Package name w/ version
+          PKG_BASENAME="${{ env.PROJECT }}-${PKG_VERSION}-${{ matrix.platform }}"
+
+          # Full name of the tarball asset
+          PKG_NAME="${PKG_BASENAME}.${PKG_SUFFIX}"
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.vars.outputs.PKG_BASENAME }}
+          path: PKG_NAME
