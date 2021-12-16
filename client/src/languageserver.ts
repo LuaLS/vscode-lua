@@ -21,8 +21,8 @@ import {
     DocumentSelector,
 } from 'vscode-languageclient/node';
 
-let defaultClient: LanguageClient;
-let clients: Map<string, LanguageClient> = new Map();
+let defaultClient: LuaClient;
+let clients: Map<string, LuaClient> = new Map();
 
 type HintResult = {
     text: string,
@@ -107,88 +107,101 @@ async function exists(path: fs.PathLike) {
     })
 }
 
-async function start(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
-    // Options to control the language client
-    let clientOptions: LanguageClientOptions = {
-        // Register the server for plain text documents
-        documentSelector: documentSelector,
-        workspaceFolder: folder,
-        progressOnInitialization: true,
-        markdown: {
-            isTrusted: true,
-        },
-        initializationOptions: {
-            changeConfiguration: true,
+class LuaClient {
+    private context: ExtensionContext;
+    private documentSelector: DocumentSelector;
+    private folder: WorkspaceFolder;
+    protected client: LanguageClient;
+    constructor(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
+        this.context = context;
+        this.documentSelector = documentSelector;
+        this.folder = folder;
+    }
+
+   async start() {
+        // Options to control the language client
+        let clientOptions: LanguageClientOptions = {
+            // Register the server for plain text documents
+            documentSelector: this.documentSelector,
+            workspaceFolder: this.folder,
+            progressOnInitialization: true,
+            markdown: {
+                isTrusted: true,
+            },
+            initializationOptions: {
+                changeConfiguration: true,
+            }
+        };
+
+        let config = Workspace.getConfiguration(undefined, this.folder);
+        let commandParam: string[] = config.get("Lua.misc.parameters");
+        let command: string;
+        let platform: string = os.platform();
+        let binDir: string;
+        if (await exists(this.context.asAbsolutePath(
+            path.join(
+                'server',
+                'bin',
+            )
+        ))) {
+            binDir = 'bin';
         }
-    };
+        switch (platform) {
+            case "win32":
+                command = this.context.asAbsolutePath(
+                    path.join(
+                        'server',
+                        binDir ? binDir : 'bin-Windows',
+                        'lua-language-server.exe'
+                    )
+                );
+                break;
+            case "linux":
+                command = this.context.asAbsolutePath(
+                    path.join(
+                        'server',
+                        binDir ? binDir : 'bin-Linux',
+                        'lua-language-server'
+                    )
+                );
+                await chmod(command, '777');
+                break;
+            case "darwin":
+                command = this.context.asAbsolutePath(
+                    path.join(
+                        'server',
+                        binDir ? binDir : 'bin-macOS',
+                        'lua-language-server'
+                    )
+                );
+                await chmod(command, '777');
+                break;
+        }
 
-    let config = Workspace.getConfiguration(undefined, folder);
-    let commandParam: string[] = config.get("Lua.misc.parameters");
-    let command: string;
-    let platform: string = os.platform();
-    let binDir: string;
-    if (await exists(context.asAbsolutePath(
-        path.join(
-            'server',
-            'bin',
-        )
-    ))) {
-        binDir = 'bin';
-    }
-    switch (platform) {
-        case "win32":
-            command = context.asAbsolutePath(
-                path.join(
-                    'server',
-                    binDir ? binDir : 'bin-Windows',
-                    'lua-language-server.exe'
-                )
-            );
-            break;
-        case "linux":
-            command = context.asAbsolutePath(
-                path.join(
-                    'server',
-                    binDir ? binDir : 'bin-Linux',
-                    'lua-language-server'
-                )
-            );
-            await chmod(command, '777');
-            break;
-        case "darwin":
-            command = context.asAbsolutePath(
-                path.join(
-                    'server',
-                    binDir ? binDir : 'bin-macOS',
-                    'lua-language-server'
-                )
-            );
-            await chmod(command, '777');
-            break;
-    }
+        let serverOptions: ServerOptions = {
+            command: command,
+            args:    commandParam,
+        };
 
-    let serverOptions: ServerOptions = {
-        command: command,
-        args:    commandParam,
-    };
+        this.client = new LanguageClient(
+            'Lua',
+            'Lua',
+            serverOptions,
+            clientOptions
+        );
 
-    let client = new LanguageClient(
-        'Lua',
-        'Lua',
-        serverOptions,
-        clientOptions
-    );
-
-    //client.registerProposedFeatures();
-    client.start();
-    client.onReady().then(() => {
-        onCommand(client);
-        onDecorations(client)
+        //client.registerProposedFeatures();
+        this.client.start();
+        await this.client.onReady()
+        onCommand(this.client);
+        onDecorations(this.client);
         //onInlayHint(client);
-        statusBar(client);
-    });
-
-    return client;
+        statusBar(this.client);
+   }
+   
+   async stop() {
+       this.client.stop()
+   }
 }
 
 let barCount = 0;
@@ -348,7 +361,7 @@ function onInlayHint(client: LanguageClient) {
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    async function didOpenTextDocument(document: TextDocument) {
+    function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
             return;
@@ -358,9 +371,10 @@ export function activate(context: ExtensionContext) {
         let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
         if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
-            defaultClient = await start(context, [
+            defaultClient = new LuaClient(context, [
                 { scheme: 'file', language: 'lua' }
             ], null);
+            defaultClient.start();
             return;
         }
 
@@ -374,10 +388,11 @@ export function activate(context: ExtensionContext) {
 
         if (!clients.has(folder.uri.toString())) {
             let pattern: string = folder.uri.fsPath.replace(/(\[|\])/g, '[$1]') + '/**/*';
-            let client = await start(context, [
+            let client = new LuaClient(context, [
                 { scheme: 'file', language: 'lua', pattern: pattern }
             ], folder);
             clients.set(folder.uri.toString(), client);
+            client.start();
         }
     }
 
@@ -406,7 +421,7 @@ export function activate(context: ExtensionContext) {
     });
 }
 
-export function deactivate(): Thenable<void> | undefined {
+export async function deactivate(): Promise<void> {
     let promises: Thenable<void>[] = [];
     if (defaultClient) {
         promises.push(defaultClient.stop());
@@ -414,5 +429,6 @@ export function deactivate(): Thenable<void> | undefined {
     for (let client of clients.values()) {
         promises.push(client.stop());
     }
-    return Promise.all(promises).then(() => undefined);
+    await Promise.all(promises);
+    return undefined;
 }
