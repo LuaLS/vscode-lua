@@ -80,4 +80,5 @@ jobs:
             ${{ steps.vars.outputs.PKG_NAME }}
 
       - name: Publish VSCode market
+        if: startsWith(github.ref, 'refs/tags/')
         run: vsce publish -i ${{ steps.vars.outputs.PKG_NAME }} -t ${{ matrix.platform }} -p ${{ secrets.VSCE_TOKEN }}
