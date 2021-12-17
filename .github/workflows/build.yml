@@ -70,3 +70,14 @@ jobs:
         with:
           name: ${{ steps.vars.outputs.PKG_BASENAME }}
           path: ${{ steps.vars.outputs.PKG_NAME }}
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
+          files: |
+            ${{ steps.vars.outputs.PKG_NAME }}
+
+      - name: Publish VSCode market
+        run: vsce publish -i ${{ steps.vars.outputs.PKG_NAME }} -t ${{ matrix.platform }} -p ${{ secrets.VSCE_TOKEN }}

@@ -133,7 +133,7 @@ print('复制 readme ...')
 fs.copy_file(ROOT / 'server' / 'changelog.md', ROOT / 'changelog.md', fs.copy_options.overwrite_existing)
 fsu.saveFile(ROOT / 'README.md', fsu.loadFile(ROOT / 'server' / 'README.md'):gsub('%!%[build%][^\r\n]*', ''))
 
-local out = createDirectory(version)
+local out = createDirectory('test')
 print('输出目录为：', out)
 print('清理目录...')
 removeFiles(out)(true)
@@ -143,9 +143,7 @@ local count = copyFiles(ROOT , out) {
     ['client'] = {
         ['node_modules']      = true,
         ['out']               = true,
-        ['package-lock.json'] = true,
         ['package.json']      = true,
-        ['tsconfig.json']     = true,
         ['3rd']               = {
             ['vscode-lua-doc']  = {
                 ['doc']             = true,
@@ -155,11 +153,9 @@ local count = copyFiles(ROOT , out) {
     },
     ['server'] = {
         ['bin']               = true,
-        ['libs']              = true,
         ['locale']            = true,
         ['script']            = true,
         ['main.lua']          = true,
-        ['platform.lua']      = true,
         ['test']              = true,
         ['test.lua']          = true,
         ['debugger.lua']      = true,
@@ -173,11 +169,9 @@ local count = copyFiles(ROOT , out) {
         ['logo.png'] = true,
     },
     ['syntaxes']               = true,
-    ['package-lock.json']      = true,
     ['package.json']           = true,
     ['README.md']              = true,
     ['changelog.md']           = true,
-    ['tsconfig.json']          = true,
     ['package.nls.json']       = true,
     ['package.nls.zh-cn.json'] = true,
 }
@@ -225,13 +219,13 @@ local function shell(command)
     print(p.stderr:read 'a')
 end
 
-local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
+--local vsix = ROOT / 'publish' / ('lua-' .. version .. '.vsix')
 
-shell {
-    'vsce', 'package',
-    '-o', vsix,
-    cwd = out,
-}
+--shell {
+--    'vsce', 'package',
+--    '-o', vsix,
+--    cwd = out,
+--}
 
 shell {
     'git', 'add', '*',
@@ -253,18 +247,18 @@ shell {
     'git', 'push', '--tags',
 }
 
-shell {
-    'vsce', 'publish',
-    cwd = out,
-}
+--shell {
+--    'vsce', 'publish',
+--    cwd = out,
+--}
 
-local ovsxToken = fsu.loadFile(ROOT / 'ovsx-token')
-if ovsxToken then
-    ovsxToken = ovsxToken:match '[%w%-]+'
-    shell {
-        'npx', 'ovsx', 'publish', vsix,
-        '-p', ovsxToken
-    }
-end
+--local ovsxToken = fsu.loadFile(ROOT / 'ovsx-token')
+--if ovsxToken then
+--    ovsxToken = ovsxToken:match '[%w%-]+'
+--    shell {
+--        'npx', 'ovsx', 'publish', vsix,
+--        '-p', ovsxToken
+--    }
+--end
 
 print('完成')
