@@ -36,7 +36,6 @@ jobs:
 
       - name: Run luamake
         id: luamake
-        shell: bash
         working-directory: ./server
         run: luamake -platform ${{ matrix.platform }}
 
