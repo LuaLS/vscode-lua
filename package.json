@@ -1572,7 +1572,7 @@
     "description": "Lua Language Server coded by Lua",
     "displayName": "Lua",
     "engines": {
-        "vscode": "^1.23.0"
+        "vscode": "^1.61.0"
     },
     "icon": "images/logo.png",
     "keywords": [

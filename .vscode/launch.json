@@ -12,7 +12,7 @@
             ],
             "consoleCoding": "utf8",
             "sourceCoding": "utf8",
-            "luaexe": "${workspaceFolder}/server/bin/Windows/lua-language-server.exe",
+            "luaexe": "${workspaceFolder}/server/bin/lua-language-server.exe",
             "outputCapture": [
                 "print",
                 "stderr",
@@ -26,7 +26,7 @@
             "program": "${workspaceRoot}/setting/build.lua",
             "arg": [
             ],
-            "luaexe": "${workspaceFolder}/server/bin/Windows/lua-language-server.exe",
+            "luaexe": "${workspaceFolder}/server/bin/lua-language-server.exe",
             "path": "${workspaceFolder}/?.lua;${workspaceFolder}/server/script/?.lua;${workspaceFolder}/server/script/?/init.lua",
             "consoleCoding": "utf8",
             "sourceCoding": "utf8",
