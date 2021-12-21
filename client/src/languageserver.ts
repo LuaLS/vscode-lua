@@ -90,23 +90,6 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
     return folder;
 }
 
-async function chmod(path: fs.PathLike, mode: fs.Mode) {
-    await new Promise((resolve) => {
-        fs.chmod(path, mode, resolve)
-    })
-}
-
-async function exists(path: fs.PathLike) {
-    return await new Promise((resolve) => {
-        fs.stat(path, (err, stats) => {
-            if (stats && stats.isDirectory()) {
-                resolve(true);
-            }
-            resolve(false);
-        })
-    })
-}
-
 class LuaClient {
     private context: ExtensionContext;
     private documentSelector: DocumentSelector;
@@ -138,12 +121,7 @@ class LuaClient {
         let command: string;
         let platform: string = os.platform();
         let binDir: string;
-        if (await exists(this.context.asAbsolutePath(
-            path.join(
-                'server',
-                'bin',
-            )
-        ))) {
+        if ((await fs.promises.stat(this.context.asAbsolutePath('server/bin'))).isDirectory()) {
             binDir = 'bin';
         }
         switch (platform) {
@@ -164,7 +142,7 @@ class LuaClient {
                         'lua-language-server'
                     )
                 );
-                await chmod(command, '777');
+                await fs.promises.chmod(command, '777')
                 break;
             case "darwin":
                 command = this.context.asAbsolutePath(
@@ -174,7 +152,7 @@ class LuaClient {
                         'lua-language-server'
                     )
                 );
-                await chmod(command, '777');
+                await fs.promises.chmod(command, '777')
                 break;
         }
 

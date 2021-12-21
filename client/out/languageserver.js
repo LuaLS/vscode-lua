@@ -73,25 +73,6 @@ function getOuterMostWorkspaceFolder(folder) {
     }
     return folder;
 }
-function chmod(path, mode) {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield new Promise((resolve) => {
-            fs.chmod(path, mode, resolve);
-        });
-    });
-}
-function exists(path) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield new Promise((resolve) => {
-            fs.stat(path, (err, stats) => {
-                if (stats && stats.isDirectory()) {
-                    resolve(true);
-                }
-                resolve(false);
-            });
-        });
-    });
-}
 class LuaClient {
     constructor(context, documentSelector, folder) {
         this.context = context;
@@ -118,7 +99,7 @@ class LuaClient {
             let command;
             let platform = os.platform();
             let binDir;
-            if (yield exists(this.context.asAbsolutePath(path.join('server', 'bin')))) {
+            if ((yield fs.promises.stat(this.context.asAbsolutePath('server/bin'))).isDirectory()) {
                 binDir = 'bin';
             }
             switch (platform) {
@@ -127,11 +108,11 @@ class LuaClient {
                     break;
                 case "linux":
                     command = this.context.asAbsolutePath(path.join('server', binDir ? binDir : 'bin-Linux', 'lua-language-server'));
-                    yield chmod(command, '777');
+                    yield fs.promises.chmod(command, '777');
                     break;
                 case "darwin":
                     command = this.context.asAbsolutePath(path.join('server', binDir ? binDir : 'bin-macOS', 'lua-language-server'));
-                    yield chmod(command, '777');
+                    yield fs.promises.chmod(command, '777');
                     break;
             }
             let serverOptions = {
