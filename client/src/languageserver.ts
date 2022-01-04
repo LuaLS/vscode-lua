@@ -93,12 +93,10 @@ function getOuterMostWorkspaceFolder(folder: WorkspaceFolder): WorkspaceFolder {
 class LuaClient {
     private context: ExtensionContext;
     private documentSelector: DocumentSelector;
-    private folder: WorkspaceFolder;
     protected client: LanguageClient;
-    constructor(context: ExtensionContext, documentSelector: DocumentSelector, folder: WorkspaceFolder) {
+    constructor(context: ExtensionContext, documentSelector: DocumentSelector) {
         this.context = context;
         this.documentSelector = documentSelector;
-        this.folder = folder;
     }
 
    async start() {
@@ -106,7 +104,6 @@ class LuaClient {
         let clientOptions: LanguageClientOptions = {
             // Register the server for plain text documents
             documentSelector: this.documentSelector,
-            workspaceFolder: this.folder,
             progressOnInitialization: true,
             markdown: {
                 isTrusted: true,
@@ -116,7 +113,7 @@ class LuaClient {
             }
         };
 
-        let config = Workspace.getConfiguration(undefined, this.folder);
+        let config = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]);
         let commandParam: string[] = config.get("Lua.misc.parameters");
         let command: string;
         let platform: string = os.platform();
@@ -345,68 +342,33 @@ export function activate(context: ExtensionContext) {
             return;
         }
 
-        let uri = document.uri;
-        let folder = Workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
-        if (folder == null && Workspace.workspaceFolders == null && !defaultClient) {
+        if (!defaultClient) {
             defaultClient = new LuaClient(context, [
-                { scheme: 'file', language: 'lua' }
-            ], null);
+                { language: 'lua' }
+            ]);
             defaultClient.start();
             return;
-        }
-
-        // Files outside a folder can't be handled. This might depend on the language.
-        // Single file languages like JSON might handle files outside the workspace folders.
-        if (!folder) {
-            return;
-        }
-        // If we have nested workspace folders we only start a server on the outer most workspace folder.
-        folder = getOuterMostWorkspaceFolder(folder);
-
-        if (!clients.has(folder.uri.toString())) {
-            let pattern: string = folder.uri.fsPath.replace(/(\[|\])/g, '[$1]') + '/**/*';
-            let client = new LuaClient(context, [
-                { scheme: 'file', language: 'lua', pattern: pattern }
-            ], folder);
-            clients.set(folder.uri.toString(), client);
-            client.start();
-        }
-    }
-
-    function didCloseTextDocument(document: TextDocument): void {
-        let uri = document.uri;
-        if (clients.has(uri.toString())) {
-            let client = clients.get(uri.toString());
-            if (client) {
-                clients.delete(uri.toString());
-                client.stop();
-            }
         }
     }
 
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
-    //Workspace.onDidCloseTextDocument(didCloseTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
-    Workspace.onDidChangeWorkspaceFolders((event) => {
-        for (let folder of event.removed) {
-            let client = clients.get(folder.uri.toString());
-            if (client) {
-                clients.delete(folder.uri.toString());
-                client.stop();
-            }
+    Workspace.onDidChangeWorkspaceFolders(() => {
+        if (defaultClient) {
+            defaultClient.stop();
+            defaultClient = new LuaClient(context, [
+                { language: 'lua' }
+            ]);
+            defaultClient.start();
         }
     });
 }
 
-export async function deactivate(): Promise<void> {
-    let promises: Thenable<void>[] = [];
+export async function deactivate() {
     if (defaultClient) {
-        promises.push(defaultClient.stop());
+        defaultClient.stop();
+        defaultClient = null;
     }
-    for (let client of clients.values()) {
-        promises.push(client.stop());
-    }
-    await Promise.all(promises);
     return undefined;
 }

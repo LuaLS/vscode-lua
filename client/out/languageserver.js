@@ -74,18 +74,17 @@ function getOuterMostWorkspaceFolder(folder) {
     return folder;
 }
 class LuaClient {
-    constructor(context, documentSelector, folder) {
+    constructor(context, documentSelector) {
         this.context = context;
         this.documentSelector = documentSelector;
-        this.folder = folder;
     }
     start() {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             // Options to control the language client
             let clientOptions = {
                 // Register the server for plain text documents
                 documentSelector: this.documentSelector,
-                workspaceFolder: this.folder,
                 progressOnInitialization: true,
                 markdown: {
                     isTrusted: true,
@@ -94,7 +93,7 @@ class LuaClient {
                     changeConfiguration: true,
                 }
             };
-            let config = vscode_1.workspace.getConfiguration(undefined, this.folder);
+            let config = vscode_1.workspace.getConfiguration(undefined, (_a = vscode.workspace.workspaceFolders) === null || _a === void 0 ? void 0 : _a[0]);
             let commandParam = config.get("Lua.misc.parameters");
             let command;
             let platform = os.platform();
@@ -280,66 +279,34 @@ function activate(context) {
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
             return;
         }
-        let uri = document.uri;
-        let folder = vscode_1.workspace.getWorkspaceFolder(uri);
         // Untitled files go to a default client.
-        if (folder == null && vscode_1.workspace.workspaceFolders == null && !defaultClient) {
+        if (!defaultClient) {
             defaultClient = new LuaClient(context, [
-                { scheme: 'file', language: 'lua' }
-            ], null);
+                { language: 'lua' }
+            ]);
             defaultClient.start();
             return;
         }
-        // Files outside a folder can't be handled. This might depend on the language.
-        // Single file languages like JSON might handle files outside the workspace folders.
-        if (!folder) {
-            return;
-        }
-        // If we have nested workspace folders we only start a server on the outer most workspace folder.
-        folder = getOuterMostWorkspaceFolder(folder);
-        if (!clients.has(folder.uri.toString())) {
-            let pattern = folder.uri.fsPath.replace(/(\[|\])/g, '[$1]') + '/**/*';
-            let client = new LuaClient(context, [
-                { scheme: 'file', language: 'lua', pattern: pattern }
-            ], folder);
-            clients.set(folder.uri.toString(), client);
-            client.start();
-        }
-    }
-    function didCloseTextDocument(document) {
-        let uri = document.uri;
-        if (clients.has(uri.toString())) {
-            let client = clients.get(uri.toString());
-            if (client) {
-                clients.delete(uri.toString());
-                client.stop();
-            }
-        }
     }
     vscode_1.workspace.onDidOpenTextDocument(didOpenTextDocument);
-    //Workspace.onDidCloseTextDocument(didCloseTextDocument);
     vscode_1.workspace.textDocuments.forEach(didOpenTextDocument);
-    vscode_1.workspace.onDidChangeWorkspaceFolders((event) => {
-        for (let folder of event.removed) {
-            let client = clients.get(folder.uri.toString());
-            if (client) {
-                clients.delete(folder.uri.toString());
-                client.stop();
-            }
+    vscode_1.workspace.onDidChangeWorkspaceFolders(() => {
+        if (defaultClient) {
+            defaultClient.stop();
+            defaultClient = new LuaClient(context, [
+                { language: 'lua' }
+            ]);
+            defaultClient.start();
         }
     });
 }
 exports.activate = activate;
 function deactivate() {
     return __awaiter(this, void 0, void 0, function* () {
-        let promises = [];
         if (defaultClient) {
-            promises.push(defaultClient.stop());
+            defaultClient.stop();
+            defaultClient = null;
         }
-        for (let client of clients.values()) {
-            promises.push(client.stop());
-        }
-        yield Promise.all(promises);
         return undefined;
     });
 }
