@@ -21,25 +21,25 @@
         "IntelliSense.traceBeSetted": {
             "default": false,
             "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceFieldInject": {
             "default": false,
             "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceLocalSet": {
             "default": false,
             "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceReturn": {
             "default": false,
             "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "color": {
@@ -62,7 +62,7 @@
                 "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
                 "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion": {
@@ -102,7 +102,7 @@
         "completion.autoRequire": {
             "default": true,
             "markdownDescription": "When the input looks like a file name, automatically `require` this file.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "completion.callSnippet": {
@@ -118,19 +118,19 @@
                 "Shows `function name` and `call snippet`.",
                 "Only shows `call snippet.`"
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion.displayContext": {
             "default": 0,
             "markdownDescription": "Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "completion.enable": {
             "default": true,
             "markdownDescription": "Enable completion.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "completion.keywordSnippet": {
@@ -146,25 +146,25 @@
                 "Shows `keyword` and `syntax snippet`.",
                 "Only shows `syntax snippet`."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion.postfix": {
             "default": "@",
             "markdownDescription": "The symbol used to trigger the postfix suggestion.",
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion.requireSeparator": {
             "default": ".",
             "markdownDescription": "The separator used when `require`.",
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion.showParams": {
             "default": true,
             "markdownDescription": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "completion.showWord": {
@@ -180,13 +180,13 @@
                 "Contextual words are only displayed when suggestions based on semantics cannot be provided.",
                 "Do not display context words."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "completion.workspaceWord": {
             "default": true,
             "markdownDescription": "Whether the displayed context word contains the content of other files in the workspace.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "diagnostics": {
@@ -225,13 +225,13 @@
                 "type": "string"
             },
             "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "diagnostics.enable": {
             "default": true,
             "markdownDescription": "Enable diagnostics.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "diagnostics.globals": {
@@ -239,7 +239,7 @@
                 "type": "string"
             },
             "markdownDescription": "Defined global variables.\n",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "diagnostics.ignoredFiles": {
@@ -255,7 +255,7 @@
                 "Only when these files are opened will it be diagnosed.",
                 "These files are not diagnosed."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "diagnostics.libraryFiles": {
@@ -271,7 +271,7 @@
                 "Only when these files are opened will it be diagnosed.",
                 "These files are not diagnosed."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
@@ -679,7 +679,7 @@
                     "type": "string"
                 }
             },
-            "scope": "window",
+            "scope": "resource",
             "title": "neededFileStatus",
             "type": "object"
         },
@@ -1128,20 +1128,20 @@
                     "type": "string"
                 }
             },
-            "scope": "window",
+            "scope": "resource",
             "title": "severity",
             "type": "object"
         },
         "diagnostics.workspaceDelay": {
             "default": 0,
             "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "hint": {
@@ -1163,7 +1163,7 @@
         "hint.enable": {
             "default": false,
             "markdownDescription": "Enabel hint.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hint.paramName": {
@@ -1179,19 +1179,19 @@
                 "Only literal type parameters are shown.",
                 "Disable parameter hints."
             ],
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "hint.paramType": {
             "default": true,
             "markdownDescription": "Show type hints at the parameter of the function.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hint.setType": {
             "default": false,
             "markdownDescription": "Show hints of type at assignment operation.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hover": {
@@ -1219,37 +1219,37 @@
         "hover.enable": {
             "default": true,
             "markdownDescription": "Enable hover.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hover.enumsLimit": {
             "default": 5,
             "markdownDescription": "When the value corresponds to multiple types, limit the number of types displaying.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "hover.previewFields": {
             "default": 20,
             "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "hover.viewNumber": {
             "default": true,
             "markdownDescription": "Hover to view numeric content (only if literal is not decimal).",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hover.viewString": {
             "default": true,
             "markdownDescription": "Hover to view the contents of a string (only if the literal contains an escape character).",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "hover.viewStringMax": {
             "default": 1000,
             "markdownDescription": "The maximum length of a hover to view the contents of a string.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "misc": {
@@ -1264,7 +1264,7 @@
                 "type": "string"
             },
             "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "runtime": {
@@ -1453,7 +1453,7 @@
                     "type": "string"
                 }
             },
-            "scope": "window",
+            "scope": "resource",
             "type": "object"
         },
         "runtime.fileEncoding": {
@@ -1465,7 +1465,7 @@
                 "utf16be"
             ],
             "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "runtime.nonstandardSymbol": {
@@ -1487,7 +1487,7 @@
                 "type": "string"
             },
             "markdownDescription": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "runtime.path": {
@@ -1499,19 +1499,19 @@
                 "type": "string"
             },
             "markdownDescription": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from the loaded files.\nif `runtime.pathStrict` is `false`, `${workspace}/**/myfile/init.lua` will also be searched.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "runtime.pathStrict": {
             "default": false,
             "markdownDescription": "When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "runtime.plugin": {
             "default": "",
             "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "runtime.special": {
@@ -1534,13 +1534,13 @@
                     "type": "string"
                 }
             },
-            "scope": "window",
+            "scope": "resource",
             "type": "object"
         },
         "runtime.unicodeName": {
             "default": false,
             "markdownDescription": "Allows Unicode characters in name.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "runtime.version": {
@@ -1553,7 +1553,7 @@
                 "LuaJIT"
             ],
             "markdownDescription": "Lua runtime version.",
-            "scope": "window",
+            "scope": "resource",
             "type": "string"
         },
         "signatureHelp": {
@@ -1566,7 +1566,7 @@
         "signatureHelp.enable": {
             "default": true,
             "markdownDescription": "Enable signature help.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "telemetry": {
@@ -1579,7 +1579,7 @@
         "telemetry.enable": {
             "default": null,
             "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
-            "scope": "window",
+            "scope": "resource",
             "type": [
                 "boolean",
                 "null"
@@ -1598,13 +1598,13 @@
         "window.progressBar": {
             "default": true,
             "markdownDescription": "Show progress bar in status bar.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "window.statusBar": {
             "default": true,
             "markdownDescription": "Show extension status in status bar.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "workspace": {
@@ -1638,7 +1638,7 @@
         "workspace.checkThirdParty": {
             "default": true,
             "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* skynet\n* Jass\n",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "workspace.ignoreDir": {
@@ -1649,13 +1649,13 @@
                 "type": "string"
             },
             "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).\n",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "workspace.ignoreSubmodules": {
             "default": true,
             "markdownDescription": "Ignore submodules.",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "workspace.library": {
@@ -1663,25 +1663,25 @@
                 "type": "string"
             },
             "markdownDescription": "In addition to the current workspace, which directories will load files from. The files in these directories will be treated as externally provided code libraries, and some features (such as renaming fields) will not modify these files.",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         },
         "workspace.maxPreload": {
             "default": 1000,
             "markdownDescription": "Max preloaded files.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "workspace.preloadFileSize": {
             "default": 100,
             "markdownDescription": "Skip files larger than this value (KB) when preloading.",
-            "scope": "window",
+            "scope": "resource",
             "type": "integer"
         },
         "workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "Ignore files list in `.gitignore` .",
-            "scope": "window",
+            "scope": "resource",
             "type": "boolean"
         },
         "workspace.userThirdParty": {
@@ -1689,7 +1689,7 @@
                 "type": "string"
             },
             "markdownDescription": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-            "scope": "window",
+            "scope": "resource",
             "type": "array"
         }
     },
