@@ -364,19 +364,29 @@
 							"name": "comment.line.double-dash.lua"
 						},
 						{
-							"begin": "---?",
+							"begin": "---",
 							"beginCaptures": {
 								"0": {
 									"name": "punctuation.definition.comment.lua"
 								}
 							},
 							"end": "\\n",
-							"name": "comment.line.double-dash.lua",
+							"name": "comment.line.double-dash.doc.lua",
 							"patterns": [
 								{
 									"include": "#luadoc"
 								}
 							]
+						},
+						{
+							"begin": "--",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.comment.lua"
+								}
+							},
+							"end": "\\n",
+							"name": "comment.line.double-dash.lua"
 						}
 					]
 				},

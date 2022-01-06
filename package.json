@@ -1082,6 +1082,22 @@
                     "scope": "resource",
                     "type": "integer"
                 },
+                "Lua.hint.arrayIndex": {
+                    "default": "Auto",
+                    "enum": [
+                        "Enable",
+                        "Auto",
+                        "Disable"
+                    ],
+                    "markdownDescription": "%config.hint.arrayIndex%",
+                    "markdownEnumDescriptions": [
+                        "%config.hint.arrayIndex.Enable%",
+                        "%config.hint.arrayIndex.Auto%",
+                        "%config.hint.arrayIndex.Disable%"
+                    ],
+                    "scope": "resource",
+                    "type": "string"
+                },
                 "Lua.hint.enable": {
                     "default": false,
                     "markdownDescription": "%config.hint.enable%",
@@ -1510,7 +1526,12 @@
             {
                 "language": "lua",
                 "path": "./syntaxes/lua.tmLanguage.json",
-                "scopeName": "source.lua"
+                "scopeName": "source.lua",
+                "tokenTypes": {
+                    "comment.line.double-dash.doc.lua": "other",
+                    "string.quoted.double.lua": "other",
+                    "string.quoted.single.lua": "other"
+                }
             }
         ],
         "semanticTokenScopes": [
