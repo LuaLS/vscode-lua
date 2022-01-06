@@ -477,6 +477,22 @@ local config = {
         },
         markdownDescription = '%config.hint.paramName%',
     },
+    ["Lua.hint.arrayIndex"] = {
+        scope = 'resource',
+        type = "string",
+        default = "Auto",
+        enum = {
+            "Enable",
+            "Auto",
+            "Disable",
+        },
+        markdownEnumDescriptions = {
+            "%config.hint.arrayIndex.Enable%",
+            "%config.hint.arrayIndex.Auto%",
+            "%config.hint.arrayIndex.Disable%",
+        },
+        markdownDescription = "%config.hint.arrayIndex%"
+    },
     ['Lua.misc.parameters'] = {
         scope = 'resource',
         type = "array",

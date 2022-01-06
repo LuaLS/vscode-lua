@@ -3,7 +3,6 @@
     "config.IntelliSense.traceFieldInject": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceLocalSet": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceReturn": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-    "config.awakened.cat": "PLAY WITH ME >_<\n\n(This will enable the beta version which is still in development. Feedback is welcome! Reload the window after changing this option!)",
     "config.color.mode": "Color mode.",
     "config.color.mode.Grammar": "Grammar color.",
     "config.color.mode.Semantic": "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
@@ -42,6 +41,10 @@
     "config.diagnostics.severity": "Modified diagnostic severity.",
     "config.diagnostics.workspaceDelay": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
     "config.diagnostics.workspaceRate": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
+    "config.hint.arrayIndex": "Show hints of array index when constructing a table.",
+    "config.hint.arrayIndex.Auto": "Show hints only when the table is greater than 3 items, or the table is a mixed table.",
+    "config.hint.arrayIndex.Disable": "Disable hints of array index.",
+    "config.hint.arrayIndex.Enable": "Show hints in all tables.",
     "config.hint.enable": "Enabel hint.",
     "config.hint.paramName": "Show hints of parameter name at the function call.",
     "config.hint.paramName.All": "All types of parameters are shown.",
@@ -79,6 +82,5 @@
     "config.workspace.maxPreload": "Max preloaded files.",
     "config.workspace.preloadFileSize": "Skip files larger than this value (KB) when preloading.",
     "config.workspace.useGitIgnore": "Ignore files list in `.gitignore` .",
-    "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-    "config.zzzzzz.cat": "DONT TOUCH ME, LET ME SLEEP >_<"
+    "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)"
 }

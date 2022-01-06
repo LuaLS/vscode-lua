@@ -58,6 +58,10 @@
     "config.diagnostics.unused-vararg": "未使用的不定参数",
     "config.diagnostics.workspaceDelay": "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
     "config.diagnostics.workspaceRate": "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
+    "config.hint.arrayIndex": "在构造表时提示数组索引。",
+    "config.hint.arrayIndex.Auto": "只有表大于3项，或者表是混合类型时才进行提示。",
+    "config.hint.arrayIndex.Disable": "禁用数组索引提示。",
+    "config.hint.arrayIndex.Enable": "所有的表中都提示数组索引。",
     "config.hint.enable": "启用内联提示。",
     "config.hint.paramName": "在函数调用处提示参数名。",
     "config.hint.paramName.All": "所有类型的参数均进行提示。",
@@ -95,6 +99,5 @@
     "config.workspace.maxPreload": "最大预加载文件数。",
     "config.workspace.preloadFileSize": "预加载时跳过大小大于该值（KB）的文件。",
     "config.workspace.useGitIgnore": "忽略 `.gitignore` 中列举的文件。",
-    "config.workspace.userThirdParty": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
-    "config.zzzzzz.cat": "DONT TOUCH ME, LET ME SLEEP >_<"
+    "config.workspace.userThirdParty": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)"
 }

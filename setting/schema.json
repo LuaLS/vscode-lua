@@ -1145,6 +1145,9 @@
         },
         "hint": {
             "properties": {
+                "arrayIndex": {
+                    "$ref": "#/properties/hint.arrayIndex"
+                },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
                 },
@@ -1158,6 +1161,22 @@
                     "$ref": "#/properties/hint.setType"
                 }
             }
+        },
+        "hint.arrayIndex": {
+            "default": "Auto",
+            "enum": [
+                "Enable",
+                "Auto",
+                "Disable"
+            ],
+            "markdownDescription": "Show hints of array index when constructing a table.",
+            "markdownEnumDescriptions": [
+                "Show hints in all tables.",
+                "Show hints only when the table is greater than 3 items, or the table is a mixed table.",
+                "Disable hints of array index."
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "hint.enable": {
             "default": false,

@@ -1145,6 +1145,9 @@
         },
         "hint": {
             "properties": {
+                "arrayIndex": {
+                    "$ref": "#/properties/hint.arrayIndex"
+                },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
                 },
@@ -1158,6 +1161,22 @@
                     "$ref": "#/properties/hint.setType"
                 }
             }
+        },
+        "hint.arrayIndex": {
+            "default": "Auto",
+            "enum": [
+                "Enable",
+                "Auto",
+                "Disable"
+            ],
+            "markdownDescription": "在构造表时提示数组索引。",
+            "markdownEnumDescriptions": [
+                "所有的表中都提示数组索引。",
+                "只有表大于3项，或者表是混合类型时才进行提示。",
+                "禁用数组索引提示。"
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "hint.enable": {
             "default": false,
