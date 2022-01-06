@@ -69,12 +69,16 @@ for dirPath in fs.pairs(fs.path 'server/locale') do
         end),
     }
 
+    local schemaName, nlsName
     if lang == 'en-us' then
-        lang = ''
+        schemaName = 'setting/schema.json'
+        nlsName    = 'package.nls.json'
     else
-        lang = '-' .. lang
+        schemaName = 'setting/schema-' .. lang .. '.json'
+        nlsName    = 'package.nls.' .. lang .. '.json'
     end
 
-    fsu.saveFile(fs.path'setting/schema'..lang..'.json', json.beautify(setting, encodeOption))
+    fsu.saveFile(fs.path(schemaName), json.beautify(setting, encodeOption))
+    fsu.saveFile(fs.path(nlsName),    json.beautify(nls, encodeOption))
     ::CONTINUE::
 end
