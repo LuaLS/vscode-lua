@@ -1,5 +1,4 @@
 {
-    "$schema": "",
     "description": "Setting of sumneko.lua",
     "properties": {
         "IntelliSense": {
@@ -224,7 +223,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Disabled diagnostic (Use code in hover brackets).\n",
+            "markdownDescription": "Disabled diagnostic (Use code in hover brackets).",
             "scope": "resource",
             "type": "array"
         },
@@ -238,7 +237,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Defined global variables.\n",
+            "markdownDescription": "Defined global variables.",
             "scope": "resource",
             "type": "array"
         },
@@ -276,7 +275,7 @@
         },
         "diagnostics.neededFileStatus": {
             "additionalProperties": false,
-            "markdownDescription": "If you want to check only opened files, choice Opened; else choice Any.\n",
+            "markdownDescription": "* Opened:  only diagnose opened files\n* Any:     diagnose all files\n* Disable: disable this diagnostic\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
@@ -685,7 +684,7 @@
         },
         "diagnostics.severity": {
             "additionalProperties": false,
-            "markdownDescription": "Modified diagnostic severity.\n",
+            "markdownDescription": "Modified diagnostic severity.",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -1637,7 +1636,7 @@
         },
         "workspace.checkThirdParty": {
             "default": true,
-            "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* skynet\n* Jass\n",
+            "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1648,7 +1647,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).\n",
+            "markdownDescription": "Ignored files and directories (Use `.gitignore` grammar).",
             "scope": "resource",
             "type": "array"
         },

@@ -14,7 +14,7 @@ local fsu = require 'fs-utility'
 ROOT = fs.path(rootPath)
 fs.current_path(ROOT)
 require 'package.build'
-dofile(rootPath .. 'setting/build.lua')
+dofile(rootPath .. 'build-settings.lua')
 local json = require 'json'
 
 local function loadPackage()

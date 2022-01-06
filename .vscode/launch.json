@@ -23,11 +23,10 @@
             "type": "lua",
             "request": "launch",
             "stopOnEntry": false,
-            "program": "${workspaceRoot}/setting/build.lua",
+            "program": "${workspaceRoot}/build-settings.lua",
             "arg": [
             ],
             "luaexe": "${workspaceFolder}/server/bin/lua-language-server.exe",
-            "path": "${workspaceFolder}/?.lua;${workspaceFolder}/server/script/?.lua;${workspaceFolder}/server/script/?/init.lua",
             "consoleCoding": "utf8",
             "sourceCoding": "utf8",
             "outputCapture": [

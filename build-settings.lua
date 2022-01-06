@@ -1,8 +1,15 @@
 local fs = require 'bee.filesystem'
 
-local json = require 'json-beautify'
+local currentPath = debug.getinfo(1, 'S').source:sub(2)
+local rootPath = currentPath:gsub('[^/\\]-$', '')
+package.path = package.path
+    .. ';' .. rootPath .. '?.lua'
+    .. ';' .. rootPath .. 'server/script/?.lua'
+
+local json          = require 'json-beautify'
 local configuration = require 'package.configuration'
-local fsu  = require 'fs-utility'
+local fsu           = require 'fs-utility'
+local lloader       = require 'locale-loader'
 
 local function addSplited(t, key, value)
     t[key] = value
@@ -43,11 +50,17 @@ local encodeOption = {
     newline = '\r\n',
     indent  = '    ',
 }
-for _, lang in ipairs {'', '-zh-cn'} do
-    local nls = require('package.nls' .. lang)
+
+for dirPath in fs.pairs(fs.path 'server/locale') do
+    local lang    = dirPath:filename():string()
+    local nlsPath = dirPath / 'setting.lua'
+    local text    = fsu.loadFile(nlsPath)
+    if not text then
+        goto CONTINUE
+    end
+    local nls = lloader(text, nlsPath:string())
 
     local setting = {
-        ['$schema'] = '',
         title       = 'setting',
         description = 'Setting of sumneko.lua',
         type        = 'object',
@@ -56,5 +69,12 @@ for _, lang in ipairs {'', '-zh-cn'} do
         end),
     }
 
+    if lang == 'en-us' then
+        lang = ''
+    else
+        lang = '-' .. lang
+    end
+
     fsu.saveFile(fs.path'setting/schema'..lang..'.json', json.beautify(setting, encodeOption))
+    ::CONTINUE::
 end
