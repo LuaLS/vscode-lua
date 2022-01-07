@@ -21,14 +21,23 @@ return {
     ['variable'] = {'variable.other.lua'},
     -- close 变量 | Close variable
     ['variable.abstract'] = {'variable.other.constant.lua'},
+    -- self
+    ['variable.definition'] = {'variable.language.self.lua'},
     -- 局部变量 | Local variable
     ['variable.declaration'] = {'variable.other.lua'},
     -- Lua库常量，如 _G | Lua library constants, such as _G
     ['variable.defaultLibrary'] = {'support.constant.lua'},
-    -- 局部变量 | Local variable
-    ['variable.local'] = {'variable.other.lua'},
     -- const 变量 | Const variable
     ['variable.readonly'] = {'variable.other.constant.lua'},
     -- 全局变量 | Global variable
     ['variable.static'] = {'variable.other.lua'},
+    ['keyword'] = {'keyword.control.lua'},
+    ['keyword.declaration'] = {'keyword.local.lua'},
+    ['keyword.readonly'] = {'constant.language.lua'},
+    ['operator'] = {'keyword.operator.lua'},
+    ['number'] = {'constant.numeric.float.lua'},
+    ['number.static'] = {'constant.numeric.integer.lua'},
+    ['string'] = {'string.lua'},
+    ['string.modification'] = {'constant.character.escape.lua'},
+    ['string.deprecated'] = {'invalid.illegal.character.escape.lua'},
 }
