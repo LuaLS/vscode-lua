@@ -1538,6 +1538,18 @@
             {
                 "language": "lua",
                 "scopes": {
+                    "class": [
+                        "support.class.lua"
+                    ],
+                    "class.declaration": [
+                        "support.class.lua"
+                    ],
+                    "comment.documentation": [
+                        "storage.type.annotation.lua"
+                    ],
+                    "event.static": [
+                        "support.class.lua"
+                    ],
                     "function": [
                         "variable.function.lua"
                     ],
@@ -1550,11 +1562,35 @@
                     "function.static": [
                         "entity.name.function.lua"
                     ],
+                    "keyword": [
+                        "keyword.control.lua"
+                    ],
+                    "keyword.async": [
+                        "entity.name.tag.lua"
+                    ],
+                    "keyword.declaration": [
+                        "keyword.local.lua"
+                    ],
+                    "keyword.readonly": [
+                        "constant.language.lua"
+                    ],
+                    "macro": [
+                        "variable.lua"
+                    ],
                     "method": [
                         "entity.name.function.lua"
                     ],
                     "method.declaration": [
                         "entity.name.function.lua"
+                    ],
+                    "number": [
+                        "constant.numeric.float.lua"
+                    ],
+                    "number.static": [
+                        "constant.numeric.integer.lua"
+                    ],
+                    "operator": [
+                        "keyword.operator.lua"
                     ],
                     "parameter.declaration": [
                         "variable.parameter.lua"
@@ -1564,6 +1600,30 @@
                     ],
                     "property.declaration": [
                         "entity.other.property.lua"
+                    ],
+                    "string": [
+                        "string.lua"
+                    ],
+                    "string.deprecated": [
+                        "invalid.illegal.character.escape.lua"
+                    ],
+                    "string.modification": [
+                        "constant.character.escape.lua"
+                    ],
+                    "struct": [
+                        "string.tag.lua"
+                    ],
+                    "struct.declaration": [
+                        "string.tag.lua"
+                    ],
+                    "type": [
+                        "support.type.lua"
+                    ],
+                    "type.modification": [
+                        "storage.type.generic.lua"
+                    ],
+                    "typeParameter": [
+                        "string.tag.lua"
                     ],
                     "variable": [
                         "variable.other.lua"
@@ -1577,8 +1637,8 @@
                     "variable.defaultLibrary": [
                         "support.constant.lua"
                     ],
-                    "variable.local": [
-                        "variable.other.lua"
+                    "variable.definition": [
+                        "variable.language.self.lua"
                     ],
                     "variable.readonly": [
                         "variable.other.constant.lua"
