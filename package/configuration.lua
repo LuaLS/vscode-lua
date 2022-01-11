@@ -331,21 +331,29 @@ local config = {
         default = '@',
         markdownDescription = "%config.completion.postfix%"
     },
-    ["Lua.color.mode"] = {
+    ["Lua.semantic.enable"] = {
         scope = 'resource',
-        type = "string",
-        default = "Semantic",
-        enum = {
-            "Grammar",
-            "Semantic",
-            "SemanticEnhanced",
-        },
-        markdownEnumDescriptions = {
-            "%config.color.mode.Grammar%",
-            "%config.color.mode.Semantic%",
-            "%config.color.mode.SemanticEnhanced%",
-        },
-        markdownDescription = "%config.color.mode%"
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.semantic.enable%"
+    },
+    ["Lua.semantic.variable"] = {
+        scope = 'resource',
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.semantic.variable%"
+    },
+    ["Lua.semantic.annotation"] = {
+        scope = 'resource',
+        type = "boolean",
+        default = true,
+        markdownDescription = "%config.semantic.annotation%"
+    },
+    ["Lua.semantic.keyword"] = {
+        scope = 'resource',
+        type = "boolean",
+        default = false,
+        markdownDescription = "%config.semantic.keyword%"
     },
     ["Lua.signatureHelp.enable"] = {
         scope = 'resource',
