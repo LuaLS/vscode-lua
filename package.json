@@ -52,22 +52,6 @@
                     "scope": "resource",
                     "type": "boolean"
                 },
-                "Lua.color.mode": {
-                    "default": "Semantic",
-                    "enum": [
-                        "Grammar",
-                        "Semantic",
-                        "SemanticEnhanced"
-                    ],
-                    "markdownDescription": "%config.color.mode%",
-                    "markdownEnumDescriptions": [
-                        "%config.color.mode.Grammar%",
-                        "%config.color.mode.Semantic%",
-                        "%config.color.mode.SemanticEnhanced%"
-                    ],
-                    "scope": "resource",
-                    "type": "string"
-                },
                 "Lua.completion.autoRequire": {
                     "default": true,
                     "markdownDescription": "%config.completion.autoRequire%",
@@ -1434,6 +1418,30 @@
                     "scope": "resource",
                     "type": "string"
                 },
+                "Lua.semantic.annotation": {
+                    "default": true,
+                    "markdownDescription": "%config.semantic.annotation%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
+                "Lua.semantic.enable": {
+                    "default": true,
+                    "markdownDescription": "%config.semantic.enable%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
+                "Lua.semantic.keyword": {
+                    "default": false,
+                    "markdownDescription": "%config.semantic.keyword%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
+                "Lua.semantic.variable": {
+                    "default": true,
+                    "markdownDescription": "%config.semantic.variable%",
+                    "scope": "resource",
+                    "type": "boolean"
+                },
                 "Lua.signatureHelp.enable": {
                     "default": true,
                     "markdownDescription": "%config.signatureHelp.enable%",
@@ -1669,5 +1677,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.5.6"
+    "version": "2.6.0"
 }

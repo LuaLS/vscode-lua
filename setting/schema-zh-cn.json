@@ -41,29 +41,6 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "color": {
-            "properties": {
-                "mode": {
-                    "$ref": "#/properties/color.mode"
-                }
-            }
-        },
-        "color.mode": {
-            "default": "Semantic",
-            "enum": [
-                "Grammar",
-                "Semantic",
-                "SemanticEnhanced"
-            ],
-            "markdownDescription": "着色模式。",
-            "markdownEnumDescriptions": [
-                "语法着色。",
-                "语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
-                "增强的语义颜色。 类似于`Semantic`，但会进行额外的分析（也会带来额外的开销）。"
-            ],
-            "scope": "resource",
-            "type": "string"
-        },
         "completion": {
             "properties": {
                 "autoRequire": {
@@ -1573,6 +1550,46 @@
             "markdownDescription": "Lua运行版本。",
             "scope": "resource",
             "type": "string"
+        },
+        "semantic": {
+            "properties": {
+                "annotation": {
+                    "$ref": "#/properties/semantic.annotation"
+                },
+                "enable": {
+                    "$ref": "#/properties/semantic.enable"
+                },
+                "keyword": {
+                    "$ref": "#/properties/semantic.keyword"
+                },
+                "variable": {
+                    "$ref": "#/properties/semantic.variable"
+                }
+            }
+        },
+        "semantic.annotation": {
+            "default": true,
+            "markdownDescription": "对类型注解进行语义着色。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.enable": {
+            "default": true,
+            "markdownDescription": "启用语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.keyword": {
+            "default": false,
+            "markdownDescription": "对关键字/字面量/运算符进行语义着色。只有当你的编辑器无法进行语法着色时才需要启用此功能。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.variable": {
+            "default": true,
+            "markdownDescription": "对变量/字段/参数进行语义着色。",
+            "scope": "resource",
+            "type": "boolean"
         },
         "signatureHelp": {
             "properties": {

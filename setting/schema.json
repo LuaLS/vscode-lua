@@ -41,29 +41,6 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "color": {
-            "properties": {
-                "mode": {
-                    "$ref": "#/properties/color.mode"
-                }
-            }
-        },
-        "color.mode": {
-            "default": "Semantic",
-            "enum": [
-                "Grammar",
-                "Semantic",
-                "SemanticEnhanced"
-            ],
-            "markdownDescription": "Color mode.",
-            "markdownEnumDescriptions": [
-                "Grammar color.",
-                "Semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
-                "Enhanced semantic color. Like `Semantic`, but with additional analysis which might be more computationally expensive."
-            ],
-            "scope": "resource",
-            "type": "string"
-        },
         "completion": {
             "properties": {
                 "autoRequire": {
@@ -1180,7 +1157,7 @@
         },
         "hint.enable": {
             "default": false,
-            "markdownDescription": "Enabel hint.",
+            "markdownDescription": "Enable inlay hint.",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1573,6 +1550,46 @@
             "markdownDescription": "Lua runtime version.",
             "scope": "resource",
             "type": "string"
+        },
+        "semantic": {
+            "properties": {
+                "annotation": {
+                    "$ref": "#/properties/semantic.annotation"
+                },
+                "enable": {
+                    "$ref": "#/properties/semantic.enable"
+                },
+                "keyword": {
+                    "$ref": "#/properties/semantic.keyword"
+                },
+                "variable": {
+                    "$ref": "#/properties/semantic.variable"
+                }
+            }
+        },
+        "semantic.annotation": {
+            "default": true,
+            "markdownDescription": "Semantic coloring of type annotations.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.enable": {
+            "default": true,
+            "markdownDescription": "Enable semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.keyword": {
+            "default": false,
+            "markdownDescription": "Semantic coloring of keywords/literals/operators. You only need to enable this feature if your editor cannot do syntax coloring.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.variable": {
+            "default": true,
+            "markdownDescription": "Semantic coloring of variables/fields/parameters.",
+            "scope": "resource",
+            "type": "boolean"
         },
         "signatureHelp": {
             "properties": {
