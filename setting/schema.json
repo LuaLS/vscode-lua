@@ -1109,7 +1109,7 @@
             "type": "object"
         },
         "diagnostics.workspaceDelay": {
-            "default": 0,
+            "default": 3,
             "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
             "scope": "resource",
             "type": "integer"
@@ -1702,13 +1702,13 @@
             "type": "array"
         },
         "workspace.maxPreload": {
-            "default": 1000,
+            "default": 5000,
             "markdownDescription": "Max preloaded files.",
             "scope": "resource",
             "type": "integer"
         },
         "workspace.preloadFileSize": {
-            "default": 100,
+            "default": 500,
             "markdownDescription": "Skip files larger than this value (KB) when preloading.",
             "scope": "resource",
             "type": "integer"

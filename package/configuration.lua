@@ -143,7 +143,7 @@ local config = {
     ["Lua.diagnostics.workspaceDelay"] = {
         scope = 'resource',
         type = "integer",
-        default = 0,
+        default = 3,
         markdownDescription = "%config.diagnostics.workspaceDelay%",
     },
     ["Lua.diagnostics.workspaceRate"] = {
@@ -210,13 +210,13 @@ local config = {
     ["Lua.workspace.maxPreload"] = {
         scope = 'resource',
         type = "integer",
-        default = 1000,
+        default = 5000,
         markdownDescription = "%config.workspace.maxPreload%"
     },
     ["Lua.workspace.preloadFileSize"] = {
         scope = 'resource',
         type = "integer",
-        default = 100,
+        default = 500,
         markdownDescription = "%config.workspace.preloadFileSize%"
     },
     ["Lua.workspace.library"] = {
