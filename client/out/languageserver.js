@@ -16,7 +16,9 @@ const fs = require("fs");
 const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
+const ConfigWatcher_1 = require("./ConfigWatcher");
 let defaultClient;
+let editorConfigWatcher;
 let clients = new Map();
 function registerCustomCommands(context) {
     context.subscriptions.push(vscode_1.commands.registerCommand('lua.config', (changes) => {
@@ -43,6 +45,15 @@ function registerCustomCommands(context) {
             }
         }
     }));
+}
+function registerConfigWatch(context) {
+    editorConfigWatcher = new ConfigWatcher_1.ConfigWatcher('**/.editorconfig');
+    editorConfigWatcher.onConfigUpdate(onEditorConfigUpdate);
+    context.subscriptions.push(editorConfigWatcher);
+}
+function onEditorConfigUpdate(e) {
+    var _a;
+    (_a = defaultClient === null || defaultClient === void 0 ? void 0 : defaultClient.client) === null || _a === void 0 ? void 0 : _a.sendRequest('config/editorconfig/update', e);
 }
 let _sortedWorkspaceFolders;
 function sortedWorkspaceFolders() {
@@ -81,6 +92,7 @@ class LuaClient {
     start() {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
+            const editorConfigFiles = yield editorConfigWatcher.watch();
             // Options to control the language client
             let clientOptions = {
                 // Register the server for plain text documents
@@ -91,6 +103,7 @@ class LuaClient {
                 },
                 initializationOptions: {
                     changeConfiguration: true,
+                    editorConfigFiles
                 }
             };
             let config = vscode_1.workspace.getConfiguration(undefined, (_a = vscode.workspace.workspaceFolders) === null || _a === void 0 ? void 0 : _a[0]);
@@ -274,6 +287,7 @@ function onInlayHint(client) {
 }
 function activate(context) {
     registerCustomCommands(context);
+    registerConfigWatch(context);
     function didOpenTextDocument(document) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
