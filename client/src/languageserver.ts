@@ -13,6 +13,7 @@ import {
     Uri,
     window,
     TextEditor,
+    Disposable,
 } from 'vscode';
 import {
     LanguageClient,
@@ -22,7 +23,6 @@ import {
 } from 'vscode-languageclient/node';
 
 let defaultClient: LuaClient;
-let clients: Map<string, LuaClient> = new Map();
 
 type HintResult = {
     text: string,
@@ -94,12 +94,14 @@ class LuaClient {
     private context: ExtensionContext;
     private documentSelector: DocumentSelector;
     protected client: LanguageClient;
+    private disposables: Disposable[];
     constructor(context: ExtensionContext, documentSelector: DocumentSelector) {
         this.context = context;
         this.documentSelector = documentSelector;
+        this.disposables = new Array<Disposable>();
     }
 
-   async start() {
+    async start() {
         // Options to control the language client
         let clientOptions: LanguageClientOptions = {
             // Register the server for plain text documents
@@ -167,44 +169,138 @@ class LuaClient {
 
         //client.registerProposedFeatures();
         this.client.start();
-        await this.client.onReady()
-        onCommand(this.client);
-        onDecorations(this.client);
+        await this.client.onReady();
+        this.onCommand();
+        this.onDecorations();
         //onInlayHint(client);
-        statusBar(this.client);
-   }
+        this.statusBar();
+    }
    
-   async stop() {
-       this.client.stop()
-   }
-}
+    async stop() {
+        this.client.stop();
+        for (const disposable of this.disposables) {
+            disposable.dispose();
+        }
+    }
 
-let barCount = 0;
-function statusBar(client: LanguageClient) {
-    let bar = window.createStatusBarItem();
-    bar.text = 'Lua';
-    barCount ++;
-    bar.command = 'Lua.statusBar:' + barCount;
-    Commands.registerCommand(bar.command, () => {
-        client.sendNotification('$/status/click');
-    })
-    client.onNotification('$/status/show', (params) => {
-        bar.show();
-    })
-    client.onNotification('$/status/hide', (params) => {
-        bar.hide();
-    })
-    client.onNotification('$/status/report', (params) => {
-        bar.text    = params.text;
-        bar.tooltip = params.tooltip;
-    })
-    client.sendNotification('$/status/refresh');
-}
+    statusBar() {
+        let client = this.client;
+        let bar = window.createStatusBarItem();
+        bar.text = 'Lua';
+        bar.command = 'Lua.statusBar';
+        this.disposables.push(Commands.registerCommand(bar.command, () => {
+            client.sendNotification('$/status/click');
+        }))
+        this.disposables.push(client.onNotification('$/status/show', (params) => {
+            bar.show();
+        }))
+        this.disposables.push(client.onNotification('$/status/hide', (params) => {
+            bar.hide();
+        }))
+        this.disposables.push(client.onNotification('$/status/report', (params) => {
+            bar.text    = params.text;
+            bar.tooltip = params.tooltip;
+        }))
+        client.sendNotification('$/status/refresh');
+        this.disposables.push(bar);
+    }
 
-function onCommand(client: LanguageClient) {
-    client.onNotification('$/command', (params) => {
-        Commands.executeCommand(params.command, params.data);
-    });
+    onCommand() {
+        this.disposables.push(this.client.onNotification('$/command', (params) => {
+            Commands.executeCommand(params.command, params.data);
+        }));
+    }
+
+    onDecorations() {
+        let client = this.client;
+        let textType = window.createTextEditorDecorationType({});
+
+        function notifyVisibleRanges(textEditor: TextEditor) {
+            if (!isDocumentInClient(textEditor.document, client)) {
+                return;
+            }
+            let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
+            let ranges: types.Range[] = [];
+            for (let index = 0; index < textEditor.visibleRanges.length; index++) {
+                const range = textEditor.visibleRanges[index];
+                ranges[index] = client.code2ProtocolConverter.asRange(new vscode.Range(
+                    Math.max(range.start.line - 3, 0),
+                    range.start.character,
+                    Math.min(range.end.line + 3, textEditor.document.lineCount - 1),
+                    range.end.character
+                ));
+            }
+            for (let index = ranges.length; index > 1; index--) {
+                const current = ranges[index];
+                const before = ranges[index - 1];
+                if (current.start.line > before.end.line) {
+                    continue;
+                }
+                if (current.start.line == before.end.line && current.start.character > before.end.character) {
+                    continue;
+                }
+                ranges.pop();
+                before.end = current.end;
+            }
+            client.sendNotification('$/didChangeVisibleRanges', {
+                uri:    uri,
+                ranges: ranges,
+            })
+        }
+
+        for (let index = 0; index < window.visibleTextEditors.length; index++) {
+            notifyVisibleRanges(window.visibleTextEditors[index]);
+        }
+
+        this.disposables.push(window.onDidChangeVisibleTextEditors((params: TextEditor[]) => {
+            for (let index = 0; index < params.length; index++) {
+                notifyVisibleRanges(params[index]);
+            }
+        }))
+
+        this.disposables.push(window.onDidChangeTextEditorVisibleRanges((params: vscode.TextEditorVisibleRangesChangeEvent) => {
+            notifyVisibleRanges(params.textEditor);
+        }))
+
+        this.disposables.push(client.onNotification('$/hint', (params) => {
+            let uri:        types.URI = params.uri;
+            for (let index = 0; index < window.visibleTextEditors.length; index++) {
+                const editor = window.visibleTextEditors[index];
+                if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
+                    let textEditor = editor;
+                    let edits: HintResult[] = params.edits
+                    let options: vscode.DecorationOptions[] = [];
+                    for (let index = 0; index < edits.length; index++) {
+                        const edit = edits[index];
+                        let pos = client.protocol2CodeConverter.asPosition(edit.pos);
+                        options[index] = {
+                            hoverMessage:  edit.text,
+                            range:         new vscode.Range(pos, pos),
+                            renderOptions: {
+                                light: {
+                                    after: {
+                                        contentText:     edit.text,
+                                        color:           '#888888',
+                                        backgroundColor: '#EEEEEE;border-radius: 5px;',
+                                        fontWeight:      '400; font-size: 12px; line-height: 1;',
+                                    }
+                                },
+                                dark: {
+                                    after: {
+                                        contentText:     edit.text,
+                                        color:           '#888888',
+                                        backgroundColor: '#333333;border-radius: 5px;',
+                                        fontWeight:      '400; font-size: 12px; line-height: 1;',
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    textEditor.setDecorations(textType, options);
+                }
+            }
+        }))
+    }
 }
 
 function isDocumentInClient(textDocuments: TextDocument, client: LanguageClient): boolean {
@@ -216,96 +312,6 @@ function isDocumentInClient(textDocuments: TextDocument, client: LanguageClient)
         return true;
     }
     return false;
-}
-
-function onDecorations(client: LanguageClient) {
-    let textType = window.createTextEditorDecorationType({})
-
-    function notifyVisibleRanges(textEditor: TextEditor) {
-        if (!isDocumentInClient(textEditor.document, client)) {
-            return;
-        }
-        let uri:    types.DocumentUri = client.code2ProtocolConverter.asUri(textEditor.document.uri);
-        let ranges: types.Range[] = [];
-        for (let index = 0; index < textEditor.visibleRanges.length; index++) {
-            const range = textEditor.visibleRanges[index];
-            ranges[index] = client.code2ProtocolConverter.asRange(new vscode.Range(
-                Math.max(range.start.line - 3, 0),
-                range.start.character,
-                Math.min(range.end.line + 3, textEditor.document.lineCount - 1),
-                range.end.character
-            ));
-        }
-        for (let index = ranges.length; index > 1; index--) {
-            const current = ranges[index];
-            const before = ranges[index - 1];
-            if (current.start.line > before.end.line) {
-                continue;
-            }
-            if (current.start.line == before.end.line && current.start.character > before.end.character) {
-                continue;
-            }
-            ranges.pop();
-            before.end = current.end;
-        }
-        client.sendNotification('$/didChangeVisibleRanges', {
-            uri:    uri,
-            ranges: ranges,
-        })
-    }
-
-    for (let index = 0; index < window.visibleTextEditors.length; index++) {
-        notifyVisibleRanges(window.visibleTextEditors[index]);
-    }
-
-    window.onDidChangeVisibleTextEditors((params: TextEditor[]) => {
-        for (let index = 0; index < params.length; index++) {
-            notifyVisibleRanges(params[index]);
-        }
-    })
-
-    window.onDidChangeTextEditorVisibleRanges((params: vscode.TextEditorVisibleRangesChangeEvent) => {
-        notifyVisibleRanges(params.textEditor);
-    })
-
-    client.onNotification('$/hint', (params) => {
-        let uri:        types.URI = params.uri;
-        for (let index = 0; index < window.visibleTextEditors.length; index++) {
-            const editor = window.visibleTextEditors[index];
-            if (editor.document.uri.toString() == uri && isDocumentInClient(editor.document, client)) {
-                let textEditor = editor;
-                let edits: HintResult[] = params.edits
-                let options: vscode.DecorationOptions[] = [];
-                for (let index = 0; index < edits.length; index++) {
-                    const edit = edits[index];
-                    let pos = client.protocol2CodeConverter.asPosition(edit.pos);
-                    options[index] = {
-                        hoverMessage:  edit.text,
-                        range:         new vscode.Range(pos, pos),
-                        renderOptions: {
-                            light: {
-                                after: {
-                                    contentText:     edit.text,
-                                    color:           '#888888',
-                                    backgroundColor: '#EEEEEE;border-radius: 5px;',
-                                    fontWeight:      '400; font-size: 12px; line-height: 1;',
-                                }
-                            },
-                            dark: {
-                                after: {
-                                    contentText:     edit.text,
-                                    color:           '#888888',
-                                    backgroundColor: '#333333;border-radius: 5px;',
-                                    fontWeight:      '400; font-size: 12px; line-height: 1;',
-                                }
-                            }
-                        }
-                    }
-                }
-                textEditor.setDecorations(textType, options);
-            }
-        }
-    })
 }
 
 function onInlayHint(client: LanguageClient) {
