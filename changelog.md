@@ -1,5 +1,17 @@
 # changelog
 
+## 2.6.1
+* `CHG` default values of settings:
+  + `Lua.diagnostics.workspaceDelay`: `0` sec -> `3` sec
+  + `Lua.workspace.maxPreload`: `1000` -> `5000`
+  + `Lua.workspace.preloadFileSize`: `100` KB -> `500` KB
+* `CHG` improve performance
+* `FIX` modify luarc failed
+* `FIX` library files not recognized correctly
+* `FIX` [#903](https://github.com/sumneko/lua-language-server/issues/903)
+* `FIX` [#906](https://github.com/sumneko/lua-language-server/issues/906)
+* `FIX` [#920](https://github.com/sumneko/lua-language-server/issues/920)
+
 ## 2.6.0
 `2022-1-13`
 * `NEW` supports multi-workspace in server side, for developers of language clients, please [read here](https://github.com/sumneko/lua-language-server/wiki/Multi-workspace-supports) to learn more.
