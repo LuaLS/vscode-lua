@@ -1,5 +1,11 @@
 # changelog
 
+## 2.6.3
+`2022-1-25`
+* `FIX` new files are not loaded correctly
+* `FIX` [#923](https://github.com/sumneko/lua-language-server/issues/923)
+* `FIX` [#926](https://github.com/sumneko/lua-language-server/issues/926)
+
 ## 2.6.2
 `2022-1-25`
 * `FIX` [#925](https://github.com/sumneko/lua-language-server/issues/925)
