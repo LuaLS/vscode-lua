@@ -143,7 +143,7 @@ local config = {
     ["Lua.diagnostics.workspaceDelay"] = {
         scope = 'resource',
         type = "integer",
-        default = 3,
+        default = 3000,
         markdownDescription = "%config.diagnostics.workspaceDelay%",
     },
     ["Lua.diagnostics.workspaceRate"] = {
