@@ -1,5 +1,39 @@
 # changelog
 
+## 2.6.4
+`2022-2-9`
+* `CHG` completion: reduced sorting priority for postfix completion
+* `FIX` [#936](https://github.com/sumneko/lua-language-server/issues/936)
+* `FIX` [#937](https://github.com/sumneko/lua-language-server/issues/937)
+* `FIX` [#940](https://github.com/sumneko/lua-language-server/issues/940)
+* `FIX` [#941](https://github.com/sumneko/lua-language-server/issues/941)
+* `FIX` [#941](https://github.com/sumneko/lua-language-server/issues/942)
+* `FIX` [#943](https://github.com/sumneko/lua-language-server/issues/943)
+* `FIX` [#946](https://github.com/sumneko/lua-language-server/issues/946)
+
+## 2.6.3
+`2022-1-25`
+* `FIX` new files are not loaded correctly
+* `FIX` [#923](https://github.com/sumneko/lua-language-server/issues/923)
+* `FIX` [#926](https://github.com/sumneko/lua-language-server/issues/926)
+
+## 2.6.2
+`2022-1-25`
+* `FIX` [#925](https://github.com/sumneko/lua-language-server/issues/925)
+
+## 2.6.1
+`2022-1-24`
+* `CHG` default values of settings:
+  + `Lua.diagnostics.workspaceDelay`: `0` sec -> `3` sec
+  + `Lua.workspace.maxPreload`: `1000` -> `5000`
+  + `Lua.workspace.preloadFileSize`: `100` KB -> `500` KB
+* `CHG` improve performance
+* `FIX` modify luarc failed
+* `FIX` library files not recognized correctly
+* `FIX` [#903](https://github.com/sumneko/lua-language-server/issues/903)
+* `FIX` [#906](https://github.com/sumneko/lua-language-server/issues/906)
+* `FIX` [#920](https://github.com/sumneko/lua-language-server/issues/920)
+
 ## 2.6.0
 `2022-1-13`
 * `NEW` supports multi-workspace in server side, for developers of language clients, please [read here](https://github.com/sumneko/lua-language-server/wiki/Multi-workspace-supports) to learn more.

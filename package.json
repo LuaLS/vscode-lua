@@ -1055,7 +1055,7 @@
                     "type": "object"
                 },
                 "Lua.diagnostics.workspaceDelay": {
-                    "default": 0,
+                    "default": 3000,
                     "markdownDescription": "%config.diagnostics.workspaceDelay%",
                     "scope": "resource",
                     "type": "integer"
@@ -1501,13 +1501,13 @@
                     "type": "array"
                 },
                 "Lua.workspace.maxPreload": {
-                    "default": 1000,
+                    "default": 5000,
                     "markdownDescription": "%config.workspace.maxPreload%",
                     "scope": "resource",
                     "type": "integer"
                 },
                 "Lua.workspace.preloadFileSize": {
-                    "default": 100,
+                    "default": 500,
                     "markdownDescription": "%config.workspace.preloadFileSize%",
                     "scope": "resource",
                     "type": "integer"
@@ -1677,5 +1677,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.6.0"
+    "version": "2.6.4"
 }
