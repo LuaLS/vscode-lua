@@ -1,5 +1,16 @@
 # changelog
 
+## 2.6.4
+`2022-2-9`
+* `CHG` completion: reduced sorting priority for postfix completion
+* `FIX` [#936](https://github.com/sumneko/lua-language-server/issues/936)
+* `FIX` [#937](https://github.com/sumneko/lua-language-server/issues/937)
+* `FIX` [#940](https://github.com/sumneko/lua-language-server/issues/940)
+* `FIX` [#941](https://github.com/sumneko/lua-language-server/issues/941)
+* `FIX` [#941](https://github.com/sumneko/lua-language-server/issues/942)
+* `FIX` [#943](https://github.com/sumneko/lua-language-server/issues/943)
+* `FIX` [#946](https://github.com/sumneko/lua-language-server/issues/946)
+
 ## 2.6.3
 `2022-1-25`
 * `FIX` new files are not loaded correctly

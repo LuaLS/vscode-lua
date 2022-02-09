@@ -1055,7 +1055,7 @@
                     "type": "object"
                 },
                 "Lua.diagnostics.workspaceDelay": {
-                    "default": 3,
+                    "default": 3000,
                     "markdownDescription": "%config.diagnostics.workspaceDelay%",
                     "scope": "resource",
                     "type": "integer"
@@ -1677,5 +1677,5 @@
         "type": "git",
         "url": "https://github.com/sumneko/lua-language-server"
     },
-    "version": "2.6.3"
+    "version": "2.6.4"
 }
