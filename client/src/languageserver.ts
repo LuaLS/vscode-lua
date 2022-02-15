@@ -21,11 +21,9 @@ import {
     ServerOptions,
     DocumentSelector,
 } from 'vscode-languageclient/node';
-import { ConfigWatcher, IConfigUpdate } from "./ConfigWatcher";
 
 
 let defaultClient: LuaClient;
-let editorConfigWatcher: ConfigWatcher;
 
 type HintResult = {
     text: string,
@@ -58,17 +56,6 @@ function registerCustomCommands(context: ExtensionContext) {
             }
         }
     }))
-}
-
-function registerConfigWatch(context: ExtensionContext) {
-    editorConfigWatcher = new ConfigWatcher('**/.editorconfig');
-
-    editorConfigWatcher.onConfigUpdate(onEditorConfigUpdate);
-    context.subscriptions.push(editorConfigWatcher);
-}
-
-function onEditorConfigUpdate(e: IConfigUpdate) {
-    defaultClient?.client?.sendRequest('config/editorconfig/update', e);
 }
 
 let _sortedWorkspaceFolders: string[] | undefined;
@@ -113,7 +100,6 @@ class LuaClient {
     }
 
     async start() {
-        const editorConfigFiles = await editorConfigWatcher.watch();
         // Options to control the language client
         let clientOptions: LanguageClientOptions = {
             // Register the server for plain text documents
@@ -124,7 +110,6 @@ class LuaClient {
             },
             initializationOptions: {
                 changeConfiguration: true,
-                editorConfigFiles
             }
         };
 
@@ -355,7 +340,6 @@ function onInlayHint(client: LanguageClient) {
 
 export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
-    registerConfigWatch(context);
     function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
         if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
