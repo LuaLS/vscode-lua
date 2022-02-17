@@ -502,6 +502,12 @@ local config = {
         },
         markdownDescription = "%config.hint.arrayIndex%"
     },
+    ["Lua.format.enable"] = {
+        scope = 'resource',
+        type = "boolean",
+        default = "true",
+        markdownDescription = "%config.format.enable%"
+    },
     ['Lua.misc.parameters'] = {
         scope = 'resource',
         type = "array",
