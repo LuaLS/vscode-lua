@@ -1,5 +1,11 @@
 # changelog
 
+## 2.6.5
+`2022-2-17`
+* `FIX` telemetry is not disabled by default
+* `FIX` [#934](https://github.com/sumneko/lua-language-server/issues/934)
+* `FIX` [#952](https://github.com/sumneko/lua-language-server/issues/952)
+
 ## 2.6.4
 `2022-2-9`
 * `CHG` completion: reduced sorting priority for postfix completion
