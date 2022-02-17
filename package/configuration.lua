@@ -449,7 +449,8 @@ local config = {
         scope = 'resource',
         type = {"boolean", "null"},
         default = json.null,
-        markdownDescription = "%config.telemetry.enable%"
+        markdownDescription = "%config.telemetry.enable%",
+        tags = {"telemetry"},
     },
     ['Lua.hint.enable'] = {
         scope = 'resource',
