@@ -508,6 +508,11 @@ local config = {
         default = "true",
         markdownDescription = "%config.format.enable%"
     },
+    ["Lua.format.defaultConfig"] = {
+        scope = 'resource',
+        type  = 'object',
+        markdownDescription = "%config.format.defaultConfig%",
+    },
     ['Lua.misc.parameters'] = {
         scope = 'resource',
         type = "array",
