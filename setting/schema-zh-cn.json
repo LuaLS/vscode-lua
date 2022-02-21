@@ -1141,6 +1141,27 @@
             "scope": "resource",
             "type": "integer"
         },
+        "format": {
+            "properties": {
+                "defaultConfig": {
+                    "$ref": "#/properties/format.defaultConfig"
+                },
+                "enable": {
+                    "$ref": "#/properties/format.enable"
+                }
+            }
+        },
+        "format.defaultConfig": {
+            "markdownDescription": "%config.format.defaultConfig%",
+            "scope": "resource",
+            "type": "object"
+        },
+        "format.enable": {
+            "default": "true",
+            "markdownDescription": "启用代码格式化程序。",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "hint": {
             "properties": {
                 "arrayIndex": {
@@ -1636,6 +1657,9 @@
             "default": null,
             "markdownDescription": "启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)阅读我们的隐私声明。\n",
             "scope": "resource",
+            "tags": [
+                "telemetry"
+            ],
             "type": [
                 "boolean",
                 "null"

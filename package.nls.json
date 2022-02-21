@@ -41,6 +41,7 @@
     "config.diagnostics.severity": "Modified diagnostic severity.",
     "config.diagnostics.workspaceDelay": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
     "config.diagnostics.workspaceRate": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
+    "config.format.enable": "Enable code formatter.",
     "config.hint.arrayIndex": "Show hints of array index when constructing a table.",
     "config.hint.arrayIndex.Auto": "Show hints only when the table is greater than 3 items, or the table is a mixed table.",
     "config.hint.arrayIndex.Disable": "Disable hints of array index.",
