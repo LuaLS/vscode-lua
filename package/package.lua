@@ -35,18 +35,6 @@ return {
             title = "Lua",
             properties = require 'package.configuration',
         },
-        grammars = {
-            {
-                language = "lua",
-                scopeName = "source.lua",
-                path = "./syntaxes/lua.tmLanguage.json",
-                tokenTypes = {
-                    ["comment.line.double-dash.doc.lua"] = "other",
-                    ["string.quoted.single.lua"]         = "other",
-                    ["string.quoted.double.lua"]         = "other",
-                },
-            }
-        },
         semanticTokenScopes = {
             {
                 language = "lua",
