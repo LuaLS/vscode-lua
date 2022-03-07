@@ -28,12 +28,6 @@ return {
         "onWebviewPanel:lua-doc",
         "onCommand:extension.lua.doc",
     },
-    jsonValidation = {
-        {
-            fileMatch = ".luarc.json",
-            url = "./setting/schema.json",
-        },
-    },
     main = "./client/out/extension",
     contributes = {
         configuration = {
@@ -46,7 +40,13 @@ return {
                 language = "lua",
                 scopes = require 'package.semanticTokenScope',
             }
-        }
+        },
+        jsonValidation = {
+            {
+                fileMatch = ".luarc.json",
+                url = "./setting/schema.json",
+            },
+        },
     },
     capabilities = {
         untrustedWorkspaces = {

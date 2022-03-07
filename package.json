@@ -1565,6 +1565,12 @@
             "title": "Lua",
             "type": "object"
         },
+        "jsonValidation": [
+            {
+                "fileMatch": ".luarc.json",
+                "url": "./setting/schema.json"
+            }
+        ],
         "semanticTokenScopes": [
             {
                 "language": "lua",
@@ -1601,6 +1607,9 @@
                     ],
                     "keyword.declaration": [
                         "keyword.local.lua"
+                    ],
+                    "keyword.documentation": [
+                        "storage.type.annotation.lua"
                     ],
                     "keyword.readonly": [
                         "constant.language.lua"
@@ -1687,12 +1696,6 @@
         "vscode": "^1.61.0"
     },
     "icon": "images/logo.png",
-    "jsonValidation": [
-        {
-            "fileMatch": ".luarc.json",
-            "url": "./setting/schema.json"
-        }
-    ],
     "keywords": [
         "Lua",
         "IntelliSense",
