@@ -1016,7 +1016,7 @@
                             "type": "string"
                         },
                         "unknown-diag-code": {
-                            "default": "Waiting",
+                            "default": "Warning",
                             "description": "%config.diagnostics.unknown-diag-code%",
                             "enum": [
                                 "Error",
@@ -1565,24 +1565,6 @@
             "title": "Lua",
             "type": "object"
         },
-        "grammars": [
-            {
-                "language": "lua",
-                "path": "./syntaxes/lua.tmLanguage.json",
-                "scopeName": "source.lua",
-                "tokenTypes": {
-                    "comment.line.double-dash.doc.lua": "other",
-                    "string.quoted.double.lua": "other",
-                    "string.quoted.single.lua": "other"
-                }
-            }
-        ],
-        "jsonValidation": [
-            {
-                "fileMatch": ".luarc.json",
-                "url": "./setting/schema.json"
-            }
-        ],
         "semanticTokenScopes": [
             {
                 "language": "lua",
@@ -1705,6 +1687,12 @@
         "vscode": "^1.61.0"
     },
     "icon": "images/logo.png",
+    "jsonValidation": [
+        {
+            "fileMatch": ".luarc.json",
+            "url": "./setting/schema.json"
+        }
+    ],
     "keywords": [
         "Lua",
         "IntelliSense",
