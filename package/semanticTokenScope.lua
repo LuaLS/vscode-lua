@@ -35,6 +35,7 @@ return {
     ['keyword.declaration'] = {'keyword.local.lua'},
     ['keyword.readonly'] = {'constant.language.lua'},
     ['keyword.async'] = {'entity.name.tag.lua'},
+    ['keyword.documentation'] = {'storage.type.annotation.lua'},
     ['operator'] = {'keyword.operator.lua'},
     ['number'] = {'constant.numeric.float.lua'},
     ['number.static'] = {'constant.numeric.integer.lua'},
