@@ -28,6 +28,12 @@ return {
         "onWebviewPanel:lua-doc",
         "onCommand:extension.lua.doc",
     },
+    jsonValidation = {
+        {
+            fileMatch = ".luarc.json",
+            url = "./setting/schema.json",
+        },
+    },
     main = "./client/out/extension",
     contributes = {
         configuration = {
