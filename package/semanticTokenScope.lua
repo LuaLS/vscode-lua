@@ -30,7 +30,7 @@ return {
     -- const 变量 | Const variable
     ['variable.readonly'] = {'variable.other.constant.lua'},
     -- 全局变量 | Global variable
-    ['variable.static'] = {'variable.other.lua'},
+    ['variable.static'] = {'variable.global.lua'},
     ['keyword'] = {'keyword.control.lua'},
     ['keyword.declaration'] = {'keyword.local.lua'},
     ['keyword.readonly'] = {'constant.language.lua'},
