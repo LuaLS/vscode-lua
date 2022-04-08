@@ -310,9 +310,9 @@
                             ],
                             "type": "string"
                         },
-                        "duplicate-doc-alias": {
+                        "duplicate-doc-class": {
                             "default": "Any",
-                            "description": "%config.diagnostics.duplicate-doc-alias%",
+                            "description": "%config.diagnostics.duplicate-doc-class%",
                             "enum": [
                                 "Any",
                                 "Opened",
@@ -410,9 +410,9 @@
                             ],
                             "type": "string"
                         },
-                        "no-unknown": {
+                        "no-implicit-any": {
                             "default": "None",
-                            "description": "%config.diagnostics.no-unknown%",
+                            "description": "%config.diagnostics.no-implicit-any%",
                             "enum": [
                                 "Any",
                                 "Opened",
@@ -740,9 +740,9 @@
                             ],
                             "type": "string"
                         },
-                        "duplicate-doc-alias": {
+                        "duplicate-doc-class": {
                             "default": "Warning",
-                            "description": "%config.diagnostics.duplicate-doc-alias%",
+                            "description": "%config.diagnostics.duplicate-doc-class%",
                             "enum": [
                                 "Error",
                                 "Warning",
@@ -850,9 +850,9 @@
                             ],
                             "type": "string"
                         },
-                        "no-unknown": {
+                        "no-implicit-any": {
                             "default": "Information",
-                            "description": "%config.diagnostics.no-unknown%",
+                            "description": "%config.diagnostics.no-implicit-any%",
                             "enum": [
                                 "Error",
                                 "Warning",
