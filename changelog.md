@@ -1,5 +1,17 @@
 # changelog
 
+## 3.0.0
+`2022-4-10`
+* `CHG` [break changes](https://github.com/sumneko/lua-language-server/issues/980)
+* `CHG` diagnostic:
+  + `type-check`: removed for now
+  + `no-implicit-any`: renamed to `no-unknown`
+* `CHG` formatter: no longer need` --preview`
+* `CHG` `LuaDoc`: supports `---@type (string|integer)[]`
+* `FIX` semantic: color of `function`
+* `FIX` [#1027](https://github.com/sumneko/lua-language-server/issues/1027)
+* `FIX` [#1028](https://github.com/sumneko/lua-language-server/issues/1028)
+
 ## 2.6.8
 `2022-4-9`
 * `CHG` completion: call snippet shown as `Function` instead of `Snippet` when `Lua.completion.callSnippet` is `Replace`
