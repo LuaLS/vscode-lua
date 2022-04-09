@@ -1,6 +1,6 @@
 return {
     -- 局部函数 | Local function
-    ['function'] = {'variable.function.lua'},
+    ['function'] = {'support.function.any-method.lua'},
     -- 自定义函数声明 | Custom function declaration
     ['function.declaration'] = {'entity.name.function.lua'},
     -- Lua库函数，如 print | Lua library functions, such as print
