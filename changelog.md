@@ -1,5 +1,13 @@
 # changelog
 
+## 3.0.1
+`2022-4-11`
+* `FIX` [#1033](https://github.com/sumneko/lua-language-server/issues/1033)
+* `FIX` [#1034](https://github.com/sumneko/lua-language-server/issues/1034)
+* `FIX` [#1035](https://github.com/sumneko/lua-language-server/issues/1035)
+* `FIX` [#1036](https://github.com/sumneko/lua-language-server/issues/1036)
+* `FIX` runtime errors reported by telemetry, see [#1037](https://github.com/sumneko/lua-language-server/issues/1037)
+
 ## 3.0.0
 `2022-4-10`
 * `CHG` [break changes](https://github.com/sumneko/lua-language-server/issues/980)
