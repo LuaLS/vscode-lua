@@ -1,0 +1,1778 @@
+{
+    "description": "Setting of sumneko.lua",
+    "properties": {
+        "IntelliSense": {
+            "properties": {
+                "traceBeSetted": {
+                    "$ref": "#/properties/IntelliSense.traceBeSetted"
+                },
+                "traceFieldInject": {
+                    "$ref": "#/properties/IntelliSense.traceFieldInject"
+                },
+                "traceLocalSet": {
+                    "$ref": "#/properties/IntelliSense.traceLocalSet"
+                },
+                "traceReturn": {
+                    "$ref": "#/properties/IntelliSense.traceReturn"
+                }
+            }
+        },
+        "IntelliSense.traceBeSetted": {
+            "default": false,
+            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "IntelliSense.traceFieldInject": {
+            "default": false,
+            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "IntelliSense.traceLocalSet": {
+            "default": false,
+            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "IntelliSense.traceReturn": {
+            "default": false,
+            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "completion": {
+            "properties": {
+                "autoRequire": {
+                    "$ref": "#/properties/completion.autoRequire"
+                },
+                "callSnippet": {
+                    "$ref": "#/properties/completion.callSnippet"
+                },
+                "displayContext": {
+                    "$ref": "#/properties/completion.displayContext"
+                },
+                "enable": {
+                    "$ref": "#/properties/completion.enable"
+                },
+                "keywordSnippet": {
+                    "$ref": "#/properties/completion.keywordSnippet"
+                },
+                "postfix": {
+                    "$ref": "#/properties/completion.postfix"
+                },
+                "requireSeparator": {
+                    "$ref": "#/properties/completion.requireSeparator"
+                },
+                "showParams": {
+                    "$ref": "#/properties/completion.showParams"
+                },
+                "showWord": {
+                    "$ref": "#/properties/completion.showWord"
+                },
+                "workspaceWord": {
+                    "$ref": "#/properties/completion.workspaceWord"
+                }
+            }
+        },
+        "completion.autoRequire": {
+            "default": true,
+            "markdownDescription": "輸入內容看起來是個檔名時，自動`require` 此檔案。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "completion.callSnippet": {
+            "default": "Disable",
+            "enum": [
+                "Disable",
+                "Both",
+                "Replace"
+            ],
+            "markdownDescription": "顯示函式呼叫片段。",
+            "markdownEnumDescriptions": [
+                "只顯示`函式名`。 ",
+                "顯示`函式名` 與`呼叫片段`。 ",
+                "只顯示`呼叫片段`。 "
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "completion.displayContext": {
+            "default": 0,
+            "markdownDescription": "預覽建議的相關程式碼片段，可能可以幫助你了解這項建議的用法。設定的數字表示程式碼片段的截取行數，設定為`0`可以禁用此功能。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "completion.enable": {
+            "default": true,
+            "markdownDescription": "啟用自動完成。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "completion.keywordSnippet": {
+            "default": "Replace",
+            "enum": [
+                "Disable",
+                "Both",
+                "Replace"
+            ],
+            "markdownDescription": "顯示關鍵字語法片段",
+            "markdownEnumDescriptions": [
+                "只顯示`關鍵字`。 ",
+                "顯示`關鍵字` 與`語法片段`。 ",
+                "只顯示`語法片段`。 "
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "completion.postfix": {
+            "default": "@",
+            "markdownDescription": "用於觸發後綴建議的符號。 ",
+            "scope": "resource",
+            "type": "string"
+        },
+        "completion.requireSeparator": {
+            "default": ".",
+            "markdownDescription": "`require` 時使用的分隔符。 ",
+            "scope": "resource",
+            "type": "string"
+        },
+        "completion.showParams": {
+            "default": true,
+            "markdownDescription": "在建議列表中顯示函式的參數訊息，函式擁有多個定義時會分開顯示。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "completion.showWord": {
+            "default": "Fallback",
+            "enum": [
+                "Enable",
+                "Fallback",
+                "Disable"
+            ],
+            "markdownDescription": "在建議中顯示上下文單詞。 ",
+            "markdownEnumDescriptions": [
+                "總是在建議中顯示上下文單詞。 ",
+                "無法根據語義提供建議時才顯示上下文單詞。 ",
+                "不顯示上下文單詞。 "
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "completion.workspaceWord": {
+            "default": true,
+            "markdownDescription": "顯示的上下文單詞是否包含工作區中其他檔案的內容。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "diagnostics": {
+            "properties": {
+                "disable": {
+                    "$ref": "#/properties/diagnostics.disable"
+                },
+                "enable": {
+                    "$ref": "#/properties/diagnostics.enable"
+                },
+                "globals": {
+                    "$ref": "#/properties/diagnostics.globals"
+                },
+                "ignoredFiles": {
+                    "$ref": "#/properties/diagnostics.ignoredFiles"
+                },
+                "libraryFiles": {
+                    "$ref": "#/properties/diagnostics.libraryFiles"
+                },
+                "neededFileStatus": {
+                    "$ref": "#/properties/diagnostics.neededFileStatus"
+                },
+                "severity": {
+                    "$ref": "#/properties/diagnostics.severity"
+                },
+                "workspaceDelay": {
+                    "$ref": "#/properties/diagnostics.workspaceDelay"
+                },
+                "workspaceRate": {
+                    "$ref": "#/properties/diagnostics.workspaceRate"
+                }
+            }
+        },
+        "diagnostics.disable": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "禁用的診斷（使用浮框括號內的程式碼）。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.enable": {
+            "default": true,
+            "markdownDescription": "啟用診斷。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "diagnostics.globals": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "已定義的全域變數。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.ignoredFiles": {
+            "default": "Opened",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "如何診斷被忽略的檔案。",
+            "markdownEnumDescriptions": [
+                "總是診斷這些檔案。",
+                "只有打開這些檔案時才會診斷。",
+                "不診斷這些檔案。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "diagnostics.libraryFiles": {
+            "default": "Opened",
+            "enum": [
+                "Enable",
+                "Opened",
+                "Disable"
+            ],
+            "markdownDescription": "如何診斷通過`Lua.workspace.library` 載入的檔案。",
+            "markdownEnumDescriptions": [
+                "總是診斷這些檔案。",
+                "只有打開這些檔案時才會診斷。",
+                "不診斷這些檔案。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "diagnostics.neededFileStatus": {
+            "additionalProperties": false,
+            "markdownDescription": "* Opened: 只診斷打開的檔案\n* Any: 診斷任何檔案\n* Disable: 禁用此診斷\n",
+            "properties": {
+                "ambiguity-1": {
+                    "default": "Any",
+                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為`(num or 0) + 1` ",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "await-in-sync": {
+                    "default": "None",
+                    "description": "%config.diagnostics.await-in-sync%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "circle-doc-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.circle-doc-class%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "close-non-object": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.close-non-object%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "code-after-break": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "codestyle-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.codestyle-check%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "count-down-loop": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.count-down-loop%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "deprecated": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.deprecated%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "different-requires": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "discard-returns": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.discard-returns%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "doc-field-no-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.doc-field-no-class%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-alias": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-alias%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-field": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-field%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-param": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-doc-param%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-index": {
+                    "default": "Any",
+                    "description": "在字面常數表中重複定義了索引",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-set-field": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "empty-block": {
+                    "default": "Opened",
+                    "description": "空程式碼區塊",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "global-in-nil-env": {
+                    "default": "Any",
+                    "description": "不能使用全域變數（ `_ENV` 被設定為了`nil`）",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "lowercase-global": {
+                    "default": "Any",
+                    "description": "首字母小寫的全域變數定義",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "newfield-call": {
+                    "default": "Any",
+                    "description": "在字面常數表中，2行程式碼之間缺少分隔符，在語法上被解析為了一次索引操作",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "newline-call": {
+                    "default": "Any",
+                    "description": "以`(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "no-unknown": {
+                    "default": "None",
+                    "description": "%config.diagnostics.no-unknown%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "not-yieldable": {
+                    "default": "None",
+                    "description": "%config.diagnostics.not-yieldable%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "redefined-local": {
+                    "default": "Opened",
+                    "description": "重複定義的區域變數",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "redundant-parameter": {
+                    "default": "Opened",
+                    "description": "函式呼叫時，傳入了多餘的參數",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "redundant-return": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.redundant-return%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "redundant-value": {
+                    "default": "Opened",
+                    "description": "賦值操作時，值的數量比被賦值的對像多",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "trailing-space": {
+                    "default": "Opened",
+                    "description": "後置空格",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.type-check%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unbalanced-assignments": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-class": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-class%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-name": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-name%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-param": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.undefined-doc-param%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-env-child": {
+                    "default": "Any",
+                    "description": "`_ENV` 被設定為了新的字面常數表，但是試圖獲取的全域變數不在這張表中",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-field": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.undefined-field%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "undefined-global": {
+                    "default": "Any",
+                    "description": "未定義的全域變數",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unknown-diag-code": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.unknown-diag-code%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unused-function": {
+                    "default": "Opened",
+                    "description": "未使用的函式",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unused-label": {
+                    "default": "Opened",
+                    "description": "未使用的標籤",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unused-local": {
+                    "default": "Opened",
+                    "description": "未使用的區域變數",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "unused-vararg": {
+                    "default": "Opened",
+                    "description": "未使用的不定參數",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "neededFileStatus",
+            "type": "object"
+        },
+        "diagnostics.severity": {
+            "additionalProperties": false,
+            "markdownDescription": "修改診斷等級。",
+            "properties": {
+                "ambiguity-1": {
+                    "default": "Warning",
+                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為`(num or 0) + 1` ",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "await-in-sync": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.await-in-sync%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "circle-doc-class": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.circle-doc-class%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "close-non-object": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.close-non-object%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "code-after-break": {
+                    "default": "Hint",
+                    "description": "%config.diagnostics.code-after-break%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "codestyle-check": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.codestyle-check%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "count-down-loop": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.count-down-loop%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "deprecated": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.deprecated%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "different-requires": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.different-requires%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "discard-returns": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.discard-returns%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "doc-field-no-class": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.doc-field-no-class%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-alias": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.duplicate-doc-alias%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.duplicate-doc-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-doc-param": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.duplicate-doc-param%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-index": {
+                    "default": "Warning",
+                    "description": "在字面常數表中重複定義了索引",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "duplicate-set-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "empty-block": {
+                    "default": "Hint",
+                    "description": "空程式碼區塊",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "global-in-nil-env": {
+                    "default": "Warning",
+                    "description": "不能使用全域變數（ `_ENV` 被設定為了`nil`）",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "lowercase-global": {
+                    "default": "Information",
+                    "description": "首字母小寫的全域變數定義",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "newfield-call": {
+                    "default": "Warning",
+                    "description": "在字面常數表中，2行程式碼之間缺少分隔符，在語法上被解析為了一次索引操作",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "newline-call": {
+                    "default": "Information",
+                    "description": "以`(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "no-unknown": {
+                    "default": "Information",
+                    "description": "%config.diagnostics.no-unknown%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "not-yieldable": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.not-yieldable%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "redefined-local": {
+                    "default": "Hint",
+                    "description": "重複定義的區域變數",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "redundant-parameter": {
+                    "default": "Warning",
+                    "description": "函式呼叫時，傳入了多餘的參數",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "redundant-return": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.redundant-return%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "redundant-value": {
+                    "default": "Warning",
+                    "description": "賦值操作時，值的數量比被賦值的對像多",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "trailing-space": {
+                    "default": "Hint",
+                    "description": "後置空格",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.type-check%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unbalanced-assignments": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-class": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-doc-class%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-name": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-doc-name%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-doc-param": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-doc-param%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-env-child": {
+                    "default": "Information",
+                    "description": "`_ENV` 被設定為了新的字面常數表，但是試圖獲取的全域變數不在這張表中",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-field": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.undefined-field%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "undefined-global": {
+                    "default": "Warning",
+                    "description": "未定義的全域變數",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unknown-diag-code": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.unknown-diag-code%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unused-function": {
+                    "default": "Hint",
+                    "description": "未使用的函式",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unused-label": {
+                    "default": "Hint",
+                    "description": "未使用的標籤",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unused-local": {
+                    "default": "Hint",
+                    "description": "未使用的區域變數",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "unused-vararg": {
+                    "default": "Hint",
+                    "description": "未使用的不定參數",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "severity",
+            "type": "object"
+        },
+        "diagnostics.workspaceDelay": {
+            "default": 3000,
+            "markdownDescription": "進行工作區診斷的延遲（毫秒）。當你啟動工作區，或編輯了任意檔案後，將會在後台對整個工作區進行重新診斷。設定為負數可以禁用工作區診斷。",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "diagnostics.workspaceRate": {
+            "default": 100,
+            "markdownDescription": "工作區診斷的執行速率（百分比）。降低該值會減少CPU佔用，但是也會降低工作區診斷的速度。你目前正在編輯的檔案的診斷總是全速完成，不受該選項影響。",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "format": {
+            "properties": {
+                "defaultConfig": {
+                    "$ref": "#/properties/format.defaultConfig"
+                },
+                "enable": {
+                    "$ref": "#/properties/format.enable"
+                }
+            }
+        },
+        "format.defaultConfig": {
+            "markdownDescription": "%config.format.defaultConfig%",
+            "scope": "resource",
+            "type": "object"
+        },
+        "format.enable": {
+            "default": "true",
+            "markdownDescription": "啟用程式碼格式化程式。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hint": {
+            "properties": {
+                "arrayIndex": {
+                    "$ref": "#/properties/hint.arrayIndex"
+                },
+                "enable": {
+                    "$ref": "#/properties/hint.enable"
+                },
+                "paramName": {
+                    "$ref": "#/properties/hint.paramName"
+                },
+                "paramType": {
+                    "$ref": "#/properties/hint.paramType"
+                },
+                "setType": {
+                    "$ref": "#/properties/hint.setType"
+                }
+            }
+        },
+        "hint.arrayIndex": {
+            "default": "Auto",
+            "enum": [
+                "Enable",
+                "Auto",
+                "Disable"
+            ],
+            "markdownDescription": "在構造表時提示數組索引。",
+            "markdownEnumDescriptions": [
+                "所有的表中都提示數組索引。",
+                "只有表大於3項，或者表是混合類型時才進行提示。",
+                "禁用數組索引提示。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "hint.enable": {
+            "default": false,
+            "markdownDescription": "啟用內嵌提示。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hint.paramName": {
+            "default": "All",
+            "enum": [
+                "All",
+                "Literal",
+                "Disable"
+            ],
+            "markdownDescription": "在函式呼叫處提示參數名。",
+            "markdownEnumDescriptions": [
+                "所有類型的參數均進行提示。",
+                "只有字面常數類型的參數進行提示。",
+                "禁用參數提示。"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "hint.paramType": {
+            "default": true,
+            "markdownDescription": "在函式的參數位置提示類型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hint.setType": {
+            "default": false,
+            "markdownDescription": "在賦值操作位置提示類型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hover": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/hover.enable"
+                },
+                "enumsLimit": {
+                    "$ref": "#/properties/hover.enumsLimit"
+                },
+                "previewFields": {
+                    "$ref": "#/properties/hover.previewFields"
+                },
+                "viewNumber": {
+                    "$ref": "#/properties/hover.viewNumber"
+                },
+                "viewString": {
+                    "$ref": "#/properties/hover.viewString"
+                },
+                "viewStringMax": {
+                    "$ref": "#/properties/hover.viewStringMax"
+                }
+            }
+        },
+        "hover.enable": {
+            "default": true,
+            "markdownDescription": "啟用懸浮提示。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hover.enumsLimit": {
+            "default": 5,
+            "markdownDescription": "當值對應多個類型時，限制類型的顯示數量。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "hover.previewFields": {
+            "default": 20,
+            "markdownDescription": "懸浮提示查看表時，限製表內欄位的最大預覽數量。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "hover.viewNumber": {
+            "default": true,
+            "markdownDescription": "懸浮提示查看數字內容（僅當字面常數不是十進制時）。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hover.viewString": {
+            "default": true,
+            "markdownDescription": "懸浮提示查看字串內容（僅當字面常數包含轉義符時）。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hover.viewStringMax": {
+            "default": 1000,
+            "markdownDescription": "懸浮提示查看字串內容時的最大長度。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "misc": {
+            "properties": {
+                "parameters": {
+                    "$ref": "#/properties/misc.parameters"
+                }
+            }
+        },
+        "misc.parameters": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "VSCode中啟動語言服務時的[命令列參數](https://github.com/sumneko/lua-language-server/wiki/Command-line)。 ",
+            "scope": "resource",
+            "type": "array"
+        },
+        "runtime": {
+            "properties": {
+                "builtin": {
+                    "$ref": "#/properties/runtime.builtin"
+                },
+                "fileEncoding": {
+                    "$ref": "#/properties/runtime.fileEncoding"
+                },
+                "nonstandardSymbol": {
+                    "$ref": "#/properties/runtime.nonstandardSymbol"
+                },
+                "path": {
+                    "$ref": "#/properties/runtime.path"
+                },
+                "pathStrict": {
+                    "$ref": "#/properties/runtime.pathStrict"
+                },
+                "plugin": {
+                    "$ref": "#/properties/runtime.plugin"
+                },
+                "special": {
+                    "$ref": "#/properties/runtime.special"
+                },
+                "unicodeName": {
+                    "$ref": "#/properties/runtime.unicodeName"
+                },
+                "version": {
+                    "$ref": "#/properties/runtime.version"
+                }
+            }
+        },
+        "runtime.builtin": {
+            "additionalProperties": false,
+            "markdownDescription": "調整內置庫的啟用狀態，你可以根據實際執行環境禁用掉不存在的庫（或重新定義）。\n\n* `default`: 表示庫會根據執行版本啟用或禁用\n* `enable`: 總是啟用\n* `disable`: 總是禁用\n",
+            "properties": {
+                "basic": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.basic%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "bit": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.bit%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "bit32": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.bit32%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "builtin": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.builtin%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "coroutine": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.coroutine%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "debug": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.debug%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "ffi": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.ffi%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "io": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.io%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "jit": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.jit%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "math": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.math%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "os": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.os%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "package": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.package%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "string": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.string%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "table": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.table%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
+                "utf8": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.utf8%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "type": "object"
+        },
+        "runtime.fileEncoding": {
+            "default": "utf8",
+            "enum": [
+                "utf8",
+                "ansi",
+                "utf16le",
+                "utf16be"
+            ],
+            "markdownDescription": "檔案編碼，`ansi` 選項只在`Windows` 平台下有效。",
+            "scope": "resource",
+            "type": "string"
+        },
+        "runtime.nonstandardSymbol": {
+            "items": {
+                "enum": [
+                    "//",
+                    "/**/",
+                    "`",
+                    "+=",
+                    "-=",
+                    "*=",
+                    "/=",
+                    "||",
+                    "&&",
+                    "!",
+                    "!=",
+                    "continue"
+                ],
+                "type": "string"
+            },
+            "markdownDescription": "支援非標準的符號。請務必確認你的執行環境支援這些符號。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "runtime.path": {
+            "default": [
+                "?.lua",
+                "?/init.lua"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "當使用`require` 時，如何根據輸入的名字來查找檔案。\n此選項設定為`?/init.lua` 意味著當你輸入`require 'myfile'` 時，會從已載入的檔案中搜尋`{workspace}/myfile/init.lua`。\n當`runtime.pathStrict` 設定為`false` 時，還會嘗試搜尋`${workspace}/**/myfile/init.lua`。\n如果你想要載入工作區以外的檔案，你需要先設定`Lua.workspace.library`。\n",
+            "scope": "resource",
+            "type": "array"
+        },
+        "runtime.pathStrict": {
+            "default": false,
+            "markdownDescription": "啟用後`runtime.path` 將只搜尋第一層目錄，見`runtime.path` 的說明。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "runtime.plugin": {
+            "default": "",
+            "markdownDescription": "延伸模組路徑，請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
+            "scope": "resource",
+            "type": "string"
+        },
+        "runtime.special": {
+            "additionalProperties": false,
+            "markdownDescription": "將自定義全域變數視為一些特殊的內置變數，語言服務將提供特殊的支援。\n下面這個例子表示將`include` 視為`require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
+            "patternProperties": {
+                ".*": {
+                    "default": "require",
+                    "enum": [
+                        "_G",
+                        "rawset",
+                        "rawget",
+                        "setmetatable",
+                        "require",
+                        "dofile",
+                        "loadfile",
+                        "pcall",
+                        "xpcall"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "type": "object"
+        },
+        "runtime.unicodeName": {
+            "default": false,
+            "markdownDescription": "允許在名字中使用Unicode 字元。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "runtime.version": {
+            "default": "Lua 5.4",
+            "enum": [
+                "Lua 5.1",
+                "Lua 5.2",
+                "Lua 5.3",
+                "Lua 5.4",
+                "LuaJIT"
+            ],
+            "markdownDescription": "Lua執行版本。",
+            "scope": "resource",
+            "type": "string"
+        },
+        "semantic": {
+            "properties": {
+                "annotation": {
+                    "$ref": "#/properties/semantic.annotation"
+                },
+                "enable": {
+                    "$ref": "#/properties/semantic.enable"
+                },
+                "keyword": {
+                    "$ref": "#/properties/semantic.keyword"
+                },
+                "variable": {
+                    "$ref": "#/properties/semantic.variable"
+                }
+            }
+        },
+        "semantic.annotation": {
+            "default": true,
+            "markdownDescription": "對類型註解進行語義著色。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.enable": {
+            "default": true,
+            "markdownDescription": "啟用語義著色。你可能需要同時將`editor.semanticHighlighting.enabled` 設定為`true` 才能生效。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.keyword": {
+            "default": false,
+            "markdownDescription": "對關鍵字/字面常數/運算符進行語義著色。只有當你的編輯器無法進行語法著色時才需要啟用此功能。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "semantic.variable": {
+            "default": true,
+            "markdownDescription": "對變數/欄位/參數進行語義著色。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "signatureHelp": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/signatureHelp.enable"
+                }
+            }
+        },
+        "signatureHelp.enable": {
+            "default": true,
+            "markdownDescription": "啟用參數提示。 ",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "telemetry": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/telemetry.enable"
+                }
+            }
+        },
+        "telemetry.enable": {
+            "default": null,
+            "markdownDescription": "啟用遙測，通過網路發送你的編輯器訊息與錯誤日誌。在[此處](https://github.com/s umneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)閱讀我們的隱私聲明。\n",
+            "scope": "resource",
+            "tags": [
+                "telemetry"
+            ],
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "window": {
+            "properties": {
+                "progressBar": {
+                    "$ref": "#/properties/window.progressBar"
+                },
+                "statusBar": {
+                    "$ref": "#/properties/window.statusBar"
+                }
+            }
+        },
+        "window.progressBar": {
+            "default": true,
+            "markdownDescription": "在狀態欄顯示進度條。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "window.statusBar": {
+            "default": true,
+            "markdownDescription": "在狀態欄顯示延伸模組狀態。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "workspace": {
+            "properties": {
+                "checkThirdParty": {
+                    "$ref": "#/properties/workspace.checkThirdParty"
+                },
+                "ignoreDir": {
+                    "$ref": "#/properties/workspace.ignoreDir"
+                },
+                "ignoreSubmodules": {
+                    "$ref": "#/properties/workspace.ignoreSubmodules"
+                },
+                "library": {
+                    "$ref": "#/properties/workspace.library"
+                },
+                "maxPreload": {
+                    "$ref": "#/properties/workspace.maxPreload"
+                },
+                "preloadFileSize": {
+                    "$ref": "#/properties/workspace.preloadFileSize"
+                },
+                "useGitIgnore": {
+                    "$ref": "#/properties/workspace.useGitIgnore"
+                },
+                "userThirdParty": {
+                    "$ref": "#/properties/workspace.userThirdParty"
+                }
+            }
+        },
+        "workspace.checkThirdParty": {
+            "default": true,
+            "markdownDescription": "自動檢測與適配第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "workspace.ignoreDir": {
+            "default": [
+                ".vscode"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "忽略的檔案與目錄（使用`.gitignore` 語法）。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "workspace.ignoreSubmodules": {
+            "default": true,
+            "markdownDescription": "忽略子模組。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "workspace.library": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "除了目前工作區以外，還會從哪些目錄中載入檔案。這些目錄中的檔案將被視作外部提供的程式碼庫，部分操作（如重命名欄位）不會修改這些檔案。 ",
+            "scope": "resource",
+            "type": "array"
+        },
+        "workspace.maxPreload": {
+            "default": 5000,
+            "markdownDescription": "最大預載入檔案數。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "workspace.preloadFileSize": {
+            "default": 500,
+            "markdownDescription": "預載入時跳過大小大於該值（KB）的檔案。 ",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "workspace.useGitIgnore": {
+            "default": true,
+            "markdownDescription": "忽略`.gitignore` 中列舉的檔案。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "workspace.userThirdParty": {
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "在這裡添加私有的第三方庫適配檔案路徑，請參考內置的[配置檔案路徑](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
+            "scope": "resource",
+            "type": "array"
+        }
+    },
+    "title": "setting",
+    "type": "object"
+}
