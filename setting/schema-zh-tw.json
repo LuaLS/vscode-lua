@@ -19,25 +19,25 @@
         },
         "IntelliSense.traceBeSetted": {
             "default": false,
-            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "markdownDescription": "請查閲[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
             "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceFieldInject": {
             "default": false,
-            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "markdownDescription": "請查閲[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
             "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceLocalSet": {
             "default": false,
-            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "markdownDescription": "請查閲[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
             "scope": "resource",
             "type": "boolean"
         },
         "IntelliSense.traceReturn": {
             "default": false,
-            "markdownDescription": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)了解用法。 ",
+            "markdownDescription": "請查閲[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -77,7 +77,7 @@
         },
         "completion.autoRequire": {
             "default": true,
-            "markdownDescription": "輸入內容看起來是個檔名時，自動`require` 此檔案。 ",
+            "markdownDescription": "輸入內容看起來是個檔名時，自動 `require` 此檔案。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -90,16 +90,16 @@
             ],
             "markdownDescription": "顯示函式呼叫片段。",
             "markdownEnumDescriptions": [
-                "只顯示`函式名`。 ",
-                "顯示`函式名` 與`呼叫片段`。 ",
-                "只顯示`呼叫片段`。 "
+                "只顯示 `函式名`。",
+                "顯示 `函式名` 與 `呼叫片段`。",
+                "只顯示 `呼叫片段`。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "completion.displayContext": {
             "default": 0,
-            "markdownDescription": "預覽建議的相關程式碼片段，可能可以幫助你了解這項建議的用法。設定的數字表示程式碼片段的截取行數，設定為`0`可以禁用此功能。 ",
+            "markdownDescription": "預覽建議的相關程式碼片段，可能可以幫助你瞭解這項建議的用法。設定的數字表示程式碼片段的截取行數，設定為`0`可以禁用此功能。",
             "scope": "resource",
             "type": "integer"
         },
@@ -118,28 +118,28 @@
             ],
             "markdownDescription": "顯示關鍵字語法片段",
             "markdownEnumDescriptions": [
-                "只顯示`關鍵字`。 ",
-                "顯示`關鍵字` 與`語法片段`。 ",
-                "只顯示`語法片段`。 "
+                "只顯示 `關鍵字`。",
+                "顯示 `關鍵字` 與 `語法片段`。",
+                "只顯示 `語法片段`。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "completion.postfix": {
             "default": "@",
-            "markdownDescription": "用於觸發後綴建議的符號。 ",
+            "markdownDescription": "用於觸發後綴建議的符號。",
             "scope": "resource",
             "type": "string"
         },
         "completion.requireSeparator": {
             "default": ".",
-            "markdownDescription": "`require` 時使用的分隔符。 ",
+            "markdownDescription": "`require` 時使用的分隔符。",
             "scope": "resource",
             "type": "string"
         },
         "completion.showParams": {
             "default": true,
-            "markdownDescription": "在建議列表中顯示函式的參數訊息，函式擁有多個定義時會分開顯示。 ",
+            "markdownDescription": "在建議列表中顯示函式的參數訊息，函式擁有多個定義時會分開顯示。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -150,18 +150,18 @@
                 "Fallback",
                 "Disable"
             ],
-            "markdownDescription": "在建議中顯示上下文單詞。 ",
+            "markdownDescription": "在建議中顯示上下文單詞。",
             "markdownEnumDescriptions": [
-                "總是在建議中顯示上下文單詞。 ",
-                "無法根據語義提供建議時才顯示上下文單詞。 ",
-                "不顯示上下文單詞。 "
+                "總是在建議中顯示上下文單詞。",
+                "無法根據語義提供建議時才顯示上下文單詞。",
+                "不顯示上下文單詞。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "completion.workspaceWord": {
             "default": true,
-            "markdownDescription": "顯示的上下文單詞是否包含工作區中其他檔案的內容。 ",
+            "markdownDescription": "顯示的上下文單詞是否包含工作區中其他檔案的內容。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -241,7 +241,7 @@
                 "Opened",
                 "Disable"
             ],
-            "markdownDescription": "如何診斷通過`Lua.workspace.library` 載入的檔案。",
+            "markdownDescription": "如何診斷通過 `Lua.workspace.library` 載入的檔案。",
             "markdownEnumDescriptions": [
                 "總是診斷這些檔案。",
                 "只有打開這些檔案時才會診斷。",
@@ -252,11 +252,11 @@
         },
         "diagnostics.neededFileStatus": {
             "additionalProperties": false,
-            "markdownDescription": "* Opened: 只診斷打開的檔案\n* Any: 診斷任何檔案\n* Disable: 禁用此診斷\n",
+            "markdownDescription": "* Opened:  只診斷打開的檔案\n* Any:     診斷任何檔案\n* Disable: 禁用此診斷\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
-                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為`(num or 0) + 1` ",
+                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為 `(num or 0) + 1` ",
                     "enum": [
                         "Any",
                         "Opened",
@@ -426,7 +426,7 @@
                 },
                 "global-in-nil-env": {
                     "default": "Any",
-                    "description": "不能使用全域變數（ `_ENV` 被設定為了`nil`）",
+                    "description": "不能使用全域變數（ `_ENV` 被設定為了 `nil`）",
                     "enum": [
                         "Any",
                         "Opened",
@@ -456,7 +456,7 @@
                 },
                 "newline-call": {
                     "default": "Any",
-                    "description": "以`(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
+                    "description": "以 `(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
                     "enum": [
                         "Any",
                         "Opened",
@@ -486,7 +486,7 @@
                 },
                 "redefined-local": {
                     "default": "Opened",
-                    "description": "重複定義的區域變數",
+                    "description": "重複定義的局部變數",
                     "enum": [
                         "Any",
                         "Opened",
@@ -516,7 +516,7 @@
                 },
                 "redundant-value": {
                     "default": "Opened",
-                    "description": "賦值操作時，值的數量比被賦值的對像多",
+                    "description": "賦值操作時，值的數量比被賦值的對象多",
                     "enum": [
                         "Any",
                         "Opened",
@@ -646,7 +646,7 @@
                 },
                 "unused-local": {
                     "default": "Opened",
-                    "description": "未使用的區域變數",
+                    "description": "未使用的局部變數",
                     "enum": [
                         "Any",
                         "Opened",
@@ -675,7 +675,7 @@
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
-                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為`(num or 0) + 1` ",
+                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為 `(num or 0) + 1` ",
                     "enum": [
                         "Error",
                         "Warning",
@@ -862,7 +862,7 @@
                 },
                 "global-in-nil-env": {
                     "default": "Warning",
-                    "description": "不能使用全域變數（ `_ENV` 被設定為了`nil`）",
+                    "description": "不能使用全域變數（ `_ENV` 被設定為了 `nil`）",
                     "enum": [
                         "Error",
                         "Warning",
@@ -895,7 +895,7 @@
                 },
                 "newline-call": {
                     "default": "Information",
-                    "description": "以`(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
+                    "description": "以 `(` 開始的新行，在語法上被解析為了上一行的函式呼叫",
                     "enum": [
                         "Error",
                         "Warning",
@@ -928,7 +928,7 @@
                 },
                 "redefined-local": {
                     "default": "Hint",
-                    "description": "重複定義的區域變數",
+                    "description": "重複定義的局部變數",
                     "enum": [
                         "Error",
                         "Warning",
@@ -961,7 +961,7 @@
                 },
                 "redundant-value": {
                     "default": "Warning",
-                    "description": "賦值操作時，值的數量比被賦值的對像多",
+                    "description": "賦值操作時，值的數量比被賦值的對象多",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1104,7 +1104,7 @@
                 },
                 "unused-local": {
                     "default": "Hint",
-                    "description": "未使用的區域變數",
+                    "description": "未使用的局部變數",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1188,11 +1188,11 @@
                 "Auto",
                 "Disable"
             ],
-            "markdownDescription": "在構造表時提示數組索引。",
+            "markdownDescription": "在構造表時提示陣列索引。",
             "markdownEnumDescriptions": [
-                "所有的表中都提示數組索引。",
+                "所有的表中都提示陣列索引。",
                 "只有表大於3項，或者表是混合類型時才進行提示。",
-                "禁用數組索引提示。"
+                "禁用陣列索引提示。"
             ],
             "scope": "resource",
             "type": "string"
@@ -1255,37 +1255,37 @@
         },
         "hover.enable": {
             "default": true,
-            "markdownDescription": "啟用懸浮提示。 ",
+            "markdownDescription": "啟用懸浮提示。",
             "scope": "resource",
             "type": "boolean"
         },
         "hover.enumsLimit": {
             "default": 5,
-            "markdownDescription": "當值對應多個類型時，限制類型的顯示數量。 ",
+            "markdownDescription": "當值對應多個類型時，限制類型的顯示數量。",
             "scope": "resource",
             "type": "integer"
         },
         "hover.previewFields": {
             "default": 20,
-            "markdownDescription": "懸浮提示查看表時，限製表內欄位的最大預覽數量。 ",
+            "markdownDescription": "懸浮提示查看表時，限制表內欄位的最大預覽數量。",
             "scope": "resource",
             "type": "integer"
         },
         "hover.viewNumber": {
             "default": true,
-            "markdownDescription": "懸浮提示查看數字內容（僅當字面常數不是十進制時）。 ",
+            "markdownDescription": "懸浮提示查看數字內容（僅當字面常數不是十進制時）。",
             "scope": "resource",
             "type": "boolean"
         },
         "hover.viewString": {
             "default": true,
-            "markdownDescription": "懸浮提示查看字串內容（僅當字面常數包含轉義符時）。 ",
+            "markdownDescription": "懸浮提示查看字串內容（僅當字面常數包含跳脫字元時）。",
             "scope": "resource",
             "type": "boolean"
         },
         "hover.viewStringMax": {
             "default": 1000,
-            "markdownDescription": "懸浮提示查看字串內容時的最大長度。 ",
+            "markdownDescription": "懸浮提示查看字串內容時的最大長度。",
             "scope": "resource",
             "type": "integer"
         },
@@ -1300,7 +1300,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "VSCode中啟動語言服務時的[命令列參數](https://github.com/sumneko/lua-language-server/wiki/Command-line)。 ",
+            "markdownDescription": "VSCode中啟動語言服務時的[命令列參數](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
             "scope": "resource",
             "type": "array"
         },
@@ -1337,7 +1337,7 @@
         },
         "runtime.builtin": {
             "additionalProperties": false,
-            "markdownDescription": "調整內置庫的啟用狀態，你可以根據實際執行環境禁用掉不存在的庫（或重新定義）。\n\n* `default`: 表示庫會根據執行版本啟用或禁用\n* `enable`: 總是啟用\n* `disable`: 總是禁用\n",
+            "markdownDescription": "調整內建庫的啟用狀態，你可以根據實際執行環境禁用掉不存在的庫（或重新定義）。\n\n* `default`: 表示庫會根據執行版本啟用或禁用\n* `enable`: 總是啟用\n* `disable`: 總是禁用\n",
             "properties": {
                 "basic": {
                     "default": "default",
@@ -1501,7 +1501,7 @@
                 "utf16le",
                 "utf16be"
             ],
-            "markdownDescription": "檔案編碼，`ansi` 選項只在`Windows` 平台下有效。",
+            "markdownDescription": "檔案編碼，`ansi` 選項只在 `Windows` 平台下有效。",
             "scope": "resource",
             "type": "string"
         },
@@ -1535,25 +1535,25 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "當使用`require` 時，如何根據輸入的名字來查找檔案。\n此選項設定為`?/init.lua` 意味著當你輸入`require 'myfile'` 時，會從已載入的檔案中搜尋`{workspace}/myfile/init.lua`。\n當`runtime.pathStrict` 設定為`false` 時，還會嘗試搜尋`${workspace}/**/myfile/init.lua`。\n如果你想要載入工作區以外的檔案，你需要先設定`Lua.workspace.library`。\n",
+            "markdownDescription": "當使用 `require` 時，如何根據輸入的名字來查找檔案。\n此選項設定為 `?/init.lua` 意味著當你輸入 `require 'myfile'` 時，會從已載入的檔案中搜尋 `{workspace}/myfile/init.lua`。\n當 `runtime.pathStrict` 設定為 `false` 時，還會嘗試搜尋 `${workspace}/**/myfile/init.lua`。\n如果你想要載入工作區以外的檔案，你需要先設定 `Lua.workspace.library`。\n",
             "scope": "resource",
             "type": "array"
         },
         "runtime.pathStrict": {
             "default": false,
-            "markdownDescription": "啟用後`runtime.path` 將只搜尋第一層目錄，見`runtime.path` 的說明。 ",
+            "markdownDescription": "啟用後 `runtime.path` 將只搜尋第一層目錄，見 `runtime.path` 的説明。",
             "scope": "resource",
             "type": "boolean"
         },
         "runtime.plugin": {
             "default": "",
-            "markdownDescription": "延伸模組路徑，請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/Plugin)了解用法。",
+            "markdownDescription": "延伸模組路徑，請查閲[文件](https://github.com/sumneko/lua-language-server/wiki/Plugin)瞭解用法。",
             "scope": "resource",
             "type": "string"
         },
         "runtime.special": {
             "additionalProperties": false,
-            "markdownDescription": "將自定義全域變數視為一些特殊的內置變數，語言服務將提供特殊的支援。\n下面這個例子表示將`include` 視為`require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
+            "markdownDescription": "將自定義全域變數視為一些特殊的內建變數，語言服務將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
                     "default": "require",
@@ -1576,7 +1576,7 @@
         },
         "runtime.unicodeName": {
             "default": false,
-            "markdownDescription": "允許在名字中使用Unicode 字元。",
+            "markdownDescription": "允許在名字中使用 Unicode 字元。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1611,25 +1611,25 @@
         },
         "semantic.annotation": {
             "default": true,
-            "markdownDescription": "對類型註解進行語義著色。 ",
+            "markdownDescription": "對類型註解進行語義著色。",
             "scope": "resource",
             "type": "boolean"
         },
         "semantic.enable": {
             "default": true,
-            "markdownDescription": "啟用語義著色。你可能需要同時將`editor.semanticHighlighting.enabled` 設定為`true` 才能生效。 ",
+            "markdownDescription": "啟用語義著色。你可能需要同時將 `editor.semanticHighlighting.enabled` 設定為 `true` 才能生效。",
             "scope": "resource",
             "type": "boolean"
         },
         "semantic.keyword": {
             "default": false,
-            "markdownDescription": "對關鍵字/字面常數/運算符進行語義著色。只有當你的編輯器無法進行語法著色時才需要啟用此功能。 ",
+            "markdownDescription": "對關鍵字/字面常數/運算符進行語義著色。只有當你的編輯器無法進行語法著色時才需要啟用此功能。",
             "scope": "resource",
             "type": "boolean"
         },
         "semantic.variable": {
             "default": true,
-            "markdownDescription": "對變數/欄位/參數進行語義著色。 ",
+            "markdownDescription": "對變數/欄位/參數進行語義著色。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1642,7 +1642,7 @@
         },
         "signatureHelp.enable": {
             "default": true,
-            "markdownDescription": "啟用參數提示。 ",
+            "markdownDescription": "啟用參數提示。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1655,7 +1655,7 @@
         },
         "telemetry.enable": {
             "default": null,
-            "markdownDescription": "啟用遙測，通過網路發送你的編輯器訊息與錯誤日誌。在[此處](https://github.com/s umneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)閱讀我們的隱私聲明。\n",
+            "markdownDescription": "啟用遙測，通過網路發送你的編輯器訊息與錯誤日誌。在[此處](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%90%E7%A7%81%E5%A3%B0%E6%98%8E)閲讀我們的隱私聲明。\n",
             "scope": "resource",
             "tags": [
                 "telemetry"
@@ -1717,7 +1717,7 @@
         },
         "workspace.checkThirdParty": {
             "default": true,
-            "markdownDescription": "自動檢測與適配第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
+            "markdownDescription": "自動檢測與適應第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1728,7 +1728,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "忽略的檔案與目錄（使用`.gitignore` 語法）。",
+            "markdownDescription": "忽略的檔案與目錄（使用 `.gitignore` 語法）。",
             "scope": "resource",
             "type": "array"
         },
@@ -1742,25 +1742,25 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "除了目前工作區以外，還會從哪些目錄中載入檔案。這些目錄中的檔案將被視作外部提供的程式碼庫，部分操作（如重命名欄位）不會修改這些檔案。 ",
+            "markdownDescription": "除了目前工作區以外，還會從哪些目錄中載入檔案。這些目錄中的檔案將被視作外部提供的程式碼庫，部分操作（如重命名欄位）不會修改這些檔案。",
             "scope": "resource",
             "type": "array"
         },
         "workspace.maxPreload": {
             "default": 5000,
-            "markdownDescription": "最大預載入檔案數。 ",
+            "markdownDescription": "最大預載入檔案數。",
             "scope": "resource",
             "type": "integer"
         },
         "workspace.preloadFileSize": {
             "default": 500,
-            "markdownDescription": "預載入時跳過大小大於該值（KB）的檔案。 ",
+            "markdownDescription": "預載入時跳過大小大於該值（KB）的檔案。",
             "scope": "resource",
             "type": "integer"
         },
         "workspace.useGitIgnore": {
             "default": true,
-            "markdownDescription": "忽略`.gitignore` 中列舉的檔案。",
+            "markdownDescription": "忽略 `.gitignore` 中列舉的檔案。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1768,7 +1768,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "在這裡添加私有的第三方庫適配檔案路徑，請參考內置的[配置檔案路徑](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
+            "markdownDescription": "在這裡添加私有的第三方庫適應檔案路徑，請參考內建的[組態檔案路徑](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
             "scope": "resource",
             "type": "array"
         }
