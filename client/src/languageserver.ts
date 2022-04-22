@@ -122,8 +122,7 @@ class LuaClient {
         );
 
         //client.registerProposedFeatures();
-        this.client.start();
-        await this.client.onReady();
+        await this.client.start();
         this.onCommand();
         this.statusBar();
     }

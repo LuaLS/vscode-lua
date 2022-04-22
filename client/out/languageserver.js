@@ -91,8 +91,7 @@ class LuaClient {
             };
             this.client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
             //client.registerProposedFeatures();
-            this.client.start();
-            yield this.client.onReady();
+            yield this.client.start();
             this.onCommand();
             this.statusBar();
         });
