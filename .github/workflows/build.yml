@@ -96,4 +96,4 @@ jobs:
       - name: Publish Open VSX market
         run: |
           npm install -g ovsx
-          ovsx publish ${{ steps.vars.outputs.PKG_NAME }} -p ${{ secrets.OVSX_TOKEN }}
+          ovsx publish ${{ steps.vars.outputs.PKG_NAME }} --target ${{ matrix.platform }} -p ${{ secrets.OVSX_TOKEN }}
