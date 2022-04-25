@@ -444,6 +444,26 @@
                     ],
                     "type": "string"
                 },
+                "missing-parameter": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.missing-parameter%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "need-check-nil": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.need-check-nil%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
                 "newfield-call": {
                     "default": "Any",
                     "description": "在字面量表中，2行代码之间缺少分隔符，在语法上被解析为了一次索引操作",
@@ -874,6 +894,28 @@
                 "lowercase-global": {
                     "default": "Information",
                     "description": "首字母小写的全局变量定义",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "missing-parameter": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-parameter%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "need-check-nil": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.need-check-nil%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1566,7 +1608,8 @@
                         "dofile",
                         "loadfile",
                         "pcall",
-                        "xpcall"
+                        "xpcall",
+                        "assert"
                     ],
                     "type": "string"
                 }

@@ -52,6 +52,7 @@ local config = {
                     'loadfile',
                     'pcall',
                     'xpcall',
+                    'assert',
                 }
             }
         }

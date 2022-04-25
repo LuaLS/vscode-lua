@@ -1,6 +1,6 @@
 local json = require 'json-beautify'
 
-local VERSION = "3.1.0"
+local VERSION = "3.2.0"
 
 local package = require 'package.package'
 local fsu     = require 'fs-utility'
@@ -14,7 +14,7 @@ package.__metadata = {
 
 local encodeOption = {
     newline = '\r\n',
-    indent  = '    ',
+    indent  = '\t',
 }
 print('生成 package.json')
 fsu.saveFile(ROOT / 'package.json', json.beautify(package, encodeOption) .. '\r\n')

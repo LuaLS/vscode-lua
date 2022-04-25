@@ -1,5 +1,47 @@
 # changelog
 
+## 3.2.0
+`2022-4-25`
+* `NEW` supports infer of callback parameter
+  ```lua
+  ---@type string[]
+  local t
+
+  table.sort(t, function (a, b)
+      -- `a` and `b` is `string` here
+  end)
+  ```
+* `NEW` using `---@overload` as class constructor
+  ```lua
+  ---@class Class
+  ---@overload fun():Class
+  local mt
+
+  local x = mt() --> x is `Class` here
+  ```
+* `NEW` add `--[[@as type]]`
+  ```lua
+  local x = true
+  local y = x--[[@as integer]] -- y is `integer` here
+  ```
+* `NEW` add `---@cast`
+  * `---@cast localname type`
+  * `---@cast localname +type`
+  * `---@cast localname -type`
+  * `---@cast localname +?`
+  * `---@cast localname -?`
+* `NEW` generic: resolve `T[]` by `table<integer, type>` or `---@field [integer] type`
+* `NEW` resolve `class[1]` by `---@field [integer] type`
+* `NEW` diagnostic: `missing-parameter`
+* `NEW` diagnostic: `need-check-nil`
+* `CHG` diagnostic: no longer mark `redundant-parameter` as `Unnecessary`
+* `FIX` diagnostic: `unused-function` does not recognize recursion
+* `FIX` [#1051](https://github.com/sumneko/lua-language-server/issues/1051)
+* `FIX` [#1072](https://github.com/sumneko/lua-language-server/issues/1072)
+* `FIX` [#1077](https://github.com/sumneko/lua-language-server/issues/1077)
+* `FIX` [#1088](https://github.com/sumneko/lua-language-server/issues/1088)
+* `FIX` runtime errors
+
 ## 3.1.0
 `2022-4-17`
 * `NEW` support find definition in method
