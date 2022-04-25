@@ -26,20 +26,6 @@ local function loadPackage()
     return package.version
 end
 
-local function updateNodeModules(out, postinstall)
-    local current = fs.current_path()
-    fs.current_path(out)
-    local cmd = io.popen(postinstall)
-    for line in cmd:lines 'l' do
-        print(line)
-    end
-    local suc = cmd:close()
-    if not suc then
-        error('更新NodeModules失败！')
-    end
-    fs.current_path(current)
-end
-
 local function createDirectory(version)
     local out = ROOT / 'publish' / version
     fs.create_directories(out)
