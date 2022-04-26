@@ -1,5 +1,16 @@
 # changelog
 
+## 3.2.2
+`2022-4-26`
+* `FIX` diagnostic: `unused-function` cannot handle recursion correctly
+* `FIX` [#1092](https://github.com/sumneko/lua-language-server/issues/1092)
+* `FIX` [#1093](https://github.com/sumneko/lua-language-server/issues/1093)
+* `FIX` runtime errors reported by telemetry, see [#1091](https://github.com/sumneko/lua-language-server/issues/1091)
+
+## 3.2.1
+`2022-4-25`
+* `FIX` broken in VSCode
+
 ## 3.2.0
 `2022-4-25`
 * `NEW` supports infer of callback parameter
