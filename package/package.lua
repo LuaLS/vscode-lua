@@ -47,6 +47,14 @@ return {
                 url = "./setting/schema.json",
             },
         },
+        languages = {
+            {
+                id = 'jsonc',
+                filenames = {
+                    '.luarc.json',
+                },
+            },
+        },
     },
     capabilities = {
         untrustedWorkspaces = {
