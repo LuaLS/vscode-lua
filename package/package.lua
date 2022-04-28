@@ -43,7 +43,10 @@ return {
         },
         jsonValidation = {
             {
-                fileMatch = ".luarc.json",
+                fileMatch = {
+                    ".luarc.json",
+                    ".luarc.jsonc",
+                },
                 url = "./setting/schema.json",
             },
         },
