@@ -506,7 +506,7 @@ local config = {
     ["Lua.format.enable"] = {
         scope = 'resource',
         type = "boolean",
-        default = "true",
+        default = true,
         markdownDescription = "%config.format.enable%"
     },
     ["Lua.format.defaultConfig"] = {
