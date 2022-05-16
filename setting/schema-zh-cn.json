@@ -1199,7 +1199,7 @@
             "type": "object"
         },
         "format.enable": {
-            "default": "true",
+            "default": true,
             "markdownDescription": "启用代码格式化程序。",
             "scope": "resource",
             "type": "boolean"

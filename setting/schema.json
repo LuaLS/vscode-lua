@@ -256,7 +256,7 @@
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
-                    "description": "优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ",
+                    "description": "Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -396,7 +396,7 @@
                 },
                 "duplicate-index": {
                     "default": "Any",
-                    "description": "在字面量表中重复定义了索引",
+                    "description": "Enable duplicate table index diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -416,7 +416,7 @@
                 },
                 "empty-block": {
                     "default": "Opened",
-                    "description": "空代码块",
+                    "description": "Enable empty code block diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -426,7 +426,7 @@
                 },
                 "global-in-nil-env": {
                     "default": "Any",
-                    "description": "不能使用全局变量（ `_ENV` 被设置为了 `nil`）",
+                    "description": "Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -436,7 +436,7 @@
                 },
                 "lowercase-global": {
                     "default": "Any",
-                    "description": "首字母小写的全局变量定义",
+                    "description": "Enable lowercase global variable definition diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -476,7 +476,7 @@
                 },
                 "newline-call": {
                     "default": "Any",
-                    "description": "以 `(` 开始的新行，在语法上被解析为了上一行的函数调用",
+                    "description": "Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -506,7 +506,7 @@
                 },
                 "redefined-local": {
                     "default": "Opened",
-                    "description": "重复定义的局部变量",
+                    "description": "Enable redefined local variable diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -516,7 +516,7 @@
                 },
                 "redundant-parameter": {
                     "default": "Opened",
-                    "description": "函数调用时，传入了多余的参数",
+                    "description": "Enable redundant function parameter diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -536,7 +536,7 @@
                 },
                 "redundant-value": {
                     "default": "Opened",
-                    "description": "赋值操作时，值的数量比被赋值的对象多",
+                    "description": "Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -546,7 +546,7 @@
                 },
                 "trailing-space": {
                     "default": "Opened",
-                    "description": "后置空格",
+                    "description": "Enable trailing space diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -606,7 +606,7 @@
                 },
                 "undefined-env-child": {
                     "default": "Any",
-                    "description": "`_ENV` 被设置为了新的字面量表，但是试图获取的全局变量不再这张表中",
+                    "description": "Enable undefined environment variable diagnostics. It's raised when `_ENV` table is set to a new literal table, but the used global variable is no longer present in the global environment.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -626,7 +626,7 @@
                 },
                 "undefined-global": {
                     "default": "Any",
-                    "description": "未定义的全局变量",
+                    "description": "Enable undefined global variable diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -646,7 +646,7 @@
                 },
                 "unused-function": {
                     "default": "Opened",
-                    "description": "未使用的函数",
+                    "description": "Enable unused function diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -656,7 +656,7 @@
                 },
                 "unused-label": {
                     "default": "Opened",
-                    "description": "未使用的标签",
+                    "description": "Enable unused label diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -666,7 +666,7 @@
                 },
                 "unused-local": {
                     "default": "Opened",
-                    "description": "未使用的局部变量",
+                    "description": "Enable unused local variable diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -676,7 +676,7 @@
                 },
                 "unused-vararg": {
                     "default": "Opened",
-                    "description": "未使用的不定参数",
+                    "description": "Enable unused vararg diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -695,7 +695,7 @@
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
-                    "description": "优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ",
+                    "description": "Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -849,7 +849,7 @@
                 },
                 "duplicate-index": {
                     "default": "Warning",
-                    "description": "在字面量表中重复定义了索引",
+                    "description": "Enable duplicate table index diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -871,7 +871,7 @@
                 },
                 "empty-block": {
                     "default": "Hint",
-                    "description": "空代码块",
+                    "description": "Enable empty code block diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -882,7 +882,7 @@
                 },
                 "global-in-nil-env": {
                     "default": "Warning",
-                    "description": "不能使用全局变量（ `_ENV` 被设置为了 `nil`）",
+                    "description": "Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -893,7 +893,7 @@
                 },
                 "lowercase-global": {
                     "default": "Information",
-                    "description": "首字母小写的全局变量定义",
+                    "description": "Enable lowercase global variable definition diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -937,7 +937,7 @@
                 },
                 "newline-call": {
                     "default": "Information",
-                    "description": "以 `(` 开始的新行，在语法上被解析为了上一行的函数调用",
+                    "description": "Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -970,7 +970,7 @@
                 },
                 "redefined-local": {
                     "default": "Hint",
-                    "description": "重复定义的局部变量",
+                    "description": "Enable redefined local variable diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -981,7 +981,7 @@
                 },
                 "redundant-parameter": {
                     "default": "Warning",
-                    "description": "函数调用时，传入了多余的参数",
+                    "description": "Enable redundant function parameter diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1003,7 +1003,7 @@
                 },
                 "redundant-value": {
                     "default": "Warning",
-                    "description": "赋值操作时，值的数量比被赋值的对象多",
+                    "description": "Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1014,7 +1014,7 @@
                 },
                 "trailing-space": {
                     "default": "Hint",
-                    "description": "后置空格",
+                    "description": "Enable trailing space diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1080,7 +1080,7 @@
                 },
                 "undefined-env-child": {
                     "default": "Information",
-                    "description": "`_ENV` 被设置为了新的字面量表，但是试图获取的全局变量不再这张表中",
+                    "description": "Enable undefined environment variable diagnostics. It's raised when `_ENV` table is set to a new literal table, but the used global variable is no longer present in the global environment.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1102,7 +1102,7 @@
                 },
                 "undefined-global": {
                     "default": "Warning",
-                    "description": "未定义的全局变量",
+                    "description": "Enable undefined global variable diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1124,7 +1124,7 @@
                 },
                 "unused-function": {
                     "default": "Hint",
-                    "description": "未使用的函数",
+                    "description": "Enable unused function diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1135,7 +1135,7 @@
                 },
                 "unused-label": {
                     "default": "Hint",
-                    "description": "未使用的标签",
+                    "description": "Enable unused label diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1146,7 +1146,7 @@
                 },
                 "unused-local": {
                     "default": "Hint",
-                    "description": "未使用的局部变量",
+                    "description": "Enable unused local variable diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1157,7 +1157,7 @@
                 },
                 "unused-vararg": {
                     "default": "Hint",
-                    "description": "未使用的不定参数",
+                    "description": "Enable unused vararg diagnostics.",
                     "enum": [
                         "Error",
                         "Warning",

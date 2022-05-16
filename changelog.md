@@ -1,5 +1,14 @@
 # changelog
 
+## 3.2.3
+`2022-5-16`
+* `CHG` parse `.luarc.json` as jsonc. In order to please the editor, it also supports `.luarc.jsonc` as the file name.
+* `CHG` dose not load files in symbol links
+* `FIX` memory leak with symbol links
+* `FIX` diagnostic: send empty results to every file after startup
+* `FIX` [#1103](https://github.com/sumneko/lua-language-server/issues/1103)
+* `FIX` [#1107](https://github.com/sumneko/lua-language-server/issues/1107)
+
 ## 3.2.2
 `2022-4-26`
 * `FIX` diagnostic: `unused-function` cannot handle recursion correctly

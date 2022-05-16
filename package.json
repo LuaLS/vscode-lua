@@ -1135,7 +1135,7 @@
 					"type": "object"
 				},
 				"Lua.format.enable": {
-					"default": "true",
+					"default": true,
 					"markdownDescription": "%config.format.enable%",
 					"scope": "resource",
 					"type": "boolean"
@@ -1610,8 +1610,19 @@
 		},
 		"jsonValidation": [
 			{
-				"fileMatch": ".luarc.json",
+				"fileMatch": [
+					".luarc.json",
+					".luarc.jsonc"
+				],
 				"url": "./setting/schema.json"
+			}
+		],
+		"languages": [
+			{
+				"filenames": [
+					".luarc.json"
+				],
+				"id": "jsonc"
 			}
 		],
 		"semanticTokenScopes": [
@@ -1752,5 +1763,5 @@
 		"type": "git",
 		"url": "https://github.com/sumneko/lua-language-server"
 	},
-	"version": "3.2.2"
+	"version": "3.2.3"
 }
