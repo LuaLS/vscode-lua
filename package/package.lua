@@ -21,7 +21,7 @@ return {
         "EmmyLua",
     },
     engines = {
-        vscode = "^1.61.0"
+        vscode = "^1.67.0"
     },
     activationEvents = {
         "onLanguage:lua",
