@@ -170,6 +170,9 @@
                 "disable": {
                     "$ref": "#/properties/diagnostics.disable"
                 },
+                "disableScheme": {
+                    "$ref": "#/properties/diagnostics.disableScheme"
+                },
                 "enable": {
                     "$ref": "#/properties/diagnostics.enable"
                 },
@@ -201,6 +204,17 @@
                 "type": "string"
             },
             "markdownDescription": "Disabled diagnostic (Use code in hover brackets).",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.disableScheme": {
+            "default": [
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Do not diagnose Lua files that use the following scheme.",
             "scope": "resource",
             "type": "array"
         },
@@ -1750,6 +1764,9 @@
                 "preloadFileSize": {
                     "$ref": "#/properties/workspace.preloadFileSize"
                 },
+                "supportScheme": {
+                    "$ref": "#/properties/workspace.supportScheme"
+                },
                 "useGitIgnore": {
                     "$ref": "#/properties/workspace.useGitIgnore"
                 },
@@ -1800,6 +1817,19 @@
             "markdownDescription": "Skip files larger than this value (KB) when preloading.",
             "scope": "resource",
             "type": "integer"
+        },
+        "workspace.supportScheme": {
+            "default": [
+                "file",
+                "untitled",
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Provide language server for the Lua files of the following scheme.",
+            "scope": "resource",
+            "type": "array"
         },
         "workspace.useGitIgnore": {
             "default": true,

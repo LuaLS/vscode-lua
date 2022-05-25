@@ -31,6 +31,7 @@
     "config.develop.enable": "Developer mode. Do not enable, performance will be affected.",
     "config.diagnostics.ambiguity-1": "优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ",
     "config.diagnostics.disable": "Disabled diagnostic (Use code in hover brackets).",
+    "config.diagnostics.disableScheme": "Do not diagnose Lua files that use the following scheme.",
     "config.diagnostics.duplicate-index": "在字面量表中重复定义了索引",
     "config.diagnostics.empty-block": "空代码块",
     "config.diagnostics.enable": "Enable diagnostics.",
@@ -103,6 +104,7 @@
     "config.workspace.library": "In addition to the current workspace, which directories will load files from. The files in these directories will be treated as externally provided code libraries, and some features (such as renaming fields) will not modify these files.",
     "config.workspace.maxPreload": "Max preloaded files.",
     "config.workspace.preloadFileSize": "Skip files larger than this value (KB) when preloading.",
+    "config.workspace.supportScheme": "Provide language server for the Lua files of the following scheme.",
     "config.workspace.useGitIgnore": "Ignore files list in `.gitignore` .",
     "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)"
 }

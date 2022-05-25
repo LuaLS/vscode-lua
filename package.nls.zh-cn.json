@@ -31,6 +31,7 @@
     "config.develop.enable": "开发者模式。请勿开启，会影响性能。",
     "config.diagnostics.ambiguity-1": "优先级歧义，如：`num or 0 + 1`，推测用户的实际期望为 `(num or 0) + 1` ",
     "config.diagnostics.disable": "禁用的诊断（使用浮框括号内的代码）。",
+    "config.diagnostics.disableScheme": "不诊断使用以下 scheme 的lua文件。",
     "config.diagnostics.duplicate-index": "在字面量表中重复定义了索引",
     "config.diagnostics.empty-block": "空代码块",
     "config.diagnostics.enable": "启用诊断。",
@@ -103,6 +104,7 @@
     "config.workspace.library": "除了当前工作区以外，还会从哪些目录中加载文件。这些目录中的文件将被视作外部提供的代码库，部分操作（如重命名字段）不会修改这些文件。",
     "config.workspace.maxPreload": "最大预加载文件数。",
     "config.workspace.preloadFileSize": "预加载时跳过大小大于该值（KB）的文件。",
+    "config.workspace.supportScheme": "为以下 scheme 的lua文件提供语言服务。",
     "config.workspace.useGitIgnore": "忽略 `.gitignore` 中列举的文件。",
     "config.workspace.userThirdParty": "在这里添加私有的第三方库适配文件路径，请参考内置的[配置文件路径](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)"
 }

@@ -170,6 +170,9 @@
                 "disable": {
                     "$ref": "#/properties/diagnostics.disable"
                 },
+                "disableScheme": {
+                    "$ref": "#/properties/diagnostics.disableScheme"
+                },
                 "enable": {
                     "$ref": "#/properties/diagnostics.enable"
                 },
@@ -201,6 +204,17 @@
                 "type": "string"
             },
             "markdownDescription": "停用的診斷（使用浮框括號內的程式碼）。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.disableScheme": {
+            "default": [
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "不诊断使用以下 scheme 的lua文件。",
             "scope": "resource",
             "type": "array"
         },
@@ -1750,6 +1764,9 @@
                 "preloadFileSize": {
                     "$ref": "#/properties/workspace.preloadFileSize"
                 },
+                "supportScheme": {
+                    "$ref": "#/properties/workspace.supportScheme"
+                },
                 "useGitIgnore": {
                     "$ref": "#/properties/workspace.useGitIgnore"
                 },
@@ -1800,6 +1817,19 @@
             "markdownDescription": "預載入時跳過大小大於該值（KB）的檔案。",
             "scope": "resource",
             "type": "integer"
+        },
+        "workspace.supportScheme": {
+            "default": [
+                "file",
+                "untitled",
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "为以下 scheme 的lua文件提供语言服务。",
+            "scope": "resource",
+            "type": "array"
         },
         "workspace.useGitIgnore": {
             "default": true,

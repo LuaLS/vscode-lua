@@ -150,6 +150,17 @@
 					"scope": "resource",
 					"type": "array"
 				},
+				"Lua.diagnostics.disableScheme": {
+					"default": [
+						"git"
+					],
+					"items": {
+						"type": "string"
+					},
+					"markdownDescription": "%config.diagnostics.disableScheme%",
+					"scope": "resource",
+					"type": "array"
+				},
 				"Lua.diagnostics.enable": {
 					"default": true,
 					"markdownDescription": "%config.diagnostics.enable%",
@@ -1590,6 +1601,19 @@
 					"scope": "resource",
 					"type": "integer"
 				},
+				"Lua.workspace.supportScheme": {
+					"default": [
+						"file",
+						"untitled",
+						"git"
+					],
+					"items": {
+						"type": "string"
+					},
+					"markdownDescription": "%config.workspace.supportScheme%",
+					"scope": "resource",
+					"type": "array"
+				},
 				"Lua.workspace.useGitIgnore": {
 					"default": true,
 					"markdownDescription": "%config.workspace.useGitIgnore%",
@@ -1747,7 +1771,7 @@
 	"description": "Lua Language Server coded by Lua",
 	"displayName": "Lua",
 	"engines": {
-		"vscode": "^1.61.0"
+		"vscode": "^1.67.0"
 	},
 	"icon": "images/logo.png",
 	"keywords": [
@@ -1763,5 +1787,5 @@
 		"type": "git",
 		"url": "https://github.com/sumneko/lua-language-server"
 	},
-	"version": "3.2.3"
+	"version": "3.2.4"
 }
