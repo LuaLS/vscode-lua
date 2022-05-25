@@ -185,6 +185,17 @@ local config = {
         },
         markdownDescription = "%config.diagnostics.ignoredFiles%",
     },
+    ['Lua.diagnostics.disableScheme'] = {
+        scope = 'resource',
+        type = "array",
+        items = {
+            type = "string"
+        },
+        default = {
+            'git',
+        },
+        markdownDescription = "%config.diagnostics.disableScheme%"
+    },
     ["Lua.workspace.ignoreDir"] = {
         scope = 'resource',
         type = "array",
@@ -241,6 +252,19 @@ local config = {
             type = "string"
         },
         markdownDescription = "%config.workspace.userThirdParty%"
+    },
+    ['Lua.workspace.supportScheme'] = {
+        scope = 'resource',
+        type = "array",
+        items = {
+            type = "string"
+        },
+        default = {
+            'file',
+            'untitled',
+            'git',
+        },
+        markdownDescription = "%config.workspace.supportScheme%"
     },
     ["Lua.completion.enable"] = {
         scope = 'resource',
