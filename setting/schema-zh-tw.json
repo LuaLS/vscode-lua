@@ -99,7 +99,7 @@
         },
         "completion.displayContext": {
             "default": 0,
-            "markdownDescription": "預覽建議的相關程式碼片段，可能可以幫助你瞭解這項建議的用法。設定的數字表示程式碼片段的擷取行數，設定為`0`可以停用此功能。",
+            "markdownDescription": "預覽建議的相關程式碼片段，可能可以幫助你瞭解這項建議的用法。設定的數字表示程式碼片段的擷取行數，設定為 `0` 可以停用此功能。",
             "scope": "resource",
             "type": "integer"
         },
@@ -116,7 +116,7 @@
                 "Both",
                 "Replace"
             ],
-            "markdownDescription": "顯示關鍵字語法片段",
+            "markdownDescription": "顯示關鍵字語法片段。",
             "markdownEnumDescriptions": [
                 "只顯示 `關鍵字`。",
                 "顯示 `關鍵字` 與 `語法片段`。",
@@ -214,7 +214,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "不诊断使用以下 scheme 的lua文件。",
+            "markdownDescription": "不診斷使用以下 scheme 的lua檔案。",
             "scope": "resource",
             "type": "array"
         },
@@ -270,7 +270,7 @@
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
-                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為 `(num or 0) + 1` ",
+                    "description": "優先級歧義，如： `num or 0 + 1` ，推測使用者的實際期望為 `(num or 0) + 1`",
                     "enum": [
                         "Any",
                         "Opened",
@@ -530,7 +530,7 @@
                 },
                 "redundant-parameter": {
                     "default": "Opened",
-                    "description": "函式呼叫時，傳入了多餘的參數",
+                    "description": "函式呼叫時，傳入了多餘的引數",
                     "enum": [
                         "Any",
                         "Opened",
@@ -551,6 +551,16 @@
                 "redundant-value": {
                     "default": "Opened",
                     "description": "賦值操作時，值的數量比被賦值的對象多",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
+                "spell-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.spell-check%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -690,7 +700,7 @@
                 },
                 "unused-vararg": {
                     "default": "Opened",
-                    "description": "未使用的不定參數",
+                    "description": "未使用的不定引數",
                     "enum": [
                         "Any",
                         "Opened",
@@ -709,7 +719,7 @@
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
-                    "description": "優先級歧義，如：`num or 0 + 1`，推測使用者的實際期望為 `(num or 0) + 1` ",
+                    "description": "優先級歧義，如： `num or 0 + 1` ，推測使用者的實際期望為 `(num or 0) + 1`",
                     "enum": [
                         "Error",
                         "Warning",
@@ -995,7 +1005,7 @@
                 },
                 "redundant-parameter": {
                     "default": "Warning",
-                    "description": "函式呼叫時，傳入了多餘的參數",
+                    "description": "函式呼叫時，傳入了多餘的引數",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1018,6 +1028,17 @@
                 "redundant-value": {
                     "default": "Warning",
                     "description": "賦值操作時，值的數量比被賦值的對象多",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "spell-check": {
+                    "default": "Information",
+                    "description": "%config.diagnostics.spell-check%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1171,7 +1192,7 @@
                 },
                 "unused-vararg": {
                     "default": "Hint",
-                    "description": "未使用的不定參數",
+                    "description": "未使用的不定引數",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1187,7 +1208,7 @@
         },
         "diagnostics.workspaceDelay": {
             "default": 3000,
-            "markdownDescription": "進行工作區診斷的延遲（毫秒）。當你啟動工作區，或編輯了任意檔案後，將會在後台對整個工作區進行重新診斷。設定為負數可以停用工作區診斷。",
+            "markdownDescription": "進行工作區診斷的延遲（毫秒）。當你啟動工作區，或編輯了任意檔案後，將會在背景對整個工作區進行重新診斷。設定為負數可以停用工作區診斷。",
             "scope": "resource",
             "type": "integer"
         },
@@ -1247,7 +1268,7 @@
             "markdownDescription": "在建構表時提示陣列索引。",
             "markdownEnumDescriptions": [
                 "所有的表中都提示陣列索引。",
-                "只有表大於3項，或者表是混合類型時才進行提示。",
+                "只有表大於3項，或者表是混合型別時才進行提示。",
                 "停用陣列索引提示。"
             ],
             "scope": "resource",
@@ -1268,8 +1289,8 @@
             ],
             "markdownDescription": "在函式呼叫處提示參數名。",
             "markdownEnumDescriptions": [
-                "所有類型的參數均進行提示。",
-                "只有字面常數類型的參數進行提示。",
+                "所有型別的參數均進行提示。",
+                "只有字面常數型別的參數進行提示。",
                 "停用參數提示。"
             ],
             "scope": "resource",
@@ -1277,13 +1298,13 @@
         },
         "hint.paramType": {
             "default": true,
-            "markdownDescription": "在函式的參數位置提示類型。",
+            "markdownDescription": "在函式的參數位置提示型別。",
             "scope": "resource",
             "type": "boolean"
         },
         "hint.setType": {
             "default": false,
-            "markdownDescription": "在賦值操作位置提示類型。",
+            "markdownDescription": "在賦值操作位置提示型別。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1317,31 +1338,31 @@
         },
         "hover.enumsLimit": {
             "default": 5,
-            "markdownDescription": "當值對應多個類型時，限制類型的顯示數量。",
+            "markdownDescription": "當值對應多個型別時，限制型別的顯示數量。",
             "scope": "resource",
             "type": "integer"
         },
         "hover.previewFields": {
             "default": 20,
-            "markdownDescription": "懸浮提示查看表時，限制表內欄位的最大預覽數量。",
+            "markdownDescription": "懸浮提示檢視表時，限制表內欄位的最大預覽數量。",
             "scope": "resource",
             "type": "integer"
         },
         "hover.viewNumber": {
             "default": true,
-            "markdownDescription": "懸浮提示查看數字內容（僅當字面常數不是十進制時）。",
+            "markdownDescription": "懸浮提示檢視數字內容（僅當字面常數不是十進制時）。",
             "scope": "resource",
             "type": "boolean"
         },
         "hover.viewString": {
             "default": true,
-            "markdownDescription": "懸浮提示查看字串內容（僅當字面常數包含跳脫字元時）。",
+            "markdownDescription": "懸浮提示檢視字串內容（僅當字面常數包含跳脫字元時）。",
             "scope": "resource",
             "type": "boolean"
         },
         "hover.viewStringMax": {
             "default": 1000,
-            "markdownDescription": "懸浮提示查看字串內容時的最大長度。",
+            "markdownDescription": "懸浮提示檢視字串內容時的最大長度。",
             "scope": "resource",
             "type": "integer"
         },
@@ -1591,7 +1612,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "當使用 `require` 時，如何根據輸入的名字來查找檔案。\n此選項設定為 `?/init.lua` 意味著當你輸入 `require 'myfile'` 時，會從已載入的檔案中搜尋 `{workspace}/myfile/init.lua`。\n當 `runtime.pathStrict` 設定為 `false` 時，還會嘗試搜尋 `${workspace}/**/myfile/init.lua`。\n如果你想要載入工作區以外的檔案，你需要先設定 `Lua.workspace.library`。\n",
+            "markdownDescription": "當使用 `require` 時，如何根據輸入的名字來尋找檔案。\n此選項設定為 `?/init.lua` 意味著當你輸入 `require 'myfile'` 時，會從已載入的檔案中搜尋 `{workspace}/myfile/init.lua`。\n當 `runtime.pathStrict` 設定為 `false` 時，還會嘗試搜尋 `${workspace}/**/myfile/init.lua`。\n如果你想要載入工作區以外的檔案，你需要先設定 `Lua.workspace.library`。\n",
             "scope": "resource",
             "type": "array"
         },
@@ -1609,7 +1630,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
-            "markdownDescription": "將自定義全域變數視為一些特殊的內建變數，語言服務將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
+            "markdownDescription": "將自訂全域變數視為一些特殊的內建變數，語言服務將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
                     "default": "require",
@@ -1668,7 +1689,7 @@
         },
         "semantic.annotation": {
             "default": true,
-            "markdownDescription": "對類型註解進行語義著色。",
+            "markdownDescription": "對型別註解進行語義著色。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1777,7 +1798,7 @@
         },
         "workspace.checkThirdParty": {
             "default": true,
-            "markdownDescription": "自動檢測與適應第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
+            "markdownDescription": "自動偵測與適應第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1802,7 +1823,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "除了目前工作區以外，還會從哪些目錄中載入檔案。這些目錄中的檔案將被視作外部提供的程式碼庫，部分操作（如重命名欄位）不會修改這些檔案。",
+            "markdownDescription": "除了目前工作區以外，還會從哪些目錄中載入檔案。這些目錄中的檔案將被視作外部提供的程式碼庫，部分操作（如重新命名欄位）不會修改這些檔案。",
             "scope": "resource",
             "type": "array"
         },
@@ -1827,7 +1848,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "为以下 scheme 的lua文件提供语言服务。",
+            "markdownDescription": "為以下 `scheme` 的lua檔案提供語言服務。",
             "scope": "resource",
             "type": "array"
         },

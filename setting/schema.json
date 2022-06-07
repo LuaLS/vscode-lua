@@ -558,6 +558,16 @@
                     ],
                     "type": "string"
                 },
+                "spell-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.spell-check%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None"
+                    ],
+                    "type": "string"
+                },
                 "trailing-space": {
                     "default": "Opened",
                     "description": "Enable trailing space diagnostics.",
@@ -1018,6 +1028,17 @@
                 "redundant-value": {
                     "default": "Warning",
                     "description": "Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint"
+                    ],
+                    "type": "string"
+                },
+                "spell-check": {
+                    "default": "Information",
+                    "description": "%config.diagnostics.spell-check%",
                     "enum": [
                         "Error",
                         "Warning",
