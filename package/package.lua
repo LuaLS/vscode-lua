@@ -33,7 +33,7 @@ return {
         configuration = {
             type = "object",
             title = "Lua",
-            properties = require 'package.configuration',
+            properties = require 'server.tools.configuration',
         },
         semanticTokenScopes = {
             {
