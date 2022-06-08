@@ -7,7 +7,7 @@ package.path = package.path
     .. ';' .. rootPath .. 'server/script/?.lua'
 
 local json          = require 'json-beautify'
-local configuration = require 'package.configuration'
+local configuration = require 'server.tools.configuration'
 local fsu           = require 'fs-utility'
 local lloader       = require 'locale-loader'
 

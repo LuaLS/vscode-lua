@@ -1,46 +1,6 @@
 {
     "description": "Setting of sumneko.lua",
     "properties": {
-        "IntelliSense": {
-            "properties": {
-                "traceBeSetted": {
-                    "$ref": "#/properties/IntelliSense.traceBeSetted"
-                },
-                "traceFieldInject": {
-                    "$ref": "#/properties/IntelliSense.traceFieldInject"
-                },
-                "traceLocalSet": {
-                    "$ref": "#/properties/IntelliSense.traceLocalSet"
-                },
-                "traceReturn": {
-                    "$ref": "#/properties/IntelliSense.traceReturn"
-                }
-            }
-        },
-        "IntelliSense.traceBeSetted": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceFieldInject": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceLocalSet": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceReturn": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "completion": {
             "properties": {
                 "autoRequire": {
@@ -200,6 +160,7 @@
             }
         },
         "diagnostics.disable": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -225,6 +186,7 @@
             "type": "boolean"
         },
         "diagnostics.globals": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -1229,8 +1191,10 @@
             }
         },
         "format.defaultConfig": {
+            "default": [],
             "markdownDescription": "%config.format.defaultConfig%",
             "scope": "resource",
+            "title": "defaultConfig",
             "type": "object"
         },
         "format.enable": {
@@ -1243,6 +1207,9 @@
             "properties": {
                 "arrayIndex": {
                     "$ref": "#/properties/hint.arrayIndex"
+                },
+                "await": {
+                    "$ref": "#/properties/hint.await"
                 },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
@@ -1273,6 +1240,12 @@
             ],
             "scope": "resource",
             "type": "string"
+        },
+        "hint.await": {
+            "default": true,
+            "markdownDescription": "%config.hint.await%",
+            "scope": "resource",
+            "type": "boolean"
         },
         "hint.enable": {
             "default": false,
@@ -1316,6 +1289,9 @@
                 "enumsLimit": {
                     "$ref": "#/properties/hover.enumsLimit"
                 },
+                "expandAlias": {
+                    "$ref": "#/properties/hover.expandAlias"
+                },
                 "previewFields": {
                     "$ref": "#/properties/hover.previewFields"
                 },
@@ -1341,6 +1317,12 @@
             "markdownDescription": "When the value corresponds to multiple types, limit the number of types displaying.",
             "scope": "resource",
             "type": "integer"
+        },
+        "hover.expandAlias": {
+            "default": true,
+            "markdownDescription": "%config.hover.expandAlias%",
+            "scope": "resource",
+            "type": "boolean"
         },
         "hover.previewFields": {
             "default": 20,
@@ -1374,6 +1356,7 @@
             }
         },
         "misc.parameters": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -1388,6 +1371,9 @@
                 },
                 "fileEncoding": {
                     "$ref": "#/properties/runtime.fileEncoding"
+                },
+                "meta": {
+                    "$ref": "#/properties/runtime.meta"
                 },
                 "nonstandardSymbol": {
                     "$ref": "#/properties/runtime.nonstandardSymbol"
@@ -1568,6 +1554,7 @@
                 }
             },
             "scope": "resource",
+            "title": "builtin",
             "type": "object"
         },
         "runtime.fileEncoding": {
@@ -1579,10 +1566,23 @@
                 "utf16be"
             ],
             "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
+            "markdownEnumDescriptions": [
+                "%config.runtime.fileEncoding.utf8%",
+                "%config.runtime.fileEncoding.ansi%",
+                "%config.runtime.fileEncoding.utf16le%",
+                "%config.runtime.fileEncoding.utf16be%"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "runtime.meta": {
+            "default": "${version} ${language} ${encoding}",
+            "markdownDescription": "%config.runtime.meta%",
             "scope": "resource",
             "type": "string"
         },
         "runtime.nonstandardSymbol": {
+            "default": [],
             "items": {
                 "enum": [
                     "//",
@@ -1630,6 +1630,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
+            "default": [],
             "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
@@ -1650,6 +1651,7 @@
                 }
             },
             "scope": "resource",
+            "title": "special",
             "type": "object"
         },
         "runtime.unicodeName": {
@@ -1668,6 +1670,13 @@
                 "LuaJIT"
             ],
             "markdownDescription": "Lua runtime version.",
+            "markdownEnumDescriptions": [
+                "%config.runtime.version.Lua 5.1%",
+                "%config.runtime.version.Lua 5.2%",
+                "%config.runtime.version.Lua 5.3%",
+                "%config.runtime.version.Lua 5.4%",
+                "%config.runtime.version.LuaJIT%"
+            ],
             "scope": "resource",
             "type": "string"
         },
@@ -1723,6 +1732,22 @@
             "markdownDescription": "Enable signature help.",
             "scope": "resource",
             "type": "boolean"
+        },
+        "spell": {
+            "properties": {
+                "dict": {
+                    "$ref": "#/properties/spell.dict"
+                }
+            }
+        },
+        "spell.dict": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "%config.spell.dict%",
+            "scope": "resource",
+            "type": "array"
         },
         "telemetry": {
             "properties": {
@@ -1820,6 +1845,7 @@
             "type": "boolean"
         },
         "workspace.library": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -1859,6 +1885,7 @@
             "type": "boolean"
         },
         "workspace.userThirdParty": {
+            "default": [],
             "items": {
                 "type": "string"
             },
