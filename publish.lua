@@ -139,6 +139,7 @@ local count = copyFiles(ROOT , out) {
     },
     ['server'] = {
         ['bin']               = true,
+        ['doc']               = true,
         ['locale']            = true,
         ['script']            = true,
         ['main.lua']          = true,

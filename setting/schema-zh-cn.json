@@ -1191,8 +1191,15 @@
             }
         },
         "format.defaultConfig": {
+            "additionalProperties": false,
             "default": [],
             "markdownDescription": "%config.format.defaultConfig%",
+            "patternProperties": {
+                ".*": {
+                    "default": "",
+                    "type": "string"
+                }
+            },
             "scope": "resource",
             "title": "defaultConfig",
             "type": "object"
