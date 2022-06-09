@@ -1,5 +1,12 @@
 # changelog
 
+## 3.2.5
+`2022-6-9`
+* `NEW` provide config docs in `LUA_LANGUAGE_SERVER/doc/`
+* `FIX` [#1148](https://github.com/sumneko/lua-language-server/issues/1148)
+* `FIX` [#1149](https://github.com/sumneko/lua-language-server/issues/1149)
+* `FIX` [#1192](https://github.com/sumneko/lua-language-server/issues/1192)
+
 ## 3.2.4
 `2022-5-25`
 * `NEW` settings:
