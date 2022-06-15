@@ -20,6 +20,9 @@ return {
         "IntelliSense",
         "EmmyLua",
     },
+    sponsor = {
+        url = "https://github.com/sumneko/lua-language-server/issues/484"
+    },
     engines = {
         vscode = "^1.67.0"
     },
