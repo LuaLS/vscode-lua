@@ -1,5 +1,51 @@
 # changelog
 
+## 3.3.0
+`2022-6-15`
+* `NEW` `LuaDoc` supports `` `CODE` ``
+  ```lua
+  ---@type `CONST.X` | `CONST.Y`
+  local x
+
+  if x == -- suggest `CONST.X` and `CONST.Y` here
+  ```
+* `CHG` infer type by `error`
+  ```lua
+  ---@type integer|nil
+  local n
+
+  if not n then
+      error('n is nil')
+  end
+
+  print(n) -- `n` is `integer` here
+  ```
+* `CHG` infer type by `t and t.x`
+  ```lua
+  ---@type table|nil
+  local t
+
+  local s = t and t.x or 1 -- `t` in `t.x` is `table`
+  ```
+* `CHG` infer type by `type(x)`
+  ```lua
+  local x
+
+  if type(x) == 'string' then
+      print(x) -- `x` is `string` here
+  end
+
+  local tp = type(x)
+
+  if tp == 'boolean' then
+      print(x) -- `x` is `boolean` here
+  end
+  ```
+* `CHG` infer type by `>`/`<`/`>=`/`<=`
+* `FIX` with clients that support LSP 3.17 (VSCode), workspace diagnostics are triggered every time when opening a file.
+* `FIX` [#1204](https://github.com/sumneko/lua-language-server/issues/1204)
+* `FIX` [#1208](https://github.com/sumneko/lua-language-server/issues/1208)
+
 ## 3.2.5
 `2022-6-9`
 * `NEW` provide config docs in `LUA_LANGUAGE_SERVER/doc/`

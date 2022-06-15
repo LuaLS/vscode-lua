@@ -1250,7 +1250,7 @@
         },
         "hint.await": {
             "default": true,
-            "markdownDescription": "%config.hint.await%",
+            "markdownDescription": "如果调用的函数被标记为了 `---@async` ，则在调用处提示 `await` 。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1327,7 +1327,7 @@
         },
         "hover.expandAlias": {
             "default": true,
-            "markdownDescription": "%config.hover.expandAlias%",
+            "markdownDescription": "是否展开别名。例如 `---@alias myType boolean|number` 展开后显示为 `boolean|number`，否则显示为 `myType`。\n",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1652,7 +1652,9 @@
                         "loadfile",
                         "pcall",
                         "xpcall",
-                        "assert"
+                        "assert",
+                        "error",
+                        "type"
                     ],
                     "type": "string"
                 }

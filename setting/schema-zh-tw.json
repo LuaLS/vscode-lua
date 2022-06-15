@@ -1250,7 +1250,7 @@
         },
         "hint.await": {
             "default": true,
-            "markdownDescription": "%config.hint.await%",
+            "markdownDescription": "If the called function is marked `---@async`, prompt `await` at the call.",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1327,7 +1327,7 @@
         },
         "hover.expandAlias": {
             "default": true,
-            "markdownDescription": "%config.hover.expandAlias%",
+            "markdownDescription": "Whether to expand the alias. For example, expands `---@alias myType boolean|number` appears as `boolean|number`, otherwise it appears as `myType'.\n",
             "scope": "resource",
             "type": "boolean"
         },
@@ -1652,7 +1652,9 @@
                         "loadfile",
                         "pcall",
                         "xpcall",
-                        "assert"
+                        "assert",
+                        "error",
+                        "type"
                     ],
                     "type": "string"
                 }
