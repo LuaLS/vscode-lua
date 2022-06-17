@@ -1844,5 +1844,8 @@
 		"type": "git",
 		"url": "https://github.com/sumneko/lua-language-server"
 	},
-	"version": "3.3.0"
+	"sponsor": {
+		"url": "https://github.com/sumneko/lua-language-server/issues/484"
+	},
+	"version": "3.3.1"
 }
