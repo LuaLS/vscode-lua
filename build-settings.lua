@@ -28,6 +28,10 @@ end
 
 local function copyWithNLS(t, callback)
     local nt = {}
+    local mt = getmetatable(t)
+    if mt then
+        setmetatable(nt, mt)
+    end
     for k, v in pairs(t) do
         if type(v) == 'string' then
             v = callback(v) or v
