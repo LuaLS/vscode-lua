@@ -118,6 +118,8 @@
     "config.signatureHelp.enable": "Enable signature help.",
     "config.spell.dict": "Custom words for spell checking.",
     "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
+    "config.type.castNumberToInteger": "Allowed to assign the `number` type to the `integer` type.",
+    "config.type.weakUnionCheck": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.window.progressBar": "Show progress bar in status bar.",
     "config.window.statusBar": "Show extension status in status bar.",
     "config.workspace.checkThirdParty": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",

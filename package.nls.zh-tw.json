@@ -118,6 +118,8 @@
     "config.signatureHelp.enable": "啟用參數提示。",
     "config.spell.dict": "拼寫檢查的自訂單詞。",
     "config.telemetry.enable": "啟用遙測，透過網路發送你的編輯器資訊與錯誤日誌。在[此處](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%B1%E7%A7%81%E8%81%B2%E6%98%8E)閱讀我們的隱私聲明。\n",
+    "config.type.castNumberToInteger": "Allowed to assign the `number` type to the `integer` type.",
+    "config.type.weakUnionCheck": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.window.progressBar": "在狀態欄顯示進度條。",
     "config.window.statusBar": "在狀態欄顯示延伸模組狀態。",
     "config.workspace.checkThirdParty": "自動偵測與適應第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",

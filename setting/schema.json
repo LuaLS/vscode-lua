@@ -2497,6 +2497,28 @@
                 "null"
             ]
         },
+        "type": {
+            "properties": {
+                "castNumberToInteger": {
+                    "$ref": "#/properties/type.castNumberToInteger"
+                },
+                "weakUnionCheck": {
+                    "$ref": "#/properties/type.weakUnionCheck"
+                }
+            }
+        },
+        "type.castNumberToInteger": {
+            "default": false,
+            "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakUnionCheck": {
+            "default": false,
+            "markdownDescription": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "window": {
             "properties": {
                 "progressBar": {

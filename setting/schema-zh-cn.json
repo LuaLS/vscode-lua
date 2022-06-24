@@ -2497,6 +2497,28 @@
                 "null"
             ]
         },
+        "type": {
+            "properties": {
+                "castNumberToInteger": {
+                    "$ref": "#/properties/type.castNumberToInteger"
+                },
+                "weakUnionCheck": {
+                    "$ref": "#/properties/type.weakUnionCheck"
+                }
+            }
+        },
+        "type.castNumberToInteger": {
+            "default": false,
+            "markdownDescription": "允许将 `number` 类型赋给 `integer` 类型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakUnionCheck": {
+            "default": false,
+            "markdownDescription": "联合类型中只要有一个子类型满足条件，则联合类型也满足条件。\n\n此设置为 `false` 时，`number|boolean` 类型无法赋给 `number` 类型；为 `true` 时则可以。\n",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "window": {
             "properties": {
                 "progressBar": {
