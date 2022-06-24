@@ -10,6 +10,8 @@ local json          = require 'json-beautify'
 local configuration = require 'server.tools.configuration'
 local fsu           = require 'fs-utility'
 local lloader       = require 'locale-loader'
+local diagd         = require 'proto.diagnostic'
+local util          = require 'utility'
 
 local function addSplited(t, key, value)
     t[key] = value
@@ -50,6 +52,17 @@ local encodeOption = {
     newline = '\r\n',
     indent  = '    ',
 }
+local function mergeDiagnosticGroupLocale(locale)
+    for groupName, names in pairs(diagd.diagnosticGroups) do
+        local key = ('config.diagnostics.%s'):format(groupName)
+        local list = {}
+        for name in util.sortPairs(names) do
+            list[#list+1] = ('* %s'):format(name)
+        end
+        local desc = table.concat(list, '\n')
+        locale[key] = desc
+    end
+end
 
 for dirPath in fs.pairs(fs.path 'server/locale') do
     local lang    = dirPath:filename():string()
@@ -59,6 +72,8 @@ for dirPath in fs.pairs(fs.path 'server/locale') do
         goto CONTINUE
     end
     local nls = lloader(text, nlsPath:string())
+    -- add `config.diagnostics.XXX`
+    mergeDiagnosticGroupLocale(nls)
 
     local setting = {
         title       = 'setting',
