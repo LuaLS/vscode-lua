@@ -305,7 +305,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Any",
                         "Opened",
@@ -316,7 +316,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* redundant-parameter\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Any",
                         "Opened",
@@ -455,7 +455,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Error",
                         "Warning",
@@ -467,7 +467,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* redundant-parameter\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Error",
                         "Warning",
@@ -829,6 +829,32 @@
                     ],
                     "type": "string"
                 },
+                "missing-return": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
                 "need-check-nil": {
                     "default": "Opened",
                     "description": "%config.diagnostics.need-check-nil%",
@@ -946,9 +972,35 @@
                     ],
                     "type": "string"
                 },
+                "redundant-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
                 "redundant-value": {
                     "default": "Any",
                     "description": "賦值操作時，值的數量比被賦值的對象多",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.return-type-mismatch%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1508,6 +1560,36 @@
                     ],
                     "type": "string"
                 },
+                "missing-return": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "need-check-nil": {
                     "default": "Warning",
                     "description": "%config.diagnostics.need-check-nil%",
@@ -1643,9 +1725,39 @@
                     ],
                     "type": "string"
                 },
+                "redundant-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "redundant-value": {
                     "default": "Warning",
                     "description": "賦值操作時，值的數量比被賦值的對象多",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.return-type-mismatch%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1912,7 +2024,7 @@
         },
         "format.defaultConfig": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "預設的格式化組態，優先順序低於工作區內的 `.editorconfig` 檔案。\n請查閱[格式化文件](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs)了解用法。\n",
             "patternProperties": {
                 ".*": {
@@ -1946,6 +2058,9 @@
                 },
                 "paramType": {
                     "$ref": "#/properties/hint.paramType"
+                },
+                "semicolon": {
+                    "$ref": "#/properties/hint.semicolon"
                 },
                 "setType": {
                     "$ref": "#/properties/hint.setType"
@@ -2001,6 +2116,22 @@
             "markdownDescription": "在函式的參數位置提示類型。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "hint.semicolon": {
+            "default": "SameLine",
+            "enum": [
+                "All",
+                "SameLine",
+                "Disable"
+            ],
+            "markdownDescription": "若陳述式尾部沒有分號，則顯示虛擬分號。",
+            "markdownEnumDescriptions": [
+                "所有陳述式都顯示虛擬分號。",
+                "兩個陳述式在同一行時，在它們之間顯示分號。",
+                "停用虛擬分號。"
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "hint.setType": {
             "default": false,
@@ -2357,7 +2488,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "將自訂全域變數視為一些特殊的內建變數，語言伺服將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
@@ -2509,13 +2640,13 @@
         },
         "type.castNumberToInteger": {
             "default": false,
-            "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "markdownDescription": "允許將 `number` 類型賦值給 `integer` 類型。",
             "scope": "resource",
             "type": "boolean"
         },
         "type.weakUnionCheck": {
             "default": false,
-            "markdownDescription": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
+            "markdownDescription": "同位類型中只要有一個子類型滿足條件，則同位類型也滿足條件。\n\n此設定為 `false` 時，`number|boolean` 類型無法賦給 `number` 類型；為 `true` 時則可以。\n",
             "scope": "resource",
             "type": "boolean"
         },

@@ -305,7 +305,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Any",
                         "Opened",
@@ -316,7 +316,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* redundant-parameter\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Any",
                         "Opened",
@@ -455,7 +455,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Error",
                         "Warning",
@@ -467,7 +467,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* redundant-parameter\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Error",
                         "Warning",
@@ -829,6 +829,32 @@
                     ],
                     "type": "string"
                 },
+                "missing-return": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
                 "need-check-nil": {
                     "default": "Opened",
                     "description": "%config.diagnostics.need-check-nil%",
@@ -946,9 +972,35 @@
                     ],
                     "type": "string"
                 },
+                "redundant-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
                 "redundant-value": {
                     "default": "Any",
                     "description": "赋值操作时，值的数量比被赋值的对象多",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.return-type-mismatch%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1508,6 +1560,36 @@
                     ],
                     "type": "string"
                 },
+                "missing-return": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "need-check-nil": {
                     "default": "Warning",
                     "description": "%config.diagnostics.need-check-nil%",
@@ -1643,9 +1725,39 @@
                     ],
                     "type": "string"
                 },
+                "redundant-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "redundant-value": {
                     "default": "Warning",
                     "description": "赋值操作时，值的数量比被赋值的对象多",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.return-type-mismatch%",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1912,7 +2024,7 @@
         },
         "format.defaultConfig": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
             "patternProperties": {
                 ".*": {
@@ -1946,6 +2058,9 @@
                 },
                 "paramType": {
                     "$ref": "#/properties/hint.paramType"
+                },
+                "semicolon": {
+                    "$ref": "#/properties/hint.semicolon"
                 },
                 "setType": {
                     "$ref": "#/properties/hint.setType"
@@ -2001,6 +2116,22 @@
             "markdownDescription": "Show type hints at the parameter of the function.",
             "scope": "resource",
             "type": "boolean"
+        },
+        "hint.semicolon": {
+            "default": "SameLine",
+            "enum": [
+                "All",
+                "SameLine",
+                "Disable"
+            ],
+            "markdownDescription": "If there is no semicolon at the end of the statement, display a virtual semicolon.",
+            "markdownEnumDescriptions": [
+                "All statements display virtual semicolons.",
+                "When two statements are on the same line, display a semicolon between them.",
+                "Disable virtual semicolons."
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "hint.setType": {
             "default": false,
@@ -2357,7 +2488,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {

@@ -1,5 +1,57 @@
 # changelog
 
+## 3.4.0
+`2022-6-29`
+* `NEW` diagnostics:
+  * `cast-local-type`
+  * `assign-type-mismatch`
+  * `param-type-mismatch`
+  * `unknown-cast-variable`
+  * `cast-type-mismatch`
+  * `missing-return-value`
+  * `redundant-return-value`
+  * `missing-return`
+  * `return-type-mismatch`
+* `NEW` settings:
+  * `diagnostics.groupSeverity`
+  * `diagnostics.groupFileStatus`
+  * `type.castNumberToInteger`
+  * `type.weakUnionCheck`
+  * `hint.semicolon`
+* `CHG` infer `nil` as redundant return value
+  ```lua
+  local function f() end
+  local x = f() -- `x` is `nil` instead of `unknown`
+  ```
+* `CHG` infer called function by params num
+  ```lua
+  ---@overload fun(x: number, y: number):string
+  ---@overload fun(x: number):number
+  ---@return boolean
+  local function f() end
+
+  local n1 = f()     -- `n1` is `boolean`
+  local n2 = f(0)    -- `n2` is `number`
+  local n3 = f(0, 0) -- `n3` is `string`
+  ```
+* `CHG` semicolons and parentheses can be used in `DocTable`
+  ```lua
+  ---@type { (x: number); (y: boolean) }
+  ```
+* `CHG` return names and parentheses can be used in `DocFunction`
+  ```lua
+  ---@type fun():(x: number, y: number, ...: number)
+  ```
+* `CHG` supports `---@return boolean ...`
+* `CHG` improve experience for diagnostics and semantic-tokens
+* `FIX` diagnostics flash when opening a file
+* `FIX` sometimes workspace diagnostics are not triggered
+* `FIX` [#1228](https://github.com/sumneko/lua-language-server/issues/1228)
+* `FIX` [#1229](https://github.com/sumneko/lua-language-server/issues/1229)
+* `FIX` [#1242](https://github.com/sumneko/lua-language-server/issues/1242)
+* `FIX` [#1243](https://github.com/sumneko/lua-language-server/issues/1243)
+* `FIX` [#1249](https://github.com/sumneko/lua-language-server/issues/1249)
+
 ## 3.3.1
 `2022-6-17`
 * `FIX` [#1213](https://github.com/sumneko/lua-language-server/issues/1213)
