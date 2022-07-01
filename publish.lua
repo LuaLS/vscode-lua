@@ -150,6 +150,7 @@ local count = copyFiles(ROOT , out) {
         ['meta']              = {
             ['template']      = true,
             ['3rd']           = true,
+            ['spell']         = true,
         },
     },
     ['images'] = {
