@@ -2633,6 +2633,9 @@
                 "castNumberToInteger": {
                     "$ref": "#/properties/type.castNumberToInteger"
                 },
+                "weakNilCheck": {
+                    "$ref": "#/properties/type.weakNilCheck"
+                },
                 "weakUnionCheck": {
                     "$ref": "#/properties/type.weakUnionCheck"
                 }
@@ -2641,6 +2644,12 @@
         "type.castNumberToInteger": {
             "default": false,
             "markdownDescription": "允许将 `number` 类型赋给 `integer` 类型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakNilCheck": {
+            "default": false,
+            "markdownDescription": "对联合类型进行类型检查时，忽略其中的 `nil`。\n\n此设置为 `false` 时，`numer|nil` 类型无法赋给 `number` 类型；为 `true` 是则可以。\n",
             "scope": "resource",
             "type": "boolean"
         },

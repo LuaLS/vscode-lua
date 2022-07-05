@@ -2449,6 +2449,12 @@
 					"scope": "resource",
 					"type": "boolean"
 				},
+				"Lua.type.weakNilCheck": {
+					"default": false,
+					"markdownDescription": "%config.type.weakNilCheck%",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.type.weakUnionCheck": {
 					"default": false,
 					"markdownDescription": "%config.type.weakUnionCheck%",
@@ -2701,5 +2707,5 @@
 	"sponsor": {
 		"url": "https://github.com/sumneko/lua-language-server/issues/484"
 	},
-	"version": "3.4.0"
+	"version": "3.4.1"
 }

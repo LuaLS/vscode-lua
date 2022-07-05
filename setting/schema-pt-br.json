@@ -2633,6 +2633,9 @@
                 "castNumberToInteger": {
                     "$ref": "#/properties/type.castNumberToInteger"
                 },
+                "weakNilCheck": {
+                    "$ref": "#/properties/type.weakNilCheck"
+                },
                 "weakUnionCheck": {
                     "$ref": "#/properties/type.weakUnionCheck"
                 }
@@ -2641,6 +2644,12 @@
         "type.castNumberToInteger": {
             "default": false,
             "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakNilCheck": {
+            "default": false,
+            "markdownDescription": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
             "scope": "resource",
             "type": "boolean"
         },
