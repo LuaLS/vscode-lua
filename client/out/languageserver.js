@@ -149,15 +149,6 @@ function activate(context) {
     }
     vscode_1.workspace.onDidOpenTextDocument(didOpenTextDocument);
     vscode_1.workspace.textDocuments.forEach(didOpenTextDocument);
-    vscode_1.workspace.onDidChangeWorkspaceFolders(() => {
-        if (defaultClient) {
-            defaultClient.stop();
-            defaultClient = new LuaClient(context, [
-                { language: 'lua' }
-            ]);
-            defaultClient.start();
-        }
-    });
 }
 exports.activate = activate;
 function deactivate() {

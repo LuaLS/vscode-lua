@@ -183,15 +183,6 @@ export function activate(context: ExtensionContext) {
 
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
-    Workspace.onDidChangeWorkspaceFolders(() => {
-        if (defaultClient) {
-            defaultClient.stop();
-            defaultClient = new LuaClient(context, [
-                { language: 'lua' }
-            ]);
-            defaultClient.start();
-        }
-    });
 }
 
 export async function deactivate() {
