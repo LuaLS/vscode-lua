@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deactivate = exports.activate = void 0;
+exports.reportAPIDoc = exports.deactivate = exports.activate = void 0;
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
@@ -59,6 +59,7 @@ class LuaClient {
                 progressOnInitialization: true,
                 markdown: {
                     isTrusted: true,
+                    supportHtml: true,
                 },
                 initializationOptions: {
                     changeConfiguration: true,
@@ -161,4 +162,13 @@ function deactivate() {
     });
 }
 exports.deactivate = deactivate;
+function reportAPIDoc(params) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!defaultClient) {
+            return;
+        }
+        defaultClient.client.sendNotification('$/api/report', params);
+    });
+}
+exports.reportAPIDoc = reportAPIDoc;
 //# sourceMappingURL=languageserver.js.map

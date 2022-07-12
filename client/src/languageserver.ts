@@ -63,6 +63,7 @@ class LuaClient {
             progressOnInitialization: true,
             markdown: {
                 isTrusted: true,
+                supportHtml: true,
             },
             initializationOptions: {
                 changeConfiguration: true,
@@ -191,4 +192,11 @@ export async function deactivate() {
         defaultClient = null;
     }
     return undefined;
+}
+
+export async function reportAPIDoc(params: any) {
+    if (!defaultClient) {
+        return;
+    }
+    defaultClient.client.sendNotification('$/api/report', params);
 }
