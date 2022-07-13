@@ -28,3 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
     languageserver.deactivate();
 }
+
+export async function reportAPIDoc(params: any) {
+    await languageserver.reportAPIDoc(params);
+}
