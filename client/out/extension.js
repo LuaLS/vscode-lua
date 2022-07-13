@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reportAPIDoc = exports.deactivate = exports.activate = void 0;
+exports.deactivate = exports.activate = void 0;
 const languageserver = require("./languageserver");
 let luadoc = require('../3rd/vscode-lua-doc/extension.js');
 function activate(context) {
@@ -29,16 +29,17 @@ function activate(context) {
     luaDocContext.OpenCommand = 'extension.lua.doc';
     luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc';
     luadoc.activate(luaDocContext);
+    return {
+        reportAPIDoc(params) {
+            return __awaiter(this, void 0, void 0, function* () {
+                yield languageserver.reportAPIDoc(params);
+            });
+        }
+    };
 }
 exports.activate = activate;
 function deactivate() {
     languageserver.deactivate();
 }
 exports.deactivate = deactivate;
-function reportAPIDoc(params) {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield languageserver.reportAPIDoc(params);
-    });
-}
-exports.reportAPIDoc = reportAPIDoc;
 //# sourceMappingURL=extension.js.map
