@@ -23,12 +23,16 @@ export function activate(context: vscode.ExtensionContext) {
     luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc'
 
     luadoc.activate(luaDocContext);
+
+    return {
+        async reportAPIDoc(params: any) {
+            await languageserver.reportAPIDoc(params);
+        }
+    }
 }
 
 export function deactivate() {
     languageserver.deactivate();
 }
 
-export async function reportAPIDoc(params: any) {
-    await languageserver.reportAPIDoc(params);
-}
+
