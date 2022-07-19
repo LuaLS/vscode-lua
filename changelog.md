@@ -1,5 +1,79 @@
 # changelog
 
+## 3.5.0
+`2022-7-19`
+* `NEW` `LuaDoc`: `---@operator`:
+  ```lua
+  ---@class fspath
+  ---@operator div(string|fspath): fspath
+
+  ---@type fspath
+  local root
+
+  local fileName = root / 'script' / 'main.lua' -- `fileName` is `fspath` here
+  ```
+* `NEW` `LuaDoc`: `---@source`:
+  ```lua
+  -- Also supports absolute path or relative path (based on current file path)
+  ---@source file:///xxx.c:50:20
+  XXX = 1 -- when finding definitions of `XXX`, returns `file:///xxx.c:50:20` instead here.
+  ```
+* `NEW` `LuaDoc`: `---@enum`:
+  ```lua
+  ---@enum animal
+  Animal = {
+    Cat = 1,
+    Dog = 2,
+  }
+
+  ---@param x animal
+  local function f(x) end
+
+  f() -- suggests `Animal.Cat`, `Animal.Dog`, `1`, `2` as the first parameter
+  ```
+* `NEW` diagnostics:
+  * `unknown-operator`
+  * `unreachable-code`
+* `NEW` settings:
+  * `diagnostics.unusedLocalExclude`
+* `NEW` VSCode: add support for [EmmyLuaUnity](https://marketplace.visualstudio.com/items?itemName=CppCXY.emmylua-unity)
+* `CHG` support multi-type:
+  ```lua
+  ---@type number, _, boolean
+  local a, b, c -- `a` is `number`, `b` is `unknown`, `c` is `boolean`
+  ```
+* `CHG` treat `_ENV = XXX` as `local _ENV = XXX`
+  * `_ENV = nil`: disable all globals
+  * `_ENV = {}`: allow all globals
+  * `_ENV = {} ---@type mathlib`: only allow globals in `mathlib`
+* `CHG` hover: dose not show unknown `---@XXX` as description
+* `CHG` contravariance is allowed at the class declaration
+  ```lua
+  ---@class BaseClass
+  local BaseClass
+
+  ---@class MyClass: BaseClass
+  local MyClass = BaseClass -- OK!
+  ```
+* `CHG` hover: supports path in link
+  ```lua
+  --![](image.png) --> will convert to `--![](file:///xxxx/image.png)`
+  local x
+  ```
+* `CHG` signature: only show signatures matching the entered parameters
+* `FIX` [#880](https://github.com/sumneko/lua-language-server/issues/880)
+* `FIX` [#1284](https://github.com/sumneko/lua-language-server/issues/1284)
+* `FIX` [#1292](https://github.com/sumneko/lua-language-server/issues/1292)
+* `FIX` [#1294](https://github.com/sumneko/lua-language-server/issues/1294)
+* `FIX` [#1306](https://github.com/sumneko/lua-language-server/issues/1306)
+* `FIX` [#1311](https://github.com/sumneko/lua-language-server/issues/1311)
+* `FIX` [#1317](https://github.com/sumneko/lua-language-server/issues/1317)
+* `FIX` [#1320](https://github.com/sumneko/lua-language-server/issues/1320)
+* `FIX` [#1330](https://github.com/sumneko/lua-language-server/issues/1330)
+* `FIX` [#1345](https://github.com/sumneko/lua-language-server/issues/1345)
+* `FIX` [#1346](https://github.com/sumneko/lua-language-server/issues/1346)
+* `FIX` [#1348](https://github.com/sumneko/lua-language-server/issues/1348)
+
 ## 3.4.2
 `2022-7-6`
 * `CHG` diagnostic: `type-check` ignores `nil` in `getfield`
