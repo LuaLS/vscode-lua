@@ -361,7 +361,7 @@
                 },
                 "luadoc": {
                     "default": "Fallback",
-                    "description": "* cast-type-mismatch\n* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+                    "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
                     "enum": [
                         "Any",
                         "Opened",
@@ -507,7 +507,7 @@
                 },
                 "luadoc": {
                     "default": "Fallback",
-                    "description": "* cast-type-mismatch\n* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+                    "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
                     "enum": [
                         "Error",
                         "Warning",
@@ -683,7 +683,7 @@
                     "type": "string"
                 },
                 "cast-type-mismatch": {
-                    "default": "Any",
+                    "default": "Opened",
                     "description": "%config.diagnostics.cast-type-mismatch%",
                     "enum": [
                         "Any",
@@ -2410,6 +2410,9 @@
                 "plugin": {
                     "$ref": "#/properties/runtime.plugin"
                 },
+                "pluginArgs": {
+                    "$ref": "#/properties/runtime.pluginArgs"
+                },
                 "special": {
                     "$ref": "#/properties/runtime.special"
                 },
@@ -2678,6 +2681,15 @@
             "scope": "resource",
             "type": "string"
         },
+        "runtime.pluginArgs": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Additional arguments for the plugin.",
+            "scope": "resource",
+            "type": "array"
+        },
         "runtime.special": {
             "additionalProperties": false,
             "default": {},
@@ -2834,7 +2846,7 @@
             }
         },
         "type.castNumberToInteger": {
-            "default": false,
+            "default": true,
             "markdownDescription": "允许将 `number` 类型赋给 `integer` 类型。",
             "scope": "resource",
             "type": "boolean"
