@@ -117,7 +117,7 @@ print('版本号为：' .. version)
 
 print('复制 readme ...')
 fs.copy_file(ROOT / 'server' / 'changelog.md', ROOT / 'changelog.md', fs.copy_options.overwrite_existing)
-fsu.saveFile(ROOT / 'README.md', fsu.loadFile(ROOT / 'server' / 'README.md'):gsub('%!%[build%][^\r\n]*', ''))
+fsu.saveFile(ROOT / 'README.md', fsu.loadFile(ROOT / 'server' / 'README.md'):gsub('%.svg', '.png'))
 
 local out = createDirectory('test')
 print('输出目录为：', out)
