@@ -1,10 +1,10 @@
 # lua-language-server
 
-
-[![version](https://vsmarketplacebadge.apphb.com/version-short/sumneko.lua.svg)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
-![installs](https://vsmarketplacebadge.apphb.com/installs-short/sumneko.lua.svg)
-![downloads](https://vsmarketplacebadge.apphb.com/downloads-short/sumneko.lua.svg)
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/sumneko/lua-language-server.svg)](https://github.com/sumneko/lua-language-server/issues "Average time to resolve an issue")
+![build](https://github.com/sumneko/lua-language-server/workflows/build/badge.png)
+[![version](https://vsmarketplacebadge.apphb.com/version-short/sumneko.lua.png)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
+![installs](https://vsmarketplacebadge.apphb.com/installs-short/sumneko.lua.png)
+![downloads](https://vsmarketplacebadge.apphb.com/downloads-short/sumneko.lua.png)
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/sumneko/lua-language-server.png)](https://github.com/sumneko/lua-language-server/issues "Average time to resolve an issue")
 
 
 ***Lua development just got a whole lot better*** 🧠
@@ -119,4 +119,4 @@ Software that the language server (or the development of it) uses:
 * [inspect.lua](https://github.com/kikito/inspect.lua)
 
 
-[checkmark]: https://gist.githubusercontent.com/carsakiller/362482775731de88cdafeeca9f6a392e/raw/cd3976e92a85aafe1f33e3f9fe3d0e0bd451902c/checkmark.svg
+[checkmark]: https://gist.githubusercontent.com/carsakiller/362482775731de88cdafeeca9f6a392e/raw/cd3976e92a85aafe1f33e3f9fe3d0e0bd451902c/checkmark.png
