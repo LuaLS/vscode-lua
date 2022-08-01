@@ -2677,7 +2677,7 @@
         },
         "runtime.plugin": {
             "default": "",
-            "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
+            "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.",
             "scope": "resource",
             "type": "string"
         },
@@ -2822,7 +2822,7 @@
         },
         "telemetry.enable": {
             "default": null,
-            "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
+            "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).\n",
             "scope": "resource",
             "tags": [
                 "telemetry"

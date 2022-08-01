@@ -970,7 +970,7 @@
                 },
                 "newfield-call": {
                     "default": "Any",
-                    "description": "在字面量表中，2行代码之间缺少分隔符，在语法上被解析为了一次索引操作",
+                    "description": "Enable newfield call diagnostics. It is raised when the parenthesis of a function call appear on the following line when defining a field in a table.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1733,7 +1733,7 @@
                 },
                 "newfield-call": {
                     "default": "Warning",
-                    "description": "在字面量表中，2行代码之间缺少分隔符，在语法上被解析为了一次索引操作",
+                    "description": "Enable newfield call diagnostics. It is raised when the parenthesis of a function call appear on the following line when defining a field in a table.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2677,7 +2677,7 @@
         },
         "runtime.plugin": {
             "default": "",
-            "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugin) to learn more.",
+            "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.",
             "scope": "resource",
             "type": "string"
         },
@@ -2822,7 +2822,7 @@
         },
         "telemetry.enable": {
             "default": null,
-            "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Privacy-Policy).\n",
+            "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).\n",
             "scope": "resource",
             "tags": [
                 "telemetry"

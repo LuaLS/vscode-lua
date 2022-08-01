@@ -2383,7 +2383,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "VSCode中啟動語言伺服時的[命令列參數](https://github.com/sumneko/lua-language-server/wiki/Command-line)。",
+            "markdownDescription": "VSCode中啟動語言伺服時的[命令列參數](https://github.com/sumneko/lua-language-server/wiki/Getting-Started#arguments)。",
             "scope": "resource",
             "type": "array"
         },
@@ -2677,7 +2677,7 @@
         },
         "runtime.plugin": {
             "default": "",
-            "markdownDescription": "延伸模組路徑，請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/Plugin)瞭解用法。",
+            "markdownDescription": "延伸模組路徑，請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/Plugins)瞭解用法。",
             "scope": "resource",
             "type": "string"
         },
@@ -2822,7 +2822,7 @@
         },
         "telemetry.enable": {
             "default": null,
-            "markdownDescription": "啟用遙測，透過網路發送你的編輯器資訊與錯誤日誌。在[此處](https://github.com/sumneko/lua-language-server/wiki/%E9%9A%B1%E7%A7%81%E8%81%B2%E6%98%8E)閱讀我們的隱私聲明。\n",
+            "markdownDescription": "啟用遙測，透過網路發送你的編輯器資訊與錯誤日誌。在[此處](https://github.com/sumneko/lua-language-server/wiki/Home#privacy)閱讀我們的隱私聲明。\n",
             "scope": "resource",
             "tags": [
                 "telemetry"
