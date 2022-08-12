@@ -174,6 +174,7 @@
                 "enum": [
                     "action-after-return",
                     "ambiguity-1",
+                    "ambiguous-syntax",
                     "args-after-dots",
                     "assign-type-mismatch",
                     "await-in-sync",
@@ -211,6 +212,30 @@
                     "keyword",
                     "local-limit",
                     "lowercase-global",
+                    "lua-doc-miss-sign",
+                    "luadoc-error-diag-mode",
+                    "luadoc-miss-alias-extends",
+                    "luadoc-miss-alias-name",
+                    "luadoc-miss-arg-name",
+                    "luadoc-miss-cate-name",
+                    "luadoc-miss-class-extends-name",
+                    "luadoc-miss-class-name",
+                    "luadoc-miss-diag-mode",
+                    "luadoc-miss-diag-name",
+                    "luadoc-miss-field-extends",
+                    "luadoc-miss-field-name",
+                    "luadoc-miss-fun-after-overload",
+                    "luadoc-miss-generic-name",
+                    "luadoc-miss-local-name",
+                    "luadoc-miss-module-name",
+                    "luadoc-miss-operator-name",
+                    "luadoc-miss-param-extends",
+                    "luadoc-miss-param-name",
+                    "luadoc-miss-sign-name",
+                    "luadoc-miss-symbol",
+                    "luadoc-miss-type-name",
+                    "luadoc-miss-vararg-type",
+                    "luadoc-miss-version",
                     "malformed-number",
                     "miss-end",
                     "miss-esc-x",
@@ -645,7 +670,7 @@
                 },
                 "assign-type-mismatch": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.assign-type-mismatch%",
+                    "description": "Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -658,7 +683,7 @@
                 },
                 "await-in-sync": {
                     "default": "None",
-                    "description": "%config.diagnostics.await-in-sync%",
+                    "description": "Enable diagnostics for calls of asynchronous functions within a synchronous function.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -671,7 +696,7 @@
                 },
                 "cast-local-type": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.cast-local-type%",
+                    "description": "Enable diagnostics for casts of local variables where the target type does not match the defined type.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -684,7 +709,7 @@
                 },
                 "cast-type-mismatch": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.cast-type-mismatch%",
+                    "description": "Enable diagnostics for casts where the target type does not match the initial type.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -710,7 +735,7 @@
                 },
                 "close-non-object": {
                     "default": "Any",
-                    "description": "%config.diagnostics.close-non-object%",
+                    "description": "Enable diagnostics for attempts to close a variable with a non-object.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -723,7 +748,7 @@
                 },
                 "code-after-break": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.code-after-break%",
+                    "description": "Enable diagnostics for code placed after a break statement in a loop.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -736,7 +761,7 @@
                 },
                 "codestyle-check": {
                     "default": "None",
-                    "description": "%config.diagnostics.codestyle-check%",
+                    "description": "Enable diagnostics for incorrectly styled lines.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -749,7 +774,7 @@
                 },
                 "count-down-loop": {
                     "default": "Any",
-                    "description": "%config.diagnostics.count-down-loop%",
+                    "description": "Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -762,7 +787,7 @@
                 },
                 "deprecated": {
                     "default": "Any",
-                    "description": "%config.diagnostics.deprecated%",
+                    "description": "Enable diagnostics to highlight deprecated API.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -775,7 +800,7 @@
                 },
                 "different-requires": {
                     "default": "Any",
-                    "description": "%config.diagnostics.different-requires%",
+                    "description": "Enable diagnostics for files which are required by two different paths.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -788,7 +813,7 @@
                 },
                 "discard-returns": {
                     "default": "Any",
-                    "description": "%config.diagnostics.discard-returns%",
+                    "description": "Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -801,7 +826,7 @@
                 },
                 "doc-field-no-class": {
                     "default": "Any",
-                    "description": "%config.diagnostics.doc-field-no-class%",
+                    "description": "Enable diagnostics to highlight a field annotation without a defining class annotation.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -814,7 +839,7 @@
                 },
                 "duplicate-doc-alias": {
                     "default": "Any",
-                    "description": "%config.diagnostics.duplicate-doc-alias%",
+                    "description": "Enable diagnostics for a duplicated alias annotation name.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -827,7 +852,7 @@
                 },
                 "duplicate-doc-field": {
                     "default": "Any",
-                    "description": "%config.diagnostics.duplicate-doc-field%",
+                    "description": "Enable diagnostics for a duplicated field annotation name.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -840,7 +865,7 @@
                 },
                 "duplicate-doc-param": {
                     "default": "Any",
-                    "description": "%config.diagnostics.duplicate-doc-param%",
+                    "description": "Enable diagnostics for a duplicated param annotation name.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -866,7 +891,7 @@
                 },
                 "duplicate-set-field": {
                     "default": "Any",
-                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "description": "Enable diagnostics for setting the same field in a class more than once.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -918,7 +943,7 @@
                 },
                 "missing-parameter": {
                     "default": "Any",
-                    "description": "%config.diagnostics.missing-parameter%",
+                    "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -931,7 +956,7 @@
                 },
                 "missing-return": {
                     "default": "Any",
-                    "description": "%config.diagnostics.missing-return%",
+                    "description": "Enable diagnostics for functions with return annotations which have no return statement.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -944,7 +969,7 @@
                 },
                 "missing-return-value": {
                     "default": "Any",
-                    "description": "%config.diagnostics.missing-return-value%",
+                    "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -957,7 +982,7 @@
                 },
                 "need-check-nil": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.need-check-nil%",
+                    "description": "Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -996,7 +1021,7 @@
                 },
                 "no-unknown": {
                     "default": "None",
-                    "description": "%config.diagnostics.no-unknown%",
+                    "description": "Enable diagnostics for cases in which the type cannot be inferred.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1009,7 +1034,7 @@
                 },
                 "not-yieldable": {
                     "default": "None",
-                    "description": "%config.diagnostics.not-yieldable%",
+                    "description": "Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1022,7 +1047,7 @@
                 },
                 "param-type-mismatch": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.param-type-mismatch%",
+                    "description": "Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1061,7 +1086,7 @@
                 },
                 "redundant-return": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.redundant-return%",
+                    "description": "Enable diagnostics for return statements which are not needed because the function would exit on its own.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1074,7 +1099,7 @@
                 },
                 "redundant-return-value": {
                     "default": "Any",
-                    "description": "%config.diagnostics.redundant-return-value%",
+                    "description": "Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1100,7 +1125,7 @@
                 },
                 "return-type-mismatch": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.return-type-mismatch%",
+                    "description": "Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1113,7 +1138,7 @@
                 },
                 "spell-check": {
                     "default": "None",
-                    "description": "%config.diagnostics.spell-check%",
+                    "description": "Enable diagnostics for typos in strings.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1139,7 +1164,7 @@
                 },
                 "unbalanced-assignments": {
                     "default": "Any",
-                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "description": "Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1152,7 +1177,7 @@
                 },
                 "undefined-doc-class": {
                     "default": "Any",
-                    "description": "%config.diagnostics.undefined-doc-class%",
+                    "description": "Enable diagnostics for class annotations in which an undefined class is referenced.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1165,7 +1190,7 @@
                 },
                 "undefined-doc-name": {
                     "default": "Any",
-                    "description": "%config.diagnostics.undefined-doc-name%",
+                    "description": "Enable diagnostics for type annotations referencing an undefined type or alias.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1178,7 +1203,7 @@
                 },
                 "undefined-doc-param": {
                     "default": "Any",
-                    "description": "%config.diagnostics.undefined-doc-param%",
+                    "description": "Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1204,7 +1229,7 @@
                 },
                 "undefined-field": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.undefined-field%",
+                    "description": "Enable diagnostics for cases in which an undefined field of a variable is read.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1230,7 +1255,7 @@
                 },
                 "unknown-cast-variable": {
                     "default": "Any",
-                    "description": "%config.diagnostics.unknown-cast-variable%",
+                    "description": "Enable diagnostics for casts of undefined variables.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1243,7 +1268,7 @@
                 },
                 "unknown-diag-code": {
                     "default": "Any",
-                    "description": "%config.diagnostics.unknown-diag-code%",
+                    "description": "Enable diagnostics in cases in which an unknown diagnostics code is entered.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1256,7 +1281,7 @@
                 },
                 "unknown-operator": {
                     "default": "Any",
-                    "description": "%config.diagnostics.unknown-operator%",
+                    "description": "Enable diagnostics for unknown operators.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1269,7 +1294,7 @@
                 },
                 "unreachable-code": {
                     "default": "Opened",
-                    "description": "%config.diagnostics.unreachable-code%",
+                    "description": "Enable diagnostics for unreachable code.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1358,7 +1383,7 @@
                 },
                 "assign-type-mismatch": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.assign-type-mismatch%",
+                    "description": "Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1373,7 +1398,7 @@
                 },
                 "await-in-sync": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.await-in-sync%",
+                    "description": "Enable diagnostics for calls of asynchronous functions within a synchronous function.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1388,7 +1413,7 @@
                 },
                 "cast-local-type": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.cast-local-type%",
+                    "description": "Enable diagnostics for casts of local variables where the target type does not match the defined type.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1403,7 +1428,7 @@
                 },
                 "cast-type-mismatch": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.cast-type-mismatch%",
+                    "description": "Enable diagnostics for casts where the target type does not match the initial type.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1433,7 +1458,7 @@
                 },
                 "close-non-object": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.close-non-object%",
+                    "description": "Enable diagnostics for attempts to close a variable with a non-object.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1448,7 +1473,7 @@
                 },
                 "code-after-break": {
                     "default": "Hint",
-                    "description": "%config.diagnostics.code-after-break%",
+                    "description": "Enable diagnostics for code placed after a break statement in a loop.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1463,7 +1488,7 @@
                 },
                 "codestyle-check": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.codestyle-check%",
+                    "description": "Enable diagnostics for incorrectly styled lines.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1478,7 +1503,7 @@
                 },
                 "count-down-loop": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.count-down-loop%",
+                    "description": "Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1493,7 +1518,7 @@
                 },
                 "deprecated": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.deprecated%",
+                    "description": "Enable diagnostics to highlight deprecated API.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1508,7 +1533,7 @@
                 },
                 "different-requires": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.different-requires%",
+                    "description": "Enable diagnostics for files which are required by two different paths.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1523,7 +1548,7 @@
                 },
                 "discard-returns": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.discard-returns%",
+                    "description": "Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1538,7 +1563,7 @@
                 },
                 "doc-field-no-class": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.doc-field-no-class%",
+                    "description": "Enable diagnostics to highlight a field annotation without a defining class annotation.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1553,7 +1578,7 @@
                 },
                 "duplicate-doc-alias": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.duplicate-doc-alias%",
+                    "description": "Enable diagnostics for a duplicated alias annotation name.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1568,7 +1593,7 @@
                 },
                 "duplicate-doc-field": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.duplicate-doc-field%",
+                    "description": "Enable diagnostics for a duplicated field annotation name.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1583,7 +1608,7 @@
                 },
                 "duplicate-doc-param": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.duplicate-doc-param%",
+                    "description": "Enable diagnostics for a duplicated param annotation name.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1613,7 +1638,7 @@
                 },
                 "duplicate-set-field": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.duplicate-set-field%",
+                    "description": "Enable diagnostics for setting the same field in a class more than once.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1673,7 +1698,7 @@
                 },
                 "missing-parameter": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.missing-parameter%",
+                    "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1688,7 +1713,7 @@
                 },
                 "missing-return": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.missing-return%",
+                    "description": "Enable diagnostics for functions with return annotations which have no return statement.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1703,7 +1728,7 @@
                 },
                 "missing-return-value": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.missing-return-value%",
+                    "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1718,7 +1743,7 @@
                 },
                 "need-check-nil": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.need-check-nil%",
+                    "description": "Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1763,7 +1788,7 @@
                 },
                 "no-unknown": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.no-unknown%",
+                    "description": "Enable diagnostics for cases in which the type cannot be inferred.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1778,7 +1803,7 @@
                 },
                 "not-yieldable": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.not-yieldable%",
+                    "description": "Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1793,7 +1818,7 @@
                 },
                 "param-type-mismatch": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.param-type-mismatch%",
+                    "description": "Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1838,7 +1863,7 @@
                 },
                 "redundant-return": {
                     "default": "Hint",
-                    "description": "%config.diagnostics.redundant-return%",
+                    "description": "Enable diagnostics for return statements which are not needed because the function would exit on its own.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1853,7 +1878,7 @@
                 },
                 "redundant-return-value": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.redundant-return-value%",
+                    "description": "Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1883,7 +1908,7 @@
                 },
                 "return-type-mismatch": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.return-type-mismatch%",
+                    "description": "Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1898,7 +1923,7 @@
                 },
                 "spell-check": {
                     "default": "Information",
-                    "description": "%config.diagnostics.spell-check%",
+                    "description": "Enable diagnostics for typos in strings.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1928,7 +1953,7 @@
                 },
                 "unbalanced-assignments": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.unbalanced-assignments%",
+                    "description": "Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1943,7 +1968,7 @@
                 },
                 "undefined-doc-class": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.undefined-doc-class%",
+                    "description": "Enable diagnostics for class annotations in which an undefined class is referenced.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1958,7 +1983,7 @@
                 },
                 "undefined-doc-name": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.undefined-doc-name%",
+                    "description": "Enable diagnostics for type annotations referencing an undefined type or alias.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1973,7 +1998,7 @@
                 },
                 "undefined-doc-param": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.undefined-doc-param%",
+                    "description": "Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2003,7 +2028,7 @@
                 },
                 "undefined-field": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.undefined-field%",
+                    "description": "Enable diagnostics for cases in which an undefined field of a variable is read.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2033,7 +2058,7 @@
                 },
                 "unknown-cast-variable": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.unknown-cast-variable%",
+                    "description": "Enable diagnostics for casts of undefined variables.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2048,7 +2073,7 @@
                 },
                 "unknown-diag-code": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.unknown-diag-code%",
+                    "description": "Enable diagnostics in cases in which an unknown diagnostics code is entered.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2063,7 +2088,7 @@
                 },
                 "unknown-operator": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.unknown-operator%",
+                    "description": "Enable diagnostics for unknown operators.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2078,7 +2103,7 @@
                 },
                 "unreachable-code": {
                     "default": "Hint",
-                    "description": "%config.diagnostics.unreachable-code%",
+                    "description": "Enable diagnostics for unreachable code.",
                     "enum": [
                         "Error",
                         "Warning",

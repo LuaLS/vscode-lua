@@ -36,7 +36,7 @@
     "config.diagnostics.await-in-sync": "Enable diagnostics for calls of asynchronous functions within a synchronous function.",
     "config.diagnostics.cast-local-type": "Enable diagnostics for casts of local variables where the target type does not match the defined type.",
     "config.diagnostics.cast-type-mismatch": "Enable diagnostics for casts where the target type does not match the initial type.",
-    "config.diagnostics.circle-doc-class": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
+    "config.diagnostics.circular-doc-class": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
     "config.diagnostics.close-non-object": "Enable diagnostics for attempts to close a variable with a non-object.",
     "config.diagnostics.code-after-break": "Enable diagnostics for code placed after a break statement in a loop.",
     "config.diagnostics.codestyle": "* codestyle-check\n* spell-check",

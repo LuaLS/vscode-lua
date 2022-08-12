@@ -124,6 +124,7 @@
 						"enum": [
 							"action-after-return",
 							"ambiguity-1",
+							"ambiguous-syntax",
 							"args-after-dots",
 							"assign-type-mismatch",
 							"await-in-sync",
@@ -161,6 +162,30 @@
 							"keyword",
 							"local-limit",
 							"lowercase-global",
+							"lua-doc-miss-sign",
+							"luadoc-error-diag-mode",
+							"luadoc-miss-alias-extends",
+							"luadoc-miss-alias-name",
+							"luadoc-miss-arg-name",
+							"luadoc-miss-cate-name",
+							"luadoc-miss-class-extends-name",
+							"luadoc-miss-class-name",
+							"luadoc-miss-diag-mode",
+							"luadoc-miss-diag-name",
+							"luadoc-miss-field-extends",
+							"luadoc-miss-field-name",
+							"luadoc-miss-fun-after-overload",
+							"luadoc-miss-generic-name",
+							"luadoc-miss-local-name",
+							"luadoc-miss-module-name",
+							"luadoc-miss-operator-name",
+							"luadoc-miss-param-extends",
+							"luadoc-miss-param-name",
+							"luadoc-miss-sign-name",
+							"luadoc-miss-symbol",
+							"luadoc-miss-type-name",
+							"luadoc-miss-vararg-type",
+							"luadoc-miss-version",
 							"malformed-number",
 							"miss-end",
 							"miss-esc-x",
@@ -2747,6 +2772,15 @@
 			"title": "Lua",
 			"type": "object"
 		},
+		"configurationDefaults": {
+			"[lua]": {
+				"editor.quickSuggestions": {
+					"comments": "inline",
+					"other": "on",
+					"strings": "on"
+				}
+			}
+		},
 		"jsonValidation": [
 			{
 				"fileMatch": [
@@ -2881,16 +2915,7 @@
 					]
 				}
 			}
-		],
-		"configurationDefaults": {
-			"[lua]": {
-				"editor.quickSuggestions": {
-					"other": "on",
-					"comments": "inline",
-					"strings": "on"
-				}
-			}
-		}
+		]
 	},
 	"description": "Lua Language Server coded by Lua",
 	"displayName": "Lua",
@@ -2914,5 +2939,5 @@
 	"sponsor": {
 		"url": "https://github.com/sumneko/lua-language-server/issues/484"
 	},
-	"version": "3.5.2"
+	"version": "3.5.3"
 }
