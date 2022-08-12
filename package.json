@@ -2881,7 +2881,16 @@
 					]
 				}
 			}
-		]
+		],
+		"configurationDefaults": {
+			"[lua]": {
+				"editor.quickSuggestions": {
+					"other": "on",
+					"comments": "inline",
+					"strings": "on"
+				}
+			}
+		}
 	},
 	"description": "Lua Language Server coded by Lua",
 	"displayName": "Lua",

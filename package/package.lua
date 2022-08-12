@@ -61,6 +61,15 @@ return {
                 },
             },
         },
+        configurationDefaults = {
+            ["[lua]"] = {
+                ["editor.quickSuggestions"] = {
+                    comments = "inline",
+                    other = "on",
+                    strings = "on",
+                },
+            },
+        },
     },
     capabilities = {
         untrustedWorkspaces = {
