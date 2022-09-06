@@ -253,6 +253,7 @@
                     "missing-return",
                     "missing-return-value",
                     "need-check-nil",
+                    "need-paren",
                     "newfield-call",
                     "newline-call",
                     "no-unknown",
@@ -2583,6 +2584,16 @@
                     ],
                     "type": "string"
                 },
+                "string.buffer": {
+                    "default": "default",
+                    "description": "%config.runtime.builtin.string.buffer%",
+                    "enum": [
+                        "default",
+                        "enable",
+                        "disable"
+                    ],
+                    "type": "string"
+                },
                 "table": {
                     "default": "default",
                     "description": "%config.runtime.builtin.table%",
@@ -2887,6 +2898,37 @@
             "markdownDescription": "同位類型中只要有一個子類型滿足條件，則同位類型也滿足條件。\n\n此設定為 `false` 時，`number|boolean` 類型無法賦給 `number` 類型；為 `true` 時則可以。\n",
             "scope": "resource",
             "type": "boolean"
+        },
+        "typeFormat": {
+            "properties": {
+                "config": {
+                    "$ref": "#/properties/typeFormat.config"
+                }
+            }
+        },
+        "typeFormat.config": {
+            "additionalProperties": false,
+            "markdownDescription": "%config.typeFormat.config%",
+            "properties": {
+                "auto_complete_end": {
+                    "default": "true",
+                    "description": "%config.typeFormat.config.auto_complete_end%",
+                    "type": "string"
+                },
+                "auto_complete_table_sep": {
+                    "default": "true",
+                    "description": "%config.typeFormat.config.auto_complete_table_sep%",
+                    "type": "string"
+                },
+                "format_line": {
+                    "default": "true",
+                    "description": "%config.typeFormat.config.format_line%",
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "config",
+            "type": "object"
         },
         "window": {
             "properties": {
