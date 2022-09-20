@@ -67,6 +67,24 @@ class LuaClient {
             };
             let config = vscode_1.workspace.getConfiguration(undefined, (_a = vscode.workspace.workspaceFolders) === null || _a === void 0 ? void 0 : _a[0]);
             let commandParam = config.get("Lua.misc.parameters");
+            let command = yield this.getCommand(config);
+            let serverOptions = {
+                command: command,
+                args: commandParam,
+            };
+            this.client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
+            //client.registerProposedFeatures();
+            yield this.client.start();
+            this.onCommand();
+            this.statusBar();
+        });
+    }
+    getCommand(config) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let executablePath = config.get("Lua.misc.executablePath");
+            if (executablePath && executablePath != "") {
+                return executablePath;
+            }
             let command;
             let platform = os.platform();
             let binDir;
@@ -86,15 +104,7 @@ class LuaClient {
                     yield fs.promises.chmod(command, '777');
                     break;
             }
-            let serverOptions = {
-                command: command,
-                args: commandParam,
-            };
-            this.client = new node_1.LanguageClient('Lua', 'Lua', serverOptions, clientOptions);
-            //client.registerProposedFeatures();
-            yield this.client.start();
-            this.onCommand();
-            this.statusBar();
+            return command;
         });
     }
     stop() {

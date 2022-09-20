@@ -72,6 +72,31 @@ class LuaClient {
 
         let config = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]);
         let commandParam: string[] = config.get("Lua.misc.parameters");
+        let command: string = await this.getCommand(config);
+
+        let serverOptions: ServerOptions = {
+            command: command,
+            args:    commandParam,
+        };
+
+        this.client = new LanguageClient(
+            'Lua',
+            'Lua',
+            serverOptions,
+            clientOptions
+        );
+
+        //client.registerProposedFeatures();
+        await this.client.start();
+        this.onCommand();
+        this.statusBar();
+    }
+
+    private async getCommand(config: vscode.WorkspaceConfiguration) {
+        let executablePath: string = config.get("Lua.misc.executablePath");
+        if (executablePath && executablePath != "") {
+            return executablePath;
+        }
         let command: string;
         let platform: string = os.platform();
         let binDir: string;
@@ -96,7 +121,7 @@ class LuaClient {
                         'lua-language-server'
                     )
                 );
-                await fs.promises.chmod(command, '777')
+                await fs.promises.chmod(command, '777');
                 break;
             case "darwin":
                 command = this.context.asAbsolutePath(
@@ -106,28 +131,12 @@ class LuaClient {
                         'lua-language-server'
                     )
                 );
-                await fs.promises.chmod(command, '777')
+                await fs.promises.chmod(command, '777');
                 break;
         }
-
-        let serverOptions: ServerOptions = {
-            command: command,
-            args:    commandParam,
-        };
-
-        this.client = new LanguageClient(
-            'Lua',
-            'Lua',
-            serverOptions,
-            clientOptions
-        );
-
-        //client.registerProposedFeatures();
-        await this.client.start();
-        this.onCommand();
-        this.statusBar();
+        return command;
     }
-   
+
     async stop() {
         this.client.stop();
         for (const disposable of this.disposables) {
