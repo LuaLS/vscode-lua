@@ -68,6 +68,7 @@ return {
                     other = "on",
                     strings = "on",
                 },
+                ["editor.semanticHighlighting.enabled"] = true,
             },
         },
     },
