@@ -136,6 +136,7 @@ local count = copyFiles(ROOT , out) {
                 ['extension.js']    = true,
             },
         },
+        ['web']               = true
     },
     ['server'] = {
         ['bin']               = true,

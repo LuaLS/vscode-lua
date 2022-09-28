@@ -33,6 +33,21 @@ return {
     },
     main = "./client/out/extension",
     contributes = {
+        commands = {
+            {
+                command = "lua.psi.view",
+                title = "Lua Psi Viewer"
+            }
+        },
+        menus = {
+            ["editor/context"] = {
+                {
+                    when = "resourceLangId == lua",
+                    command = "lua.psi.view",
+                    group = "z_commands"
+                }
+            }
+        },
         configuration = {
             type = "object",
             title = "Lua",
