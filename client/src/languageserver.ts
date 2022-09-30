@@ -18,7 +18,7 @@ import {
     DocumentSelector,
 } from 'vscode-languageclient/node';
 
-let defaultClient: LuaClient;
+export let defaultClient: LuaClient;
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {

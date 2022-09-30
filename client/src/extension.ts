@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
 import * as languageserver from './languageserver';
+import * as psi from './psi/psiViewer';
 
 let luadoc = require('../3rd/vscode-lua-doc/extension.js')
 
@@ -23,6 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
     luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc'
 
     luadoc.activate(luaDocContext);
+    psi.activate(context);
 
     return {
         async reportAPIDoc(params: any) {

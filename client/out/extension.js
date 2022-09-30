@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const languageserver = require("./languageserver");
+const psi = require("./psi/psiViewer");
 let luadoc = require('../3rd/vscode-lua-doc/extension.js');
 function activate(context) {
     languageserver.activate(context);
@@ -29,6 +30,7 @@ function activate(context) {
     luaDocContext.OpenCommand = 'extension.lua.doc';
     luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc';
     luadoc.activate(luaDocContext);
+    psi.activate(context);
     return {
         reportAPIDoc(params) {
             return __awaiter(this, void 0, void 0, function* () {

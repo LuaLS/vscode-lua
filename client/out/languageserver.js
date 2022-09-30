@@ -9,14 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reportAPIDoc = exports.deactivate = exports.activate = void 0;
+exports.reportAPIDoc = exports.deactivate = exports.activate = exports.defaultClient = void 0;
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
 const vscode = require("vscode");
 const vscode_1 = require("vscode");
 const node_1 = require("vscode-languageclient/node");
-let defaultClient;
 function registerCustomCommands(context) {
     context.subscriptions.push(vscode_1.commands.registerCommand('lua.config', (changes) => {
         let propMap = new Map();
@@ -150,11 +149,11 @@ function activate(context) {
             return;
         }
         // Untitled files go to a default client.
-        if (!defaultClient) {
-            defaultClient = new LuaClient(context, [
+        if (!exports.defaultClient) {
+            exports.defaultClient = new LuaClient(context, [
                 { language: 'lua' }
             ]);
-            defaultClient.start();
+            exports.defaultClient.start();
             return;
         }
     }
@@ -164,9 +163,9 @@ function activate(context) {
 exports.activate = activate;
 function deactivate() {
     return __awaiter(this, void 0, void 0, function* () {
-        if (defaultClient) {
-            defaultClient.stop();
-            defaultClient = null;
+        if (exports.defaultClient) {
+            exports.defaultClient.stop();
+            exports.defaultClient = null;
         }
         return undefined;
     });
@@ -174,10 +173,10 @@ function deactivate() {
 exports.deactivate = deactivate;
 function reportAPIDoc(params) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (!defaultClient) {
+        if (!exports.defaultClient) {
             return;
         }
-        defaultClient.client.sendNotification('$/api/report', params);
+        exports.defaultClient.client.sendNotification('$/api/report', params);
     });
 }
 exports.reportAPIDoc = reportAPIDoc;
