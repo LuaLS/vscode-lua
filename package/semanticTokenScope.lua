@@ -51,6 +51,7 @@ return {
     ["class.declaration"] = {"support.class.lua"},
     ["type"] = {"support.type.lua"},
     ["type.modification"] = {"storage.type.generic.lua"},
+    ["type.readonly"] = {"storage.type.self.lua"},
     ["macro"] = {"variable.lua"},
     ["event.static"] = {"support.class.lua"},
 }
