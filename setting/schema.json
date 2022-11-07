@@ -163,6 +163,9 @@
                 "workspaceDelay": {
                     "$ref": "#/properties/diagnostics.workspaceDelay"
                 },
+                "workspaceEvent": {
+                    "$ref": "#/properties/diagnostics.workspaceEvent"
+                },
                 "workspaceRate": {
                     "$ref": "#/properties/diagnostics.workspaceRate"
                 }
@@ -208,6 +211,7 @@
                     "exp-in-action",
                     "global-in-nil-env",
                     "index-in-func-name",
+                    "invisible",
                     "jump-local-scope",
                     "keyword",
                     "local-limit",
@@ -231,6 +235,7 @@
                     "luadoc-miss-operator-name",
                     "luadoc-miss-param-extends",
                     "luadoc-miss-param-name",
+                    "luadoc-miss-see-name",
                     "luadoc-miss-sign-name",
                     "luadoc-miss-symbol",
                     "luadoc-miss-type-name",
@@ -409,7 +414,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Any",
                         "Opened",
@@ -557,7 +562,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Error",
                         "Warning",
@@ -919,6 +924,19 @@
                 "global-in-nil-env": {
                     "default": "Any",
                     "description": "Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "invisible": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.invisible%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1682,6 +1700,21 @@
                     ],
                     "type": "string"
                 },
+                "invisible": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.invisible%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "lowercase-global": {
                     "default": "Information",
                     "description": "Enable lowercase global variable definition diagnostics.",
@@ -2193,15 +2226,71 @@
         },
         "diagnostics.workspaceDelay": {
             "default": 3000,
-            "markdownDescription": "Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.",
+            "markdownDescription": "Latency (milliseconds) for workspace diagnostics.",
             "scope": "resource",
             "type": "integer"
+        },
+        "diagnostics.workspaceEvent": {
+            "default": "OnSave",
+            "enum": [
+                "OnChange",
+                "OnSave",
+                "None"
+            ],
+            "markdownDescription": "Set the time to trigger workspace diagnostics.",
+            "markdownEnumDescriptions": [
+                "Trigger workspace diagnostics when the file is changed.",
+                "Trigger workspace diagnostics when the file is saved.",
+                "Disable workspace diagnostics."
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.",
             "scope": "resource",
             "type": "integer"
+        },
+        "doc": {
+            "properties": {
+                "packageName": {
+                    "$ref": "#/properties/doc.packageName"
+                },
+                "privateName": {
+                    "$ref": "#/properties/doc.privateName"
+                },
+                "protectedName": {
+                    "$ref": "#/properties/doc.protectedName"
+                }
+            }
+        },
+        "doc.packageName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as package, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are package, witch can only be accessed in the file where the definition is located.",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.privateName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as private, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are private, witch can only be accessed in the class where the definition is located.",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.protectedName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as protected, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are protected, witch can only be accessed in the class where the definition is located and its subclasses.",
+            "scope": "resource",
+            "type": "array"
         },
         "format": {
             "properties": {
@@ -2399,17 +2488,26 @@
         },
         "misc": {
             "properties": {
+                "executablePath": {
+                    "$ref": "#/properties/misc.executablePath"
+                },
                 "parameters": {
                     "$ref": "#/properties/misc.parameters"
                 }
             }
+        },
+        "misc.executablePath": {
+            "default": "",
+            "markdownDescription": "Specify the executable path in VSCode.",
+            "scope": "resource",
+            "type": "string"
         },
         "misc.parameters": {
             "default": [],
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.",
+            "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.",
             "scope": "resource",
             "type": "array"
         },

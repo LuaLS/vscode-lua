@@ -163,6 +163,9 @@
                 "workspaceDelay": {
                     "$ref": "#/properties/diagnostics.workspaceDelay"
                 },
+                "workspaceEvent": {
+                    "$ref": "#/properties/diagnostics.workspaceEvent"
+                },
                 "workspaceRate": {
                     "$ref": "#/properties/diagnostics.workspaceRate"
                 }
@@ -208,6 +211,7 @@
                     "exp-in-action",
                     "global-in-nil-env",
                     "index-in-func-name",
+                    "invisible",
                     "jump-local-scope",
                     "keyword",
                     "local-limit",
@@ -231,6 +235,7 @@
                     "luadoc-miss-operator-name",
                     "luadoc-miss-param-extends",
                     "luadoc-miss-param-name",
+                    "luadoc-miss-see-name",
                     "luadoc-miss-sign-name",
                     "luadoc-miss-symbol",
                     "luadoc-miss-type-name",
@@ -409,7 +414,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Any",
                         "Opened",
@@ -557,7 +562,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Error",
                         "Warning",
@@ -919,6 +924,19 @@
                 "global-in-nil-env": {
                     "default": "Any",
                     "description": "不能使用全域變數（ `_ENV` 被設定為 `nil`）",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "invisible": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.invisible%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1682,6 +1700,21 @@
                     ],
                     "type": "string"
                 },
+                "invisible": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.invisible%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "lowercase-global": {
                     "default": "Information",
                     "description": "首字母小寫的全域變數定義",
@@ -2193,15 +2226,71 @@
         },
         "diagnostics.workspaceDelay": {
             "default": 3000,
-            "markdownDescription": "進行工作區診斷的延遲（毫秒）。當你啟動工作區，或編輯了任何檔案後，將會在背景對整個工作區進行重新診斷。設定為負數可以停用工作區診斷。",
+            "markdownDescription": "進行工作區診斷的延遲（毫秒）。",
             "scope": "resource",
             "type": "integer"
+        },
+        "diagnostics.workspaceEvent": {
+            "default": "OnSave",
+            "enum": [
+                "OnChange",
+                "OnSave",
+                "None"
+            ],
+            "markdownDescription": "Set the time to trigger workspace diagnostics.",
+            "markdownEnumDescriptions": [
+                "Trigger workspace diagnostics when the file is changed.",
+                "Trigger workspace diagnostics when the file is saved.",
+                "Disable workspace diagnostics."
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "工作區診斷的執行速率（百分比）。降低該值會減少CPU使用率，但是也會降低工作區診斷的速度。你目前正在編輯的檔案的診斷總是全速完成，不受該選項影響。",
             "scope": "resource",
             "type": "integer"
+        },
+        "doc": {
+            "properties": {
+                "packageName": {
+                    "$ref": "#/properties/doc.packageName"
+                },
+                "privateName": {
+                    "$ref": "#/properties/doc.privateName"
+                },
+                "protectedName": {
+                    "$ref": "#/properties/doc.protectedName"
+                }
+            }
+        },
+        "doc.packageName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as package, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are package, witch can only be accessed in the file where the definition is located.",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.privateName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as private, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are private, witch can only be accessed in the class where the definition is located.",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.protectedName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Treat specific field names as protected, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are protected, witch can only be accessed in the class where the definition is located and its subclasses.",
+            "scope": "resource",
+            "type": "array"
         },
         "format": {
             "properties": {
@@ -2399,10 +2488,19 @@
         },
         "misc": {
             "properties": {
+                "executablePath": {
+                    "$ref": "#/properties/misc.executablePath"
+                },
                 "parameters": {
                     "$ref": "#/properties/misc.parameters"
                 }
             }
+        },
+        "misc.executablePath": {
+            "default": "",
+            "markdownDescription": "Specify the executable path in VSCode.",
+            "scope": "resource",
+            "type": "string"
         },
         "misc.parameters": {
             "default": [],

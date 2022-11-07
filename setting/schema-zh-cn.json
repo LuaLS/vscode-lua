@@ -163,6 +163,9 @@
                 "workspaceDelay": {
                     "$ref": "#/properties/diagnostics.workspaceDelay"
                 },
+                "workspaceEvent": {
+                    "$ref": "#/properties/diagnostics.workspaceEvent"
+                },
                 "workspaceRate": {
                     "$ref": "#/properties/diagnostics.workspaceRate"
                 }
@@ -208,6 +211,7 @@
                     "exp-in-action",
                     "global-in-nil-env",
                     "index-in-func-name",
+                    "invisible",
                     "jump-local-scope",
                     "keyword",
                     "local-limit",
@@ -231,6 +235,7 @@
                     "luadoc-miss-operator-name",
                     "luadoc-miss-param-extends",
                     "luadoc-miss-param-name",
+                    "luadoc-miss-see-name",
                     "luadoc-miss-sign-name",
                     "luadoc-miss-symbol",
                     "luadoc-miss-type-name",
@@ -409,7 +414,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Any",
                         "Opened",
@@ -557,7 +562,7 @@
                 },
                 "strict": {
                     "default": "Fallback",
-                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
                     "enum": [
                         "Error",
                         "Warning",
@@ -919,6 +924,19 @@
                 "global-in-nil-env": {
                     "default": "Any",
                     "description": "不能使用全局变量（ `_ENV` 被设置为了 `nil`）",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "invisible": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.invisible%",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1682,6 +1700,21 @@
                     ],
                     "type": "string"
                 },
+                "invisible": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.invisible%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
                 "lowercase-global": {
                     "default": "Information",
                     "description": "首字母小写的全局变量定义",
@@ -2193,15 +2226,71 @@
         },
         "diagnostics.workspaceDelay": {
             "default": 3000,
-            "markdownDescription": "进行工作区诊断的延迟（毫秒）。当你启动工作区，或编辑了任意文件后，将会在后台对整个工作区进行重新诊断。设置为负数可以禁用工作区诊断。",
+            "markdownDescription": "进行工作区诊断的延迟（毫秒）。",
             "scope": "resource",
             "type": "integer"
+        },
+        "diagnostics.workspaceEvent": {
+            "default": "OnSave",
+            "enum": [
+                "OnChange",
+                "OnSave",
+                "None"
+            ],
+            "markdownDescription": "设置触发工作区诊断的时机。",
+            "markdownEnumDescriptions": [
+                "当文件发生变化时触发工作区诊断。",
+                "当文件保存时触发工作区诊断。",
+                "关闭工作区诊断。"
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
             "markdownDescription": "工作区诊断的运行速率（百分比）。降低该值会减少CPU占用，但是也会降低工作区诊断的速度。你当前正在编辑的文件的诊断总是全速完成，不受该选项影响。",
             "scope": "resource",
             "type": "integer"
+        },
+        "doc": {
+            "properties": {
+                "packageName": {
+                    "$ref": "#/properties/doc.packageName"
+                },
+                "privateName": {
+                    "$ref": "#/properties/doc.privateName"
+                },
+                "protectedName": {
+                    "$ref": "#/properties/doc.protectedName"
+                }
+            }
+        },
+        "doc.packageName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "将特定名称的字段视为package，例如 `m_*` 意味着 `XXX.m_id` 与 `XXX.m_type` 只能在定义所在的文件中访问。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.privateName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "将特定名称的字段视为私有，例如 `m_*` 意味着 `XXX.m_id` 与 `XXX.m_type` 是私有字段，只能在定义所在的类中访问。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "doc.protectedName": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "将特定名称的字段视为受保护，例如 `m_*` 意味着 `XXX.m_id` 与 `XXX.m_type` 是受保护的字段，只能在定义所在的类极其子类中访问。",
+            "scope": "resource",
+            "type": "array"
         },
         "format": {
             "properties": {
@@ -2399,10 +2488,19 @@
         },
         "misc": {
             "properties": {
+                "executablePath": {
+                    "$ref": "#/properties/misc.executablePath"
+                },
                 "parameters": {
                     "$ref": "#/properties/misc.parameters"
                 }
             }
+        },
+        "misc.executablePath": {
+            "default": "",
+            "markdownDescription": "VSCode中指定可执行文件路径。",
+            "scope": "resource",
+            "type": "string"
         },
         "misc.parameters": {
             "default": [],
