@@ -1,6 +1,16 @@
 # changelog
 
+## 3.6.1
+`2022-11-8`
+* `FIX` wrong diagnostics for `pcall` and `xpcall`
+* `FIX` duplicate fields in table hover
+* `FIX` description disapeared for overloaded function
+* `FIX` [#1675]
+
+[#1675]: https://github.com/sumneko/lua-language-server/issues/1675
+
 ## 3.6.0
+`2022-11-8`
 * `NEW` supports `private`/`protected`/`public`/`package`
   * mark in `doc.field`
     ```lua
@@ -163,6 +173,7 @@ server will generate `doc.json` and `doc.md` in `LOGPATH`.
 
 [#1153]: https://github.com/sumneko/lua-language-server/issues/1153
 [#1177]: https://github.com/sumneko/lua-language-server/issues/1177
+[#1201]: https://github.com/sumneko/lua-language-server/issues/1201
 [#1202]: https://github.com/sumneko/lua-language-server/issues/1202
 [#1332]: https://github.com/sumneko/lua-language-server/issues/1332
 [#1344]: https://github.com/sumneko/lua-language-server/issues/1344
