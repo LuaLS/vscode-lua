@@ -73,6 +73,7 @@ return {
                 id = 'jsonc',
                 filenames = {
                     '.luarc.json',
+                    'config.json',
                 },
             },
         },

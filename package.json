@@ -2919,7 +2919,8 @@
 		"languages": [
 			{
 				"filenames": [
-					".luarc.json"
+					".luarc.json",
+					"config.json"
 				],
 				"id": "jsonc"
 			}
