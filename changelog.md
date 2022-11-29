@@ -1,5 +1,28 @@
 # changelog
 
+`2022-11-29`
+## 3.6.4
+* `NEW` modify `require` after renaming files
+* `FIX` circulation reference in process analysis
+  ```lua
+  ---@type number
+  local x
+
+  ---@type number
+  local y
+
+  x = y
+
+  y = x --> Can not infer `y` before
+  ```
+* `FIX` [#1698]
+* `FIX` [#1704]
+* `FIX` [#1717]
+
+[#1698]: https://github.com/sumneko/lua-language-server/issues/1698
+[#1704]: https://github.com/sumneko/lua-language-server/issues/1704
+[#1717]: https://github.com/sumneko/lua-language-server/issues/1717
+
 ## 3.6.3
 `2022-11-14`
 * `FIX` [#1684]
