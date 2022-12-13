@@ -13,6 +13,7 @@
 		"vscode": "^1.70.0"
 	},
 	"dependencies": {
+		"axios": "^1.2.1",
 		"vscode-languageclient": "8.0.2"
 	},
 	"devDependencies": {

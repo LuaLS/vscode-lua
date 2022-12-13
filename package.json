@@ -25,6 +25,10 @@
 			{
 				"command": "lua.psi.view",
 				"title": "Lua Psi Viewer"
+			},
+			{
+				"command": "lua.addon_manager.open",
+				"title": "Lua: Open Addon Manager"
 			}
 		],
 		"configuration": {
@@ -2915,6 +2919,15 @@
 				"id": "jsonc"
 			}
 		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "addon-manager",
+					"title": "Addon Manager",
+					"icon": "images/logo.png"
+				}
+			]
+		},
 		"menus": {
 			"editor/context": [
 				{
