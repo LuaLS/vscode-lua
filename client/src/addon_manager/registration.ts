@@ -8,7 +8,7 @@ export async function activate(context: vscode.ExtensionContext) {
     // Register commands
     context.subscriptions.push(
         vscode.commands.registerCommand("lua.addon_manager.open", () => {
-            AddonManager.render(context.extensionUri);
+            AddonManager.render(context);
         })
     );
 

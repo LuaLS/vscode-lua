@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 import { logger } from "../../logger";
 import { getUri } from "../util/getUri";
 import { credentials } from "../authentication";
-import path = require("path");
+import { commands } from "../commands";
 
 /** Name of the folder containing addons in the remote repo */
 export const ADDON_FOLDER = "addons";
@@ -15,11 +15,13 @@ export class AddonManager {
     private _disposables: vscode.Disposable[] = [];
     private addons = [];
 
-    private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
+    private constructor(context: vscode.ExtensionContext, panel: vscode.WebviewPanel) {
+        const extensionUri = context.extensionUri;
+
         this._panel = panel;
         this._extensionUri = extensionUri;
         this._panel.onDidDispose(this.dispose, null, this._disposables);
-        this._setWebviewMessageListener(this._panel.webview);
+        this._setWebviewMessageListener(context, this._panel.webview);
         this._panel.iconPath = {
             dark: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
             light: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
@@ -31,7 +33,9 @@ export class AddonManager {
     }
 
     /** Reveal or create a new panel in VS Code */
-    public static render(extensionUri: vscode.Uri) {
+    public static render(context: vscode.ExtensionContext) {
+        const extensionUri = context.extensionUri;
+
         if (AddonManager.currentPanel) {
             AddonManager.currentPanel._panel.reveal(vscode.ViewColumn.One);
         } else {
@@ -46,11 +50,12 @@ export class AddonManager {
                 }
             );
 
-            AddonManager.currentPanel = new AddonManager(panel, extensionUri);
+            AddonManager.currentPanel = new AddonManager(context, panel);
         }
 
         // Ask user to login and send their access token to the webview
         credentials.login(true).then(() => {
+            if (!AddonManager.currentPanel) return;
             AddonManager.currentPanel._panel.webview.postMessage({
                 command: "accessToken",
                 data: credentials.access_token,
@@ -124,10 +129,20 @@ export class AddonManager {
     }
 
     /** Sets up event listener for messages sent from webview */
-    private _setWebviewMessageListener(webview: vscode.Webview) {
+    private _setWebviewMessageListener(context: vscode.ExtensionContext, webview: vscode.Webview) {
         webview.onDidReceiveMessage((message: any) => {
-            const command = message.command;
-            vscode.window.showInformationMessage(command);
+            const json = JSON.parse(message);
+            const command = json.command;
+
+            logger.debug(
+                `Message from WebVue:\n${JSON.stringify(json, null, "\t")}`
+            );
+
+            try {
+                commands[command](context, json);
+            } catch (e) {
+                logger.error(e);
+            }
         });
     }
 }
