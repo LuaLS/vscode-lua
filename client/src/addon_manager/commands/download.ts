@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import * as vscode from "vscode";
+import { commands } from ".";
 import { logger } from "../../logger";
 import { REPOSITORY_OWNER, REPOSITORY_NAME, ADDONS_DIRECTORY } from "../config";
 
@@ -91,6 +92,7 @@ export default async (
     Promise.all(promises)
         .then(() => {
             logger.info(`Successfully downloaded "${data.name}" addon!`);
+            commands.getInstalled(context, webview);
         })
         .catch(() => {
             logger.error(
