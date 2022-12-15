@@ -13,9 +13,11 @@ export class AddonManager {
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
     private _disposables: vscode.Disposable[] = [];
-    private addons = [];
 
-    private constructor(context: vscode.ExtensionContext, panel: vscode.WebviewPanel) {
+    private constructor(
+        context: vscode.ExtensionContext,
+        panel: vscode.WebviewPanel
+    ) {
         const extensionUri = context.extensionUri;
 
         this._panel = panel;
@@ -61,6 +63,8 @@ export class AddonManager {
                 data: credentials.access_token,
             });
         });
+
+        commands.getInstalled(context, this.currentPanel._panel.webview);
     }
 
     /** Dispose of panel to clean up resources when it is closed */
@@ -129,17 +133,18 @@ export class AddonManager {
     }
 
     /** Sets up event listener for messages sent from webview */
-    private _setWebviewMessageListener(context: vscode.ExtensionContext, webview: vscode.Webview) {
+    private _setWebviewMessageListener(
+        context: vscode.ExtensionContext,
+        webview: vscode.Webview
+    ) {
         webview.onDidReceiveMessage((message: any) => {
+            logger.debug(`Message from WebVue: ${message}`);
+
             const json = JSON.parse(message);
             const command = json.command;
 
-            logger.debug(
-                `Message from WebVue:\n${JSON.stringify(json, null, "\t")}`
-            );
-
             try {
-                commands[command](context, json);
+                commands[command](context, webview, json);
             } catch (e) {
                 logger.error(e);
             }

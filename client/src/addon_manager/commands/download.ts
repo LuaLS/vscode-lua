@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosPromise, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import * as vscode from "vscode";
 import { logger } from "../../logger";
 import { REPOSITORY_OWNER, REPOSITORY_NAME, ADDONS_DIRECTORY } from "../config";
@@ -6,21 +6,23 @@ import { REPOSITORY_OWNER, REPOSITORY_NAME, ADDONS_DIRECTORY } from "../config";
 import type { TreeNode } from "../types/github";
 
 type Message = {
-    command: string;
+    command: "download";
     name: string;
     tree: TreeNode[];
 };
 
-export default async (context: vscode.ExtensionContext, data: Message) => {
+export default async (
+    context: vscode.ExtensionContext,
+    webview: vscode.Webview,
+    data: Message
+) => {
     const endpoint = `https://raw.githubusercontent.com/${REPOSITORY_OWNER}/${REPOSITORY_NAME}/main/${ADDONS_DIRECTORY}`;
     const extensionStorageURI = context.globalStorageUri;
     const addonDirectoryURI = vscode.Uri.joinPath(
         extensionStorageURI,
+        ADDONS_DIRECTORY,
         data.name
     );
-
-    // NOTE: Creates directory. If it does not exist, does nothing
-    await vscode.workspace.fs.createDirectory(addonDirectoryURI);
 
     const promises = [];
     for (const node of data.tree) {
