@@ -61,7 +61,7 @@ type Addon = {
     name: string;
     description: string;
     size: number;
-    latestHash?: string;
+    hash?: string;
 };
 
 export default async (
@@ -86,8 +86,13 @@ export default async (
             const name = entry[0];
             const addonUri = vscode.Uri.joinPath(addonsDirectoryURI, name);
             const configFileURI = vscode.Uri.joinPath(addonUri, "config.json");
+            const versionFileURI = vscode.Uri.joinPath(addonUri, ".version");
 
-            const addon = { name, description: "", size: 0 };
+            const addon: Addon = {
+                name,
+                description: "Unknown",
+                size: 0,
+            };
 
             // Get config file
             // Gets description of addon
@@ -100,6 +105,18 @@ export default async (
             } catch (e) {
                 localLogger.error(
                     `Failed to get installed addon (${name}) description! (${e})`
+                );
+            }
+
+            // Get version info
+            try {
+                const content = await vscode.workspace.fs.readFile(
+                    versionFileURI
+                );
+                addon.hash = content.toString();
+            } catch (e) {
+                localLogger.error(
+                    `Failed to get version info for ${name} (${e})`
                 );
             }
 

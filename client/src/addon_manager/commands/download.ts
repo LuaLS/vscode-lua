@@ -13,6 +13,7 @@ const localLogger = createChildLogger("Download Addon");
 type Message = {
     name: string;
     tree: TreeNode[];
+    hash: string;
 };
 
 export default async (
@@ -29,6 +30,10 @@ export default async (
     );
 
     const promises = [];
+
+    // Save version info
+    promises.push(saveHashToFile(addonDirectoryURI, data.hash));
+
     for (const node of data.tree) {
         const uri = vscode.Uri.joinPath(addonDirectoryURI, node.path);
 
@@ -75,4 +80,14 @@ export default async (
             localLogger.error(e);
             uninstall(context, webview, { name: data.name });
         });
+};
+
+const saveHashToFile = (path: vscode.Uri, hash: string) => {
+    const uri = vscode.Uri.joinPath(path, ".version");
+
+    return new Promise(async (resolve) => {
+        await vscode.workspace.fs.writeFile(uri, stringToByteArray(hash));
+        localLogger.info(`Saved version info`);
+        resolve(true);
+    });
 };
