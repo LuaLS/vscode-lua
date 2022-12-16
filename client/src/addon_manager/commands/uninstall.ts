@@ -1,10 +1,11 @@
 import * as vscode from "vscode";
-import { commands } from ".";
-import { logger } from "../../logger";
+import getInstalled from "./getInstalled";
+import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
 
+const localLogger = createChildLogger("Uninstall Addon");
+
 type Message = {
-    command: "uninstall";
     name: string;
 };
 
@@ -19,14 +20,18 @@ export default async (
         ADDONS_DIRECTORY,
         data.name
     );
-    vscode.workspace.fs.delete(uri, { recursive: true, useTrash: true }).then(
-        () => {
-            logger.info(`Successfully deleted ${data.name}`);
-        },
-        (err) => {
-            logger.error(`Failed to delete "${data.name} addon (${err})"`);
-        }
-    );
 
-    commands.getInstalled(context, webview);
+    return vscode.workspace.fs
+        .delete(uri, { recursive: true, useTrash: true })
+        .then(
+            () => {
+                localLogger.info(`Successfully uninstalled ${data.name}`);
+                getInstalled(context, webview);
+            },
+            (err) => {
+                localLogger.error(
+                    `Failed to uninstall "${data.name} addon (${err})"`
+                );
+            }
+        );
 };

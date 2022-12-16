@@ -1,15 +1,12 @@
 import * as vscode from "vscode";
 
-import { logger } from "../../logger";
+import { createChildLogger, logger } from "../../services/logging.service";
 import { getUri } from "../util/getUri";
 import { credentials } from "../authentication";
 import { commands } from "../commands";
 
-/** Name of the folder containing addons in the remote repo */
-export const ADDON_FOLDER = "addons";
-
-export class AddonManager {
-    public static currentPanel: AddonManager | undefined;
+export class WebVue {
+    public static currentPanel: WebVue | undefined;
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
     private _disposables: vscode.Disposable[] = [];
@@ -38,8 +35,8 @@ export class AddonManager {
     public static render(context: vscode.ExtensionContext) {
         const extensionUri = context.extensionUri;
 
-        if (AddonManager.currentPanel) {
-            AddonManager.currentPanel._panel.reveal(vscode.ViewColumn.One);
+        if (WebVue.currentPanel) {
+            WebVue.currentPanel._panel.reveal(vscode.ViewColumn.One);
         } else {
             const panel = vscode.window.createWebviewPanel(
                 "lua-addon_manager",
@@ -52,24 +49,32 @@ export class AddonManager {
                 }
             );
 
-            AddonManager.currentPanel = new AddonManager(context, panel);
+            WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        // Ask user to login and send their access token to the webview
-        credentials.login(true).then(() => {
-            if (!AddonManager.currentPanel) return;
-            AddonManager.currentPanel._panel.webview.postMessage({
+        // If we don't already have user's access token, ask them to sign in
+        // Then send access token to webview
+        if (!credentials.access_token) {
+            credentials.login(true).then(() => {
+                if (!WebVue.currentPanel) return;
+                WebVue.currentPanel._panel.webview.postMessage({
+                    command: "accessToken",
+                    data: credentials.access_token,
+                });
+            });
+        } else {
+            WebVue.currentPanel._panel.webview.postMessage({
                 command: "accessToken",
                 data: credentials.access_token,
             });
-        });
+        }
 
         commands.getInstalled(context, this.currentPanel._panel.webview);
     }
 
     /** Dispose of panel to clean up resources when it is closed */
     public dispose() {
-        AddonManager.currentPanel = undefined;
+        WebVue.currentPanel = undefined;
 
         this._panel?.dispose();
 
@@ -137,16 +142,26 @@ export class AddonManager {
         context: vscode.ExtensionContext,
         webview: vscode.Webview
     ) {
-        webview.onDidReceiveMessage((message: any) => {
-            logger.debug(`Message from WebVue: ${message}`);
+        const messageLogger = createChildLogger("WebView Message");
+        const commandLogger = createChildLogger("Command");
 
-            const json = JSON.parse(message);
-            const command = json.command;
+        webview.onDidReceiveMessage((message: any) => {
+            let json: { command: string; [index: string]: any };
+            let command;
+
+            try {
+                json = JSON.parse(message);
+                command = json.command;
+            } catch (e) {
+                messageLogger.error(e);
+            }
+
+            commandLogger.debug(`Executing "${command}"`);
 
             try {
                 commands[command](context, webview, json);
             } catch (e) {
-                logger.error(e);
+                commandLogger.error(e);
             }
         });
     }

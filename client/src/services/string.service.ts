@@ -1,0 +1,14 @@
+/** Pad a string to have spaces on either side, making it a set `length`
+ * @param str The string to add padding to
+ * @param length The new total length the string should be with padding
+ */
+export const padText = (str: string, length: number) => {
+    const paddingLength = Math.max(0, length - str.length);
+    const padding = " ".repeat(paddingLength / 2);
+
+    return padding + str + padding;
+};
+
+/** Convert a string to a byte array */
+export const stringToByteArray = (str: string): Uint8Array =>
+    Uint8Array.from(Array.from(str).map((char) => char.charCodeAt(0)));

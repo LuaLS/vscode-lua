@@ -1,8 +1,10 @@
 import * as vscode from "vscode";
-import { logger } from "../logger";
+import { createChildLogger } from "../services/logging.service";
 
 const GITHUB_AUTH_PROVIDED_ID = "github";
 const SCOPES = [];
+
+const localLogger = createChildLogger("Authentication");
 
 export class Credentials {
     access_token: string | undefined;
@@ -26,11 +28,11 @@ export class Credentials {
                 { createIfNone: prompt }
             );
             if (!session?.accessToken) throw "User has not granted permission";
-            logger.info("Logged in to GitHub")
+            localLogger.info("Logged in to GitHub");
             this.access_token = session.accessToken;
             return session.accessToken;
         } catch (e) {
-            logger.warn(`Could not log in to GitHub! (${e})`);
+            localLogger.warn(`Could not log in to GitHub! (${e})`);
             return false;
         }
     }
@@ -41,13 +43,16 @@ export class Credentials {
             vscode.authentication.onDidChangeSessions(async (e) => {
                 if (e.provider.id !== GITHUB_AUTH_PROVIDED_ID) return;
 
-                const session = await vscode.authentication.getSession(GITHUB_AUTH_PROVIDED_ID, SCOPES);
+                const session = await vscode.authentication.getSession(
+                    GITHUB_AUTH_PROVIDED_ID,
+                    SCOPES
+                );
 
                 if (session.accessToken) {
-                    logger.info("Logged in to GitHub!");
+                    localLogger.info("Logged in to GitHub!");
                     this.access_token = session.accessToken;
                 } else {
-                    logger.info("Logged out of GitHub!");
+                    localLogger.info("Logged out of GitHub!");
                     this.access_token = undefined;
                 }
             })

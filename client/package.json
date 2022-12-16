@@ -14,7 +14,8 @@
 	},
 	"dependencies": {
 		"axios": "^1.2.1",
-		"vscode-languageclient": "8.0.2"
+		"vscode-languageclient": "8.0.2",
+		"winston": "^3.8.2"
 	},
 	"devDependencies": {
 		"@types/node": "^17.0.35",

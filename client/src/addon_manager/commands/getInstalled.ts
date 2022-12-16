@@ -1,9 +1,14 @@
 import * as vscode from "vscode";
-import { logger } from "../../logger";
+import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
 
 const MAX_TRAVERSAL_DEPTH = 10;
 
+const localLogger = createChildLogger("Get Installed");
+
+/** Traverses directory, calculating size of child files
+ * @param path The path to start at
+ */
 async function traverse<T extends number>(
     path: vscode.Uri,
     depth: number
@@ -14,7 +19,7 @@ async function traverse(path: vscode.Uri, depth = 0) {
 
     return new Promise<number | false>(async (resolve, reject) => {
         if (depth >= MAX_TRAVERSAL_DEPTH) {
-            logger.warn(
+            localLogger.warn(
                 `Max traversal depth (${MAX_TRAVERSAL_DEPTH}) reached while reading addons directory. Stopped at ${path.path}`
             );
             resolve(false);
@@ -29,12 +34,12 @@ async function traverse(path: vscode.Uri, depth = 0) {
 
             switch (type) {
                 case vscode.FileType.File:
-                    logger.debug(`Found file ${uri.path}`);
+                    localLogger.verbose(`Found file ${uri.path}`);
                     const stats = await vscode.workspace.fs.stat(uri);
                     size += stats.size;
                     break;
                 case vscode.FileType.Directory:
-                    logger.debug(`Found directory ${uri.path}`);
+                    localLogger.verbose(`Found directory ${uri.path}`);
                     const sum = await traverse(uri, depth + 1);
                     if (!sum) {
                         break;
@@ -42,7 +47,9 @@ async function traverse(path: vscode.Uri, depth = 0) {
                     size += sum;
                     break;
                 default:
-                    logger.warn(`Found unsupported file type @ ${uri.path}`);
+                    localLogger.warn(
+                        `Found unsupported file type @ ${uri.path}`
+                    );
                     break;
             }
         }
@@ -91,8 +98,8 @@ export default async (
                 const json = JSON.parse(content.toString());
                 addon.description = json.description;
             } catch (e) {
-                logger.error(
-                    `Failed to get installed addon (${configFileURI.path}) description! (${e})`
+                localLogger.error(
+                    `Failed to get installed addon (${name}) description! (${e})`
                 );
             }
 
@@ -108,6 +115,6 @@ export default async (
             totalSize,
         });
     } catch (e) {
-        logger.error(`Failed to read addons install directory (${e})`);
+        localLogger.error(`Failed to read addons install directory (${e})`);
     }
 };

@@ -1,13 +1,16 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import * as vscode from "vscode";
-import { commands } from ".";
-import { logger } from "../../logger";
+import getInstalled from "./getInstalled";
 import { REPOSITORY_OWNER, REPOSITORY_NAME, ADDONS_DIRECTORY } from "../config";
+import { stringToByteArray } from "../../services/string.service";
+import { createChildLogger } from "../../services/logging.service";
+import uninstall from "./uninstall";
 
 import type { TreeNode } from "../types/github";
 
+const localLogger = createChildLogger("Download Addon");
+
 type Message = {
-    command: "download";
     name: string;
     tree: TreeNode[];
 };
@@ -36,67 +39,40 @@ export default async (
             case "blob":
                 const rawURL = `${endpoint}/${data.name}/${node.path}`;
 
-                logger.debug(`Attempting download of ${rawURL}...`);
+                const promise = new Promise(async (resolve, reject) => {
+                    const response = await axios.get(rawURL, {
+                        responseType: "text",
+                    });
+                    const content = stringToByteArray(response.data);
 
-                promises.push(
-                    axios
-                        .get<string>(rawURL, { responseType: "text" })
-                        .then((response) => {
-                            // Convert raw string to byte array
-                            logger.http(response, `Downloaded ${node.path}!`);
-                            const content = Uint8Array.from(
-                                Array.from(response.data).map((letter) =>
-                                    letter.charCodeAt(0)
-                                )
-                            );
+                    try {
+                        await vscode.workspace.fs.writeFile(uri, content);
+                        localLogger.verbose(`Wrote to ${uri.path}!`);
+                        resolve(true);
+                    } catch (e) {
+                        const message = `Failed to write to ${uri.path} (${e})`;
+                        reject(e);
+                    }
+                });
 
-                            // Write byte array to file
-                            promises.push(
-                                vscode.workspace.fs
-                                    .writeFile(uri, content)
-                                    .then(
-                                        () => {
-                                            logger.debug(
-                                                `Wrote to ${uri.path}`
-                                            );
-                                        },
-                                        (reason) => {
-                                            logger.error(
-                                                `Failed to write to ${uri.path} (${reason})`
-                                            );
-                                        }
-                                    )
-                            );
-                        })
-                        .catch((error: AxiosError) => {
-                            let errorMessage = "Unknown Error Occurred";
-                            const response = error.response;
-
-                            if (response) {
-                                errorMessage = `${response.status}: ${response.statusText}`;
-                            } else {
-                                errorMessage = `${error.name}: ${error.message}`;
-                            }
-                            logger.error(
-                                `Failed to download ${rawURL} (${errorMessage})`
-                            );
-                        })
-                );
+                promises.push(promise);
                 break;
             default:
-                logger.warn(`Unsupported file type in tree: ${node.type}`);
+                localLogger.warn(`Unsupported file type in tree: ${node.type}`);
                 break;
         }
     }
 
-    Promise.all(promises)
+    return Promise.all(promises)
         .then(() => {
-            logger.info(`Successfully downloaded "${data.name}" addon!`);
-            commands.getInstalled(context, webview);
+            localLogger.info(`Successfully downloaded "${data.name}" addon!`);
+            getInstalled(context, webview);
         })
-        .catch(() => {
-            logger.error(
+        .catch((e) => {
+            localLogger.error(
                 `There was an error while downloading ${data.name} addon!`
             );
+            localLogger.error(e);
+            uninstall(context, webview, { name: data.name });
         });
 };
