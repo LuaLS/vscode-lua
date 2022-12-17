@@ -14,6 +14,7 @@ type Message = {
     name: string;
     tree: TreeNode[];
     hash: string;
+    commitDate: number;
 };
 
 export default async (
@@ -32,7 +33,7 @@ export default async (
     const promises = [];
 
     // Save version info
-    promises.push(saveHashToFile(addonDirectoryURI, data.hash));
+    promises.push(saveVersionInfo(addonDirectoryURI, data.commitDate));
 
     for (const node of data.tree) {
         const uri = vscode.Uri.joinPath(addonDirectoryURI, node.path);
@@ -82,12 +83,15 @@ export default async (
         });
 };
 
-const saveHashToFile = (path: vscode.Uri, hash: string) => {
+const saveVersionInfo = (path: vscode.Uri, modifiedDate: number) => {
     const uri = vscode.Uri.joinPath(path, ".version");
 
     return new Promise(async (resolve) => {
-        await vscode.workspace.fs.writeFile(uri, stringToByteArray(hash));
-        localLogger.info(`Saved version info`);
+        await vscode.workspace.fs.writeFile(
+            uri,
+            stringToByteArray(String(modifiedDate))
+        );
+        localLogger.verbose(`Saved version info`);
         resolve(true);
     });
 };

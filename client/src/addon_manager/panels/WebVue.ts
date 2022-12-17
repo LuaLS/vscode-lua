@@ -7,6 +7,7 @@ import { commands } from "../commands";
 
 export class WebVue {
     public static currentPanel: WebVue | undefined;
+    private readonly _context: vscode.ExtensionContext;
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
     private _disposables: vscode.Disposable[] = [];
@@ -17,10 +18,11 @@ export class WebVue {
     ) {
         const extensionUri = context.extensionUri;
 
+        this._context = context;
         this._panel = panel;
         this._extensionUri = extensionUri;
         this._panel.onDidDispose(this.dispose, null, this._disposables);
-        this._setWebviewMessageListener(context, this._panel.webview);
+        this._setWebviewMessageListener(this._panel.webview);
         this._panel.iconPath = {
             dark: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
             light: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
@@ -114,34 +116,88 @@ export class WebVue {
         ]);
 
         // TODO: Lock down CSP https://code.visualstudio.com/api/extension-guides/webview#content-security-policy
-        return `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" type="text/css" href="${stylesUri}">
-            <title>Hello World!</title>
-            <style>
-                @font-face {
-                    font-family: "codicon";
-                    src: url(${codiconUri}) format("truetype");
-                }
-            </style>
-        </head>
-        <body>
-            <div id="app"></div>
-            <script type="module" src="${scriptUri}"></script>
-        </body>
-        </html>
-        `;
+        if (this._context.extensionMode !== vscode.ExtensionMode.Production) {
+            return `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Lua Addon Manager</title>
+                <style>
+                    html,body {
+                        height: 100%;
+                        display: block;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    iframe {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        border: none;
+                        user-select: none;
+                    }
+                </style>
+            </head>
+            <body>
+                <iframe src="http://127.0.0.1:5173/"></iframe>
+                <script>
+                    const vscode = acquireVsCodeApi();
+
+                    const devIframe = document.querySelector("iframe");
+                    window.addEventListener("message", (message) => {
+                        // If message is from VS Code
+
+
+                        if (message.origin.startsWith("vscode-webview")) {
+                            console.log("Message received by development iframe from VS Code");
+                            console.log(message.data);
+                            devIframe.contentWindow.postMessage(message.data, devIframe.src)
+                            return;
+                        }
+
+                        if (message.source === devIframe.contentWindow) {
+                            console.log("Message received by development iframe from WebVue");
+                            console.log(message.data);
+                            vscode.postMessage(message.data);
+                            return;
+                        }
+
+                        console.error("Source unknown");
+                        console.error(message);
+                    })
+                </script>
+            </body>
+            </html>
+            `;
+        } else {
+            return `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" type="text/css" href="${stylesUri}">
+                <title>Lua Addon Manager</title>
+                <style>
+                    @font-face {
+                        font-family: "codicon";
+                        src: url(${codiconUri}) format("truetype");
+                    }
+                </style>
+            </head>
+            <body>
+                <div id="app"></div>
+                <script type="module" src="${scriptUri}"></script>
+            </body>
+            </html>
+            `;
+        }
     }
 
     /** Sets up event listener for messages sent from webview */
-    private _setWebviewMessageListener(
-        context: vscode.ExtensionContext,
-        webview: vscode.Webview
-    ) {
+    private _setWebviewMessageListener(webview: vscode.Webview) {
         const messageLogger = createChildLogger("WebView Message");
         const commandLogger = createChildLogger("Command");
 
@@ -159,7 +215,7 @@ export class WebVue {
             commandLogger.debug(`Executing "${command}"`);
 
             try {
-                commands[command](context, webview, json);
+                commands[command](this._context, webview, json);
             } catch (e) {
                 commandLogger.error(e);
             }

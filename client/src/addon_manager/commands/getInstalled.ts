@@ -1,8 +1,13 @@
+import type { Addon } from "../types/addon";
+
 import * as vscode from "vscode";
 import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
 
+/** Max depth to traverse into addon directories */
 const MAX_TRAVERSAL_DEPTH = 10;
+/** Filenames that should be skipped during traversal */
+const FILE_SKIPS = [".version"];
 
 const localLogger = createChildLogger("Get Installed");
 
@@ -17,12 +22,12 @@ async function traverse(path: vscode.Uri): Promise<number>;
 async function traverse(path: vscode.Uri, depth = 0) {
     let size = 0;
 
-    return new Promise<number | false>(async (resolve, reject) => {
+    return new Promise<number>(async (resolve, reject) => {
         if (depth >= MAX_TRAVERSAL_DEPTH) {
             localLogger.warn(
                 `Max traversal depth (${MAX_TRAVERSAL_DEPTH}) reached while reading addons directory. Stopped at ${path.path}`
             );
-            resolve(false);
+            resolve(0);
         }
 
         const files = await vscode.workspace.fs.readDirectory(path);
@@ -31,6 +36,8 @@ async function traverse(path: vscode.Uri, depth = 0) {
             const name = file[0];
             const type = file[1];
             const uri = vscode.Uri.joinPath(path, name);
+
+            if (FILE_SKIPS.includes(name)) continue;
 
             switch (type) {
                 case vscode.FileType.File:
@@ -56,13 +63,6 @@ async function traverse(path: vscode.Uri, depth = 0) {
         resolve(size);
     });
 }
-
-type Addon = {
-    name: string;
-    description: string;
-    size: number;
-    hash?: string;
-};
 
 export default async (
     context: vscode.ExtensionContext,
@@ -113,7 +113,7 @@ export default async (
                 const content = await vscode.workspace.fs.readFile(
                     versionFileURI
                 );
-                addon.hash = content.toString();
+                addon.installDate = Number(content.toString());
             } catch (e) {
                 localLogger.error(
                     `Failed to get version info for ${name} (${e})`
