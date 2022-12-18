@@ -20,9 +20,16 @@ export default (
     webview: vscode.Webview,
     data: Message
 ) => {
+    let enabledLibraries = [];
+    let enabledAddons = {};
     // Get the currently enabled addons
-    const enabledLibraries = getEnabledLibraries();
-    const enabledAddons = getEnabledAddons();
+    try {
+        enabledLibraries = getEnabledLibraries();
+        enabledAddons = getEnabledAddons(enabledLibraries);
+    } catch (e) {
+        localLogger.warn(e);
+        return
+    }
 
     // The index of the addon in `enabledLibraries`
     const index = enabledAddons[data.name];

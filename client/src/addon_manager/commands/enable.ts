@@ -6,7 +6,7 @@ import {
     LIBRARY_SETTING_SECTION,
 } from "../config";
 import getInstalled from "./getInstalled";
-import { getSetting, setSetting } from "../util/settings";
+import { getWorkspace, setSetting } from "../util/settings";
 import { getEnabledAddons, getEnabledLibraries } from "../util/addon";
 
 const localLogger = createChildLogger("Enable Addon");
@@ -29,8 +29,16 @@ export default (
     );
 
     // Get the currently enabled libraries
-    const enabledLibraries = getEnabledLibraries();
-    const enabledAddons = getEnabledAddons();
+    let enabledLibraries = [];
+    let enabledAddons = {};
+    // Get the currently enabled addons
+    try {
+        enabledLibraries = getEnabledLibraries();
+        enabledAddons = getEnabledAddons(enabledLibraries);
+    } catch (e) {
+        localLogger.warn(e);
+        return
+    }
 
     // NOTE: For some reason, if the path has a leading slash, the libraries
     // are not loaded. The following trims the leading slash off.

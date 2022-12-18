@@ -3,7 +3,7 @@ import type { Addon } from "../types/addon";
 import * as vscode from "vscode";
 import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
-import { getEnabledAddons } from "../util/addon";
+import { getEnabledAddons, getEnabledLibraries } from "../util/addon";
 
 /** Max depth to traverse into addon directories */
 const MAX_TRAVERSAL_DEPTH = 10;
@@ -78,7 +78,15 @@ export default async (
     const addons: Addon[] = [];
     let totalSize = 0;
 
-    const enabledAddons = getEnabledAddons();
+    let enabledLibraries = [];
+    let enabledAddons = {};
+    // Get the currently enabled addons
+    try {
+        enabledLibraries = getEnabledLibraries(true);
+        enabledAddons = getEnabledAddons(enabledLibraries);
+    } catch (e) {
+        localLogger.warn(e);
+    }
 
     try {
         const entries = await vscode.workspace.fs.readDirectory(

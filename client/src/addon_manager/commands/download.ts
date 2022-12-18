@@ -7,6 +7,8 @@ import { createChildLogger } from "../../services/logging.service";
 import uninstall from "./uninstall";
 
 import type { TreeNode } from "../types/github";
+import { getWorkspace } from "../util/settings";
+import enable from "./enable";
 
 const localLogger = createChildLogger("Download Addon");
 
@@ -72,7 +74,12 @@ export default async (
     return Promise.all(promises)
         .then(() => {
             localLogger.info(`Successfully downloaded "${data.name}" addon!`);
-            getInstalled(context, webview);
+            // Enable addon in current workspace if one is open, otherwise, just refresh
+            if (getWorkspace()) {
+                enable(context, webview, { name: data.name });
+            } else {
+                getInstalled(context, webview);
+            }
         })
         .catch((e) => {
             localLogger.error(

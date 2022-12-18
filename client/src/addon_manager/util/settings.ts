@@ -9,7 +9,7 @@ const localLogger = createChildLogger("Settings");
  * [technically always "active"](https://code.visualstudio.com/api/references/vscode-api#WorkspaceFolder),
  * however, getting the first workspace [*should*](https://code.visualstudio.com/api/references/vscode-api#WorkspaceConfiguration) be the root workspace.
  */
-const getWorkspace = () => vscode.workspace.workspaceFolders?.[0];
+export const getWorkspace = () => vscode.workspace.workspaceFolders?.[0];
 
 /** Get a setting from the current workspace.
  * @param name The name of the setting to get.
@@ -58,4 +58,17 @@ export const setSetting = (name: string, section = "Lua", value: any) => {
     workspaceConfig.update(name, value, vscode.ConfigurationTarget.Workspace);
 
     localLogger.debug(`Set ${section}.${name} to ${value}`);
+};
+
+/** Request that the user open a folder/workspace */
+export const requestOpenFolder = () => {
+    return vscode.window
+        .showInformationMessage(
+            "There is no workspace currently open",
+            "Open Folder"
+        )
+        .then((result) => {
+            if (!result) return;
+            vscode.commands.executeCommand("workbench.action.files.openFolder");
+        });
 };

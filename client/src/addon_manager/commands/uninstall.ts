@@ -3,6 +3,7 @@ import getInstalled from "./getInstalled";
 import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
 import { getEnabledAddons, getEnabledLibraries } from "../util/addon";
+import { setSetting } from "../util/settings";
 
 const localLogger = createChildLogger("Uninstall Addon");
 
@@ -23,12 +24,17 @@ export default async (
     );
 
     // If it is currently enabled, disable it
-    const enabledLibraries = getEnabledLibraries();
-    const enabledAddons = getEnabledAddons();
-
-    /** Index of target addon in `enabledLibraries` */
-    const index = enabledAddons[data.name];
-    if (index !== undefined) enabledLibraries.splice(index, 1);
+    try {
+        const enabledLibraries = getEnabledLibraries(true);
+        const enabledAddons = getEnabledAddons(enabledLibraries);
+        /** Index of target addon in `enabledLibraries` */
+        const index = enabledAddons[data.name];
+        if (index !== undefined) enabledLibraries.splice(index, 1);
+        // Update library setting
+        setSetting("library", "Lua.workspace", enabledLibraries);
+    } catch (e) {
+        localLogger.verbose(e);
+    }
 
     return vscode.workspace.fs
         .delete(uri, { recursive: true, useTrash: true })
