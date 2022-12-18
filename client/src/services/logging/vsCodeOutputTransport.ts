@@ -45,6 +45,21 @@ export default class VSCodeOutputTransport extends Transport {
 
         outputChannel.appendLine(message);
 
+        // Give user warning that something has error'd
+        if (info.level === "error") {
+            vscode.window
+                .showErrorMessage(
+                    `An error occurred in the sumneko.lua extension!`,
+                    { modal: false },
+                    "View Log"
+                )
+                .then((result) => {
+                    if (result === "View Log") {
+                        outputChannel.show();
+                    }
+                });
+        }
+
         callback();
     }
 }
