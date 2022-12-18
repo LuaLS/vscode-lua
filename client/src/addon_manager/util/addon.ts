@@ -29,13 +29,13 @@ export const getEnabledAddons = (
     libraryPaths?: string[],
     failSilently = false
 ): { [index: string]: number } => {
-    const enabledLibraries = libraryPaths ?? getEnabledLibraries(failSilently) as string[];
+    const enabledLibraries =
+        libraryPaths ?? (getEnabledLibraries(failSilently) as string[]);
     const enabledAddons = {};
     enabledLibraries.map((path, index) => {
         const match = ADDON_REGEX.exec(path);
-        const addonName = match[1];
-        if (!match[0]) return;
-        enabledAddons[addonName] = index;
+        const addonName = match?.[1];
+        if (addonName) enabledAddons[addonName] = index;
     });
     return enabledAddons;
 };
