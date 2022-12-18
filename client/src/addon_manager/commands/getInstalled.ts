@@ -19,16 +19,16 @@ async function traverse<T extends number>(
     path: vscode.Uri,
     depth: number
 ): Promise<number | false>;
-async function traverse(path: vscode.Uri): Promise<number>;
+async function traverse(path: vscode.Uri): Promise<number | false>;
 async function traverse(path: vscode.Uri, depth = 0) {
     let size = 0;
 
-    return new Promise<number>(async (resolve, reject) => {
+    return new Promise<number | false>(async (resolve, reject) => {
         if (depth >= MAX_TRAVERSAL_DEPTH) {
             localLogger.warn(
                 `Max traversal depth (${MAX_TRAVERSAL_DEPTH}) reached while reading addons directory. Stopped at ${path.path}`
             );
-            resolve(0);
+            resolve(false);
         }
 
         const files = await vscode.workspace.fs.readDirectory(path);
@@ -126,8 +126,14 @@ export default async (
             }
 
             const size = await traverse(addonUri);
-            addon.size = size;
-            totalSize += size;
+            // MAX_TRAVERSAL_DEPTH was reached
+            if (!size) {
+                addon.treeTruncated = true;
+                addon.size = 0;
+            } else {
+                addon.size = size;
+                totalSize += size;
+            }
             addons.push(addon);
         }
 
