@@ -6,7 +6,9 @@ export const padText = (str: string, length: number) => {
     const paddingLength = Math.max(0, length - str.length);
     const padding = " ".repeat(paddingLength / 2);
 
-    return padding + str + padding;
+    const paddingLeft = " ".repeat(length - padding.length - str.length)
+
+    return paddingLeft + str + padding;
 };
 
 /** Convert a string to a byte array */
