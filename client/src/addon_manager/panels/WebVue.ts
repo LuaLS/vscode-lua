@@ -1,10 +1,12 @@
 import * as vscode from "vscode";
 
-import { createChildLogger, logger } from "../../services/logging.service";
+import { createChildLogger } from "../../services/logging.service";
 import { getUri } from "../util/getUri";
 import { credentials } from "../authentication";
 import { commands } from "../commands";
 import { getWorkspace } from "../util/settings";
+
+const localLogger = createChildLogger("WebVue");
 
 export class WebVue {
     public static currentPanel: WebVue | undefined;
@@ -74,8 +76,10 @@ export class WebVue {
 
         WebVue.currentPanel._panel.webview.postMessage({
             command: "workspaceOpen",
-            data: getWorkspace() !== undefined
-        })
+            data: getWorkspace() !== undefined,
+        });
+
+        localLogger.debug(`Workspace Open: ${getWorkspace() !== undefined}`);
 
         commands.getInstalled(context, this.currentPanel._panel.webview);
     }
