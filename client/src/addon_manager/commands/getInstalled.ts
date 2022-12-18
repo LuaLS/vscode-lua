@@ -3,6 +3,7 @@ import type { Addon } from "../types/addon";
 import * as vscode from "vscode";
 import { createChildLogger } from "../../services/logging.service";
 import { ADDONS_DIRECTORY } from "../config";
+import { getEnabledAddons } from "../util/addon";
 
 /** Max depth to traverse into addon directories */
 const MAX_TRAVERSAL_DEPTH = 10;
@@ -77,6 +78,8 @@ export default async (
     const addons: Addon[] = [];
     let totalSize = 0;
 
+    const enabledAddons = getEnabledAddons();
+
     try {
         const entries = await vscode.workspace.fs.readDirectory(
             addonsDirectoryURI
@@ -84,6 +87,7 @@ export default async (
 
         for (const entry of entries) {
             const name = entry[0];
+            const isEnabled = enabledAddons[name] !== undefined;
             const addonUri = vscode.Uri.joinPath(addonsDirectoryURI, name);
             const configFileURI = vscode.Uri.joinPath(addonUri, "config.json");
             const versionFileURI = vscode.Uri.joinPath(addonUri, ".version");
@@ -92,6 +96,7 @@ export default async (
                 name,
                 description: "Unknown",
                 size: 0,
+                enabled: isEnabled,
             };
 
             // Get config file

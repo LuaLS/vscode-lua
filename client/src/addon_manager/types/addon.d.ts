@@ -9,11 +9,14 @@ export interface Addon {
     /** Name of the addon */
     name: string;
 
+    /** Whether the addon is currently enabled or not */
+    enabled: boolean;
+
     /** A description of the addon */
     description?: string;
 
     /** Size of the addon in bytes */
-    size?: number;
+    size: number;
 
     /** Whether the tree was too large and was truncated */
     treeTruncated?: boolean;
