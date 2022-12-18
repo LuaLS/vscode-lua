@@ -26,7 +26,7 @@ export default class VSCodeOutputTransport extends Transport {
         message += `${padText(`${info.level.toUpperCase()}`, 8)} | `;
 
         // Add category
-        message += `${padText(info.defaultMeta.category, 16)} | `;
+        message += `${padText(info?.defaultMeta?.category ?? "General", 16)} | `;
 
         // Add message
         if (typeof info.message === "object") {
