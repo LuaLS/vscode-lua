@@ -76,7 +76,10 @@ export default async (
             localLogger.info(`Successfully downloaded "${data.name}" addon!`);
             // Enable addon in current workspace if one is open, otherwise, just refresh
             if (getWorkspace()) {
-                enable(context, webview, { name: data.name });
+                const alreadyEnabled = !enable(context, webview, {
+                    name: data.name,
+                });
+                if (alreadyEnabled) getInstalled(context, webview);
             } else {
                 getInstalled(context, webview);
             }

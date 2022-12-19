@@ -7,3 +7,5 @@ export const ADDONS_DIRECTORY = "addons";
 // settings.json file info
 export const LIBRARY_SETTING_SECTION = "Lua.workspace";
 export const LIBRARY_SETTING_NAME = "library";
+
+export const PLUGIN_FILENAME = "plugin.lua"

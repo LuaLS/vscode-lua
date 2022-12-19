@@ -23,4 +23,7 @@ export interface Addon {
 
     /** UNIX timestamp (milliseconds) of when the addon was committed */
     installDate?: number;
+
+    /** If the addon includes a `plugin.lua` */
+    hasPlugin?: boolean;
 }

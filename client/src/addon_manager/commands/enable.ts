@@ -47,7 +47,7 @@ export default (
     // Add path to target addon to enabled libraries list
     if (enabledAddons[data.name] !== undefined) {
         localLogger.warn(`${data.name} addon is already enabled`);
-        return;
+        return false;
     }
     enabledLibraries.push(fsPath);
 
