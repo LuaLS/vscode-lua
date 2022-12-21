@@ -143,6 +143,7 @@ export default async (
                 );
                 const json = JSON.parse(content.toString());
                 addon.description = json.description;
+                addon.displayName = json.name;
             } catch (e) {
                 localLogger.error(
                     `Failed to get installed addon (${name}) description! (${e})`

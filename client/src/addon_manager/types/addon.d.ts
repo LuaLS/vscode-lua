@@ -9,6 +9,9 @@ export interface Addon {
     /** Name of the addon */
     name: string;
 
+    /** Display name of the addon from `config.json` */
+    displayName?: string;
+
     /** Whether the addon is currently enabled or not */
     enabled: boolean;
 
