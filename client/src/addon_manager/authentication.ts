@@ -7,7 +7,7 @@ const SCOPES = [];
 const localLogger = createChildLogger("Authentication");
 
 export class Credentials {
-    access_token: string | undefined;
+    access_token: string | undefined | false;
 
     /** Requires extension context. Registers listeners */
     async initialize(context: vscode.ExtensionContext) {
@@ -30,9 +30,9 @@ export class Credentials {
             if (!session?.accessToken) throw "User has not granted permission";
             localLogger.info("Logged in to GitHub");
             this.access_token = session.accessToken;
-            return session.accessToken;
         } catch (e) {
             localLogger.warn(`Could not log in to GitHub! (${e})`);
+            this.access_token = false;
             return false;
         }
     }

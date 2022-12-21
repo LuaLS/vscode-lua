@@ -66,6 +66,13 @@ export class WebVue {
                     command: "accessToken",
                     data: credentials.access_token,
                 });
+            }).catch(err => {
+                // User denied sign in
+                if (!WebVue.currentPanel) return;
+                WebVue.currentPanel._panel.webview.postMessage({
+                    command: "accessToken",
+                    data: false
+                })
             });
         } else {
             WebVue.currentPanel._panel.webview.postMessage({
