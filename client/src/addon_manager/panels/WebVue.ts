@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 
 import { createChildLogger } from "../../services/logging.service";
-import { getUri } from "../util/getUri";
 import { credentials } from "../authentication";
 import { commands } from "../commands";
 import { getWorkspace } from "../util/settings";
@@ -60,20 +59,23 @@ export class WebVue {
         // If we don't already have user's access token, ask them to sign in
         // Then send access token to webview
         if (!credentials.access_token) {
-            credentials.login(true).then(() => {
-                if (!WebVue.currentPanel) return;
-                WebVue.currentPanel._panel.webview.postMessage({
-                    command: "accessToken",
-                    data: credentials.access_token,
-                });
-            }).catch(err => {
-                // User denied sign in
-                if (!WebVue.currentPanel) return;
-                WebVue.currentPanel._panel.webview.postMessage({
-                    command: "accessToken",
-                    data: false
+            credentials
+                .login(true)
+                .then(() => {
+                    if (!WebVue.currentPanel) return;
+                    WebVue.currentPanel._panel.webview.postMessage({
+                        command: "accessToken",
+                        data: credentials.access_token,
+                    });
                 })
-            });
+                .catch((err) => {
+                    // User denied sign in
+                    if (!WebVue.currentPanel) return;
+                    WebVue.currentPanel._panel.webview.postMessage({
+                        command: "accessToken",
+                        data: false,
+                    });
+                });
         } else {
             WebVue.currentPanel._panel.webview.postMessage({
                 command: "accessToken",
@@ -110,21 +112,21 @@ export class WebVue {
         webview: vscode.Webview,
         extensionUri: vscode.Uri
     ) {
-        const stylesUri = getUri(webview, extensionUri, [
+        const stylesUri = this.toWebviewUri([
             "client",
             "webvue",
             "build",
             "assets",
             "index.css",
         ]);
-        const scriptUri = getUri(webview, extensionUri, [
+        const scriptUri = this.toWebviewUri([
             "client",
             "webvue",
             "build",
             "assets",
             "index.js",
         ]);
-        const codiconUri = getUri(webview, extensionUri, [
+        const codiconUri = this.toWebviewUri([
             "client",
             "webvue",
             "build",
@@ -237,5 +239,11 @@ export class WebVue {
                 commandLogger.error(e);
             }
         });
+    }
+
+    private toWebviewUri(pathList: string[]) {
+        return this._panel.webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, ...pathList)
+        );
     }
 }
