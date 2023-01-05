@@ -4,11 +4,11 @@
  */
 
 import winston from "winston";
+import { transports } from "winston";
 import VSCodeOutputTransport from "./logging/vsCodeOutputTransport";
 import axios, { AxiosError } from "axios";
 import { ClientRequest } from "http";
-
-// TODO: migrate over all logging for client to winston logger
+import { padText } from "./string.service";
 
 // Create logger from winston
 export const logger = winston.createLogger({
@@ -19,11 +19,20 @@ export const logger = winston.createLogger({
             format: "YYYY-MM-DD HH:mm:ss",
         }),
         winston.format.errors({ stack: true }),
-        winston.format.json()
+        winston.format.printf((message) => {
+            const level = padText(message.level, 9);
+            const category = padText(message.category, 18);
+            return `[${
+                message.timestamp
+            }] | ${level.toUpperCase()} | ${category} | ${message.message}`;
+        })
     ),
 
     // TODO: add file log
-    transports: [new VSCodeOutputTransport({ level: "silly" })],
+    transports: [
+        new VSCodeOutputTransport({ level: "debug" }),
+        new transports.Console({ level: "debug" }),
+    ],
 });
 
 export const createChildLogger = (label: string) => {
@@ -44,15 +53,16 @@ const axiosLogger = createChildLogger("AXIOS");
 
 axios.interceptors.request.use(
     (request) => {
+        const method = request.method ?? "???"
         axiosLogger.http(
-            `${request.method.toUpperCase()} requesting ${request.url}`
+            `${method.toUpperCase()} requesting ${request.url}`
         );
 
         return request;
     },
     (error: AxiosError) => {
-        const url = error.config.url;
-        const method = error.config.method.toUpperCase();
+        const url = error?.config?.url;
+        const method = error.config?.method?.toUpperCase();
 
         axiosLogger.error(`${url} ${method} ${error.code} ${error.message}`);
         return Promise.reject(error);
@@ -71,10 +81,14 @@ axios.interceptors.response.use(
         return response;
     },
     (error: AxiosError) => {
-        const url = error.config.url;
-        const method = error.config.method.toUpperCase();
+        const url = error?.config?.url;
+        const method = error?.config?.method?.toUpperCase();
 
-        axiosLogger.error(`${url} ${method} ${error.code} ${error.message}`);
+        const code = error.response?.status ?? error.code;
+        const message = error?.response?.statusText ?? error.message;
+        const data = JSON.stringify(error?.response?.data);
+
+        axiosLogger.error(`${url} ${method} ${code} ${message} ${data ?? ""}`);
 
         return Promise.reject(error);
     }

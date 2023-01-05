@@ -1,12 +1,26 @@
 import * as vscode from "vscode";
 import Transport from "winston-transport";
 import winston from "winston";
-import { padText } from "../string.service";
+import { MESSAGE } from "triple-beam";
+import { REPOSITORY_ISSUES_URL } from "../../config";
 
 const outputChannel = vscode.window.createOutputChannel(
     "Lua Addon Manager",
     "log"
 );
+
+const reportError = (info: winston.LogEntry) => {
+    const base = vscode.Uri.parse(REPOSITORY_ISSUES_URL);
+
+    const query = [
+        base.query,
+        `actual=...\n\nI also see the following error:\n\n\`\`\`\n${info[MESSAGE]}\n\`\`\``,
+    ];
+
+    const url = base.with({ query: query.join("&") });
+
+    vscode.env.openExternal(url);
+};
 
 export default class VSCodeOutputTransport extends Transport {
     static outputChannel = outputChannel;
@@ -20,30 +34,7 @@ export default class VSCodeOutputTransport extends Transport {
             this.emit("logged", info);
         });
 
-        let message = `[${info.timestamp}] `;
-
-        // Add level
-        message += `${padText(`${info.level.toUpperCase()}`, 8)} | `;
-
-        // Add category
-        message += `${padText(info?.defaultMeta?.category ?? "General", 16)} | `;
-
-        // Add message
-        if (typeof info.message === "object") {
-            let text = JSON.stringify(info.message, null, "\t")
-                .replace(/\t(?!\t)/g, "\t\t")
-                .replace(/^{/g, "\t{")
-                .replace(/}$/g, "\t}");
-            message += `\n${text}`;
-        } else {
-            message += info.message;
-        }
-
-        if (info.stack) {
-            message += `\n\t${info.stack.replace(/\t(?!\t)/g, "\t\t")}`;
-        }
-
-        outputChannel.appendLine(message);
+        outputChannel.appendLine(info[MESSAGE]);
 
         // Give user warning that something has error'd
         if (info.level === "error") {
@@ -51,11 +42,17 @@ export default class VSCodeOutputTransport extends Transport {
                 .showErrorMessage(
                     `An error occurred in the sumneko.lua extension!`,
                     { modal: false },
-                    "View Log"
+                    "Report Issue",
+                    "Ignore"
                 )
                 .then((result) => {
-                    if (result === "View Log") {
-                        outputChannel.show();
+                    switch (result) {
+                        case "Ignore":
+                            break;
+                        case "Report Issue":
+                            outputChannel.show(true);
+                            reportError(info);
+                            break;
                     }
                 });
         }

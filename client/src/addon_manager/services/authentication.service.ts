@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { createChildLogger } from "../services/logging.service";
+import { createChildLogger } from "./logging.service";
 
-const GITHUB_AUTH_PROVIDED_ID = "github";
+const GITHUB_AUTH_PROVIDER_ID = "github";
 const SCOPES = [];
 
 const localLogger = createChildLogger("Authentication");
@@ -11,40 +11,12 @@ export class Credentials {
 
     /** Requires extension context. Registers listeners */
     async initialize(context: vscode.ExtensionContext) {
-        this.registerListeners(context);
-    }
-
-    /**
-     * Create session and log in to GitHub
-     * @param prompt If the user should be prompted to sign in or just gently encouraged with a notification on their accounts icon.
-     * */
-    async login(prompt = false) {
-        if (this.access_token) return this.access_token;
-
-        try {
-            const session = await vscode.authentication.getSession(
-                GITHUB_AUTH_PROVIDED_ID,
-                SCOPES,
-                { createIfNone: prompt }
-            );
-            if (!session?.accessToken) throw "User has not granted permission";
-            localLogger.info("Logged in to GitHub");
-            this.access_token = session.accessToken;
-        } catch (e) {
-            localLogger.warn(`Could not log in to GitHub! (${e})`);
-            this.access_token = false;
-            return false;
-        }
-    }
-
-    /** Listen for changes in logged in state */
-    private registerListeners(context: vscode.ExtensionContext) {
         context.subscriptions.push(
             vscode.authentication.onDidChangeSessions(async (e) => {
-                if (e.provider.id !== GITHUB_AUTH_PROVIDED_ID) return;
+                if (e.provider.id !== GITHUB_AUTH_PROVIDER_ID) return;
 
                 const session = await vscode.authentication.getSession(
-                    GITHUB_AUTH_PROVIDED_ID,
+                    GITHUB_AUTH_PROVIDER_ID,
                     SCOPES
                 );
 
@@ -57,6 +29,32 @@ export class Credentials {
                 }
             })
         );
+    }
+
+    /**
+     * Create session and log in to GitHub
+     * @param prompt If the user should be prompted to sign in or just gently encouraged with a notification on their accounts icon.
+     * */
+    async login(prompt = false) {
+        if (this.access_token) return this.access_token;
+
+        localLogger.error("TEST");
+
+        try {
+            const session = await vscode.authentication.getSession(
+                GITHUB_AUTH_PROVIDER_ID,
+                SCOPES,
+                { createIfNone: prompt }
+            );
+            if (!session?.accessToken) throw "User has not granted permission";
+            localLogger.info("Logged in to GitHub");
+            this.access_token = session.accessToken;
+            return this.access_token;
+        } catch (e) {
+            localLogger.warn(`Could not log in to GitHub! (${e})`);
+            this.access_token = false;
+            return false;
+        }
     }
 }
 
