@@ -1,4 +1,5 @@
-/** `config.json` file structure for an addon */
+import { Uri } from "vscode";
+
 export type AddonConfig = {
     name: string;
     description: string;
@@ -6,27 +7,11 @@ export type AddonConfig = {
 };
 
 export interface Addon {
-    /** Name of the addon */
-    name: string;
+    readonly name: string;
+    readonly uri: Uri;
 
-    /** Display name of the addon from `config.json` */
     displayName?: string;
-
-    /** Whether the addon is currently enabled or not */
-    enabled: boolean;
-
-    /** A description of the addon */
     description?: string;
-
-    /** Size of the addon in bytes */
-    size: number;
-
-    /** Whether the tree was too large and was truncated */
-    treeTruncated?: boolean;
-
-    /** UNIX timestamp (milliseconds) of when the addon was committed */
-    installDate?: number;
-
-    /** If the addon includes a `plugin.lua` */
+    size?: number;
     hasPlugin?: boolean;
 }

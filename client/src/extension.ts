@@ -6,7 +6,6 @@ import * as addonManager from './addon_manager/registration';
 let luadoc = require('../3rd/vscode-lua-doc/extension.js')
 
 export function activate(context: vscode.ExtensionContext) {
-    
     languageserver.activate(context);
 
     let luaDocContext = {

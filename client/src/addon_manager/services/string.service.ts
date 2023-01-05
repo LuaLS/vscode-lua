@@ -16,3 +16,15 @@ export const padText = (str: string, length: number) => {
 /** Convert a string to a byte array */
 export const stringToByteArray = (str: string): Uint8Array =>
     new TextEncoder().encode(str);
+
+/** Convert an object into a query string without the leading `?` */
+export const objectToQueryString = (
+    obj: Record<string, string | boolean | number>
+): string => {
+    return Object.keys(obj)
+        .map(
+            (key) =>
+                `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`
+        )
+        .join("&");
+};

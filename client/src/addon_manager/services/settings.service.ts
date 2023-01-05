@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { createChildLogger } from "../../services/logging.service";
+import { createChildLogger } from "./logging.service";
 
 const localLogger = createChildLogger("Settings");
 
@@ -17,11 +17,11 @@ export const getWorkspace = () => vscode.workspace.workspaceFolders?.[0];
  * @param defaultValue A value to fall back to should the setting not exist.
  * @throws If there is no workspace open
  */
-export const getSetting = (
+export const getSetting = <T>(
     name: string,
     section = "Lua",
-    defaultValue?: any
-) => {
+    defaultValue?: T
+): T => {
     // Get current user config for "primary" workspace
     const initialWorkspace = getWorkspace();
 
@@ -31,7 +31,7 @@ export const getSetting = (
 
     const config = vscode.workspace.getConfiguration(section, initialWorkspace);
 
-    const value = config.get(name);
+    const value = config.get(name) as T;
     localLogger.debug(`${section}.${name} = ${value ?? "undefined"}`);
 
     return value ?? defaultValue;

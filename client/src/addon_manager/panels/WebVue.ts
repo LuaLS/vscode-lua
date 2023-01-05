@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
 
-import { createChildLogger } from "../../services/logging.service";
-import { credentials } from "../authentication";
+import { createChildLogger } from "../services/logging.service";
 import { commands } from "../commands";
-import { getWorkspace } from "../util/settings";
+import { getWorkspace } from "../services/settings.service";
+import { WebVueMessage } from "../types/webvue";
 
 const localLogger = createChildLogger("WebVue");
 
@@ -35,6 +35,21 @@ export class WebVue {
         );
     }
 
+    /** Send a message to the webview */
+    public static sendMessage(command: string, data: { [index: string]: any }) {
+        WebVue.currentPanel._panel.webview.postMessage({ command, data });
+    }
+
+    public static setLoadingState(
+        store: "remoteAddonStore" | "localAddonStore",
+        loading: boolean
+    ) {
+        WebVue.sendMessage(store, {
+            prop: "loading",
+            value: loading,
+        });
+    }
+
     /** Reveal or create a new panel in VS Code */
     public static render(context: vscode.ExtensionContext) {
         const extensionUri = context.extensionUri;
@@ -56,41 +71,9 @@ export class WebVue {
             WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        // If we don't already have user's access token, ask them to sign in
-        // Then send access token to webview
-        if (!credentials.access_token) {
-            credentials
-                .login(true)
-                .then(() => {
-                    if (!WebVue.currentPanel) return;
-                    WebVue.currentPanel._panel.webview.postMessage({
-                        command: "accessToken",
-                        data: credentials.access_token,
-                    });
-                })
-                .catch((err) => {
-                    // User denied sign in
-                    if (!WebVue.currentPanel) return;
-                    WebVue.currentPanel._panel.webview.postMessage({
-                        command: "accessToken",
-                        data: false,
-                    });
-                });
-        } else {
-            WebVue.currentPanel._panel.webview.postMessage({
-                command: "accessToken",
-                data: credentials.access_token,
-            });
-        }
-
-        WebVue.currentPanel._panel.webview.postMessage({
-            command: "workspaceOpen",
-            data: getWorkspace() !== undefined,
-        });
-
-        localLogger.debug(`Workspace Open: ${getWorkspace() !== undefined}`);
-
-        commands.getInstalled(context, this.currentPanel._panel.webview);
+        const workspaceOpen = getWorkspace() !== undefined;
+        WebVue.sendMessage("workspaceOpen", { workspaceOpen });
+        localLogger.debug(`Workspace Open: ${workspaceOpen}`);
     }
 
     /** Dispose of panel to clean up resources when it is closed */
@@ -220,21 +203,13 @@ export class WebVue {
         const messageLogger = createChildLogger("WebView Message");
         const commandLogger = createChildLogger("Command");
 
-        webview.onDidReceiveMessage((message: any) => {
-            let json: { command: string; [index: string]: any };
+        webview.onDidReceiveMessage((message: WebVueMessage) => {
             let command;
-
-            try {
-                json = JSON.parse(message);
-                command = json.command;
-            } catch (e) {
-                messageLogger.error(e);
-            }
-
+            command = message.command;
             commandLogger.debug(`Executing "${command}"`);
 
             try {
-                commands[command](this._context, webview, json);
+                commands[command](this._context, message);
             } catch (e) {
                 commandLogger.error(e);
             }
