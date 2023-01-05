@@ -3,6 +3,7 @@ import Transport from "winston-transport";
 import winston from "winston";
 import { MESSAGE } from "triple-beam";
 import { REPOSITORY_ISSUES_URL } from "../../config";
+import VSCodeLogFileTransport from "./vsCodeLogFileTransport";
 
 const reportError = async (info: winston.LogEntry) => {
     const base = vscode.Uri.parse(REPOSITORY_ISSUES_URL);
@@ -14,6 +15,7 @@ const reportError = async (info: winston.LogEntry) => {
 
     const url = base.with({ query: query.join("&") });
 
+    vscode.env.openExternal(VSCodeLogFileTransport.currentLogFile);
     vscode.env.openExternal(url);
 };
 

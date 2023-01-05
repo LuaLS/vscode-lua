@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 import { stringToByteArray } from "../string.service";
 
 export default class VSCodeLogFileTransport extends Transport {
-    private logFileUri: vscode.Uri;
+    public static currentLogFile: vscode.Uri;
 
     private initialized = false;
 
@@ -23,11 +23,12 @@ export default class VSCodeLogFileTransport extends Transport {
     /** Initialize transport instance by creating the needed directories and files. */
     public async init() {
         await vscode.workspace.fs.createDirectory(this.logDir);
-        this.logFileUri = vscode.Uri.joinPath(
+        const logFileUri = vscode.Uri.joinPath(
             this.logDir,
             `${dayjs().format("DD-MMMM-YYYY")}.log`
         );
-        this.stream = fs.createWriteStream(this.logFileUri.path.substring(1), {
+        VSCodeLogFileTransport.currentLogFile = logFileUri;
+        this.stream = fs.createWriteStream(logFileUri.path.substring(1), {
             flags: "a",
         });
         this.initialized = true;
