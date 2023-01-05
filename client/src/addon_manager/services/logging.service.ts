@@ -4,7 +4,6 @@
  */
 
 import winston from "winston";
-import { transports } from "winston";
 import VSCodeOutputTransport from "./logging/vsCodeOutputTransport";
 import axios, { AxiosError } from "axios";
 import { ClientRequest } from "http";
@@ -21,18 +20,14 @@ export const logger = winston.createLogger({
         winston.format.errors({ stack: true }),
         winston.format.printf((message) => {
             const level = padText(message.level, 9);
-            const category = padText(message.category, 18);
+            const category = padText(message.defaultMeta.category, 18);
             return `[${
                 message.timestamp
             }] | ${level.toUpperCase()} | ${category} | ${message.message}`;
         })
     ),
 
-    // TODO: add file log
-    transports: [
-        new VSCodeOutputTransport({ level: "debug" }),
-        new transports.Console({ level: "debug" }),
-    ],
+    transports: [new VSCodeOutputTransport({ level: "info" })],
 });
 
 export const createChildLogger = (label: string) => {
@@ -53,10 +48,8 @@ const axiosLogger = createChildLogger("AXIOS");
 
 axios.interceptors.request.use(
     (request) => {
-        const method = request.method ?? "???"
-        axiosLogger.http(
-            `${method.toUpperCase()} requesting ${request.url}`
-        );
+        const method = request.method ?? "???";
+        axiosLogger.http(`${method.toUpperCase()} requesting ${request.url}`);
 
         return request;
     },

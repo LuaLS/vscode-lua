@@ -4,12 +4,7 @@ import winston from "winston";
 import { MESSAGE } from "triple-beam";
 import { REPOSITORY_ISSUES_URL } from "../../config";
 
-const outputChannel = vscode.window.createOutputChannel(
-    "Lua Addon Manager",
-    "log"
-);
-
-const reportError = (info: winston.LogEntry) => {
+const reportError = async (info: winston.LogEntry) => {
     const base = vscode.Uri.parse(REPOSITORY_ISSUES_URL);
 
     const query = [
@@ -23,10 +18,14 @@ const reportError = (info: winston.LogEntry) => {
 };
 
 export default class VSCodeOutputTransport extends Transport {
-    static outputChannel = outputChannel;
+    private readonly outputChannel: vscode.OutputChannel;
 
     constructor(opts?: Transport.TransportStreamOptions) {
         super(opts);
+        this.outputChannel = vscode.window.createOutputChannel(
+            "Lua Addon Manager",
+            "log"
+        );
     }
 
     log(info: winston.LogEntry, callback: winston.LogCallback) {
@@ -34,7 +33,7 @@ export default class VSCodeOutputTransport extends Transport {
             this.emit("logged", info);
         });
 
-        outputChannel.appendLine(info[MESSAGE]);
+        this.outputChannel.appendLine(info[MESSAGE]);
 
         // Give user warning that something has error'd
         if (info.level === "error") {
@@ -50,7 +49,7 @@ export default class VSCodeOutputTransport extends Transport {
                         case "Ignore":
                             break;
                         case "Report Issue":
-                            outputChannel.show(true);
+                            this.outputChannel.show(true);
                             reportError(info);
                             break;
                     }

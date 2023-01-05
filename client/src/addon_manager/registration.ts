@@ -5,9 +5,17 @@ import { WebVue } from "./panels/WebVue";
 import { ADDONS_DIRECTORY } from "./config";
 import filesystem from "./services/filesystem.service";
 import VSCodeLogFileTransport from "./services/logging/vsCodeLogFileTransport";
+import { logger } from "./services/logging.service";
 
-/** Set up the addon manager by registering its commands and views in VS Code */
+/** Set up the addon manager by registering its commands in VS Code */
 export async function activate(context: vscode.ExtensionContext) {
+    // Create log file transport and add to logger
+    const fileLogger = new VSCodeLogFileTransport(context.logUri, {
+        level: "debug",
+    });
+    context.subscriptions.push(await fileLogger.init());
+    logger.add(fileLogger);
+    fileLogger.logStart();
 
     // Register commands
     context.subscriptions.push(
