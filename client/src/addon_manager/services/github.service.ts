@@ -25,56 +25,64 @@ const getHeaders = () => {
 };
 
 namespace GitHub {
-    /** Operations relating to a repository */
+    /** Operations relating to a repository. */
     export namespace repos {
-        export type GitTreeNode = {
-            path: string;
-            mode: string;
-            type: "blob" | "tree";
-            sha: string;
-            size: number;
-            url: string;
-        };
-        /**
-         * Get the Git tree of a repo
-         *
-         * @param owner The owner of the repository
-         * @param repo The name of the repository
-         * @param sha The SHA of the tree
-         * @param recursive Whether to include all tree entries or only the top-level entries
-         * @returns The Git tree
-         */
-        export async function getTree(
-            owner: string,
-            repo: string,
-            sha: string,
-            recursive = false
-        ) {
-            type Response = {
+        /** Operations relating to a repository's git tree. */
+        export namespace tree {
+            export type GitTreeNode = {
+                path: string;
+                mode: string;
+                type: "blob" | "tree";
                 sha: string;
+                size: number;
                 url: string;
-                tree: GitTreeNode[];
-                truncated: boolean;
             };
+            /**
+             * Get the Git tree of a repo.
+             *
+             * @param owner The owner of the repository
+             * @param repo The name of the repository
+             * @param sha The SHA of the tree
+             * @param recursive Whether to include all tree entries or only the top-level entries
+             * @returns The Git tree
+             */
+            export async function get(
+                owner: string,
+                repo: string,
+                sha: string,
+                recursive = false
+            ) {
+                type Response = {
+                    sha: string;
+                    url: string;
+                    tree: GitTreeNode[];
+                    truncated: boolean;
+                };
 
-            let uri = Uri.joinPath(
-                ROOT_URI,
-                "repos",
-                owner,
-                repo,
-                "git",
-                "trees",
-                sha
-            );
+                let uri = Uri.joinPath(
+                    ROOT_URI,
+                    "repos",
+                    owner,
+                    repo,
+                    "git",
+                    "trees",
+                    sha
+                );
 
-            if (recursive) uri = uri.with({ query: "recursive=true" });
+                if (recursive) uri = uri.with({ query: "recursive=true" });
 
-            const response = await axios.get<Response>(uri.toString(true), {
-                headers: getHeaders(),
-            });
-            return response.data;
+                const response = await axios.get<Response>(uri.toString(true), {
+                    headers: getHeaders(),
+                });
+                return response.data;
+            }
         }
 
+        /** Get the content of an item in a repo.
+         * @param owner The username of the owner of the repo
+         * @param repo The name of the repo
+         * @param path The path to the item from the root of the repo
+         */
         export async function getContent(
             owner: string,
             repo: string,
@@ -113,6 +121,13 @@ namespace GitHub {
 
             return response.data;
         }
+
+        /** Download the raw contents of a file
+         * @param owner The username of the owner of the repo
+         * @param repo The name of the repo
+         * @param path The path to the item from the root of the repo
+         * @param type The expected response type
+         */
         export async function downloadFile<T>(
             owner: string,
             repo: string,
@@ -127,12 +142,13 @@ namespace GitHub {
                 path
             );
 
-            const response = await axios.get<T>(uri.toString(true), {
+            const response = await axios.get(uri.toString(true), {
                 responseType: type ?? "text",
             });
             return response.data;
         }
 
+        /** Operations relating to the commits of a repo. */
         export namespace commits {
             type ListOptions = {
                 sha?: string;
@@ -143,7 +159,7 @@ namespace GitHub {
                 per_page?: number;
                 page?: number;
             };
-            interface CommitEntry {
+            type CommitEntry = {
                 url: string;
                 sha: string;
                 node_id: string;
@@ -153,9 +169,9 @@ namespace GitHub {
                 author: CommitEntryContributor;
                 committer: CommitContributor;
                 parents: ParentCommit[];
-            }
+            };
 
-            interface CommitEntryContributor {
+            type CommitEntryContributor = {
                 login: string;
                 id: number;
                 node_id: string;
@@ -174,9 +190,9 @@ namespace GitHub {
                 received_events_url: string;
                 type: string;
                 site_admin: boolean;
-            }
+            };
 
-            interface Commit {
+            type Commit = {
                 url: string;
                 author: CommitContributor;
                 committer: CommitContributor;
@@ -184,26 +200,31 @@ namespace GitHub {
                 tree: ParentCommit;
                 comment_count: number;
                 verification: Verification;
-            }
+            };
 
-            interface CommitContributor {
+            type CommitContributor = {
                 name: string;
                 email: string;
                 date: Date;
-            }
+            };
 
-            interface ParentCommit {
+            type ParentCommit = {
                 url: string;
                 sha: string;
-            }
+            };
 
-            interface Verification {
+            type Verification = {
                 verified: boolean;
                 reason: string;
                 signature: null;
                 payload: null;
-            }
+            };
 
+            /** List the commits for a repository
+             * @param owner The username of the owner of the repo
+             * @param repo The name of the repo
+             * @param options Various options for filtering commits
+             */
             export async function list(
                 owner: string,
                 repo: string,

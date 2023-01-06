@@ -57,7 +57,7 @@ class AddonManager {
     public async fetchRemoteAddons() {
         localLogger.verbose("Fetching remote addons");
 
-        const root = await GitHub.repos.getTree(
+        const root = await GitHub.repos.tree.get(
             REPOSITORY_OWNER,
             REPOSITORY_NAME,
             REPOSITORY_DEFAULT_BRANCH
@@ -74,7 +74,7 @@ class AddonManager {
             throw err;
         }
 
-        const response = await GitHub.repos.getTree(
+        const response = await GitHub.repos.tree.get(
             REPOSITORY_OWNER,
             REPOSITORY_NAME,
             addonsDirectory.sha

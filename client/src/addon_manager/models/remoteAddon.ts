@@ -40,9 +40,9 @@ export class RemoteAddon implements Addon {
      * addon was. This is used for version checking.*/
     #latestCommitTimestamp?: number;
     /** A flat array containing the Git tree for this addon. */
-    #tree?: GitHub.repos.GitTreeNode[];
+    #tree?: GitHub.repos.tree.GitTreeNode[];
 
-    constructor(node: GitHub.repos.GitTreeNode) {
+    constructor(node: GitHub.repos.tree.GitTreeNode) {
         this.name = node.path;
         this.uri = vscode.Uri.parse(node.url, true);
         this.sha = node.url.split("/").at(-1);
@@ -114,7 +114,7 @@ export class RemoteAddon implements Addon {
             };
 
         try {
-            const result = await GitHub.repos.getTree(
+            const result = await GitHub.repos.tree.get(
                 REPOSITORY_OWNER,
                 REPOSITORY_NAME,
                 this.sha,
