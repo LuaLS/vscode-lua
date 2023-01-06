@@ -218,7 +218,7 @@ export class WebVue {
 
         webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;
-            commandLogger.info(`Executing "${command}"`);
+            commandLogger.verbose(`Executing "${command}"`);
 
             try {
                 commands[command](this._context, message);
