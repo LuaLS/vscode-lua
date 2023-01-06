@@ -13,8 +13,13 @@ type Message = {
 
 export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.localAddons.get(message.data.name);
+
     addon.enabled = false;
     addonManager.uninstallAddon(message.data.name);
-    localLogger.verbose(`Uninstalled "${message.data.name}"`);
+
+    WebVue.sendMessage("localAddonStore", {
+        property: "total",
+        value: addonManager.localAddons.size,
+    });
     WebVue.sendMessage("removeLocalAddon", { name: message.data.name });
 };

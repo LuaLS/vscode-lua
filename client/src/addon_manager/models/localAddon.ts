@@ -248,10 +248,11 @@ export class LocalAddon implements Addon {
 
     /** Uninstalls this addon. */
     public async uninstall() {
-        localLogger.info(`Uninstalling "${this.name}"`);
-        return filesystem.deleteFile(this.uri, {
-            recursive: true,
-            useTrash: true,
-        });
+        return await filesystem
+            .deleteFile(this.uri, {
+                recursive: true,
+                useTrash: true,
+            })
+            .then(() => localLogger.info(`Uninstalled "${this.name}"`));
     }
 }

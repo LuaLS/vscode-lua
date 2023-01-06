@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
 import { ADDONS_DIRECTORY } from "../config";
+import { WebVue } from "../panels/WebVue";
 
 const localLogger = createChildLogger("Install Addon");
 
@@ -21,7 +22,13 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         message.data.name,
         installLocation
     );
+
     localAddon.enabled = true;
     await localAddon.sendToWebVue();
+
+    WebVue.sendMessage("localAddonStore", {
+        property: "total",
+        value: addonManager.localAddons.size,
+    });
     localLogger.info(`Installed ${message.data.name}`);
 };
