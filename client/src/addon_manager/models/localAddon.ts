@@ -24,7 +24,6 @@ export class LocalAddon implements Addon {
     /** A uri that points to this addon directory on the local computer. */
     readonly uri: vscode.Uri;
 
-
     /** The display name defined in the addon's `config.json`. */
     #displayName?: string;
     /** The description defined in the addon's `config.json`. */
@@ -125,7 +124,7 @@ export class LocalAddon implements Addon {
 
     /** Send this addon to WebVue. */
     public async sendToWebVue() {
-        WebVue.sendMessage("addLocalAddon", await this.toJSON());
+        WebVue.sendMessage("addLocalAddon", { addons: await this.toJSON() });
     }
 
     /** Get the values from `config.json` for this addon from the filesystem. */

@@ -57,7 +57,7 @@ export class WebVue {
         loading: boolean
     ) {
         WebVue.sendMessage(store, {
-            prop: "loading",
+            property: "loading",
             value: loading,
         });
     }
@@ -143,7 +143,7 @@ export class WebVue {
 
 
                         if (message.origin.startsWith("vscode-webview")) {
-                            console.groupCollapsed("DEV: VS Code -> WebVue");
+                            console.groupCollapsed("DEV: VS Code ➡️ WebVue");
                             console.log(message.data);
                             console.groupEnd();
                             devIframe.contentWindow.postMessage(message.data, devIframe.src)
@@ -151,7 +151,7 @@ export class WebVue {
                         }
 
                         if (message.source === devIframe.contentWindow) {
-                            console.groupCollapsed("DEV: WebVue -> VS Code");
+                            console.groupCollapsed("DEV: WebVue ➡️ VS Code");
                             console.log(message.data);
                             console.groupEnd();
                             vscode.postMessage(message.data);

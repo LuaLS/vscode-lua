@@ -9,7 +9,6 @@ type Message = {
     data: { page: number; pageSize?: number };
 };
 
-//TODO: Make sure that all local addons appear in remote page
 export default async (context: vscode.ExtensionContext, message: Message) => {
     WebVue.setLoadingState("remoteAddonStore", true);
 
@@ -19,22 +18,24 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         await addonManager.fetchRemoteAddons();
     }
 
-    const remoteAddons = await addonManager.getRemoteAddonsPage(
+    WebVue.sendMessage("remoteAddonStore", {
+        prop: "total",
+        value: addonManager.remoteAddons.size,
+    });
+
+    if (addonManager.remoteAddons.size === 0) {
+        WebVue.setLoadingState("remoteAddonStore", false);
+        localLogger.verbose("No remote addons found");
+        return;
+    }
+
+    const addonList = await addonManager.getRemoteAddonsPage(
         page,
         pageSize ?? 5
     );
 
-    const promises = [];
-    for (const addon of remoteAddons) {
-        localLogger.debug(`Sending remote addon "${addon.name}" to WebVue`);
-        promises.push(addon.sendToWebVue());
-    }
+    const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
 
-    Promise.allSettled(promises).then(() => {
-        WebVue.sendMessage("remoteAddonStore", {
-            prop: "total",
-            value: addonManager.remoteAddons.size,
-        });
-        WebVue.setLoadingState("remoteAddonStore", false);
-    });
+    WebVue.sendMessage("addRemoteAddon", { addons });
+    WebVue.setLoadingState("remoteAddonStore", false);
 };

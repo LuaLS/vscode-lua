@@ -21,25 +21,24 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     if (addonManager.localAddons.size < 1)
         await addonManager.fetchLocalAddons(installLocation);
 
+    WebVue.sendMessage("localAddonStore", {
+        prop: "total",
+        value: addonManager.localAddons.size,
+    });
+
     if (addonManager.localAddons.size === 0) {
+        localLogger.verbose("No local addons found");
         WebVue.setLoadingState("localAddonStore", false);
+        return;
     }
 
-    const addons = addonManager.getLocalAddonsPage(
+    const addonList = addonManager.getLocalAddonsPage(
         message.data.page,
         message.data.pageSize ?? 5
     );
 
-    const promises = [];
-    for (const addon of addons) {
-        promises.push(addon.sendToWebVue());
-    }
+    const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
 
-    Promise.allSettled(promises).then(() => {
-        WebVue.sendMessage("localAddonStore", {
-            prop: "total",
-            value: addonManager.localAddons.size,
-        });
-        WebVue.setLoadingState("localAddonStore", false);
-    });
+    WebVue.sendMessage("addLocalAddon", { addons });
+    WebVue.setLoadingState("localAddonStore", false);
 };
