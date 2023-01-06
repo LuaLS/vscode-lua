@@ -14,5 +14,4 @@ export default (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.localAddons.get(message.data.name);
     addon.enabled = false;
     addon.sendToWebVue();
-    localLogger.info(`Disabled "${message.data.name}" addon!`);
 };
