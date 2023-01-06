@@ -14,17 +14,31 @@ import addonManager from "../services/addonManager.service";
 
 const localLogger = createChildLogger("Addon");
 
+/** An addon (directory) installed locally on this computer.
+ *
+ * Its data needs to be retrieved asynchronously using the filesystem.
+ */
 export class LocalAddon implements Addon {
-    readonly uri: vscode.Uri;
+    /** Name of the addon. */
     readonly name: string;
+    /** A uri that points to this addon directory on the local computer. */
+    readonly uri: vscode.Uri;
 
+
+    /** The display name defined in the addon's `config.json`. */
     #displayName?: string;
+    /** The description defined in the addon's `config.json`. */
     #description?: string;
+    /** The size of the addon in bytes. */
     #size?: number;
-    #enabled?: boolean;
+    /** Whether or not this addon has a `plugin.lua`. */
     #hasPlugin?: boolean;
 
+    /** Whether or not this addon is enabled. */
+    #enabled?: boolean;
+    /** A unix timestamp (milliseconds) of when this addon was installed. */
     #installTimestamp?: number;
+    /** Whether or not this addon has an update available from GitHub. */
     #hasUpdate?: boolean;
 
     constructor(name: string, uri: vscode.Uri) {
@@ -33,6 +47,7 @@ export class LocalAddon implements Addon {
         this.#enabled = undefined;
     }
 
+    /** Set the enabled state for this addon. */
     public set enabled(state: boolean) {
         let librarySetting: string[] = [];
 
@@ -56,8 +71,6 @@ export class LocalAddon implements Addon {
 
         const regex = new RegExp(`/sumneko.lua/addons/${this.name}`, "g");
         const index = librarySetting.findIndex((path) => regex.test(path));
-
-        localLogger.info(index);
 
         if (state) {
             if (index > -1) {
@@ -89,6 +102,7 @@ export class LocalAddon implements Addon {
         );
     }
 
+    /** Convert this addon to an object ready for sending to WebVue. */
     public async toJSON() {
         const { displayName, description } = await this.getConfig();
         const enabled = await this.getEnabled();
@@ -109,11 +123,12 @@ export class LocalAddon implements Addon {
         };
     }
 
+    /** Send this addon to WebVue. */
     public async sendToWebVue() {
         WebVue.sendMessage("addLocalAddon", await this.toJSON());
     }
 
-    /** Get the `config.json` values for this addon */
+    /** Get the values from `config.json` for this addon from the filesystem. */
     public async getConfig() {
         if (this.#displayName && this.#description)
             return {
@@ -139,7 +154,7 @@ export class LocalAddon implements Addon {
         }
     }
 
-    /** Get the install timestamp (milliseconds) for this addon */
+    /** Get the install timestamp (milliseconds) for this addon from the filesystem. */
     public async getVersionInfo() {
         if (this.#installTimestamp) return this.#installTimestamp;
 
@@ -155,7 +170,7 @@ export class LocalAddon implements Addon {
         }
     }
 
-    /** Get whether this addon has a plugin or not */
+    /** Get whether this addon has a `plugin.lua` or not from the filesystem. */
     public async getHasPlugin() {
         if (this.#hasPlugin) return this.#hasPlugin;
 
@@ -169,12 +184,12 @@ export class LocalAddon implements Addon {
         }
     }
 
-    /** Get whether this addon is enabled or not
+    /** Get whether this addon is enabled or not by checking the user's VS Code settings.
      * @throws When a workspace is not open
      */
     public async getEnabled(librarySetting?: string[]) {
         try {
-            const regex = new RegExp(`sumneko.lua\/addons\/${this.name}`, "g");
+            const regex = new RegExp(`sumneko.lua/addons/${this.name}`, "g");
 
             if (!librarySetting) {
                 librarySetting = getSetting(
@@ -193,7 +208,8 @@ export class LocalAddon implements Addon {
         }
     }
 
-    /** Calculate the size of this addon. A relatively slow process due to it having to recurse through the entire directory */
+    /** Calculate the size of this addon. A relatively slow process due to it
+     * having to recurse through the entire directory. */
     public async calculateSize() {
         if (this.#size) return this.#size;
 
@@ -206,6 +222,8 @@ export class LocalAddon implements Addon {
         }
     }
 
+    /** Check whether this addon has an update by looking for the remote
+     * version of this addon and comparing their dates. */
     public async hasUpdate() {
         if (this.#hasUpdate) return this.#hasUpdate;
 
@@ -229,7 +247,7 @@ export class LocalAddon implements Addon {
         return false;
     }
 
-    /** Uninstalls this addon */
+    /** Uninstalls this addon. */
     public async uninstall() {
         localLogger.info(`Uninstalling "${this.name}"`);
         return filesystem.deleteFile(this.uri, {

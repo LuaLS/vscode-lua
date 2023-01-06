@@ -36,11 +36,22 @@ export class WebVue {
         );
     }
 
+    /** Convert a standard file uri to a uri usable by this webview. */
+    private toWebviewUri(pathList: string[]) {
+        return this._panel.webview.asWebviewUri(
+            vscode.Uri.joinPath(this._extensionUri, ...pathList)
+        );
+    }
+
     /** Send a message to the webview */
-    public static sendMessage(command: string, data: { [index: string]: any }) {
+    public static sendMessage(
+        command: string,
+        data: { [index: string]: unknown }
+    ) {
         WebVue.currentPanel._panel.webview.postMessage({ command, data });
     }
 
+    /** Set the loading state of a store in the webview */
     public static setLoadingState(
         store: "remoteAddonStore" | "localAddonStore",
         loading: boolean
@@ -96,28 +107,6 @@ export class WebVue {
         webview: vscode.Webview,
         extensionUri: vscode.Uri
     ) {
-        const stylesUri = this.toWebviewUri([
-            "client",
-            "webvue",
-            "build",
-            "assets",
-            "index.css",
-        ]);
-        const scriptUri = this.toWebviewUri([
-            "client",
-            "webvue",
-            "build",
-            "assets",
-            "index.js",
-        ]);
-        const codiconUri = this.toWebviewUri([
-            "client",
-            "webvue",
-            "build",
-            "assets",
-            "codicon.ttf",
-        ]);
-
         // TODO: Lock down CSP https://code.visualstudio.com/api/extension-guides/webview#content-security-policy
         if (this._context.extensionMode !== vscode.ExtensionMode.Production) {
             return `
@@ -154,15 +143,17 @@ export class WebVue {
 
 
                         if (message.origin.startsWith("vscode-webview")) {
-                            console.log("Message received by development iframe from VS Code");
+                            console.groupCollapsed("DEV: VS Code -> WebVue");
                             console.log(message.data);
+                            console.groupEnd();
                             devIframe.contentWindow.postMessage(message.data, devIframe.src)
                             return;
                         }
 
                         if (message.source === devIframe.contentWindow) {
-                            console.log("Message received by development iframe from WebVue");
+                            console.groupCollapsed("DEV: WebVue -> VS Code");
                             console.log(message.data);
+                            console.groupEnd();
                             vscode.postMessage(message.data);
                             return;
                         }
@@ -175,6 +166,28 @@ export class WebVue {
             </html>
             `;
         } else {
+            const stylesUri = this.toWebviewUri([
+                "client",
+                "webvue",
+                "build",
+                "assets",
+                "index.css",
+            ]);
+            const scriptUri = this.toWebviewUri([
+                "client",
+                "webvue",
+                "build",
+                "assets",
+                "index.js",
+            ]);
+            const codiconUri = this.toWebviewUri([
+                "client",
+                "webvue",
+                "build",
+                "assets",
+                "codicon.ttf",
+            ]);
+
             return `
             <!DOCTYPE html>
             <html lang="en">
@@ -201,13 +214,11 @@ export class WebVue {
 
     /** Sets up event listener for messages sent from webview */
     private _setWebviewMessageListener(webview: vscode.Webview) {
-        const messageLogger = createChildLogger("WebView Message");
         const commandLogger = createChildLogger("Command");
 
         webview.onDidReceiveMessage((message: WebVueMessage) => {
-            let command;
-            command = message.command;
-            commandLogger.debug(`Executing "${command}"`);
+            const command = message.command;
+            commandLogger.info(`Executing "${command}"`);
 
             try {
                 commands[command](this._context, message);
@@ -215,11 +226,5 @@ export class WebVue {
                 commandLogger.error(e);
             }
         });
-    }
-
-    private toWebviewUri(pathList: string[]) {
-        return this._panel.webview.asWebviewUri(
-            vscode.Uri.joinPath(this._extensionUri, ...pathList)
-        );
     }
 }

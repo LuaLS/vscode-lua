@@ -1,15 +1,8 @@
-import axios, { Axios, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { Uri } from "vscode";
-import { createChildLogger } from "./logging.service";
 import { credentials } from "./authentication.service";
-import {
-    REPOSITORY_DEFAULT_BRANCH,
-    REPOSITORY_NAME,
-    REPOSITORY_OWNER,
-} from "../config";
+import { REPOSITORY_DEFAULT_BRANCH } from "../config";
 import { objectToQueryString } from "./string.service";
-
-const localLogger = createChildLogger("GitHub");
 
 /** The root URI to build queries off of */
 const ROOT_URI = Uri.parse("https://api.github.com", true);

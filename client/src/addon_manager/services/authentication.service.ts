@@ -38,8 +38,6 @@ export class Credentials {
     async login(prompt = false) {
         if (this.access_token) return this.access_token;
 
-        localLogger.error("TEST");
-
         try {
             const session = await vscode.authentication.getSession(
                 GITHUB_AUTH_PROVIDER_ID,

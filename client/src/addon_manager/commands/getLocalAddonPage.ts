@@ -25,10 +25,9 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         WebVue.setLoadingState("localAddonStore", false);
     }
 
-    // DEBUG: increase page size
     const addons = addonManager.getLocalAddonsPage(
         message.data.page,
-        message.data.pageSize ?? 2
+        message.data.pageSize ?? 5
     );
 
     const promises = [];

@@ -21,7 +21,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
 
     const remoteAddons = await addonManager.getRemoteAddonsPage(
         page,
-        pageSize ?? 3
+        pageSize ?? 5
     );
 
     const promises = [];

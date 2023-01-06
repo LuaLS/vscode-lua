@@ -15,17 +15,31 @@ import { WebVue } from "../panels/WebVue";
 
 const localLogger = createChildLogger("Remote Addon");
 
+/** An addon (directory) from the [official GitHub repository](https://github.com/carsakiller/LLS-Addons).
+ *
+ * Its data needs to be retrieved asynchronously using the GitHub Rest API.
+ */
 export class RemoteAddon implements Addon {
+    /** Name of the addon. */
     readonly name: string;
+    /** A uri that points to this addon directory in the GitHub API. */
     readonly uri: vscode.Uri;
+    /** The [sha hash](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects) for this addon directory in the remote git tree. */
     readonly sha: string;
 
+    /** The display name defined in the addon's `config.json`. */
     #displayName?: string;
+    /** The description defined in the addon's `config.json`. */
     #description?: string;
+    /** The size of the addon in bytes. */
     #size?: number;
+    /** Whether or not this addon has a `plugin.lua`. */
     #hasPlugin?: boolean;
 
+    /** A unix timestamp (milliseconds) of when the latest commit for this
+     * addon was. This is used for version checking.*/
     #latestCommitTimestamp?: number;
+    /** A flat array containing the Git tree for this addon. */
     #tree?: GitHub.repos.GitTreeNode[];
 
     constructor(node: GitHub.repos.GitTreeNode) {
@@ -34,6 +48,7 @@ export class RemoteAddon implements Addon {
         this.sha = node.url.split("/").at(-1);
     }
 
+    /** Convert this addon to an object ready for sending to WebVue. */
     public async toJSON() {
         const { displayName, description } = await this.getConfig();
         const { size, hasPlugin } = await this.getTree();
@@ -51,11 +66,12 @@ export class RemoteAddon implements Addon {
         };
     }
 
+    /** Send this addon to WebVue. */
     public async sendToWebVue() {
         WebVue.sendMessage("addRemoteAddon", await this.toJSON());
     }
 
-    /** Get the values from the `config.json` for this addon */
+    /** Get the values from the `config.json` for this addon from GitHub. */
     public async getConfig() {
         if (this.#displayName && this.#description)
             return {
@@ -88,7 +104,7 @@ export class RemoteAddon implements Addon {
         }
     }
 
-    /** Get the git tree for this addon */
+    /** Get the git tree for this addon from GitHub. */
     public async getTree() {
         if (this.#tree && this.#size && this.#hasPlugin)
             return {
@@ -126,7 +142,7 @@ export class RemoteAddon implements Addon {
         }
     }
 
-    /** Get the unix timestamp (milliseconds) of the latest commit for this addon */
+    /** Get the unix timestamp (milliseconds) of the latest commit for this addon from GitHub. */
     public async getLatestCommit() {
         if (this.#latestCommitTimestamp) return this.#latestCommitTimestamp;
 
@@ -151,10 +167,10 @@ export class RemoteAddon implements Addon {
         }
     }
 
-    /** Install this addon */
+    /** Install this addon from GitHub. */
     public async install(addonInstallLocation: vscode.Uri) {
         const addonUri = vscode.Uri.joinPath(addonInstallLocation, this.name);
-        const promises: Promise<any>[] = [];
+        const promises: Promise<void>[] = [];
 
         // Download files and create directories
         // Directories seem to always appear before their child items
