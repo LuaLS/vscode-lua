@@ -97,12 +97,18 @@ class AddonManager {
     public getLocalAddonsPage(page: number, pageSize: number): LocalAddon[] {
         const start = (page - 1) * pageSize;
         const addons = Array.from(this.localAddons.values());
+
+        addons.sort((a, b) => a.name.localeCompare(b.name));
+
         return addons.slice(start, start + pageSize);
     }
     /** Get a page of remote addons */
     public getRemoteAddonsPage(page: number, pageSize: number): RemoteAddon[] {
         const start = (page - 1) * pageSize;
         const addons = Array.from(this.remoteAddons.values());
+
+        addons.sort((a, b) => a.name.localeCompare(b.name));
+
         return addons.slice(start, start + pageSize);
     }
 
