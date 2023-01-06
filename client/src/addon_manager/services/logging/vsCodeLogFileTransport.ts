@@ -3,8 +3,8 @@ import Transport from "winston-transport";
 import winston from "winston";
 import { MESSAGE } from "triple-beam";
 import * as fs from "fs";
-import dayjs from "dayjs";
 import { stringToByteArray } from "../string.service";
+import dayjs from "dayjs";
 
 export default class VSCodeLogFileTransport extends Transport {
     public static currentLogFile: vscode.Uri;
@@ -22,10 +22,15 @@ export default class VSCodeLogFileTransport extends Transport {
 
     /** Initialize transport instance by creating the needed directories and files. */
     public async init() {
+        // Ensure log directory exists
         await vscode.workspace.fs.createDirectory(this.logDir);
+        // Create subdirectory
+        const addonLogsDir = vscode.Uri.joinPath(this.logDir, "addonManager");
+        await vscode.workspace.fs.createDirectory(addonLogsDir);
+        // Create log file stream
         const logFileUri = vscode.Uri.joinPath(
-            this.logDir,
-            `${dayjs().format("DD-MMMM-YYYY")}.log`
+            addonLogsDir,
+            `${dayjs().format("HH-mm-ss")}.log`
         );
         VSCodeLogFileTransport.currentLogFile = logFileUri;
         this.stream = fs.createWriteStream(logFileUri.path.substring(1), {
@@ -37,11 +42,7 @@ export default class VSCodeLogFileTransport extends Transport {
 
     /** Mark the start of the addon manager in the log */
     public logStart() {
-        this.stream.write(
-            stringToByteArray(
-                "-------------------------------------------- STARTUP --------------------------------------------\n"
-            )
-        );
+        this.stream.write(stringToByteArray("#### STARTUP ####\n"));
     }
 
     public async log(info: winston.LogEntry, callback: winston.LogCallback) {
