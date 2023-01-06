@@ -107,29 +107,27 @@ namespace filesystem {
             const type = item[1];
             const itemURI = vscode.Uri.joinPath(uri, name);
 
+            const pathSegments = itemURI.path.split("/");
+            const path = pathSegments
+                .slice(pathSegments.length - (options.depth + 1))
+                .join("/");
+
             switch (type) {
                 case vscode.FileType.File:
-                    const pathSegments = itemURI.path.split("/");
-                    const path = pathSegments
-                        .slice(pathSegments.length - (options.depth + 1))
-                        .join("/");
                     tree.push({ path, name, type, uri: itemURI });
                     break;
                 case vscode.FileType.Directory:
                     if (!options.recursive) {
-                        const pathSegments = itemURI.path.split("/");
-                        const path = pathSegments
-                            .slice(pathSegments.length - (options.depth + 1))
-                            .join("/");
                         tree.push({ path, name, type, uri: itemURI });
                         continue;
                     }
-                    const result = await readDirectory(itemURI, {
-                        recursive: true,
-                        maxDepth: options.maxDepth,
-                        depth: options.depth + 1,
-                    });
-                    tree.push(...result);
+                    tree.push(
+                        ...(await readDirectory(itemURI, {
+                            recursive: true,
+                            maxDepth: options.maxDepth,
+                            depth: options.depth + 1,
+                        }))
+                    );
                     break;
                 default:
                     localLogger.warn(`Unsupported file type ${itemURI.path}`);

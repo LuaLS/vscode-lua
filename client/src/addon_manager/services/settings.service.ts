@@ -43,7 +43,7 @@ export const getSetting = <T>(
  * @param value The value to set for the setting.
  * @throws If there is no workspace open
  */
-export const setSetting = (name: string, section = "Lua", value: any) => {
+export const setSetting = (name: string, section = "Lua", value: unknown) => {
     const initialWorkspace = getWorkspace();
 
     if (!initialWorkspace) {

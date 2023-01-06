@@ -103,10 +103,7 @@ export class WebVue {
     }
 
     /** Get the HTML content of the webview */
-    private _getWebViewContent(
-        webview: vscode.Webview,
-        extensionUri: vscode.Uri
-    ) {
+    private _getWebViewContent() {
         // TODO: Lock down CSP https://code.visualstudio.com/api/extension-guides/webview#content-security-policy
         if (this._context.extensionMode !== vscode.ExtensionMode.Production) {
             return `

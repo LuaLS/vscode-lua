@@ -1,9 +1,6 @@
 import * as vscode from "vscode";
-import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
 import { WebVue } from "../panels/WebVue";
-
-const localLogger = createChildLogger("Uninstall Addon");
 
 type Message = {
     data: {

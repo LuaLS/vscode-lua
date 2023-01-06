@@ -1,8 +1,5 @@
 import * as vscode from "vscode";
-import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
-
-const localLogger = createChildLogger("Disable Addon");
 
 type Message = {
     data: {
