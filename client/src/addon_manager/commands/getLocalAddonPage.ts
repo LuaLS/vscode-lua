@@ -22,7 +22,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         await addonManager.fetchLocalAddons(installLocation);
 
     WebVue.sendMessage("localAddonStore", {
-        prop: "total",
+        property: "total",
         value: addonManager.localAddons.size,
     });
 

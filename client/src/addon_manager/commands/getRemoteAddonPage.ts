@@ -19,7 +19,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     }
 
     WebVue.sendMessage("remoteAddonStore", {
-        prop: "total",
+        property: "total",
         value: addonManager.remoteAddons.size,
     });
 
