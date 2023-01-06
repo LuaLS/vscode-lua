@@ -4,6 +4,7 @@ import { createChildLogger } from "../services/logging.service";
 import { commands } from "../commands";
 import { getWorkspace } from "../services/settings.service";
 import { WebVueMessage } from "../types/webvue";
+import { DEVELOPMENT_IFRAME_URL } from "../config";
 
 const localLogger = createChildLogger("WebVue");
 
@@ -143,7 +144,7 @@ export class WebVue {
                 </style>
             </head>
             <body>
-                <iframe src="http://127.0.0.1:5173/"></iframe>
+                <iframe src="${DEVELOPMENT_IFRAME_URL}"></iframe>
                 <script>
                     const vscode = acquireVsCodeApi();
 
