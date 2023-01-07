@@ -6,6 +6,7 @@ import open from "./open";
 import getRemoteAddonPage from "./getRemoteAddonPage";
 import getLocalAddonsPage from "./getLocalAddonPage";
 import refreshLocalAddons from "./refreshLocalAddons";
+import openLog from "./openLog";
 
 export const commands = {
     install,
@@ -16,4 +17,5 @@ export const commands = {
     getRemoteAddonPage,
     getLocalAddonsPage,
     refreshLocalAddons,
+    openLog,
 };
