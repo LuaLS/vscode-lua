@@ -5,7 +5,7 @@
     "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
     "rules": {
         "@typescript-eslint/no-namespace": "off",
-        "linebreak-style": ["warn", "auto"],
+        "linebreak-style": "off",
         "no-duplicate-imports": "warn",
         "semi": "error",
         "default-case": "error",
