@@ -181,15 +181,19 @@ export class WebVue {
                 "codicon.ttf",
             ]);
 
+            const inlineStyleNonce = this.getNonce();
+            const scriptNonce = this.getNonce();
+
             return `
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource} 'nonce-${inlineStyleNonce}'; font-src ${webview.cspSource}; script-src 'nonce-${scriptNonce}';">
                 <link rel="stylesheet" type="text/css" href="${stylesUri}">
                 <title>Lua Addon Manager</title>
-                <style>
+                <style nonce="${inlineStyleNonce}">
                     @font-face {
                         font-family: "codicon";
                         src: url(${codiconUri}) format("truetype");
@@ -198,11 +202,27 @@ export class WebVue {
             </head>
             <body>
                 <div id="app"></div>
-                <script type="module" src="${scriptUri}"></script>
+                <script type="module" src="${scriptUri}" nonce="${scriptNonce}"></script>
             </body>
             </html>
             `;
         }
+    }
+
+    /** Get a `nonce` (number used once). Used for the content security policy.
+     *
+     * [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)
+     */
+    private getNonce() {
+        let text = "";
+        const possible =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (let i = 0; i < 32; i++) {
+            text += possible.charAt(
+                Math.floor(Math.random() * possible.length)
+            );
+        }
+        return text;
     }
 
     /** Sets up event listener for messages sent from webview */
