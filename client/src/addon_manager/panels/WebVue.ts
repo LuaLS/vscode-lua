@@ -10,7 +10,6 @@ const localLogger = createChildLogger("WebVue");
 
 export class WebVue {
     public static currentPanel: WebVue | undefined;
-    private readonly _context: vscode.ExtensionContext;
     private readonly _panel: vscode.WebviewPanel;
     private readonly _extensionUri: vscode.Uri;
     private _disposables: vscode.Disposable[] = [];
@@ -21,19 +20,17 @@ export class WebVue {
     ) {
         const extensionUri = context.extensionUri;
 
-        this._context = context;
         this._panel = panel;
         this._extensionUri = extensionUri;
-        this._panel.onDidDispose(this.dispose, null, this._disposables);
-        this._setWebviewMessageListener(this._panel.webview);
         this._panel.iconPath = {
             dark: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
             light: vscode.Uri.joinPath(extensionUri, "images", "logo.png"),
         };
-        this._panel.webview.html = this._getWebViewContent(
-            this._panel.webview,
-            extensionUri
+        this._disposables.push(
+            this._panel.onDidDispose(this.dispose, null, this._disposables),
+            this._setWebviewMessageListener(this._panel.webview, context)
         );
+        this._panel.webview.html = this._getWebViewContent(this._panel.webview, context);
     }
 
     /** Convert a standard file uri to a uri usable by this webview. */
@@ -103,9 +100,8 @@ export class WebVue {
     }
 
     /** Get the HTML content of the webview */
-    private _getWebViewContent() {
-        // TODO: Lock down CSP https://code.visualstudio.com/api/extension-guides/webview#content-security-policy
-        if (this._context.extensionMode !== vscode.ExtensionMode.Production) {
+    private _getWebViewContent(webview: vscode.Webview, context: vscode.ExtensionContext) {
+        if (context.extensionMode !== vscode.ExtensionMode.Production) {
             return `
             <!DOCTYPE html>
             <html lang="en">
@@ -210,15 +206,18 @@ export class WebVue {
     }
 
     /** Sets up event listener for messages sent from webview */
-    private _setWebviewMessageListener(webview: vscode.Webview) {
+    private _setWebviewMessageListener(
+        webview: vscode.Webview,
+        context: vscode.ExtensionContext
+    ) {
         const commandLogger = createChildLogger("Command");
 
-        webview.onDidReceiveMessage((message: WebVueMessage) => {
+        return webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;
             commandLogger.verbose(`Executing "${command}"`);
 
             try {
-                commands[command](this._context, message);
+                commands[command](context, message);
             } catch (e) {
                 commandLogger.error(e);
             }
