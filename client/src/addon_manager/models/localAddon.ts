@@ -4,9 +4,10 @@ import { CONFIG_FILENAME, LIBRARY_SETTING, PLUGIN_FILENAME } from "../config";
 import filesystem from "../services/filesystem.service";
 import { Addon, AddonConfig } from "../types/addon";
 import {
+    applyAddonSettings,
     getLibraries,
-    getSetting,
     setSetting,
+    revokeAddonSettings,
 } from "../services/settings.service";
 import { WebVue } from "../panels/WebVue";
 import addonManager from "../services/addonManager.service";
@@ -139,16 +140,11 @@ export class LocalAddon implements Addon {
         const regex = new RegExp(`sumneko.lua/addons/${this.name}`, "g");
 
         if (!librarySetting) {
-            const settingValue = await getSetting(LIBRARY_SETTING);
-
-            if (!Array.isArray(settingValue)) {
-                localLogger.warn(
-                    `"${LIBRARY_SETTING}" setting in workspace is not an array`
-                );
-                return;
+            try {
+                librarySetting = await getLibraries();
+            } catch (e) {
+                librarySetting = [];
             }
-
-            librarySetting = settingValue;
         }
 
         const enabled = librarySetting.some((path) => regex.test(path));
@@ -210,21 +206,29 @@ export class LocalAddon implements Addon {
         const regex = new RegExp(`/sumneko.lua/addons/${this.name}`, "g");
 
         const libraryPaths = await getLibraries();
-
         const index = libraryPaths.findIndex((path) => regex.test(path));
 
         if (index !== -1) {
             localLogger.warn(`"${this.name}" is already enabled`);
+            this.#enabled = true;
             return;
         }
 
-        const addonPath = this.uri.path.substring(1);
-        libraryPaths.push(addonPath);
+        const libraryUri = vscode.Uri.joinPath(this.uri, "library");
+        const libraryPath = libraryUri.path.substring(1);
+        libraryPaths.push(libraryPath);
 
-        return setSetting(LIBRARY_SETTING, libraryPaths).then(() => {
-            this.#enabled = true;
-            localLogger.info(`Enabled "${this.name}"`);
-        });
+        const configValues = await this.getConfig();
+
+        return setSetting(LIBRARY_SETTING, libraryPaths).then(
+            () => {
+                applyAddonSettings(configValues.settings).then(() => {
+                    this.#enabled = true;
+                    localLogger.info(`Enabled "${this.name}"`);
+                });
+            },
+            () => localLogger.warn(`Failed to enable "${this.name}"`)
+        );
     }
 
     /** Disable this addon */
@@ -232,19 +236,28 @@ export class LocalAddon implements Addon {
         const regex = new RegExp(`/sumneko.lua/addons/${this.name}`, "g");
 
         const libraryPaths = await getLibraries();
-
         const index = libraryPaths.findIndex((path) => regex.test(path));
 
         if (index === -1) {
             localLogger.warn(`"${this.name}" is already disabled`);
+            this.#enabled = false;
             return;
         }
 
         libraryPaths.splice(index);
 
-        return setSetting(LIBRARY_SETTING, libraryPaths).then(() => {
-            this.#enabled = false;
-            localLogger.info(`Disabled "${this.name}"`);
-        });
+        const configValues = await this.getConfig();
+
+        return setSetting(LIBRARY_SETTING, libraryPaths).then(
+            () => {
+                revokeAddonSettings(configValues.settings).then(() => {
+                    this.#enabled = false;
+                    localLogger.info(`Disabled "${this.name}"`);
+                });
+            },
+            () => {
+                localLogger.warn(`Failed to disable "${this.name}"`);
+            }
+        );
     }
 }
