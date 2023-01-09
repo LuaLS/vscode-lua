@@ -30,7 +30,7 @@ export default class VSCodeLogFileTransport extends Transport {
         // Create log file stream
         const logFileUri = vscode.Uri.joinPath(
             addonLogsDir,
-            `${dayjs().format("HH-mm-ss")}.log`
+            `${dayjs().format("HH-mm")}.log`
         );
         VSCodeLogFileTransport.currentLogFile = logFileUri;
         this.stream = fs.createWriteStream(logFileUri.path.substring(1), {
