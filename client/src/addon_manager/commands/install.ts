@@ -23,7 +23,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         installLocation
     );
 
-    localAddon.enabled = true;
+    await localAddon.enable();
     await localAddon.sendToWebVue();
 
     WebVue.sendMessage("localAddonStore", {

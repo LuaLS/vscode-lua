@@ -9,8 +9,7 @@ export const REPOSITORY_ISSUES_URL = "https://github.com/carsakiller/vscode-lua-
 export const ADDONS_DIRECTORY = "addons";
 
 // settings.json file info
-export const LIBRARY_SETTING_SECTION = "Lua.workspace";
-export const LIBRARY_SETTING_NAME = "library";
+export const LIBRARY_SETTING = "Lua.workspace.library";
 
 // Addon files
 export const PLUGIN_FILENAME = "plugin.lua";

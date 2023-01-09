@@ -1,8 +1,5 @@
 import * as vscode from "vscode";
-import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
-
-const localLogger = createChildLogger("Enable Addon");
 
 type Message = {
     data: {
@@ -10,9 +7,8 @@ type Message = {
     };
 };
 
-export default (context: vscode.ExtensionContext, message: Message) => {
+export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.localAddons.get(message.data.name);
-    addon.enabled = true;
+    await addon.enable();
     addon.sendToWebVue();
-    localLogger.info(`Enabled "${message.data.name}" addon!`);
 };

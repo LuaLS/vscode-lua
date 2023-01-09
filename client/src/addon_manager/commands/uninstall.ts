@@ -11,7 +11,7 @@ type Message = {
 export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.localAddons.get(message.data.name);
 
-    addon.enabled = false;
+    await addon.disable();
     addonManager.uninstallAddon(message.data.name);
 
     WebVue.sendMessage("localAddonStore", {

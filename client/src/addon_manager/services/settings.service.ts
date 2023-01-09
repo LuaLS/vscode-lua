@@ -1,5 +1,8 @@
 import * as vscode from "vscode";
 import { createChildLogger } from "./logging.service";
+import filesystem from "./filesystem.service";
+import { LIBRARY_SETTING } from "../config";
+import { LoggableError } from "./logging/LoggableError";
 
 const localLogger = createChildLogger("Settings");
 
@@ -11,64 +14,60 @@ const localLogger = createChildLogger("Settings");
  */
 export const getWorkspace = () => vscode.workspace.workspaceFolders?.[0];
 
-/** Get a setting from the current workspace.
- * @param name The name of the setting to get.
- * @param section The section that the setting lives in. Will default to "Lua". Example: `Lua.workspace`.
- * @param defaultValue A value to fall back to should the setting not exist.
- * @throws If there is no workspace open
+/** Get the `.vscode/settings.json` file for a given workspace.
+ * @param workspace The workspace to get the setting file for
  */
-export const getSetting = <T>(
-    name: string,
-    section = "Lua",
-    defaultValue?: T
-): T => {
-    // Get current user config for "primary" workspace
-    const initialWorkspace = getWorkspace();
-
-    if (!initialWorkspace) {
-        throw "There is no workspace open";
-    }
-
-    const config = vscode.workspace.getConfiguration(section, initialWorkspace);
-
-    const value = config.get(name) as T;
-    localLogger.debug(`${section}.${name} = ${value ?? "undefined"}`);
-
-    return value ?? defaultValue;
-};
-
-/** Set a setting from the current workspace.
- * @param name The name of the setting to set.
- * @param section The section that the setting lives in. Will default to "Lua". Example: `Lua.workspace`.
- * @param value The value to set for the setting.
- * @throws If there is no workspace open
- */
-export const setSetting = (name: string, section = "Lua", value: unknown) => {
-    const initialWorkspace = getWorkspace();
-
-    if (!initialWorkspace) {
-        throw "There is no workspace open";
-    }
-
-    const workspaceConfig = vscode.workspace.getConfiguration(
-        section,
-        initialWorkspace
+export const getWorkspaceSettingsFile = async (
+    workspace: vscode.WorkspaceFolder
+): Promise<Record<string, unknown>> => {
+    const settingFileUri = vscode.Uri.joinPath(
+        workspace.uri,
+        ".vscode",
+        "settings.json"
     );
 
-    workspaceConfig.update(name, value, vscode.ConfigurationTarget.Workspace);
-
-    localLogger.debug(`Set ${section}.${name} to ${value}`);
+    return JSON.parse(await filesystem.readFile(settingFileUri));
 };
 
-/** Request that the user open a folder/workspace */
-export const requestOpenFolder = () => {
-    return vscode.window
-        .showInformationMessage(
-            "There is no workspace currently open",
-            "Open Folder"
-        )
-        .then((result) => {
-            if (!result) return;
-            vscode.commands.executeCommand("workbench.action.files.openFolder");
-        });
+/** Get a setting from the workspace's `.vscode/settings.json` file.
+ * @param name The name of the setting, e.g. `Lua.runtime.version`.
+ * @throws If a workspace is not open
+ */
+export const getSetting = async (name: string): Promise<unknown> => {
+    const workspace = getWorkspace();
+    if (!workspace)
+        throw new LoggableError("Workspace is not open", localLogger);
+
+    const workspaceSettings = await getWorkspaceSettingsFile(workspace);
+    return workspaceSettings[name];
+};
+
+/** Set a setting in this workspace's `.vscode/settings.json` file.
+ * @param name The name of the setting, e.g. `Lua.runtime.version`.
+ * @param value The value of the setting.
+ * @throws If a workspace is not open
+ */
+export const setSetting = async (name: string, value: unknown) => {
+    const workspace = getWorkspace();
+    if (!workspace)
+        throw new LoggableError("Workspace is not open!", localLogger);
+
+    const workspaceConfiguration = vscode.workspace.getConfiguration(
+        null,
+        workspace
+    );
+    return workspaceConfiguration.update(name, value);
+};
+
+/** Get the enabled libraries in the current workspace. */
+export const getLibraries = async (): Promise<string[]> => {
+    const settingValue = await getSetting(LIBRARY_SETTING);
+
+    if (!Array.isArray(settingValue))
+        throw new LoggableError(
+            `"${LIBRARY_SETTING}" setting in workspace is not an array`,
+            localLogger
+        );
+
+    return settingValue;
 };

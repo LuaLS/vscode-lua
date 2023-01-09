@@ -23,13 +23,6 @@ class AddonManager {
         this.remoteAddons = new Map();
     }
 
-    /** Get an array of the names of enabled addons */
-    public get enabledAddons() {
-        return Array.from(this.localAddons.values()).filter(
-            (addon) => addon.enabled
-        );
-    }
-
     /** Retrieve the list of all installed addons */
     public async fetchLocalAddons(installLocation: vscode.Uri) {
         const directoryNodes = await filesystem.readDirectory(installLocation);
