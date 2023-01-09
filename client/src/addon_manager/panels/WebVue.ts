@@ -43,7 +43,7 @@ export class WebVue {
     /** Send a message to the webview */
     public static sendMessage(
         command: string,
-        data: { [index: string]: unknown }
+        data: { [index: string]: unknown } | unknown
     ) {
         WebVue.currentPanel._panel.webview.postMessage({ command, data });
     }
@@ -81,7 +81,7 @@ export class WebVue {
         }
 
         const workspaceOpen = getWorkspace() !== undefined;
-        WebVue.sendMessage("workspaceOpen", { workspaceOpen });
+        WebVue.sendMessage("workspaceOpen", workspaceOpen);
         localLogger.debug(`Workspace Open: ${workspaceOpen}`);
     }
 
