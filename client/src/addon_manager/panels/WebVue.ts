@@ -81,7 +81,10 @@ export class WebVue {
         }
 
         const workspaceOpen = getWorkspace() !== undefined;
-        WebVue.sendMessage("workspaceOpen", workspaceOpen);
+        const clientVersion = context.extension.packageJSON.version;
+
+        WebVue.sendMessage("appStore", {property: "workspaceState", value: workspaceOpen});
+        WebVue.sendMessage("appStore", {property: "clientVersion", value: clientVersion});
         localLogger.debug(`Workspace Open: ${workspaceOpen}`);
     }
 
