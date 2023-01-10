@@ -32,10 +32,9 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         return;
     }
 
-    const addonList = addonManager.getLocalAddonsPage(
-        message.data.page,
-        message.data.pageSize ?? 5
-    );
+    const { page, pageSize } = message.data;
+
+    const addonList = addonManager.getLocalAddonsPage(page, pageSize ?? 5);
 
     const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
 

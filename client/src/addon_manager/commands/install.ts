@@ -18,13 +18,17 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         ADDONS_DIRECTORY
     );
 
+    const remoteAddon = addonManager.remoteAddons.get(message.data.name);
+    await remoteAddon.setLock(true);
+
     const localAddon = await addonManager.installAddon(
         message.data.name,
         installLocation
     );
-
     await localAddon.enable();
-    await localAddon.sendToWebVue();
+
+    await localAddon.setLock(false);
+    await remoteAddon.setLock(false);
 
     WebVue.sendMessage("localAddonStore", {
         property: "total",

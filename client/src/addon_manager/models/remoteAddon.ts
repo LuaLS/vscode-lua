@@ -35,6 +35,8 @@ export class RemoteAddon implements Addon {
     #size?: number;
     /** Whether or not this addon has a `plugin.lua`. */
     #hasPlugin?: boolean;
+    /** Whether or not this addon is currently processing an operation. */
+    processing?: boolean;
 
     /** A unix timestamp (milliseconds) of when the latest commit for this
      * addon was. This is used for version checking.*/
@@ -63,12 +65,13 @@ export class RemoteAddon implements Addon {
             size,
             hasPlugin,
             latestCommitTimestamp,
+            processing: this.processing,
         };
     }
 
     /** Send this addon to WebVue. */
     public async sendToWebVue() {
-        WebVue.sendMessage("addRemoteAddon", await this.toJSON());
+        WebVue.sendMessage("addRemoteAddon", { addons: await this.toJSON() });
     }
 
     /** Get the values from the `config.json` for this addon from GitHub. */
@@ -186,9 +189,10 @@ export class RemoteAddon implements Addon {
                             REPOSITORY_NAME,
                             `${ADDONS_DIRECTORY}/${this.name}/${item.path}`
                         )
-                        .then((rawContents) =>
-                            filesystem.writeFile(filePath, rawContents)
-                        )
+                        .then((rawContents) => {
+                            localLogger.debug(`Downloaded ${item.path}`);
+                            return filesystem.writeFile(filePath, rawContents);
+                        })
                 );
             } else {
                 const dirPath = vscode.Uri.joinPath(addonUri, item.path);
@@ -202,5 +206,10 @@ export class RemoteAddon implements Addon {
             await filesystem.writeFile(uri, dayjs().valueOf().toString());
             return { name: this.name, uri: addonUri };
         });
+    }
+
+    public async setLock(state: boolean) {
+        this.processing = state;
+        return this.sendToWebVue();
     }
 }

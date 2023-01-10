@@ -115,8 +115,9 @@ class AddonManager {
 
     public uninstallAddon(name: string) {
         const addon = this.localAddons.get(name);
-        addon.uninstall();
-        this.localAddons.delete(name);
+        return addon.uninstall().then(() => {
+            this.localAddons.delete(name);
+        });
     }
 }
 

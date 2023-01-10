@@ -9,6 +9,7 @@ type Message = {
 
 export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.localAddons.get(message.data.name);
+    await addon.setLock(true);
     await addon.enable();
-    addon.sendToWebVue();
+    await addon.setLock(false);
 };

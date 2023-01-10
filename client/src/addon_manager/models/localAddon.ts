@@ -32,6 +32,8 @@ export class LocalAddon implements Addon {
     #size?: number;
     /** Whether or not this addon has a `plugin.lua`. */
     #hasPlugin?: boolean;
+    /** Whether or not this addon is currently processing an operation. */
+    processing?: boolean;
 
     /** Whether or not this addon is enabled. */
     #enabled?: boolean;
@@ -45,7 +47,6 @@ export class LocalAddon implements Addon {
     constructor(name: string, uri: vscode.Uri) {
         this.name = name;
         this.uri = uri;
-        this.#enabled = undefined;
     }
 
     /** Convert this addon to an object ready for sending to WebVue. */
@@ -66,6 +67,7 @@ export class LocalAddon implements Addon {
             installTimestamp,
             size,
             hasUpdate,
+            processing: this.processing,
         };
     }
 
@@ -198,7 +200,9 @@ export class LocalAddon implements Addon {
                 recursive: true,
                 useTrash: true,
             })
-            .then(() => localLogger.info(`Uninstalled "${this.name}"`));
+            .then(() => {
+                localLogger.info(`Uninstalled "${this.name}"`);
+            });
     }
 
     /** Enable this addon */
@@ -259,5 +263,10 @@ export class LocalAddon implements Addon {
                 localLogger.warn(`Failed to disable "${this.name}"`);
             }
         );
+    }
+
+    public async setLock(state: boolean) {
+        this.processing = state;
+        return this.sendToWebVue();
     }
 }
