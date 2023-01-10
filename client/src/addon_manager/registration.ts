@@ -6,6 +6,10 @@ import { ADDONS_DIRECTORY } from "./config";
 import filesystem from "./services/filesystem.service";
 import VSCodeLogFileTransport from "./services/logging/vsCodeLogFileTransport";
 import { logger } from "./services/logging.service";
+import dayjs from "dayjs";
+import RelativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(RelativeTime);
 
 /** Set up the addon manager by registering its commands in VS Code */
 export async function activate(context: vscode.ExtensionContext) {

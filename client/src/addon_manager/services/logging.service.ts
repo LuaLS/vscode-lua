@@ -12,6 +12,7 @@ import * as vscode from "vscode";
 import { MESSAGE } from "triple-beam";
 import { REPOSITORY_ISSUES_URL } from "../config";
 import VSCodeLogFileTransport from "./logging/vsCodeLogFileTransport";
+import dayjs from "dayjs";
 
 // Create logger from winston
 export const logger = winston.createLogger({
@@ -125,6 +126,25 @@ axios.interceptors.response.use(
         const code = error.response?.status ?? error.code;
         const message = error?.response?.statusText ?? error.message;
         const data = JSON.stringify(error?.response?.data);
+
+        // Got rate limited
+        if (code === 403) {
+            const rateLimitReset = dayjs.unix(
+                Number(error.response.headers["x-ratelimit-reset"])
+            );
+
+            const limitTime = rateLimitReset.toNow(true);
+
+            vscode.window.showWarningMessage(
+                `Looks like GitHub just rate limited you for ${limitTime}. I recommend logging in to get a much higher rate limit.`,
+                { modal: true }
+            );
+            axiosLogger.warn(
+                `${url} ${method} ${code} ${message} ${data ?? ""}`
+            );
+
+            return Promise.reject(error);
+        }
 
         axiosLogger.error(`${url} ${method} ${code} ${message} ${data ?? ""}`);
 
