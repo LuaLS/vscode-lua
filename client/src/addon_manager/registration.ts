@@ -16,7 +16,9 @@ export async function activate(context: vscode.ExtensionContext) {
     // Register commands
     context.subscriptions.push(
         vscode.commands.registerCommand("lua.addon_manager.open", () => {
-            WebVue.render(context);
+            credentials.login().then(() => {
+                WebVue.render(context);
+            });
         })
     );
     // Create log file transport and add to logger
@@ -36,5 +38,5 @@ export async function activate(context: vscode.ExtensionContext) {
     await filesystem.createDirectory(addonDirectoryURI);
 
     await credentials.initialize(context);
-    credentials.login();
+    await credentials.login();
 }

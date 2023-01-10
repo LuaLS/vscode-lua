@@ -2886,6 +2886,12 @@
 					"markdownDescription": "%config.workspace.userThirdParty%",
 					"scope": "resource",
 					"type": "array"
+				},
+				"Lua.addonManager.authentication.noAsk": {
+					"default": false,
+					"markdownDescription": "Don't ask to sign in on startup.",
+					"scope": "resource",
+					"type": "boolean"
 				}
 			},
 			"title": "Lua",
