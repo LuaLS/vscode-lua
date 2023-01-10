@@ -19,7 +19,6 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     );
 
     const remoteAddon = addonManager.remoteAddons.get(message.data.name);
-    await remoteAddon.setLock(true);
 
     const localAddon = await addonManager.installAddon(
         message.data.name,
