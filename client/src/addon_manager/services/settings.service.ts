@@ -39,7 +39,7 @@ export const getWorkspaceSettingsFile = async (
     );
 
     let rawSettings = await filesystem.readFile(settingFileUri);
-    if (rawSettings === "") {
+    if (!rawSettings) {
         rawSettings = "{}";
     }
 
