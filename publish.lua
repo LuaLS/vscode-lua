@@ -163,6 +163,8 @@ local count = copyFiles(ROOT , out) {
     ['changelog.md']           = true,
     ['package.nls.json']       = true,
     ['package.nls.zh-cn.json'] = true,
+    ['package.nls.zh-tw.json'] = true,
+    ['package.nls.pt-br.json'] = true,
 }
 print(('复制了[%d]个文件'):format(count))
 
