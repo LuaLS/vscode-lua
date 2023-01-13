@@ -63,8 +63,8 @@ jobs:
           # Full name of the tarball asset
           PKG_NAME="${PKG_BASENAME}.${PKG_SUFFIX}"
 
-          echo name=PKG_BASENAME::${PKG_BASENAME} >> $GITHUB_OUTPUT
-          echo name=PKG_NAME::${PKG_NAME} >> $GITHUB_OUTPUT
+          echo PKG_BASENAME=${PKG_BASENAME} >> $GITHUB_OUTPUT
+          echo PKG_NAME=${PKG_NAME} >> $GITHUB_OUTPUT
 
       - name: Compile clinet
         shell: bash
@@ -79,7 +79,7 @@ jobs:
         id: pack
         shell: bash
         run: |
-          npm install -g vsce
+          npm install -g @vscode/vsce
           vsce package -o ${{ steps.vars.outputs.PKG_NAME }} -t ${{ matrix.platform }}
 
       - uses: actions/upload-artifact@v3
