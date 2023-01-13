@@ -68,7 +68,7 @@ jobs:
 
       - name: Compile clinet
         shell: bash
-        run: /
+        run: |
           npm install -g typescript
           cd client
           tsc
