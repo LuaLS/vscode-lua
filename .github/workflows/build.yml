@@ -71,6 +71,7 @@ jobs:
         run: |
           npm install -g typescript
           cd client
+          npm install
           tsc
           cd ..
 
@@ -79,9 +80,6 @@ jobs:
         shell: bash
         run: |
           npm install -g vsce
-          cd client
-          npm install
-          cd ..
           vsce package -o ${{ steps.vars.outputs.PKG_NAME }} -t ${{ matrix.platform }}
 
       - uses: actions/upload-artifact@v2
