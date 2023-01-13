@@ -66,6 +66,14 @@ jobs:
           echo ::set-output name=PKG_BASENAME::${PKG_BASENAME}
           echo ::set-output name=PKG_NAME::${PKG_NAME}
 
+      - name: Compile clinet
+        shell: bash
+        run: /
+          npm install -g typescript
+          cd client
+          tsc
+          cd ..
+
       - name: Pack vsix
         id: pack
         shell: bash
