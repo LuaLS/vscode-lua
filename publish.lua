@@ -128,7 +128,6 @@ print('开始复制文件...')
 local count = copyFiles(ROOT , out) {
     ['client'] = {
         ['node_modules']      = true,
-        ['out']               = true,
         ['package.json']      = true,
         ['3rd']               = {
             ['vscode-lua-doc']  = {
