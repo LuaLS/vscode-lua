@@ -2925,15 +2925,6 @@
 				"id": "jsonc"
 			}
 		],
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "addon-manager",
-					"title": "Addon Manager",
-					"icon": "images/logo.png"
-				}
-			]
-		},
 		"menus": {
 			"editor/context": [
 				{
