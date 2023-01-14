@@ -74,6 +74,14 @@ jobs:
           npx tsc
           cd ..
 
+      - name: Build Addon Manager WebVue
+        shell: bash
+        run: |
+          cd client/webvue
+          npm ci
+          npm run build
+          cd ../..
+
       - name: Pack vsix
         id: pack
         shell: bash
