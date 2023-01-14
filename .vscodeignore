@@ -4,6 +4,7 @@
 !client/package.json
 !client/3rd/vscode-lua-doc/doc
 !client/3rd/vscode-lua-doc/extension.js
+!client/webvue/build
 
 !server/bin
 !server/locale
