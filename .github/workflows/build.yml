@@ -66,13 +66,12 @@ jobs:
           echo PKG_BASENAME=${PKG_BASENAME} >> $GITHUB_OUTPUT
           echo PKG_NAME=${PKG_NAME} >> $GITHUB_OUTPUT
 
-      - name: Compile clinet
+      - name: Compile client
         shell: bash
         run: |
-          npm install -g typescript
           cd client
-          npm install
-          tsc
+          npm ci
+          npx tsc
           cd ..
 
       - name: Pack vsix
