@@ -6,7 +6,9 @@
 	"version": "0.0.1",
 	"publisher": "vscode",
 	"scripts": {
-		"lint": "npx eslint src/"
+		"lint": "npx eslint src/",
+		"build": "tsc",
+		"postbuild": "cp package*.json out && cd out && npm ci --omit=dev"
 	},
 	"repository": {
 		"type": "git",

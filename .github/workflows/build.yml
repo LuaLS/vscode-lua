@@ -71,7 +71,7 @@ jobs:
         run: |
           cd client
           npm ci
-          npx tsc
+          npm run build
           cd ..
 
       - name: Build Addon Manager WebVue
