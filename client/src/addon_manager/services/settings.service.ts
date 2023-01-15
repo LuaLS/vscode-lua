@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { createChildLogger } from "./logging.service";
 import filesystem from "./filesystem.service";
 import { LIBRARY_SETTING } from "../config";
+import * as JSONC from "jsonc-parser";
 
 const localLogger = createChildLogger("Settings");
 
@@ -44,7 +45,10 @@ export const getWorkspaceSettingsFile = async (
     }
 
     try {
-        return JSON.parse(rawSettings);
+        return JSONC.parse(rawSettings, null, {
+            allowTrailingComma: true,
+            allowEmptyContent: true,
+        });
     } catch (e) {
         const relativePath = vscode.workspace.asRelativePath(settingFileUri);
         localLogger.warn(
