@@ -22,20 +22,22 @@ export let defaultClient: LuaClient;
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
-        let propMap: Map<string, Map<string, any>> = new Map();
+        const propMap: Map<string, Map<string, unknown>> = new Map();
+
         for (const data of changes) {
-            let config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
-            if (data.action == 'add') {
-                let value: any[] = config.get(data.key);
+            const config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
+
+            if (data.action === 'add') {
+                const value: unknown[] = config.get(data.key);
                 value.push(data.value);
                 config.update(data.key, value, data.global);
                 continue;
             }
-            if (data.action == 'set') {
+            if (data.action === 'set') {
                 config.update(data.key, data.value, data.global);
                 continue;
             }
-            if (data.action == 'prop') {
+            if (data.action === 'prop') {
                 if (!propMap[data.key]) {
                     propMap[data.key] = config.get(data.key);
                 }
@@ -44,7 +46,7 @@ function registerCustomCommands(context: ExtensionContext) {
                 continue;
             }
         }
-    }))
+    }));
 }
 
 class LuaClient {
@@ -57,7 +59,7 @@ class LuaClient {
 
     async start() {
         // Options to control the language client
-        let clientOptions: LanguageClientOptions = {
+        const clientOptions: LanguageClientOptions = {
             // Register the server for plain text documents
             documentSelector: this.documentSelector,
             progressOnInitialization: true,
@@ -70,11 +72,11 @@ class LuaClient {
             }
         };
 
-        let config = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]);
-        let commandParam: string[] = config.get("Lua.misc.parameters");
-        let command: string = await this.getCommand(config);
+        const config = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]);
+        const commandParam: string[] = config.get("Lua.misc.parameters");
+        const command = await this.getCommand(config);
 
-        let serverOptions: ServerOptions = {
+        const serverOptions: ServerOptions = {
             command: command,
             args:    commandParam,
         };
@@ -93,16 +95,20 @@ class LuaClient {
     }
 
     private async getCommand(config: vscode.WorkspaceConfiguration) {
-        let executablePath: string = config.get("Lua.misc.executablePath");
-        if (executablePath && executablePath != "") {
+        const executablePath: string = config.get("Lua.misc.executablePath");
+
+        if (executablePath && executablePath !== "") {
             return executablePath;
         }
+
+        const platform: string = os.platform();
         let command: string;
-        let platform: string = os.platform();
         let binDir: string;
+
         if ((await fs.promises.stat(this.context.asAbsolutePath('server/bin'))).isDirectory()) {
             binDir = 'bin';
         }
+
         switch (platform) {
             case "win32":
                 command = this.context.asAbsolutePath(
@@ -133,6 +139,8 @@ class LuaClient {
                 );
                 await fs.promises.chmod(command, '777');
                 break;
+            default:
+                throw new Error(`Unsupported operating system "${platform}"!`);
         }
         return command;
     }
@@ -145,23 +153,23 @@ class LuaClient {
     }
 
     statusBar() {
-        let client = this.client;
-        let bar = window.createStatusBarItem();
+        const client = this.client;
+        const bar = window.createStatusBarItem();
         bar.text = 'Lua';
         bar.command = 'Lua.statusBar';
         this.disposables.push(Commands.registerCommand(bar.command, () => {
             client.sendNotification('$/status/click');
-        }))
-        this.disposables.push(client.onNotification('$/status/show', (params) => {
+        }));
+        this.disposables.push(client.onNotification('$/status/show', () => {
             bar.show();
-        }))
-        this.disposables.push(client.onNotification('$/status/hide', (params) => {
+        }));
+        this.disposables.push(client.onNotification('$/status/hide', () => {
             bar.hide();
-        }))
+        }));
         this.disposables.push(client.onNotification('$/status/report', (params) => {
             bar.text    = params.text;
             bar.tooltip = params.tooltip;
-        }))
+        }));
         client.sendNotification('$/status/refresh');
         this.disposables.push(bar);
     }
@@ -203,7 +211,7 @@ export async function deactivate() {
     return undefined;
 }
 
-export async function reportAPIDoc(params: any) {
+export async function reportAPIDoc(params: unknown) {
     if (!defaultClient) {
         return;
     }

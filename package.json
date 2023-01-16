@@ -25,6 +25,10 @@
 			{
 				"command": "lua.psi.view",
 				"title": "Lua Psi Viewer"
+			},
+			{
+				"command": "lua.addon_manager.open",
+				"title": "Lua: Open Addon Manager"
 			}
 		],
 		"configuration": {
@@ -2882,6 +2886,12 @@
 					"markdownDescription": "%config.workspace.userThirdParty%",
 					"scope": "resource",
 					"type": "array"
+				},
+				"Lua.addonManager.authentication.noAsk": {
+					"default": false,
+					"markdownDescription": "Don't ask to sign in on startup.",
+					"scope": "resource",
+					"type": "boolean"
 				}
 			},
 			"title": "Lua",

@@ -4,3 +4,6 @@
 [submodule "client/3rd/vscode-lua-doc"]
 	path = client/3rd/vscode-lua-doc
 	url = https://github.com/actboy168/vscode-lua-doc
+[submodule "client/webvue"]
+	path = client/webvue
+	url = git@github.com:carsakiller/vscode-lua-webvue.git

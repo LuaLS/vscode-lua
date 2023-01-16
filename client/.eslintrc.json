@@ -1,0 +1,16 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    "rules": {
+        "@typescript-eslint/no-namespace": "off",
+        "linebreak-style": "off",
+        "no-duplicate-imports": "warn",
+        "semi": "error",
+        "default-case": "error",
+        "default-case-last": "error",
+        "eqeqeq": "error"
+    },
+    "ignorePatterns": ["out", "dist", "**/*.d.ts"]
+}
