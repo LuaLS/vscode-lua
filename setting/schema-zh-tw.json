@@ -1,6 +1,19 @@
 {
     "description": "Setting of sumneko.lua",
     "properties": {
+        "codeLens": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/codeLens.enable"
+                }
+            }
+        },
+        "codeLens.enable": {
+            "default": false,
+            "markdownDescription": "Enable code lens.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "completion": {
             "properties": {
                 "autoRequire": {
@@ -259,6 +272,7 @@
                     "missing-return-value",
                     "need-check-nil",
                     "need-paren",
+                    "nesting-long-mark",
                     "newfield-call",
                     "newline-call",
                     "no-unknown",
@@ -936,7 +950,7 @@
                 },
                 "invisible": {
                     "default": "Any",
-                    "description": "%config.diagnostics.invisible%",
+                    "description": "Enable diagnostics for accesses to fields which are invisible.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1702,7 +1716,7 @@
                 },
                 "invisible": {
                     "default": "Warning",
-                    "description": "%config.diagnostics.invisible%",
+                    "description": "Enable diagnostics for accesses to fields which are invisible.",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2304,7 +2318,7 @@
         },
         "format.defaultConfig": {
             "additionalProperties": false,
-            "default": {},
+            "default": [],
             "markdownDescription": "預設的格式化組態，優先順序低於工作區內的 `.editorconfig` 檔案。\n請查閱[格式化文件](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs)了解用法。\n",
             "patternProperties": {
                 ".*": {
@@ -2826,7 +2840,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
-            "default": {},
+            "default": [],
             "markdownDescription": "將自訂全域變數視為一些特殊的內建變數，語言伺服將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
@@ -2947,25 +2961,6 @@
             "scope": "resource",
             "type": "array"
         },
-        "telemetry": {
-            "properties": {
-                "enable": {
-                    "$ref": "#/properties/telemetry.enable"
-                }
-            }
-        },
-        "telemetry.enable": {
-            "default": null,
-            "markdownDescription": "啟用遙測，透過網路發送你的編輯器資訊與錯誤日誌。在[此處](https://github.com/sumneko/lua-language-server/wiki/Home#privacy)閱讀我們的隱私聲明。\n",
-            "scope": "resource",
-            "tags": [
-                "telemetry"
-            ],
-            "type": [
-                "boolean",
-                "null"
-            ]
-        },
         "type": {
             "properties": {
                 "castNumberToInteger": {
@@ -3006,21 +3001,21 @@
         },
         "typeFormat.config": {
             "additionalProperties": false,
-            "markdownDescription": "%config.typeFormat.config%",
+            "markdownDescription": "Configures the formatting behavior while typing Lua code.",
             "properties": {
                 "auto_complete_end": {
                     "default": "true",
-                    "description": "%config.typeFormat.config.auto_complete_end%",
+                    "description": "Controls if `end` is automatically completed at suitable positions.",
                     "type": "string"
                 },
                 "auto_complete_table_sep": {
                     "default": "true",
-                    "description": "%config.typeFormat.config.auto_complete_table_sep%",
+                    "description": "Controls if a separator is automatically appended at the end of a table declaration.",
                     "type": "string"
                 },
                 "format_line": {
                     "default": "true",
-                    "description": "%config.typeFormat.config.format_line%",
+                    "description": "Controls if a line is formatted at all.",
                     "type": "string"
                 }
             },

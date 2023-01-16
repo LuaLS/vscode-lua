@@ -1,5 +1,5 @@
 /client/node_modules
-/client/out/*.map
+/client/out/
 /publish/
 /luadoc/out/
 /ovsx-token

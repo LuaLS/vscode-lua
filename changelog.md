@@ -1,7 +1,41 @@
 # changelog
 
-`2022-11-29`
+## 3.6.5
+`2023-1-16`
+* `NEW` support casting global variables
+* `NEW` code lens: this feature is disabled by default.
+* `NEW` settings:
+  * `Lua.codeLens.enable`: Enable code lens.
+* `CHG` improve memory usage for large libraries
+* `CHG` definition: supports finding definitions for `@class` and `@alias`, since they may be defined multi times
+* `CHG` rename: supports `@field`
+* `CHG` improve patch for `.luarc.json`
+* `CHG` `---@meta [name]`: once declared `name`, user can only require this file by declared name. meta file can not be required with name `_`
+* `CHG` remove telemetry
+* `FIX` [#831]
+* `FIX` [#1729]
+* `FIX` [#1737]
+* `FIX` [#1751]
+* `FIX` [#1767]
+* `FIX` [#1796]
+* `FIX` [#1805]
+* `FIX` [#1808]
+* `FIX` [#1811]
+* `FIX` [#1824]
+
+[#831]:  https://github.com/sumneko/lua-language-server/issues/831
+[#1729]: https://github.com/sumneko/lua-language-server/issues/1729
+[#1737]: https://github.com/sumneko/lua-language-server/issues/1737
+[#1751]: https://github.com/sumneko/lua-language-server/issues/1751
+[#1767]: https://github.com/sumneko/lua-language-server/issues/1767
+[#1796]: https://github.com/sumneko/lua-language-server/issues/1796
+[#1805]: https://github.com/sumneko/lua-language-server/issues/1805
+[#1808]: https://github.com/sumneko/lua-language-server/issues/1808
+[#1811]: https://github.com/sumneko/lua-language-server/issues/1811
+[#1824]: https://github.com/sumneko/lua-language-server/issues/1824
+
 ## 3.6.4
+`2022-11-29`
 * `NEW` modify `require` after renaming files
 * `FIX` circulation reference in process analysis
   ```lua

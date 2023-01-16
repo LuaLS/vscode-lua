@@ -29,6 +29,12 @@
 		],
 		"configuration": {
 			"properties": {
+				"Lua.codeLens.enable": {
+					"default": false,
+					"markdownDescription": "%config.codeLens.enable%",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.completion.autoRequire": {
 					"default": true,
 					"markdownDescription": "%config.completion.autoRequire%",
@@ -207,6 +213,7 @@
 							"missing-return-value",
 							"need-check-nil",
 							"need-paren",
+							"nesting-long-mark",
 							"newfield-call",
 							"newline-call",
 							"no-unknown",
@@ -2229,7 +2236,7 @@
 				},
 				"Lua.format.defaultConfig": {
 					"additionalProperties": false,
-					"default": {},
+					"default": [],
 					"markdownDescription": "%config.format.defaultConfig%",
 					"patternProperties": {
 						".*": {
@@ -2654,7 +2661,7 @@
 				},
 				"Lua.runtime.special": {
 					"additionalProperties": false,
-					"default": {},
+					"default": [],
 					"markdownDescription": "%config.runtime.special%",
 					"patternProperties": {
 						".*": {
@@ -2744,18 +2751,6 @@
 					"markdownDescription": "%config.spell.dict%",
 					"scope": "resource",
 					"type": "array"
-				},
-				"Lua.telemetry.enable": {
-					"default": null,
-					"markdownDescription": "%config.telemetry.enable%",
-					"scope": "resource",
-					"tags": [
-						"telemetry"
-					],
-					"type": [
-						"boolean",
-						"null"
-					]
 				},
 				"Lua.type.castNumberToInteger": {
 					"default": true,
@@ -3068,5 +3063,5 @@
 	"sponsor": {
 		"url": "https://github.com/sumneko/lua-language-server/issues/484"
 	},
-	"version": "3.6.4"
+	"version": "3.6.5"
 }
