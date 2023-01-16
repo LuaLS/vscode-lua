@@ -13,11 +13,14 @@ dayjs.extend(RelativeTime);
 
 /** Set up the addon manager by registering its commands in VS Code */
 export async function activate(context: vscode.ExtensionContext) {
+    const setupPromises = [];
     // Register commands
     context.subscriptions.push(
         vscode.commands.registerCommand("lua.addon_manager.open", () => {
-            credentials.login().then(() => {
-                WebVue.render(context);
+            Promise.allSettled(setupPromises).then(() => {
+                credentials.login().then(() => {
+                    WebVue.render(context);
+                });
             });
         })
     );
@@ -25,7 +28,9 @@ export async function activate(context: vscode.ExtensionContext) {
     const fileLogger = new VSCodeLogFileTransport(context.logUri, {
         level: "debug",
     });
-    context.subscriptions.push(await fileLogger.init());
+    const promiseFilelogger = await fileLogger.init();
+    setupPromises.push(promiseFilelogger);
+    context.subscriptions.push(promiseFilelogger);
     logger.add(fileLogger);
     fileLogger.logStart();
 
@@ -35,8 +40,9 @@ export async function activate(context: vscode.ExtensionContext) {
         extensionStorageURI,
         ADDONS_DIRECTORY
     );
-    await filesystem.createDirectory(addonDirectoryURI);
 
-    await credentials.initialize(context);
-    await credentials.login();
+    setupPromises.push(
+        await filesystem.createDirectory(addonDirectoryURI),
+        await credentials.initialize(context)
+    );
 }
