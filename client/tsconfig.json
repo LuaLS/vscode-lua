@@ -5,8 +5,7 @@
 		"outDir": "out",
 		"rootDir": "src",
 		"lib": ["es6"],
-		"sourceMap": true,
-        "esModuleInterop": true
+		"sourceMap": true
 	},
 	"include": ["src", "out/patch.js"],
 	"exclude": ["node_modules", ".vscode-test"]

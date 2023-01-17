@@ -66,21 +66,14 @@ jobs:
           echo PKG_BASENAME=${PKG_BASENAME} >> $GITHUB_OUTPUT
           echo PKG_NAME=${PKG_NAME} >> $GITHUB_OUTPUT
 
-      - name: Compile client
+      - name: Compile clinet
         shell: bash
         run: |
+          npm install -g typescript
           cd client
-          npm ci
-          npm run build
+          npm install
+          tsc
           cd ..
-
-      - name: Build Addon Manager WebVue
-        shell: bash
-        run: |
-          cd client/webvue
-          npm ci
-          npm run build
-          cd ../..
 
       - name: Pack vsix
         id: pack
