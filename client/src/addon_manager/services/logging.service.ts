@@ -38,7 +38,7 @@ export const logger = winston.createLogger({
         })
     ),
 
-    transports: [new VSCodeOutputTransport({ level: "debug" })],
+    transports: [new VSCodeOutputTransport({ level: "info" })],
 });
 
 // When a error is logged, ask user to report error.
