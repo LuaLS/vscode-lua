@@ -1,21 +1,17 @@
-import install from "./install";
-import uninstall from "./uninstall";
 import enable from "./enable";
 import disable from "./disable";
 import open from "./open";
-import getRemoteAddonPage from "./getRemoteAddonPage";
-import getLocalAddonsPage from "./getLocalAddonPage";
-import refreshLocalAddons from "./refreshLocalAddons";
+import getAddonsPage from "./getAddonsPage";
+import refreshAddons from "./refreshAddons";
 import openLog from "./openLog";
+import update from "./update";
 
 export const commands = {
-    install,
-    uninstall,
     enable,
     disable,
     open,
-    getRemoteAddonPage,
-    getLocalAddonsPage,
-    refreshLocalAddons,
+    getAddonsPage,
+    refreshAddons,
     openLog,
+    update,
 };

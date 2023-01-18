@@ -89,10 +89,10 @@ export const setSetting = async (name: string, value: unknown) => {
     );
     return workspaceConfiguration.update(name, value).then(
         () => {
-            localLogger.debug(`successfully set "${name}" to ${value}`);
+            localLogger.debug(`Successfully set "${name}" to \`${value}\``);
         },
         () => {
-            localLogger.warn(`Failed to set "${name}" to ${value}`);
+            localLogger.warn(`Failed to set "${name}" to \`${value}\``);
         }
     );
 };

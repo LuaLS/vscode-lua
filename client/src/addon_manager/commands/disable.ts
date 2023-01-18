@@ -8,7 +8,7 @@ type Message = {
 };
 
 export default async (context: vscode.ExtensionContext, message: Message) => {
-    const addon = addonManager.localAddons.get(message.data.name);
+    const addon = addonManager.addons.get(message.data.name);
     await addon.disable();
     await addon.setLock(false);
 };

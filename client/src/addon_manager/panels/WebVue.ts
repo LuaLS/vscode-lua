@@ -30,7 +30,10 @@ export class WebVue {
             this._panel.onDidDispose(this.dispose, null, this._disposables),
             this._setWebviewMessageListener(this._panel.webview, context)
         );
-        this._panel.webview.html = this._getWebViewContent(this._panel.webview, context);
+        this._panel.webview.html = this._getWebViewContent(
+            this._panel.webview,
+            context
+        );
     }
 
     /** Convert a standard file uri to a uri usable by this webview. */
@@ -49,11 +52,8 @@ export class WebVue {
     }
 
     /** Set the loading state of a store in the webview */
-    public static setLoadingState(
-        store: "remoteAddonStore" | "localAddonStore",
-        loading: boolean
-    ) {
-        WebVue.sendMessage(store, {
+    public static setLoadingState(loading: boolean) {
+        WebVue.sendMessage("addonStore", {
             property: "loading",
             value: loading,
         });
@@ -83,8 +83,14 @@ export class WebVue {
         const workspaceOpen = getWorkspace() !== undefined;
         const clientVersion = context.extension.packageJSON.version;
 
-        WebVue.sendMessage("appStore", {property: "workspaceState", value: workspaceOpen});
-        WebVue.sendMessage("appStore", {property: "clientVersion", value: clientVersion});
+        WebVue.sendMessage("appStore", {
+            property: "workspaceState",
+            value: workspaceOpen,
+        });
+        WebVue.sendMessage("appStore", {
+            property: "clientVersion",
+            value: clientVersion,
+        });
         localLogger.debug(`Workspace Open: ${workspaceOpen}`);
     }
 
@@ -103,7 +109,10 @@ export class WebVue {
     }
 
     /** Get the HTML content of the webview */
-    private _getWebViewContent(webview: vscode.Webview, context: vscode.ExtensionContext) {
+    private _getWebViewContent(
+        webview: vscode.Webview,
+        context: vscode.ExtensionContext
+    ) {
         if (context.extensionMode !== vscode.ExtensionMode.Production) {
             return `
             <!DOCTYPE html>

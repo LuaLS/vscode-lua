@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
 import { WebVue } from "../panels/WebVue";
+import { ADDONS_DIRECTORY } from "../config";
 
 const localLogger = createChildLogger("Get Remote Addons");
 
@@ -10,32 +11,35 @@ type Message = {
 };
 
 export default async (context: vscode.ExtensionContext, message: Message) => {
-    WebVue.setLoadingState("remoteAddonStore", true);
+    WebVue.setLoadingState(true);
 
     const { page, pageSize } = message.data;
 
-    if (addonManager.remoteAddons.size < 1) {
-        await addonManager.fetchRemoteAddons();
+    const installLocation = vscode.Uri.joinPath(
+        context.globalStorageUri,
+        "addonManager",
+        ADDONS_DIRECTORY
+    );
+
+    if (addonManager.addons.size < 1) {
+        await addonManager.fetchAddons(installLocation);
     }
 
-    WebVue.sendMessage("remoteAddonStore", {
+    WebVue.sendMessage("addonStore", {
         property: "total",
-        value: addonManager.remoteAddons.size,
+        value: addonManager.addons.size,
     });
 
-    if (addonManager.remoteAddons.size === 0) {
-        WebVue.setLoadingState("remoteAddonStore", false);
+    if (addonManager.addons.size === 0) {
+        WebVue.setLoadingState(false);
         localLogger.verbose("No remote addons found");
         return;
     }
 
-    const addonList = await addonManager.getRemoteAddonsPage(
-        page,
-        pageSize ?? 5
-    );
+    const addonList = await addonManager.getAddonsPage(page, pageSize ?? 5);
 
     const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
 
-    WebVue.sendMessage("addRemoteAddon", { addons });
-    WebVue.setLoadingState("remoteAddonStore", false);
+    WebVue.sendMessage("addAddon", { addons });
+    WebVue.setLoadingState(false);
 };

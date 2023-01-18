@@ -26,13 +26,19 @@ export const logger = winston.createLogger({
         winston.format.printf((message) => {
             const level = padText(message.level, 9);
             const category = padText(message.defaultMeta.category, 18);
+            if (typeof message.message === "object")
+                return `[${
+                    message.timestamp
+                }] | ${level.toUpperCase()} | ${category} | ${JSON.stringify(
+                    message.message
+                )}`;
             return `[${
                 message.timestamp
             }] | ${level.toUpperCase()} | ${category} | ${message.message}`;
         })
     ),
 
-    transports: [new VSCodeOutputTransport({ level: "info" })],
+    transports: [new VSCodeOutputTransport({ level: "debug" })],
 });
 
 // When a error is logged, ask user to report error.

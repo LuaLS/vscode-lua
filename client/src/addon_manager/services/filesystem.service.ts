@@ -23,6 +23,19 @@ namespace filesystem {
         }
     }
 
+    /** Check if a directory is empty
+     * @param uri - The URI of the directory to check
+     */
+    export async function empty(uri: vscode.Uri): Promise<boolean> {
+        try {
+            const dirContents = await vscode.workspace.fs.readDirectory(uri);
+            return dirContents.length < 1;
+        } catch (e) {
+            localLogger.error(e);
+            return false;
+        }
+    }
+
     /** Read from a file
      * @param uri - The URI of the file to read from
      */
@@ -68,7 +81,7 @@ namespace filesystem {
     export async function createDirectory(uri: vscode.Uri) {
         return vscode.workspace.fs
             .createDirectory(uri)
-            .then(() => localLogger.debug(`Created directory at ${uri.path}`));
+            .then(() => localLogger.debug(`Created directory at "${uri.path}"`));
     }
 
     export type DirectoryNode = {
