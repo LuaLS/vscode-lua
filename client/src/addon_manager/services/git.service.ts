@@ -50,6 +50,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
             await git.checkout("submoduling");
         }
 
+        await git.fetch();
         await git.pull();
     } catch (e) {
         localLogger.error(e);
