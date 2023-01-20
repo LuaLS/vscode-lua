@@ -26,6 +26,8 @@ export class Addon {
     #enabled?: boolean[];
     /** Whether or not this addon has an update available from git. */
     #hasUpdate?: boolean;
+    /** Whether or not this addon is installed */
+    #installed: boolean;
 
     constructor(name: string, path: vscode.Uri) {
         this.name = name;
@@ -33,6 +35,7 @@ export class Addon {
 
         this.#enabled = [];
         this.#hasUpdate = false;
+        this.#installed = false;
     }
 
     /** Fetch addon info from `info.json` */
@@ -104,6 +107,10 @@ export class Addon {
 
         folderStates.forEach(
             (entry) => (this.#enabled[entry.folder.index] = entry.enabled)
+        );
+
+        this.#installed = await filesystem.exists(
+            vscode.Uri.joinPath(this.uri, "module")
         );
 
         return folderStates;
@@ -192,20 +199,22 @@ export class Addon {
             return;
         }
 
-        // Remove submodule
-        // try {
-        //     const moduleURI = vscode.Uri.joinPath(this.uri, "module");
-        //     await filesystem.deleteFile(moduleURI, {
-        //         recursive: true,
-        //         useTrash: false,
-        //     });
-        // } catch (e) {
-        //     localLogger.error(`Failed to uninstall "${this.name}"`);
-        //     return;
-        // }
-
         this.#enabled[folder.index] = false;
         localLogger.info(`Disabled "${this.name}"`);
+    }
+
+    public async uninstall() {
+        for (const folder of vscode.workspace.workspaceFolders) {
+            await this.disable(folder);
+        }
+        const moduleURI = vscode.Uri.joinPath(this.uri, "module");
+        await filesystem.deleteFile(moduleURI, {
+            recursive: true,
+            useTrash: false,
+        });
+        localLogger.info(`Uninstalled ${this.name}`);
+        this.#installed = false;
+        this.setLock(false);
     }
 
     /** Convert this addon to an object ready for sending to WebVue. */
@@ -227,6 +236,7 @@ export class Addon {
             size,
             hasUpdate,
             processing: this.#processing,
+            installed: this.#installed,
         };
     }
 
