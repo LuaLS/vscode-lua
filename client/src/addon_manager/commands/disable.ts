@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import addonManager from "../services/addonManager.service";
 import { createChildLogger } from "../services/logging.service";
+import { setSetting } from "../services/settings.service";
 
 type Message = {
     data: {
@@ -43,11 +44,11 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
                 return;
             }
             for (const target of targetFolders) {
-                await addon.disable(
-                    workspaceFolders.find(
-                        (folder) => folder.name === target.label
-                    )
+                const folder = workspaceFolders.find(
+                    (folder) => folder.name === target.label
                 );
+                await addon.disable(folder);
+                await setSetting(folder, "Lua.workspace.checkThirdParty", false);
             }
         }
     } catch (e) {
