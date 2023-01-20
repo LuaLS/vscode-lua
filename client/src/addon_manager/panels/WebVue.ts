@@ -2,7 +2,6 @@ import * as vscode from "vscode";
 
 import { createChildLogger } from "../services/logging.service";
 import { commands } from "../commands";
-import { getWorkspace } from "../services/settings.service";
 import { WebVueMessage } from "../types/webvue";
 import { DEVELOPMENT_IFRAME_URL } from "../config";
 
@@ -81,7 +80,7 @@ export class WebVue {
             WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        const workspaceOpen = getWorkspace() !== undefined;
+        const workspaceOpen = vscode.workspace.workspaceFolders.length > 0;
         const clientVersion = context.extension.packageJSON.version;
 
         WebVue.sendMessage("appStore", {

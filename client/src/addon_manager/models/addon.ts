@@ -5,7 +5,8 @@ import { AddonConfig, AddonInfo } from "../types/addon";
 import { WebVue } from "../panels/WebVue";
 import {
     applyAddonSettings,
-    getLibraries,
+    getSetting,
+    getLibraryPaths,
     revokeAddonSettings,
     setSetting,
 } from "../services/settings.service";
@@ -19,29 +20,18 @@ export class Addon {
     readonly name: string;
     readonly uri: vscode.Uri;
 
-    #displayName?: string;
-    /** The description defined in the addon's `config.json`. */
-    #description?: string;
-    /** The size of the addon in bytes. */
-    #size?: number;
-    /** Whether or not this addon has a `plugin.lua`. */
-    #hasPlugin?: boolean;
     /** Whether or not this addon is currently processing an operation. */
     #processing?: boolean;
-
-    /** Whether or not this addon is enabled. */
-    #enabled?: boolean;
-    /** A unix timestamp (milliseconds) of when this addon was installed. */
-    #installTimestamp?: number;
-    /** Whether or not this addon has an update available from GitHub. */
+    /** The workspace folders that this addon is enabled in. */
+    #enabled?: boolean[];
+    /** Whether or not this addon has an update available from git. */
     #hasUpdate?: boolean;
-    /** The settings to apply when this addon is enabled. */
-    #settings?: Record<string, unknown>;
 
     constructor(name: string, path: vscode.Uri) {
         this.name = name;
         this.uri = path;
 
+        this.#enabled = [];
         this.#hasUpdate = false;
     }
 
@@ -51,11 +41,6 @@ export class Addon {
         const rawInfo = await filesystem.readFile(path);
         const info = JSON.parse(rawInfo) as AddonInfo;
 
-        this.#displayName = info.name;
-        this.#description = info.description;
-        this.#size = info.size;
-        this.#hasPlugin = info.hasPlugin;
-
         return {
             name: info.name,
             description: info.description,
@@ -64,6 +49,7 @@ export class Addon {
         };
     }
 
+    /** Get the `config.json` for this addon. */
     public async getConfig() {
         const configURI = vscode.Uri.joinPath(
             this.uri,
@@ -83,6 +69,7 @@ export class Addon {
         }
     }
 
+    /** Update this addon using git. */
     public async update() {
         const path = this.uri.path.substring(1);
         return git
@@ -90,24 +77,48 @@ export class Addon {
             .then((message) => localLogger.debug(message));
     }
 
-    public async getIsEnabled(libraryPaths?: string[]) {
+    /** Check whether this addon is enabled, given an array of enabled library paths.
+     * @param libraryPaths An array of paths from the `Lua.workspace.library` setting.
+     */
+    public checkIfEnabled(libraryPaths: string[]) {
         const regex = new RegExp(
             `/sumneko.lua/addonManager/addons/${this.name}`,
             "g"
         );
 
-        if (!libraryPaths) libraryPaths = await getLibraries();
         const index = libraryPaths.findIndex((path) => regex.test(path));
         return index !== -1;
     }
 
-    public async enable() {
-        const libraryPaths = await getLibraries();
+    /** Get the enabled state for this addon in all opened workspace folders */
+    public async getEnabled() {
+        const folders = await getLibraryPaths();
 
-        const enabled = await this.getIsEnabled(libraryPaths);
+        // Check all workspace folders for a path that matches this addon
+        const folderStates = folders.map((entry) => {
+            return {
+                folder: entry.folder,
+                enabled: this.checkIfEnabled(entry.paths),
+            };
+        });
+
+        folderStates.forEach(
+            (entry) => (this.#enabled[entry.folder.index] = entry.enabled)
+        );
+
+        return folderStates;
+    }
+
+    public async enable(folder: vscode.WorkspaceFolder) {
+        const librarySetting = (await getSetting(
+            LIBRARY_SETTING,
+            folder
+        )) as string[];
+
+        const enabled = await this.checkIfEnabled(librarySetting);
         if (enabled) {
             localLogger.warn(`${this.name} is already enabled`);
-            this.#enabled = true;
+            this.#enabled[folder.index] = true;
             return;
         }
 
@@ -129,76 +140,80 @@ export class Addon {
             return;
         }
 
-        // Apply setting for Language Server
+        // Apply addon settings
         const libraryUri = vscode.Uri.joinPath(this.uri, "module", "library");
         const libraryPath = libraryUri.path.substring(1);
-        libraryPaths.push(libraryPath);
+        librarySetting.push(libraryPath);
 
         const configValues = await this.getConfig();
 
         try {
-            await setSetting(LIBRARY_SETTING, libraryPaths);
-            await applyAddonSettings(configValues.settings);
+            await setSetting(folder, LIBRARY_SETTING, librarySetting);
+            if (configValues.settings)
+                await applyAddonSettings(folder, configValues.settings);
         } catch (e) {
             localLogger.warn(`Failed to apply settings of "${this.name}"`);
             return;
         }
 
-        this.#enabled = true;
+        this.#enabled[folder.index] = true;
         localLogger.info(`Enabled "${this.name}"`);
-
-        return this.setLock(false);
     }
 
-    public async disable() {
-        const libraryPaths = await getLibraries();
+    public async disable(folder: vscode.WorkspaceFolder) {
+        const librarySetting = (await getSetting(
+            LIBRARY_SETTING,
+            folder
+        )) as string[];
+
         const regex = new RegExp(
             `/sumneko.lua/addonManager/addons/${this.name}`,
             "g"
         );
-        const index = libraryPaths.findIndex((path) => regex.test(path));
+        const index = librarySetting.findIndex((path) => regex.test(path));
 
         if (index === -1) {
             localLogger.warn(`"${this.name}" is already disabled`);
-            this.#enabled = false;
+            this.#enabled[folder.index] = false;
             return;
         }
 
         // Remove setting for Language Server
-        libraryPaths.splice(index);
+        librarySetting.splice(index);
         const configValues = await this.getConfig();
 
         // Revoke settings
         try {
-            await setSetting(LIBRARY_SETTING, libraryPaths);
-            await revokeAddonSettings(configValues.settings);
+            await setSetting(folder, LIBRARY_SETTING, librarySetting);
+            if (configValues.settings)
+                await revokeAddonSettings(folder, configValues.settings);
         } catch (e) {
             localLogger.error(`Failed to revoke settings of "${this.name}"`);
             return;
         }
 
         // Remove submodule
-        try {
-            const moduleURI = vscode.Uri.joinPath(this.uri, "module");
-            await filesystem.deleteFile(moduleURI, {
-                recursive: true,
-                useTrash: false,
-            });
-        } catch (e) {
-            localLogger.error(`Failed to uninstall "${this.name}"`);
-            return;
-        }
+        // try {
+        //     const moduleURI = vscode.Uri.joinPath(this.uri, "module");
+        //     await filesystem.deleteFile(moduleURI, {
+        //         recursive: true,
+        //         useTrash: false,
+        //     });
+        // } catch (e) {
+        //     localLogger.error(`Failed to uninstall "${this.name}"`);
+        //     return;
+        // }
 
-        this.#enabled = false;
+        this.#enabled[folder.index] = false;
         localLogger.info(`Disabled "${this.name}"`);
-
-        return this.setLock(false);
     }
 
     /** Convert this addon to an object ready for sending to WebVue. */
     public async toJSON() {
+        await this.getEnabled();
+
         const { name, description, size, hasPlugin } = await this.fetchInfo();
-        const enabled = await this.getIsEnabled();
+        const enabled = this.#enabled;
         const installTimestamp = (await git.log()).latest.date;
         const hasUpdate = this.#hasUpdate;
 
