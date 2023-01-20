@@ -7,6 +7,7 @@ import { WebVueMessage } from "../types/webvue";
 import { DEVELOPMENT_IFRAME_URL } from "../config";
 
 const localLogger = createChildLogger("WebVue");
+const commandLogger = createChildLogger("Command");
 
 export class WebVue {
     public static currentPanel: WebVue | undefined;
@@ -242,7 +243,6 @@ export class WebVue {
         webview: vscode.Webview,
         context: vscode.ExtensionContext
     ) {
-        const commandLogger = createChildLogger("Command");
 
         return webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;

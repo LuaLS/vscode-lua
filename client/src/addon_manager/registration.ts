@@ -5,7 +5,6 @@ import VSCodeLogFileTransport from "./services/logging/vsCodeLogFileTransport";
 import { logger } from "./services/logging.service";
 import dayjs from "dayjs";
 import RelativeTime from "dayjs/plugin/relativeTime";
-import { setSetting } from "./services/settings.service";
 import { setupGit } from "./services/git.service";
 
 dayjs.extend(RelativeTime);
@@ -16,10 +15,9 @@ export async function activate(context: vscode.ExtensionContext) {
     // Register commands
     context.subscriptions.push(
         vscode.commands.registerCommand("lua.addon_manager.open", () => {
-            Promise.allSettled(setupPromises).then(() =>
-                WebVue.render(context)
-            );
-            setSetting("Lua.workspace.checkThirdParty", false);
+            Promise.allSettled(setupPromises)
+                .then(() => WebVue.render(context))
+                .catch((e) => logger.error(e));
         })
     );
     // Create log file transport and add to logger

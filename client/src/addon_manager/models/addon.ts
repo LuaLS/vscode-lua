@@ -11,7 +11,7 @@ import {
 } from "../services/settings.service";
 import { git } from "../services/git.service";
 import filesystem from "../services/filesystem.service";
-import { DiffResultBinaryFile, DiffResultTextFile } from "simple-git";
+import { DiffResultTextFile } from "simple-git";
 
 const localLogger = createChildLogger("Addon");
 
@@ -70,10 +70,17 @@ export class Addon {
             "module",
             CONFIG_FILENAME
         );
-        const rawConfig = await filesystem.readFile(configURI);
-        const config = JSON.parse(rawConfig);
 
-        return config as AddonConfig;
+        try {
+            const rawConfig = await filesystem.readFile(configURI);
+            const config = JSON.parse(rawConfig);
+            return config as AddonConfig;
+        } catch (e) {
+            localLogger.error(
+                `Failed to read config.json file for ${this.name} (${e})`
+            );
+            throw e;
+        }
     }
 
     public async update() {
