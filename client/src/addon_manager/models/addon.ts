@@ -109,9 +109,11 @@ export class Addon {
             (entry) => (this.#enabled[entry.folder.index] = entry.enabled)
         );
 
-        this.#installed = await filesystem.exists(
-            vscode.Uri.joinPath(this.uri, "module")
-        );
+        const moduleURI = vscode.Uri.joinPath(this.uri, "module");
+        this.#installed =
+            (await filesystem.exists(moduleURI)) &&
+            (await filesystem.readDirectory(moduleURI, { recursive: false }))
+                .length > 0;
 
         return folderStates;
     }
