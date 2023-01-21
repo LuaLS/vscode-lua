@@ -37,8 +37,8 @@ class AddonManager {
 
     public async checkUpdated() {
         const diff = await git.diffSummary([
-            "submoduling",
-            "origin/submoduling",
+            "main",
+            "origin/main",
         ]);
         this.addons.forEach((addon) => {
             addon.checkForUpdate(diff.files as DiffResultTextFile[]);

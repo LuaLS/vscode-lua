@@ -26,8 +26,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
     const isEmpty = await filesystem.empty(storageURI);
     if (isEmpty) {
         try {
-            // const options = { "--depth": 1 };
-            const options = {};
+            const options = { "--depth": 1 };
             await git.clone(
                 REPOSITORY_PATH,
                 storageURI.path.substring(1),
@@ -41,14 +40,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
 
     // pull
     try {
-        // If remote branch is not already checked out, check out
-        const branches = await git.branch();
-        if (!Object.keys(branches.branches).includes("submoduling")) {
-            // DEBUG:
-            await git.checkoutBranch("submoduling", "origin/submoduling");
-        } else {
-            await git.checkout("submoduling");
-        }
+        await git.checkout("main");
 
         await git.fetch();
         await git.pull();

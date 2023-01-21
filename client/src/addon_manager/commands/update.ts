@@ -14,6 +14,6 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     await addon.update();
     await addon.setLock(false);
 
-    const diff = await git.diffSummary(["HEAD", "origin/submoduling"]);
+    const diff = await git.diffSummary(["HEAD", "origin/main"]);
     addon.checkForUpdate(diff.files as DiffResultTextFile[]);
 };
