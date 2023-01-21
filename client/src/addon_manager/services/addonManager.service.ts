@@ -1,123 +1,53 @@
 import * as vscode from "vscode";
 import filesystem from "./filesystem.service";
 import { createChildLogger } from "./logging.service";
-import { LocalAddon } from "../models/localAddon";
-import { RemoteAddon } from "../models/remoteAddon";
-import GitHub from "./github.service";
-import {
-    REPOSITORY_DEFAULT_BRANCH,
-    REPOSITORY_NAME,
-    REPOSITORY_OWNER,
-} from "../config";
+import { Addon } from "../models/addon";
+import { git } from "./git.service";
+import { DiffResultTextFile } from "simple-git";
 
 const localLogger = createChildLogger("Addon Manager");
 
 class AddonManager {
-    /** Map of currently installed addons */
-    readonly localAddons: Map<string, LocalAddon>;
-    /** Map of addons available in the official repository */
-    readonly remoteAddons: Map<string, RemoteAddon>;
+    readonly addons: Map<string, Addon>;
 
     constructor() {
-        this.localAddons = new Map();
-        this.remoteAddons = new Map();
+        this.addons = new Map();
     }
 
-    /** Retrieve the list of all installed addons */
-    public async fetchLocalAddons(installLocation: vscode.Uri) {
-        const directoryNodes = await filesystem.readDirectory(installLocation);
+    public async fetchAddons(installLocation: vscode.Uri) {
+        const addons = await filesystem.readDirectory(installLocation);
 
-        localLogger.verbose("Fetching local addons...");
-
-        for (const node of directoryNodes) {
-            // Ignore non-directories
-            if (node.type !== vscode.FileType.Directory) {
-                localLogger.warn(
-                    `Non-directory item found in addons directory`
-                );
-                continue;
-            }
-
-            localLogger.verbose(`Found installed addon "${node.name}"`);
-
-            const addon = new LocalAddon(node.name, node.uri);
-            this.localAddons.set(addon.name, addon);
-        }
-        return this.localAddons;
-    }
-
-    /** Retrieve the list of all remote addons */
-    public async fetchRemoteAddons() {
-        localLogger.verbose("Fetching remote addons");
-
-        const root = await GitHub.repos.tree.get(
-            REPOSITORY_OWNER,
-            REPOSITORY_NAME,
-            REPOSITORY_DEFAULT_BRANCH
-        );
-        const addonsDirectory = root.tree.find(
-            (node) => node.path === "addons"
-        );
-
-        if (!addonsDirectory) {
-            const err = new Error(
-                "Could not find addon directory in remote repository!"
-            );
-            localLogger.error(err);
-            throw err;
+        for (const addon of addons) {
+            this.addons.set(addon.name, new Addon(addon.name, addon.uri));
+            localLogger.verbose(`Found ${addon.name}`);
         }
 
-        const response = await GitHub.repos.tree.get(
-            REPOSITORY_OWNER,
-            REPOSITORY_NAME,
-            addonsDirectory.sha
-        );
-
-        if (response.truncated)
-            localLogger.warn("Remote addons list was truncated!");
-
-        for (const node of response.tree) {
-            if (node.type !== "tree") continue;
-
-            const remoteAddon = new RemoteAddon(node);
-            this.remoteAddons.set(remoteAddon.name, remoteAddon);
-        }
-
-        return this.remoteAddons;
+        return await this.checkUpdated();
     }
 
     /** Get a page of local addons */
-    public getLocalAddonsPage(page: number, pageSize: number): LocalAddon[] {
+    public getAddonsPage(page: number, pageSize: number): Addon[] {
         const start = (page - 1) * pageSize;
-        const addons = Array.from(this.localAddons.values());
-
-        addons.sort((a, b) => a.name.localeCompare(b.name));
-
-        return addons.slice(start, start + pageSize);
-    }
-    /** Get a page of remote addons */
-    public getRemoteAddonsPage(page: number, pageSize: number): RemoteAddon[] {
-        const start = (page - 1) * pageSize;
-        const addons = Array.from(this.remoteAddons.values());
+        const addons = Array.from(this.addons.values());
 
         addons.sort((a, b) => a.name.localeCompare(b.name));
 
         return addons.slice(start, start + pageSize);
     }
 
-    public async installAddon(name: string, location: vscode.Uri) {
-        const addon = this.remoteAddons.get(name);
-        const { uri } = await addon.install(location);
-        const localAddon = new LocalAddon(name, uri);
-        this.localAddons.set(name, localAddon);
-        return localAddon;
-    }
-
-    public uninstallAddon(name: string) {
-        const addon = this.localAddons.get(name);
-        return addon.uninstall().then(() => {
-            this.localAddons.delete(name);
+    public async checkUpdated() {
+        const diff = await git.diffSummary([
+            "main",
+            "origin/main",
+        ]);
+        this.addons.forEach((addon) => {
+            addon.checkForUpdate(diff.files as DiffResultTextFile[]);
         });
+    }
+
+    public unlockAddon(name: string) {
+        const addon = this.addons.get(name);
+        return addon.setLock(false);
     }
 }
 

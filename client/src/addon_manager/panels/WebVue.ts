@@ -2,11 +2,11 @@ import * as vscode from "vscode";
 
 import { createChildLogger } from "../services/logging.service";
 import { commands } from "../commands";
-import { getWorkspace } from "../services/settings.service";
 import { WebVueMessage } from "../types/webvue";
 import { DEVELOPMENT_IFRAME_URL } from "../config";
 
 const localLogger = createChildLogger("WebVue");
+const commandLogger = createChildLogger("Command");
 
 export class WebVue {
     public static currentPanel: WebVue | undefined;
@@ -30,7 +30,10 @@ export class WebVue {
             this._panel.onDidDispose(this.dispose, null, this._disposables),
             this._setWebviewMessageListener(this._panel.webview, context)
         );
-        this._panel.webview.html = this._getWebViewContent(this._panel.webview, context);
+        this._panel.webview.html = this._getWebViewContent(
+            this._panel.webview,
+            context
+        );
     }
 
     /** Convert a standard file uri to a uri usable by this webview. */
@@ -49,11 +52,8 @@ export class WebVue {
     }
 
     /** Set the loading state of a store in the webview */
-    public static setLoadingState(
-        store: "remoteAddonStore" | "localAddonStore",
-        loading: boolean
-    ) {
-        WebVue.sendMessage(store, {
+    public static setLoadingState(loading: boolean) {
+        WebVue.sendMessage("addonStore", {
             property: "loading",
             value: loading,
         });
@@ -80,11 +80,17 @@ export class WebVue {
             WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        const workspaceOpen = getWorkspace() !== undefined;
+        const workspaceOpen = vscode.workspace.workspaceFolders.length > 0;
         const clientVersion = context.extension.packageJSON.version;
 
-        WebVue.sendMessage("appStore", {property: "workspaceState", value: workspaceOpen});
-        WebVue.sendMessage("appStore", {property: "clientVersion", value: clientVersion});
+        WebVue.sendMessage("appStore", {
+            property: "workspaceState",
+            value: workspaceOpen,
+        });
+        WebVue.sendMessage("appStore", {
+            property: "clientVersion",
+            value: clientVersion,
+        });
         localLogger.debug(`Workspace Open: ${workspaceOpen}`);
     }
 
@@ -103,7 +109,10 @@ export class WebVue {
     }
 
     /** Get the HTML content of the webview */
-    private _getWebViewContent(webview: vscode.Webview, context: vscode.ExtensionContext) {
+    private _getWebViewContent(
+        webview: vscode.Webview,
+        context: vscode.ExtensionContext
+    ) {
         if (context.extensionMode !== vscode.ExtensionMode.Production) {
             return `
             <!DOCTYPE html>
@@ -233,7 +242,6 @@ export class WebVue {
         webview: vscode.Webview,
         context: vscode.ExtensionContext
     ) {
-        const commandLogger = createChildLogger("Command");
 
         return webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;

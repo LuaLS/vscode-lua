@@ -42,7 +42,15 @@ export default class VSCodeLogFileTransport extends Transport {
 
     /** Mark the start of the addon manager in the log */
     public logStart() {
-        this.stream.write(stringToByteArray("#### STARTUP ####\n"));
+        return new Promise((resolve, reject) => {
+            this.stream.write(
+                stringToByteArray("#### STARTUP ####\n"),
+                (err) => {
+                    if (err) reject(err);
+                    resolve(true);
+                }
+            );
+        });
     }
 
     public async log(info: winston.LogEntry, callback: winston.LogCallback) {

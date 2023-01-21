@@ -11,6 +11,7 @@ export default async (
     const extensionStorageURI = context.globalStorageUri;
     const uri = vscode.Uri.joinPath(
         extensionStorageURI,
+        "addonManager",
         ADDONS_DIRECTORY,
         message.data.name
     );

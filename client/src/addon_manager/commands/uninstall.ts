@@ -1,22 +1,10 @@
 import * as vscode from "vscode";
-import addonManager from "../services/addonManager.service";
-import { WebVue } from "../panels/WebVue";
+import addonManagerService from "../services/addonManager.service";
 
-type Message = {
-    data: {
-        name: string;
-    };
-};
-
-export default async (context: vscode.ExtensionContext, message: Message) => {
-    const addon = addonManager.localAddons.get(message.data.name);
-
-    await addon.disable();
-    await addonManager.uninstallAddon(message.data.name);
-
-    WebVue.sendMessage("localAddonStore", {
-        property: "total",
-        value: addonManager.localAddons.size,
-    });
-    WebVue.sendMessage("removeLocalAddon", { name: message.data.name });
+export default async (
+    context: vscode.ExtensionContext,
+    message: { data: { name: string } }
+) => {
+    const addon = addonManagerService.addons.get(message.data.name);
+    addon.uninstall();
 };

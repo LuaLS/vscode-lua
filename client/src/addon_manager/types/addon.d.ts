@@ -6,6 +6,13 @@ export type AddonConfig = {
     settings: { [index: string]: Object };
 };
 
+export type AddonInfo = {
+    name: string;
+    description: string;
+    size: number;
+    hasPlugin: boolean;
+}
+
 export interface Addon {
     readonly name: string;
     readonly uri: Uri;

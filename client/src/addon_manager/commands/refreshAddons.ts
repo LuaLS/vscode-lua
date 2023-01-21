@@ -4,14 +4,15 @@ import { ADDONS_DIRECTORY } from "../config";
 import { WebVue } from "../panels/WebVue";
 
 export default async (context: vscode.ExtensionContext) => {
-    WebVue.setLoadingState("localAddonStore", true);
+    WebVue.setLoadingState(true);
 
     const installLocation = vscode.Uri.joinPath(
         context.globalStorageUri,
+        "addonManager",
         ADDONS_DIRECTORY
     );
 
-    await addonManager.fetchLocalAddons(installLocation);
+    await addonManager.fetchAddons(installLocation);
 
-    WebVue.setLoadingState("localAddonStore", false);
+    WebVue.setLoadingState(false);
 };

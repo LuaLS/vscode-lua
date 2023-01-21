@@ -25,7 +25,16 @@ export const logger = winston.createLogger({
         winston.format.errors({ stack: true }),
         winston.format.printf((message) => {
             const level = padText(message.level, 9);
-            const category = padText(message.defaultMeta.category, 18);
+            const category = padText(
+                message?.defaultMeta?.category ?? "GENERAL",
+                18
+            );
+            if (typeof message.message === "object")
+                return `[${
+                    message.timestamp
+                }] | ${level.toUpperCase()} | ${category} | ${JSON.stringify(
+                    message.message
+                )}`;
             return `[${
                 message.timestamp
             }] | ${level.toUpperCase()} | ${category} | ${message.message}`;
