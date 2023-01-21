@@ -169,7 +169,7 @@ export class Addon {
         localLogger.info(`Enabled "${this.name}"`);
     }
 
-    public async disable(folder: vscode.WorkspaceFolder) {
+    public async disable(folder: vscode.WorkspaceFolder, silent = false) {
         const librarySetting = (await getSetting(
             LIBRARY_SETTING,
             folder
@@ -182,7 +182,7 @@ export class Addon {
         const index = librarySetting.findIndex((path) => regex.test(path));
 
         if (index === -1) {
-            localLogger.warn(`"${this.name}" is already disabled`);
+            if (!silent) localLogger.warn(`"${this.name}" is already disabled`);
             this.#enabled[folder.index] = false;
             return;
         }
@@ -207,7 +207,7 @@ export class Addon {
 
     public async uninstall() {
         for (const folder of vscode.workspace.workspaceFolders) {
-            await this.disable(folder);
+            await this.disable(folder, true);
         }
         const moduleURI = vscode.Uri.joinPath(this.uri, "module");
         await filesystem.deleteFile(moduleURI, {
