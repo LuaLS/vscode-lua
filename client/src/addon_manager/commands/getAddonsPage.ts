@@ -36,7 +36,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         return;
     }
 
-    const addonList = await addonManager.getAddonsPage(page, pageSize ?? 5);
+    const addonList = await addonManager.getAddonsPage(page, pageSize ?? 10);
 
     const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
 
