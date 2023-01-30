@@ -29,6 +29,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     try {
         if (workspaceFolders.length === 1) {
             await addon.enable(workspaceFolders[0]);
+            await setSetting(workspaceFolders[0], "Lua.workspace.checkThirdParty", false);
         } else {
             const targetFolders = await vscode.window.showQuickPick(
                 folderOptions,
