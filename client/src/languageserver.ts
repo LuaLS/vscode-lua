@@ -47,10 +47,34 @@ function registerCustomCommands(context: ExtensionContext) {
             }
         }
     }))
+
+    context.subscriptions.push(Commands.registerCommand('lua.exportDocument', async () => {
+        if (!defaultClient) {
+            return;
+        };
+        let outputs = await vscode.window.showOpenDialog({
+            defaultUri: vscode.Uri.joinPath(
+                context.extensionUri,
+                'server',
+                'log',
+            ),
+            openLabel: "Export documents to this folder",
+            canSelectFiles: false,
+            canSelectFolders: true,
+            canSelectMany: false,
+        });
+        let output = outputs?.[0];
+        if (!output) {
+            return;
+        };
+        defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+            command: 'lua.exportDocument',
+            arguments: [output.toString()],
+        })
+    }))
 }
 
 class LuaClient {
-
     public client: LanguageClient;
     private disposables = new Array<Disposable>();
     constructor(private context: ExtensionContext,

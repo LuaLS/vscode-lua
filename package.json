@@ -25,6 +25,7 @@
 			{
 				"command": "lua.psi.view",
 				"title": "Lua Psi Viewer"
+				"command": "lua.exportDocument",
 			}
 		],
 		"configuration": {
@@ -2913,7 +2914,7 @@
 		"menus": {
 			"editor/context": [
 				{
-					"command": "lua.psi.view",
+					"command": "lua.exportDocument",
 					"group": "z_commands",
 					"when": "resourceLangId == lua"
 				}
