@@ -31,6 +31,9 @@ export const getSettingsFile = async (
 
     let rawSettings = await filesystem.readFile(settingFileUri);
     if (!rawSettings) {
+        localLogger.warn(
+            `Could not get settings file for ${folder.name} folder, falling back to no settings`
+        );
         rawSettings = "{}";
     }
 
@@ -56,12 +59,8 @@ export const getSetting = async (
     name: string,
     folder: vscode.WorkspaceFolder
 ): Promise<unknown> => {
-    try {
-        const workspaceSettings = await getSettingsFile(folder);
-        return workspaceSettings[name];
-    } catch (e) {
-        return undefined;
-    }
+    const workspaceSettings = await getSettingsFile(folder);
+    return workspaceSettings[name] ?? [];
 };
 
 /** Set a setting in this workspace's `.vscode/settings.json` file.
@@ -92,7 +91,7 @@ export const setSetting = async (
 
 export type WorkspaceLibrary = {
     folder: vscode.WorkspaceFolder;
-    paths: string[];
+    paths?: string[];
 };
 
 export const getLibraryPaths = async () => {
@@ -101,7 +100,7 @@ export const getLibraryPaths = async () => {
     for (const folder of vscode.workspace.workspaceFolders) {
         folders.push({
             folder,
-            paths: (await getSetting(LIBRARY_SETTING, folder)) as string[],
+            paths: (await getSetting(LIBRARY_SETTING, folder)) as string[] | undefined,
         });
     }
 

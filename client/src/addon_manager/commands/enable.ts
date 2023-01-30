@@ -15,22 +15,22 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.addons.get(message.data.name);
     const workspaceFolders = vscode.workspace.workspaceFolders;
 
-    const folderOptions = await (
-        await addon.getEnabled()
-    )
-        .filter((entry) => entry.enabled === false)
-        .map((entry) => {
-            return {
-                label: entry.folder.name,
-                detail: entry.folder.uri.path,
-            };
-        });
-
     try {
         if (workspaceFolders.length === 1) {
             await addon.enable(workspaceFolders[0]);
             await setSetting(workspaceFolders[0], "Lua.workspace.checkThirdParty", false);
         } else {
+            const folderOptions = await (
+                await addon.getEnabled()
+            )
+                .filter((entry) => entry.enabled === false)
+                .map((entry) => {
+                    return {
+                        label: entry.folder.name,
+                        detail: entry.folder.uri.path,
+                    };
+                });
+
             const targetFolders = await vscode.window.showQuickPick(
                 folderOptions,
                 {
