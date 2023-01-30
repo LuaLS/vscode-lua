@@ -84,7 +84,14 @@ for dirPath in fs.pairs(fs.path 'server/locale') do
         description = 'Setting of sumneko.lua',
         type        = 'object',
         properties  = copyWithNLS(configuration, function (str)
-            return str:gsub('^%%(.+)%%$', nls)
+            return str:gsub('^%%(.+)%%$', function (key)
+                if nls[key] then
+                    return nls[key]
+                else
+                    nls[key] = ''
+                    return ''
+                end
+            end)
         end),
     }
 

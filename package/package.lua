@@ -37,13 +37,17 @@ return {
             {
                 command = "lua.psi.view",
                 title = "Lua Psi Viewer"
-            }
+            },
+            {
+                command = "lua.exportDocument",
+                title = "Export Document",
+            },
         },
         menus = {
             ["editor/context"] = {
                 {
                     when = "resourceLangId == lua",
-                    command = "lua.psi.view",
+                    command = "lua.exportDocument",
                     group = "z_commands"
                 }
             }

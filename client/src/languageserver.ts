@@ -16,6 +16,8 @@ import {
     LanguageClientOptions,
     ServerOptions,
     DocumentSelector,
+    LSPAny,
+    ExecuteCommandRequest,
 } from 'vscode-languageclient/node';
 
 export let defaultClient: LuaClient;
@@ -46,7 +48,32 @@ function registerCustomCommands(context: ExtensionContext) {
                 continue;
             }
         }
-    }));
+    }))
+
+    context.subscriptions.push(Commands.registerCommand('lua.exportDocument', async () => {
+        if (!defaultClient) {
+            return;
+        };
+        let outputs = await vscode.window.showOpenDialog({
+            defaultUri: vscode.Uri.joinPath(
+                context.extensionUri,
+                'server',
+                'log',
+            ),
+            openLabel: "Export documents to this folder",
+            canSelectFiles: false,
+            canSelectFolders: true,
+            canSelectMany: false,
+        });
+        let output = outputs?.[0];
+        if (!output) {
+            return;
+        };
+        defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+            command: 'lua.exportDocument',
+            arguments: [output.toString()],
+        })
+    }))
 }
 
 class LuaClient {
@@ -103,6 +130,7 @@ class LuaClient {
 
         const platform: string = os.platform();
         let command: string;
+        let platform: string = os.platform();
         let binDir: string;
 
         if ((await fs.promises.stat(this.context.asAbsolutePath('server/bin'))).isDirectory()) {
@@ -196,6 +224,18 @@ export function activate(context: ExtensionContext) {
             ]);
             defaultClient.start();
             return;
+        } else {
+            getConfig("Lua.runtime.version", document.uri).then((version) => {
+                let x = version;
+                setConfig([
+                    {
+                        action: "set",
+                        key:    "Lua.runtime.version",
+                        value:  "Lua 5.4",
+                        uri:    document.uri,
+                    }
+                ])
+            });
         }
     }
 
@@ -216,4 +256,61 @@ export async function reportAPIDoc(params: unknown) {
         return;
     }
     defaultClient.client.sendNotification('$/api/report', params);
+}
+
+type ConfigChange = {
+    action:  "set",
+    key:     string,
+    value:   LSPAny,
+    uri:     vscode.Uri,
+    global?: boolean,
+} | {
+    action:  "add",
+    key:     string,
+    value:   LSPAny,
+    uri:     vscode.Uri,
+    global?: boolean,
+} | {
+    action:  "prop",
+    key:     string,
+    prop:    string;
+    value:   LSPAny,
+    uri:     vscode.Uri,
+    global?: boolean,
+}
+
+export async function setConfig(changes: ConfigChange[]): Promise<boolean> {
+    if (!defaultClient) {
+        return false;
+    }
+    let params = [];
+    for (const change of changes) {
+        params.push({
+            action: change.action,
+            prop:   (change.action == "prop") ? change.prop : undefined,
+            key:    change.key,
+            value:  change.value,
+            uri:    change.uri.toString(),
+            global: change.global,
+        })
+    };
+    await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+        command: 'lua.setConfig',
+        arguments: params,
+    });
+    return true;
+}
+
+export async function getConfig(key: string, uri: vscode.Uri): Promise<LSPAny> {
+    if (!defaultClient) {
+        return undefined;
+    }
+    let result = await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+        command: 'lua.getConfig',
+        arguments: [{
+            uri: uri.toString(),
+            key: key,
+        }]
+    });
+    return result;
 }

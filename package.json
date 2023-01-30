@@ -29,6 +29,10 @@
 			{
 				"command": "lua.addon_manager.open",
 				"title": "Lua: Open Addon Manager"
+			},
+			{
+				"command": "lua.exportDocument",
+				"title": "Export Document"
 			}
 		],
 		"configuration": {
@@ -2881,12 +2885,6 @@
 					"markdownDescription": "%config.workspace.userThirdParty%",
 					"scope": "resource",
 					"type": "array"
-				},
-				"Lua.addonManager.authentication.noAsk": {
-					"default": false,
-					"markdownDescription": "Don't ask to sign in on startup.",
-					"scope": "resource",
-					"type": "boolean"
 				}
 			},
 			"title": "Lua",
@@ -2923,7 +2921,7 @@
 		"menus": {
 			"editor/context": [
 				{
-					"command": "lua.psi.view",
+					"command": "lua.exportDocument",
 					"group": "z_commands",
 					"when": "resourceLangId == lua"
 				}
@@ -3073,5 +3071,5 @@
 	"sponsor": {
 		"url": "https://github.com/sumneko/lua-language-server/issues/484"
 	},
-	"version": "3.6.5"
+	"version": "3.6.7"
 }

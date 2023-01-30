@@ -1,5 +1,21 @@
 # changelog
 
+## 3.6.7
+`2023-1-20`
+* `FIX` [#1810]
+* `FIX` [#1829]
+
+[#1810]: https://github.com/sumneko/lua-language-server/issues/1810
+[#1829]: https://github.com/sumneko/lua-language-server/issues/1829
+
+## 3.6.6
+`2023-1-17`
+* `FIX` [#1825]
+* `FIX` [#1826]
+
+[#1825]: https://github.com/sumneko/lua-language-server/issues/1825
+[#1826]: https://github.com/sumneko/lua-language-server/issues/1826
+
 ## 3.6.5
 `2023-1-16`
 * `NEW` support casting global variables
