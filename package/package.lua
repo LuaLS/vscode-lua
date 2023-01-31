@@ -40,7 +40,7 @@ return {
             },
             {
                 command = "lua.exportDocument",
-                title = "Export Document",
+                title = "%command.exportDocument%",
             },
         },
         menus = {

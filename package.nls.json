@@ -1,4 +1,5 @@
 {
+    "command.exportDocument": "Export Document ...",
     "config.IntelliSense.traceBeSetted": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceFieldInject": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceLocalSet": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",

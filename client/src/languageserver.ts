@@ -58,7 +58,7 @@ function registerCustomCommands(context: ExtensionContext) {
                 'server',
                 'log',
             ),
-            openLabel: "Export documents to this folder",
+            openLabel: "Export to this folder",
             canSelectFiles: false,
             canSelectFolders: true,
             canSelectMany: false,

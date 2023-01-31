@@ -1,4 +1,5 @@
 {
+    "command.exportDocument": "Export Document ...",
     "config.IntelliSense.traceBeSetted": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceFieldInject": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceLocalSet": "請查閱[文件](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",

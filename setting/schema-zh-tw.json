@@ -3065,9 +3065,6 @@
                 "preloadFileSize": {
                     "$ref": "#/properties/workspace.preloadFileSize"
                 },
-                "supportScheme": {
-                    "$ref": "#/properties/workspace.supportScheme"
-                },
                 "useGitIgnore": {
                     "$ref": "#/properties/workspace.useGitIgnore"
                 },
@@ -3119,19 +3116,6 @@
             "markdownDescription": "預載入時跳過大小大於該值（KB）的檔案。",
             "scope": "resource",
             "type": "integer"
-        },
-        "workspace.supportScheme": {
-            "default": [
-                "file",
-                "untitled",
-                "git"
-            ],
-            "items": {
-                "type": "string"
-            },
-            "markdownDescription": "為以下 `scheme` 的lua檔案提供語言伺服。",
-            "scope": "resource",
-            "type": "array"
         },
         "workspace.useGitIgnore": {
             "default": true,

@@ -3065,9 +3065,6 @@
                 "preloadFileSize": {
                     "$ref": "#/properties/workspace.preloadFileSize"
                 },
-                "supportScheme": {
-                    "$ref": "#/properties/workspace.supportScheme"
-                },
                 "useGitIgnore": {
                     "$ref": "#/properties/workspace.useGitIgnore"
                 },
@@ -3119,19 +3116,6 @@
             "markdownDescription": "Skip files larger than this value (KB) when preloading.",
             "scope": "resource",
             "type": "integer"
-        },
-        "workspace.supportScheme": {
-            "default": [
-                "file",
-                "untitled",
-                "git"
-            ],
-            "items": {
-                "type": "string"
-            },
-            "markdownDescription": "Provide language server for the Lua files of the following scheme.",
-            "scope": "resource",
-            "type": "array"
         },
         "workspace.useGitIgnore": {
             "default": true,
