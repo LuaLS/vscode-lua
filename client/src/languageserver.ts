@@ -203,7 +203,7 @@ export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
     function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
-        if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
+        if (document.languageId !== 'lua') {
             return;
         }
 
