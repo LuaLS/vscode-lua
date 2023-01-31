@@ -1,5 +1,23 @@
 # changelog
 
+## 3.6.8
+`2023-1-31`
+* `NEW` command `lua.exportDocument` . VSCode will display this command in the right-click menu
+* `CHG` setting `Lua.workspace.supportScheme` has been removed. All schemes are supported if the language id is `lua`
+* `FIX` [#1831]
+* `FIX` [#1838]
+* `FIX` [#1841]
+* `FIX` [#1851]
+* `FIX` [#1855]
+* `FIX` [#1857]
+
+[#1831]: https://github.com/sumneko/lua-language-server/issues/1831
+[#1838]: https://github.com/sumneko/lua-language-server/issues/1838
+[#1841]: https://github.com/sumneko/lua-language-server/issues/1841
+[#1851]: https://github.com/sumneko/lua-language-server/issues/1851
+[#1855]: https://github.com/sumneko/lua-language-server/issues/1855
+[#1857]: https://github.com/sumneko/lua-language-server/issues/1857
+
 ## 3.6.7
 `2023-1-20`
 * `FIX` [#1810]
