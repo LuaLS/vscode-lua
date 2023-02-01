@@ -235,7 +235,7 @@ export function activate(context: ExtensionContext) {
                         action: "set",
                         key:    "Lua.runtime.version",
                         value:  "Lua 5.4",
-                        uri:    document.uri.toString(),
+                        uri:    document.uri,
                     }
                 ]);
             });
@@ -265,20 +265,20 @@ type ConfigChange = {
     action:  "set",
     key:     string,
     value:   LSPAny,
-    uri:     string,
+    uri:     vscode.Uri,
     global?: boolean,
 } | {
     action:  "add",
     key:     string,
     value:   LSPAny,
-    uri:     string,
+    uri:     vscode.Uri,
     global?: boolean,
 } | {
     action:  "prop",
     key:     string,
     prop:    string;
     value:   LSPAny,
-    uri:     string,
+    uri:     vscode.Uri,
     global?: boolean,
 }
 
@@ -286,7 +286,7 @@ export async function setConfig(changes: ConfigChange[]): Promise<boolean> {
     if (!defaultClient) {
         return false;
     }
-    const params: ConfigChange[] = [];
+    const params: any = [];
     for (const change of changes) {
         params.push({
             action: change.action,
@@ -308,12 +308,11 @@ export async function getConfig(key: string, uri: vscode.Uri): Promise<LSPAny> {
     if (!defaultClient) {
         return undefined;
     }
-    const result = await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+    return await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
         command: 'lua.getConfig',
         arguments: [{
             uri: uri.toString(),
             key: key,
         }]
     });
-    return result;
 }

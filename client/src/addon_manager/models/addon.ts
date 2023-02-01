@@ -5,14 +5,13 @@ import { AddonConfig, AddonInfo } from "../types/addon";
 import { WebVue } from "../panels/WebVue";
 import {
     applyAddonSettings,
-    getSetting,
     getLibraryPaths,
     revokeAddonSettings,
-    setSetting,
 } from "../services/settings.service";
 import { git } from "../services/git.service";
 import filesystem from "../services/filesystem.service";
 import { DiffResultTextFile } from "simple-git";
+import { getConfig, setConfig } from "../../languageserver";
 
 const localLogger = createChildLogger("Addon");
 
@@ -23,7 +22,7 @@ export class Addon {
     /** Whether or not this addon is currently processing an operation. */
     #processing?: boolean;
     /** The workspace folders that this addon is enabled in. */
-    #enabled?: boolean[];
+    #enabled: boolean[];
     /** Whether or not this addon has an update available from git. */
     #hasUpdate?: boolean;
     /** Whether or not this addon is installed */
@@ -53,7 +52,7 @@ export class Addon {
     }
 
     /** Get the `config.json` for this addon. */
-    public async getConfig() {
+    public async getConfigurationFile() {
         const configURI = vscode.Uri.joinPath(
             this.uri,
             "module",
@@ -119,10 +118,10 @@ export class Addon {
     }
 
     public async enable(folder: vscode.WorkspaceFolder) {
-        const librarySetting = (await getSetting(
+        const librarySetting = ((await getConfig(
             LIBRARY_SETTING,
-            folder
-        )) as string[];
+            folder.uri
+        )) ?? []) as string[];
 
         const enabled = await this.checkIfEnabled(librarySetting);
         if (enabled) {
@@ -152,12 +151,18 @@ export class Addon {
         // Apply addon settings
         const libraryUri = vscode.Uri.joinPath(this.uri, "module", "library");
         const libraryPath = libraryUri.path.substring(1);
-        librarySetting.push(libraryPath);
 
-        const configValues = await this.getConfig();
+        const configValues = await this.getConfigurationFile();
 
         try {
-            await setSetting(folder, LIBRARY_SETTING, librarySetting);
+            await setConfig([
+                {
+                    action: "add",
+                    key: LIBRARY_SETTING,
+                    value: libraryPath,
+                    uri: folder.uri,
+                },
+            ]);
             if (configValues.settings)
                 await applyAddonSettings(folder, configValues.settings);
         } catch (e) {
@@ -170,10 +175,10 @@ export class Addon {
     }
 
     public async disable(folder: vscode.WorkspaceFolder, silent = false) {
-        const librarySetting = (await getSetting(
+        const librarySetting = ((await getConfig(
             LIBRARY_SETTING,
-            folder
-        )) as string[];
+            folder.uri
+        )) ?? []) as string[];
 
         const regex = new RegExp(
             `/sumneko.lua/addonManager/addons/${this.name}`,
@@ -188,12 +193,19 @@ export class Addon {
         }
 
         // Remove setting for Language Server
-        librarySetting.splice(index);
-        const configValues = await this.getConfig();
+        librarySetting.splice(index, 1);
+        const configValues = await this.getConfigurationFile();
 
         // Revoke settings
         try {
-            await setSetting(folder, LIBRARY_SETTING, librarySetting);
+            await setConfig([
+                {
+                    action: "set",
+                    key: LIBRARY_SETTING,
+                    value: librarySetting,
+                    uri: folder.uri,
+                },
+            ]);
             if (configValues.settings)
                 await revokeAddonSettings(folder, configValues.settings);
         } catch (e) {
@@ -253,6 +265,23 @@ export class Addon {
             this.#hasUpdate = true;
         }
         return this.#hasUpdate;
+    }
+
+    /** Get a list of options for a quick picker that lists the workspace
+     * folders that the addon is enabled/disabled in.
+     * @param enabledState The state the addon must be in in a folder to be included.
+     * `true` will only return the folders that the addon is **enabled** in.
+     * `false` will only return the folders that the addon is **disabled** in
+     */
+    public async getQuickPickerOptions(enabledState: boolean) {
+        return (await this.getEnabled())
+            .filter((entry) => entry.enabled === enabledState)
+            .map((entry) => {
+                return {
+                    label: entry.folder.name,
+                    detail: entry.folder.uri.path,
+                };
+            });
     }
 
     public async setLock(state: boolean) {
