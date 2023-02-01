@@ -214,18 +214,6 @@ export function activate(context: ExtensionContext) {
             ]);
             defaultClient.start();
             return;
-        } else {
-            getConfig("Lua.runtime.version", document.uri).then((version) => {
-                let x = version;
-                setConfig([
-                    {
-                        action: "set",
-                        key:    "Lua.runtime.version",
-                        value:  "Lua 5.4",
-                        uri:    document.uri,
-                    }
-                ])
-            });
         }
     }
 
