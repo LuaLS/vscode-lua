@@ -1,9 +1,9 @@
 {
     "command.exportDocument": "Export Document ...",
-    "config.IntelliSense.traceBeSetted": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-    "config.IntelliSense.traceFieldInject": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-    "config.IntelliSense.traceLocalSet": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-    "config.IntelliSense.traceReturn": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+    "config.IntelliSense.traceBeSetted": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+    "config.IntelliSense.traceFieldInject": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+    "config.IntelliSense.traceLocalSet": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
+    "config.IntelliSense.traceReturn": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.codeLens.enable": "Enable code lens.",
     "config.color.mode": "Color mode.",
     "config.color.mode.Grammar": "Grammar color.",
@@ -183,7 +183,7 @@
     "config.runtime.nonstandardSymbol": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     "config.runtime.path": "When using `require`, how to find the file based on the input name.\nSetting this config to `?/init.lua` means that when you enter `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from the loaded files.\nif `runtime.pathStrict` is `false`, `${workspace}/**/myfile/init.lua` will also be searched.\nIf you want to load files outside the workspace, you need to set `Lua.workspace.library` first.\n",
     "config.runtime.pathStrict": "When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.",
-    "config.runtime.plugin": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.",
+    "config.runtime.plugin": "Plugin path. Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/Plugins) to learn more.",
     "config.runtime.pluginArgs": "Additional arguments for the plugin.",
     "config.runtime.special": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
     "config.runtime.unicodeName": "Allows Unicode characters in name.",
@@ -199,7 +199,7 @@
     "config.semantic.variable": "Semantic coloring of variables/fields/parameters.",
     "config.signatureHelp.enable": "Enable signature help.",
     "config.spell.dict": "Custom words for spell checking.",
-    "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).\n",
+    "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/LuaLS/lua-language-server/wiki/Home#privacy).\n",
     "config.type.castNumberToInteger": "Allowed to assign the `number` type to the `integer` type.",
     "config.type.weakNilCheck": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.type.weakUnionCheck": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
@@ -217,5 +217,5 @@
     "config.workspace.preloadFileSize": "Skip files larger than this value (KB) when preloading.",
     "config.workspace.supportScheme": "Provide language server for the Lua files of the following scheme.",
     "config.workspace.useGitIgnore": "Ignore files list in `.gitignore` .",
-    "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)"
+    "config.workspace.userThirdParty": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/LuaLS/lua-language-server/tree/master/meta/3rd)"
 }
