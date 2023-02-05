@@ -19,6 +19,7 @@ export class Addon {
     readonly name: string;
     readonly uri: vscode.Uri;
 
+    #displayName?: string;
     /** Whether or not this addon is currently processing an operation. */
     #processing?: boolean;
     /** The workspace folders that this addon is enabled in. */
@@ -37,11 +38,17 @@ export class Addon {
         this.#installed = false;
     }
 
+    public get displayName() {
+        return this.#displayName ?? this.name;
+    }
+
     /** Fetch addon info from `info.json` */
     public async fetchInfo() {
         const path = vscode.Uri.joinPath(this.uri, INFO_FILENAME);
         const rawInfo = await filesystem.readFile(path);
         const info = JSON.parse(rawInfo) as AddonInfo;
+
+        this.#displayName = info.name;
 
         return {
             name: info.name,

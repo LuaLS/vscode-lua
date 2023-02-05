@@ -30,7 +30,7 @@ class AddonManager {
         const start = (page - 1) * pageSize;
         const addons = Array.from(this.addons.values());
 
-        addons.sort((a, b) => a.name.localeCompare(b.name));
+        addons.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
         return addons.slice(start, start + pageSize);
     }
