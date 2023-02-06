@@ -1,5 +1,13 @@
 # changelog
 
+## 3.6.10
+`2023-2-7`
+* `FIX` [#1869]
+* `FIX` [#1872]
+
+[#1869]: https://github.com/LuaLS/lua-language-server/issues/1869
+[#1872]: https://github.com/LuaLS/lua-language-server/issues/1872
+
 ## 3.6.9
 `2023-2-2`
 * `FIX` [#1864]
@@ -7,10 +15,10 @@
 * `FIX` [#1869]
 * `FIX` [#1871]
 
-[#1864]: https://github.com/sumneko/lua-language-server/issues/1864
-[#1868]: https://github.com/sumneko/lua-language-server/issues/1868
-[#1869]: https://github.com/sumneko/lua-language-server/issues/1869
-[#1871]: https://github.com/sumneko/lua-language-server/issues/1871
+[#1864]: https://github.com/LuaLS/lua-language-server/issues/1864
+[#1868]: https://github.com/LuaLS/lua-language-server/issues/1868
+[#1869]: https://github.com/LuaLS/lua-language-server/issues/1869
+[#1871]: https://github.com/LuaLS/lua-language-server/issues/1871
 
 ## 3.6.8
 `2023-1-31`
@@ -23,12 +31,12 @@
 * `FIX` [#1855]
 * `FIX` [#1857]
 
-[#1831]: https://github.com/sumneko/lua-language-server/issues/1831
-[#1838]: https://github.com/sumneko/lua-language-server/issues/1838
-[#1841]: https://github.com/sumneko/lua-language-server/issues/1841
-[#1851]: https://github.com/sumneko/lua-language-server/issues/1851
-[#1855]: https://github.com/sumneko/lua-language-server/issues/1855
-[#1857]: https://github.com/sumneko/lua-language-server/issues/1857
+[#1831]: https://github.com/LuaLS/lua-language-server/issues/1831
+[#1838]: https://github.com/LuaLS/lua-language-server/issues/1838
+[#1841]: https://github.com/LuaLS/lua-language-server/issues/1841
+[#1851]: https://github.com/LuaLS/lua-language-server/issues/1851
+[#1855]: https://github.com/LuaLS/lua-language-server/issues/1855
+[#1857]: https://github.com/LuaLS/lua-language-server/issues/1857
 
 ## 3.6.7
 `2023-1-20`
@@ -742,7 +750,7 @@ server will generate `doc.json` and `doc.md` in `LOGPATH`.
 ## 2.6.7
 `2022-3-9`
 * `NEW` offline diagnostic, [read more](https://github.com/LuaLS/lua-language-server/wiki/Offline-Diagnostic)
-* `CHG` `VSCode`: 1.65 has built in new `Lua` syntax files, so this extension no longer provides syntax files, which means you can install other syntax extensions in the marketplace. If you have any suggestions or issues, please [open issues here](https://github.com/sumneko/lua.tmbundle).
+* `CHG` `VSCode`: 1.65 has built in new `Lua` syntax files, so this extension no longer provides syntax files, which means you can install other syntax extensions in the marketplace. If you have any suggestions or issues, please [open issues here](https://github.com/LuaLS/lua.tmbundle).
 * `CHG` telemetry: the prompt will only appear in VSCode to avoid repeated prompts in other platforms due to the inability to automatically modify the settings.
 * `FIX` [#965](https://github.com/LuaLS/lua-language-server/issues/965)
 * `FIX` [#975](https://github.com/LuaLS/lua-language-server/issues/975)
@@ -1621,7 +1629,7 @@ f( -- view comments of `1` and `2` in completion
 * `NEW` diagnostic: `undefined-field`
 * `NEW` telemetry:
     + [What data will be sent](https://github.com/LuaLS/lua-language-server/blob/master/script/service/telemetry.lua)
-    + [How to use this data](https://github.com/sumneko/lua-telemetry-server/tree/master/method)
+    + [How to use this data](https://github.com/LuaLS/lua-telemetry-server/tree/master/method)
 * `CHG` diagnostic: `unused-function` ignores function with `<close>`
 * `CHG` semantic: not cover local call
 * `CHG` language client: update to [7.0.0](https://github.com/microsoft/vscode-languageserver-node/commit/20681d7632bb129def0c751be73cf76bd01f2f3a)

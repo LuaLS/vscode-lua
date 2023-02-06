@@ -4,7 +4,7 @@
 [![version](https://vsmarketplacebadges.dev/version-short/sumneko.lua.png)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
 ![installs](https://vsmarketplacebadges.dev/installs-short/sumneko.lua.png)
 ![downloads](https://vsmarketplacebadges.dev/downloads-short/sumneko.lua.png)
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/sumneko/lua-language-server.png)](https://github.com/LuaLS/lua-language-server/issues "Average time to resolve an issue")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/LuaLS/lua-language-server.png)](https://github.com/LuaLS/lua-language-server/issues "Average time to resolve an issue")
 
 
 ***Lua development just got a whole lot better*** 🧠
@@ -37,7 +37,7 @@ The language server can easily be installed for use in VS Code, but it can also 
 
 The language server and Visual Studio Code client can be installed from [the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=sumneko.lua).
 
-![](https://github.com/sumneko/vscode-lua/raw/master/images//Install%20In%20VSCode.gif)
+![](https://github.com/LuaLS/vscode-lua/raw/master/images//Install%20In%20VSCode.gif)
 
 ### Command Line
 [![Install for command line](https://img.shields.io/badge/Install%20For-Command%20Line-blue?style=for-the-badge&logo=windowsterminal "Install for command line")](https://github.com/LuaLS/lua-language-server/wiki/Getting-Started#command-line)
@@ -107,13 +107,13 @@ Software that the language server (or the development of it) uses:
 * [bee.lua](https://github.com/actboy168/bee.lua)
 * [luamake](https://github.com/actboy168/luamake)
 * [LPegLabel](https://github.com/sqmedeiros/lpeglabel)
-* [LuaParser](https://github.com/sumneko/LuaParser)
+* [LuaParser](https://github.com/LuaLS/LuaParser)
 * [ScreenToGif](https://github.com/NickeManarin/ScreenToGif)
 * [vscode-languageclient](https://github.com/microsoft/vscode-languageserver-node)
 * [lua.tmbundle](https://github.com/textmate/lua.tmbundle)
 * [EmmyLua](https://emmylua.github.io)
-* [lua-glob](https://github.com/sumneko/lua-glob)
-* [utility](https://github.com/sumneko/utility)
+* [lua-glob](https://github.com/LuaLS/lua-glob)
+* [utility](https://github.com/LuaLS/utility)
 * [vscode-lua-doc](https://github.com/actboy168/vscode-lua-doc)
 * [json.lua](https://github.com/actboy168/json.lua)
 * [EmmyLuaCodeStyle](https://github.com/CppCXY/EmmyLuaCodeStyle)
