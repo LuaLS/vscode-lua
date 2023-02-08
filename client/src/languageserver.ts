@@ -61,7 +61,7 @@ function registerCustomCommands(context: ExtensionContext) {
                 'server',
                 'log',
             ),
-            openLabel: "Export documents to this folder",
+            openLabel: "Export to this folder",
             canSelectFiles: false,
             canSelectFolders: true,
             canSelectMany: false,
@@ -217,7 +217,7 @@ export function activate(context: ExtensionContext) {
     registerCustomCommands(context);
     function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
-        if (document.languageId !== 'lua' || (document.uri.scheme !== 'file' && document.uri.scheme !== 'untitled')) {
+        if (document.languageId !== 'lua') {
             return;
         }
 
@@ -228,17 +228,6 @@ export function activate(context: ExtensionContext) {
             ]);
             defaultClient.start();
             return;
-        } else {
-            getConfig("Lua.runtime.version", document.uri).then(() => {
-                setConfig([
-                    {
-                        action: "set",
-                        key:    "Lua.runtime.version",
-                        value:  "Lua 5.4",
-                        uri:    document.uri,
-                    }
-                ]);
-            });
         }
     }
 

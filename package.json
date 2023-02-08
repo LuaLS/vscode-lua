@@ -32,7 +32,7 @@
 			},
 			{
 				"command": "lua.exportDocument",
-				"title": "Export Document"
+				"title": "%command.exportDocument%"
 			}
 		],
 		"configuration": {
@@ -2858,19 +2858,6 @@
 					"scope": "resource",
 					"type": "integer"
 				},
-				"Lua.workspace.supportScheme": {
-					"default": [
-						"file",
-						"untitled",
-						"git"
-					],
-					"items": {
-						"type": "string"
-					},
-					"markdownDescription": "%config.workspace.supportScheme%",
-					"scope": "resource",
-					"type": "array"
-				},
 				"Lua.workspace.useGitIgnore": {
 					"default": true,
 					"markdownDescription": "%config.workspace.useGitIgnore%",
@@ -3066,10 +3053,10 @@
 	"publisher": "sumneko",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sumneko/lua-language-server"
+		"url": "https://github.com/LuaLS/lua-language-server"
 	},
 	"sponsor": {
-		"url": "https://github.com/sumneko/lua-language-server/issues/484"
+		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.7"
+	"version": "3.6.10"
 }
