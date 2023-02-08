@@ -199,25 +199,35 @@ export class Addon {
             return;
         }
 
-        // Remove setting for Language Server
+        // Remove this addon from the library list
         librarySetting.splice(index, 1);
-        const configValues = await this.getConfigurationFile();
-
-        // Revoke settings
-        try {
-            await setConfig([
-                {
-                    action: "set",
-                    key: LIBRARY_SETTING,
-                    value: librarySetting,
-                    uri: folder.uri,
-                },
-            ]);
-            if (configValues.settings)
-                await revokeAddonSettings(folder, configValues.settings);
-        } catch (e) {
-            localLogger.error(`Failed to revoke settings of "${this.name}"`);
+        const result = await setConfig([
+            {
+                action: "set",
+                key: LIBRARY_SETTING,
+                value: librarySetting,
+                uri: folder.uri,
+            },
+        ]);
+        if (!result) {
+            localLogger.error(
+                `Failed to update ${LIBRARY_SETTING} when disabling ${this.name}`
+            );
             return;
+        }
+
+        // Remove addon settings if installed
+        if (this.#installed) {
+            const configValues = await this.getConfigurationFile();
+            try {
+                if (configValues.settings)
+                    await revokeAddonSettings(folder, configValues.settings);
+            } catch (e) {
+                localLogger.error(
+                    `Failed to revoke settings of "${this.name}"`
+                );
+                return;
+            }
         }
 
         this.#enabled[folder.index] = false;
