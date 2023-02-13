@@ -35,48 +35,38 @@ export const applyAddonSettings = async (
 ) => {
     if (!folder) throw new ConfigError(`Workspace is not open!`);
 
-    const promises = [];
+    const changes = [];
     for (const [newKey, newValue] of Object.entries(config)) {
         if (Array.isArray(newValue)) {
-            promises.push(
-                setConfig([
-                    {
-                        action: "add",
-                        key: newKey,
-                        value: newValue,
-                        uri: folder.uri,
-                    },
-                ])
-            );
+            changes.push({
+                action: "add",
+                key: newKey,
+                value: newValue,
+                uri: folder.uri,
+            });
         } else if (typeof newValue === "object") {
-            promises.push(
-                setConfig(
-                    Object.entries(newValue).map(([key, value]) => {
-                        return {
-                            action: "prop",
-                            key: newKey,
-                            prop: key,
-                            value,
-                            uri: folder.uri,
-                        };
-                    })
-                )
+            changes.push(
+                ...Object.entries(newValue).map(([key, value]) => {
+                    return {
+                        action: "prop",
+                        key: newKey,
+                        prop: key,
+                        value,
+                        uri: folder.uri,
+                    };
+                })
             );
         } else {
-            promises.push(
-                setConfig([
-                    {
-                        action: "set",
-                        key: newKey,
-                        value: newValue,
-                        uri: folder.uri,
-                    },
-                ])
-            );
+            changes.push({
+                action: "set",
+                key: newKey,
+                value: newValue,
+                uri: folder.uri,
+            });
         }
     }
 
-    return Promise.all(promises);
+    return await setConfig(changes);
 };
 
 export const revokeAddonSettings = async (
@@ -85,7 +75,7 @@ export const revokeAddonSettings = async (
 ) => {
     if (!folder) throw new ConfigError(`Workspace is not open!`);
 
-    const promises = [];
+    const changes = [];
     for (const [newKey, newValue] of Object.entries(config)) {
         const currentValue = await getConfig(newKey, folder.uri);
 
@@ -94,46 +84,34 @@ export const revokeAddonSettings = async (
             const notAddon = currentValue.filter(
                 (oldValue) => !newValue.includes(oldValue)
             );
-            promises.push(
-                setConfig([
-                    {
-                        action: "set",
-                        key: newKey,
-                        value: notAddon,
-                        uri: folder.uri,
-                    },
-                ])
-            );
+            changes.push({
+                action: "set",
+                key: newKey,
+                value: notAddon,
+                uri: folder.uri,
+            });
         } else if (typeof newValue === "object") {
             for (const objectKey of Object.keys(newValue)) {
                 delete currentValue[objectKey];
             }
             // If object is now empty, delete it
             if (Object.keys(currentValue).length === 0) {
-                promises.push(
-                    setConfig([
-                        {
-                            action: "set",
-                            key: newKey,
-                            value: undefined,
-                            uri: folder.uri,
-                        },
-                    ])
-                );
+                changes.push({
+                    action: "set",
+                    key: newKey,
+                    value: undefined,
+                    uri: folder.uri,
+                });
             } else {
-                promises.push(
-                    setConfig([
-                        {
-                            action: "set",
-                            key: newKey,
-                            value: currentValue,
-                            uri: folder.uri,
-                        },
-                    ])
-                );
+                changes.push({
+                    action: "set",
+                    key: newKey,
+                    value: currentValue,
+                    uri: folder.uri,
+                });
             }
         }
     }
 
-    return Promise.all(promises);
+    return await setConfig(changes);
 };
