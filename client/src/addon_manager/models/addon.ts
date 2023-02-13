@@ -170,10 +170,12 @@ export class Addon {
                     uri: folder.uri,
                 },
             ]);
-            if (configValues.settings)
+            if (configValues.settings) {
                 await applyAddonSettings(folder, configValues.settings);
+                localLogger.info(`Applied addon settings for ${this.name}`);
+            }
         } catch (e) {
-            localLogger.warn(`Failed to apply settings of "${this.name}"`);
+            localLogger.warn(`Failed to apply settings of "${this.name}" due to ${e}`);
             return;
         }
 
