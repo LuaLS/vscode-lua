@@ -25,16 +25,6 @@ class AddonManager {
         return await this.checkUpdated();
     }
 
-    /** Get a page of local addons */
-    public getAddonsPage(page: number, pageSize: number): Addon[] {
-        const start = (page - 1) * pageSize;
-        const addons = Array.from(this.addons.values());
-
-        addons.sort((a, b) => a.displayName.localeCompare(b.displayName));
-
-        return addons.slice(start, start + pageSize);
-    }
-
     public async checkUpdated() {
         const diff = await git.diffSummary([
             "main",

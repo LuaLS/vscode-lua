@@ -6,14 +6,8 @@ import { ADDONS_DIRECTORY } from "../config";
 
 const localLogger = createChildLogger("Get Remote Addons");
 
-type Message = {
-    data: { page: number; pageSize?: number };
-};
-
-export default async (context: vscode.ExtensionContext, message: Message) => {
+export default async (context: vscode.ExtensionContext) => {
     WebVue.setLoadingState(true);
-
-    const { page, pageSize } = message.data;
 
     const installLocation = vscode.Uri.joinPath(
         context.globalStorageUri,
@@ -36,10 +30,19 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         return;
     }
 
-    const addonList = await addonManager.getAddonsPage(page, pageSize ?? 10);
+    /** Number of addons to load per chunk */
+    const CHUNK_SIZE = 30;
 
-    const addons = await Promise.all(addonList.map((addon) => addon.toJSON()));
+    // Get list of addons and sort them alphabetically
+    const addonList = Array.from(addonManager.addons.values());
+    addonList.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
-    WebVue.sendMessage("addAddon", { addons });
+    // Send addons to client in chunks
+    for (let i = 0; i <= addonList.length / CHUNK_SIZE; i++) {
+        const chunk = addonList.slice(i * CHUNK_SIZE, i * CHUNK_SIZE + CHUNK_SIZE);
+        const addons = await Promise.all(chunk.map((addon) => addon.toJSON()));
+        await WebVue.sendMessage("addAddon", { addons });
+    }
+
     WebVue.setLoadingState(false);
 };
