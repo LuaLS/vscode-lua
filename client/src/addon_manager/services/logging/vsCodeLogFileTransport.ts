@@ -62,7 +62,7 @@ export default class VSCodeLogFileTransport extends Transport {
             this.emit("logged", info);
         });
 
-        this.stream.write(stringToByteArray(info[MESSAGE] + "\n"));
+        this.stream.write(stringToByteArray(info[MESSAGE as unknown as string] + "\n"));
 
         callback();
     }

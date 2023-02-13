@@ -19,7 +19,7 @@ export default class VSCodeOutputTransport extends Transport {
             this.emit("logged", info);
         });
 
-        this.outputChannel.appendLine(info[MESSAGE]);
+        this.outputChannel.appendLine(info[MESSAGE as unknown as string]);
 
         callback();
     }
