@@ -2682,7 +2682,8 @@
 								"xpcall",
 								"assert",
 								"error",
-								"type"
+								"type",
+								"os.exit"
 							],
 							"type": "string"
 						}
@@ -3054,5 +3055,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.10"
+	"version": "3.6.11"
 }
