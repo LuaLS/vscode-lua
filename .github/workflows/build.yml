@@ -44,7 +44,10 @@ jobs:
           curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodesource_setup.sh # For nodejs
           sudo bash /tmp/nodesource_setup.sh
           apt-get update
-          apt-get install -y git gcc-9 g++-9 nodejs
+          apt-get install -y git gcc-9 g++-9
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+          source ~/.bashrc
+          nvm install node
 
       - name: Install aarch64-linux-gnu
         if: ${{ matrix.platform == 'linux-arm64' }}
