@@ -87,7 +87,7 @@ jobs:
         shell: bash
         run: |
           cd client
-          npm ci
+          npm i
           npm run build
           cd ..
 
