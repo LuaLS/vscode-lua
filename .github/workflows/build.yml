@@ -45,6 +45,7 @@ jobs:
           sudo bash /tmp/nodesource_setup.sh
           apt-get update
           apt-get install -y git gcc-9 g++-9
+          touch ~/.bashrc
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
           source ~/.bashrc
           nvm install node
