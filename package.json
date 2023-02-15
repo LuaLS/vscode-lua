@@ -2240,7 +2240,7 @@
 				},
 				"Lua.format.defaultConfig": {
 					"additionalProperties": false,
-					"default": [],
+					"default": {},
 					"markdownDescription": "%config.format.defaultConfig%",
 					"patternProperties": {
 						".*": {
@@ -2665,7 +2665,7 @@
 				},
 				"Lua.runtime.special": {
 					"additionalProperties": false,
-					"default": [],
+					"default": {},
 					"markdownDescription": "%config.runtime.special%",
 					"patternProperties": {
 						".*": {

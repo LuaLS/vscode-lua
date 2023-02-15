@@ -2318,7 +2318,7 @@
         },
         "format.defaultConfig": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "預設的格式化組態，優先順序低於工作區內的 `.editorconfig` 檔案。\n請查閱[格式化文件](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs)了解用法。\n",
             "patternProperties": {
                 ".*": {
@@ -2840,7 +2840,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
-            "default": [],
+            "default": {},
             "markdownDescription": "將自訂全域變數視為一些特殊的內建變數，語言伺服將提供特殊的支援。\n下面這個例子表示將 `include` 視為 `require` 。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
