@@ -38,11 +38,13 @@ export const applyAddonSettings = async (
     const changes = [];
     for (const [newKey, newValue] of Object.entries(config)) {
         if (Array.isArray(newValue)) {
-            changes.push({
-                action: "add",
-                key: newKey,
-                value: newValue,
-                uri: folder.uri,
+            newValue.forEach((val) => {
+                changes.push({
+                    action: "add",
+                    key: newKey,
+                    value: val,
+                    uri: folder.uri,
+                });
             });
         } else if (typeof newValue === "object") {
             changes.push(
