@@ -275,7 +275,7 @@ export async function setConfig(changes: ConfigChange[]): Promise<boolean> {
     if (!defaultClient) {
         return false;
     }
-    const params: any = [];
+    const params = [];
     for (const change of changes) {
         params.push({
             action: change.action,
