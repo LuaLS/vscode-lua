@@ -1,6 +1,19 @@
 {
     "description": "Setting of sumneko.lua",
     "properties": {
+        "addonManager": {
+            "properties": {
+                "enable": {
+                    "$ref": "#/properties/addonManager.enable"
+                }
+            }
+        },
+        "addonManger.enable": {
+            "default": true,
+            "markdownDescription": "Set the on/off state for the addon manager.",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "codeLens": {
             "properties": {
                 "enable": {

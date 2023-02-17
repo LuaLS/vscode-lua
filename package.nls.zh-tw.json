@@ -1,5 +1,6 @@
 {
     "command.exportDocument": "Export Document ...",
+    "config.addonManager.enable": "Set the on/off state for the addon manager.",
     "config.IntelliSense.traceBeSetted": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceFieldInject": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceLocalSet": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
