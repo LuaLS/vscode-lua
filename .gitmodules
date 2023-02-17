@@ -6,4 +6,4 @@
 	url = https://github.com/LuaLS/vscode-lua-doc
 [submodule "client/webvue"]
 	path = client/webvue
-	url = git@github.com:carsakiller/vscode-lua-webvue.git
+	url = https://github.com/LuaLS/vscode-lua-webvue
