@@ -1,31 +1,23 @@
 {
-    "version": "2.0.0",
-    "type": "shell",
-    "windows": {
-        "options": {
-            "shell": {
-                "executable": "C:\\Windows\\System32\\cmd.exe",
-                "args": [
-                    "/c"
-                ]
-            }
-        }
-    },
-    "options": {
-        "cwd": "${workspaceFolder}"
-    },
-    "tasks": [
-        {
-            "type": "typescript",
-            "tsconfig": "client/tsconfig.json",
-            "problemMatcher": [
-                "$tsc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "label": "tsc: 构建 - client/tsconfig.json"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "./buildClient.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "icon": { "color": "terminal.ansiCyan", "id": "server-process" },
+      "label": "Build Client"
+    }
+  ]
 }
