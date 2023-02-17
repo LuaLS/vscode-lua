@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { defaultClient } from '../languageserver';
 
-const LANGUAGE_ID: string = "lua";
+const LANGUAGE_ID = "lua";
 /**
  * Manages webview panels
  */
@@ -72,7 +72,7 @@ class PsiViewer {
         }
     }
 
-    public post(message: any) {
+    public post(message: unknown) {
         this.panel.webview.postMessage(message);
     }
 
@@ -116,8 +116,8 @@ class PsiViewer {
 
     private requestPsiImpl(editor: vscode.TextEditor) {
         const client = defaultClient.client;
-        let params: any = { uri: editor.document.uri.toString() };
-        client?.sendRequest<{ data: any }>("$/psi/view", params).then(result => {
+        const params = { uri: editor.document.uri.toString() };
+        client?.sendRequest<{ data: unknown }>("$/psi/view", params).then(result => {
             if (result) {
                 this.post({
                     type: "psi",
@@ -129,8 +129,8 @@ class PsiViewer {
 
     private requestPsiSelect(position: vscode.Position, uri: vscode.Uri) {
         const client = defaultClient.client;
-        let params: any = { uri: uri.toString(), position };
-        client?.sendRequest<{ data: any }>("$/psi/select", params).then(result => {
+        const params = { uri: uri.toString(), position };
+        client?.sendRequest<{ data: unknown }>("$/psi/select", params).then(result => {
             if (result) {
                 this.post({
                     type: "psi_select",
@@ -159,11 +159,11 @@ class PsiViewer {
     }
 
     private static onDidChangeSelection(e: vscode.TextEditorSelectionChangeEvent) {
-        if (e.kind == vscode.TextEditorSelectionChangeKind.Mouse
-            || e.kind == vscode.TextEditorSelectionChangeKind.Keyboard) {
+        if (e.kind === vscode.TextEditorSelectionChangeKind.Mouse
+            || e.kind === vscode.TextEditorSelectionChangeKind.Keyboard) {
             const viewer = PsiViewer.currentPanel;
             if (viewer) {
-                viewer.requestPsiSelect(e.selections[0].start, e.textEditor.document.uri)
+                viewer.requestPsiSelect(e.selections[0].start, e.textEditor.document.uri);
             }
         }
     }

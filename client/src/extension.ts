@@ -1,36 +1,41 @@
-import * as vscode from 'vscode'
+import * as vscode from 'vscode';
 import * as languageserver from './languageserver';
 import * as psi from './psi/psiViewer';
+import * as addonManager from './addon_manager/registration';
 
-let luadoc = require('../3rd/vscode-lua-doc/extension.js')
+import luadoc from "../3rd/vscode-lua-doc/extension.js";
 
 export function activate(context: vscode.ExtensionContext) {
-    
     languageserver.activate(context);
 
-    let luaDocContext = {
+    const luaDocContext = {
         ViewType:      undefined,
         OpenCommand:   undefined,
         extensionPath: undefined,
-    }
+    };
 
     for (const k in context) {
         try {
             luaDocContext[k] = context[k];
-        } catch (error) {}
+        } catch (error) {
+            console.error(error);
+        }
     }
     luaDocContext.ViewType      = 'lua-doc';
     luaDocContext.OpenCommand   = 'extension.lua.doc';
-    luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc'
+    luaDocContext.extensionPath = context.extensionPath + '/client/3rd/vscode-lua-doc';
 
     luadoc.activate(luaDocContext);
     psi.activate(context);
 
+    // Register and activate addon manager
+    addonManager.activate(context);
+
     return {
-        async reportAPIDoc(params: any) {
+        async reportAPIDoc(params: unknown) {
             await languageserver.reportAPIDoc(params);
         }
-    }
+    };
 }
 
 export function deactivate() {

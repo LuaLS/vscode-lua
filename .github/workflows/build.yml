@@ -44,7 +44,11 @@ jobs:
           curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodesource_setup.sh # For nodejs
           sudo bash /tmp/nodesource_setup.sh
           apt-get update
-          apt-get install -y git gcc-9 g++-9 nodejs
+          apt-get install -y git gcc-9 g++-9
+          cd ~
+          curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+          sudo bash /tmp/nodesource_setup.sh
+          sudo apt install nodejs
 
       - name: Install aarch64-linux-gnu
         if: ${{ matrix.platform == 'linux-arm64' }}
@@ -83,14 +87,21 @@ jobs:
           echo PKG_BASENAME=${PKG_BASENAME} >> $GITHUB_OUTPUT
           echo PKG_NAME=${PKG_NAME} >> $GITHUB_OUTPUT
 
-      - name: Compile clinet
+      - name: Compile client
         shell: bash
         run: |
-          npm install -g typescript
           cd client
-          npm install
-          tsc
+          npm ci
+          npm run build
           cd ..
+
+      - name: Build Addon Manager WebVue
+        shell: bash
+        run: |
+          cd client/webvue
+          npm ci
+          npm run build
+          cd ../..
 
       - name: Pack vsix
         id: pack
