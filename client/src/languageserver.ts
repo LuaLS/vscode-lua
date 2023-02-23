@@ -186,7 +186,7 @@ class LuaClient {
 
     statusBar() {
         const client = this.client;
-        const bar = window.createStatusBarItem();
+        const bar = window.createStatusBarItem(vscode.StatusBarAlignment.Right);
         bar.text = 'Lua';
         bar.command = 'Lua.statusBar';
         this.disposables.push(Commands.registerCommand(bar.command, () => {
