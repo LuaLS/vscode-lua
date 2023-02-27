@@ -7,8 +7,7 @@
 	"publisher": "vscode",
 	"scripts": {
 		"lint": "npx eslint src/",
-		"build": "tsc",
-		"postbuild": "cp package*.json out && cd out && npm ci --omit=dev"
+		"build": "tsc"
 	},
 	"repository": {
 		"type": "git",

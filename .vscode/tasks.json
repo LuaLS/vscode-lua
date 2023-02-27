@@ -4,6 +4,9 @@
     {
       "type": "shell",
       "command": "./buildClient.sh",
+      "windows": {
+        "command": ".\\buildClient.bat"
+      },
       "group": {
         "kind": "build",
         "isDefault": true
