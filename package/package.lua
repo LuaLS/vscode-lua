@@ -39,6 +39,10 @@ return {
                 title = "Lua Psi Viewer"
             },
             {
+                command = "lua.addon_manager.open",
+                title = "%command.addon_manager.open%",
+            },
+            {
                 command = "lua.exportDocument",
                 title = "%command.exportDocument%",
             },
@@ -49,7 +53,12 @@ return {
                     when = "resourceLangId == lua",
                     command = "lua.exportDocument",
                     group = "z_commands"
-                }
+                },
+                {
+                    when = "resourceLangId == lua",
+                    command = "lua.addon_manager.open",
+                    group = "z_commands",
+                },
             }
         },
         configuration = {
