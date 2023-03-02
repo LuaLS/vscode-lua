@@ -6,13 +6,11 @@
 import winston from "winston";
 import VSCodeOutputTransport from "./logging/vsCodeOutputTransport";
 import axios, { AxiosError } from "axios";
-import { ClientRequest } from "http";
 import { padText } from "./string.service";
 import * as vscode from "vscode";
 import { MESSAGE } from "triple-beam";
 import { REPOSITORY_ISSUES_URL } from "../config";
 import VSCodeLogFileTransport from "./logging/vsCodeLogFileTransport";
-import dayjs from "dayjs";
 
 // Create logger from winston
 export const logger = winston.createLogger({
@@ -113,50 +111,6 @@ axios.interceptors.request.use(
         const method = error.config?.method?.toUpperCase();
 
         axiosLogger.error(`${url} ${method} ${error.code} ${error.message}`);
-        return Promise.reject(error);
-    }
-);
-
-axios.interceptors.response.use(
-    (response) => {
-        const request = response.request as ClientRequest;
-        const url = `${request.protocol}//${request.host}${request.path}`;
-
-        const message = `${request.method} ${response.status} ${response.statusText}: ${url} | Size: ${response.headers["content-length"]} Type: ${response.headers["content-type"]}`;
-
-        axiosLogger.http(message);
-
-        return response;
-    },
-    (error: AxiosError) => {
-        const url = error?.config?.url;
-        const method = error?.config?.method?.toUpperCase();
-
-        const code = error.response?.status ?? error.code;
-        const message = error?.response?.statusText ?? error.message;
-        const data = JSON.stringify(error?.response?.data);
-
-        // Got rate limited
-        if (code === 403) {
-            const rateLimitReset = dayjs.unix(
-                Number(error.response.headers["x-ratelimit-reset"])
-            );
-
-            const limitTime = rateLimitReset.toNow(true);
-
-            vscode.window.showWarningMessage(
-                `Looks like GitHub just rate limited you for ${limitTime}. I recommend logging in to get a much higher rate limit.`,
-                { modal: true }
-            );
-            axiosLogger.warn(
-                `${url} ${method} ${code} ${message} ${data ?? ""}`
-            );
-
-            return Promise.reject(error);
-        }
-
-        axiosLogger.error(`${url} ${method} ${code} ${message} ${data ?? ""}`);
-
         return Promise.reject(error);
     }
 );
