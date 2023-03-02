@@ -70,6 +70,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
         setupPromises.push(setupGit(context));
     } catch (e) {
-        localLogger.error(`Failed to initialize addon manager | ${e}`);
+        localLogger.error(`Failed to initialize addon manager!`);
+        localLogger.error(e);
     }
 }
