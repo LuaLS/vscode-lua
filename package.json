@@ -28,7 +28,7 @@
 			},
 			{
 				"command": "lua.addon_manager.open",
-				"title": "Lua: Open Addon Manager"
+				"title": "%command.addon_manager.open%"
 			},
 			{
 				"command": "lua.exportDocument",
@@ -37,8 +37,8 @@
 		],
 		"configuration": {
 			"properties": {
-				"Lua.addonManager.enable" : {
-					"default": true,
+				"Lua.addonManager.enable": {
+					"default": false,
 					"markdownDescription": "%config.addonManager.enable%",
 					"scope": "resource",
 					"type": "boolean"
@@ -2918,6 +2918,11 @@
 					"command": "lua.exportDocument",
 					"group": "z_commands",
 					"when": "resourceLangId == lua"
+				},
+				{
+					"command": "lua.addon_manager.open",
+					"group": "z_commands",
+					"when": "resourceLangId == lua"
 				}
 			]
 		},
@@ -3065,5 +3070,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.11"
+	"version": "3.6.12"
 }

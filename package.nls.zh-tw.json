@@ -1,10 +1,11 @@
 {
-    "command.exportDocument": "Export Document ...",
-    "config.addonManager.enable": "Set the on/off state for the addon manager.",
+    "command.addon_manager.open": "Lua: Open Addon Manager ...",
+    "command.exportDocument": "Lua: Export Document ...",
     "config.IntelliSense.traceBeSetted": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceFieldInject": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceLocalSet": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceReturn": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
+    "config.addonManager.enable": "",
     "config.codeLens.enable": "Enable code lens.",
     "config.color.mode": "著色模式。",
     "config.color.mode.Grammar": "語法著色。",

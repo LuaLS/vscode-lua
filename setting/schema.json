@@ -9,8 +9,8 @@
             }
         },
         "addonManager.enable": {
-            "default": true,
-            "markdownDescription": "Set the on/off state for the addon manager.",
+            "default": false,
+            "markdownDescription": "",
             "scope": "resource",
             "type": "boolean"
         },
