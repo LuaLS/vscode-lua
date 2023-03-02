@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { stringToByteArray } from "./string.service";
 import { createChildLogger } from "./logging.service";
+import { platform } from "os";
 
 const localLogger = createChildLogger("Filesystem");
 
@@ -11,6 +12,11 @@ type ReadDirectoryOptions = {
 };
 
 namespace filesystem {
+
+    export function getCorrectPath(uri: vscode.Uri): string {
+        return platform() === "win32" ? uri.path.substring(1) : uri.fsPath;
+    }
+
     /** Check if a file exists
      * @param uri - The URI of the file to check the existence of
      */

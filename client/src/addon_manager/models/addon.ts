@@ -80,7 +80,7 @@ export class Addon {
 
     /** Update this addon using git. */
     public async update() {
-        const path = this.uri.path.substring(1);
+        const path = filesystem.getCorrectPath(this.uri);
         return git
             .submoduleUpdate([path])
             .then((message) => localLogger.debug(message));
@@ -138,7 +138,7 @@ export class Addon {
         }
 
         // Init submodule
-        const path = this.uri.path.substring(1);
+        const path = filesystem.getCorrectPath(this.uri);
         try {
             await git.submoduleInit([path]);
             localLogger.debug("Initialized submodule");
@@ -157,7 +157,7 @@ export class Addon {
 
         // Apply addon settings
         const libraryUri = vscode.Uri.joinPath(this.uri, "module", "library");
-        const libraryPath = libraryUri.path.substring(1);
+        const libraryPath = filesystem.getCorrectPath(libraryUri);
 
         const configValues = await this.getConfigurationFile();
 
