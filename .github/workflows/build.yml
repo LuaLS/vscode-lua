@@ -65,7 +65,9 @@ jobs:
       - name: Run luamake
         id: luamake
         working-directory: ./server
-        run: luamake -platform ${{ matrix.platform }}
+        run: |
+          luamake -platform ${{ matrix.platform }}
+          rm ./build
 
       - name: Setting up workflow variables
         id: vars
