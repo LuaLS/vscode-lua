@@ -92,6 +92,7 @@ jobs:
       - name: Compile client
         shell: bash
         run: |
+          npm install -g typescript
           cd client
           npm ci
           npm run build
