@@ -33,7 +33,7 @@ export default class VSCodeLogFileTransport extends Transport {
             `${dayjs().format("HH-mm")}.log`
         );
         VSCodeLogFileTransport.currentLogFile = logFileUri;
-        this.stream = fs.createWriteStream(logFileUri.path.substring(1), {
+        this.stream = fs.createWriteStream(logFileUri.fsPath, {
             flags: "a",
         });
         this.initialized = true;

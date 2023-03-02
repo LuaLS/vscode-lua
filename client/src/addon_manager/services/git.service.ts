@@ -17,7 +17,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
 
     // set working directory
     try {
-        await git.cwd({ path: storageURI.path.substring(1), root: true });
+        await git.cwd({ path: storageURI.fsPath, root: true });
     } catch (e) {
         localLogger.error(e);
     }
@@ -29,11 +29,12 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
             const options = { "--depth": 1 };
             await git.clone(
                 REPOSITORY_PATH,
-                storageURI.path.substring(1),
+                storageURI.fsPath,
                 options
             );
-            localLogger.debug(`Cloned ${REPOSITORY_NAME}`);
+            localLogger.debug(`Cloned ${REPOSITORY_NAME} to ${storageURI.fsPath}`);
         } catch (e) {
+            localLogger.error("Failed to clone repo!");
             localLogger.error(e);
         }
     }
@@ -45,6 +46,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
         await git.fetch();
         await git.pull();
     } catch (e) {
+        localLogger.error("Failed to checkout repo!");
         localLogger.error(e);
     }
 };
