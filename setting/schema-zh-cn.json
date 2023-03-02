@@ -9,7 +9,7 @@
             }
         },
         "addonManager.enable": {
-            "default": false,
+            "default": true,
             "markdownDescription": "",
             "scope": "resource",
             "type": "boolean"

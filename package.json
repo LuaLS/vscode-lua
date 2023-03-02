@@ -38,7 +38,7 @@
 		"configuration": {
 			"properties": {
 				"Lua.addonManager.enable": {
-					"default": false,
+					"default": true,
 					"markdownDescription": "%config.addonManager.enable%",
 					"scope": "resource",
 					"type": "boolean"
@@ -3070,5 +3070,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.12"
+	"version": "3.6.13"
 }
