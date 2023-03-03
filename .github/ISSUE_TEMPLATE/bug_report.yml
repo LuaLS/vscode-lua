@@ -1,0 +1,63 @@
+name: Bug Report
+description: Report something behaving in an unexpected manor.
+body:
+  - type: markdown
+    attributes:
+      value: >
+        **Please check for similar issues before continuing!**
+  - type: dropdown
+    id: OS
+    attributes:
+      label: Which OS are you using?
+      options:
+        - Windows
+        - Linux
+        - MacOS
+        - Windows WSL
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: What is the expected behaviour?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behaviour
+      description: What is actually happening that is unexpected?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: >
+        Please provide detailed steps to reproduce the error. This will help us
+        to diagnose, test fixes, and fix the issue.
+      value: |
+        1. Go to '...'
+        2. Click '...'
+        3. See error '...'
+    validations:
+      required: true
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: >
+        Please provide any additional notes, context, and media you have.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: >
+        Please provide your log. The log can be found in VS Code by opening the
+        `OUTPUT` panel and selecting `Lua Addon Manager` from the dropdown.
+  - type: markdown
+    attributes:
+      value: |
+        Thank you very much for helping us improve! ❤️
