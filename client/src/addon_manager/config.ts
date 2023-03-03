@@ -7,7 +7,7 @@ export const REPOSITORY_OWNER = "carsakiller";
 export const REPOSITORY_NAME = "LLS-Addons";
 export const REPOSITORY_DEFAULT_BRANCH = "main";
 export const REPOSITORY_ISSUES_URL =
-    "https://github.com/LuaLS/vscode-lua-webvue/issues/new?template=bug_report.yml";
+    "https://github.com/LuaLS/vscode-lua/issues/new?template=bug_report.yml";
 export const ADDONS_DIRECTORY = "addons";
 export const GIT_DOWNLOAD_URL = "https://git-scm.com/downloads";
 
