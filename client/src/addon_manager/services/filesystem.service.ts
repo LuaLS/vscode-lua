@@ -13,8 +13,12 @@ type ReadDirectoryOptions = {
 
 namespace filesystem {
 
-    export function getCorrectPath(uri: vscode.Uri): string {
-        return platform() === "win32" ? uri.path.substring(1) : uri.fsPath;
+    export function unixifyPath(uri: vscode.Uri): string {
+        if (platform() === "win32") {
+            return uri.path.substring(1);
+        } else {
+            return uri.fsPath;
+        }
     }
 
     /** Check if a file exists

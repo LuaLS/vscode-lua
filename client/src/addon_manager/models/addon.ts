@@ -80,9 +80,8 @@ export class Addon {
 
     /** Update this addon using git. */
     public async update() {
-        const path = filesystem.getCorrectPath(this.uri);
         return git
-            .submoduleUpdate([path])
+            .submoduleUpdate([this.uri.fsPath])
             .then((message) => localLogger.debug(message));
     }
 
@@ -91,7 +90,7 @@ export class Addon {
      */
     public checkIfEnabled(libraryPaths: string[]) {
         const regex = new RegExp(
-            `/sumneko.lua/addonManager/addons/${this.name}`,
+            `[\/\\\\]+sumneko.lua[\/\\\\]+addonManager[\/\\\\]+addons[\/\\\\]+${this.name}`,
             "g"
         );
 
@@ -138,9 +137,8 @@ export class Addon {
         }
 
         // Init submodule
-        const path = filesystem.getCorrectPath(this.uri);
         try {
-            await git.submoduleInit([path]);
+            await git.submoduleInit([this.uri.fsPath]);
             localLogger.debug("Initialized submodule");
         } catch (e) {
             localLogger.error(e);
@@ -148,7 +146,7 @@ export class Addon {
         }
 
         try {
-            await git.submoduleUpdate([path]);
+            await git.submoduleUpdate([this.uri.fsPath]);
             localLogger.debug("Submodule up to date");
         } catch (e) {
             localLogger.error(e);
@@ -157,7 +155,6 @@ export class Addon {
 
         // Apply addon settings
         const libraryUri = vscode.Uri.joinPath(this.uri, "module", "library");
-        const libraryPath = filesystem.getCorrectPath(libraryUri);
 
         const configValues = await this.getConfigurationFile();
 
@@ -166,7 +163,7 @@ export class Addon {
                 {
                     action: "add",
                     key: LIBRARY_SETTING,
-                    value: libraryPath,
+                    value: filesystem.unixifyPath(libraryUri),
                     uri: folder.uri,
                 },
             ]);
@@ -190,7 +187,7 @@ export class Addon {
         )) ?? []) as string[];
 
         const regex = new RegExp(
-            `/sumneko.lua/addonManager/addons/${this.name}`,
+            `[\/\\\\]+sumneko.lua[\/\\\\]+addonManager[\/\\\\]+addons[\/\\\\]+${this.name}`,
             "g"
         );
         const index = librarySetting.findIndex((path) => regex.test(path));
