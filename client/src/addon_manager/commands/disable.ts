@@ -17,7 +17,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
 
     let selectedFolders: vscode.WorkspaceFolder[];
 
-    if (workspaceFolders.length === 1) {
+    if (workspaceFolders && workspaceFolders.length === 1) {
         selectedFolders = [workspaceFolders[0]];
     } else {
         const folderOptions = await addon.getQuickPickerOptions(true);

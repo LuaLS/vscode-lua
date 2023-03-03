@@ -80,7 +80,7 @@ export class WebVue {
             WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        const workspaceOpen = vscode.workspace.workspaceFolders.length > 0;
+        const workspaceOpen = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0;
         const clientVersion = context.extension.packageJSON.version;
 
         WebVue.sendMessage("appStore", {

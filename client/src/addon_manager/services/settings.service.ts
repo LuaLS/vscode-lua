@@ -21,6 +21,8 @@ export const getLibraryPaths = async (): Promise<
 > => {
     const result = [];
 
+    if (!vscode.workspace.workspaceFolders) return [];
+
     for (const folder of vscode.workspace.workspaceFolders) {
         const libraries = await getConfig(LIBRARY_SETTING, folder.uri);
         result.push({ folder, paths: libraries ?? [] });
