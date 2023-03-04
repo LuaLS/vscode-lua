@@ -3,7 +3,6 @@ import simpleGit from "simple-git";
 import filesystem from "./filesystem.service";
 import { createChildLogger } from "./logging.service";
 import { REPOSITORY_NAME, REPOSITORY_PATH } from "../config";
-import { platform } from "os";
 
 const localLogger = createChildLogger("Git");
 
@@ -27,6 +26,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
     const isEmpty = await filesystem.empty(storageURI);
     if (isEmpty) {
         try {
+            localLogger.debug(`Attempting to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}`)
             const options = { "--depth": 1 };
             await git.clone(
                 REPOSITORY_PATH,
@@ -35,7 +35,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
             );
             localLogger.debug(`Cloned ${REPOSITORY_NAME} to ${storageURI.fsPath}`);
         } catch (e) {
-            localLogger.error("Failed to clone repo!");
+            localLogger.error(`Failed to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}!`);
             localLogger.error(e);
         }
     }
@@ -47,7 +47,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
         await git.fetch();
         await git.pull();
     } catch (e) {
-        localLogger.error("Failed to checkout repo!");
+        localLogger.error(`Failed to pull ${REPOSITORY_NAME}!`);
         localLogger.error(e);
     }
 };
