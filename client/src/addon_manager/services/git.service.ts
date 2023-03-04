@@ -42,10 +42,10 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
 
     // pull
     try {
-        await git.checkout("main");
-
         await git.fetch();
         await git.pull();
+
+        await git.checkout("main");
     } catch (e) {
         localLogger.error(`Failed to pull ${REPOSITORY_NAME}!`);
         localLogger.error(e);
