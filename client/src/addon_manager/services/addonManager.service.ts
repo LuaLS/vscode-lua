@@ -4,6 +4,8 @@ import { createChildLogger } from "./logging.service";
 import { Addon } from "../models/addon";
 import { git } from "./git.service";
 import { DiffResultTextFile } from "simple-git";
+import { WebVue } from "../panels/WebVue";
+import { NotificationLevels } from "../types/webvue";
 
 const localLogger = createChildLogger("Addon Manager");
 
@@ -15,6 +17,16 @@ class AddonManager {
     }
 
     public async fetchAddons(installLocation: vscode.Uri) {
+        try {
+            await git.fetch();
+            await git.pull();
+        } catch (e) {
+            WebVue.sendNotification({
+                level: NotificationLevels.error,
+                message: `Failed to fetch addons! Please check your connection to GitHub.`,
+            });
+        }
+
         const addons = await filesystem.readDirectory(installLocation);
 
         for (const addon of addons) {
@@ -26,10 +38,7 @@ class AddonManager {
     }
 
     public async checkUpdated() {
-        const diff = await git.diffSummary([
-            "main",
-            "origin/main",
-        ]);
+        const diff = await git.diffSummary(["main", "origin/main"]);
         this.addons.forEach((addon) => {
             addon.checkForUpdate(diff.files as DiffResultTextFile[]);
         });

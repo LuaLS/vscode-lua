@@ -2,6 +2,8 @@ import * as vscode from "vscode";
 import addonManager from "../services/addonManager.service";
 import { createChildLogger } from "../services/logging.service";
 import { setConfig } from "../../languageserver";
+import { WebVue } from "../panels/WebVue";
+import { NotificationLevels } from "../types/webvue";
 
 type Message = {
     data: {
@@ -39,7 +41,17 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     }
 
     for (const folder of selectedFolders) {
-        await addon.enable(folder);
+        try {
+            await addon.enable(folder);
+        } catch (e) {
+            WebVue.sendNotification({
+                level: NotificationLevels.error,
+                message: `Failed to enable ${addon.name}!`,
+            });
+            localLogger.warn(`Failed to enable ${addon.name}`);
+            localLogger.warn(e);
+            continue;
+        }
         await setConfig([
             {
                 action: "set",

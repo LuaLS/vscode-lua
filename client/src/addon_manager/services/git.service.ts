@@ -16,15 +16,10 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
     await filesystem.createDirectory(storageURI);
 
     // set working directory
-    try {
-        await git.cwd({ path: storageURI.fsPath, root: true });
-    } catch (e) {
-        localLogger.error(e);
-    }
+    await git.cwd({ path: storageURI.fsPath, root: true });
 
     // clone if not already cloned
-    const isEmpty = await filesystem.empty(storageURI);
-    if (isEmpty) {
+    if (await filesystem.empty(storageURI)) {
         try {
             localLogger.debug(
                 `Attempting to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}`
@@ -35,10 +30,10 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
                 `Cloned ${REPOSITORY_NAME} to ${storageURI.fsPath}`
             );
         } catch (e) {
-            localLogger.error(
+            localLogger.warn(
                 `Failed to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}!`
             );
-            localLogger.error(e);
+            throw e
         }
     }
 
@@ -49,7 +44,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
 
         await git.checkout("main");
     } catch (e) {
-        localLogger.error(`Failed to pull ${REPOSITORY_NAME}!`);
-        localLogger.error(e);
+        localLogger.warn(`Failed to pull ${REPOSITORY_NAME}!`);
+        throw e
     }
 };

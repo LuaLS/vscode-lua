@@ -141,16 +141,18 @@ export class Addon {
             await git.submoduleInit([this.uri.fsPath]);
             localLogger.debug("Initialized submodule");
         } catch (e) {
-            localLogger.error(e);
-            return;
+            localLogger.warn(`Unable to initialize submodule for ${this.name}`);
+            localLogger.warn(e);
+            throw e;
         }
 
         try {
             await git.submoduleUpdate([this.uri.fsPath]);
             localLogger.debug("Submodule up to date");
         } catch (e) {
-            localLogger.error(e);
-            return;
+            localLogger.warn(`Unable to update submodule for ${this.name}`);
+            localLogger.warn(e);
+            throw e;
         }
 
         // Apply addon settings
@@ -172,7 +174,8 @@ export class Addon {
                 localLogger.info(`Applied addon settings for ${this.name}`);
             }
         } catch (e) {
-            localLogger.warn(`Failed to apply settings of "${this.name}" due to ${e}`);
+            localLogger.warn(`Failed to apply settings of "${this.name}"`);
+            localLogger.warn(e);
             return;
         }
 

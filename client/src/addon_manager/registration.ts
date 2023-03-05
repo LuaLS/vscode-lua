@@ -8,6 +8,7 @@ import RelativeTime from "dayjs/plugin/relativeTime";
 import { setupGit } from "./services/git.service";
 import { execSync } from "child_process";
 import { GIT_DOWNLOAD_URL } from "./config";
+import { NotificationLevels } from "./types/webvue";
 
 dayjs.extend(RelativeTime);
 
@@ -19,7 +20,7 @@ export async function activate(context: vscode.ExtensionContext) {
     const isEnabled = globalConfig.get("enable") as boolean;
 
     if (!isEnabled) {
-        localLogger.warn("Addon manager has been disabled");
+        localLogger.info("Addon manager is disabled");
         return;
     }
 
@@ -35,7 +36,11 @@ export async function activate(context: vscode.ExtensionContext) {
             .then((result) => {
                 switch (result) {
                     case "Disable Addon Manager":
-                        globalConfig.update("enable", false, vscode.ConfigurationTarget.Global);
+                        globalConfig.update(
+                            "enable",
+                            false,
+                            vscode.ConfigurationTarget.Global
+                        );
                         break;
                     case "Visit Git Website":
                         vscode.env.openExternal(
@@ -49,28 +54,29 @@ export async function activate(context: vscode.ExtensionContext) {
         return;
     }
 
-    try {
-        const setupPromises = [];
-        // Register commands
-        context.subscriptions.push(
-            vscode.commands.registerCommand("lua.addon_manager.open", () => {
-                Promise.allSettled(setupPromises)
-                    .then(() => WebVue.render(context))
-                    .catch((e) => logger.error(e));
-            })
-        );
-        // Create log file transport and add to logger
-        const fileLogger = new VSCodeLogFileTransport(context.logUri, {
-            level: "debug",
-        });
-        const promiseFilelogger = await fileLogger.init();
-        context.subscriptions.push(promiseFilelogger);
-        logger.add(fileLogger);
-        await fileLogger.logStart();
+    // Register commands
+    context.subscriptions.push(
+        vscode.commands.registerCommand("lua.addon_manager.open", async () => {
+            // Create log file transport and add to logger
+            const fileLogger = new VSCodeLogFileTransport(context.logUri, {
+                level: "debug",
+            });
+            const promiseFilelogger = await fileLogger.init();
+            context.subscriptions.push(promiseFilelogger);
+            logger.add(fileLogger);
+            await fileLogger.logStart();
 
-        setupPromises.push(setupGit(context));
-    } catch (e) {
-        localLogger.error(`Failed to initialize addon manager!`);
-        localLogger.error(e);
-    }
+            WebVue.render(context);
+
+            try {
+                await setupGit(context);
+            } catch (e) {
+                WebVue.sendNotification({
+                    level: NotificationLevels.error,
+                    message:
+                        "Failed to set up Git repository. Please check your connection to GitHub.",
+                });
+            }
+        })
+    );
 }

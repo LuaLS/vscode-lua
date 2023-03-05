@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 import { createChildLogger } from "../services/logging.service";
 import { commands } from "../commands";
-import { WebVueMessage } from "../types/webvue";
+import { Notification, WebVueMessage } from "../types/webvue";
 import { DEVELOPMENT_IFRAME_URL } from "../config";
 
 const localLogger = createChildLogger("WebVue");
@@ -51,6 +51,10 @@ export class WebVue {
         WebVue.currentPanel._panel.webview.postMessage({ command, data });
     }
 
+    public static sendNotification(message: Notification) {
+        WebVue.sendMessage("notify", message);
+    }
+
     /** Set the loading state of a store in the webview */
     public static setLoadingState(loading: boolean) {
         WebVue.sendMessage("addonStore", {
@@ -80,7 +84,9 @@ export class WebVue {
             WebVue.currentPanel = new WebVue(context, panel);
         }
 
-        const workspaceOpen = vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0;
+        const workspaceOpen =
+            vscode.workspace.workspaceFolders &&
+            vscode.workspace.workspaceFolders.length > 0;
         const clientVersion = context.extension.packageJSON.version;
 
         WebVue.sendMessage("appStore", {
@@ -242,7 +248,6 @@ export class WebVue {
         webview: vscode.Webview,
         context: vscode.ExtensionContext
     ) {
-
         return webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;
             commandLogger.verbose(`Executing "${command}"`);
