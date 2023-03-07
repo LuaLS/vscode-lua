@@ -1,6 +1,6 @@
 export interface WebVueMessage {
     command: string;
-    data: { [index: string]: any };
+    data: { [index: string]: unknown };
 }
 
 export enum NotificationLevels {

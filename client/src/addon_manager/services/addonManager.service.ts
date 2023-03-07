@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import filesystem from "./filesystem.service";
 import { createChildLogger } from "./logging.service";
-import { Addon } from "../models/addon";
+import { Addon } from "../models/Addon";
 import { git } from "./git.service";
 import { DiffResultTextFile } from "simple-git";
 import { WebVue } from "../panels/WebVue";
@@ -21,9 +21,13 @@ class AddonManager {
             await git.fetch();
             await git.pull();
         } catch (e) {
+            const message =
+                "Failed to fetch addons! Please check your connection to GitHub.";
+            localLogger.error(message, { report: false });
+            localLogger.error(e, { report: false });
             WebVue.sendNotification({
                 level: NotificationLevels.error,
-                message: `Failed to fetch addons! Please check your connection to GitHub.`,
+                message,
             });
         }
 

@@ -15,7 +15,7 @@ import VSCodeLogFileTransport from "./logging/vsCodeLogFileTransport";
 // Create logger from winston
 export const logger = winston.createLogger({
     level: "info",
-    defaultMeta: { category: "General" },
+    defaultMeta: { category: "General", report: true },
     format: winston.format.combine(
         winston.format.timestamp({
             format: "YYYY-MM-DD HH:mm:ss",
@@ -44,7 +44,7 @@ export const logger = winston.createLogger({
 
 // When a error is logged, ask user to report error.
 logger.on("data", async (info) => {
-    if (info.level !== "error") return;
+    if (info.level !== "error" || !info.report) return;
 
     const choice = await vscode.window.showErrorMessage(
         `An error occurred with the Lua Addon Manager. Please help us improve by reporting the issue ❤️`,

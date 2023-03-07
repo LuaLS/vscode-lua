@@ -12,7 +12,9 @@ type ReadDirectoryOptions = {
 };
 
 namespace filesystem {
-
+    /** Get a string representation of a URI using UNIX separators
+     * @param uri The URI to get as a UNIX path string
+     */
     export function unixifyPath(uri: vscode.Uri): string {
         if (platform() === "win32") {
             return uri.path.substring(1);
@@ -91,7 +93,9 @@ namespace filesystem {
     export async function createDirectory(uri: vscode.Uri) {
         return vscode.workspace.fs
             .createDirectory(uri)
-            .then(() => localLogger.debug(`Created directory at "${uri.path}"`));
+            .then(() =>
+                localLogger.debug(`Created directory at "${uri.path}"`)
+            );
     }
 
     export type DirectoryNode = {

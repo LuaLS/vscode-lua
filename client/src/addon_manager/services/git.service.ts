@@ -33,7 +33,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
             localLogger.warn(
                 `Failed to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}!`
             );
-            throw e
+            throw e;
         }
     }
 
@@ -41,10 +41,9 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
     try {
         await git.fetch();
         await git.pull();
-
         await git.checkout("main");
     } catch (e) {
         localLogger.warn(`Failed to pull ${REPOSITORY_NAME}!`);
-        throw e
+        throw e;
     }
 };
