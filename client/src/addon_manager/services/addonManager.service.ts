@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import filesystem from "./filesystem.service";
 import { createChildLogger } from "./logging.service";
-import { Addon } from "../models/Addon";
+import { Addon } from "../models/addon";
 import { git } from "./git.service";
 import { DiffResultTextFile } from "simple-git";
 import { WebVue } from "../panels/WebVue";
