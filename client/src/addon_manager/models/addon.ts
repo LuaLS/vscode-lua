@@ -90,7 +90,7 @@ export class Addon {
      */
     public checkIfEnabled(libraryPaths: string[]) {
         const regex = new RegExp(
-            `[\/\\\\]+sumneko.lua[\/\\\\]+addonManager[\/\\\\]+addons[\/\\\\]+${this.name}`,
+            `[/\\\\]+sumneko.lua[/\\\\]+addonManager[/\\\\]+addons[/\\\\]+${this.name}`,
             "g"
         );
 
@@ -190,7 +190,7 @@ export class Addon {
         )) ?? []) as string[];
 
         const regex = new RegExp(
-            `[\/\\\\]+sumneko.lua[\/\\\\]+addonManager[\/\\\\]+addons[\/\\\\]+${this.name}`,
+            `[/\\\\]+sumneko.lua[/\\\\]+addonManager[/\\\\]+addons[/\\\\]+${this.name}`,
             "g"
         );
         const index = librarySetting.findIndex((path) => regex.test(path));
