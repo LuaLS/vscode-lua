@@ -250,7 +250,9 @@ export class WebVue {
     ) {
         return webview.onDidReceiveMessage((message: WebVueMessage) => {
             const command = message.command;
-            commandLogger.verbose(`Executing "${command}"`);
+            commandLogger.verbose(
+                `Executing "${command}" (${JSON.stringify(message)})`
+            );
 
             try {
                 commands[command](context, message);

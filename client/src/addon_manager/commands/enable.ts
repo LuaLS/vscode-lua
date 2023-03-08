@@ -44,12 +44,13 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
         try {
             await addon.enable(folder);
         } catch (e) {
+            const message = `Failed to enable ${addon.name}!`;
+            localLogger.error(message, { report: false });
+            localLogger.error(e, { report: false });
             WebVue.sendNotification({
                 level: NotificationLevels.error,
-                message: `Failed to enable ${addon.name}!`,
+                message,
             });
-            localLogger.warn(`Failed to enable ${addon.name}`);
-            localLogger.warn(e);
             continue;
         }
         await setConfig([

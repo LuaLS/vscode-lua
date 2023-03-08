@@ -21,9 +21,13 @@ class AddonManager {
             await git.fetch();
             await git.pull();
         } catch (e) {
+            const message =
+                "Failed to fetch addons! Please check your connection to GitHub.";
+            localLogger.error(message, { report: false });
+            localLogger.error(e, { report: false });
             WebVue.sendNotification({
                 level: NotificationLevels.error,
-                message: `Failed to fetch addons! Please check your connection to GitHub.`,
+                message,
             });
         }
 

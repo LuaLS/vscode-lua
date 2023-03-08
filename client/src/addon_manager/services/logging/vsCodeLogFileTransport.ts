@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 export default class VSCodeLogFileTransport extends Transport {
     public static currentLogFile: vscode.Uri;
 
-    private initialized = false;
+    public initialized = false;
 
     private logDir: vscode.Uri;
 
@@ -30,7 +30,7 @@ export default class VSCodeLogFileTransport extends Transport {
         // Create log file stream
         const logFileUri = vscode.Uri.joinPath(
             addonLogsDir,
-            `${dayjs().format("HH-mm")}.log`
+            `${dayjs().format("HH")}.log`
         );
         VSCodeLogFileTransport.currentLogFile = logFileUri;
         this.stream = fs.createWriteStream(logFileUri.fsPath, {
@@ -62,7 +62,9 @@ export default class VSCodeLogFileTransport extends Transport {
             this.emit("logged", info);
         });
 
-        this.stream.write(stringToByteArray(info[MESSAGE as unknown as string] + "\n"));
+        this.stream.write(
+            stringToByteArray(info[MESSAGE as unknown as string] + "\n")
+        );
 
         callback();
     }
