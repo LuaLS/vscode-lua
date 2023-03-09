@@ -1,5 +1,28 @@
 # changelog
 
+## 3.6.17
+`2023-3-9`
+* `CHG` export documents: export global variables
+* `FIX` [#1715]
+* `FIX` [#1753]
+* `FIX` [#1914]
+* `FIX` [#1922]
+* `FIX` [#1924]
+* `FIX` [#1928]
+* `FIX` [#1945]
+* `FIX` [#1955]
+* `FIX` [#1978]
+
+[#1715]: https://github.com/LuaLS/lua-language-server/issues/1715
+[#1753]: https://github.com/LuaLS/lua-language-server/issues/1753
+[#1914]: https://github.com/LuaLS/lua-language-server/issues/1914
+[#1922]: https://github.com/LuaLS/lua-language-server/issues/1922
+[#1924]: https://github.com/LuaLS/lua-language-server/issues/1924
+[#1928]: https://github.com/LuaLS/lua-language-server/issues/1928
+[#1945]: https://github.com/LuaLS/lua-language-server/issues/1945
+[#1955]: https://github.com/LuaLS/lua-language-server/issues/1955
+[#1978]: https://github.com/LuaLS/lua-language-server/issues/1978
+
 ## 3.6.13
 `2023-3-2`
 * `FIX` setting: `Lua.addonManager.enable` should be `true` by default

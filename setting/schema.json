@@ -10,7 +10,7 @@
         },
         "addonManager.enable": {
             "default": true,
-            "markdownDescription": "",
+            "markdownDescription": "Whether the addon manager is enabled or not.",
             "scope": "resource",
             "type": "boolean"
         },

@@ -5,7 +5,7 @@
     "config.IntelliSense.traceFieldInject": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceLocalSet": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
     "config.IntelliSense.traceReturn": "請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features)瞭解用法。",
-    "config.addonManager.enable": "",
+    "config.addonManager.enable": "Whether the addon manager is enabled or not.",
     "config.codeLens.enable": "Enable code lens.",
     "config.color.mode": "著色模式。",
     "config.color.mode.Grammar": "語法著色。",
