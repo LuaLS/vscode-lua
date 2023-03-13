@@ -45,8 +45,6 @@ jobs:
           sudo bash /tmp/nodesource_setup.sh
           apt-get update
           apt-get install -y git gcc-9 g++-9
-          update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
-          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 100
           cd ~
           curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
           sudo bash /tmp/nodesource_setup.sh
@@ -57,6 +55,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+      - name: Prepare container
+        if: ${{ matrix.target == 'linux' }}
+        run: |
+          update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
+          update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 100
 
       - uses: actions/checkout@v3
         with:
