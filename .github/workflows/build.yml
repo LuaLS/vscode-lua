@@ -44,6 +44,7 @@ jobs:
           apt-get update
           apt-get install -y sudo git gcc-9 g++-9
 
+          apt-get install -y curl
           curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodesource_setup.sh # For nodejs
           sudo bash /tmp/nodesource_setup.sh
           cd ~
