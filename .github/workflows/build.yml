@@ -38,13 +38,14 @@ jobs:
         if: ${{ matrix.target == 'linux' }}
         run: |
           apt-get update
-          apt-get install -y software-properties-common curl sudo
+          apt-get install -y software-properties-common
           add-apt-repository -y ppa:ubuntu-toolchain-r/test # For gcc-9 and g++-9
           add-apt-repository -y ppa:git-core/ppa # For git>=2.18.
+          apt-get update
+          apt-get install -y sudo git gcc-9 g++-9
+
           curl -sL https://deb.nodesource.com/setup_14.x -o /tmp/nodesource_setup.sh # For nodejs
           sudo bash /tmp/nodesource_setup.sh
-          apt-get update
-          apt-get install -y git gcc-9 g++-9
           cd ~
           curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
           sudo bash /tmp/nodesource_setup.sh
@@ -53,8 +54,8 @@ jobs:
       - name: Install aarch64-linux-gnu
         if: ${{ matrix.platform == 'linux-arm64' }}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          apt-get update
+          apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
       - name: Prepare container
         if: ${{ matrix.target == 'linux' }}
