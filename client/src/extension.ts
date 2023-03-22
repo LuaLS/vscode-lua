@@ -18,7 +18,6 @@ export function activate(context: vscode.ExtensionContext) {
         try {
             luaDocContext[k] = context[k];
         } catch (error) {
-            console.error(error);
         }
     }
     luaDocContext.ViewType      = 'lua-doc';
@@ -41,5 +40,3 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
     languageserver.deactivate();
 }
-
-
