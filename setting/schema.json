@@ -235,6 +235,7 @@
                     "err-nonstandard-symbol",
                     "err-then-as-do",
                     "exp-in-action",
+                    "global-element",
                     "global-in-nil-env",
                     "index-in-func-name",
                     "invisible",
@@ -450,6 +451,17 @@
                     ],
                     "type": "string"
                 },
+                "strict-conventions": {
+                    "default": "None",
+                    "description": "* global-element\n* ...",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
                 "strong": {
                     "default": "Fallback",
                     "description": "* no-unknown",
@@ -590,6 +602,18 @@
                 "strict": {
                     "default": "Fallback",
                     "description": "* close-non-object\n* deprecated\n* discard-returns\n* invisible",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "strict-conventions": {
+                    "default": "Fallback",
+                    "description": "* global-element\n* ...",
                     "enum": [
                         "Error",
                         "Warning",
@@ -938,6 +962,19 @@
                 "empty-block": {
                     "default": "Opened",
                     "description": "Enable empty code block diagnostics.",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "global-element": {
+                    "default": "None",
+                    "description": "Enable avoiding all global elements.",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1700,6 +1737,21 @@
                 "empty-block": {
                     "default": "Hint",
                     "description": "Enable empty code block diagnostics.",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "global-element": {
+                    "default": "Warning",
+                    "description": "Enable avoiding all global elements.",
                     "enum": [
                         "Error",
                         "Warning",
