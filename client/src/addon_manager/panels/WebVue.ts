@@ -85,7 +85,7 @@ export class WebVue {
         }
 
         const workspaceOpen =
-            vscode.workspace.workspaceFolders &&
+            vscode.workspace.workspaceFolders !== undefined &&
             vscode.workspace.workspaceFolders.length > 0;
         const clientVersion = context.extension.packageJSON.version;
 
