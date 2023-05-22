@@ -194,6 +194,7 @@ class LuaClient {
             return undefined;
         };
         const port = commandParam[portIndex].split("=")[1]
+                  || commandParam[portIndex].split(" ")[1]
                   || commandParam[portIndex + 1];
         if (!port) {
             return undefined;
