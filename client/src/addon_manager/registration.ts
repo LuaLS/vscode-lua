@@ -8,6 +8,7 @@ import RelativeTime from "dayjs/plugin/relativeTime";
 import { git, setupGit } from "./services/git.service";
 import { GIT_DOWNLOAD_URL } from "./config";
 import { NotificationLevels } from "./types/webvue";
+import * as languageServer from "../languageserver";
 
 dayjs.extend(RelativeTime);
 
@@ -40,6 +41,13 @@ export async function activate(context: vscode.ExtensionContext) {
                 );
                 logger.add(fileLogger);
                 await fileLogger.logStart();
+            }
+            // Start language server if it is not already
+            // We depend on it to apply config modifications
+            if (!languageServer.defaultClient) {
+                logger.debug("Starting language server");
+                await languageServer.createClient(context);
+                logger.debug("Language server has started");
             }
 
             // Check if git is installed

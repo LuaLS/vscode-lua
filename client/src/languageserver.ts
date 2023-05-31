@@ -78,6 +78,12 @@ function registerCustomCommands(context: ExtensionContext) {
     }));
 }
 
+/** Creates a new {@link LuaClient} and starts it. */
+export const createClient = (context: ExtensionContext) => {
+    defaultClient = new LuaClient(context, [{ language: 'lua' }])
+    defaultClient.start();
+}
+
 class LuaClient {
 
     public client: LanguageClient;
@@ -248,10 +254,7 @@ export function activate(context: ExtensionContext) {
 
         // Untitled files go to a default client.
         if (!defaultClient) {
-            defaultClient = new LuaClient(context, [
-                { language: 'lua' }
-            ]);
-            defaultClient.start();
+            createClient(context);
             return;
         }
     }
