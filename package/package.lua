@@ -46,6 +46,10 @@ return {
                 command = "lua.exportDocument",
                 title = "%command.exportDocument%",
             },
+			{
+				command = "lua.reloadFFIMeta",
+				title = "%command.reloadFFIMeta%",
+			},
         },
         menus = {
             ["editor/context"] = {
@@ -58,6 +62,11 @@ return {
                     when = "resourceLangId == lua",
                     command = "lua.addon_manager.open",
                     group = "z_commands",
+                },
+                {
+                    when = "resourceLangId == lua",
+                    command = "lua.reloadFFIMeta",
+                    group = "z_commands"
                 },
             }
         },

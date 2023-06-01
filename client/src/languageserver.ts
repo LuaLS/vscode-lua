@@ -76,6 +76,12 @@ function registerCustomCommands(context: ExtensionContext) {
             arguments: [output.toString()],
         });
     }));
+
+    context.subscriptions.push(Commands.registerCommand('lua.reloadFFIMeta', async () => {
+        defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+            command: 'lua.reloadFFIMeta',
+        })
+    }))
 }
 
 /** Creates a new {@link LuaClient} and starts it. */
