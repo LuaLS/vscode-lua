@@ -90,12 +90,14 @@ export const createClient = (context: ExtensionContext) => {
     defaultClient.start();
 }
 
-class LuaClient {
-
+class LuaClient extends Disposable {
     public client: LanguageClient;
     private disposables = new Array<Disposable>();
-    constructor(private context: ExtensionContext,
-                private documentSelector: DocumentSelector) {
+    constructor(
+        private context: ExtensionContext,
+        private documentSelector: DocumentSelector
+    ) {
+        super(() => this.dispose());
     }
 
     async start() {
@@ -110,29 +112,35 @@ class LuaClient {
             },
             initializationOptions: {
                 changeConfiguration: true,
-            }
+            },
         };
 
-        const config = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]);
+        const config = Workspace.getConfiguration(
+            undefined,
+            vscode.workspace.workspaceFolders?.[0]
+        );
         const commandParam = config.get("Lua.misc.parameters");
         const command = await this.getCommand(config);
 
-        if (!Array.isArray(commandParam)) throw new Error("Lua.misc.parameters must be an Array!");
+        if (!Array.isArray(commandParam))
+            throw new Error("Lua.misc.parameters must be an Array!");
 
         const port = this.getPort(commandParam);
 
         const serverOptions: ServerOptions = {
             command: command,
-            transport: port ? {
-                kind: TransportKind.socket,
-                port: port,
-            } : undefined,
-            args:    commandParam,
+            transport: port
+                ? {
+                      kind: TransportKind.socket,
+                      port: port,
+                  }
+                : undefined,
+            args: commandParam,
         };
 
         this.client = new LanguageClient(
-            'Lua',
-            'Lua',
+            "Lua",
+            "Lua",
             serverOptions,
             clientOptions
         );
@@ -146,7 +154,8 @@ class LuaClient {
     private async getCommand(config: vscode.WorkspaceConfiguration) {
         const executablePath = config.get("Lua.misc.executablePath");
 
-        if (typeof executablePath !== "string") throw new Error("Lua.misc.executablePath must be a string!");
+        if (typeof executablePath !== "string")
+            throw new Error("Lua.misc.executablePath must be a string!");
 
         if (executablePath && executablePath !== "") {
             return executablePath;
@@ -156,39 +165,45 @@ class LuaClient {
         let command: string;
         let binDir: string | undefined;
 
-        if ((await fs.promises.stat(this.context.asAbsolutePath('server/bin'))).isDirectory()) {
-            binDir = 'bin';
+        if (
+            (
+                await fs.promises.stat(
+                    this.context.asAbsolutePath("server/bin")
+                )
+            ).isDirectory()
+        ) {
+            binDir = "bin";
         }
 
         switch (platform) {
             case "win32":
                 command = this.context.asAbsolutePath(
                     path.join(
-                        'server',
-                        binDir ? binDir : 'bin-Windows',
-                        'lua-language-server.exe'
+                        "server",
+                        binDir ? binDir : "bin-Windows",
+                        "lua-language-server.exe"
                     )
                 );
                 break;
             case "linux":
                 command = this.context.asAbsolutePath(
                     path.join(
-                        'server',
-                        binDir ? binDir : 'bin-Linux',
-                        'lua-language-server'
+                        "server",
+                        binDir ? binDir : "bin-Linux",
+                        "lua-language-server"
                     )
                 );
-                await fs.promises.chmod(command, '777');
+                await fs.promises.chmod(command, "777");
                 break;
             case "darwin":
                 command = this.context.asAbsolutePath(
                     path.join(
-                        'server',
-                        binDir ? binDir : 'bin-macOS',
-                        'lua-language-server'
+                        "server",
+                        binDir ? binDir : "bin-macOS",
+                        "lua-language-server"
                     )
                 );
-                await fs.promises.chmod(command, '777');
+                await fs.promises.chmod(command, "777");
                 break;
             default:
                 throw new Error(`Unsupported operating system "${platform}"!`);
@@ -204,13 +219,14 @@ class LuaClient {
         });
         if (portIndex === -1) {
             return undefined;
-        };
-        const port = commandParam[portIndex].split("=")[1]
-                  || commandParam[portIndex].split(" ")[1]
-                  || commandParam[portIndex + 1];
+        }
+        const port =
+            commandParam[portIndex].split("=")[1] ||
+            commandParam[portIndex].split(" ")[1] ||
+            commandParam[portIndex + 1];
         if (!port) {
             return undefined;
-        };
+        }
         return Number(port);
     }
 
@@ -224,29 +240,39 @@ class LuaClient {
     statusBar() {
         const client = this.client;
         const bar = window.createStatusBarItem(vscode.StatusBarAlignment.Right);
-        bar.text = 'Lua';
-        bar.command = 'Lua.statusBar';
-        this.disposables.push(Commands.registerCommand(bar.command, () => {
-            client.sendNotification('$/status/click');
-        }));
-        this.disposables.push(client.onNotification('$/status/show', () => {
-            bar.show();
-        }));
-        this.disposables.push(client.onNotification('$/status/hide', () => {
-            bar.hide();
-        }));
-        this.disposables.push(client.onNotification('$/status/report', (params) => {
-            bar.text    = params.text;
-            bar.tooltip = params.tooltip;
-        }));
-        client.sendNotification('$/status/refresh');
+        bar.text = "Lua";
+        bar.command = "Lua.statusBar";
+        this.disposables.push(
+            Commands.registerCommand(bar.command, () => {
+                client.sendNotification("$/status/click");
+            })
+        );
+        this.disposables.push(
+            client.onNotification("$/status/show", () => {
+                bar.show();
+            })
+        );
+        this.disposables.push(
+            client.onNotification("$/status/hide", () => {
+                bar.hide();
+            })
+        );
+        this.disposables.push(
+            client.onNotification("$/status/report", (params) => {
+                bar.text = params.text;
+                bar.tooltip = params.tooltip;
+            })
+        );
+        client.sendNotification("$/status/refresh");
         this.disposables.push(bar);
     }
 
     onCommand() {
-        this.disposables.push(this.client.onNotification('$/command', (params) => {
-            Commands.executeCommand(params.command, params.data);
-        }));
+        this.disposables.push(
+            this.client.onNotification("$/command", (params) => {
+                Commands.executeCommand(params.command, params.data);
+            })
+        );
     }
 }
 
