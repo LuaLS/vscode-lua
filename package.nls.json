@@ -1,6 +1,7 @@
 {
     "command.addon_manager.open": "Lua: Open Addon Manager ...",
     "command.exportDocument": "Lua: Export Document ...",
+    "command.reloadFFIMeta": "Lua: Reload luajit ffi meta",
     "config.IntelliSense.traceBeSetted": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceFieldInject": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
     "config.IntelliSense.traceLocalSet": "Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",

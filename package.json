@@ -33,6 +33,10 @@
 			{
 				"command": "lua.exportDocument",
 				"title": "%command.exportDocument%"
+			},
+			{
+				"command": "lua.reloadFFIMeta",
+				"title": "%command.reloadFFIMeta%"
 			}
 		],
 		"configuration": {
@@ -3127,6 +3131,11 @@
 					"command": "lua.addon_manager.open",
 					"group": "z_commands",
 					"when": "resourceLangId == lua"
+				},
+				{
+					"command": "lua.reloadFFIMeta",
+					"group": "z_commands",
+					"when": "resourceLangId == lua"
 				}
 			]
 		},
@@ -3274,5 +3283,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.21"
+	"version": "3.6.22"
 }
