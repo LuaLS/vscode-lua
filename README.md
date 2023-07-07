@@ -1,9 +1,9 @@
 # lua-language-server
 
-[![build](https://github.com/LuaLS/lua-language-server/actions/workflows/build.yml/badge.png?branch=master)](https://github.com/LuaLS/lua-language-server/actions/workflows/build.yml)
-[![version](https://vsmarketplacebadges.dev/version-short/sumneko.lua.png)](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
-![installs](https://vsmarketplacebadges.dev/installs-short/sumneko.lua.png)
-![downloads](https://vsmarketplacebadges.dev/downloads-short/sumneko.lua.png)
+![build](https://img.shields.io/github/actions/workflow/status/LuaLS/lua-language-server/.github%2Fworkflows%2Fbuild.yml)
+![Version (including pre-releases)](https://img.shields.io/visual-studio-marketplace/v/sumneko.lua)
+![Installs](https://img.shields.io/visual-studio-marketplace/i/sumneko.lua)
+![Downloads](https://img.shields.io/visual-studio-marketplace/d/sumneko.lua)
 
 
 ***Lua development just got a whole lot better*** 🧠
