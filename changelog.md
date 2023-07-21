@@ -1,5 +1,13 @@
 # changelog
 
+## 3.6.24
+`2023-7-21`
+* `NEW` diagnostic: `missing-fields`
+* `FIX` shake of `codeLens`
+* `FIX` [#2145]
+
+[#2145]: https://github.com/LuaLS/lua-language-server/issues/2145
+
 ## 3.6.23
 `2023-7-7`
 * `CHG` signature: narrow by inputed literal

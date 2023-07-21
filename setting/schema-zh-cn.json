@@ -282,6 +282,7 @@
                     "miss-sep-in-table",
                     "miss-space-between",
                     "miss-symbol",
+                    "missing-fields",
                     "missing-global-doc",
                     "missing-local-export-doc",
                     "missing-parameter",
@@ -490,7 +491,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-fields\n* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Any",
                         "Opened",
@@ -653,7 +654,7 @@
                 },
                 "unbalanced": {
                     "default": "Fallback",
-                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+                    "description": "* missing-fields\n* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1031,6 +1032,19 @@
                 "lowercase-global": {
                     "default": "Any",
                     "description": "首字母小写的全局变量定义",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "missing-fields": {
+                    "default": "Any",
+                    "description": "",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1868,6 +1882,21 @@
                 "lowercase-global": {
                     "default": "Information",
                     "description": "首字母小写的全局变量定义",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "missing-fields": {
+                    "default": "Warning",
+                    "description": "",
                     "enum": [
                         "Error",
                         "Warning",

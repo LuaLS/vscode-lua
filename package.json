@@ -228,6 +228,7 @@
 							"miss-sep-in-table",
 							"miss-space-between",
 							"miss-symbol",
+							"missing-fields",
 							"missing-global-doc",
 							"missing-local-export-doc",
 							"missing-parameter",
@@ -977,6 +978,19 @@
 						"lowercase-global": {
 							"default": "Any",
 							"description": "%config.diagnostics.lowercase-global%",
+							"enum": [
+								"Any",
+								"Opened",
+								"None",
+								"Any!",
+								"Opened!",
+								"None!"
+							],
+							"type": "string"
+						},
+						"missing-fields": {
+							"default": "Any",
+							"description": "%config.diagnostics.missing-fields%",
 							"enum": [
 								"Any",
 								"Opened",
@@ -1814,6 +1828,21 @@
 						"lowercase-global": {
 							"default": "Information",
 							"description": "%config.diagnostics.lowercase-global%",
+							"enum": [
+								"Error",
+								"Warning",
+								"Information",
+								"Hint",
+								"Error!",
+								"Warning!",
+								"Information!",
+								"Hint!"
+							],
+							"type": "string"
+						},
+						"missing-fields": {
+							"default": "Warning",
+							"description": "%config.diagnostics.missing-fields%",
 							"enum": [
 								"Error",
 								"Warning",
@@ -3283,5 +3312,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.23"
+	"version": "3.6.24"
 }
