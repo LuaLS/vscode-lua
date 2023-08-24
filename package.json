@@ -185,6 +185,7 @@
 							"global-in-nil-env",
 							"incomplete-signature-doc",
 							"index-in-func-name",
+							"inject-field",
 							"invisible",
 							"jump-local-scope",
 							"keyword",
@@ -952,6 +953,19 @@
 						"incomplete-signature-doc": {
 							"default": "None",
 							"description": "%config.diagnostics.incomplete-signature-doc%",
+							"enum": [
+								"Any",
+								"Opened",
+								"None",
+								"Any!",
+								"Opened!",
+								"None!"
+							],
+							"type": "string"
+						},
+						"inject-field": {
+							"default": "Opened",
+							"description": "%config.diagnostics.inject-field%",
 							"enum": [
 								"Any",
 								"Opened",
@@ -1798,6 +1812,21 @@
 						"incomplete-signature-doc": {
 							"default": "Warning",
 							"description": "%config.diagnostics.incomplete-signature-doc%",
+							"enum": [
+								"Error",
+								"Warning",
+								"Information",
+								"Hint",
+								"Error!",
+								"Warning!",
+								"Information!",
+								"Hint!"
+							],
+							"type": "string"
+						},
+						"inject-field": {
+							"default": "Warning",
+							"description": "%config.diagnostics.inject-field%",
 							"enum": [
 								"Error",
 								"Warning",
@@ -3312,5 +3341,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.6.26"
+	"version": "3.7.0"
 }

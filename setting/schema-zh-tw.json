@@ -239,6 +239,7 @@
                     "global-in-nil-env",
                     "incomplete-signature-doc",
                     "index-in-func-name",
+                    "inject-field",
                     "invisible",
                     "jump-local-scope",
                     "keyword",
@@ -480,7 +481,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* inject-field\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Any",
                         "Opened",
@@ -642,7 +643,7 @@
                 },
                 "type-check": {
                     "default": "Fallback",
-                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* inject-field\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1006,6 +1007,19 @@
                 "incomplete-signature-doc": {
                     "default": "None",
                     "description": "Incomplete @param or @return annotations for functions.",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "inject-field": {
+                    "default": "Opened",
+                    "description": "",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1852,6 +1866,21 @@
                 "incomplete-signature-doc": {
                     "default": "Warning",
                     "description": "Incomplete @param or @return annotations for functions.",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "inject-field": {
+                    "default": "Warning",
+                    "description": "",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2731,7 +2760,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "VSCode中啟動語言伺服時的[命令列參數](https://github.com/LuaLS/lua-language-server/wiki/Getting-Started#arguments)。",
+            "markdownDescription": "VSCode中啟動語言伺服時的[命令列參數](https://luals.github.io/wiki/usage#arguments)。",
             "scope": "resource",
             "type": "array"
         },
@@ -3078,7 +3107,7 @@
         },
         "runtime.plugin": {
             "default": "",
-            "markdownDescription": "延伸模組路徑，請查閱[文件](https://github.com/LuaLS/lua-language-server/wiki/Plugins)瞭解用法。",
+            "markdownDescription": "延伸模組路徑，請查閱[文件](https://luals.github.io/wiki/plugins)瞭解用法。",
             "scope": "resource",
             "type": "string"
         },
