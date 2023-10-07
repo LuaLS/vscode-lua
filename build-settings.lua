@@ -85,12 +85,10 @@ for dirPath in fs.pairs(fs.path 'server/locale') do
         type        = 'object',
         properties  = copyWithNLS(configuration, function (str)
             return str:gsub('^%%(.+)%%$', function (key)
-                if nls[key] then
-                    return nls[key]
-                else
-                    nls[key] = ''
-                    return ''
+                if not nls[key] then
+                    nls[key] = "TODO: Needs documentation"
                 end
+                return nls[key]
             end)
         end),
     }
