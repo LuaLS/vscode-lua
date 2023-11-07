@@ -3088,10 +3088,22 @@
 					"type": "boolean"
 				},
 				"Lua.workspace.checkThirdParty": {
-					"default": true,
+					"default": "Ask",
+					"enum": [
+						"Ask",
+						"Apply",
+						"ApplyInMemory",
+						"Disable"
+					],
 					"markdownDescription": "%config.workspace.checkThirdParty%",
+					"markdownEnumDescriptions": [
+						"%config.workspace.checkThirdParty.Ask%",
+						"%config.workspace.checkThirdParty.Apply%",
+						"%config.workspace.checkThirdParty.ApplyInMemory%",
+						"%config.workspace.checkThirdParty.Disable%"
+					],
 					"scope": "resource",
-					"type": "boolean"
+					"type": "string"
 				},
 				"Lua.workspace.ignoreDir": {
 					"default": [
@@ -3341,5 +3353,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.7.0"
+	"version": "3.7.1"
 }

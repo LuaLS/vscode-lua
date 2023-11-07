@@ -3357,10 +3357,22 @@
             }
         },
         "workspace.checkThirdParty": {
-            "default": true,
+            "default": "Ask",
+            "enum": [
+                "Ask",
+                "Apply",
+                "ApplyInMemory",
+                "Disable"
+            ],
             "markdownDescription": "自動偵測與適應第三方庫，目前支援的庫為：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
+            "markdownEnumDescriptions": [
+                "TODO: Needs documentation",
+                "TODO: Needs documentation",
+                "TODO: Needs documentation",
+                "TODO: Needs documentation"
+            ],
             "scope": "resource",
-            "type": "boolean"
+            "type": "string"
         },
         "workspace.ignoreDir": {
             "default": [
