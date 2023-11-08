@@ -28,7 +28,6 @@ jobs:
           - { os: ubuntu-20.04,   target: linux,   platform: linux-arm64, container: 'ubuntu:18.04' }
           - { os: macos-11,       target: darwin,  platform: darwin-x64   }
           - { os: macos-11,       target: darwin,  platform: darwin-arm64 }
-          - { os: windows-latest, target: windows, platform: win32-ia32   }
           - { os: windows-latest, target: windows, platform: win32-x64    }
     runs-on: ${{ matrix.os }}
     container:
