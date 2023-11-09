@@ -3357,22 +3357,12 @@
             }
         },
         "workspace.checkThirdParty": {
-            "default": "Ask",
-            "enum": [
-                "Ask",
-                "Apply",
-                "ApplyInMemory",
-                "Disable"
-            ],
             "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
-            "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
-            ],
             "scope": "resource",
-            "type": "string"
+            "type": [
+                "string",
+                "boolean"
+            ]
         },
         "workspace.ignoreDir": {
             "default": [

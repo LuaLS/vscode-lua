@@ -3357,22 +3357,12 @@
             }
         },
         "workspace.checkThirdParty": {
-            "default": "Ask",
-            "enum": [
-                "Ask",
-                "Apply",
-                "ApplyInMemory",
-                "Disable"
-            ],
             "markdownDescription": "自动检测与适配第三方库，目前支持的库为：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
-            "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
-            ],
             "scope": "resource",
-            "type": "string"
+            "type": [
+                "string",
+                "boolean"
+            ]
         },
         "workspace.ignoreDir": {
             "default": [
