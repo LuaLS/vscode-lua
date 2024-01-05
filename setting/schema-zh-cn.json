@@ -10,7 +10,7 @@
         },
         "addonManager.enable": {
             "default": true,
-            "markdownDescription": "Whether the addon manager is enabled or not.",
+            "markdownDescription": "是否启用扩展的附加插件管理器(Addon Manager)",
             "scope": "resource",
             "type": "boolean"
         },
@@ -733,7 +733,7 @@
                 },
                 "assign-type-mismatch": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.",
+                    "description": "值类型与赋值变量类型不匹配",
                     "enum": [
                         "Any",
                         "Opened",
@@ -746,7 +746,7 @@
                 },
                 "await-in-sync": {
                     "default": "None",
-                    "description": "Enable diagnostics for calls of asynchronous functions within a synchronous function.",
+                    "description": "同步函数中异步函数调用",
                     "enum": [
                         "Any",
                         "Opened",
@@ -759,7 +759,7 @@
                 },
                 "cast-local-type": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for casts of local variables where the target type does not match the defined type.",
+                    "description": "已显式定义变量类型与要定义的值的类型不匹配",
                     "enum": [
                         "Any",
                         "Opened",
@@ -772,7 +772,7 @@
                 },
                 "cast-type-mismatch": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for casts where the target type does not match the initial type.",
+                    "description": "变量被转换为与其初始类型不匹配的类型",
                     "enum": [
                         "Any",
                         "Opened",
@@ -811,7 +811,7 @@
                 },
                 "code-after-break": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for code placed after a break statement in a loop.",
+                    "description": "放在循环中break语句后面的代码",
                     "enum": [
                         "Any",
                         "Opened",
@@ -837,7 +837,7 @@
                 },
                 "count-down-loop": {
                     "default": "Any",
-                    "description": "Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.",
+                    "description": "for循环永远无法达到最大/极限值(在递减时递增)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -850,7 +850,7 @@
                 },
                 "deprecated": {
                     "default": "Any",
-                    "description": "Enable diagnostics to highlight deprecated API.",
+                    "description": "变量已被标记为deprecated(过时)但仍在使用",
                     "enum": [
                         "Any",
                         "Opened",
@@ -863,7 +863,7 @@
                 },
                 "different-requires": {
                     "default": "Any",
-                    "description": "Enable diagnostics for files which are required by two different paths.",
+                    "description": "required的同一个文件使用了两个不同的名字",
                     "enum": [
                         "Any",
                         "Opened",
@@ -876,7 +876,7 @@
                 },
                 "discard-returns": {
                     "default": "Any",
-                    "description": "Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.",
+                    "description": "函数的返回值被忽略(函数被`@nodiscard`标记时)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -889,7 +889,7 @@
                 },
                 "doc-field-no-class": {
                     "default": "Any",
-                    "description": "Enable diagnostics to highlight a field annotation without a defining class annotation.",
+                    "description": "为不存在的类`@class`标记`@field`字段",
                     "enum": [
                         "Any",
                         "Opened",
@@ -902,7 +902,7 @@
                 },
                 "duplicate-doc-alias": {
                     "default": "Any",
-                    "description": "Enable diagnostics for a duplicated alias annotation name.",
+                    "description": "`@alias`字段的名字冲突",
                     "enum": [
                         "Any",
                         "Opened",
@@ -915,7 +915,7 @@
                 },
                 "duplicate-doc-field": {
                     "default": "Any",
-                    "description": "Enable diagnostics for a duplicated field annotation name.",
+                    "description": "`@field`字段的名字冲突",
                     "enum": [
                         "Any",
                         "Opened",
@@ -928,7 +928,7 @@
                 },
                 "duplicate-doc-param": {
                     "default": "Any",
-                    "description": "Enable diagnostics for a duplicated param annotation name.",
+                    "description": "`@param`字段的名字冲突",
                     "enum": [
                         "Any",
                         "Opened",
@@ -954,7 +954,7 @@
                 },
                 "duplicate-set-field": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for setting the same field in a class more than once.",
+                    "description": "在一个类中多次定义同一字段",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1006,7 +1006,7 @@
                 },
                 "incomplete-signature-doc": {
                     "default": "None",
-                    "description": "Incomplete @param or @return annotations for functions.",
+                    "description": "`@param`或`@return`的注释不完整",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1032,7 +1032,7 @@
                 },
                 "invisible": {
                     "default": "Any",
-                    "description": "Enable diagnostics for accesses to fields which are invisible.",
+                    "description": "使用不可见的值",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1071,7 +1071,7 @@
                 },
                 "missing-global-doc": {
                     "default": "None",
-                    "description": "Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.",
+                    "description": "全局变量的注释缺失(全局函数必须为所有参数和返回值提供注释和注释)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1084,7 +1084,7 @@
                 },
                 "missing-local-export-doc": {
                     "default": "None",
-                    "description": "Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.",
+                    "description": "导出的本地函数缺少注释(导出的本地函数必须有包括本身以及所有参数和返回值的注释)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1097,7 +1097,7 @@
                 },
                 "missing-parameter": {
                     "default": "Any",
-                    "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
+                    "description": "函数参数数少于注释函数参数数",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1110,7 +1110,7 @@
                 },
                 "missing-return": {
                     "default": "Any",
-                    "description": "Enable diagnostics for functions with return annotations which have no return statement.",
+                    "description": "函数带有返回注释而无返回语句",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1123,7 +1123,7 @@
                 },
                 "missing-return-value": {
                     "default": "Any",
-                    "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
+                    "description": "函数无值返回但函数使用`@return`标记了返回值",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1136,7 +1136,7 @@
                 },
                 "name-style-check": {
                     "default": "None",
-                    "description": "Enable diagnostics for name style.",
+                    "description": "变量的名称样式检查",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1149,7 +1149,7 @@
                 },
                 "need-check-nil": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.",
+                    "description": "变量之前被赋值为`nil`或可选值(可能为 `nil`)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1188,7 +1188,7 @@
                 },
                 "no-unknown": {
                     "default": "None",
-                    "description": "Enable diagnostics for cases in which the type cannot be inferred.",
+                    "description": "变量的未知类型无法推断",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1201,7 +1201,7 @@
                 },
                 "not-yieldable": {
                     "default": "None",
-                    "description": "Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.",
+                    "description": "不允许调用 `coroutine.yield()` ",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1214,7 +1214,7 @@
                 },
                 "param-type-mismatch": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.",
+                    "description": "给定参数的类型与函数定义所要求的类型(`@param`)不匹配",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1253,7 +1253,7 @@
                 },
                 "redundant-return": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for return statements which are not needed because the function would exit on its own.",
+                    "description": "当放置一个不需要的返回值时触发(函数会自行退出)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1266,7 +1266,7 @@
                 },
                 "redundant-return-value": {
                     "default": "Any",
-                    "description": "Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.",
+                    "description": "返回`@return`注释未指定的额外值",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1292,7 +1292,7 @@
                 },
                 "return-type-mismatch": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.",
+                    "description": "返回值的类型与`@return`中声明的类型不匹配",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1331,7 +1331,7 @@
                 },
                 "unbalanced-assignments": {
                     "default": "Any",
-                    "description": "Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).",
+                    "description": "多重赋值时没有赋值所有变量(如`local x,y = 1`)",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1344,7 +1344,7 @@
                 },
                 "undefined-doc-class": {
                     "default": "Any",
-                    "description": "Enable diagnostics for class annotations in which an undefined class is referenced.",
+                    "description": "在`@class`注解中引用未定义的类。",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1357,7 +1357,7 @@
                 },
                 "undefined-doc-name": {
                     "default": "Any",
-                    "description": "Enable diagnostics for type annotations referencing an undefined type or alias.",
+                    "description": "在`@type`注解中引用未定义的类型或`@alias`",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1370,7 +1370,7 @@
                 },
                 "undefined-doc-param": {
                     "default": "Any",
-                    "description": "Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.",
+                    "description": "函数声明中`@param`引用了未定义的参数",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1396,7 +1396,7 @@
                 },
                 "undefined-field": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for cases in which an undefined field of a variable is read.",
+                    "description": "引用变量的未定义字段",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1422,7 +1422,7 @@
                 },
                 "unknown-cast-variable": {
                     "default": "Any",
-                    "description": "Enable diagnostics for casts of undefined variables.",
+                    "description": "使用`@cast`对未定义变量的强制转换",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1435,7 +1435,7 @@
                 },
                 "unknown-diag-code": {
                     "default": "Any",
-                    "description": "Enable diagnostics in cases in which an unknown diagnostics code is entered.",
+                    "description": "未知的诊断代码",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1448,7 +1448,7 @@
                 },
                 "unknown-operator": {
                     "default": "Any",
-                    "description": "Enable diagnostics for unknown operators.",
+                    "description": "未知的运算符",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1461,7 +1461,7 @@
                 },
                 "unreachable-code": {
                     "default": "Opened",
-                    "description": "Enable diagnostics for unreachable code.",
+                    "description": "不可达的代码",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1550,7 +1550,7 @@
                 },
                 "assign-type-mismatch": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.",
+                    "description": "值类型与赋值变量类型不匹配",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1565,7 +1565,7 @@
                 },
                 "await-in-sync": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for calls of asynchronous functions within a synchronous function.",
+                    "description": "同步函数中异步函数调用",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1580,7 +1580,7 @@
                 },
                 "cast-local-type": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for casts of local variables where the target type does not match the defined type.",
+                    "description": "已显式定义变量类型与要定义的值的类型不匹配",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1595,7 +1595,7 @@
                 },
                 "cast-type-mismatch": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for casts where the target type does not match the initial type.",
+                    "description": "变量被转换为与其初始类型不匹配的类型",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1640,7 +1640,7 @@
                 },
                 "code-after-break": {
                     "default": "Hint",
-                    "description": "Enable diagnostics for code placed after a break statement in a loop.",
+                    "description": "放在循环中break语句后面的代码",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1670,7 +1670,7 @@
                 },
                 "count-down-loop": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.",
+                    "description": "for循环永远无法达到最大/极限值(在递减时递增)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1685,7 +1685,7 @@
                 },
                 "deprecated": {
                     "default": "Warning",
-                    "description": "Enable diagnostics to highlight deprecated API.",
+                    "description": "变量已被标记为deprecated(过时)但仍在使用",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1700,7 +1700,7 @@
                 },
                 "different-requires": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for files which are required by two different paths.",
+                    "description": "required的同一个文件使用了两个不同的名字",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1715,7 +1715,7 @@
                 },
                 "discard-returns": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.",
+                    "description": "函数的返回值被忽略(函数被`@nodiscard`标记时)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1730,7 +1730,7 @@
                 },
                 "doc-field-no-class": {
                     "default": "Warning",
-                    "description": "Enable diagnostics to highlight a field annotation without a defining class annotation.",
+                    "description": "为不存在的类`@class`标记`@field`字段",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1745,7 +1745,7 @@
                 },
                 "duplicate-doc-alias": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for a duplicated alias annotation name.",
+                    "description": "`@alias`字段的名字冲突",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1760,7 +1760,7 @@
                 },
                 "duplicate-doc-field": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for a duplicated field annotation name.",
+                    "description": "`@field`字段的名字冲突",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1775,7 +1775,7 @@
                 },
                 "duplicate-doc-param": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for a duplicated param annotation name.",
+                    "description": "`@param`字段的名字冲突",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1805,7 +1805,7 @@
                 },
                 "duplicate-set-field": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for setting the same field in a class more than once.",
+                    "description": "在一个类中多次定义同一字段",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1865,7 +1865,7 @@
                 },
                 "incomplete-signature-doc": {
                     "default": "Warning",
-                    "description": "Incomplete @param or @return annotations for functions.",
+                    "description": "`@param`或`@return`的注释不完整",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1895,7 +1895,7 @@
                 },
                 "invisible": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for accesses to fields which are invisible.",
+                    "description": "使用不可见的值",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1940,7 +1940,7 @@
                 },
                 "missing-global-doc": {
                     "default": "Warning",
-                    "description": "Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.",
+                    "description": "全局变量的注释缺失(全局函数必须为所有参数和返回值提供注释和注释)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1955,7 +1955,7 @@
                 },
                 "missing-local-export-doc": {
                     "default": "Warning",
-                    "description": "Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.",
+                    "description": "导出的本地函数缺少注释(导出的本地函数必须有包括本身以及所有参数和返回值的注释)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1970,7 +1970,7 @@
                 },
                 "missing-parameter": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
+                    "description": "函数参数数少于注释函数参数数",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1985,7 +1985,7 @@
                 },
                 "missing-return": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for functions with return annotations which have no return statement.",
+                    "description": "函数带有返回注释而无返回语句",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2000,7 +2000,7 @@
                 },
                 "missing-return-value": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
+                    "description": "函数无值返回但函数使用`@return`标记了返回值",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2015,7 +2015,7 @@
                 },
                 "name-style-check": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for name style.",
+                    "description": "变量的名称样式检查",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2030,7 +2030,7 @@
                 },
                 "need-check-nil": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.",
+                    "description": "变量之前被赋值为`nil`或可选值(可能为 `nil`)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2075,7 +2075,7 @@
                 },
                 "no-unknown": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for cases in which the type cannot be inferred.",
+                    "description": "变量的未知类型无法推断",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2090,7 +2090,7 @@
                 },
                 "not-yieldable": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.",
+                    "description": "不允许调用 `coroutine.yield()` ",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2105,7 +2105,7 @@
                 },
                 "param-type-mismatch": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.",
+                    "description": "给定参数的类型与函数定义所要求的类型(`@param`)不匹配",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2150,7 +2150,7 @@
                 },
                 "redundant-return": {
                     "default": "Hint",
-                    "description": "Enable diagnostics for return statements which are not needed because the function would exit on its own.",
+                    "description": "当放置一个不需要的返回值时触发(函数会自行退出)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2165,7 +2165,7 @@
                 },
                 "redundant-return-value": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.",
+                    "description": "返回`@return`注释未指定的额外值",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2195,7 +2195,7 @@
                 },
                 "return-type-mismatch": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.",
+                    "description": "返回值的类型与`@return`中声明的类型不匹配",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2240,7 +2240,7 @@
                 },
                 "unbalanced-assignments": {
                     "default": "Warning",
-                    "description": "Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).",
+                    "description": "多重赋值时没有赋值所有变量(如`local x,y = 1`)",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2255,7 +2255,7 @@
                 },
                 "undefined-doc-class": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for class annotations in which an undefined class is referenced.",
+                    "description": "在`@class`注解中引用未定义的类。",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2270,7 +2270,7 @@
                 },
                 "undefined-doc-name": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for type annotations referencing an undefined type or alias.",
+                    "description": "在`@type`注解中引用未定义的类型或`@alias`",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2285,7 +2285,7 @@
                 },
                 "undefined-doc-param": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.",
+                    "description": "函数声明中`@param`引用了未定义的参数",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2315,7 +2315,7 @@
                 },
                 "undefined-field": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for cases in which an undefined field of a variable is read.",
+                    "description": "引用变量的未定义字段",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2345,7 +2345,7 @@
                 },
                 "unknown-cast-variable": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for casts of undefined variables.",
+                    "description": "使用`@cast`对未定义变量的强制转换",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2360,7 +2360,7 @@
                 },
                 "unknown-diag-code": {
                     "default": "Warning",
-                    "description": "Enable diagnostics in cases in which an unknown diagnostics code is entered.",
+                    "description": "未知的诊断代码",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2375,7 +2375,7 @@
                 },
                 "unknown-operator": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for unknown operators.",
+                    "description": "未知的运算符",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2390,7 +2390,7 @@
                 },
                 "unreachable-code": {
                     "default": "Hint",
-                    "description": "Enable diagnostics for unreachable code.",
+                    "description": "不可达的代码",
                     "enum": [
                         "Error",
                         "Warning",
@@ -3284,21 +3284,21 @@
         },
         "typeFormat.config": {
             "additionalProperties": false,
-            "markdownDescription": "Configures the formatting behavior while typing Lua code.",
+            "markdownDescription": "配置输入Lua代码时的格式化行为",
             "properties": {
                 "auto_complete_end": {
                     "default": "true",
-                    "description": "Controls if `end` is automatically completed at suitable positions.",
+                    "description": "是否在合适的位置自动完成 `end`",
                     "type": "string"
                 },
                 "auto_complete_table_sep": {
                     "default": "true",
-                    "description": "Controls if a separator is automatically appended at the end of a table declaration.",
+                    "description": "是否在table末尾自动添加分隔符",
                     "type": "string"
                 },
                 "format_line": {
                     "default": "true",
-                    "description": "Controls if a line is formatted at all.",
+                    "description": "是否对某一行进行格式化",
                     "type": "string"
                 }
             },
