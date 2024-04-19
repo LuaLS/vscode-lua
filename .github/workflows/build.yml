@@ -40,10 +40,11 @@ jobs:
 
       - name: Run luamake
         id: luamake
-        working-directory: ./server
         run: |
+          pushd ./server
           luamake -platform ${{ matrix.platform }}
           rm -r ./build
+          popd
 
       - name: Setting up workflow variables
         id: vars
