@@ -3106,19 +3106,20 @@
             "type": "boolean"
         },
         "runtime.plugin": {
-            "default": "",
             "markdownDescription": "插件路径，请查阅[文档](https://luals.github.io/wiki/plugins)了解用法。",
             "scope": "resource",
-            "type": "string"
+            "type": [
+                "string",
+                "array"
+            ]
         },
         "runtime.pluginArgs": {
-            "default": [],
-            "items": {
-                "type": "string"
-            },
             "markdownDescription": "Additional arguments for the plugin.",
             "scope": "resource",
-            "type": "array"
+            "type": [
+                "array",
+                "object"
+            ]
         },
         "runtime.special": {
             "additionalProperties": false,
@@ -3249,6 +3250,9 @@
                 "castNumberToInteger": {
                     "$ref": "#/properties/type.castNumberToInteger"
                 },
+                "inferParamType": {
+                    "$ref": "#/properties/type.inferParamType"
+                },
                 "weakNilCheck": {
                     "$ref": "#/properties/type.weakNilCheck"
                 },
@@ -3260,6 +3264,12 @@
         "type.castNumberToInteger": {
             "default": true,
             "markdownDescription": "允许将 `number` 类型赋给 `integer` 类型。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.inferParamType": {
+            "default": false,
+            "markdownDescription": "未注释参数类型时，参数类型由函数传入参数推断。\n\n如果设置为 \"false\"，则在未注释时，参数类型为 \"any\"。\n",
             "scope": "resource",
             "type": "boolean"
         },

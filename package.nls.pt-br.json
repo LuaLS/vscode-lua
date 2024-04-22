@@ -211,6 +211,7 @@
     "config.spell.dict": "Custom words for spell checking.",
     "config.telemetry.enable": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://luals.github.io/privacy/#language-server).\n",
     "config.type.castNumberToInteger": "Allowed to assign the `number` type to the `integer` type.",
+    "config.type.inferParamType": "When the parameter type is not annotated, the parameter type is inferred from the function's incoming parameters.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
     "config.type.weakNilCheck": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.type.weakUnionCheck": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.typeFormat.config": "Configures the formatting behavior while typing Lua code.",

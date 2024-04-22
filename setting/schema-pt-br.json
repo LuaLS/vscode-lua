@@ -3106,19 +3106,20 @@
             "type": "boolean"
         },
         "runtime.plugin": {
-            "default": "",
             "markdownDescription": "Plugin path. Please read [wiki](https://luals.github.io/wiki/plugins) to learn more.",
             "scope": "resource",
-            "type": "string"
+            "type": [
+                "string",
+                "array"
+            ]
         },
         "runtime.pluginArgs": {
-            "default": [],
-            "items": {
-                "type": "string"
-            },
             "markdownDescription": "Additional arguments for the plugin.",
             "scope": "resource",
-            "type": "array"
+            "type": [
+                "array",
+                "object"
+            ]
         },
         "runtime.special": {
             "additionalProperties": false,
@@ -3249,6 +3250,9 @@
                 "castNumberToInteger": {
                     "$ref": "#/properties/type.castNumberToInteger"
                 },
+                "inferParamType": {
+                    "$ref": "#/properties/type.inferParamType"
+                },
                 "weakNilCheck": {
                     "$ref": "#/properties/type.weakNilCheck"
                 },
@@ -3260,6 +3264,12 @@
         "type.castNumberToInteger": {
             "default": true,
             "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.inferParamType": {
+            "default": false,
+            "markdownDescription": "When the parameter type is not annotated, the parameter type is inferred from the function's incoming parameters.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
             "scope": "resource",
             "type": "boolean"
         },

@@ -64,7 +64,7 @@ local function copyFiles(root, out)
 end
 
 local function runTest(root)
-    local ext = platform.OS == 'Windows' and '.exe' or ''
+    local ext = platform.os == 'windows' and '.exe' or ''
     local exe = root / 'bin' / 'lua-language-server' .. ext
     local test = root / 'test.lua'
     local lua = subprocess.spawn {

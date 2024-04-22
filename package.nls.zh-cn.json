@@ -211,6 +211,7 @@
     "config.spell.dict": "拼写检查的自定义单词。",
     "config.telemetry.enable": "启用遥测，通过网络发送你的编辑器信息与错误日志。在[此处](https://luals.github.io/privacy/#language-server)阅读我们的隐私声明。\n",
     "config.type.castNumberToInteger": "允许将 `number` 类型赋给 `integer` 类型。",
+    "config.type.inferParamType": "未注释参数类型时，参数类型由函数传入参数推断。\n\n如果设置为 \"false\"，则在未注释时，参数类型为 \"any\"。\n",
     "config.type.weakNilCheck": "对联合类型进行类型检查时，忽略其中的 `nil`。\n\n此设置为 `false` 时，`numer|nil` 类型无法赋给 `number` 类型；为 `true` 是则可以。\n",
     "config.type.weakUnionCheck": "联合类型中只要有一个子类型满足条件，则联合类型也满足条件。\n\n此设置为 `false` 时，`number|boolean` 类型无法赋给 `number` 类型；为 `true` 时则可以。\n",
     "config.typeFormat.config": "配置输入Lua代码时的格式化行为",
