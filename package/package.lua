@@ -24,7 +24,7 @@ return {
         url = "https://github.com/LuaLS/lua-language-server/issues/484"
     },
     engines = {
-        vscode = "^1.67.0"
+        vscode = "^1.86.0"
     },
     activationEvents = {
         "onLanguage:lua",
