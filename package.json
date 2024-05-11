@@ -10,6 +10,7 @@
 			"description": "",
 			"restrictedConfigurations": [
 				"Lua.runtime.plugin",
+				"Lua.misc.executablePath",
 				"Lua.misc.parameters"
 			],
 			"supported": "limited"
@@ -37,6 +38,14 @@
 			{
 				"command": "lua.reloadFFIMeta",
 				"title": "%command.reloadFFIMeta%"
+			},
+			{
+				"command": "lua.startServer",
+				"title": "%command.startServer%"
+			},
+			{
+				"command": "lua.stopServer",
+				"title": "%command.stopServer%"
 			}
 		],
 		"configuration": {
@@ -308,6 +317,15 @@
 						"type": "string"
 					},
 					"markdownDescription": "%config.diagnostics.globals%",
+					"scope": "resource",
+					"type": "array"
+				},
+				"Lua.diagnostics.globalsRegex": {
+					"default": [],
+					"items": {
+						"type": "string"
+					},
+					"markdownDescription": "%config.diagnostics.globalsRegex%",
 					"scope": "resource",
 					"type": "array"
 				},
@@ -3350,5 +3368,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.8.3"
+	"version": "3.9.0"
 }
