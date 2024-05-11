@@ -165,6 +165,9 @@
                 "globals": {
                     "$ref": "#/properties/diagnostics.globals"
                 },
+                "globalsRegex": {
+                    "$ref": "#/properties/diagnostics.globalsRegex"
+                },
                 "groupFileStatus": {
                     "$ref": "#/properties/diagnostics.groupFileStatus"
                 },
@@ -362,6 +365,15 @@
                 "type": "string"
             },
             "markdownDescription": "已定義的全域變數。",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.globalsRegex": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Find defined global variables using regex.",
             "scope": "resource",
             "type": "array"
         },

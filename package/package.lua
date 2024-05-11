@@ -52,11 +52,11 @@ return {
             },
             {
                 command = "lua.startServer",
-                title = "重启服务器",
+                title = "%command.startServer%",
             },
             {
                 command = "lua.stopServer",
-                title = "停止服务器",
+                title = "%command.stopServer%",
             }
         },
         menus = {

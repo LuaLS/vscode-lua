@@ -82,6 +82,15 @@ function registerCustomCommands(context: ExtensionContext) {
             command: 'lua.reloadFFIMeta',
         })
     }))
+
+    context.subscriptions.push(Commands.registerCommand('lua.startServer', async () => {
+        deactivate();
+        createClient(context);
+    }));
+
+    context.subscriptions.push(Commands.registerCommand('lua.stopServer', async () => {
+        deactivate();
+    }));
 }
 
 /** Creates a new {@link LuaClient} and starts it. */
@@ -144,6 +153,7 @@ class LuaClient extends Disposable {
             serverOptions,
             clientOptions
         );
+        this.disposables.push(this.client);
 
         //client.registerProposedFeatures();
         await this.client.start();
@@ -298,6 +308,7 @@ export function activate(context: ExtensionContext) {
 export async function deactivate() {
     if (defaultClient) {
         defaultClient.stop();
+        defaultClient.dispose();
         defaultClient = null;
     }
     return undefined;
