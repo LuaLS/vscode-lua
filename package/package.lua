@@ -46,10 +46,18 @@ return {
                 command = "lua.exportDocument",
                 title = "%command.exportDocument%",
             },
-			{
-				command = "lua.reloadFFIMeta",
-				title = "%command.reloadFFIMeta%",
-			},
+            {
+                command = "lua.reloadFFIMeta",
+                title = "%command.reloadFFIMeta%",
+            },
+            {
+                command = "lua.startServer",
+                title = "重启服务器",
+            },
+            {
+                command = "lua.stopServer",
+                title = "停止服务器",
+            }
         },
         menus = {
             ["editor/context"] = {
@@ -116,6 +124,7 @@ return {
             description = "",
             restrictedConfigurations = {
                 "Lua.runtime.plugin",
+                "Lua.misc.executablePath",
                 "Lua.misc.parameters",
             },
         },
