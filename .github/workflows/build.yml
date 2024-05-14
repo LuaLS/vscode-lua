@@ -44,12 +44,14 @@ jobs:
 
       - name: Build for Windows
         if: ${{ matrix.target == 'windows' }}
+        working-directory: ./server
         run: |
           .\make.bat ${{ matrix.platform }}
           rm -r ./build
 
       - name: Build for Linux
         if: ${{ matrix.target == 'linux' }}
+        working-directory: ./server
         run: |
           sudo apt update
           sudo apt install ninja-build
@@ -58,6 +60,7 @@ jobs:
           
       - name: Build for macOS
         if: ${{ matrix.target == 'darwin' }}
+        working-directory: ./server
         run: |
           brew install ninja
           ./make.sh ${{ matrix.platform }}
