@@ -42,13 +42,25 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: actboy168/setup-luamake@master
-
-      - name: Run luamake
-        id: luamake
-        working-directory: ./server
+      - name: Build for Windows
+        if: ${{ matrix.target == 'windows' }}
         run: |
-          luamake -platform ${{ matrix.platform }}
+          .\make.bat ${{ matrix.platform }}
+          rm -r ./build
+
+      - name: Build for Linux
+        if: ${{ matrix.target == 'linux' }}
+        run: |
+          sudo apt update
+          sudo apt install ninja-build
+          ./make.sh ${{ matrix.platform }}
+          rm -r ./build
+          
+      - name: Build for macOS
+        if: ${{ matrix.target == 'darwin' }}
+        run: |
+          brew install ninja
+          ./make.sh ${{ matrix.platform }}
           rm -r ./build
 
       - name: Setting up workflow variables
