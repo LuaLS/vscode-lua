@@ -44,17 +44,57 @@ export class Addon {
 
     /** Fetch addon info from `info.json` */
     public async fetchInfo() {
-        const path = vscode.Uri.joinPath(this.uri, INFO_FILENAME);
-        const rawInfo = await filesystem.readFile(path);
+        const infoFilePath = vscode.Uri.joinPath(this.uri, INFO_FILENAME);
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+
+        const rawInfo = await filesystem.readFile(infoFilePath);
         const info = JSON.parse(rawInfo) as AddonInfo;
 
         this.#displayName = info.name;
+
+        const moduleGit = git.cwd({ path: modulePath.fsPath, root: false });
+
+        let currentVersion = null;
+        let tags = [];
+
+        await this.getEnabled();
+
+        if (this.#installed) {
+            tags = (await moduleGit.tags(["--sort=-taggerdate"])).all;
+
+            const currentTag = await moduleGit
+                .raw(["describe", "--tags", "--exact-match"])
+                .catch((err) => {
+                    localLogger.warn(err);
+                    return null;
+                });
+            const commitsBehindLatest = await moduleGit.raw([
+                "rev-list",
+                `HEAD..origin/${await this.getDefaultBranch()}`,
+                "--count",
+            ]);
+
+            if (Number(commitsBehindLatest) < 1) {
+                currentVersion = "Latest";
+            } else if (currentTag != "") {
+                currentVersion = currentTag;
+            } else {
+                currentVersion = await moduleGit
+                    .revparse(["--short", "HEAD"])
+                    .catch((err) => {
+                        localLogger.warn(err);
+                        return null;
+                    });
+            }
+        }
 
         return {
             name: info.name,
             description: info.description,
             size: info.size,
             hasPlugin: info.hasPlugin,
+            tags: tags,
+            version: currentVersion,
         };
     }
 
@@ -83,6 +123,30 @@ export class Addon {
         return git
             .submoduleUpdate([this.uri.fsPath])
             .then((message) => localLogger.debug(message));
+    }
+
+    public async getDefaultBranch() {
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+
+        const result = (await git
+            .cwd({ path: modulePath.fsPath, root: false })
+            .remote(["show", "origin"])) as string;
+        const match = result.match(/HEAD branch: (\w+)/);
+
+        return match[1];
+    }
+
+    public async pull() {
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+
+        return await git.cwd({ path: modulePath.fsPath, root: false }).pull();
+    }
+
+    public async checkout(obj: string) {
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+        return git
+            .cwd({ path: modulePath.fsPath, root: false })
+            .checkout([obj]);
     }
 
     /** Check whether this addon is enabled, given an array of enabled library paths.
@@ -254,7 +318,8 @@ export class Addon {
     public async toJSON() {
         await this.getEnabled();
 
-        const { name, description, size, hasPlugin } = await this.fetchInfo();
+        const { name, description, size, hasPlugin, tags, version } =
+            await this.fetchInfo();
         const enabled = this.#enabled;
         const installTimestamp = (await git.log()).latest.date;
         const hasUpdate = this.#hasUpdate;
@@ -270,6 +335,8 @@ export class Addon {
             hasUpdate,
             processing: this.#processing,
             installed: this.#installed,
+            tags,
+            version,
         };
     }
 

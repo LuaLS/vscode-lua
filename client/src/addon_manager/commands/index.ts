@@ -6,6 +6,7 @@ import refreshAddons from "./refreshAddons";
 import openLog from "./openLog";
 import update from "./update";
 import uninstall from "./uninstall";
+import setVersion from "./setVersion";
 
 export const commands = {
     enable,
@@ -15,5 +16,6 @@ export const commands = {
     refreshAddons,
     openLog,
     update,
-    uninstall
+    uninstall,
+    setVersion,
 };
