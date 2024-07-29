@@ -16,12 +16,15 @@ type Message = {
 
 export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.addons.get(message.data.name);
+    if (!addon) {
+        return;
+    }
     try {
         await addon.update();
     } catch (e) {
         const message = `Failed to update ${addon.name}`;
         localLogger.error(message, { report: false });
-        localLogger.error(e, { report: false });
+        localLogger.error(String(e), { report: false });
         WebVue.sendNotification({
             level: NotificationLevels.error,
             message,

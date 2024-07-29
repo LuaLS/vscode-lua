@@ -153,7 +153,7 @@ namespace filesystem {
                             recursive: true,
                             maxDepth: options.maxDepth,
                             depth: options.depth + 1,
-                        }))
+                        })) ?? []
                     );
                     break;
                 default:
@@ -175,7 +175,7 @@ namespace filesystem {
         });
 
         const promises = [] as Promise<number>[];
-        for (const node of tree) {
+        for (const node of tree ?? []) {
             if (node.type !== vscode.FileType.File) continue;
 
             promises.push(

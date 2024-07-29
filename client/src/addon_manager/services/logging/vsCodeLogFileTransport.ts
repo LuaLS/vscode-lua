@@ -13,7 +13,7 @@ export default class VSCodeLogFileTransport extends Transport {
 
     private logDir: vscode.Uri;
 
-    private stream: fs.WriteStream;
+    private stream?: fs.WriteStream;
 
     constructor(logDir: vscode.Uri, opts?: Transport.TransportStreamOptions) {
         super(opts);
@@ -37,13 +37,13 @@ export default class VSCodeLogFileTransport extends Transport {
             flags: "a",
         });
         this.initialized = true;
-        return new vscode.Disposable(() => this.stream.close);
+        return new vscode.Disposable(() => this.stream?.close);
     }
 
     /** Mark the start of the addon manager in the log */
     public logStart() {
         return new Promise((resolve, reject) => {
-            this.stream.write(
+            this.stream?.write(
                 stringToByteArray("#### STARTUP ####\n"),
                 (err) => {
                     if (err) reject(err);
@@ -62,7 +62,7 @@ export default class VSCodeLogFileTransport extends Transport {
             this.emit("logged", info);
         });
 
-        this.stream.write(
+        this.stream?.write(
             stringToByteArray(info[MESSAGE as unknown as string] + "\n")
         );
 
