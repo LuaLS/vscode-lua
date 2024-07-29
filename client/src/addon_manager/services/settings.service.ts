@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getConfig, setConfig } from "../../languageserver";
+import { ConfigChange, getConfig, setConfig } from "../../languageserver";
 import { createChildLogger } from "./logging.service";
 import { LIBRARY_SETTING } from "../config";
 
@@ -8,8 +8,6 @@ const localLogger = createChildLogger("Settings");
 /** An error with the user's configuration `.vscode/settings.json` or an
  * addon's `config.json`. */
 class ConfigError extends Error {
-    message: string;
-
     constructor(message: string) {
         super(message);
         localLogger.error(message);
@@ -37,7 +35,7 @@ export const applyAddonSettings = async (
 ) => {
     if (!folder) throw new ConfigError(`Workspace is not open!`);
 
-    const changes = [];
+    const changes: ConfigChange[] = [];
     for (const [newKey, newValue] of Object.entries(config)) {
         if (Array.isArray(newValue)) {
             newValue.forEach((val) => {
@@ -48,9 +46,9 @@ export const applyAddonSettings = async (
                     uri: folder.uri,
                 });
             });
-        } else if (typeof newValue === "object") {
+        } else if (typeof newValue === "object" && newValue !== null) {
             changes.push(
-                ...Object.entries(newValue).map(([key, value]) => {
+                ...Object.entries(newValue).map(([key, value]): ConfigChange => {
                     return {
                         action: "prop",
                         key: newKey,
@@ -79,14 +77,14 @@ export const revokeAddonSettings = async (
 ) => {
     if (!folder) throw new ConfigError(`Workspace is not open!`);
 
-    const changes = [];
+    const changes: ConfigChange[] = [];
     for (const [newKey, newValue] of Object.entries(config)) {
         const currentValue = await getConfig(newKey, folder.uri);
 
         if (Array.isArray(newValue)) {
             // Only keep values that the addon settings does not contain
             const notAddon = currentValue.filter(
-                (oldValue) => !newValue.includes(oldValue)
+                (oldValue: any) => !newValue.includes(oldValue)
             );
             changes.push({
                 action: "set",
@@ -94,7 +92,7 @@ export const revokeAddonSettings = async (
                 value: notAddon,
                 uri: folder.uri,
             });
-        } else if (typeof newValue === "object") {
+        } else if (typeof newValue === "object" && newValue !== null) {
             for (const objectKey of Object.keys(newValue)) {
                 delete currentValue[objectKey];
             }

@@ -25,7 +25,7 @@ export let defaultClient: LuaClient | null;
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
-        const propMap: Map<string, Map<string, unknown>> = new Map();
+        const propMap: Record<string, Record<string, unknown>> = {};
 
         for (const data of changes) {
             const config = Workspace.getConfiguration(undefined, Uri.parse(data.uri));
@@ -43,7 +43,10 @@ function registerCustomCommands(context: ExtensionContext) {
             }
             if (data.action === 'prop') {
                 if (!propMap[data.key]) {
-                    propMap[data.key] = config.get(data.key);
+                    let prop = config.get(data.key);
+                    if (typeof prop === 'object' && prop !== null) {
+                        propMap[data.key] = prop as Record<string, unknown>;
+                    }
                 }
                 propMap[data.key][data.prop] = data.value;
                 config.update(data.key, propMap[data.key], data.global);
@@ -71,14 +74,14 @@ function registerCustomCommands(context: ExtensionContext) {
         if (!output) {
             return;
         }
-        defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+        defaultClient.client?.sendRequest(ExecuteCommandRequest.type, {
             command: 'lua.exportDocument',
             arguments: [output.toString()],
         });
     }));
 
     context.subscriptions.push(Commands.registerCommand('lua.reloadFFIMeta', async () => {
-        defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+        defaultClient?.client?.sendRequest(ExecuteCommandRequest.type, {
             command: 'lua.reloadFFIMeta',
         })
     }))
@@ -100,7 +103,7 @@ export const createClient = (context: ExtensionContext) => {
 }
 
 class LuaClient extends Disposable {
-    public client: LanguageClient;
+    public client: LanguageClient | undefined;
     private disposables = new Array<Disposable>();
     constructor(
         private context: ExtensionContext,
@@ -241,14 +244,14 @@ class LuaClient extends Disposable {
     }
 
     async stop() {
-        this.client.stop();
+        this.client?.stop();
         for (const disposable of this.disposables) {
             disposable.dispose();
         }
     }
 
     statusBar() {
-        const client = this.client;
+        const client = this.client!;
         const bar = window.createStatusBarItem(vscode.StatusBarAlignment.Right);
         bar.text = "Lua";
         bar.command = "Lua.statusBar";
@@ -278,6 +281,9 @@ class LuaClient extends Disposable {
     }
 
     onCommand() {
+        if (!this.client) {
+            return;
+        }
         this.disposables.push(
             this.client.onNotification("$/command", (params) => {
                 Commands.executeCommand(params.command, params.data);
@@ -318,10 +324,10 @@ export async function reportAPIDoc(params: unknown) {
     if (!defaultClient) {
         return;
     }
-    defaultClient.client.sendNotification('$/api/report', params);
+    defaultClient.client?.sendNotification('$/api/report', params);
 }
 
-type ConfigChange = {
+export type ConfigChange = {
     action:  "set",
     key:     string,
     value:   LSPAny,
@@ -357,7 +363,7 @@ export async function setConfig(changes: ConfigChange[]): Promise<boolean> {
             global: change.global,
         });
     }
-    await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+    await defaultClient.client?.sendRequest(ExecuteCommandRequest.type, {
         command: 'lua.setConfig',
         arguments: params,
     });
@@ -368,7 +374,7 @@ export async function getConfig(key: string, uri: vscode.Uri): Promise<LSPAny> {
     if (!defaultClient) {
         return undefined;
     }
-    return await defaultClient.client.sendRequest(ExecuteCommandRequest.type, {
+    return await defaultClient.client?.sendRequest(ExecuteCommandRequest.type, {
         command: 'lua.getConfig',
         arguments: [{
             uri: uri.toString(),

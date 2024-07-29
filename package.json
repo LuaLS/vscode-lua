@@ -3358,7 +3358,7 @@
 		"EmmyLua"
 	],
 	"license": "MIT",
-	"main": "./client/out/extension",
+	"main": "./client/out/src/extension",
 	"name": "lua",
 	"publisher": "sumneko",
 	"repository": {

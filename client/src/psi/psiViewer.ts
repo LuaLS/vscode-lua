@@ -21,7 +21,7 @@ class PsiViewer {
     private readonly extensionPath: string;
     private readonly builtAppFolder: string;
     private disposables: vscode.Disposable[] = [];
-    private timeoutToReqAnn?: NodeJS.Timer;
+    private timeoutToReqAnn?: NodeJS.Timeout;
 
     public static createOrShow(context: vscode.ExtensionContext) {
         // const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
@@ -115,7 +115,7 @@ class PsiViewer {
     }
 
     private requestPsiImpl(editor: vscode.TextEditor) {
-        const client = defaultClient.client;
+        const client = defaultClient?.client;
         const params = { uri: editor.document.uri.toString() };
         client?.sendRequest<{ data: unknown }>("$/psi/view", params).then(result => {
             if (result) {
@@ -128,7 +128,7 @@ class PsiViewer {
     }
 
     private requestPsiSelect(position: vscode.Position, uri: vscode.Uri) {
-        const client = defaultClient.client;
+        const client = defaultClient?.client;
         const params = { uri: uri.toString(), position };
         client?.sendRequest<{ data: unknown }>("$/psi/select", params).then(result => {
             if (result) {
@@ -146,7 +146,7 @@ class PsiViewer {
         if (activeEditor
             && activeEditor.document === event.document
             && activeEditor.document.languageId === LANGUAGE_ID) {
-            viewer.requestPsi(activeEditor);
+            viewer?.requestPsi(activeEditor);
         }
     }
 
@@ -154,7 +154,7 @@ class PsiViewer {
         const viewer = PsiViewer.currentPanel;
         if (editor
             && editor.document.languageId === LANGUAGE_ID) {
-            viewer.requestPsi(editor);
+            viewer?.requestPsi(editor);
         }
     }
 
