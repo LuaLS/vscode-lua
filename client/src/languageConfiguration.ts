@@ -15,6 +15,13 @@ export const luaConfiguration: vscode.LanguageConfiguration = {
     ],
     onEnterRules: [
         {
+            beforeText: /\)\s*$/,
+            afterText: /^\s*end\b/,
+            action: {
+                indentAction: vscode.IndentAction.IndentOutdent,
+            }
+        },
+        {
             beforeText: /\b(\)|then|do|else)\b\s*$/,
             afterText: /^\s*end\b/,
             action: {
@@ -28,5 +35,34 @@ export const luaConfiguration: vscode.LanguageConfiguration = {
                 indentAction: vscode.IndentAction.IndentOutdent,
             }
         },
-    ]
+        {
+            beforeText: /^\s*---@/,
+            action: {
+                indentAction: vscode.IndentAction.None,
+                appendText: "---@"
+            }
+        },
+        {
+            beforeText: /^\s*--- @/,
+            action: {
+                indentAction: vscode.IndentAction.None,
+                appendText: "--- @"
+            }
+        },
+        {
+            beforeText: /^\s*--- /,
+            action: {
+                indentAction: vscode.IndentAction.None,
+                appendText: "--- "
+            }
+        },
+        {
+            beforeText: /^\s*---/,
+            action: {
+                indentAction: vscode.IndentAction.None,
+                appendText: "---"
+            }
+        },
+    ],
+    wordPattern: /(-?\d*\.\d\w*)|(-?\d+\.)|([\p{L}_\u10000-\uFFFFFFFF][\p{L}\p{N}_\u10000-\uFFFFFFFF]*)/gu,
 };
