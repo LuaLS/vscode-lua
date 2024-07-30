@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+import { luaConfiguration } from './languageConfiguration';
 import {
     workspace as Workspace,
     ExtensionContext,
@@ -109,7 +110,13 @@ class LuaClient extends Disposable {
         private context: ExtensionContext,
         private documentSelector: DocumentSelector
     ) {
-        super(() => this.dispose());
+        super(() => {
+            for (const disposable of this.disposables) {
+                disposable.dispose();
+            }
+        });
+
+        this.disposables.push(vscode.languages.setLanguageConfiguration('lua', luaConfiguration));
     }
 
     async start() {
@@ -245,9 +252,7 @@ class LuaClient extends Disposable {
 
     async stop() {
         this.client?.stop();
-        for (const disposable of this.disposables) {
-            disposable.dispose();
-        }
+        this.dispose();
     }
 
     statusBar() {
