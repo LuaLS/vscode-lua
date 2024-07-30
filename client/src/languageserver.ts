@@ -131,6 +131,9 @@ class LuaClient extends Disposable {
             },
             initializationOptions: {
                 changeConfiguration: true,
+                viewDocument: true,
+                trustByClient: true,
+                useSemanticByRange: true,
             },
         };
 
