@@ -95,6 +95,25 @@ function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.stopServer', async () => {
         deactivate();
     }));
+
+    context.subscriptions.push(Commands.registerCommand('lua.showReferences', (uri: string, position: Record<string, number>, locations: any[]) => {
+        vscode.commands.executeCommand(
+            'editor.action.showReferences',
+            vscode.Uri.parse(uri),
+            new vscode.Position(position.line, position.character),
+            locations.map((value) => {
+                return new vscode.Location(
+                    vscode.Uri.parse(value.uri as any as string),
+                    new vscode.Range(
+                        value.range.start.line,
+                        value.range.start.character,
+                        value.range.end.line,
+                        value.range.end.character,
+                    ),
+                );
+            })
+        );
+    }));
 }
 
 /** Creates a new {@link LuaClient} and starts it. */
@@ -134,6 +153,7 @@ class LuaClient extends Disposable {
                 viewDocument: true,
                 trustByClient: true,
                 useSemanticByRange: true,
+                codeLensViewReferences: true,
             },
         };
 
