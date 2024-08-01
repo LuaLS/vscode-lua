@@ -64,5 +64,4 @@ export const luaConfiguration: vscode.LanguageConfiguration = {
             }
         },
     ],
-    wordPattern: /(-?\d*\.\d\w*)|(-?\d+\.)|([\p{L}_\u10000-\uFFFFFFFF][\p{L}\p{N}_\u10000-\uFFFFFFFF]*)/gu,
 };
