@@ -6,7 +6,7 @@ import { REPOSITORY_NAME, REPOSITORY_PATH } from "../config";
 
 const localLogger = createChildLogger("Git");
 
-export const git = simpleGit();
+export const git = simpleGit({ trimmed: true });
 
 export const setupGit = async (context: vscode.ExtensionContext) => {
     const storageURI = vscode.Uri.joinPath(
