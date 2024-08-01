@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import * as path from "path";
 import { ConfigChange, getConfig, setConfig } from "../../languageserver";
 import { createChildLogger } from "./logging.service";
 import { LIBRARY_SETTING } from "../config";
@@ -23,7 +24,13 @@ export const getLibraryPaths = async (): Promise<
 
     for (const folder of vscode.workspace.workspaceFolders) {
         const libraries = await getConfig(LIBRARY_SETTING, folder.uri);
-        result.push({ folder, paths: libraries ?? [] });
+        const libraryPaths = libraries.map((libraryPath: string) => {
+            if (path.isAbsolute(libraryPath)) {
+                return libraryPath;
+            }
+            return path.join(folder.uri.fsPath, libraryPath);
+        })
+        result.push({ folder, paths: libraryPaths ?? [] });
     }
 
     return result;
