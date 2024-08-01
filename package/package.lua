@@ -31,7 +31,7 @@ return {
         "onWebviewPanel:lua-doc",
         "onCommand:extension.lua.doc",
     },
-    main = "./client/out/extension",
+    main = "./client/out/src/extension",
     contributes = {
         commands = {
             {

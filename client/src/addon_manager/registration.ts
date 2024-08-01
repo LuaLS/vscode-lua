@@ -84,7 +84,7 @@ export async function activate(context: vscode.ExtensionContext) {
             // Set up git repository for fetching addons
             try {
                 setupGit(context);
-            } catch (e) {
+            } catch (e: any) {
                 const message =
                     "Failed to set up Git repository. Please check your connection to GitHub.";
                 logger.error(message, { report: false });

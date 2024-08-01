@@ -15,6 +15,10 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     const addon = addonManager.addons.get(message.data.name);
     const workspaceFolders = vscode.workspace.workspaceFolders;
 
+    if (!addon || !workspaceFolders) {
+        return;
+    }
+
     let selectedFolders: vscode.WorkspaceFolder[];
 
     if (workspaceFolders && workspaceFolders.length === 1) {
@@ -35,7 +39,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
             return workspaceFolders.find(
                 (folder) => folder.name === selection.label
             );
-        });
+        }).filter((folder) => !!folder);
     }
 
     for (const folder of selectedFolders) {

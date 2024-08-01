@@ -14,7 +14,7 @@
 		"url": "https://github.com/Microsoft/vscode-extension-samples"
 	},
 	"engines": {
-		"vscode": "^1.70.0"
+		"vscode": "^1.85.0"
 	},
 	"dependencies": {
 		"axios": "^1.2.1",
@@ -25,8 +25,8 @@
 		"winston": "^3.8.2"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.35",
-		"@types/vscode": "^1.70.0",
-		"typescript": "^5.4.5"
+		"@types/node": "^18.19.18",
+		"@types/vscode": "1.85.0",
+		"typescript": "^5.5.0"
 	}
 }

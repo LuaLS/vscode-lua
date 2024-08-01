@@ -6,5 +6,5 @@ export default async (
     message: { data: { name: string } }
 ) => {
     const addon = addonManagerService.addons.get(message.data.name);
-    addon.uninstall();
+    addon?.uninstall();
 };

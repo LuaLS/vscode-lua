@@ -20,7 +20,7 @@ class AddonManager {
         try {
             await git.fetch();
             await git.pull();
-        } catch (e) {
+        } catch (e: any) {
             const message =
                 "Failed to fetch addons! Please check your connection to GitHub.";
             localLogger.error(message, { report: false });
@@ -33,7 +33,7 @@ class AddonManager {
 
         const addons = await filesystem.readDirectory(installLocation);
 
-        for (const addon of addons) {
+        for (const addon of addons ?? []) {
             this.addons.set(addon.name, new Addon(addon.name, addon.uri));
             localLogger.verbose(`Found ${addon.name}`);
         }
@@ -50,7 +50,7 @@ class AddonManager {
 
     public unlockAddon(name: string) {
         const addon = this.addons.get(name);
-        return addon.setLock(false);
+        return addon?.setLock(false);
     }
 }
 

@@ -117,8 +117,7 @@ export class Addon {
         const moduleURI = vscode.Uri.joinPath(this.uri, "module");
         this.#installed =
             (await filesystem.exists(moduleURI)) &&
-            (await filesystem.readDirectory(moduleURI, { recursive: false }))
-                .length > 0;
+            ((await filesystem.readDirectory(moduleURI, { recursive: false }))?.length ?? 0) > 0;
 
         return folderStates;
     }
@@ -237,7 +236,7 @@ export class Addon {
     }
 
     public async uninstall() {
-        for (const folder of vscode.workspace.workspaceFolders) {
+        for (const folder of vscode.workspace.workspaceFolders ?? []) {
             await this.disable(folder, true);
         }
         const moduleURI = vscode.Uri.joinPath(this.uri, "module");
@@ -256,7 +255,7 @@ export class Addon {
 
         const { name, description, size, hasPlugin } = await this.fetchInfo();
         const enabled = this.#enabled;
-        const installTimestamp = (await git.log()).latest.date;
+        const installTimestamp = (await git.log()).latest?.date;
         const hasUpdate = this.#hasUpdate;
 
         return {

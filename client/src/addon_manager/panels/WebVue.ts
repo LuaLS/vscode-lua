@@ -48,7 +48,7 @@ export class WebVue {
         command: string,
         data: { [index: string]: unknown } | unknown
     ) {
-        WebVue.currentPanel._panel.webview.postMessage({ command, data });
+        WebVue.currentPanel?._panel.webview.postMessage({ command, data });
     }
 
     public static sendNotification(message: Notification) {
@@ -255,7 +255,7 @@ export class WebVue {
             );
 
             try {
-                commands[command](context, message);
+                (commands as any)[command](context, message);
             } catch (e) {
                 commandLogger.error(e);
             }
