@@ -2496,6 +2496,20 @@
 					"scope": "resource",
 					"type": "array"
 				},
+				"Lua.doc.regengine": {
+					"default": "glob",
+					"enum": [
+						"glob",
+						"lua"
+					],
+					"markdownDescription": "%config.doc.regengine%",
+					"markdownEnumDescriptions": [
+						"%config.doc.regengine.glob%",
+						"%config.doc.regengine.lua%"
+					],
+					"scope": "resource",
+					"type": "string"
+				},
 				"Lua.format.defaultConfig": {
 					"additionalProperties": false,
 					"default": {},
@@ -3368,5 +3382,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.9.3"
+	"version": "3.10.0"
 }

@@ -2527,6 +2527,9 @@
                 },
                 "protectedName": {
                     "$ref": "#/properties/doc.protectedName"
+                },
+                "regengine": {
+                    "$ref": "#/properties/doc.regengine"
                 }
             }
         },
@@ -2556,6 +2559,20 @@
             "markdownDescription": "将特定名称的字段视为受保护，例如 `m_*` 意味着 `XXX.m_id` 与 `XXX.m_type` 是受保护的字段，只能在定义所在的类极其子类中访问。",
             "scope": "resource",
             "type": "array"
+        },
+        "doc.regengine": {
+            "default": "glob",
+            "enum": [
+                "glob",
+                "lua"
+            ],
+            "markdownDescription": "TODO: Needs documentation",
+            "markdownEnumDescriptions": [
+                "TODO: Needs documentation",
+                "TODO: Needs documentation"
+            ],
+            "scope": "resource",
+            "type": "string"
         },
         "format": {
             "properties": {
