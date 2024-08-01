@@ -55,7 +55,7 @@ export class Addon {
         const moduleGit = git.cwd({ path: modulePath.fsPath, root: false });
 
         let currentVersion = null;
-        let tags = [];
+        let tags: string[] = [];
 
         await this.getEnabled();
 
@@ -133,7 +133,7 @@ export class Addon {
             .remote(["show", "origin"])) as string;
         const match = result.match(/HEAD branch: (\w+)/);
 
-        return match[1];
+        return match![1];
     }
 
     public async pull() {

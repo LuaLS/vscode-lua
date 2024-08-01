@@ -10,7 +10,7 @@ export default async (
     context: vscode.ExtensionContext,
     message: { data: { name: string; version: string } }
 ) => {
-    const addon = addonManager.addons.get(message.data.name);
+    const addon = addonManager.addons.get(message.data.name)!;
 
     try {
         if (message.data.version === "Latest") {
