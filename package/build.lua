@@ -1,6 +1,6 @@
 local json = require 'json-beautify'
 
-local VERSION = "3.10.0"
+local VERSION = "3.10.1"
 
 local package = require 'package.package'
 local fsu     = require 'fs-utility'
