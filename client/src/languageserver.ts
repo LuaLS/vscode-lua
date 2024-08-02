@@ -154,6 +154,7 @@ class LuaClient extends Disposable {
                 trustByClient: true,
                 useSemanticByRange: true,
                 codeLensViewReferences: true,
+                fixIndents: true,
             },
         };
 
