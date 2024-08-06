@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import { luaConfiguration } from './languageConfiguration';
 import {
     workspace as Workspace,
     ExtensionContext,
@@ -134,8 +133,6 @@ class LuaClient extends Disposable {
                 disposable.dispose();
             }
         });
-
-        this.disposables.push(vscode.languages.setLanguageConfiguration('lua', luaConfiguration));
     }
 
     async start() {
@@ -150,11 +147,13 @@ class LuaClient extends Disposable {
             },
             initializationOptions: {
                 changeConfiguration: true,
+                statusBar: true,
                 viewDocument: true,
                 trustByClient: true,
                 useSemanticByRange: true,
                 codeLensViewReferences: true,
                 fixIndents: true,
+                languageConfiguration: true,
             },
         };
 
@@ -193,6 +192,7 @@ class LuaClient extends Disposable {
         await this.client.start();
         this.onCommand();
         this.statusBar();
+        this.languageConfiguration();
     }
 
     private async getCommand(config: vscode.WorkspaceConfiguration) {
@@ -279,7 +279,7 @@ class LuaClient extends Disposable {
         this.dispose();
     }
 
-    statusBar() {
+    private statusBar() {
         const client = this.client!;
         const bar = window.createStatusBarItem(vscode.StatusBarAlignment.Right);
         bar.text = "Lua";
@@ -309,7 +309,7 @@ class LuaClient extends Disposable {
         this.disposables.push(bar);
     }
 
-    onCommand() {
+    private onCommand() {
         if (!this.client) {
             return;
         }
@@ -318,6 +318,45 @@ class LuaClient extends Disposable {
                 Commands.executeCommand(params.command, params.data);
             })
         );
+    }
+
+    private languageConfiguration() {
+        if (!this.client) {
+            return;
+        }
+
+        function convertStringsToRegex(config: any): any {
+            if (typeof config !== 'object' || config === null) {
+                return config;
+            }
+        
+            for (const key in config) {
+                if (config.hasOwnProperty(key)) {
+                    const value = config[key];
+        
+                    if (typeof value === 'object' && value !== null) {
+                        convertStringsToRegex(value);
+                    }
+        
+                    if (key === 'beforeText' || key === 'afterText') {
+                        if (typeof value === 'string') {
+                            config[key] = new RegExp(value);
+                        }
+                    }
+                }
+            }
+        
+            return config;
+        }
+
+        let configuration: Disposable | undefined;
+        this.disposables.push(
+            this.client.onNotification('$/languageConfiguration', (params) => {
+                configuration?.dispose();
+                configuration = vscode.languages.setLanguageConfiguration(params.id, convertStringsToRegex(params.configuration));
+                this.disposables.push(configuration);
+            })
+        )
     }
 }
 
@@ -348,7 +387,7 @@ export async function deactivate() {
     }
     return undefined;
 }
-
+vscode.SyntaxTokenType.String
 export async function reportAPIDoc(params: unknown) {
     if (!defaultClient) {
         return;
