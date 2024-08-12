@@ -43,6 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
     return {
         async reportAPIDoc(params: unknown) {
             await languageserver.reportAPIDoc(params);
+        },
+        async setConfig(changes: languageserver.ConfigChange[]) {
+            await languageserver.setConfig(changes);
         }
     };
 }
