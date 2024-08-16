@@ -81,7 +81,9 @@ export class Addon {
                 currentVersion = await moduleGit
                     .revparse(["--short", "HEAD"])
                     .catch((err) => {
-                        localLogger.warn(err);
+                        localLogger.warn(
+                            `Failed to get current hash for ${this.name}: ${err}`
+                        );
                         return null;
                     });
             }
