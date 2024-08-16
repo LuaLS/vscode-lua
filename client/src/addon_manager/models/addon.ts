@@ -192,10 +192,10 @@ export class Addon {
         );
 
         const moduleURI = vscode.Uri.joinPath(this.uri, "module");
-        this.#installed =
-            (await filesystem.exists(moduleURI)) &&
-            ((await filesystem.readDirectory(moduleURI, { recursive: false }))
-                ?.length ?? 0) > 0;
+
+        const exists = await filesystem.exists(moduleURI);
+        const empty = await filesystem.empty(moduleURI);
+        this.#installed = exists && !empty;
 
         return folderStates;
     }
