@@ -3279,6 +3279,9 @@
                 "castNumberToInteger": {
                     "$ref": "#/properties/type.castNumberToInteger"
                 },
+                "checkTableShape": {
+                    "$ref": "#/properties/type.checkTableShape"
+                },
                 "inferParamType": {
                     "$ref": "#/properties/type.inferParamType"
                 },
@@ -3293,6 +3296,12 @@
         "type.castNumberToInteger": {
             "default": true,
             "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.checkTableShape": {
+            "default": false,
+            "markdownDescription": "对表的形状进行严格检查。\n",
             "scope": "resource",
             "type": "boolean"
         },

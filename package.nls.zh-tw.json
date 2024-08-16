@@ -217,6 +217,7 @@
     "config.spell.dict": "拼寫檢查的自訂單詞。",
     "config.telemetry.enable": "啟用遙測，透過網路發送你的編輯器資訊與錯誤日誌。在[此處](https://luals.github.io/privacy/#language-server)閱讀我們的隱私聲明。\n",
     "config.type.castNumberToInteger": "允許將 `number` 類型賦值給 `integer` 類型。",
+    "config.type.checkTableShape": "对表的形状进行严格检查。\n",
     "config.type.inferParamType": "未注释参数类型时，参数类型由函数传入参数推断。\n\n如果设置为 \"false\"，则在未注释时，参数类型为 \"any\"。\n",
     "config.type.weakNilCheck": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.type.weakUnionCheck": "同位類型中只要有一個子類型滿足條件，則同位類型也滿足條件。\n\n此設定為 `false` 時，`number|boolean` 類型無法賦給 `number` 類型；為 `true` 時則可以。\n",
