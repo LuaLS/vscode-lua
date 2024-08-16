@@ -55,8 +55,6 @@ namespace filesystem {
         const bytes = await vscode.workspace.fs.readFile(uri);
         const str = bytes.toString();
 
-        localLogger.debug(`Read "${uri.path}"`);
-
         return str;
     }
 

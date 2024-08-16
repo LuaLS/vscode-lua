@@ -60,12 +60,17 @@ export class Addon {
         await this.getEnabled();
 
         if (this.#installed) {
-            tags = (await moduleGit.tags(["--sort=-taggerdate"])).all;
+            tags = (
+                await moduleGit.tags([
+                    "--sort=-taggerdate",
+                    "--merged",
+                    `origin/${await this.getDefaultBranch()}`,
+                ])
+            ).all;
 
             const currentTag = await moduleGit
                 .raw(["describe", "--tags", "--exact-match"])
                 .catch((err) => {
-                    localLogger.warn(err);
                     return null;
                 });
             const commitsBehindLatest = await moduleGit.raw([
@@ -82,7 +87,9 @@ export class Addon {
                 currentVersion = await moduleGit
                     .revparse(["--short", "HEAD"])
                     .catch((err) => {
-                        localLogger.warn(err);
+                        localLogger.warn(
+                            `Failed to get current hash for ${this.name}: ${err}`
+                        );
                         return null;
                     });
             }
@@ -126,8 +133,20 @@ export class Addon {
     }
 
     public async getDefaultBranch() {
-        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+        // Get branch from .gitmodules if specified
+        const targetBranch = await git.raw(
+            "config",
+            "-f",
+            ".gitmodules",
+            "--get",
+            `submodule.addons/${this.name}/module.branch`
+        );
+        if (targetBranch) {
+            return targetBranch;
+        }
 
+        // Fetch default branch from remote
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
         const result = (await git
             .cwd({ path: modulePath.fsPath, root: false })
             .remote(["show", "origin"])) as string;
@@ -179,9 +198,10 @@ export class Addon {
         );
 
         const moduleURI = vscode.Uri.joinPath(this.uri, "module");
-        this.#installed =
-            (await filesystem.exists(moduleURI)) &&
-            ((await filesystem.readDirectory(moduleURI, { recursive: false }))?.length ?? 0) > 0;
+
+        const exists = await filesystem.exists(moduleURI);
+        const empty = await filesystem.empty(moduleURI);
+        this.#installed = exists && !empty;
 
         return folderStates;
     }
