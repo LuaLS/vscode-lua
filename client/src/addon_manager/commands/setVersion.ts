@@ -15,10 +15,6 @@ export default async (
     try {
         if (message.data.version === "Latest") {
             await addon.update();
-
-            const defaultBranch = await addon.getDefaultBranch();
-            await addon.checkout(defaultBranch);
-            await addon.pull();
         } else {
             await addon.checkout(message.data.version);
         }
