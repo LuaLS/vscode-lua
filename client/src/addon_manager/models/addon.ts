@@ -127,8 +127,20 @@ export class Addon {
     }
 
     public async getDefaultBranch() {
-        const modulePath = vscode.Uri.joinPath(this.uri, "module");
+        // Get branch from .gitmodules if specified
+        const targetBranch = await git.raw(
+            "config",
+            "-f",
+            ".gitmodules",
+            "--get",
+            `submodule.addons/${this.name}/module.branch`
+        );
+        if (targetBranch) {
+            return targetBranch;
+        }
 
+        // Fetch default branch from remote
+        const modulePath = vscode.Uri.joinPath(this.uri, "module");
         const result = (await git
             .cwd({ path: modulePath.fsPath, root: false })
             .remote(["show", "origin"])) as string;
