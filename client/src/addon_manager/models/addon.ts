@@ -60,7 +60,13 @@ export class Addon {
         await this.getEnabled();
 
         if (this.#installed) {
-            tags = (await moduleGit.tags(["--sort=-taggerdate"])).all;
+            tags = (
+                await moduleGit.tags([
+                    "--sort=-taggerdate",
+                    "--merged",
+                    `origin/${await this.getDefaultBranch()}`,
+                ])
+            ).all;
 
             const currentTag = await moduleGit
                 .raw(["describe", "--tags", "--exact-match"])
