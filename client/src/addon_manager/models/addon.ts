@@ -65,7 +65,6 @@ export class Addon {
             const currentTag = await moduleGit
                 .raw(["describe", "--tags", "--exact-match"])
                 .catch((err) => {
-                    localLogger.warn(err);
                     return null;
                 });
             const commitsBehindLatest = await moduleGit.raw([
