@@ -3,6 +3,14 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.10.5
+`2024-8-19`
+* `NEW` using `enum (partial)`, it suggests all fields with the same `enum` type rather than just the fields from the current table.
+* `NEW` When using `enum["<key>" or <index>]`, undefined fields will raise an 'undefined' error.
+* `FIX` Renaming files in the directory leads to the auto-correction in "require" adding extra characters.
+* `FIX` Performance issue
+* `FIX` Fix incorrect indent fixing for `for`
+
 ## 3.10.4
 `2024-8-16`
 * `NEW` Setting: `Lua.type.checkTableShape`: Add matching checks between the shape of tables and classes, during type checking. [#2768](https://github.com/LuaLS/lua-language-server/pull/2768)
