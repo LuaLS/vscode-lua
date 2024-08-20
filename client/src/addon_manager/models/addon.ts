@@ -60,6 +60,7 @@ export class Addon {
         await this.getEnabled();
 
         if (this.#installed) {
+            await git.fetch(["origin", "--prune", "--prune-tags"]);
             tags = (
                 await moduleGit.tags([
                     "--sort=-taggerdate",
