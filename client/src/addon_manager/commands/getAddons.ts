@@ -34,7 +34,7 @@ export default async (context: vscode.ExtensionContext) => {
     const CHUNK_SIZE = 30;
 
     // Get list of addons and sort them alphabetically
-    const addonList = Array.from(addonManager_service_1.default.addons.values()).filter(a => a.displayName !== '.DS_Store');
+    const addonList = Array.from(addonManager.addons.values());
     addonList.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
     // Send addons to client in chunks
