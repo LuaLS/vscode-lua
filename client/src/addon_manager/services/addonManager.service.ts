@@ -31,9 +31,14 @@ class AddonManager {
             });
         }
 
-        const addons = await filesystem.readDirectory(installLocation);
-
-        for (const addon of addons ?? []) {
+        const ignoreList = [".DS_Store"];
+        let addons = await filesystem.readDirectory(installLocation);
+        if (!addons) {
+            localLogger.warn("No addons found in installation folder");
+            return;
+        }
+        addons = addons.filter((a) => !ignoreList.includes(a.name));
+        for (const addon of addons) {
             this.addons.set(addon.name, new Addon(addon.name, addon.uri));
             localLogger.verbose(`Found ${addon.name}`);
         }
