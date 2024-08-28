@@ -36,7 +36,7 @@ class AddonManager {
         if (addons) {
             addons = addons.filter((a) => !ignoreList.includes(a.name));
         }
-        if (!addons) {
+        if (!addons || addons.length === 0) {
             localLogger.warn("No addons found in installation folder");
             return;
         }
