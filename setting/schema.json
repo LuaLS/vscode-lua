@@ -2574,6 +2574,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "docScriptPath": {
+            "default": "",
+            "markdownDescription": "TODO: Needs documentation",
+            "scope": "resource",
+            "type": "string"
+        },
         "format": {
             "properties": {
                 "defaultConfig": {

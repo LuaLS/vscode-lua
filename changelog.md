@@ -3,6 +3,18 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.10.6
+`2024-9-10`
+* `NEW` Custom documentation exporter
+* `NEW` Setting: `Lua.docScriptPath`: Path to a script that overrides `cli.doc.export`, allowing user-specified documentation exporting.
+* `NEW` Infer the parameter types of a same-named function in the subclass based on the parameter types in the superclass function.
+* `FIX` Fix `VM.OnCompileFunctionParam` function in plugins
+* `FIX` Lua 5.1: fix incorrect warning when using setfenv with an int as first parameter
+* `FIX` Improve type narrow by checking exact match on literal type params
+* `FIX` Correctly list enums for function overload arguments [#2840](https://github.com/LuaLS/lua-language-server/pull/2840)
+* `FIX` Incorrect function params' type infer when there is only `@overload` [#2509](https://github.com/LuaLS/lua-language-server/issues/2509) [#2708](https://github.com/LuaLS/lua-language-server/issues/2708) [#2709](https://github.com/LuaLS/lua-language-server/issues/2709)
+* `FIX` Only call workspace/configuration when available [#981](https://github.com/LuaLS/lua-language-server/issues/981), [#2318](https://github.com/LuaLS/lua-language-server/issues/2318), [2336](https://github.com/LuaLS/lua-language-server/issues/2336) [#2843](https://github.com/LuaLS/lua-language-server/pull/2843)
+
 ## 3.10.5
 `2024-8-19`
 * `NEW` using `enum (partial)`, it suggests all fields with the same `enum` type rather than just the fields from the current table.
