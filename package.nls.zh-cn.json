@@ -138,6 +138,7 @@
     "config.doc.regengine": "TODO: Needs documentation",
     "config.doc.regengine.glob": "TODO: Needs documentation",
     "config.doc.regengine.lua": "TODO: Needs documentation",
+    "config.docScriptPath": "TODO: Needs documentation",
     "config.format.defaultConfig": "默认的格式化配置，优先级低于工作区内的 `.editorconfig` 文件。\n请查阅[格式化文档](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs)了解用法。\n",
     "config.format.enable": "启用代码格式化程序。",
     "config.hint.arrayIndex": "在构造表时提示数组索引。",

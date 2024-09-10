@@ -2510,6 +2510,12 @@
 					"scope": "resource",
 					"type": "string"
 				},
+				"Lua.docScriptPath": {
+					"default": "",
+					"markdownDescription": "%config.docScriptPath%",
+					"scope": "resource",
+					"type": "string"
+				},
 				"Lua.format.defaultConfig": {
 					"additionalProperties": false,
 					"default": {},
@@ -3388,5 +3394,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.10.5"
+	"version": "3.10.6"
 }
