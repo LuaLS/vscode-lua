@@ -173,10 +173,7 @@ export class Addon {
      * @param libraryPaths An array of paths from the `Lua.workspace.library` setting.
      */
     public checkIfEnabled(libraryPaths: string[]) {
-        const regex = new RegExp(
-            `[/\\\\]+sumneko.lua[/\\\\]+addonManager[/\\\\]+addons[/\\\\]+${this.name}`,
-            "g"
-        );
+        const regex = new RegExp(`${this.name}\/module\/library`, "g");
 
         const index = libraryPaths.findIndex((path) => regex.test(path));
         return index !== -1;
@@ -207,7 +204,10 @@ export class Addon {
         return folderStates;
     }
 
-    public async enable(folder: vscode.WorkspaceFolder) {
+    public async enable(
+        folder: vscode.WorkspaceFolder,
+        installLocation: vscode.Uri
+    ) {
         const librarySetting = ((await getConfig(
             LIBRARY_SETTING,
             folder.uri
@@ -240,7 +240,11 @@ export class Addon {
         }
 
         // Apply addon settings
-        const libraryUri = vscode.Uri.joinPath(this.uri, "module", "library");
+        const libraryPath = vscode.Uri.joinPath(
+            this.uri,
+            "module",
+            "library"
+        ).path.replace(installLocation.path, "${addons}");
 
         const configValues = await this.getConfigurationFile();
 
@@ -249,7 +253,7 @@ export class Addon {
                 {
                     action: "add",
                     key: LIBRARY_SETTING,
-                    value: filesystem.unixifyPath(libraryUri),
+                    value: libraryPath,
                     uri: folder.uri,
                 },
             ]);
