@@ -4,6 +4,7 @@ import { createChildLogger } from "../services/logging.service";
 import { setConfig } from "../../languageserver";
 import { WebVue } from "../panels/WebVue";
 import { NotificationLevels } from "../types/webvue";
+import { ADDONS_DIRECTORY } from "../config";
 
 type Message = {
     data: {
@@ -20,7 +21,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     if (!addon || !workspaceFolders) {
         return;
     }
-    
+
     let selectedFolders: vscode.WorkspaceFolder[];
 
     if (workspaceFolders && workspaceFolders.length === 1) {
@@ -38,16 +39,23 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
             await addon.setLock(false);
             return;
         }
-        selectedFolders = pickResult.map((selection) => {
-            return workspaceFolders.find(
-                (folder) => folder.name === selection.label
-            );
-        }).filter((folder) => !!folder);
+        selectedFolders = pickResult
+            .map((selection) => {
+                return workspaceFolders.find(
+                    (folder) => folder.name === selection.label
+                );
+            })
+            .filter((folder) => !!folder);
     }
 
     for (const folder of selectedFolders) {
         try {
-            await addon.enable(folder);
+            const installLocation = vscode.Uri.joinPath(
+                context.globalStorageUri,
+                "addonManager",
+                ADDONS_DIRECTORY
+            );
+            await addon.enable(folder, installLocation);
         } catch (e) {
             const message = `Failed to enable ${addon.name}!`;
             localLogger.error(message, { report: false });
