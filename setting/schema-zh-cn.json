@@ -373,7 +373,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "Find defined global variables using regex.",
+            "markdownDescription": "启用诊断以检测尝试关闭非对象的变量。",
             "scope": "resource",
             "type": "array"
         },
@@ -810,7 +810,7 @@
                 },
                 "close-non-object": {
                     "default": "Any",
-                    "description": "Enable diagnostics for attempts to close a variable with a non-object.",
+                    "description": "尝试关闭非对象变量的诊断",
                     "enum": [
                         "Any",
                         "Opened",
@@ -836,7 +836,7 @@
                 },
                 "codestyle-check": {
                     "default": "None",
-                    "description": "Enable diagnostics for incorrectly styled lines.",
+                    "description": "启用对不正确样式行的诊断",
                     "enum": [
                         "Any",
                         "Opened",
@@ -992,7 +992,7 @@
                 },
                 "global-element": {
                     "default": "None",
-                    "description": "Enable diagnostics to warn about global elements.",
+                    "description": "启用诊断以警告全局元素。",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1317,7 +1317,7 @@
                 },
                 "spell-check": {
                     "default": "None",
-                    "description": "Enable diagnostics for typos in strings.",
+                    "description": "启用字符串拼写检查的诊断。",
                     "enum": [
                         "Any",
                         "Opened",
@@ -1637,7 +1637,7 @@
                 },
                 "close-non-object": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for attempts to close a variable with a non-object.",
+                    "description": "尝试关闭非对象变量的诊断",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1667,7 +1667,7 @@
                 },
                 "codestyle-check": {
                     "default": "Warning",
-                    "description": "Enable diagnostics for incorrectly styled lines.",
+                    "description": "启用对不正确样式行的诊断",
                     "enum": [
                         "Error",
                         "Warning",
@@ -1847,7 +1847,7 @@
                 },
                 "global-element": {
                     "default": "Warning",
-                    "description": "Enable diagnostics to warn about global elements.",
+                    "description": "启用诊断以警告全局元素。",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2222,7 +2222,7 @@
                 },
                 "spell-check": {
                     "default": "Information",
-                    "description": "Enable diagnostics for typos in strings.",
+                    "description": "启用字符串拼写检查的诊断。",
                     "enum": [
                         "Error",
                         "Warning",
@@ -2774,6 +2774,28 @@
             "scope": "resource",
             "type": "integer"
         },
+        "language": {
+            "properties": {
+                "completeAnnotation": {
+                    "$ref": "#/properties/language.completeAnnotation"
+                },
+                "fixIndent": {
+                    "$ref": "#/properties/language.fixIndent"
+                }
+            }
+        },
+        "language.completeAnnotation": {
+            "default": true,
+            "markdownDescription": "(仅VSCode) 在注解后换行时自动插入 \"---@ \"。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "language.fixIndent": {
+            "default": true,
+            "markdownDescription": "(仅VSCode) 修复错误的自动缩进，例如在包含单词 \"function\" 的字符串中换行时出现的错误缩进。",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "misc": {
             "properties": {
                 "executablePath": {
@@ -3149,7 +3171,7 @@
             ]
         },
         "runtime.pluginArgs": {
-            "markdownDescription": "Additional arguments for the plugin.",
+            "markdownDescription": "插件的额外参数。",
             "scope": "resource",
             "type": [
                 "array",

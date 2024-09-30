@@ -2650,6 +2650,18 @@
 					"scope": "resource",
 					"type": "integer"
 				},
+				"Lua.language.completeAnnotation": {
+					"default": true,
+					"markdownDescription": "%config.language.completeAnnotation%",
+					"scope": "resource",
+					"type": "boolean"
+				},
+				"Lua.language.fixIndent": {
+					"default": true,
+					"markdownDescription": "%config.language.fixIndent%",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.misc.executablePath": {
 					"default": "",
 					"markdownDescription": "%config.misc.executablePath%",
@@ -3394,5 +3406,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.10.6"
+	"version": "3.11.0"
 }

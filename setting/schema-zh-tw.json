@@ -2774,6 +2774,28 @@
             "scope": "resource",
             "type": "integer"
         },
+        "language": {
+            "properties": {
+                "completeAnnotation": {
+                    "$ref": "#/properties/language.completeAnnotation"
+                },
+                "fixIndent": {
+                    "$ref": "#/properties/language.fixIndent"
+                }
+            }
+        },
+        "language.completeAnnotation": {
+            "default": true,
+            "markdownDescription": "(VSCode only) Automatically insert \"---@ \" after a line break following a annotation.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "language.fixIndent": {
+            "default": true,
+            "markdownDescription": "(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word \"function.\"",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "misc": {
             "properties": {
                 "executablePath": {

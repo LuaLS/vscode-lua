@@ -167,6 +167,8 @@
     "config.hover.viewStringMax": "懸浮提示檢視字串內容時的最大長度。",
     "config.intelliSense.fastGlobal": "在對全域變數進行補全，及檢視 `_G` 的懸浮提示時進行最佳化。這會略微降低類型推測的準確度，但是對於大量使用全域變數的專案會有大幅的效能提升。",
     "config.intelliSense.searchDepth": "設定智慧感知的搜尋深度。增大該值可以增加準確度，但會降低效能。不同的工作區對該設定的容忍度差異較大，請自己調整為合適的值。",
+    "config.language.completeAnnotation": "(VSCode only) Automatically insert \"---@ \" after a line break following a annotation.",
+    "config.language.fixIndent": "(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word \"function.\"",
     "config.misc.executablePath": "Specify the executable path in VSCode.",
     "config.misc.parameters": "VSCode中啟動語言伺服時的[命令列參數](https://luals.github.io/wiki/usage#arguments)。",
     "config.nameStyle.config": "Set name style config",
