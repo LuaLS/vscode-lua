@@ -2,6 +2,7 @@
 
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
+* `FIX` Pass storagePath option to server to resolve addon directory not found
 
 ## 3.11.0
 * `NEW` Added support for Japanese locale

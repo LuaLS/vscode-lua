@@ -154,6 +154,7 @@ class LuaClient extends Disposable {
                 codeLensViewReferences: true,
                 fixIndents: true,
                 languageConfiguration: true,
+                storagePath: this.context.globalStorageUri.path,
             },
         };
 
