@@ -328,11 +328,18 @@ export class Addon {
         for (const folder of vscode.workspace.workspaceFolders ?? []) {
             await this.disable(folder, true);
         }
-        const moduleURI = vscode.Uri.joinPath(this.uri, "module");
-        await filesystem.deleteFile(moduleURI, {
-            recursive: true,
-            useTrash: false,
+        const files =
+            (await filesystem.readDirectory(
+                vscode.Uri.joinPath(this.uri, "module"),
+                { depth: 1 }
+            )) ?? [];
+        files.map((f) => {
+            return filesystem.deleteFile(f.uri, {
+                recursive: true,
+                useTrash: false,
+            });
         });
+        await Promise.all(files);
         localLogger.info(`Uninstalled ${this.name}`);
         this.#installed = false;
         this.setLock(false);
