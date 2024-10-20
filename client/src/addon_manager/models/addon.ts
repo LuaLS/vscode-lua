@@ -278,7 +278,7 @@ export class Addon {
         )) ?? []) as string[];
 
         const regex = new RegExp(
-            `[/\\\\]+sumneko.lua[/\\\\]+addonManager[/\\\\]+addons[/\\\\]+${this.name}`,
+            `addons}?[/\\\\]+${this.name}[/\\\\]+module[/\\\\]+library`,
             "g"
         );
         const index = librarySetting.findIndex((path) => regex.test(path));
