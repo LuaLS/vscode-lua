@@ -154,7 +154,7 @@ class LuaClient extends Disposable {
                 codeLensViewReferences: true,
                 fixIndents: true,
                 languageConfiguration: true,
-                storagePath: this.context.globalStorageUri.path,
+                storagePath: this.context.globalStorageUri.fsPath,
             },
         };
 
@@ -330,15 +330,15 @@ class LuaClient extends Disposable {
             if (typeof config !== 'object' || config === null) {
                 return config;
             }
-        
+
             for (const key in config) {
                 if (config.hasOwnProperty(key)) {
                     const value = config[key];
-        
+
                     if (typeof value === 'object' && value !== null) {
                         convertStringsToRegex(value);
                     }
-        
+
                     if (key === 'beforeText' || key === 'afterText') {
                         if (typeof value === 'string') {
                             config[key] = new RegExp(value);
@@ -346,7 +346,7 @@ class LuaClient extends Disposable {
                     }
                 }
             }
-        
+
             return config;
         }
 
