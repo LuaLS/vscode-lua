@@ -3236,15 +3236,6 @@
 		],
 		"languages": [
 			{
-				"id": "lua",
-				"extensions": [
-					".lua"
-				],
-				"aliases": [
-					"Lua"
-				]
-			},
-			{
 				"filenames": [
 					".luarc.json",
 					"config.json"
@@ -3415,5 +3406,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.11.1"
+	"version": "3.12.0"
 }
