@@ -3236,13 +3236,13 @@
 		],
 		"languages": [
 			{
-				"id": "lua",
+				"aliases": [
+					"Lua"
+				],
 				"extensions": [
 					".lua"
 				],
-				"aliases": [
-					"Lua"
-				]
+				"id": "lua"
 			},
 			{
 				"filenames": [
