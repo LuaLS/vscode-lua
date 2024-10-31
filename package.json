@@ -3236,6 +3236,15 @@
 		],
 		"languages": [
 			{
+				"id": "lua",
+				"extensions": [
+					".lua"
+				],
+				"aliases": [
+					"Lua"
+				]
+			},
+			{
 				"filenames": [
 					".luarc.json",
 					"config.json"
