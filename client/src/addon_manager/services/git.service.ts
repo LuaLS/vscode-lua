@@ -2,15 +2,15 @@ import * as vscode from "vscode";
 import simpleGit from "simple-git";
 import filesystem from "./filesystem.service";
 import { createChildLogger } from "./logging.service";
-import { REPOSITORY_NAME, REPOSITORY } from "../config";
+import { REPOSITORY_NAME, REPOSITORY, getStorageUri } from "../config";
 
 const localLogger = createChildLogger("Git");
 
 export const git = simpleGit({ trimmed: true });
 
-export const setupGit = async (context: vscode.ExtensionContext, storageUri: vscode.Uri) => {
+export const setupGit = async (context: vscode.ExtensionContext) => {
     const storageURI = vscode.Uri.joinPath(
-        storageUri,
+        getStorageUri(context),
         "addonManager"
     );
     await filesystem.createDirectory(storageURI);

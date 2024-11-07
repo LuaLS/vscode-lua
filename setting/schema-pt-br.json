@@ -3331,6 +3331,9 @@
                 "inferParamType": {
                     "$ref": "#/properties/type.inferParamType"
                 },
+                "inferTableSize": {
+                    "$ref": "#/properties/type.inferTableSize"
+                },
                 "weakNilCheck": {
                     "$ref": "#/properties/type.weakNilCheck"
                 },
@@ -3356,6 +3359,12 @@
             "markdownDescription": "When the parameter type is not annotated, the parameter type is inferred from the function's incoming parameters.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
             "scope": "resource",
             "type": "boolean"
+        },
+        "type.inferTableSize": {
+            "default": 10,
+            "markdownDescription": "TODO: Needs documentation",
+            "scope": "resource",
+            "type": "integer"
         },
         "type.weakNilCheck": {
             "default": false,

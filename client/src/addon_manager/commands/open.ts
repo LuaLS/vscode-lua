@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { createChildLogger } from "../services/logging.service";
-import { ADDONS_DIRECTORY } from "../config";
+import { ADDONS_DIRECTORY, getStorageUri } from "../config";
 
 const localLogger = createChildLogger("Open Addon");
 
@@ -8,7 +8,7 @@ export default async (
     context: vscode.ExtensionContext,
     message: { data: { name: string } }
 ) => {
-    const extensionStorageURI = context.globalStorageUri;
+    const extensionStorageURI = getStorageUri(context);
     const uri = vscode.Uri.joinPath(
         extensionStorageURI,
         "addonManager",
