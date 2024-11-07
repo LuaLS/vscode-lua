@@ -224,6 +224,7 @@
     "config.type.castNumberToInteger": "Allowed to assign the `number` type to the `integer` type.",
     "config.type.checkTableShape": "Strictly check the shape of the table.\n",
     "config.type.inferParamType": "When a parameter type is not annotated, it is inferred from the function's call sites.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
+    "config.type.inferTableSize": "TODO: Needs documentation",
     "config.type.weakNilCheck": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.type.weakUnionCheck": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
     "config.typeFormat.config": "Configures the formatting behavior while typing Lua code.",

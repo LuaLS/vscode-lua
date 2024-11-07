@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { createChildLogger } from "../services/logging.service";
 import addonManager from "../services/addonManager.service";
 import { WebVue } from "../panels/WebVue";
-import { ADDONS_DIRECTORY } from "../config";
+import { ADDONS_DIRECTORY, getStorageUri } from "../config";
 
 const localLogger = createChildLogger("Get Remote Addons");
 
@@ -10,7 +10,7 @@ export default async (context: vscode.ExtensionContext) => {
     WebVue.setLoadingState(true);
 
     const installLocation = vscode.Uri.joinPath(
-        context.globalStorageUri,
+        getStorageUri(context),
         "addonManager",
         ADDONS_DIRECTORY
     );

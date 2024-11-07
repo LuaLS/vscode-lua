@@ -3331,6 +3331,9 @@
                 "inferParamType": {
                     "$ref": "#/properties/type.inferParamType"
                 },
+                "inferTableSize": {
+                    "$ref": "#/properties/type.inferTableSize"
+                },
                 "weakNilCheck": {
                     "$ref": "#/properties/type.weakNilCheck"
                 },
@@ -3356,6 +3359,12 @@
             "markdownDescription": "未注释参数类型时，参数类型由函数传入参数推断。\n\n如果设置为 \"false\"，则在未注释时，参数类型为 \"any\"。\n",
             "scope": "resource",
             "type": "boolean"
+        },
+        "type.inferTableSize": {
+            "default": 10,
+            "markdownDescription": "TODO: Needs documentation",
+            "scope": "resource",
+            "type": "integer"
         },
         "type.weakNilCheck": {
             "default": false,

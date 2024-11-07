@@ -4,7 +4,7 @@ import { createChildLogger } from "../services/logging.service";
 import { setConfig } from "../../languageserver";
 import { WebVue } from "../panels/WebVue";
 import { NotificationLevels } from "../types/webvue";
-import { ADDONS_DIRECTORY } from "../config";
+import { ADDONS_DIRECTORY, getStorageUri } from "../config";
 
 type Message = {
     data: {
@@ -51,7 +51,7 @@ export default async (context: vscode.ExtensionContext, message: Message) => {
     for (const folder of selectedFolders) {
         try {
             const installLocation = vscode.Uri.joinPath(
-                context.globalStorageUri,
+                getStorageUri(context),
                 "addonManager",
                 ADDONS_DIRECTORY
             );
