@@ -6,7 +6,7 @@ import { createChildLogger, logger } from "./services/logging.service";
 import dayjs from "dayjs";
 import RelativeTime from "dayjs/plugin/relativeTime";
 import { git, setupGit } from "./services/git.service";
-import { GIT_DOWNLOAD_URL } from "./config";
+import { GIT_DOWNLOAD_URL, REPOSITORY } from "./config";
 import { NotificationLevels } from "./types/webvue";
 import * as languageServer from "../languageserver";
 
@@ -28,6 +28,17 @@ export async function activate(context: vscode.ExtensionContext) {
     const fileLogger = new VSCodeLogFileTransport(context.logUri, {
         level: "debug",
     });
+    
+    // update config
+    const repository_path = globalConfig.get("repository_path") as string
+    const repository_branch = globalConfig.get("repository_branch") as string
+    let storageUri = context.globalStorageUri
+    if ((repository_path || repository_branch) && context.storageUri) {
+        REPOSITORY.PATH = repository_path ?? REPOSITORY.PATH
+        REPOSITORY.DEFAULT_BRANCH = repository_branch ?? REPOSITORY.DEFAULT_BRANCH
+        storageUri = context.storageUri
+    }
+    
 
     // Register command to open addon manager
     context.subscriptions.push(
@@ -83,7 +94,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
             // Set up git repository for fetching addons
             try {
-                setupGit(context);
+                setupGit(context, storageUri);
             } catch (e: any) {
                 const message =
                     "Failed to set up Git repository. Please check your connection to GitHub.";
