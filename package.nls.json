@@ -5,6 +5,8 @@
     "command.startServer": "Lua: (debug) Start Language Server",
     "command.stopServer": "Lua: (debug) Stop Language Server",
     "config.addonManager.enable": "Whether the addon manager is enabled or not.",
+    "config.addonManager.repository_branch": "Specifies the git branch used by the addon manager.",
+    "config.addonManager.repository_path": "Specifies the git path used by the addon manager.",
     "config.codeLens.enable": "Enable code lens.",
     "config.color.mode": "Color mode.",
     "config.color.mode.Grammar": "Grammar color.",

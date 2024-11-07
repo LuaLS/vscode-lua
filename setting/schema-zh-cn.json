@@ -5,6 +5,12 @@
             "properties": {
                 "enable": {
                     "$ref": "#/properties/addonManager.enable"
+                },
+                "repository_branch": {
+                    "$ref": "#/properties/addonManager.repository_branch"
+                },
+                "repository_path": {
+                    "$ref": "#/properties/addonManager.repository_path"
                 }
             }
         },
@@ -13,6 +19,18 @@
             "markdownDescription": "是否启用扩展的附加插件管理器(Addon Manager)",
             "scope": "resource",
             "type": "boolean"
+        },
+        "addonManager.repository_branch": {
+            "default": "",
+            "markdownDescription": "插件管理器(Addon Manager)使用的git仓库分支",
+            "scope": "resource",
+            "type": "string"
+        },
+        "addonManager.repository_path": {
+            "default": "",
+            "markdownDescription": "插件管理器(Addon Manager)使用的git仓库路径",
+            "scope": "resource",
+            "type": "string"
         },
         "codeLens": {
             "properties": {
