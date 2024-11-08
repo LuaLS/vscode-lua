@@ -56,15 +56,15 @@
 					"scope": "resource",
 					"type": "boolean"
 				},
-				"Lua.addonManager.repository_branch": {
+				"Lua.addonManager.repositoryBranch": {
 					"default": "",
-					"markdownDescription": "%config.addonManager.repository_branch%",
+					"markdownDescription": "%config.addonManager.repositoryBranch%",
 					"scope": "resource",
 					"type": "string"
 				},
-				"Lua.addonManager.repository_path": {
+				"Lua.addonManager.repositoryPath": {
 					"default": "",
-					"markdownDescription": "%config.addonManager.repository_path%",
+					"markdownDescription": "%config.addonManager.repositoryPath%",
 					"scope": "resource",
 					"type": "string"
 				},

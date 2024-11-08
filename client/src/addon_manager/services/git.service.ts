@@ -24,8 +24,7 @@ export const setupGit = async (context: vscode.ExtensionContext) => {
             localLogger.debug(
                 `Attempting to clone ${REPOSITORY_NAME} to ${storageURI.fsPath}`
             );
-            const options = { "--depth": 1 };
-            await git.clone(REPOSITORY.PATH, storageURI.fsPath, options);
+            await git.clone(REPOSITORY.PATH, storageURI.fsPath);
             localLogger.debug(
                 `Cloned ${REPOSITORY_NAME} to ${storageURI.fsPath}`
             );
