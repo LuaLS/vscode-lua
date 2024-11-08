@@ -6,11 +6,11 @@
                 "enable": {
                     "$ref": "#/properties/addonManager.enable"
                 },
-                "repository_branch": {
-                    "$ref": "#/properties/addonManager.repository_branch"
+                "repositoryBranch": {
+                    "$ref": "#/properties/addonManager.repositoryBranch"
                 },
-                "repository_path": {
-                    "$ref": "#/properties/addonManager.repository_path"
+                "repositoryPath": {
+                    "$ref": "#/properties/addonManager.repositoryPath"
                 }
             }
         },
@@ -20,13 +20,13 @@
             "scope": "resource",
             "type": "boolean"
         },
-        "addonManager.repository_branch": {
+        "addonManager.repositoryBranch": {
             "default": "",
             "markdownDescription": "Specifies the git branch used by the addon manager.",
             "scope": "resource",
             "type": "string"
         },
-        "addonManager.repository_path": {
+        "addonManager.repositoryPath": {
             "default": "",
             "markdownDescription": "Specifies the git path used by the addon manager.",
             "scope": "resource",

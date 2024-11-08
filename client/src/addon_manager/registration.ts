@@ -30,11 +30,11 @@ export async function activate(context: vscode.ExtensionContext) {
     });
     
     // update config
-    const repository_path = globalConfig.get("repository_path") as string
-    const repository_branch = globalConfig.get("repository_branch") as string
-    if ((repository_path || repository_branch) && context.storageUri) {
-        REPOSITORY.PATH = !!repository_path ? repository_path : REPOSITORY.PATH
-        REPOSITORY.DEFAULT_BRANCH = !!repository_branch ? repository_branch : REPOSITORY.DEFAULT_BRANCH
+    const repositoryPath = globalConfig.get("repositoryPath") as string
+    const repositoryBranch = globalConfig.get("repositoryBranch") as string
+    if ((repositoryPath || repositoryBranch) && context.storageUri) {
+        REPOSITORY.PATH = !!repositoryPath ? repositoryPath : REPOSITORY.PATH
+        REPOSITORY.DEFAULT_BRANCH = !!repositoryBranch ? repositoryBranch : REPOSITORY.DEFAULT_BRANCH
         setGlobalStorageUri(false)
     }
     
