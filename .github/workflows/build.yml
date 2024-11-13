@@ -42,6 +42,11 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22' # 指定要安装的 Node.js 版本
+
       - name: Build for Windows
         if: ${{ matrix.target == 'windows' }}
         working-directory: ./server
