@@ -6,6 +6,30 @@
 * `NEW` Setting: `Lua.type.inferTableSize`: A Small Table array can be infered
 * `NEW` Add custom repository support for addonManager. New configuration setting: `Lua.addonManager.repositoryBranch` and `Lua.addonManager.repositoryPath`
 
+## 3.13.0
+`2024-11-13`
+* `NEW` Setting: `Lua.type.inferTableSize`: A Small Table array can be infered
+* `NEW` Add custom repository support for addonManager. New configuration setting: `Lua.addonManager.repositoryBranch` and `Lua.addonManager.repositoryPath`
+* `NEW` Infer function parameter types when the function is used as an callback argument and that argument has a `fun()` annotation. Enable with `Lua.type.inferParamType` setting. [#2695](https://github.com/LuaLS/lua-language-server/pull/2695)
+  ```lua
+  ---@param callback fun(a: integer)
+  function register(callback) end
+
+  local function callback(a) end  --> a: integer
+  register(callback)
+  ```
+* `CHG` Basic types allow contravariance
+  ```lua
+  ---@class int32: integer
+
+  ---@type integer
+  local n
+
+  ---@type int32
+  local a = n
+  ```
+* `FIX` Improve type narrow with **literal alias type** during completion and signature help
+
 ## 3.12.0
 `2024-10-30`
 * `NEW` Support importing `enum` through class name suffix matching in quick fixes, allowing the import of `enum` from `table.table.enum; return table`.
