@@ -3,6 +3,12 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.13.3
+* `CHG` Update Love2d version
+* `CHG` Improve type infer of `table.unpack` and `unpack`
+* `FIX` `missing-fields` diagnostic now warns about missing inherited fields
+* `FIX` Incorrect `param-type-mismatch` diagnostic for optional fields
+
 ## 3.13.2
 `2024-11-21`
 * `CHG` fulfill zh-cn translations
