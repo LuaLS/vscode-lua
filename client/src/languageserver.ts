@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+import * as LSP from 'vscode-languageserver-protocol';
 import {
     workspace as Workspace,
     ExtensionContext,
@@ -156,6 +157,9 @@ class LuaClient extends Disposable {
                 languageConfiguration: true,
                 storagePath: this.context.globalStorageUri.fsPath,
             },
+            middleware: {
+                provideHover: async () => undefined,
+            }
         };
 
         const config = Workspace.getConfiguration(
@@ -194,6 +198,7 @@ class LuaClient extends Disposable {
         this.onCommand();
         this.statusBar();
         this.languageConfiguration();
+        this.provideHover();
     }
 
     private async getCommand(config: vscode.WorkspaceConfiguration) {
@@ -358,6 +363,58 @@ class LuaClient extends Disposable {
                 this.disposables.push(configuration);
             })
         )
+    }
+
+    private provideHover() {
+        const client = this.client;
+        const levelMap = new WeakMap<vscode.VerboseHover, number>();
+        let provider = vscode.languages.registerHoverProvider('lua', {
+            provideHover: async (document, position, token, context?: vscode.HoverContext) => {
+                if (!client) {
+                    return null;
+                }
+                let level = 1;
+                if (context?.previousHover) {
+                    level = levelMap.get(context.previousHover) ?? 0;
+                    if (context.verbosityDelta !== undefined) {
+                        level += context.verbosityDelta;
+                    }
+                }
+                let params = {
+                    level: level,
+                    ...client.code2ProtocolConverter.asTextDocumentPositionParams(document, position),
+                }
+                return client?.sendRequest(
+                    LSP.HoverRequest.type,
+                    params,
+                    token,
+                ).then((result) => {
+                    if (token.isCancellationRequested) {
+                        return null;
+                    }
+                    if (result === null) {
+                        return null;
+                    }
+                    let verboseResult = result as LSP.Hover & { maxLevel?: number };
+                    let maxLevel = verboseResult.maxLevel ?? 0;
+                    let hover = client.protocol2CodeConverter.asHover(result);
+                    let verboseHover = new vscode.VerboseHover(
+                        hover.contents,
+                        hover.range,
+                        level < maxLevel,
+                        level > 0,
+                    );
+                    if (level > maxLevel) {
+                        level = maxLevel;
+                    }
+                    levelMap.set(verboseHover, level);
+                    return verboseHover;
+                }, (error) => {
+                    return client.handleFailedRequest(LSP.HoverRequest.type, token, error, null);
+                });
+            }
+        })
+        this.disposables.push(provider)
     }
 }
 
