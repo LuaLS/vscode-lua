@@ -2769,7 +2769,7 @@
             "type": "boolean"
         },
         "hover.previewFields": {
-            "default": 50,
+            "default": 10,
             "markdownDescription": "懸浮提示檢視表時，限制表內欄位的最大預覽數量。",
             "scope": "resource",
             "type": "integer"

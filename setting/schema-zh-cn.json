@@ -2769,7 +2769,7 @@
             "type": "boolean"
         },
         "hover.previewFields": {
-            "default": 50,
+            "default": 10,
             "markdownDescription": "悬停提示查看表时，限制表内字段的最大预览数量。",
             "scope": "resource",
             "type": "integer"

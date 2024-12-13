@@ -2769,7 +2769,7 @@
             "type": "boolean"
         },
         "hover.previewFields": {
-            "default": 50,
+            "default": 10,
             "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
             "scope": "resource",
             "type": "integer"
