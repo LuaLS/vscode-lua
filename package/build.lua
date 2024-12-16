@@ -16,6 +16,17 @@ package.version = VERSION
 --     isPreReleaseVersion = false,
 --     preRelease = false,
 -- }
+package.contributes.configuration = {
+    title = 'Lua',
+    type = 'object',
+    properties = require 'server.tools.configuration',
+}
+package.contributes.semanticTokenScopes = {
+    {
+        language = 'lua',
+        scopes = require 'package.semanticTokenScope',
+    }
+}
 
 local encodeOption = {
     newline = '\r\n',
