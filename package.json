@@ -2570,6 +2570,12 @@
 					"scope": "resource",
 					"type": "boolean"
 				},
+				"Lua.hint.awaitPropagate": {
+					"default": false,
+					"markdownDescription": "%config.hint.awaitPropagate%",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.hint.enable": {
 					"default": false,
 					"markdownDescription": "%config.hint.enable%",
@@ -3433,5 +3439,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.13.4"
+	"version": "3.13.5"
 }

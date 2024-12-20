@@ -3,6 +3,13 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.13.5
+`2024-12-20`
+* `NEW` Setting: `Lua.hint.awaitPropagate`: When enabled, --@async propagates to the caller.
+* `CHG` Add server version information to `initialize` response #2996
+* `CHG` If the `---@field` of the same name has a type of `fun`, the `duplicate-doc-field` check will not be performed.
+* `FIX` Incorrect infer for function array annotation on tables [#2367](https://github.com/LuaLS/lua-language-server/issues/2367)
+
 ## 3.13.4
 `2024-12-13`
 * `CHG` Can adjust the level of detail of Hover (VSCode)

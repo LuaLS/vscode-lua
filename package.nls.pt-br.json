@@ -148,6 +148,7 @@
     "config.hint.arrayIndex.Disable": "Disable hints of array index.",
     "config.hint.arrayIndex.Enable": "Show hints in all tables.",
     "config.hint.await": "If the called function is marked `---@async`, prompt `await` at the call.",
+    "config.hint.awaitPropagate": "Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.",
     "config.hint.enable": "Enable inlay hint.",
     "config.hint.paramName": "Show hints of parameter name at the function call.",
     "config.hint.paramName.All": "All types of parameters are shown.",

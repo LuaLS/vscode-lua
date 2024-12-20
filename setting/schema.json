@@ -2636,6 +2636,9 @@
                 "await": {
                     "$ref": "#/properties/hint.await"
                 },
+                "awaitPropagate": {
+                    "$ref": "#/properties/hint.awaitPropagate"
+                },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
                 },
@@ -2672,6 +2675,12 @@
         "hint.await": {
             "default": true,
             "markdownDescription": "If the called function is marked `---@async`, prompt `await` at the call.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hint.awaitPropagate": {
+            "default": false,
+            "markdownDescription": "Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.",
             "scope": "resource",
             "type": "boolean"
         },

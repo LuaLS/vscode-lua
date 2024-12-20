@@ -2636,6 +2636,9 @@
                 "await": {
                     "$ref": "#/properties/hint.await"
                 },
+                "awaitPropagate": {
+                    "$ref": "#/properties/hint.awaitPropagate"
+                },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
                 },
@@ -2672,6 +2675,12 @@
         "hint.await": {
             "default": true,
             "markdownDescription": "如果调用的函数被标记为了 `---@async` ，则在调用处提示 `await` 。",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "hint.awaitPropagate": {
+            "default": false,
+            "markdownDescription": "启用 `await` 的传播, 当一个函数调用了一个`---@async`标记的函数时，会自动标记为`---@async`。",
             "scope": "resource",
             "type": "boolean"
         },
