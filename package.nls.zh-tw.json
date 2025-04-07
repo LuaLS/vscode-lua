@@ -121,6 +121,7 @@
     "config.diagnostics.unknown-cast-variable": "Enable diagnostics for casts of undefined variables.",
     "config.diagnostics.unknown-diag-code": "Enable diagnostics in cases in which an unknown diagnostics code is entered.",
     "config.diagnostics.unknown-operator": "Enable diagnostics for unknown operators.",
+    "config.diagnostics.unnecessary-assert": "Enable diagnostics for redundant assertions on truthy values.",
     "config.diagnostics.unreachable-code": "Enable diagnostics for unreachable code.",
     "config.diagnostics.unused": "* code-after-break\n* empty-block\n* redundant-return\n* trailing-space\n* unreachable-code\n* unused-function\n* unused-label\n* unused-local\n* unused-vararg",
     "config.diagnostics.unused-function": "未使用的函式",
