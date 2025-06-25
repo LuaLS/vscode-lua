@@ -32,6 +32,12 @@
             "scope": "resource",
             "type": "string"
         },
+        "addonRepositoryPath": {
+            "default": "",
+            "markdownDescription": "Specifies the addon repository path (not related to the addon manager).",
+            "scope": "resource",
+            "type": "string"
+        },
         "codeLens": {
             "properties": {
                 "enable": {
@@ -2584,17 +2590,17 @@
                 "glob",
                 "lua"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
             "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
+                "The default lightweight pattern syntax.",
+                "Full Lua-style regular expressions."
             ],
             "scope": "resource",
             "type": "string"
         },
         "docScriptPath": {
             "default": "",
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
             "scope": "resource",
             "type": "string"
         },
@@ -2858,7 +2864,7 @@
         "nameStyle.config": {
             "additionalProperties": false,
             "default": {},
-            "markdownDescription": "Set name style config",
+            "markdownDescription": "Set name style config.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
             "patternProperties": {
                 ".*": {
                     "type": [
@@ -3343,6 +3349,9 @@
                 "inferTableSize": {
                     "$ref": "#/properties/type.inferTableSize"
                 },
+                "maxUnionVariants": {
+                    "$ref": "#/properties/type.maxUnionVariants"
+                },
                 "weakNilCheck": {
                     "$ref": "#/properties/type.weakNilCheck"
                 },
@@ -3371,6 +3380,12 @@
         },
         "type.inferTableSize": {
             "default": 10,
+            "markdownDescription": "Maximum number of table fields analyzed during type inference.",
+            "scope": "resource",
+            "type": "integer"
+        },
+        "type.maxUnionVariants": {
+            "default": 0,
             "markdownDescription": "TODO: Needs documentation",
             "scope": "resource",
             "type": "integer"

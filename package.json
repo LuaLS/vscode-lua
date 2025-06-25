@@ -68,6 +68,12 @@
 					"scope": "resource",
 					"type": "string"
 				},
+				"Lua.addonRepositoryPath": {
+					"default": "",
+					"markdownDescription": "%config.addonRepositoryPath%",
+					"scope": "resource",
+					"type": "string"
+				},
 				"Lua.codeLens.enable": {
 					"default": false,
 					"markdownDescription": "%config.codeLens.enable%",
@@ -3126,6 +3132,12 @@
 					"scope": "resource",
 					"type": "integer"
 				},
+				"Lua.type.maxUnionVariants": {
+					"default": 0,
+					"markdownDescription": "%config.type.maxUnionVariants%",
+					"scope": "resource",
+					"type": "integer"
+				},
 				"Lua.type.weakNilCheck": {
 					"default": false,
 					"markdownDescription": "%config.type.weakNilCheck%",
@@ -3439,5 +3451,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.14.0"
+	"version": "3.15.0"
 }
