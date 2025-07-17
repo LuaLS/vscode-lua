@@ -215,6 +215,7 @@
     "config.runtime.version.Lua 5.2": "TODO: Needs documentation",
     "config.runtime.version.Lua 5.3": "TODO: Needs documentation",
     "config.runtime.version.Lua 5.4": "TODO: Needs documentation",
+    "config.runtime.version.Lua 5.5": "TODO: Needs documentation",
     "config.runtime.version.LuaJIT": "TODO: Needs documentation",
     "config.semantic.annotation": "Coloración de las anotaciones de tipo.",
     "config.semantic.enable": "Habilita la coloración semántica. Puede ser necesario asignar `editor.semanticHighlighting.enabled`  a `true` para que tenga efecto.",

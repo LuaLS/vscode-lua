@@ -216,6 +216,7 @@
     "config.runtime.version.Lua 5.2": "TODO: Needs documentation",
     "config.runtime.version.Lua 5.3": "TODO: Needs documentation",
     "config.runtime.version.Lua 5.4": "TODO: Needs documentation",
+    "config.runtime.version.Lua 5.5": "TODO: Needs documentation",
     "config.runtime.version.LuaJIT": "TODO: Needs documentation",
     "config.semantic.annotation": "对类型注解进行语义着色。",
     "config.semantic.enable": "启用语义着色。你可能需要同时将 `editor.semanticHighlighting.enabled` 设置为 `true` 才能生效。",
