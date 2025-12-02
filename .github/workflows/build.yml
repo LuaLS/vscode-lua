@@ -39,6 +39,7 @@ jobs:
       - uses: actboy168/setup-luamake@master
 
       - name: Build
+        working-directory: ./server
         run: luamake -platform ${{ matrix.platform }}
 
       - name: Setting up workflow variables
