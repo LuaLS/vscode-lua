@@ -64,6 +64,7 @@
     "config.diagnostics.duplicate-set-field": "Habilita el diagnóstico para cuando se asigna el mismo campo en una clase más de una vez.",
     "config.diagnostics.empty-block": "Habilita el diagnóstico de bloques de código vacíos.",
     "config.diagnostics.enable": "Habilita los diagnósticos.",
+    "config.diagnostics.enableScheme": "TODO: Needs documentation",
     "config.diagnostics.global": "* global-in-nil-env\n* lowercase-global\n* undefined-env-child\n* undefined-global",
     "config.diagnostics.global-element": "Habilita el diagnóstico que alerta sobre elementos globales.",
     "config.diagnostics.global-in-nil-env": "Habilita el diagnóstico para la prohibición de uso de variables globales (`_ENV` se fija a `nil`).",

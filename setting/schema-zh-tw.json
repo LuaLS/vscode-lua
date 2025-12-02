@@ -180,11 +180,11 @@
                 "disable": {
                     "$ref": "#/properties/diagnostics.disable"
                 },
-                "disableScheme": {
-                    "$ref": "#/properties/diagnostics.disableScheme"
-                },
                 "enable": {
                     "$ref": "#/properties/diagnostics.enable"
+                },
+                "enableScheme": {
+                    "$ref": "#/properties/diagnostics.enableScheme"
                 },
                 "globals": {
                     "$ref": "#/properties/diagnostics.globals"
@@ -232,6 +232,7 @@
                     "ambiguity-1",
                     "ambiguous-syntax",
                     "args-after-dots",
+                    "assign-const-global",
                     "assign-type-mismatch",
                     "await-in-sync",
                     "block-after-else",
@@ -253,6 +254,7 @@
                     "duplicate-index",
                     "duplicate-set-field",
                     "empty-block",
+                    "env-is-global",
                     "err-assign-as-eq",
                     "err-c-long-comment",
                     "err-comment-prefix",
@@ -262,6 +264,7 @@
                     "err-nonstandard-symbol",
                     "err-then-as-do",
                     "exp-in-action",
+                    "global-close-attribute",
                     "global-element",
                     "global-in-nil-env",
                     "incomplete-signature-doc",
@@ -316,6 +319,7 @@
                     "missing-parameter",
                     "missing-return",
                     "missing-return-value",
+                    "multi-close",
                     "name-style-check",
                     "need-check-nil",
                     "need-paren",
@@ -345,6 +349,7 @@
                     "undefined-global",
                     "unexpect-dots",
                     "unexpect-efunc-name",
+                    "unexpect-gfunc-name",
                     "unexpect-lfunc-name",
                     "unexpect-symbol",
                     "unicode-name",
@@ -354,26 +359,17 @@
                     "unknown-operator",
                     "unknown-symbol",
                     "unreachable-code",
+                    "unsupport-named-vararg",
                     "unsupport-symbol",
                     "unused-function",
                     "unused-label",
                     "unused-local",
-                    "unused-vararg"
+                    "unused-vararg",
+                    "variable-not-declared"
                 ],
                 "type": "string"
             },
             "markdownDescription": "停用的診斷（使用浮框括號內的程式碼）。",
-            "scope": "resource",
-            "type": "array"
-        },
-        "diagnostics.disableScheme": {
-            "default": [
-                "git"
-            ],
-            "items": {
-                "type": "string"
-            },
-            "markdownDescription": "不診斷使用以下 scheme 的lua檔案。",
             "scope": "resource",
             "type": "array"
         },
@@ -382,6 +378,17 @@
             "markdownDescription": "啟用診斷。",
             "scope": "resource",
             "type": "boolean"
+        },
+        "diagnostics.enableScheme": {
+            "default": [
+                "file"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "TODO: Needs documentation",
+            "scope": "resource",
+            "type": "array"
         },
         "diagnostics.globals": {
             "default": [],

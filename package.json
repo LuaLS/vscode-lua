@@ -178,6 +178,7 @@
 							"ambiguity-1",
 							"ambiguous-syntax",
 							"args-after-dots",
+							"assign-const-global",
 							"assign-type-mismatch",
 							"await-in-sync",
 							"block-after-else",
@@ -199,6 +200,7 @@
 							"duplicate-index",
 							"duplicate-set-field",
 							"empty-block",
+							"env-is-global",
 							"err-assign-as-eq",
 							"err-c-long-comment",
 							"err-comment-prefix",
@@ -208,6 +210,7 @@
 							"err-nonstandard-symbol",
 							"err-then-as-do",
 							"exp-in-action",
+							"global-close-attribute",
 							"global-element",
 							"global-in-nil-env",
 							"incomplete-signature-doc",
@@ -262,6 +265,7 @@
 							"missing-parameter",
 							"missing-return",
 							"missing-return-value",
+							"multi-close",
 							"name-style-check",
 							"need-check-nil",
 							"need-paren",
@@ -291,6 +295,7 @@
 							"undefined-global",
 							"unexpect-dots",
 							"unexpect-efunc-name",
+							"unexpect-gfunc-name",
 							"unexpect-lfunc-name",
 							"unexpect-symbol",
 							"unicode-name",
@@ -300,26 +305,17 @@
 							"unknown-operator",
 							"unknown-symbol",
 							"unreachable-code",
+							"unsupport-named-vararg",
 							"unsupport-symbol",
 							"unused-function",
 							"unused-label",
 							"unused-local",
-							"unused-vararg"
+							"unused-vararg",
+							"variable-not-declared"
 						],
 						"type": "string"
 					},
 					"markdownDescription": "%config.diagnostics.disable%",
-					"scope": "resource",
-					"type": "array"
-				},
-				"Lua.diagnostics.disableScheme": {
-					"default": [
-						"git"
-					],
-					"items": {
-						"type": "string"
-					},
-					"markdownDescription": "%config.diagnostics.disableScheme%",
 					"scope": "resource",
 					"type": "array"
 				},
@@ -328,6 +324,17 @@
 					"markdownDescription": "%config.diagnostics.enable%",
 					"scope": "resource",
 					"type": "boolean"
+				},
+				"Lua.diagnostics.enableScheme": {
+					"default": [
+						"file"
+					],
+					"items": {
+						"type": "string"
+					},
+					"markdownDescription": "%config.diagnostics.enableScheme%",
+					"scope": "resource",
+					"type": "array"
 				},
 				"Lua.diagnostics.globals": {
 					"default": [],

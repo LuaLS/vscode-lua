@@ -64,6 +64,7 @@
     "config.diagnostics.duplicate-set-field": "Enable diagnostics for setting the same field in a class more than once.",
     "config.diagnostics.empty-block": "空代码块",
     "config.diagnostics.enable": "Enable diagnostics.",
+    "config.diagnostics.enableScheme": "TODO: Needs documentation",
     "config.diagnostics.global": "* global-in-nil-env\n* lowercase-global\n* undefined-env-child\n* undefined-global",
     "config.diagnostics.global-element": "Enable diagnostics to warn about global elements.",
     "config.diagnostics.global-in-nil-env": "不能使用全局变量（ `_ENV` 被设置为了 `nil`）",
