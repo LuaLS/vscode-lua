@@ -24,52 +24,22 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: ubuntu-22.04,   target: linux,   platform: linux-x64    }
-          - { os: ubuntu-22.04,   target: linux,   platform: linux-arm64  }
-          - { os: macos-latest,   target: darwin,  platform: darwin-x64   }
-          - { os: macos-latest,   target: darwin,  platform: darwin-arm64 }
+          - { os: ubuntu-22.04,     target: linux,   platform: linux-x64    }
+          - { os: ubuntu-24.04-arm, target: linux,   platform: linux-arm64  }
+          - { os: macos-latest,     target: darwin,  platform: darwin-x64   }
+          - { os: macos-latest,     target: darwin,  platform: darwin-arm64 }
+          - { os: windows-latest,   target: windows, platform: win32-x64    }
           #- { os: windows-latest, target: windows, platform: win32-ia32   } # 不再支持32位
-          - { os: windows-latest, target: windows, platform: win32-x64    }
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Install aarch64-linux-gnu
-        if: ${{ matrix.platform == 'linux-arm64' }}
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '22' # 指定要安装的 Node.js 版本
+      - uses: actboy168/setup-luamake@master
 
-      - name: Build for Windows
-        if: ${{ matrix.target == 'windows' }}
-        working-directory: ./server
-        run: |
-          .\make.bat ${{ matrix.platform }}
-          rm -r ./build
-
-      - name: Build for Linux
-        if: ${{ matrix.target == 'linux' }}
-        working-directory: ./server
-        run: |
-          sudo apt update
-          sudo apt install ninja-build
-          ./make.sh ${{ matrix.platform }}
-          rm -r ./build
-          
-      - name: Build for macOS
-        if: ${{ matrix.target == 'darwin' }}
-        working-directory: ./server
-        run: |
-          brew install ninja
-          ./make.sh ${{ matrix.platform }}
-          rm -r ./build
+      - name: Build
+        run: luamake -platform ${{ matrix.platform }}
 
       - name: Setting up workflow variables
         id: vars
