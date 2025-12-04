@@ -183,6 +183,9 @@ class LuaClient extends Disposable {
                   }
                 : undefined,
             args: commandParam,
+            options: {
+                cwd: path.dirname(path.dirname(command)),
+            },
         };
 
         this.client = new LanguageClient(
