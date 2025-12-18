@@ -24,6 +24,7 @@
     "config.completion.keywordSnippet.Both": "顯示 `關鍵字` 與 `語法片段`。",
     "config.completion.keywordSnippet.Disable": "只顯示 `關鍵字`。",
     "config.completion.keywordSnippet.Replace": "只顯示 `語法片段`。",
+    "config.completion.maxSuggestCount": "TODO: Needs documentation",
     "config.completion.postfix": "用於觸發後綴建議的符號。",
     "config.completion.requireSeparator": "`require` 時使用的分隔符。",
     "config.completion.showParams": "在建議列表中顯示函式的參數資訊，函式擁有多個定義時會分開顯示。",

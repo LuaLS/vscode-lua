@@ -24,6 +24,7 @@
     "config.completion.keywordSnippet.Both": "显示 `关键字` 与 `语法片段`。",
     "config.completion.keywordSnippet.Disable": "只显示 `关键字`。",
     "config.completion.keywordSnippet.Replace": "只显示 `语法片段`。",
+    "config.completion.maxSuggestCount": "TODO: Needs documentation",
     "config.completion.postfix": "用于触发后缀建议的符号。",
     "config.completion.requireSeparator": "`require` 时使用的分隔符。",
     "config.completion.showParams": "在建议列表中显示函数的参数信息，函数拥有多个定义时会分开显示。",

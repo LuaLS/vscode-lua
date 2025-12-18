@@ -68,6 +68,9 @@
                 "keywordSnippet": {
                     "$ref": "#/properties/completion.keywordSnippet"
                 },
+                "maxSuggestCount": {
+                    "$ref": "#/properties/completion.maxSuggestCount"
+                },
                 "postfix": {
                     "$ref": "#/properties/completion.postfix"
                 },
@@ -134,6 +137,12 @@
             ],
             "scope": "resource",
             "type": "string"
+        },
+        "completion.maxSuggestCount": {
+            "default": 100,
+            "markdownDescription": "TODO: Needs documentation",
+            "scope": "resource",
+            "type": "integer"
         },
         "completion.postfix": {
             "default": "@",

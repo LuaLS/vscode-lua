@@ -130,6 +130,12 @@
 					"scope": "resource",
 					"type": "string"
 				},
+				"Lua.completion.maxSuggestCount": {
+					"default": 100,
+					"markdownDescription": "%config.completion.maxSuggestCount%",
+					"scope": "resource",
+					"type": "integer"
+				},
 				"Lua.completion.postfix": {
 					"default": "@",
 					"markdownDescription": "%config.completion.postfix%",
@@ -3461,5 +3467,5 @@
 	"sponsor": {
 		"url": "https://github.com/LuaLS/lua-language-server/issues/484"
 	},
-	"version": "3.16.1"
+	"version": "3.16.2"
 }

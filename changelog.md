@@ -3,6 +3,16 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.16.2
+`2025-12-18`
+* `NEW` Added `completion.maxSuggestCount` which lets you increase the amount of fields to analyze before requiring more specific input
+* `NEW` `view document` supports `Lua 5.5`
+* `CHG` Omit parameter hints when the argument name matches
+* `FIX` Fix a typo in `no-unknown` diagnostic message
+* `FIX` Autodoc generation so it does not include documentation for builtin Lua language features
+* `FIX` Fix incorrect version in `view document`
+* `FIX` Fix incorrect version of builtin variables
+
 ## 3.16.1
 `2025-12-8`
 * `FIX` Broken in Linux

@@ -24,6 +24,7 @@
     "config.completion.keywordSnippet.Both": "Shows `keyword` and `syntax snippet`.",
     "config.completion.keywordSnippet.Disable": "Only shows `keyword`.",
     "config.completion.keywordSnippet.Replace": "Only shows `syntax snippet`.",
+    "config.completion.maxSuggestCount": "TODO: Needs documentation",
     "config.completion.postfix": "The symbol used to trigger the postfix suggestion.",
     "config.completion.requireSeparator": "The separator used when `require`.",
     "config.completion.showParams": "Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.",

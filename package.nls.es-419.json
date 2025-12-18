@@ -24,6 +24,7 @@
     "config.completion.keywordSnippet.Both": "Muestra `palabra clave` y `snippet de sintaxis`.",
     "config.completion.keywordSnippet.Disable": "Solo muestra `palabra clave`.",
     "config.completion.keywordSnippet.Replace": "Solo muestra `snippet de sintaxis`.",
+    "config.completion.maxSuggestCount": "TODO: Needs documentation",
     "config.completion.postfix": "El símbolo usado para lanzar la sugerencia posfija.",
     "config.completion.requireSeparator": "Separador usado en `require`.",
     "config.completion.showParams": "Muestra los parámetros en la lista de completado. Cuando la función tiene múltiples definiciones, se mostrarán por separado.",
