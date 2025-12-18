@@ -45,6 +45,7 @@ jobs:
 
       - name: Prepare zig wrapper
         if: matrix.target == 'linux'
+        working-directory: ./server
         run: chmod +x zig-cc-wrapper.sh
 
       - name: Build
