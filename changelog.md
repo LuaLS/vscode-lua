@@ -3,6 +3,10 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.16.3
+`2025-12-23`
+* `CHG` Upgraded to Lua 5.5, memory usage has been reduced by ~10%
+
 ## 3.16.2
 `2025-12-18`
 * `NEW` Added `completion.maxSuggestCount` which lets you increase the amount of fields to analyze before requiring more specific input

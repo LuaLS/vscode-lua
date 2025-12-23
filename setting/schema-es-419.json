@@ -34,7 +34,7 @@
         },
         "addonRepositoryPath": {
             "default": "",
-            "markdownDescription": "Specifies the addon repository path (not related to the addon manager).",
+            "markdownDescription": "Especifica la ruta del repositorio de complementos (no relacionada con el gestor de complementos).",
             "scope": "resource",
             "type": "string"
         },
@@ -140,7 +140,7 @@
         },
         "completion.maxSuggestCount": {
             "default": 100,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "Número máximo de campos a analizar para autocompletar. Cuando un objeto tiene más campos que este límite, las sugerencias requerirán una entrada más específica para aparecer.",
             "scope": "resource",
             "type": "integer"
         },
@@ -2606,17 +2606,17 @@
                 "glob",
                 "lua"
             ],
-            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
+            "markdownDescription": "Motor de expresiones regulares usado para coincidir nombres de ámbito de documentación.",
             "markdownEnumDescriptions": [
-                "The default lightweight pattern syntax.",
-                "Full Lua-style regular expressions."
+                "Sintaxis de patrones ligera predeterminada.",
+                "Expresiones regulares completas al estilo Lua."
             ],
             "scope": "resource",
             "type": "string"
         },
         "docScriptPath": {
             "default": "",
-            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
+            "markdownDescription": "Motor de expresiones regulares usado para coincidir nombres de ámbito de documentación.",
             "scope": "resource",
             "type": "string"
         },
@@ -2702,7 +2702,7 @@
         },
         "hint.awaitPropagate": {
             "default": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "Habilita la propagación de `await`. Cuando una función llama a una función marcada con `---@async`,se marcará automáticamente como `---@async`.",
             "scope": "resource",
             "type": "boolean"
         },
@@ -3399,7 +3399,7 @@
         },
         "type.inferTableSize": {
             "default": 10,
-            "markdownDescription": "Maximum number of table fields analyzed during type inference.",
+            "markdownDescription": "Cantidad máxima de campos de tabla analizados durante la inferencia de tipos.",
             "scope": "resource",
             "type": "integer"
         },

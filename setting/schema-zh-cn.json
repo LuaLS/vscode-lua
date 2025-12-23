@@ -140,7 +140,7 @@
         },
         "completion.maxSuggestCount": {
             "default": 100,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "自动完成时最多分析的字段数量。当对象字段超过此上限时，需要更精确的输入才会显示补全。",
             "scope": "resource",
             "type": "integer"
         },

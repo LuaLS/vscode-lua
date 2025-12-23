@@ -34,7 +34,7 @@
         },
         "addonRepositoryPath": {
             "default": "",
-            "markdownDescription": "Specifies the addon repository path (not related to the addon manager).",
+            "markdownDescription": "指定獨立的插件倉庫路徑（與插件管理器無關）。",
             "scope": "resource",
             "type": "string"
         },
@@ -140,7 +140,7 @@
         },
         "completion.maxSuggestCount": {
             "default": 100,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "自動完成時最多分析的欄位數量。若物件欄位超過此上限，必須提供更精確的輸入才會顯示建議。",
             "scope": "resource",
             "type": "integer"
         },
@@ -2606,17 +2606,17 @@
                 "glob",
                 "lua"
             ],
-            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
+            "markdownDescription": "用於匹配文件作用域名稱的正則表達式引擎。",
             "markdownEnumDescriptions": [
-                "The default lightweight pattern syntax.",
-                "Full Lua-style regular expressions."
+                "預設的輕量模式語法。",
+                "完整的 Lua 風格正則表達式。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "docScriptPath": {
             "default": "",
-            "markdownDescription": "The regular expression engine used for matching documentation scope names.",
+            "markdownDescription": "用於匹配文件作用域名稱的正則表達式引擎。",
             "scope": "resource",
             "type": "string"
         },
@@ -2880,7 +2880,7 @@
         "nameStyle.config": {
             "additionalProperties": false,
             "default": {},
-            "markdownDescription": "設定檢查命名風格的組態。\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
+            "markdownDescription": "設定檢查命名風格的組態。\n閱讀 [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) 了解用法。\n",
             "patternProperties": {
                 ".*": {
                     "type": [
@@ -3399,7 +3399,7 @@
         },
         "type.inferTableSize": {
             "default": 10,
-            "markdownDescription": "Maximum number of table fields analyzed during type inference.",
+            "markdownDescription": "在類型推斷時最多分析的表欄位數。",
             "scope": "resource",
             "type": "integer"
         },

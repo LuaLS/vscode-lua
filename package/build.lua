@@ -1,6 +1,6 @@
 local json = require 'json-beautify'
 
-local VERSION = "3.16.2"
+local VERSION = "3.16.3"
 
 local fsu     = require 'fs-utility'
 local package = json.decode(fsu.loadFile(ROOT / 'package.json'))

@@ -54,6 +54,7 @@
     "config.diagnostics.deprecated": "Enable diagnostics to highlight deprecated API.",
     "config.diagnostics.different-requires": "Enable diagnostics for files which are required by two different paths.",
     "config.diagnostics.disable": "Disabled diagnostic (Use code in hover brackets).",
+    "config.diagnostics.disableScheme": "Do not diagnose Lua files that use the following scheme.",
     "config.diagnostics.discard-returns": "Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.",
     "config.diagnostics.doc-field-no-class": "Enable diagnostics to highlight a field annotation without a defining class annotation.",
     "config.diagnostics.duplicate": "* duplicate-index\n* duplicate-set-field",
