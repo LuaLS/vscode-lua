@@ -3,6 +3,11 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.16.4
+`2025-12-25`
+* `FIX` (VSCode) Broken `view document`
+* `FIX` `for .. in` should only treat the first variable as const
+
 ## 3.16.3
 `2025-12-23`
 * `CHG` Upgraded to Lua 5.5, memory usage has been reduced by ~10%

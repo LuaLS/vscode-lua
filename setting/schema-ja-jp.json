@@ -34,7 +34,7 @@
         },
         "addonRepositoryPath": {
             "default": "",
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "アドオンのリポジトリパスを指定します（アドオンマネージャーとは無関係です）。",
             "scope": "resource",
             "type": "string"
         },
@@ -378,13 +378,13 @@
                 ],
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "無効化する診断（ホバーの括弧内に表示されるコードを使用）。",
             "scope": "resource",
             "type": "array"
         },
         "diagnostics.enable": {
             "default": true,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "診断を有効にします。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -404,7 +404,7 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "定義済みのグローバル変数。",
             "scope": "resource",
             "type": "array"
         },
@@ -413,13 +413,13 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "正規表現で定義済みのグローバル変数を検索します。",
             "scope": "resource",
             "type": "array"
         },
         "diagnostics.groupFileStatus": {
             "additionalProperties": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "グループ内の診断対象ファイル状態を変更します。\n\n* Opened: 開いているファイルのみを診断\n* Any:    すべてのファイルを診断\n* None:   この診断を無効化\n\n`Fallback` は、このグループ内の診断が個別に `diagnostics.neededFileStatus` によって制御されることを意味します。\nその他の設定は、末尾に `!` が付いていない個別の設定を上書きします。\n",
             "properties": {
                 "ambiguity": {
                     "default": "Fallback",
@@ -571,7 +571,7 @@
         },
         "diagnostics.groupSeverity": {
             "additionalProperties": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "グループ内の診断の重大度を変更します。\n`Fallback` は、このグループ内の診断が個別に `diagnostics.severity` によって制御されることを意味します。\nその他の設定は、末尾に `!` が付いていない個別の設定を上書きします。\n",
             "properties": {
                 "ambiguity": {
                     "default": "Fallback",
@@ -741,11 +741,11 @@
                 "Opened",
                 "Disable"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "無視されているファイルをどのように診断するか。",
             "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
+                "常にこれらのファイルを診断します。",
+                "これらのファイルが開かれているときのみ診断します。",
+                "これらのファイルは診断しません。"
             ],
             "scope": "resource",
             "type": "string"
@@ -757,18 +757,18 @@
                 "Opened",
                 "Disable"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "`Lua.workspace.library` 経由で読み込まれたファイルをどのように診断するか。",
             "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
+                "常にこれらのファイルを診断します。",
+                "これらのファイルが開かれているときのみ診断します。",
+                "これらのファイルは診断しません。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "diagnostics.neededFileStatus": {
             "additionalProperties": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "* Opened: 開いているファイルのみを診断\n* Any:    すべてのファイルを診断\n* None:   この診断を無効化\n\n末尾に `!` を付けると、グループ設定 `diagnostics.groupFileStatus` を上書きします。\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
@@ -1583,7 +1583,7 @@
         },
         "diagnostics.severity": {
             "additionalProperties": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "診断の重大度を変更します。\n\n末尾に `!` を付けると、グループ設定 `diagnostics.groupSeverity` を上書きします。\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -2525,13 +2525,13 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "変数名が次のパターンに一致する場合、`unused-local` を診断しません。",
             "scope": "resource",
             "type": "array"
         },
         "diagnostics.workspaceDelay": {
             "default": 3000,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "ワークスペース診断の待ち時間（ミリ秒）。",
             "scope": "resource",
             "type": "integer"
         },
@@ -2542,18 +2542,18 @@
                 "OnSave",
                 "None"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "ワークスペース診断をトリガーするタイミングを設定します。",
             "markdownEnumDescriptions": [
-                "TODO: Needs documentation",
-                "TODO: Needs documentation",
-                "TODO: Needs documentation"
+                "ファイルが変更されたときにワークスペース診断をトリガーします。",
+                "ファイルが保存されたときにワークスペース診断をトリガーします。",
+                "ワークスペース診断を無効にします。"
             ],
             "scope": "resource",
             "type": "string"
         },
         "diagnostics.workspaceRate": {
             "default": 100,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "ワークスペース診断の実行レート（％）。この値を下げると CPU 使用率は低下しますが、ワークスペース診断の速度も低下します。現在編集中のファイルの診断は常に全速で行われ、この設定の影響を受けません。",
             "scope": "resource",
             "type": "integer"
         },
@@ -2932,7 +2932,7 @@
         },
         "runtime.builtin": {
             "additionalProperties": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "組み込みライブラリの有効状態を調整します。実際のランタイム環境に応じて、存在しないライブラリを無効化（または再定義）できます。\n\n* `default`: ランタイムバージョンに応じてライブラリを有効／無効にします\n* `enable`: 常に有効\n* `disable`: 常に無効\n",
             "properties": {
                 "basic": {
                     "default": "default",
@@ -3147,7 +3147,7 @@
                 "utf16le",
                 "utf16be"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "ファイルのエンコーディング。`ansi` オプションは `Windows` プラットフォームでのみ利用可能です。",
             "markdownEnumDescriptions": [
                 "TODO: Needs documentation",
                 "TODO: Needs documentation",
@@ -3159,7 +3159,7 @@
         },
         "runtime.meta": {
             "default": "${version} ${language} ${encoding}",
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "メタファイルのディレクトリ名の形式。",
             "scope": "resource",
             "type": "string"
         },
@@ -3190,7 +3190,7 @@
                 ],
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "非標準の記号をサポートします。ランタイム環境がこれらの記号をサポートしていることを確認してください。",
             "scope": "resource",
             "type": "array"
         },
@@ -3202,18 +3202,18 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "`require` を使用する際、入力名に基づいてファイルを探す方法。\nこの設定を `?/init.lua` にすると、`require 'myfile'` と入力したとき、読み込まれたファイルから `${workspace}/myfile/init.lua` が検索されます。\n`runtime.pathStrict` が `false` の場合、`${workspace}/**/myfile/init.lua` も検索対象になります。\nワークスペース外のファイルを読み込みたい場合は、先に `Lua.workspace.library` を設定する必要があります。\n",
             "scope": "resource",
             "type": "array"
         },
         "runtime.pathStrict": {
             "default": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "有効にすると、`runtime.path` は最上位のディレクトリ階層のみを検索します。詳細は `runtime.path` の説明を参照してください。",
             "scope": "resource",
             "type": "boolean"
         },
         "runtime.plugin": {
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "プラグインのパス。詳細は [wiki](https://luals.github.io/wiki/plugins) を参照してください。",
             "scope": "resource",
             "type": [
                 "string",
@@ -3221,7 +3221,7 @@
             ]
         },
         "runtime.pluginArgs": {
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "プラグインに渡す追加引数。",
             "scope": "resource",
             "type": [
                 "array",
@@ -3231,7 +3231,7 @@
         "runtime.special": {
             "additionalProperties": false,
             "default": {},
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "カスタムのグローバル変数を一部の特別な組み込み変数として扱い、言語サーバーが特別なサポートを提供します。\n以下の例では、`include` を `require` として扱います。\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
                     "default": "require",
@@ -3259,7 +3259,7 @@
         },
         "runtime.unicodeName": {
             "default": false,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "名前に Unicode 文字を使用できるようにします。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -3273,7 +3273,7 @@
                 "Lua 5.5",
                 "LuaJIT"
             ],
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "Lua のランタイムバージョン。",
             "markdownEnumDescriptions": [
                 "TODO: Needs documentation",
                 "TODO: Needs documentation",
@@ -3517,13 +3517,13 @@
             "items": {
                 "type": "string"
             },
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "無視するファイルとディレクトリ（`.gitignore` の構文を使用）。",
             "scope": "resource",
             "type": "array"
         },
         "workspace.ignoreSubmodules": {
             "default": true,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "サブモジュールを無視します。",
             "scope": "resource",
             "type": "boolean"
         },
@@ -3538,7 +3538,7 @@
         },
         "workspace.maxPreload": {
             "default": 5000,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "プリロードする最大ファイル数。",
             "scope": "resource",
             "type": "integer"
         },
@@ -3550,7 +3550,7 @@
         },
         "workspace.useGitIgnore": {
             "default": true,
-            "markdownDescription": "TODO: Needs documentation",
+            "markdownDescription": "`.gitignore` に記載されたファイルを無視します。",
             "scope": "resource",
             "type": "boolean"
         },
