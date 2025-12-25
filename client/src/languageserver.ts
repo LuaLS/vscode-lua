@@ -43,7 +43,7 @@ function registerCustomCommands(context: ExtensionContext) {
                 continue;
             }
             if (data.action === 'prop') {
-                if (!propMap[data.key]) {
+                if (!(data.key in propMap)) {
                     let prop = config.get(data.key);
                     if (typeof prop === 'object' && prop !== null) {
                         propMap[data.key] = prop as Record<string, unknown>;

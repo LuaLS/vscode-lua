@@ -5,31 +5,12 @@ import * as addonManager from './addon_manager/registration';
 
 import luadoc from "../3rd/vscode-lua-doc/extension.js";
 
-interface LuaDocContext extends vscode.ExtensionContext {
-    ViewType: string;
-    OpenCommand: string;
-}
-
 export function activate(context: vscode.ExtensionContext) {
     languageserver.activate(context);
 
-    const luaDocContext: LuaDocContext = {
-        asAbsolutePath: context.asAbsolutePath,
-        environmentVariableCollection: context.environmentVariableCollection,
-        extensionUri: context.extensionUri,
-        globalState: context.globalState,
-        storagePath: context.storagePath,
-        subscriptions: context.subscriptions,
-        workspaceState: context.workspaceState,
-        extensionMode: context.extensionMode,
-        globalStorageUri: context.globalStorageUri,
-        logUri: context.logUri,
-        logPath: context.logPath,
-        globalStoragePath: context.globalStoragePath,
-        extension: context.extension,
-        secrets: context.secrets,
-        storageUri: context.storageUri,
+    const luaDocContext = {
         extensionPath: context.extensionPath + '/client/3rd/vscode-lua-doc',
+        subscriptions: context.subscriptions,
         ViewType: 'lua-doc',
         OpenCommand: 'extension.lua.doc',
     }
