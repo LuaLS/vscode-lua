@@ -23,6 +23,7 @@ import {
 } from 'vscode-languageclient/node';
 
 export let defaultClient: LuaClient | null;
+let outputChannel: vscode.OutputChannel | undefined;
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
@@ -137,6 +138,11 @@ class LuaClient extends Disposable {
     }
 
     async start() {
+        // 复用或创建输出通道
+        if (!outputChannel) {
+            outputChannel = vscode.window.createOutputChannel("Lua", { log: true });
+        }
+
         // Options to control the language client
         const clientOptions: LanguageClientOptions = {
             // Register the server for plain text documents
@@ -146,6 +152,7 @@ class LuaClient extends Disposable {
                 isTrusted: true,
                 supportHtml: true,
             },
+            outputChannel: outputChannel,
             initializationOptions: {
                 changeConfiguration: true,
                 statusBar: true,
@@ -445,6 +452,11 @@ export async function deactivate() {
         defaultClient.stop();
         defaultClient.dispose();
         defaultClient = null;
+    }
+    // 清理输出通道
+    if (outputChannel) {
+        outputChannel.dispose();
+        outputChannel = undefined;
     }
     return undefined;
 }
