@@ -5,7 +5,6 @@
 
 import winston from "winston";
 import VSCodeOutputTransport from "./logging/vsCodeOutputTransport";
-import axios, { AxiosError } from "axios";
 import { padText } from "./string.service";
 import * as vscode from "vscode";
 import { MESSAGE } from "triple-beam";
@@ -23,20 +22,13 @@ export const logger = winston.createLogger({
         winston.format.errors({ stack: true }),
         winston.format.printf((message) => {
             const level = padText(message.level, 9);
-            const category = padText(
-                message?.defaultMeta?.category ?? "GENERAL",
-                18
-            );
+            const category = padText(message?.defaultMeta?.category ?? "GENERAL", 18);
             if (typeof message.message === "object")
-                return `[${
-                    message.timestamp
-                }] | ${level.toUpperCase()} | ${category} | ${JSON.stringify(
-                    message.message
+                return `[${message.timestamp}] | ${level.toUpperCase()} | ${category} | ${JSON.stringify(
+                    message.message,
                 )}`;
-            return `[${
-                message.timestamp
-            }] | ${level.toUpperCase()} | ${category} | ${message.message}`;
-        })
+            return `[${message.timestamp}] | ${level.toUpperCase()} | ${category} | ${message.message}`;
+        }),
     ),
 
     transports: [new VSCodeOutputTransport({ level: "info" })],
@@ -49,7 +41,7 @@ logger.on("data", async (info) => {
     const choice = await vscode.window.showErrorMessage(
         `An error occurred with the Lua Addon Manager. Please help us improve by reporting the issue ❤️`,
         { modal: false },
-        "Report Issue"
+        "Report Issue",
     );
 
     if (choice !== "Report Issue") return;
@@ -58,23 +50,16 @@ logger.on("data", async (info) => {
     await vscode.env.openExternal(VSCodeLogFileTransport.currentLogFile);
 
     // Read log file and copy to clipboard
-    const log = await vscode.workspace.fs.readFile(
-        VSCodeLogFileTransport.currentLogFile
-    );
+    const log = await vscode.workspace.fs.readFile(VSCodeLogFileTransport.currentLogFile);
     await vscode.env.clipboard.writeText(
-        "<details><summary>Retrieved Log</summary>\n\n```\n" +
-            log.toString() +
-            "\n```\n\n</details>"
+        "<details><summary>Retrieved Log</summary>\n\n```\n" + log.toString() + "\n```\n\n</details>",
     );
     vscode.window.showInformationMessage("Copied log to clipboard");
 
     // After a delay, open GitHub issues page
     setTimeout(() => {
         const base = vscode.Uri.parse(REPOSITORY_ISSUES_URL);
-        const query = [
-            base.query,
-            `actual=...\n\nI also see the following error:\n\n\`\`\`\n${info[MESSAGE]}\n\`\`\``,
-        ];
+        const query = [base.query, `actual=...\n\nI also see the following error:\n\n\`\`\`\n${info[MESSAGE]}\n\`\`\``];
         const issueURI = base.with({ query: query.join("&") });
 
         vscode.env.openExternal(issueURI);
@@ -91,26 +76,7 @@ export const createChildLogger = (label: string) => {
                 format: "YYYY-MM-DD HH:mm:ss",
             }),
             winston.format.errors({ stack: true }),
-            winston.format.json()
+            winston.format.json(),
         ),
     });
 };
-
-// Log HTTP requests made through axios
-const axiosLogger = createChildLogger("AXIOS");
-
-axios.interceptors.request.use(
-    (request) => {
-        const method = request.method ?? "???";
-        axiosLogger.debug(`${method.toUpperCase()} requesting ${request.url}`);
-
-        return request;
-    },
-    (error: AxiosError) => {
-        const url = error?.config?.url;
-        const method = error.config?.method?.toUpperCase();
-
-        axiosLogger.error(`${url} ${method} ${error.code} ${error.message}`);
-        return Promise.reject(error);
-    }
-);
