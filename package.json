@@ -3410,6 +3410,15 @@
 						"boolean"
 					]
 				},
+				"Lua.workspace.dofileRoots": {
+					"default": [],
+					"items": {
+						"type": "string"
+					},
+					"markdownDescription": "%config.workspace.dofileRoots%",
+					"scope": "resource",
+					"type": "array"
+				},
 				"Lua.workspace.ignoreDir": {
 					"default": [
 						".vscode"

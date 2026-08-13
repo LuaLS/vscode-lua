@@ -3682,6 +3682,9 @@
                 "checkThirdParty": {
                     "$ref": "#/properties/workspace.checkThirdParty"
                 },
+                "dofileRoots": {
+                    "$ref": "#/properties/workspace.dofileRoots"
+                },
                 "ignoreDir": {
                     "$ref": "#/properties/workspace.ignoreDir"
                 },
@@ -3712,6 +3715,15 @@
                 "string",
                 "boolean"
             ]
+        },
+        "workspace.dofileRoots": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "除了目前工作區以外，`dofile` 會把這些目錄視為可能的根目錄。這些目錄中的檔案會被立即載入。",
+            "scope": "resource",
+            "type": "array"
         },
         "workspace.ignoreDir": {
             "default": [

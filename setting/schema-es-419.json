@@ -3682,6 +3682,9 @@
                 "checkThirdParty": {
                     "$ref": "#/properties/workspace.checkThirdParty"
                 },
+                "dofileRoots": {
+                    "$ref": "#/properties/workspace.dofileRoots"
+                },
                 "ignoreDir": {
                     "$ref": "#/properties/workspace.ignoreDir"
                 },
@@ -3712,6 +3715,15 @@
                 "string",
                 "boolean"
             ]
+        },
+        "workspace.dofileRoots": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Además del espacio de trabajo actual, `dofile` tratará estos directorios como posibles raíces. Los archivos en estos directorios se cargarán inmediatamente.",
+            "scope": "resource",
+            "type": "array"
         },
         "workspace.ignoreDir": {
             "default": [

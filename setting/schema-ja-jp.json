@@ -3682,6 +3682,9 @@
                 "checkThirdParty": {
                     "$ref": "#/properties/workspace.checkThirdParty"
                 },
+                "dofileRoots": {
+                    "$ref": "#/properties/workspace.dofileRoots"
+                },
                 "ignoreDir": {
                     "$ref": "#/properties/workspace.ignoreDir"
                 },
@@ -3712,6 +3715,15 @@
                 "string",
                 "boolean"
             ]
+        },
+        "workspace.dofileRoots": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "現在のワークスペースに加えて、`dofile` がルートとして扱う可能性のあるディレクトリ。これらのディレクトリ内のファイルは即座にロードされます。",
+            "scope": "resource",
+            "type": "array"
         },
         "workspace.ignoreDir": {
             "default": [

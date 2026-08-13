@@ -355,6 +355,7 @@
     "config.window.progressBar": "ステータスバーに進行状況バーを表示します。",
     "config.window.statusBar": "ステータスバーに拡張機能のステータスを表示します。",
     "config.workspace.checkThirdParty": "サードパーティライブラリの自動検出と適応。現在サポートされているライブラリ：\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
+    "config.workspace.dofileRoots": "現在のワークスペースに加えて、`dofile` がルートとして扱う可能性のあるディレクトリ。これらのディレクトリ内のファイルは即座にロードされます。",
     "config.workspace.ignoreDir": "無視するファイルとディレクトリ（`.gitignore` の構文を使用）。",
     "config.workspace.ignoreSubmodules": "サブモジュールを無視します。",
     "config.workspace.library": "現在のワークスペースに加えて、どのディレクトリからファイルをロードするか。これらのディレクトリ内のファイルは外部提供のコードライブラリとして扱われ、一部の機能（フィールド名の変更など）はこれらのファイルを変更しません。",
