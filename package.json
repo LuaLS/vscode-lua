@@ -3139,7 +3139,7 @@
 							"?.(",
 							"?.[",
 							"??",
-							"?:",
+							"ternary",
 							"~>>",
 							"~>>=",
 							"..=",
@@ -3148,7 +3148,8 @@
 							"->",
 							"number_underscore",
 							"?(",
-							"?["
+							"?[",
+							"?:"
 						],
 						"type": "string"
 					},
@@ -3178,7 +3179,7 @@
 						"%config.runtime.nonstandardSymbol?.(%",
 						"%config.runtime.nonstandardSymbol?.[%",
 						"%config.runtime.nonstandardSymbol??%",
-						"%config.runtime.nonstandardSymbol?:%",
+						"%config.runtime.nonstandardSymbol.ternary%",
 						"%config.runtime.nonstandardSymbol~>>%",
 						"%config.runtime.nonstandardSymbol~>>=%",
 						"%config.runtime.nonstandardSymbol..=%",
@@ -3187,7 +3188,8 @@
 						"%config.runtime.nonstandardSymbol->%",
 						"%config.runtime.nonstandardSymbol.number_underscore%",
 						"%config.runtime.nonstandardSymbol?(%",
-						"%config.runtime.nonstandardSymbol?[%"
+						"%config.runtime.nonstandardSymbol?[%",
+						"%config.runtime.nonstandardSymbol?:%"
 					],
 					"scope": "resource",
 					"type": "array"
