@@ -3,11 +3,25 @@
 ## Unreleased
 <!-- Add all new changes here. They will be moved under a version at release -->
 
+## 3.19.1
+`2026-08-14`
+* `NEW` LuaJIT 3.0 extension syntax can now also be enabled individually via `Lua.runtime.nonstandardSymbol` (`?.`, `??`, `ternary`, `~>>`, `~>>=`, `..=`, `~=`, `const`, `->`, `number_underscore`), independent of `Lua.runtime.version` and without the `Lua.runtime.enableLuaJITExtensions` master switch. Note that `~=` enables the bitwise-xor compound assignment only in statement context (e.g. `a ~= b` on its own line).
+* `NEW` Add no-dot optional chaining `f?()` and `t?[1]` (equivalent to `f?.()` / `t?.[1]`) as new `Lua.runtime.nonstandardSymbol` entries (`?(` and `?[`), and the no-dot safe method `obj?:get()` (equivalent to `obj?.:get()`, entry `?:`). Note: enabling `?(` / `?[` together with the ternary (`ternary`) may conflict during parsing.
+* `NEW` Support type inference for `dofile` and add a new `Lua.workspace.dofileRoots` setting to configure where it reads from [#3432](https://github.com/LuaLS/lua-language-server/pull/3432)
+
 ## 3.19.0
 `2026-08-08`
-* `FIX` Incorrect inject-field message for extra table field in exact class
-* `FIX` adds the `|lambda|` operator to the `Lua.runtime.nonstandardSymbol` configuration template, which allows the use of that option. Previously, support for it existed in the parser, but we could not actually use the option because it is not recognised in the configuration.
-* `FIX` Typed `@field` (eg `---@field [string] boolean`) should not override other defined field [#2171](https://github.com/LuaLS/lua-language-server/issues/2171), [#2711](https://github.com/LuaLS/lua-language-server/issues/2711)
+* `NEW` Support LuaJIT 3.0 extension syntax when `Lua.runtime.version` is `LuaJIT` and the new `Lua.runtime.enableLuaJITExtensions` setting is enabled: ternary conditional `?:`, safe navigation `?.` (including method forms `obj?.:method`, `obj:method?.`), nil-coalescing `??`, arithmetic shift `~>>` with `~>>=` compound assignment, `..=` concatenation assignment, `const` declarations, short function expressions (`x -> expr`, `|x| -> expr`, `-> do ... end`), and number underscores (`1_000`) [#3434](https://github.com/LuaLS/lua-language-server/issues/3434)
+* `NEW` `@operator` declarations on generic classes now resolve class type parameters through the instantiated type: with `---@class Box<T>` and `---@operator call(): T?`, calling a `Box<string>` instance infers `string?`
+* `NEW` Support type inference for `@field` and `@type` function declarations in method overrides [#3367](https://github.com/LuaLS/lua-language-server/issues/3367)
+* `FIX` Fix invalid LSP responses in files containing string literals with escaped bytes.
+* `FIX` Fix method-level generic return type being overwritten by receiver class generic resolution [#3438](https://github.com/LuaLS/lua-language-server/discussions/3438)
+* `FIX` Generic type parameters used in `@operator` annotations are now recognized as generics (and highlighted as such) instead of being treated as undefined type names
+* `FIX` Infer `pcall`/`xpcall` second result from their own declaration when the called function returns nothing [#3440](https://github.com/LuaLS/lua-language-server/pull/3440)
+* `FIX` Recognize a class inheriting a generic class as a child of that generic's own parent [#3441](https://github.com/LuaLS/lua-language-server/pull/3441)
+* `FIX` Deduplicate documentation bindings for parameters
+* `FIX` Correct `math.type` meta return annotation to use `nil` instead of the string literal `'nil'`
+* `FIX` Fix initial `nameStyle.config` not getting loaded in the appropriate workspace.
 
 ## 3.18.2
 * `CHG` `duplicate-set-field` diagnostic now supports linked suppression: when any occurrence of a duplicate field is suppressed with `---@diagnostic disable` or `---@diagnostic disable-next-line`, all warnings for that field name will be suppressed
