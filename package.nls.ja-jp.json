@@ -285,7 +285,7 @@
     "config.runtime.fileEncoding.utf16le": "TODO: Needs documentation",
     "config.runtime.fileEncoding.utf8": "TODO: Needs documentation",
     "config.runtime.meta": "メタファイルのディレクトリ名の形式。",
-    "config.runtime.nonstandardSymbol": "非標準の記号をサポートします。ランタイム環境がこれらの記号をサポートしていることを確認してください。\n\nLuaJIT 3.0 拡張構文（`?.` `??` `?:` `~>>` `~>>=` `..=` `~=` `const` `->` `number_underscore`）も個別に有効化できます。`Lua.runtime.version` を `LuaJIT` にする必要はありません。注意：`~=` は文コンテキスト（例：`a ~= b` が単独の行）でのみビット排他的論理和の複合代入として機能し、式の中では「等しくない」演算子のままです。\n",
+    "config.runtime.nonstandardSymbol": "非標準の記号をサポートします。ランタイム環境がこれらの記号をサポートしていることを確認してください。",
     "config.runtime.nonstandardSymbol!": "論理 NOT（`not` と同等）。",
     "config.runtime.nonstandardSymbol!=": "等しくない（`~=` と同等）。",
     "config.runtime.nonstandardSymbol%=": "剰余複合代入。",

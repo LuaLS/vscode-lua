@@ -285,7 +285,7 @@
     "config.runtime.fileEncoding.utf16le": "TODO: Needs documentation",
     "config.runtime.fileEncoding.utf8": "TODO: Needs documentation",
     "config.runtime.meta": "meta文件的目录名称格式。",
-    "config.runtime.nonstandardSymbol": "支持非标准的符号。请务必确认你的运行环境支持这些符号。\n\nLuaJIT 3.0 扩展语法（`?.` `??` `?:` `~>>` `~>>=` `..=` `~=` `const` `->` `number_underscore`）也可在此单独启用，不要求 `Lua.runtime.version` 为 `LuaJIT`。注意：`~=` 仅在语句上下文（如 `a ~= b` 单独成行）时作为异或复合赋值，表达式中仍是不等于比较。\n",
+    "config.runtime.nonstandardSymbol": "支持非标准的符号。请务必确认你的运行环境支持这些符号。",
     "config.runtime.nonstandardSymbol!": "逻辑非（等价于 not）。",
     "config.runtime.nonstandardSymbol!=": "不等于（等价于 ~=）。",
     "config.runtime.nonstandardSymbol%=": "取模复合赋值。",

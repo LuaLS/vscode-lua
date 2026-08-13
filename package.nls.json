@@ -285,7 +285,7 @@
     "config.runtime.fileEncoding.utf16le": "TODO: Needs documentation",
     "config.runtime.fileEncoding.utf8": "TODO: Needs documentation",
     "config.runtime.meta": "Format of the directory name of the meta files.",
-    "config.runtime.nonstandardSymbol": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.\n\nLuaJIT 3.0 extension syntax (`?.` `??` `?:` `~>>` `~>>=` `..=` `~=` `const` `->` `number_underscore`) can also be enabled individually here, without requiring `Lua.runtime.version` to be `LuaJIT`. Note: `~=` acts as a bitwise-xor compound assignment only in statement context (e.g. `a ~= b` on its own line); in expressions it remains the not-equal operator.\n",
+    "config.runtime.nonstandardSymbol": "Supports non-standard symbols. Make sure that your runtime environment supports these symbols.",
     "config.runtime.nonstandardSymbol!": "Logical not (equivalent to `not`).",
     "config.runtime.nonstandardSymbol!=": "Not equal (equivalent to `~=`).",
     "config.runtime.nonstandardSymbol%=": "Modulo compound assignment.",

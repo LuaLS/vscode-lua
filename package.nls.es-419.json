@@ -285,7 +285,7 @@
     "config.runtime.fileEncoding.utf16le": "TODO: Needs documentation",
     "config.runtime.fileEncoding.utf8": "TODO: Needs documentation",
     "config.runtime.meta": "Formato del nombre del directoria de los archivos meta.",
-    "config.runtime.nonstandardSymbol": "Soporte de símbolos no estándar. Asegúrese que la versión de Lua que se ejecuta soporte estos símbolos.\n\nLa sintaxis de extensión de LuaJIT 3.0 (`?.` `??` `?:` `~>>` `~>>=` `..=` `~=` `const` `->` `number_underscore`) también se puede habilitar individualmente aquí, sin requerir que `Lua.runtime.version` sea `LuaJIT`. Nota: `~=` solo actúa como asignación compuesta XOR en contexto de sentencia (p. ej. `a ~= b` en una línea); en expresiones sigue siendo el operador de desigualdad.\n",
+    "config.runtime.nonstandardSymbol": "Soporte de símbolos no estándar. Asegúrese que la versión de Lua que se ejecuta soporte estos símbolos.",
     "config.runtime.nonstandardSymbol!": "NO lógico (equivalente a `not`).",
     "config.runtime.nonstandardSymbol!=": "Diferente (equivalente a `~=`).",
     "config.runtime.nonstandardSymbol%=": "Asignación compuesta de módulo.",
