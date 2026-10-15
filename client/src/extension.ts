@@ -6,6 +6,8 @@ import * as addonManager from './addon_manager/registration';
 import luadoc from "../3rd/vscode-lua-doc/extension.js";
 
 export function activate(context: vscode.ExtensionContext) {
+    // Register and activate addon manager first to initialize storagePath
+    addonManager.activate(context);
     languageserver.activate(context);
 
     const luaDocContext = {
@@ -17,9 +19,6 @@ export function activate(context: vscode.ExtensionContext) {
 
     luadoc.activate(luaDocContext);
     psi.activate(context);
-
-    // Register and activate addon manager
-    addonManager.activate(context);
 
     return {
         async reportAPIDoc(params: unknown) {

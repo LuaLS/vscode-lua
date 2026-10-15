@@ -21,6 +21,7 @@ import {
     ExecuteCommandRequest,
     TransportKind,
 } from 'vscode-languageclient/node';
+import { getStorageUri } from './addon_manager/config';
 
 export let defaultClient: LuaClient | null;
 let outputChannel: vscode.OutputChannel | undefined;
@@ -162,7 +163,7 @@ class LuaClient extends Disposable {
                 codeLensViewReferences: true,
                 fixIndents: true,
                 languageConfiguration: true,
-                storagePath: this.context.globalStorageUri.fsPath,
+                storagePath: getStorageUri(this.context).fsPath,
             },
             middleware: {
                 provideHover: async () => undefined,
