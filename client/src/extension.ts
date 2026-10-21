@@ -31,6 +31,6 @@ export function activate(context: vscode.ExtensionContext) {
     };
 }
 
-export function deactivate() {
-    languageserver.deactivate();
+export function deactivate(context: vscode.ExtensionContext) {
+    languageserver.deactivate(context);
 }

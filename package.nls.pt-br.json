@@ -257,6 +257,7 @@
     "config.language.fixIndent": "(Somente VSCode) Corrige indentação automática incorreta, como quebras de linha dentro de uma string contendo a palavra \"function\".",
     "config.misc.executablePath": "Especifica o caminho do executável no VSCode.",
     "config.misc.parameters": "[Parâmetros de linha de comando](https://github.com/LuaLS/lua-telemetry-server/tree/master/method) ao iniciar o serviço de linguagem no VSCode.",
+    "config.misc.startQueue": "nothing to say",
     "config.nameStyle.config": "Configurações de estilo de nomes.\nConsulte a [documentação do formatador](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) para uso.\n",
     "config.runtime.builtin": "Ajusta o estado de habilitação das bibliotecas internas. Você pode desabilitar (ou redefinir) bibliotecas inexistentes conforme o ambiente de execução real.\n\n* `default`: a biblioteca será habilitada ou desabilitada conforme a versão do runtime\n* `enable`: sempre habilitar\n* `disable`: sempre desabilitar\n",
     "config.runtime.builtin.basic": "TODO: Needs documentation",

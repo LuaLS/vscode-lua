@@ -1,7 +1,8 @@
 {
+    "editor.tabSize": 4,
     "Lua.runtime.version": "Lua 5.4",
-    "Lua.workspace.library": {
-        "server/script-beta": true
-    },
-    "Lua.workspace.checkThirdParty": false
+    "Lua.workspace.library": [
+        "server/script/meta"
+    ],
+    "Lua.workspace.checkThirdParty": false,
 }

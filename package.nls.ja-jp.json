@@ -257,6 +257,7 @@
     "config.language.fixIndent": "(VSCodeのみ) 誤った自動インデントを修正します。例えば、\"function\" を含む文字列内で改行したときの不正なインデントなど。",
     "config.misc.executablePath": "VSCodeでの実行可能ファイルのパスを指定します。",
     "config.misc.parameters": "VSCode で言語サーバーを起動するときの[コマンドライン引数](https://github.com/LuaLS/lua-telemetry-server/tree/master/method)。",
+    "config.misc.startQueue": "nothing to say",
     "config.nameStyle.config": "命名スタイル設定。\n[formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) を参照してください。\n",
     "config.runtime.builtin": "組み込みライブラリの有効状態を調整します。実際のランタイム環境に応じて、存在しないライブラリを無効化（または再定義）できます。\n\n* `default`: ランタイムバージョンに応じてライブラリを有効／無効にします\n* `enable`: 常に有効\n* `disable`: 常に無効\n",
     "config.runtime.builtin.basic": "TODO: Needs documentation",

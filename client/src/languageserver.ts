@@ -24,6 +24,7 @@ import {
 
 export let defaultClient: LuaClient | null;
 let outputChannel: vscode.OutputChannel | undefined;
+let outputTimer: NodeJS.Timeout | null;
 
 function registerCustomCommands(context: ExtensionContext) {
     context.subscriptions.push(Commands.registerCommand('lua.config', (changes) => {
@@ -89,12 +90,12 @@ function registerCustomCommands(context: ExtensionContext) {
     }))
 
     context.subscriptions.push(Commands.registerCommand('lua.startServer', async () => {
-        deactivate();
+        deactivate(context);
         createClient(context);
     }));
 
     context.subscriptions.push(Commands.registerCommand('lua.stopServer', async () => {
-        deactivate();
+        deactivate(context);
     }));
 
     context.subscriptions.push(Commands.registerCommand('lua.showReferences', (uri: string, position: Record<string, number>, locations: any[]) => {
@@ -185,9 +186,9 @@ class LuaClient extends Disposable {
             command: command,
             transport: port
                 ? {
-                      kind: TransportKind.socket,
-                      port: port,
-                  }
+                    kind: TransportKind.socket,
+                    port: port,
+                }
                 : undefined,
             args: commandParam,
             options: {
@@ -428,7 +429,46 @@ class LuaClient extends Disposable {
     }
 }
 
-export function activate(context: ExtensionContext) {
+const COUNT_KEY = 'languageserver.start';
+function getSharedFilePath(context: ExtensionContext) {
+    /* AppData\Roaming\Code\User\globalStorage\sumneko.lua\ -> windows目录 */
+    let fsPath = context.globalStorageUri.fsPath
+    if (!fs.existsSync(fsPath)) {
+        // 确保目录存在
+        fs.mkdirSync(fsPath, { recursive: true });
+    }
+    return path.join(fsPath, 'shared-state');
+}
+function loadLocalConfig(context: ExtensionContext): Record<string, any> {
+    let filePath = getSharedFilePath(context);
+
+    let localConfig
+    if (fs.existsSync(filePath)) {
+        localConfig = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    }
+    return typeof localConfig === 'object' ? localConfig : {}
+}
+function saveLocalConfig(context: ExtensionContext, localConfig: Record<string, any>) {
+    fs.writeFileSync(getSharedFilePath(context), JSON.stringify(localConfig), 'utf-8');
+}
+
+function countLuaStart(context: ExtensionContext, i: number): number {
+    let localConfig = loadLocalConfig(context)
+    // 获取当前值，默认为 0
+    let currentCount: number = localConfig[COUNT_KEY];
+    currentCount = typeof currentCount === 'number' ? currentCount : 0
+
+    if (currentCount < 0) {
+        currentCount = 0;
+    }
+    let newCount = currentCount + i;
+    localConfig[COUNT_KEY] = newCount;
+    //使用文件记录通信，Sync锁
+    saveLocalConfig(context, localConfig)
+
+    return newCount
+};
+function _activate(context: ExtensionContext) {
     registerCustomCommands(context);
     function didOpenTextDocument(document: TextDocument) {
         // We are only interested in language mode text
@@ -446,8 +486,34 @@ export function activate(context: ExtensionContext) {
     Workspace.onDidOpenTextDocument(didOpenTextDocument);
     Workspace.textDocuments.forEach(didOpenTextDocument);
 }
+export function activate(context: ExtensionContext) {
 
-export async function deactivate() {
+    let startQueueTime: number | undefined = Workspace.getConfiguration(undefined, vscode.workspace.workspaceFolders?.[0]).get("Lua.misc.startQueue");
+
+    startQueueTime = typeof startQueueTime === 'number' ? startQueueTime : 0
+
+    if (startQueueTime <= 0) {
+        _activate(context);
+        return;
+    }
+    /* 实测5秒可以同时 open 10个LSP，(5-1)*10=45秒完成加载 */
+    startQueueTime = (startQueueTime <= 20 ? startQueueTime : 20) * 1000
+    /* 同时打开N个工作区时，vscode启动LSP插件会出现`not enough memory`的错误 */
+    outputTimer = setTimeout(async () => {
+        outputTimer = setTimeout(async () => {
+            countLuaStart(context, -1)
+            outputTimer = null
+        }, startQueueTime);
+        _activate(context)
+    }, (countLuaStart(context, 1) - 1) * startQueueTime); //使用计时器队列开启，单个窗口不受影响，第2个窗口开始wait
+}
+
+export async function deactivate(context: ExtensionContext) {
+    if (outputTimer) {
+        clearTimeout(outputTimer)
+        countLuaStart(context, -1)
+        outputTimer = null
+    }
     if (defaultClient) {
         defaultClient.stop();
         defaultClient.dispose();
@@ -469,23 +535,23 @@ export async function reportAPIDoc(params: unknown) {
 }
 
 export type ConfigChange = {
-    action:  "set",
-    key:     string,
-    value:   LSPAny,
-    uri:     vscode.Uri,
+    action: "set",
+    key: string,
+    value: LSPAny,
+    uri: vscode.Uri,
     global?: boolean,
 } | {
-    action:  "add",
-    key:     string,
-    value:   LSPAny,
-    uri:     vscode.Uri,
+    action: "add",
+    key: string,
+    value: LSPAny,
+    uri: vscode.Uri,
     global?: boolean,
 } | {
-    action:  "prop",
-    key:     string,
-    prop:    string;
-    value:   LSPAny,
-    uri:     vscode.Uri,
+    action: "prop",
+    key: string,
+    prop: string;
+    value: LSPAny,
+    uri: vscode.Uri,
     global?: boolean,
 }
 
@@ -497,10 +563,10 @@ export async function setConfig(changes: ConfigChange[]): Promise<boolean> {
     for (const change of changes) {
         params.push({
             action: change.action,
-            prop:   (change.action === "prop") ? change.prop : undefined as never,
-            key:    change.key,
-            value:  change.value,
-            uri:    change.uri.toString(),
+            prop: (change.action === "prop") ? change.prop : undefined as never,
+            key: change.key,
+            value: change.value,
+            uri: change.uri.toString(),
             global: change.global,
         });
     }

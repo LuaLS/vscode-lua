@@ -2862,6 +2862,24 @@
 					"scope": "resource",
 					"type": "array"
 				},
+				"Lua.misc.startQueue": {
+					"default": 0,
+					"enum": [
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						10,
+						15,
+						20
+					],
+					"markdownDescription": "%config.misc.startQueue%",
+					"scope": "resource",
+					"type": "integer"
+				},
 				"Lua.nameStyle.config": {
 					"additionalProperties": false,
 					"default": {},

@@ -3,3 +3,9 @@
 /publish/
 /luadoc/out/
 /ovsx-token
+
+luamake.exe
+main.lua
+/package/
+/.vscode/
+package*

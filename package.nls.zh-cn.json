@@ -257,6 +257,7 @@
     "config.language.fixIndent": "(仅VSCode) 修复错误的自动缩进，例如在包含单词 \"function\" 的字符串中换行时出现的错误缩进。",
     "config.misc.executablePath": "VSCode中指定可执行文件路径。",
     "config.misc.parameters": "VSCode中启动语言服务时的[命令行参数](https://luals.github.io/wiki/usage#arguments)。",
+    "config.misc.startQueue": "VSCode中多个窗口同时启动LSP时的间隔（秒），单个窗口不受影响。",
     "config.nameStyle.config": "设定命名风格检查的配置。\n请查阅[格式化文档](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs)了解用法。\n",
     "config.runtime.builtin": "调整内置库的启用状态，你可以根据实际运行环境禁用掉不存在的库（或重新定义）。\n\n* `default`: 表示库会根据运行版本启用或禁用\n* `enable`: 总是启用\n* `disable`: 总是禁用\n",
     "config.runtime.builtin.basic": "TODO: Needs documentation",

@@ -257,6 +257,7 @@
     "config.language.fixIndent": "（僅限VSCode）修復自動縮排錯誤，例如在有包含 \"function\" 的字串中換行時出現的錯誤縮排。",
     "config.misc.executablePath": "指定VSCode內的可執行文件",
     "config.misc.parameters": "VSCode內啟動語言伺服時的[命令列參數](https://luals.github.io/wiki/usage#arguments)。",
+    "config.misc.startQueue": "nothing to say",
     "config.nameStyle.config": "設定檢查命名風格的組態。\n閱讀 [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) 了解用法。\n",
     "config.runtime.builtin": "調整內建庫的啟用狀態，你可以根據實際執行環境停用（或重新定義）不存在的庫。\n\n* `default`: 表示庫會根據執行版本啟用或停用\n* `enable`: 總是啟用\n* `disable`: 總是停用\n",
     "config.runtime.builtin.basic": "TODO: Needs documentation",
