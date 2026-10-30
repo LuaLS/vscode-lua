@@ -3519,6 +3519,22 @@
 				"id": "jsonc"
 			}
 		],
+		"problemMatchers": [
+			{
+				"name": "lua",
+				"owner": "lua",
+				"fileLocation": [
+					"autoDetect",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(?:(?:[^\\n]*[/\\\\])?lua(?:jit)?(?:\\.exe)?: )?(.+):(\\d+): (.*)$",
+					"file": 1,
+					"line": 2,
+					"message": 3
+				}
+			}
+		],
 		"menus": {
 			"editor/context": [
 				{
